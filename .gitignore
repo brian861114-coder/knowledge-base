@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+
+.tmp_physics_seed/
+tmp_pdf_preview/
+
+tmp_newton_second_law.md
+tmp_skill_graph.json
+

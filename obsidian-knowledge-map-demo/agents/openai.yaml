@@ -1,0 +1,3 @@
+display_name: Obsidian Knowledge Map
+short_description: Build a structured physics encyclopedia in Obsidian for AI workflows and knowledge map frontends.
+default_prompt: Normalize or author Obsidian physics pages using the defined page types, relations, and templates, then export graph data when needed.

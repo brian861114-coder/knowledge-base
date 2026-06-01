@@ -100,6 +100,32 @@ Note:
 - On this machine, `[Documents]` is the Windows user Documents folder name shown in Chinese in Explorer.
 - If the vault path changes on another machine, update the export commands and startup assumptions before working further.
 
+## Machine-Specific Settings
+
+When syncing this repo to another computer, check these files first:
+
+- [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
+  - verify `$preferredPython`
+  - verify the default port `4173` is still appropriate
+- [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
+  - usually portable now, but verify it still launches the local `.ps1` correctly
+- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
+  - update example vault paths if the local machine uses a different location
+- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
+  - update the local path examples and migration checklist if needed
+- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
+  - update repo and vault paths before handing off to another agent
+- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
+  - update the external vault path reference if it changes
+- [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
+  - update the recorded repo path and vault path if the environment changes
+
+Files that usually do not need path edits:
+
+- frontend files in `prototype/`
+- enrichment scripts in `tools/`
+- export scripts, as long as the vault path is passed in through the command line
+
 ## Vault Structure
 
 The vault is organized by note type:

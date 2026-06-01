@@ -57,6 +57,37 @@ If working on another machine:
 2. confirm the repo checkout path
 3. update any path assumptions before running exports
 
+## Files To Reconfigure On Another Machine
+
+These are the main machine-specific files to check after moving the repo:
+
+1. [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
+   - check `$preferredPython`
+   - check the default local port
+   - this is the main startup file most likely to need adjustment
+2. [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
+   - usually portable
+   - confirm it still calls the local PowerShell script correctly
+3. [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
+   - update any path examples shown to future users
+4. [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
+   - update the recorded local paths and example commands
+5. [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
+   - update the repo path
+   - update the vault path
+   - update command examples if they include absolute paths
+6. [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
+   - update the external vault path reference
+7. [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
+   - update the recorded build environment paths
+
+Usually not machine-specific:
+
+- [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\app.js)
+- [prototype/index.html](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\index.html)
+- [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\styles.css)
+- generation and enrichment scripts in `tools/`, unless a script is later changed to hardcode a path
+
 ## Normal Maintenance Flow
 
 Use this sequence for most work:

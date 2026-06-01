@@ -67,11 +67,19 @@ knowledge-base/
   physics_encyclopedia_schema.md  Core encyclopedia schema
   physics_database_build_manifest.md
   physics_second_batch_manifest.md
+  MAINTENANCE.md
   PROJECT_ARCHITECTURE.md
   AI_HANDOFF.md
   start_prototype.cmd
   start_prototype.ps1
 ```
+
+## Key Docs
+
+- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md): project overview and current status
+- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md): day-to-day operations, export flow, and troubleshooting
+- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md): architecture notes
+- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md): handoff context for future continuation
 
 ## Important Paths
 

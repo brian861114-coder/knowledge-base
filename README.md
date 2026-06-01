@@ -31,18 +31,29 @@ The project is no longer just a seed prototype. It currently includes:
   - optics
   - modern physics
   - fluid mechanics
-- `136` notes exported into the frontend dataset
+- `178` notes exported into the frontend dataset
 - a graph export and note-detail export used by the prototype
 - full-page reading mode in the frontend
 - full-note export support, not only previews
 - HTML math rendering support for Obsidian-style `$...$` and `$$...$$`
 - expanded concept and law pages with stronger university-level explanations
 - step-by-step derivation sections added to core concept and core law notes
+- bridge-note and method-page batches added to reduce isolated concept pages and turn the vault into a more connected analysis system
 
 ## Current Architecture
 
 ```text
 Obsidian vault Markdown notes
+  -> note types
+     - laws
+     - concepts
+     - quantities
+     - experiments
+     - mathematical tools
+  -> bridge / method layer
+     - cross-topic concept bridges
+     - analysis-method pages
+     - quantity pages used as flow or state discriminators
   -> generation / enrichment scripts
   -> structured notes with frontmatter + sectioned bodies
   -> JSON exports
@@ -57,10 +68,63 @@ Obsidian vault Markdown notes
      - MathJax formula rendering
 ```
 
+## Bridge And Method Progress
+
+The vault is no longer being expanded only by adding isolated definition pages.  
+Recent work focused on high-value bridge pages and method pages that multiple core notes can point back to.
+
+Completed priority batches:
+
+- quantum and wave bridge pages
+  - `相位`
+  - `算符`
+  - `期望值`
+  - `穿隧`
+  - `散射`
+  - `繞射`
+  - `解析度`
+- mechanics method and reduction pages
+  - `自由度`
+  - `約束`
+  - `中心力`
+  - `有效位能`
+  - `可逆過程`
+  - `不可逆過程`
+- fluid-analysis bridge pages
+  - `理想流體近似`
+  - `黏滯力`
+  - `層流`
+  - `紊流`
+  - `雷諾數`
+
+What those batches changed structurally:
+
+- quantum notes now have a clearer bridge from `波函數 / 機率振幅 / 本徵態 / 可觀測量 / 薛丁格方程` into measurement language and barrier / scattering analysis
+- optics notes now have an explicit bridge from `干涉 / 惠更斯原理 / 顯微鏡 / 光線模型` into diffraction-limited resolution analysis
+- mechanics notes now have an explicit bridge from `廣義座標 / 拉格朗日力學 / 角動量 / 位能` into constrained-system and orbital analysis
+- thermodynamics notes now have an explicit bridge from `熱平衡 / 熵 / 熱力學第二定律` into process-direction and reversibility analysis
+- fluid mechanics notes now have an explicit bridge from `連續方程 / 伯努力方程 / 文氏管` into approximation limits, viscous effects, and flow-regime classification
+
+Status against the original bridge-page priority list:
+
+- completed: all items from the original priority list have now been created
+- not yet done: systematic back-linking from older core pages into these new bridge pages is still incomplete
+- ongoing standard: after each content batch, rerun export and validation until
+  - broken `[[wikilink]]` targets = `0`
+  - broken frontmatter relation targets = `0`
+  - math issues = `0`
+
+Current next-step priority:
+
+- add targeted reverse links from older core pages to the new bridge and method pages where the connection is conceptually central
+- keep avoiding isolated new notes
+- continue using `02_concepts/` and `03_quantities/` as the default home unless a topic is clearly a law or mathematical tool
+
 ## Repo Layout
 
 ```text
 knowledge-base/
+  assets/                         Frontend-served static diagrams and figures
   prototype/                      Frontend prototype
   tools/                          Note generation / enrichment / export scripts
   obsidian-knowledge-map-demo/    Graph export demo script source
@@ -181,11 +245,39 @@ The prototype currently supports:
 - full-note reading mode as a main-page reader
 - Markdown-like rendering for exported note content
 - clickable Obsidian-style internal links inside note content
+- Markdown image rendering for explanatory diagrams
 - MathJax rendering for:
   - inline math `$...$`
   - display math `$$...$$`
 
 The frontend should be opened over HTTP, not `file://`.
+
+## Diagram Assets
+
+If you want to embed explanatory diagrams in note content, use repo-served image assets rather than machine-specific absolute file paths.
+
+Recommended location:
+
+- [assets/README.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\assets\README.md)
+
+Recommended Markdown syntax:
+
+```md
+![Free-body diagram](../assets/newton-second-law-free-body.png "Force analysis schematic")
+```
+
+Current frontend behavior:
+
+- a standalone image line renders as a figure block
+- the optional quoted title becomes the visible caption
+- inline image syntax inside a paragraph is also supported
+- local relative paths and external `http://` / `https://` image URLs work
+
+Avoid:
+
+- Windows absolute paths such as `C:\...`
+- spaces in image filenames when a simpler hyphenated name is available
+- relying on `file://` page loads
 
 ## Running the Prototype
 

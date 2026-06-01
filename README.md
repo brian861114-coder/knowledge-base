@@ -48,6 +48,8 @@ Obsidian vault Markdown notes
   -> JSON exports
      - physics_graph.json
      - physics_note_details.json
+  -> validation
+     - frontmatter, link, math, and export consistency checks
   -> prototype frontend
      - graph exploration
      - side-panel preview
@@ -76,24 +78,24 @@ knowledge-base/
 
 ## Key Docs
 
-- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md): project overview and current status
-- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md): day-to-day operations, export flow, and troubleshooting
-- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md): architecture notes
-- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md): handoff context for future continuation
+- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\README.md): project overview and current status
+- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\MAINTENANCE.md): day-to-day operations, export flow, and troubleshooting
+- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\PROJECT_ARCHITECTURE.md): architecture notes
+- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\AI_HANDOFF.md): handoff context for future continuation
 
 ## Important Paths
 
 Project workspace:
 
-`C:\Users\brian\Downloads\vibe_coding\knowledge database`
+`C:\Users\brian\Downloads\vibe_coding\knowledge_map`
 
 Obsidian vault root:
 
-`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault`
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian`
 
 Knowledge-base vault folder used by this project:
 
-`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database`
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
 
 Note:
 
@@ -104,7 +106,7 @@ Note:
 
 When syncing this repo to another computer, check these files first:
 
-- [.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\.knowledge-base.local.example.json)
+- [.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge_map\.knowledge-base.local.example.json)
   - copy this to `.knowledge-base.local.json`
   - set the local Python path
   - set the local prototype host and port
@@ -113,20 +115,20 @@ When syncing this repo to another computer, check these files first:
   - this file is intentionally local-only and ignored by Git
   - use it instead of editing shared scripts when possible
 
-- [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
+- [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge_map\start_prototype.ps1)
   - now reads `.knowledge-base.local.json` first
   - also supports `KB_PYTHON_PATH`, `KB_PROTOTYPE_HOST`, and `KB_PROTOTYPE_PORT`
-- [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
+- [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge_map\start_prototype.cmd)
   - usually portable now, but verify it still launches the local `.ps1` correctly
-- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
+- [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\README.md)
   - update example vault paths if the local machine uses a different location
-- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
+- [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\MAINTENANCE.md)
   - update the local path examples and migration checklist if needed
-- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
+- [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\AI_HANDOFF.md)
   - update repo and vault paths before handing off to another agent
-- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
+- [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\PROJECT_ARCHITECTURE.md)
   - update the external vault path reference if it changes
-- [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
+- [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\physics_database_build_manifest.md)
   - update the recorded repo path and vault path if the environment changes
 
 Files that usually do not need path edits:
@@ -152,21 +154,23 @@ Those note types are what the generators and exports expect.
 
 Generation / enrichment:
 
-- [tools/generate_physics_third_batch.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\generate_physics_third_batch.py)
-- [tools/enrich_concept_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_concept_pages.py)
-- [tools/enrich_concept_pages_derivations.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_concept_pages_derivations.py)
-- [tools/enrich_remaining_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_remaining_pages.py)
+- [tools/generate_physics_third_batch.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\generate_physics_third_batch.py)
+- [tools/enrich_concept_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_concept_pages.py)
+- [tools/enrich_concept_pages_derivations.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_concept_pages_derivations.py)
+- [tools/enrich_remaining_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_remaining_pages.py)
 
 Export:
 
-- [tools/export_note_details.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\export_note_details.py)
-- [obsidian-knowledge-map-demo/scripts/export_graph.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\obsidian-knowledge-map-demo\scripts\export_graph.py)
+- [tools/export_note_details.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\export_note_details.py)
+- [obsidian-knowledge-map-demo/scripts/export_graph.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\obsidian-knowledge-map-demo\scripts\export_graph.py)
+- [tools/run_exports.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\run_exports.py)
+- [tools/validate_knowledge_base.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\validate_knowledge_base.py)
 
 Frontend:
 
-- [prototype/index.html](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\index.html)
-- [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\app.js)
-- [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\styles.css)
+- [prototype/index.html](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\index.html)
+- [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\app.js)
+- [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\styles.css)
 
 ## Frontend State
 
@@ -203,11 +207,32 @@ If another machine uses a different Python install or port:
 
 ## Export Workflow
 
+Recommended default command:
+
+```powershell
+python .\tools\run_exports.py
+```
+
+This runs both exports and then validates:
+
+- note count consistency
+- graph count consistency
+- required frontmatter
+- broken `[[wikilink]]` targets
+- broken frontmatter relation targets
+- basic `$` / `$$` delimiter balance
+
+Validation only:
+
+```powershell
+python .\tools\validate_knowledge_base.py
+```
+
 Re-export graph JSON:
 
 ```powershell
 python .\obsidian-knowledge-map-demo\scripts\export_graph.py `
-  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_graph.json'
 ```
 
@@ -215,7 +240,7 @@ Re-export note details JSON:
 
 ```powershell
 python .\tools\export_note_details.py `
-  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_note_details.json'
 ```
 
@@ -224,6 +249,7 @@ Important:
 - `physics_graph.json` is the graph dataset
 - `physics_note_details.json` is the reading dataset
 - after note rewrites finish, export JSON in a separate step so the frontend gets the final note state
+- use `tools/run_exports.py` as the normal operator path; use the individual commands only when isolating a problem
 
 ## Content Update Workflow
 

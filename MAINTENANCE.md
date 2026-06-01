@@ -2,7 +2,7 @@
 
 This document is the operator manual for maintaining the `knowledge-base` project after the initial setup is complete.
 
-Use [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md) for project overview.  
+Use [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\README.md) for project overview.  
 Use this file for day-to-day maintenance, export, verification, and troubleshooting.
 
 ## Scope
@@ -41,15 +41,15 @@ Rule of thumb:
 
 Current workspace:
 
-`C:\Users\brian\Downloads\vibe_coding\knowledge database`
+`C:\Users\brian\Downloads\vibe_coding\knowledge_map`
 
 Current vault root:
 
-`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault`
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian`
 
 Current knowledge-base folder inside the vault:
 
-`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database`
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
 
 If working on another machine:
 
@@ -59,7 +59,7 @@ If working on another machine:
 
 Recommended local config file:
 
-- copy [C:\Users\brian\Downloads\vibe_coding\knowledge database\.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\.knowledge-base.local.example.json)
+- copy [C:\Users\brian\Downloads\vibe_coding\knowledge_map\.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge_map\.knowledge-base.local.example.json)
   to `.knowledge-base.local.json`
 - this local file is ignored by Git
 - use it for machine-specific values instead of editing shared scripts when possible
@@ -68,35 +68,35 @@ Recommended local config file:
 
 These are the main machine-specific files to check after moving the repo:
 
-1. [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
+1. [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge_map\start_prototype.ps1)
    - reads `.knowledge-base.local.json`
    - supports `KB_PYTHON_PATH`, `KB_PROTOTYPE_HOST`, and `KB_PROTOTYPE_PORT`
    - this is the main startup file most likely to need adjustment only if config support is insufficient
-2. [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
+2. [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge_map\start_prototype.cmd)
    - usually portable
    - confirm it still calls the local PowerShell script correctly
 3. `.knowledge-base.local.json`
    - set the local Python path
    - set the local prototype host and port
    - optionally store the local vault path for operator reference
-4. [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
+4. [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\README.md)
    - update any path examples shown to future users
-5. [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
+5. [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\MAINTENANCE.md)
    - update the recorded local paths and example commands
-6. [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
+6. [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\AI_HANDOFF.md)
    - update the repo path
    - update the vault path
    - update command examples if they include absolute paths
-7. [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
+7. [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\PROJECT_ARCHITECTURE.md)
    - update the external vault path reference
-8. [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
+8. [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge_map\physics_database_build_manifest.md)
    - update the recorded build environment paths
 
 Usually not machine-specific:
 
-- [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\app.js)
-- [prototype/index.html](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\index.html)
-- [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\styles.css)
+- [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\app.js)
+- [prototype/index.html](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\index.html)
+- [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\styles.css)
 - generation and enrichment scripts in `tools/`, unless a script is later changed to hardcode a path
 
 ## Normal Maintenance Flow
@@ -105,8 +105,8 @@ Use this sequence for most work:
 
 1. Update notes in the Obsidian vault
 2. Run generation or enrichment scripts if the change is script-driven
-3. Re-export `physics_note_details.json`
-4. Re-export `physics_graph.json` if links, note titles, note count, or graph structure changed
+3. Run `python .\tools\run_exports.py`
+4. Fall back to individual export commands only when debugging one layer in isolation
 5. Start the prototype
 6. Verify representative pages
 7. Commit the related script, frontend, and export updates together
@@ -135,7 +135,7 @@ $env:KB_PROTOTYPE_PORT = "4174"
 
 ```powershell
 python .\tools\export_note_details.py `
-  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_note_details.json'
 ```
 
@@ -143,8 +143,29 @@ python .\tools\export_note_details.py `
 
 ```powershell
 python .\obsidian-knowledge-map-demo\scripts\export_graph.py `
-  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_graph.json'
+```
+
+### Recommended one-command export plus validation
+
+```powershell
+python .\tools\run_exports.py
+```
+
+This is the normal operator path. It runs both exports and then checks:
+
+- vault note count against exported note count
+- graph node count against vault note count
+- required frontmatter fields
+- broken `[[wikilink]]` targets
+- broken frontmatter relation targets
+- basic `$` / `$$` delimiter balance
+
+### Validation only
+
+```powershell
+python .\tools\validate_knowledge_base.py
 ```
 
 ### Check working tree
@@ -178,6 +199,19 @@ Re-export `physics_graph.json` when:
 - a new note type page was added or removed
 
 Re-export both when unsure.
+
+## Validation Rules
+
+The validator currently fails when it finds any of these:
+
+- missing required frontmatter fields: `type`, `title`, `domain`, `summary`
+- broken `[[wikilink]]` targets
+- broken frontmatter relation targets
+- duplicate note titles
+- unmatched `$` or `$$` delimiters
+- export count mismatches between the vault and generated JSON
+
+That strictness is intentional. This project fails more dangerously by drifting silently than by stopping early.
 
 ## Frontend Verification Checklist
 
@@ -226,17 +260,17 @@ For university-level quality, content should aim to include:
 
 Use these files depending on the kind of change:
 
-- [tools/generate_physics_third_batch.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\generate_physics_third_batch.py)
+- [tools/generate_physics_third_batch.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\generate_physics_third_batch.py)
   - batch note creation
-- [tools/enrich_concept_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_concept_pages.py)
+- [tools/enrich_concept_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_concept_pages.py)
   - broad concept-page enrichment
-- [tools/enrich_concept_pages_derivations.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_concept_pages_derivations.py)
+- [tools/enrich_concept_pages_derivations.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_concept_pages_derivations.py)
   - concept-page derivation and deeper teaching structure
-- [tools/enrich_remaining_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\enrich_remaining_pages.py)
+- [tools/enrich_remaining_pages.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\enrich_remaining_pages.py)
   - law, quantity, experiment, map, and mathematical-tool enrichment
-- [tools/export_note_details.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\tools\export_note_details.py)
+- [tools/export_note_details.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\tools\export_note_details.py)
   - note-detail export used by the reader
-- [obsidian-knowledge-map-demo/scripts/export_graph.py](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\obsidian-knowledge-map-demo\scripts\export_graph.py)
+- [obsidian-knowledge-map-demo/scripts/export_graph.py](C:\Users\brian\Downloads\vibe_coding\knowledge_map\obsidian-knowledge-map-demo\scripts\export_graph.py)
   - graph export used by node-link exploration
 
 ## Move-To-New-Machine Checklist
@@ -290,8 +324,8 @@ Check:
 Check:
 
 1. Was `physics_note_details.json` exported after the note-structure change?
-2. Did the frontend rendering logic change in [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\app.js)?
-3. Did a CSS change in [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\prototype\styles.css) affect layout width, spacing, or overflow?
+2. Did the frontend rendering logic change in [prototype/app.js](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\app.js)?
+3. Did a CSS change in [prototype/styles.css](C:\Users\brian\Downloads\vibe_coding\knowledge_map\prototype\styles.css) affect layout width, spacing, or overflow?
 
 ### Problem: A script runs but the output looks half-old and half-new
 

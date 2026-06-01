@@ -11,6 +11,7 @@ HEADING_RE = re.compile(r"^(#{2,3})\s+(.+)$", re.MULTILINE)
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
+    text = text.lstrip("\ufeff")
     if not text.startswith("---\n"):
         return {}, text
     end = text.find("\n---\n", 4)

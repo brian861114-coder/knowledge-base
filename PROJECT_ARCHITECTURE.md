@@ -2,12 +2,12 @@
 
 ## Purpose
 
-This project is building a structured physics encyclopedia on top of Obsidian content, then rendering that content as an interactive knowledge map in the browser.
+This project builds a structured physics knowledge base on top of an Obsidian vault, then renders that content as an interactive knowledge map in the browser.
 
-This is not just a visual graph demo. The real system has three layers:
+The system has three layers:
 
 1. Obsidian note system
-2. Export / transformation layer
+2. Export and transformation layer
 3. Frontend exploration layer
 
 ## Layer 1: Obsidian Source of Truth
@@ -23,7 +23,7 @@ Current page types:
 - `experiment`
 - `mathematical_tool`
 
-Each page uses structured frontmatter plus fixed sections so agents and scripts can parse it reliably.
+Each page is expected to use structured frontmatter plus stable section headings so scripts can parse it reliably.
 
 ### Core Principle
 
@@ -33,25 +33,49 @@ The vault is authoritative.
 - Exported JSON is derived data.
 - The frontend should not invent structure that the vault does not encode.
 
-## Layer 2: Export / Transformation
+## Layer 2: Export and Transformation
 
 ### Scripts
 
 `tools/generate_physics_seed_notes.py`
 
-- Generates the first batch of physics encyclopedia notes.
+- Generates the first batch of seed notes.
 
 `tools/generate_physics_second_batch.py`
 
-- Generates the second batch of notes focused on mechanics, math tools, and electromagnetism.
+- Generates the second batch focused on mechanics, mathematical tools, and electromagnetism.
+
+`tools/generate_physics_third_batch.py`
+
+- Generates the third batch used for broader coverage expansion.
+
+`tools/enrich_concept_pages.py`
+
+- Deepens concept pages.
+
+`tools/enrich_concept_pages_derivations.py`
+
+- Adds more explicit derivation-oriented teaching structure to concept pages.
+
+`tools/enrich_remaining_pages.py`
+
+- Enriches law, quantity, experiment, map, and mathematical-tool pages.
 
 `tools/export_note_details.py`
 
-- Exports note preview content and section snippets into `physics_note_details.json`.
+- Exports full note-reading data into `physics_note_details.json`.
 
 `obsidian-knowledge-map-demo/scripts/export_graph.py`
 
-- Exports node-edge graph JSON into `physics_graph.json`.
+- Exports node-edge graph data into `physics_graph.json`.
+
+`tools/validate_knowledge_base.py`
+
+- Validates required frontmatter, wikilinks, relation targets, basic math delimiter structure, and export consistency.
+
+`tools/run_exports.py`
+
+- Runs both exports and then the validator as the normal operator entrypoint.
 
 ### Export Outputs
 
@@ -64,9 +88,9 @@ The vault is authoritative.
 
 `physics_note_details.json`
 
-- Body preview
-- Section preview blocks
-- Used by the right-hand reading panel
+- Full exported note-reading content
+- Section blocks for reader mode
+- Used by the frontend side panel and full-page reader
 
 ## Layer 3: Frontend Prototype
 
@@ -78,15 +102,12 @@ Frontend files:
 
 ### Current frontend capabilities
 
-- Overview mode and focused-domain mode
-- Domain cards and domain hubs
-- Ring layout for focused views
-- Zoom / pan / fit view
-- Back-to-overview controls
-- Right-side detail panel
-- Scrollable detail panel
-- Section table of contents with jump navigation
-- Live reading from exported note preview JSON
+- Graph exploration
+- Side-panel note preview
+- Full-page reader mode
+- Clickable internal links
+- MathJax rendering for inline and display math
+- Section table of contents and jump navigation
 
 ### Current frontend limitation
 
@@ -94,31 +115,11 @@ The frontend is still a prototype.
 
 - It does not parse raw vault markdown directly.
 - It depends on pre-exported JSON.
-- It is single-page and stateful, not yet a formal app with routing or build tooling.
-
-## Domain Strategy
-
-The physics encyclopedia is organized by top-level domains for readers:
-
-- 數學工具
-- 力學
-- 振動與波動
-- 熱學與熱力學
-- 電磁學
-- 光學
-- 近代物理
-- 流體力學
-
-Internally, the graph is organized by page type plus typed relations.
-
-That distinction matters:
-
-- Reader navigation is domain-centric.
-- System structure is page-type-centric.
+- It is a single-page prototype, not yet a formal built app.
 
 ## Relation Model
 
-The graph exporter currently maps frontmatter fields to edge types:
+The graph exporter maps frontmatter fields to edge types:
 
 - `prerequisites` -> `requires`
 - `related_concepts` -> `related_to`
@@ -145,16 +146,19 @@ These belong in this Git repo:
 
 - Docs
 - Prototype
-- Skills
 - Scripts
 - Exported JSON
-- Design source files in the workspace
+- Local startup helpers
+
+Repo path on this machine:
+
+`C:\Users\brian\Downloads\vibe_coding\knowledge_map`
 
 ### Outside repo
 
-The external Obsidian vault path stores the actual encyclopedia pages:
+The external Obsidian vault stores the actual encyclopedia pages:
 
-`C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
 
 This split is intentional.
 
@@ -165,14 +169,13 @@ This split is intentional.
 
 The next durable upgrade should be:
 
-1. Add a single orchestrator script that runs note generation, graph export, and detail export in one command.
-2. Introduce a real frontend build system if the prototype grows.
+1. Extend validation beyond delimiter checks into stronger formula and schema checks.
+2. Introduce a real frontend build system if the prototype grows further.
 3. Continue increasing note density before large UI refactors.
 
 ## What Not To Break
 
 - Do not replace the structured note model with freeform notes.
 - Do not make the frontend the source of truth.
-- Do not let agent-generated pages drift away from the current page-type schema.
+- Do not let generated pages drift away from the current page-type schema.
 - Do not rely on `file://` for frontend loading.
-

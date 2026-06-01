@@ -1746,47 +1746,12 @@
     },
     {
       "source": "光學總覽",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "光學總覽",
       "target": "惠更斯原理",
       "type": "wikilink"
     },
     {
       "source": "光學總覽",
-      "target": "干涉",
+      "target": "雙狹縫實驗",
       "type": "wikilink"
     },
     {
@@ -1796,622 +1761,562 @@
     },
     {
       "source": "光學總覽",
-      "target": "薄透鏡公式",
+      "target": "折射定律",
       "type": "wikilink"
     },
     {
       "source": "光學總覽",
-      "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第二定律",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "力",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "質量",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "加速度",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "功能定理",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動量守恆",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "伯努力方程",
-      "type": "organized_by"
-    },
-    {
-      "source": "力學總覽",
-      "target": "力",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "質量",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "加速度",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第二定律",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "功能定理",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動量守恆",
-      "type": "requires"
-    },
-    {
-      "source": "力學總覽",
-      "target": "質量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "加速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "力",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "功能定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "功能定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓萬有引力定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "力",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "質量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "加速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
       "target": "機械波",
       "type": "wikilink"
     },
     {
-      "source": "力學總覽",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "牛頓第三定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "自由體圖",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "重力",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "摩擦力",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "功",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "動能",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "保守力",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "萬有引力定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "圓周運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "力學總覽",
-      "target": "碰撞分析",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "organized_by"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "簡諧運動",
-      "type": "organized_by"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "三角函數",
-      "type": "organized_by"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "複數",
-      "type": "organized_by"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "簡諧運動",
-      "type": "requires"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "requires"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "三角函數",
-      "type": "requires"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "複數",
-      "type": "requires"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "都卜勒效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
+      "source": "光學總覽",
       "target": "折射定律",
       "type": "wikilink"
     },
     {
-      "source": "振動與波動總覽",
+      "source": "光學總覽",
+      "target": "惠更斯原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
       "target": "雙狹縫實驗",
       "type": "wikilink"
     },
     {
+      "source": "光學總覽",
+      "target": "偏振",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "光學總覽",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "伯努力方程",
+      "type": "organized_by"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "requires"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "機械波",
+      "type": "organized_by"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "organized_by"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "organized_by"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "organized_by"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "requires"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "機械波",
+      "type": "requires"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "requires"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "requires"
+    },
+    {
       "source": "振動與波動總覽",
       "target": "簡諧運動",
       "type": "wikilink"
     },
     {
       "source": "振動與波動總覽",
-      "target": "共振",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "駐波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "聲波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "都卜勒效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "向量",
-      "type": "organized_by"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "導數",
-      "type": "organized_by"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "積分",
-      "type": "organized_by"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "三角函數",
-      "type": "organized_by"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "複數",
-      "type": "organized_by"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "向量",
-      "type": "requires"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "導數",
-      "type": "requires"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "積分",
-      "type": "requires"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "三角函數",
-      "type": "requires"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "複數",
-      "type": "requires"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "梯度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "散度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "旋度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "矩陣",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "機率與統計",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "梯度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "散度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "旋度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "功能定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "力",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "加速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
       "target": "機械波",
       "type": "wikilink"
     },
     {
-      "source": "數學工具總覽",
-      "target": "內積",
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "積分",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "外積",
+      "target": "向量",
+      "type": "organized_by"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "導數",
+      "type": "organized_by"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "積分",
+      "type": "organized_by"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "三角函數",
+      "type": "organized_by"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "複數",
+      "type": "organized_by"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "向量",
+      "type": "requires"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "導數",
+      "type": "requires"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "積分",
+      "type": "requires"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "三角函數",
+      "type": "requires"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "複數",
+      "type": "requires"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "偏導數",
+      "target": "導數",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "梯度",
+      "target": "積分",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "面積分",
+      "target": "三角函數",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "散度",
+      "target": "複數",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "旋度",
+      "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "矩陣",
+      "target": "導數",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "機率與統計",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "數學工具總覽",
+      "target": "積分",
       "type": "wikilink"
     },
     {
@@ -2456,57 +2361,12 @@
     },
     {
       "source": "流體力學總覽",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
       "target": "密度",
       "type": "wikilink"
     },
     {
       "source": "流體力學總覽",
       "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "流量",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "連續方程",
       "type": "wikilink"
     },
     {
@@ -2516,7 +2376,77 @@
     },
     {
       "source": "流體力學總覽",
-      "target": "文氏管",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "阿基米德原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "流體力學總覽",
+      "target": "積分",
       "type": "wikilink"
     },
     {
@@ -2556,7 +2486,32 @@
     },
     {
       "source": "熱學與熱力學總覽",
+      "target": "熱力學第零定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
       "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
+      "target": "溫度",
       "type": "wikilink"
     },
     {
@@ -2571,7 +2526,12 @@
     },
     {
       "source": "熱學與熱力學總覽",
-      "target": "熱力學第二定律",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與熱力學總覽",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -2581,12 +2541,7 @@
     },
     {
       "source": "熱學與熱力學總覽",
-      "target": "內能",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熵",
+      "target": "導數",
       "type": "wikilink"
     },
     {
@@ -2595,61 +2550,6 @@
       "type": "wikilink"
     },
     {
-      "source": "熱學與熱力學總覽",
-      "target": "機率與統計",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熱",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "內能",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熵",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熱力學第零定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熱力學第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "理想氣體方程式",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "卡諾循環",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "等溫過程",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "絕熱過程",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "統計物理",
-      "type": "wikilink"
-    },
-    {
       "source": "近代物理總覽",
       "target": "狹義相對論",
       "type": "organized_by"
@@ -2691,37 +2591,42 @@
     },
     {
       "source": "近代物理總覽",
-      "target": "牛頓第二定律",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "質能等價",
+      "target": "黑體輻射",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "複數",
+      "target": "光電效應",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "電場",
+      "target": "德布羅意波",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "牛頓第二定律",
+      "target": "薛丁格方程",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "機械波",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
       "source": "近代物理總覽",
-      "target": "複數",
+      "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理總覽",
+      "target": "光電效應",
       "type": "wikilink"
     },
     {
@@ -2751,7 +2656,27 @@
     },
     {
       "source": "近代物理總覽",
-      "target": "質能等價",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理總覽",
+      "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理總覽",
+      "target": "光電效應",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理總覽",
+      "target": "積分",
       "type": "wikilink"
     },
     {
@@ -2816,17 +2741,22 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
       "target": "高斯定律",
       "type": "wikilink"
     },
     {
       "source": "電磁學總覽",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
       "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "庫侖定律",
       "type": "wikilink"
     },
     {
@@ -2841,27 +2771,17 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "複數",
+      "target": "電荷",
       "type": "wikilink"
     },
     {
       "source": "電磁學總覽",
-      "target": "向量",
+      "target": "庫侖定律",
       "type": "wikilink"
     },
     {
       "source": "電磁學總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "折射定律",
+      "target": "電場",
       "type": "wikilink"
     },
     {
@@ -2871,37 +2791,7 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "電位",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "等位面",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "平行板電容器",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電場能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "麥克斯威方程組",
+      "target": "歐姆定律",
       "type": "wikilink"
     },
     {
@@ -2911,12 +2801,32 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "電磁波",
+      "target": "庫侖定律",
       "type": "wikilink"
     },
     {
       "source": "電磁學總覽",
-      "target": "磁場",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "積分",
       "type": "wikilink"
     },
     {
@@ -2976,12 +2886,22 @@
     },
     {
       "source": "伯努力方程",
+      "target": "文氏管",
+      "type": "wikilink"
+    },
+    {
+      "source": "伯努力方程",
       "target": "壓力",
       "type": "wikilink"
     },
     {
       "source": "伯努力方程",
       "target": "密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "伯努力方程",
+      "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
@@ -2996,7 +2916,7 @@
     },
     {
       "source": "伯努力方程",
-      "target": "連續方程",
+      "target": "壓力",
       "type": "wikilink"
     },
     {
@@ -3071,12 +2991,17 @@
     },
     {
       "source": "功能定理",
-      "target": "牛頓第二定律",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
       "source": "功能定理",
       "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "功能定理",
+      "target": "動能",
       "type": "wikilink"
     },
     {
@@ -3166,12 +3091,12 @@
     },
     {
       "source": "動量守恆",
-      "target": "動量",
+      "target": "兩滑車碰撞實驗",
       "type": "wikilink"
     },
     {
       "source": "動量守恆",
-      "target": "向量",
+      "target": "動量",
       "type": "wikilink"
     },
     {
@@ -3181,12 +3106,17 @@
     },
     {
       "source": "動量守恆",
-      "target": "質心",
+      "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "動量守恆",
-      "target": "衝量",
+      "target": "動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "動量守恆",
+      "target": "質心",
       "type": "wikilink"
     },
     {
@@ -3196,7 +3126,7 @@
     },
     {
       "source": "動量守恆",
-      "target": "火箭方程",
+      "target": "對稱性",
       "type": "wikilink"
     },
     {
@@ -3233,6 +3163,11 @@
       "source": "動量定理",
       "target": "衝量",
       "type": "derives_to"
+    },
+    {
+      "source": "動量定理",
+      "target": "兩滑車碰撞實驗",
+      "type": "wikilink"
     },
     {
       "source": "動量定理",
@@ -3277,6 +3212,11 @@
     {
       "source": "反射定律",
       "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "反射定律",
+      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -3351,12 +3291,17 @@
     },
     {
       "source": "庫侖定律",
-      "target": "電荷",
+      "target": "電位",
       "type": "wikilink"
     },
     {
       "source": "庫侖定律",
-      "target": "向量",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "扭秤實驗",
       "type": "wikilink"
     },
     {
@@ -3376,12 +3321,77 @@
     },
     {
       "source": "庫侖定律",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
       "target": "電場",
       "type": "wikilink"
     },
     {
       "source": "庫侖定律",
       "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "庫侖定律",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -3426,6 +3436,21 @@
     },
     {
       "source": "折射定律",
+      "target": "惠更斯原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射定律",
+      "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射定律",
+      "target": "薄透鏡公式",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射定律",
       "target": "三角函數",
       "type": "wikilink"
     },
@@ -3451,7 +3476,7 @@
     },
     {
       "source": "折射定律",
-      "target": "顯微鏡",
+      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -3531,6 +3556,16 @@
     },
     {
       "source": "機械能守恆",
+      "target": "滑軌能量轉換實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械能守恆",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械能守恆",
       "target": "功能定理",
       "type": "wikilink"
     },
@@ -3541,17 +3576,22 @@
     },
     {
       "source": "機械能守恆",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械能守恆",
       "target": "保守力",
       "type": "wikilink"
     },
     {
       "source": "機械能守恆",
-      "target": "動能",
+      "target": "位能",
       "type": "wikilink"
     },
     {
       "source": "機械能守恆",
-      "target": "位能",
+      "target": "動能",
       "type": "wikilink"
     },
     {
@@ -3566,7 +3606,7 @@
     },
     {
       "source": "機械能守恆",
-      "target": "簡諧運動",
+      "target": "拉格朗日力學",
       "type": "wikilink"
     },
     {
@@ -3592,6 +3632,11 @@
     {
       "source": "歐姆定律",
       "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "法拉第定律",
       "type": "wikilink"
     },
     {
@@ -3636,6 +3681,11 @@
     },
     {
       "source": "法拉第定律",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第定律",
       "target": "磁場",
       "type": "wikilink"
     },
@@ -3657,6 +3707,11 @@
     {
       "source": "法拉第定律",
       "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第定律",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -3683,6 +3738,11 @@
       "source": "火箭方程",
       "target": "推進",
       "type": "derives_to"
+    },
+    {
+      "source": "火箭方程",
+      "target": "牛頓萬有引力定律",
+      "type": "wikilink"
     },
     {
       "source": "火箭方程",
@@ -3766,12 +3826,17 @@
     },
     {
       "source": "熱力學第一定律",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱力學第一定律",
       "target": "溫度",
       "type": "wikilink"
     },
     {
       "source": "熱力學第一定律",
-      "target": "功",
+      "target": "內能",
       "type": "wikilink"
     },
     {
@@ -3791,17 +3856,22 @@
     },
     {
       "source": "熱力學第一定律",
-      "target": "熵",
+      "target": "功",
       "type": "wikilink"
     },
     {
       "source": "熱力學第一定律",
-      "target": "卡諾循環",
+      "target": "等溫過程",
       "type": "wikilink"
     },
     {
       "source": "熱力學第一定律",
-      "target": "理想氣體方程式",
+      "target": "絕熱過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱力學第一定律",
+      "target": "統計物理",
       "type": "wikilink"
     },
     {
@@ -3838,6 +3908,11 @@
       "source": "熱力學第二定律",
       "target": "絕熱過程",
       "type": "derives_to"
+    },
+    {
+      "source": "熱力學第二定律",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
     },
     {
       "source": "熱力學第二定律",
@@ -3986,6 +4061,36 @@
     },
     {
       "source": "牛頓第一定律",
+      "target": "低摩擦滑車實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "慣性",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
       "target": "力",
       "type": "wikilink"
     },
@@ -3996,7 +4101,7 @@
     },
     {
       "source": "牛頓第一定律",
-      "target": "自由體圖",
+      "target": "質量",
       "type": "wikilink"
     },
     {
@@ -4006,22 +4111,22 @@
     },
     {
       "source": "牛頓第一定律",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第一定律",
       "target": "慣性參考系",
       "type": "wikilink"
     },
     {
       "source": "牛頓第一定律",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第一定律",
-      "target": "慣性參考系",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第一定律",
-      "target": "平衡",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
@@ -4101,6 +4206,36 @@
     },
     {
       "source": "牛頓第三定律",
+      "target": "兩滑車碰撞實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
       "target": "力",
       "type": "wikilink"
     },
@@ -4121,22 +4256,22 @@
     },
     {
       "source": "牛頓第三定律",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第三定律",
       "target": "動量守恆",
       "type": "wikilink"
     },
     {
       "source": "牛頓第三定律",
-      "target": "重力",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第三定律",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第三定律",
-      "target": "推進",
+      "target": "場論觀點",
       "type": "wikilink"
     },
     {
@@ -4236,6 +4371,21 @@
     },
     {
       "source": "牛頓第二定律",
+      "target": "小車軌道實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第二定律",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第二定律",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第二定律",
       "target": "力",
       "type": "wikilink"
     },
@@ -4261,6 +4411,11 @@
     },
     {
       "source": "牛頓第二定律",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "牛頓第二定律",
       "target": "慣性",
       "type": "wikilink"
     },
@@ -4271,22 +4426,12 @@
     },
     {
       "source": "牛頓第二定律",
-      "target": "自由體圖",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第二定律",
       "target": "功能定理",
       "type": "wikilink"
     },
     {
       "source": "牛頓第二定律",
       "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第二定律",
-      "target": "圓周運動",
       "type": "wikilink"
     },
     {
@@ -4386,6 +4531,11 @@
     },
     {
       "source": "理想氣體方程式",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體方程式",
       "target": "壓力",
       "type": "wikilink"
     },
@@ -4407,6 +4557,11 @@
     {
       "source": "理想氣體方程式",
       "target": "絕熱過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體方程式",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -4461,6 +4616,21 @@
     },
     {
       "source": "萬有引力定律",
+      "target": "圓周運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "萬有引力定律",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "萬有引力定律",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "萬有引力定律",
       "target": "力",
       "type": "wikilink"
     },
@@ -4520,6 +4690,11 @@
       "type": "wikilink"
     },
     {
+      "source": "薄透鏡公式",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
       "source": "虎克定律",
       "target": "力",
       "type": "requires"
@@ -4551,6 +4726,26 @@
     },
     {
       "source": "虎克定律",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "虎克定律",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "虎克定律",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "虎克定律",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "虎克定律",
       "target": "力",
       "type": "wikilink"
     },
@@ -4591,12 +4786,22 @@
     },
     {
       "source": "質能等價",
+      "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "質能等價",
       "target": "狹義相對論",
       "type": "wikilink"
     },
     {
       "source": "質能等價",
       "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "質能等價",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
@@ -4638,6 +4843,11 @@
       "source": "連續方程",
       "target": "文氏管",
       "type": "derives_to"
+    },
+    {
+      "source": "連續方程",
+      "target": "文氏管",
+      "type": "wikilink"
     },
     {
       "source": "連續方程",
@@ -4696,12 +4906,27 @@
     },
     {
       "source": "阿基米德原理",
+      "target": "平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "阿基米德原理",
+      "target": "密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "阿基米德原理",
       "target": "壓力",
       "type": "wikilink"
     },
     {
       "source": "阿基米德原理",
       "target": "平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "阿基米德原理",
+      "target": "連續方程",
       "type": "wikilink"
     },
     {
@@ -4781,6 +5006,21 @@
     },
     {
       "source": "高斯定律",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "法拉第冰桶實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
       "target": "電場",
       "type": "wikilink"
     },
@@ -4796,17 +5036,27 @@
     },
     {
       "source": "高斯定律",
-      "target": "庫侖定律",
+      "target": "梯度",
       "type": "wikilink"
     },
     {
       "source": "高斯定律",
-      "target": "電位",
+      "target": "電場",
       "type": "wikilink"
     },
     {
       "source": "高斯定律",
-      "target": "麥克斯威方程組",
+      "target": "電通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "均勻帶電球殼電場",
       "type": "wikilink"
     },
     {
@@ -4816,7 +5066,7 @@
     },
     {
       "source": "高斯定律",
-      "target": "均勻帶電球殼電場",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -4871,6 +5121,16 @@
     },
     {
       "source": "麥克斯威方程組",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
       "target": "高斯定律",
       "type": "wikilink"
     },
@@ -4892,6 +5152,21 @@
     {
       "source": "麥克斯威方程組",
       "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
@@ -4931,12 +5206,27 @@
     },
     {
       "source": "交流電",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "交流電",
+      "target": "共振",
+      "type": "wikilink"
+    },
+    {
+      "source": "交流電",
       "target": "歐姆定律",
       "type": "wikilink"
     },
     {
       "source": "交流電",
       "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "交流電",
+      "target": "法拉第定律",
       "type": "wikilink"
     },
     {
@@ -4986,7 +5276,57 @@
     },
     {
       "source": "位移",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移",
+      "target": "功能定理",
       "type": "wikilink"
     },
     {
@@ -5041,12 +5381,32 @@
     },
     {
       "source": "位能",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "位能",
+      "target": "穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "位能",
+      "target": "勢能井",
+      "type": "wikilink"
+    },
+    {
+      "source": "位能",
       "target": "保守力",
       "type": "wikilink"
     },
     {
       "source": "位能",
       "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "位能",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
@@ -5101,12 +5461,32 @@
     },
     {
       "source": "保守力",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "保守力",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "保守力",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "保守力",
       "target": "功",
       "type": "wikilink"
     },
     {
       "source": "保守力",
       "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "保守力",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
@@ -5136,12 +5516,32 @@
     },
     {
       "source": "偏振",
-      "target": "光學總覽",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏振",
+      "target": "顯微鏡",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏振",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏振",
+      "target": "顯微鏡",
       "type": "wikilink"
     },
     {
       "source": "偏振",
       "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏振",
+      "target": "光學總覽",
       "type": "wikilink"
     },
     {
@@ -5186,12 +5586,42 @@
     },
     {
       "source": "光線模型",
+      "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
+      "target": "顯微鏡",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
+      "target": "薄透鏡公式",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
+      "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
+      "target": "顯微鏡",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
       "target": "反射定律",
       "type": "wikilink"
     },
     {
       "source": "光線模型",
       "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "光線模型",
+      "target": "薄透鏡公式",
       "type": "wikilink"
     },
     {
@@ -5231,7 +5661,22 @@
     },
     {
       "source": "光電效應",
+      "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "光電效應",
+      "target": "德布羅意波",
+      "type": "wikilink"
+    },
+    {
+      "source": "光電效應",
       "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "光電效應",
+      "target": "質能等價",
       "type": "wikilink"
     },
     {
@@ -5276,12 +5721,37 @@
     },
     {
       "source": "內能",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "內能",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "內能",
+      "target": "理想氣體方程式",
+      "type": "wikilink"
+    },
+    {
+      "source": "內能",
+      "target": "統計物理",
+      "type": "wikilink"
+    },
+    {
+      "source": "內能",
       "target": "熱",
       "type": "wikilink"
     },
     {
       "source": "內能",
       "target": "能量",
+      "type": "wikilink"
+    },
+    {
+      "source": "內能",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -5321,7 +5791,37 @@
     },
     {
       "source": "全反射",
+      "target": "光線模型",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
+      "target": "顯微鏡",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
+      "target": "反射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
+      "target": "光線模型",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
+      "target": "顯微鏡",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
       "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "全反射",
+      "target": "反射定律",
       "type": "wikilink"
     },
     {
@@ -5351,12 +5851,27 @@
     },
     {
       "source": "共振",
-      "target": "振動與波動總覽",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "共振",
+      "target": "駐波",
+      "type": "wikilink"
+    },
+    {
+      "source": "共振",
+      "target": "交流電",
       "type": "wikilink"
     },
     {
       "source": "共振",
       "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "共振",
+      "target": "振動與波動總覽",
       "type": "wikilink"
     },
     {
@@ -5416,7 +5931,7 @@
     },
     {
       "source": "力",
-      "target": "牛頓第二定律",
+      "target": "向量",
       "type": "wikilink"
     },
     {
@@ -5431,32 +5946,12 @@
     },
     {
       "source": "力",
-      "target": "虎克定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力",
       "target": "慣性",
       "type": "wikilink"
     },
     {
       "source": "力",
       "target": "自由體圖",
-      "type": "wikilink"
-    },
-    {
-      "source": "力",
-      "target": "質量",
-      "type": "wikilink"
-    },
-    {
-      "source": "力",
-      "target": "加速度",
       "type": "wikilink"
     },
     {
@@ -5496,12 +5991,47 @@
     },
     {
       "source": "功",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "保守力",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "保守力",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
       "target": "力",
       "type": "wikilink"
     },
     {
       "source": "功",
       "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "功",
+      "target": "功能定理",
       "type": "wikilink"
     },
     {
@@ -5546,22 +6076,22 @@
     },
     {
       "source": "動能",
-      "target": "功能定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "動能",
-      "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "動能",
       "target": "速度",
       "type": "wikilink"
     },
     {
       "source": "動能",
       "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "動能",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "動能",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
@@ -5601,12 +6131,37 @@
     },
     {
       "source": "勢能井",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "勢能井",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "勢能井",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "勢能井",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "勢能井",
       "target": "位能",
       "type": "wikilink"
     },
     {
       "source": "勢能井",
       "target": "穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "勢能井",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
@@ -5646,6 +6201,26 @@
     },
     {
       "source": "卡諾循環",
+      "target": "等溫過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "卡諾循環",
+      "target": "絕熱過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "卡諾循環",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "卡諾循環",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "卡諾循環",
       "target": "熱力學第二定律",
       "type": "wikilink"
     },
@@ -5706,12 +6281,32 @@
     },
     {
       "source": "圓周運動",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "圓周運動",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "圓周運動",
       "target": "速度",
       "type": "wikilink"
     },
     {
       "source": "圓周運動",
       "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "圓周運動",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "圓周運動",
+      "target": "萬有引力定律",
       "type": "wikilink"
     },
     {
@@ -5751,12 +6346,32 @@
     },
     {
       "source": "均勻帶電球殼電場",
+      "target": "無限平面電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "均勻帶電球殼電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "均勻帶電球殼電場",
+      "target": "無限平面電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "均勻帶電球殼電場",
       "target": "高斯定律",
       "type": "wikilink"
     },
     {
       "source": "均勻帶電球殼電場",
       "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "均勻帶電球殼電場",
+      "target": "高斯定律",
       "type": "wikilink"
     },
     {
@@ -5796,12 +6411,42 @@
     },
     {
       "source": "場論觀點",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
       "target": "電場",
       "type": "wikilink"
     },
     {
       "source": "場論觀點",
       "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "場論觀點",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -5841,7 +6486,37 @@
     },
     {
       "source": "對稱性",
+      "target": "拉格朗日力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
+      "target": "質能等價",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
+      "target": "拉格朗日力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "對稱性",
+      "target": "質能等價",
       "type": "wikilink"
     },
     {
@@ -5876,7 +6551,12 @@
     },
     {
       "source": "干涉",
-      "target": "振動與波動總覽",
+      "target": "駐波",
+      "type": "wikilink"
+    },
+    {
+      "source": "干涉",
+      "target": "雙狹縫實驗",
       "type": "wikilink"
     },
     {
@@ -5887,6 +6567,11 @@
     {
       "source": "干涉",
       "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "干涉",
+      "target": "振動與波動總覽",
       "type": "wikilink"
     },
     {
@@ -5918,6 +6603,26 @@
       "source": "平行板電容器",
       "target": "電場能量",
       "type": "related_to"
+    },
+    {
+      "source": "平行板電容器",
+      "target": "電位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行板電容器",
+      "target": "電場能量",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行板電容器",
+      "target": "無限平面電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行板電容器",
+      "target": "等位面",
+      "type": "wikilink"
     },
     {
       "source": "平行板電容器",
@@ -5926,16 +6631,6 @@
     },
     {
       "source": "平行板電容器",
-      "target": "無限平面電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "平行板電容器",
-      "target": "等位面",
-      "type": "wikilink"
-    },
-    {
-      "source": "平行板電容器",
       "target": "電位能",
       "type": "wikilink"
     },
@@ -5966,7 +6661,17 @@
     },
     {
       "source": "平衡",
+      "target": "穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "平衡",
       "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "平衡",
+      "target": "牛頓第一定律",
       "type": "wikilink"
     },
     {
@@ -5991,12 +6696,22 @@
     },
     {
       "source": "德布羅意波",
-      "target": "近代物理總覽",
+      "target": "薛丁格方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "德布羅意波",
+      "target": "黑體輻射",
       "type": "wikilink"
     },
     {
       "source": "德布羅意波",
       "target": "光電效應",
+      "type": "wikilink"
+    },
+    {
+      "source": "德布羅意波",
+      "target": "近代物理總覽",
       "type": "wikilink"
     },
     {
@@ -6046,7 +6761,47 @@
     },
     {
       "source": "惠更斯原理",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "雙狹縫實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "反射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "雙狹縫實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
       "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "反射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "惠更斯原理",
+      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -6100,6 +6855,41 @@
       "type": "wikilink"
     },
     {
+      "source": "慣性",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "慣性參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "慣性參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
       "source": "慣性參考系",
       "target": "慣性",
       "type": "requires"
@@ -6136,12 +6926,52 @@
     },
     {
       "source": "慣性參考系",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
       "target": "慣性",
       "type": "wikilink"
     },
     {
       "source": "慣性參考系",
       "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "慣性參考系",
+      "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
@@ -6171,7 +7001,12 @@
     },
     {
       "source": "拉格朗日力學",
-      "target": "力學總覽",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "拉格朗日力學",
+      "target": "狹義相對論",
       "type": "wikilink"
     },
     {
@@ -6182,6 +7017,11 @@
     {
       "source": "拉格朗日力學",
       "target": "對稱性",
+      "type": "wikilink"
+    },
+    {
+      "source": "拉格朗日力學",
+      "target": "力學總覽",
       "type": "wikilink"
     },
     {
@@ -6221,12 +7061,37 @@
     },
     {
       "source": "推進",
+      "target": "火箭方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "推進",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "推進",
+      "target": "火箭方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "推進",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "推進",
       "target": "動量",
       "type": "wikilink"
     },
     {
       "source": "推進",
       "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "推進",
+      "target": "火箭方程",
       "type": "wikilink"
     },
     {
@@ -6286,17 +7151,22 @@
     },
     {
       "source": "摩擦力",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
       "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
       "source": "摩擦力",
       "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "摩擦力",
-      "target": "力",
       "type": "wikilink"
     },
     {
@@ -6316,10 +7186,40 @@
     },
     {
       "source": "摩擦力",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
       "target": "機械能守恆",
       "type": "wikilink"
     },
     {
+      "source": "摩擦力",
+      "target": "自由體圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "摩擦力",
+      "target": "保守力",
+      "type": "wikilink"
+    },
+    {
       "source": "文氏管",
       "target": "流量",
       "type": "requires"
@@ -6361,7 +7261,37 @@
     },
     {
       "source": "文氏管",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
+      "target": "流量",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
+      "target": "流量",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
       "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "文氏管",
+      "target": "伯努力方程",
       "type": "wikilink"
     },
     {
@@ -6393,6 +7323,71 @@
       "source": "時間",
       "target": "動量定理",
       "type": "related_to"
+    },
+    {
+      "source": "時間",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "時間",
+      "target": "力學總覽",
+      "type": "wikilink"
     },
     {
       "source": "時間",
@@ -6466,12 +7461,7 @@
     },
     {
       "source": "機械波",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "機械波",
-      "target": "導數",
+      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -6486,7 +7476,32 @@
     },
     {
       "source": "機械波",
-      "target": "干涉",
+      "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械波",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械波",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械波",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械波",
+      "target": "聲波",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械波",
+      "target": "駐波",
       "type": "wikilink"
     },
     {
@@ -6516,17 +7531,22 @@
     },
     {
       "source": "溫度",
+      "target": "熱",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
       "target": "熱力學第零定律",
       "type": "wikilink"
     },
     {
       "source": "溫度",
       "target": "熱力學第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "溫度",
-      "target": "機率與統計",
       "type": "wikilink"
     },
     {
@@ -6541,7 +7561,27 @@
     },
     {
       "source": "溫度",
-      "target": "熵",
+      "target": "熱學與熱力學總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
+      "target": "熱力學第零定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
+      "target": "熱",
+      "type": "wikilink"
+    },
+    {
+      "source": "溫度",
+      "target": "內能",
       "type": "wikilink"
     },
     {
@@ -6576,12 +7616,42 @@
     },
     {
       "source": "無限平面電場",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
       "target": "高斯定律",
       "type": "wikilink"
     },
     {
       "source": "無限平面電場",
       "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "無限平面電場",
+      "target": "高斯定律",
       "type": "wikilink"
     },
     {
@@ -6621,7 +7691,22 @@
     },
     {
       "source": "熱",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱",
       "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -6671,12 +7756,27 @@
     },
     {
       "source": "熱傳導",
+      "target": "等溫過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱傳導",
+      "target": "絕熱過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱傳導",
       "target": "熱",
       "type": "wikilink"
     },
     {
       "source": "熱傳導",
       "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱傳導",
+      "target": "熱力學第二定律",
       "type": "wikilink"
     },
     {
@@ -6721,12 +7821,32 @@
     },
     {
       "source": "熵",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熵",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "熵",
+      "target": "統計物理",
+      "type": "wikilink"
+    },
+    {
+      "source": "熵",
       "target": "熱",
       "type": "wikilink"
     },
     {
       "source": "熵",
       "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "熵",
+      "target": "熱力學第二定律",
       "type": "wikilink"
     },
     {
@@ -6761,12 +7881,12 @@
     },
     {
       "source": "狹義相對論",
-      "target": "質能等價",
+      "target": "光電效應",
       "type": "wikilink"
     },
     {
       "source": "狹義相對論",
-      "target": "光電效應",
+      "target": "質能等價",
       "type": "wikilink"
     },
     {
@@ -6806,7 +7926,42 @@
     },
     {
       "source": "相互作用",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "磁力",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "磁力",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
       "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "相互作用",
+      "target": "牛頓第三定律",
       "type": "wikilink"
     },
     {
@@ -6856,12 +8011,52 @@
     },
     {
       "source": "碰撞分析",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
       "target": "動量",
       "type": "wikilink"
     },
     {
       "source": "碰撞分析",
       "target": "衝量",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞分析",
+      "target": "動量守恆",
       "type": "wikilink"
     },
     {
@@ -6901,12 +8096,22 @@
     },
     {
       "source": "磁力",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁力",
       "target": "磁場",
       "type": "wikilink"
     },
     {
       "source": "磁力",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁力",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -6951,7 +8156,27 @@
     },
     {
       "source": "磁場",
+      "target": "磁力",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁場",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁場",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁場",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁場",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -6991,7 +8216,42 @@
     },
     {
       "source": "穩定平衡",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "勢能井",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "勢能井",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
       "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "穩定平衡",
+      "target": "機械能守恆",
       "type": "wikilink"
     },
     {
@@ -7036,7 +8296,22 @@
     },
     {
       "source": "等位面",
+      "target": "電位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "等位面",
+      "target": "電力線",
+      "type": "wikilink"
+    },
+    {
+      "source": "等位面",
       "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "等位面",
+      "target": "高斯定律",
       "type": "wikilink"
     },
     {
@@ -7076,7 +8351,22 @@
     },
     {
       "source": "等溫過程",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "等溫過程",
+      "target": "絕熱過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "等溫過程",
       "target": "理想氣體方程式",
+      "type": "wikilink"
+    },
+    {
+      "source": "等溫過程",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -7136,7 +8426,27 @@
     },
     {
       "source": "簡諧運動",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "簡諧運動",
       "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "簡諧運動",
+      "target": "穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "簡諧運動",
+      "target": "共振",
+      "type": "wikilink"
+    },
+    {
+      "source": "簡諧運動",
+      "target": "駐波",
       "type": "wikilink"
     },
     {
@@ -7152,6 +8462,11 @@
     {
       "source": "簡諧運動",
       "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "簡諧運動",
+      "target": "虎克定律",
       "type": "wikilink"
     },
     {
@@ -7196,7 +8511,22 @@
     },
     {
       "source": "絕熱過程",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "絕熱過程",
+      "target": "等溫過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "絕熱過程",
       "target": "理想氣體方程式",
+      "type": "wikilink"
+    },
+    {
+      "source": "絕熱過程",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -7236,7 +8566,22 @@
     },
     {
       "source": "統計物理",
+      "target": "熵",
+      "type": "wikilink"
+    },
+    {
+      "source": "統計物理",
+      "target": "黑體輻射",
+      "type": "wikilink"
+    },
+    {
+      "source": "統計物理",
       "target": "機率與統計",
+      "type": "wikilink"
+    },
+    {
+      "source": "統計物理",
+      "target": "熱力學第二定律",
       "type": "wikilink"
     },
     {
@@ -7271,7 +8616,12 @@
     },
     {
       "source": "聲波",
-      "target": "振動與波動總覽",
+      "target": "駐波",
+      "type": "wikilink"
+    },
+    {
+      "source": "聲波",
+      "target": "都卜勒效應",
       "type": "wikilink"
     },
     {
@@ -7282,6 +8632,11 @@
     {
       "source": "聲波",
       "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "聲波",
+      "target": "振動與波動總覽",
       "type": "wikilink"
     },
     {
@@ -7346,7 +8701,82 @@
     },
     {
       "source": "能量",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
       "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "能量",
+      "target": "熱力學第一定律",
       "type": "wikilink"
     },
     {
@@ -7416,6 +8846,16 @@
     },
     {
       "source": "自由體圖",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
       "target": "牛頓第一定律",
       "type": "wikilink"
     },
@@ -7431,12 +8871,22 @@
     },
     {
       "source": "自由體圖",
-      "target": "力",
+      "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "自由體圖",
-      "target": "向量",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第三定律",
       "type": "wikilink"
     },
     {
@@ -7451,7 +8901,62 @@
     },
     {
       "source": "自由體圖",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
       "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "重力",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "摩擦力",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "重力",
+      "type": "wikilink"
+    },
+    {
+      "source": "自由體圖",
+      "target": "摩擦力",
       "type": "wikilink"
     },
     {
@@ -7478,6 +8983,21 @@
       "source": "薛丁格方程",
       "target": "黑體輻射",
       "type": "related_to"
+    },
+    {
+      "source": "薛丁格方程",
+      "target": "德布羅意波",
+      "type": "wikilink"
+    },
+    {
+      "source": "薛丁格方程",
+      "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "薛丁格方程",
+      "target": "複數",
+      "type": "wikilink"
     },
     {
       "source": "薛丁格方程",
@@ -7486,21 +9006,6 @@
     },
     {
       "source": "薛丁格方程",
-      "target": "德布羅意波",
-      "type": "wikilink"
-    },
-    {
-      "source": "薛丁格方程",
-      "target": "矩陣",
-      "type": "wikilink"
-    },
-    {
-      "source": "薛丁格方程",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "薛丁格方程",
       "target": "光電效應",
       "type": "wikilink"
     },
@@ -7536,12 +9041,22 @@
     },
     {
       "source": "衝量",
+      "target": "碰撞分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "衝量",
       "target": "動量",
       "type": "wikilink"
     },
     {
       "source": "衝量",
       "target": "時間",
+      "type": "wikilink"
+    },
+    {
+      "source": "衝量",
+      "target": "動量定理",
       "type": "wikilink"
     },
     {
@@ -7586,12 +9101,27 @@
     },
     {
       "source": "角動量",
+      "target": "圓周運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量",
       "target": "動量",
       "type": "wikilink"
     },
     {
       "source": "角動量",
       "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量",
+      "target": "動量守恆",
       "type": "wikilink"
     },
     {
@@ -7631,12 +9161,22 @@
     },
     {
       "source": "質心",
+      "target": "碰撞分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "質心",
       "target": "質量",
       "type": "wikilink"
     },
     {
       "source": "質心",
       "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "質心",
+      "target": "動量守恆",
       "type": "wikilink"
     },
     {
@@ -7681,12 +9221,27 @@
     },
     {
       "source": "轉矩",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉矩",
+      "target": "圓周運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉矩",
       "target": "力",
       "type": "wikilink"
     },
     {
       "source": "轉矩",
       "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉矩",
+      "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
@@ -7716,7 +9271,17 @@
     },
     {
       "source": "都卜勒效應",
-      "target": "振動與波動總覽",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "都卜勒效應",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "都卜勒效應",
+      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -7727,6 +9292,11 @@
     {
       "source": "都卜勒效應",
       "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "都卜勒效應",
+      "target": "振動與波動總覽",
       "type": "wikilink"
     },
     {
@@ -7791,27 +9361,32 @@
     },
     {
       "source": "重力",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "重力",
-      "target": "萬有引力定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "重力",
-      "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "重力",
       "target": "質量",
       "type": "wikilink"
     },
     {
       "source": "重力",
       "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "萬有引力定律",
       "type": "wikilink"
     },
     {
@@ -7826,7 +9401,37 @@
     },
     {
       "source": "重力",
+      "target": "質量",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "牛頓第三定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
       "target": "萬有引力定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "重力",
+      "target": "自由體圖",
       "type": "wikilink"
     },
     {
@@ -7886,22 +9491,7 @@
     },
     {
       "source": "電位",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電位",
-      "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電位",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電位",
-      "target": "積分",
+      "target": "電位能",
       "type": "wikilink"
     },
     {
@@ -7916,7 +9506,42 @@
     },
     {
       "source": "電位",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
       "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "電位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "電通量",
       "type": "wikilink"
     },
     {
@@ -7946,7 +9571,42 @@
     },
     {
       "source": "電位能",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
       "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "電場能量",
       "type": "wikilink"
     },
     {
@@ -7957,6 +9617,11 @@
     {
       "source": "電位能",
       "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位能",
+      "target": "庫侖定律",
       "type": "wikilink"
     },
     {
@@ -7996,7 +9661,37 @@
     },
     {
       "source": "電力線",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
+      "target": "散度",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
+      "target": "散度",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
       "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電力線",
+      "target": "高斯定律",
       "type": "wikilink"
     },
     {
@@ -8056,12 +9751,62 @@
     },
     {
       "source": "電場",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
       "target": "庫侖定律",
       "type": "wikilink"
     },
     {
       "source": "電場",
       "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -8076,17 +9821,22 @@
     },
     {
       "source": "電場",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
       "target": "電位",
       "type": "wikilink"
     },
     {
       "source": "電場",
       "target": "電力線",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場",
-      "target": "庫侖定律",
       "type": "wikilink"
     },
     {
@@ -8108,6 +9858,26 @@
       "source": "電場能量",
       "target": "能量",
       "type": "related_to"
+    },
+    {
+      "source": "電場能量",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能量",
+      "target": "能量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能量",
+      "target": "電位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能量",
+      "target": "平行板電容器",
+      "type": "wikilink"
     },
     {
       "source": "電場能量",
@@ -8116,16 +9886,6 @@
     },
     {
       "source": "電場能量",
-      "target": "電位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場能量",
-      "target": "平行板電容器",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場能量",
       "target": "電磁波",
       "type": "wikilink"
     },
@@ -8171,12 +9931,32 @@
     },
     {
       "source": "電磁波",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波",
+      "target": "偏振",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波",
+      "target": "光線模型",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波",
       "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
       "source": "電磁波",
       "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {
@@ -8241,7 +10021,17 @@
     },
     {
       "source": "電通量",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電通量",
       "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電通量",
+      "target": "電位",
       "type": "wikilink"
     },
     {
@@ -8251,7 +10041,12 @@
     },
     {
       "source": "電通量",
-      "target": "內積",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電通量",
+      "target": "向量",
       "type": "wikilink"
     },
     {
@@ -8267,6 +10062,11 @@
     {
       "source": "電通量",
       "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電通量",
+      "target": "電場",
       "type": "wikilink"
     },
     {
@@ -8291,7 +10091,22 @@
     },
     {
       "source": "顯微鏡",
-      "target": "光學總覽",
+      "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "顯微鏡",
+      "target": "偏振",
+      "type": "wikilink"
+    },
+    {
+      "source": "顯微鏡",
+      "target": "全反射",
+      "type": "wikilink"
+    },
+    {
+      "source": "顯微鏡",
+      "target": "偏振",
       "type": "wikilink"
     },
     {
@@ -8302,6 +10117,11 @@
     {
       "source": "顯微鏡",
       "target": "光線模型",
+      "type": "wikilink"
+    },
+    {
+      "source": "顯微鏡",
+      "target": "光學總覽",
       "type": "wikilink"
     },
     {
@@ -8336,7 +10156,12 @@
     },
     {
       "source": "駐波",
-      "target": "振動與波動總覽",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "駐波",
+      "target": "共振",
       "type": "wikilink"
     },
     {
@@ -8347,6 +10172,11 @@
     {
       "source": "駐波",
       "target": "聲波",
+      "type": "wikilink"
+    },
+    {
+      "source": "駐波",
+      "target": "振動與波動總覽",
       "type": "wikilink"
     },
     {
@@ -8381,7 +10211,22 @@
     },
     {
       "source": "黑體輻射",
-      "target": "近代物理總覽",
+      "target": "光電效應",
+      "type": "wikilink"
+    },
+    {
+      "source": "黑體輻射",
+      "target": "統計物理",
+      "type": "wikilink"
+    },
+    {
+      "source": "黑體輻射",
+      "target": "光電效應",
+      "type": "wikilink"
+    },
+    {
+      "source": "黑體輻射",
+      "target": "統計物理",
       "type": "wikilink"
     },
     {
@@ -8392,6 +10237,11 @@
     {
       "source": "黑體輻射",
       "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "黑體輻射",
+      "target": "近代物理總覽",
       "type": "wikilink"
     },
     {
@@ -8561,7 +10411,27 @@
     },
     {
       "source": "密度",
+      "target": "天平",
+      "type": "wikilink"
+    },
+    {
+      "source": "密度",
       "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "密度",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "密度",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "密度",
+      "target": "阿基米德原理",
       "type": "wikilink"
     },
     {
@@ -8601,12 +10471,37 @@
     },
     {
       "source": "流量",
+      "target": "文氏管",
+      "type": "wikilink"
+    },
+    {
+      "source": "流量",
       "target": "連續方程",
       "type": "wikilink"
     },
     {
       "source": "流量",
       "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流量",
+      "target": "連續方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流量",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "流量",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "流量",
+      "target": "文氏管",
       "type": "wikilink"
     },
     {
@@ -8711,6 +10606,31 @@
     },
     {
       "source": "速度",
+      "target": "打點計時器",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
+      "target": "運動感測器",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
       "target": "牛頓第一定律",
       "type": "wikilink"
     },
@@ -8731,7 +10651,12 @@
     },
     {
       "source": "速度",
-      "target": "加速度",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "速度",
+      "target": "位移",
       "type": "wikilink"
     },
     {
@@ -8806,6 +10731,26 @@
     },
     {
       "source": "低摩擦滑車實驗",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "低摩擦滑車實驗",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "低摩擦滑車實驗",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "低摩擦滑車實驗",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "低摩擦滑車實驗",
       "target": "慣性",
       "type": "wikilink"
     },
@@ -8841,6 +10786,26 @@
     },
     {
       "source": "兩滑車碰撞實驗",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "兩滑車碰撞實驗",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "兩滑車碰撞實驗",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "兩滑車碰撞實驗",
+      "target": "動量定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "兩滑車碰撞實驗",
       "target": "碰撞分析",
       "type": "wikilink"
     },
@@ -8866,6 +10831,16 @@
     },
     {
       "source": "天平",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "天平",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "天平",
       "target": "密度",
       "type": "wikilink"
     },
@@ -8891,6 +10866,11 @@
     },
     {
       "source": "密立根油滴實驗",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "密立根油滴實驗",
       "target": "電位",
       "type": "wikilink"
     },
@@ -8931,6 +10911,26 @@
     },
     {
       "source": "小車軌道實驗",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "小車軌道實驗",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "小車軌道實驗",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "小車軌道實驗",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "小車軌道實驗",
       "target": "位移",
       "type": "wikilink"
     },
@@ -8953,6 +10953,16 @@
       "source": "打點計時器",
       "target": "加速度",
       "type": "measures"
+    },
+    {
+      "source": "打點計時器",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "打點計時器",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
     },
     {
       "source": "打點計時器",
@@ -8990,6 +11000,16 @@
       "type": "wikilink"
     },
     {
+      "source": "扭秤實驗",
+      "target": "萬有引力定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "扭秤實驗",
+      "target": "萬有引力定律",
+      "type": "wikilink"
+    },
+    {
       "source": "法拉第冰桶實驗",
       "target": "電力線",
       "type": "related_to"
@@ -9016,6 +11036,16 @@
     },
     {
       "source": "法拉第冰桶實驗",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第冰桶實驗",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第冰桶實驗",
       "target": "電力線",
       "type": "wikilink"
     },
@@ -9051,6 +11081,16 @@
     },
     {
       "source": "滑軌能量轉換實驗",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "滑軌能量轉換實驗",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "滑軌能量轉換實驗",
       "target": "位能",
       "type": "wikilink"
     },
@@ -9096,6 +11136,26 @@
     },
     {
       "source": "運動感測器",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "運動感測器",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "運動感測器",
+      "target": "牛頓第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "運動感測器",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "運動感測器",
       "target": "簡諧運動",
       "type": "wikilink"
     },
@@ -9118,6 +11178,11 @@
       "source": "雙狹縫實驗",
       "target": "折射定律",
       "type": "verified_by"
+    },
+    {
+      "source": "雙狹縫實驗",
+      "target": "折射定律",
+      "type": "wikilink"
     },
     {
       "source": "雙狹縫實驗",
@@ -9166,17 +11231,42 @@
     },
     {
       "source": "三角函數",
-      "target": "向量",
+      "target": "機械波",
       "type": "wikilink"
     },
     {
       "source": "三角函數",
-      "target": "向量",
+      "target": "折射定律",
       "type": "wikilink"
     },
     {
       "source": "三角函數",
-      "target": "複數",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "三角函數",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "三角函數",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "三角函數",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "三角函數",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "三角函數",
+      "target": "機械波",
       "type": "wikilink"
     },
     {
@@ -9226,12 +11316,32 @@
     },
     {
       "source": "偏導數",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏導數",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏導數",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏導數",
       "target": "導數",
       "type": "wikilink"
     },
     {
       "source": "偏導數",
-      "target": "梯度",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "偏導數",
+      "target": "溫度",
       "type": "wikilink"
     },
     {
@@ -9291,12 +11401,42 @@
     },
     {
       "source": "內積",
+      "target": "功能定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
+      "target": "電通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
       "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "內積",
       "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "內積",
+      "target": "電通量",
       "type": "wikilink"
     },
     {
@@ -9336,7 +11476,7 @@
     },
     {
       "source": "向量",
-      "target": "力",
+      "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
@@ -9351,17 +11491,22 @@
     },
     {
       "source": "向量",
-      "target": "三角函數",
+      "target": "機械波",
       "type": "wikilink"
     },
     {
       "source": "向量",
-      "target": "導數",
+      "target": "力",
       "type": "wikilink"
     },
     {
       "source": "向量",
-      "target": "積分",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量",
+      "target": "電場",
       "type": "wikilink"
     },
     {
@@ -9416,12 +11561,37 @@
     },
     {
       "source": "外積",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "外積",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "外積",
+      "target": "磁力",
+      "type": "wikilink"
+    },
+    {
+      "source": "外積",
       "target": "向量",
       "type": "wikilink"
     },
     {
       "source": "外積",
       "target": "三角函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "外積",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "外積",
+      "target": "磁場",
       "type": "wikilink"
     },
     {
@@ -9461,12 +11631,27 @@
     },
     {
       "source": "導數",
-      "target": "積分",
+      "target": "牛頓第二定律",
       "type": "wikilink"
     },
     {
       "source": "導數",
-      "target": "向量",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "導數",
+      "target": "加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "導數",
+      "target": "動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "導數",
+      "target": "電場",
       "type": "wikilink"
     },
     {
@@ -9507,6 +11692,26 @@
     {
       "source": "散度",
       "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "散度",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "散度",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "散度",
+      "target": "偏導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "散度",
+      "target": "向量",
       "type": "wikilink"
     },
     {
@@ -9557,6 +11762,26 @@
     {
       "source": "旋度",
       "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "旋度",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "旋度",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "旋度",
+      "target": "偏導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "旋度",
+      "target": "向量",
       "type": "wikilink"
     },
     {
@@ -9621,12 +11846,37 @@
     },
     {
       "source": "梯度",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "梯度",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "梯度",
+      "target": "熱傳導",
+      "type": "wikilink"
+    },
+    {
+      "source": "梯度",
       "target": "偏導數",
       "type": "wikilink"
     },
     {
       "source": "梯度",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "梯度",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "梯度",
+      "target": "電位",
       "type": "wikilink"
     },
     {
@@ -9653,6 +11903,21 @@
       "source": "機率與統計",
       "target": "統計物理",
       "type": "uses"
+    },
+    {
+      "source": "機率與統計",
+      "target": "熱力學第零定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "機率與統計",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "機率與統計",
+      "target": "統計物理",
+      "type": "wikilink"
     },
     {
       "source": "機率與統計",
@@ -9707,6 +11972,21 @@
     {
       "source": "矩陣",
       "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "矩陣",
+      "target": "薛丁格方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "矩陣",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "矩陣",
+      "target": "向量",
       "type": "wikilink"
     },
     {
@@ -9746,12 +12026,32 @@
     },
     {
       "source": "積分",
-      "target": "導數",
+      "target": "功能定理",
       "type": "wikilink"
     },
     {
       "source": "積分",
-      "target": "向量",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "積分",
+      "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "積分",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "積分",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "積分",
+      "target": "動量",
       "type": "wikilink"
     },
     {
@@ -9786,12 +12086,47 @@
     },
     {
       "source": "複數",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
       "target": "三角函數",
       "type": "wikilink"
     },
     {
       "source": "複數",
-      "target": "向量",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "複數",
+      "target": "電場",
       "type": "wikilink"
     },
     {
@@ -9842,6 +12177,31 @@
     {
       "source": "面積分",
       "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "面積分",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "面積分",
+      "target": "電通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "面積分",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "面積分",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "面積分",
+      "target": "向量",
       "type": "wikilink"
     },
     {

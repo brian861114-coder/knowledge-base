@@ -28,6 +28,7 @@ RELATION_FIELDS = {
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
+    text = text.lstrip("\ufeff")
     if not text.startswith("---\n"):
         return {}, text
 

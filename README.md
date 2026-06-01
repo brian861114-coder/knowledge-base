@@ -81,11 +81,16 @@ Project workspace:
 
 Obsidian vault root:
 
-`C:\Users\brian\OneDrive\文件\Obsidian Vault`
+`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault`
 
 Knowledge-base vault folder used by this project:
 
-`C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
+`C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database`
+
+Note:
+
+- On this machine, `[Documents]` is the Windows user Documents folder name shown in Chinese in Explorer.
+- If the vault path changes on another machine, update the export commands and startup assumptions before working further.
 
 ## Vault Structure
 
@@ -153,7 +158,7 @@ Re-export graph JSON:
 
 ```powershell
 python .\obsidian-knowledge-map-demo\scripts\export_graph.py `
-  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
   --out '.\physics_graph.json'
 ```
 
@@ -161,7 +166,7 @@ Re-export note details JSON:
 
 ```powershell
 python .\tools\export_note_details.py `
-  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\OneDrive\[Documents]\Obsidian Vault\Project\knowledge database' `
   --out '.\physics_note_details.json'
 ```
 
@@ -181,6 +186,32 @@ Typical content workflow:
 4. Re-export `physics_graph.json` if graph structure changed
 5. Refresh the prototype
 
+## Maintainer Workflow
+
+When continuing work on another machine or after a long break, use this order:
+
+1. Confirm the Obsidian vault path used on the current machine
+2. Confirm the repo path and that `start_prototype.cmd` still points to the local setup
+3. Open a few representative notes in Obsidian and verify formulas render correctly
+4. If content scripts were changed, re-run the relevant generation or enrichment scripts
+5. Re-export `physics_note_details.json`
+6. Re-export `physics_graph.json` when links, note names, or note count changed
+7. Start the prototype and test:
+   - one concept page
+   - one law page
+   - one page with inline math
+   - one page with display math
+   - one page containing Obsidian internal links
+8. Commit the export changes together with the script or frontend changes that produced them
+
+Suggested quick sanity check after major updates:
+
+- note count still matches expectations
+- no broken `[[wikilink]]` targets remain
+- MathJax renders both `$...$` and `$$...$$`
+- full-page reader mode still opens and scrolls correctly
+- graph and note detail JSON are both freshly exported
+
 ## Current Content Direction
 
 Recent work has focused on:
@@ -191,19 +222,19 @@ Recent work has focused on:
   - what the concept measures
   - how it connects to downstream theorems
 - adding step-by-step derivations to core concept pages such as:
-  - `位能`
-  - `保守力`
-  - `簡諧運動`
-  - `電位`
+  - `potential energy`
+  - `conservative force`
+  - `simple harmonic motion`
+  - `electric potential`
 - deepening core law pages such as:
-  - `牛頓第二定律`
-  - `功能定理`
-  - `機械能守恆`
-  - `高斯定律`
-  - `法拉第定律`
-  - `理想氣體方程式`
-  - `熱力學第一定律`
-  - `薄透鏡公式`
+  - `Newton's second law`
+  - `work-energy theorem`
+  - `mechanical energy conservation`
+  - `Gauss's law`
+  - `Faraday's law`
+  - `ideal gas equation`
+  - `first law of thermodynamics`
+  - `thin lens equation`
 
 ## Source of Truth
 
@@ -218,6 +249,4 @@ Keep these responsibilities separate:
   - scripts
   - prototype
   - docs
-  - exported artifacts
-
-If the repo JSON and the vault disagree, the vault should be treated as canonical and the exports should be regenerated.
+  - exported frontend data

@@ -154,7 +154,7 @@ These belong in this Git repo:
 
 The external Obsidian vault path stores the actual encyclopedia pages:
 
-`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+`C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
 
 This split is intentional.
 

@@ -9,11 +9,11 @@
 
 實際 Obsidian 頁面輸出目標：
 
-`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+`C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
 
 工具、schema、script、前端原型仍留在目前 workspace：
 
-`C:\Users\brian\Downloads\vibe_coding\knowledge_map`
+`C:\Users\brian\Downloads\vibe_coding\knowledge database`
 
 ## 2. 目錄結構
 

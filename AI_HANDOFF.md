@@ -9,9 +9,9 @@ This workspace builds a physics knowledge-base system around an Obsidian vault.
 There are two distinct locations:
 
 - Workspace repo:
-  `C:\Users\brian\Downloads\vibe_coding\knowledge_map`
+  `C:\Users\brian\Downloads\vibe_coding\knowledge database`
 - Obsidian vault output:
-  `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+  `C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
 
 Do not confuse them.
 
@@ -140,7 +140,7 @@ Export graph:
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\obsidian-knowledge-map-demo\scripts\export_graph.py' `
-  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
+  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
   --out '.\physics_graph.json'
 ```
 
@@ -149,7 +149,7 @@ Export detail previews:
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\tools\export_note_details.py' `
-  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
+  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
   --out '.\physics_note_details.json'
 ```
 
@@ -158,7 +158,7 @@ Generate second batch again:
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\tools\generate_physics_second_batch.py' `
-  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database'
+  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database'
 ```
 
 ## Final Warning

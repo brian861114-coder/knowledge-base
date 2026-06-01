@@ -53,20 +53,21 @@ def extract_sections(body: str) -> list[dict]:
     matches = list(HEADING_RE.finditer(body))
     sections = []
     for index, match in enumerate(matches):
-      level = len(match.group(1))
-      title = match.group(2).strip()
-      start = match.end()
-      end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
-      content = clean_text(body[start:end])
-      if not content:
-          continue
-      sections.append(
-          {
-              "title": title,
-              "level": level,
-              "preview": content[:380],
-          }
-      )
+        level = len(match.group(1))
+        title = match.group(2).strip()
+        start = match.end()
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
+        content = clean_text(body[start:end])
+        if not content:
+            continue
+        sections.append(
+            {
+                "title": title,
+                "level": level,
+                "preview": content[:380],
+                "content": content,
+            }
+        )
     return sections
 
 
@@ -82,6 +83,7 @@ def build_details(vault: Path) -> dict:
             "title": frontmatter.get("title", file_path.stem),
             "summary": frontmatter.get("summary", ""),
             "body_preview": cleaned_body[:900],
+            "body_full": cleaned_body,
             "sections": extract_sections(body),
         }
     return payload

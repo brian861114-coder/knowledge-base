@@ -11,6 +11,7 @@ const primaryEdgeTypes = new Set([
   "measures",
   "related_to",
 ]);
+const wikilinkPattern = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g;
 
 const state = {
   graph: null,
@@ -26,6 +27,7 @@ const state = {
   focusedDomain: null,
   searchTerm: "",
   selectedNodeId: null,
+  noteViewMode: "preview",
   draggingNodeId: null,
   pointerOffset: { x: 0, y: 0 },
   viewport: {
@@ -52,6 +54,9 @@ const els = {
   graphFrame: document.getElementById("graphFrame"),
   graphCanvas: document.getElementById("graphCanvas"),
   nodesLayer: document.getElementById("nodesLayer"),
+  workspace: document.querySelector(".workspace"),
+  graphPanel: document.querySelector(".graph-panel"),
+  detailPanel: document.querySelector(".detail-panel"),
   detailCard: document.getElementById("detailCard"),
   zoomOutButton: document.getElementById("zoomOutButton"),
   zoomInButton: document.getElementById("zoomInButton"),
@@ -961,6 +966,9 @@ function applyViewportTransform() {
 }
 
 function renderDetail(node) {
+  const isReaderMode = Boolean(node && node.kind !== "domain" && state.noteViewMode === "full");
+  syncReadingLayout(isReaderMode);
+
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
@@ -1010,11 +1018,18 @@ function renderDetail(node) {
   const resolvedSummary = node.summary || noteDetail?.summary || noteDetail?.body_preview || "這個節點目前只有結構化關聯，尚未找到更完整的頁面摘要。";
   const resolvedPath = node.path || noteDetail?.path || "";
 
+  if (isReaderMode) {
+    els.detailCard.className = "detail-card reader";
+    els.detailCard.innerHTML = renderReaderMode(node, noteDetail, resolvedSummary, resolvedPath, outgoingGroups, incomingGroups);
+    scheduleMathTypeset(els.detailCard);
+    return;
+  }
+
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
     <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
     <h2>${escapeHtml(node.title)}</h2>
-    <p class="detail-summary">${escapeHtml(resolvedSummary)}</p>
+    <div class="detail-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
     <div class="detail-meta">
       ${detailMetaBox("領域", node.domain || "未分類")}
       ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
@@ -1037,6 +1052,96 @@ function renderDetail(node) {
       </section>
     </div>
   `;
+  scheduleMathTypeset(els.detailCard);
+}
+
+function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingGroups, incomingGroups) {
+  const sections = detail?.sections || [];
+  const outline = sections
+    .map(
+      (section, index) => `
+        <button
+          class="reader-outline-button"
+          type="button"
+          data-section-target="${escapeHtml(buildSectionTargetId(node.id, index))}"
+        >
+          ${escapeHtml(section.title)}
+        </button>
+      `
+    )
+    .join("");
+
+  const articleSections = sections
+    .map(
+      (section, index) => `
+        <section class="reader-section-block" id="${escapeHtml(buildSectionTargetId(node.id, index))}">
+          <h2>${escapeHtml(section.title)}</h2>
+          <div class="reader-prose">${renderProse(section.content || section.preview || "")}</div>
+        </section>
+      `
+    )
+    .join("");
+
+  const fallbackBody = detail?.body_full || detail?.body_preview || detail?.summary || resolvedSummary;
+
+  return `
+    <div class="reader-shell">
+      <div class="reader-toolbar">
+        <div class="detail-view-toggle" role="tablist" aria-label="頁面閱讀模式">
+          <button class="detail-view-button" type="button" data-note-view-mode="preview">回到側欄</button>
+          <button class="detail-view-button active" type="button" data-note-view-mode="full">全文閱讀</button>
+        </div>
+        <button class="ghost-button" type="button" data-note-view-mode="preview">回到圖譜</button>
+      </div>
+
+      <article class="reader-article">
+        <header class="reader-header">
+          <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+          <h1>${escapeHtml(node.title)}</h1>
+          <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
+          <div class="reader-meta-grid">
+            ${detailMetaBox("領域", node.domain || "未分類")}
+            ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
+            ${detailMetaBox("連結度", String(node.degree))}
+            ${detailMetaBox("檔案路徑", resolvedPath)}
+          </div>
+        </header>
+
+        ${
+          outline
+            ? `
+        <section class="reader-outline-panel">
+          <p class="detail-kicker">章節目錄</p>
+          <div class="reader-outline-list">${outline}</div>
+        </section>
+        `
+            : ""
+        }
+
+        <section class="reader-content">
+          ${
+            articleSections ||
+            `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+          }
+        </section>
+
+        <footer class="reader-footer-grid">
+          <section class="reader-footer-panel">
+            <p class="detail-kicker">標籤</p>
+            <div class="detail-tags">${renderPills(node.tags)}</div>
+          </section>
+          <section class="reader-footer-panel">
+            <p class="detail-kicker">它連出去的關係</p>
+            ${renderRelationGroups(outgoingGroups)}
+          </section>
+          <section class="reader-footer-panel">
+            <p class="detail-kicker">哪些頁面連到它</p>
+            ${renderRelationGroups(incomingGroups)}
+          </section>
+        </footer>
+      </article>
+    </div>
+  `;
 }
 
 function renderNotePreview(node, detail) {
@@ -1049,8 +1154,9 @@ function renderNotePreview(node, detail) {
     `;
   }
 
-  const sectionPreviewItems = (detail.sections || []).slice(0, 6);
-  const outline = sectionPreviewItems
+  const isFullMode = state.noteViewMode === "full";
+  const sectionItems = isFullMode ? detail.sections || [] : (detail.sections || []).slice(0, 6);
+  const outline = sectionItems
     .map(
       (section, index) => `
         <button
@@ -1064,13 +1170,16 @@ function renderNotePreview(node, detail) {
     )
     .join("");
 
-  const sectionCards = sectionPreviewItems
+  const sectionCards = sectionItems
     .map(
       (section, index) => `
         <article class="section-preview-card" id="${escapeHtml(buildSectionTargetId(node.id, index))}">
           <p class="detail-kicker">Section</p>
           <h4>${escapeHtml(section.title)}</h4>
-          <p>${escapeHtml(section.preview)}</p>
+          <div class="reader-prose compact-prose">${renderMarkdown(
+            isFullMode ? section.content || section.preview || "" : section.preview || "",
+            { compact: !isFullMode }
+          )}</div>
         </article>
       `
     )
@@ -1078,8 +1187,17 @@ function renderNotePreview(node, detail) {
 
   return `
     <section class="detail-section">
-      <h3>頁面預覽</h3>
-      <p class="detail-summary">${escapeHtml(detail.body_preview || detail.summary || "")}</p>
+      <div class="detail-section-heading">
+        <h3>${isFullMode ? "頁面全文" : "頁面預覽"}</h3>
+        <div class="detail-view-toggle" role="tablist" aria-label="頁面閱讀模式">
+          <button class="detail-view-button ${!isFullMode ? "active" : ""}" type="button" data-note-view-mode="preview">預覽</button>
+          <button class="detail-view-button ${isFullMode ? "active" : ""}" type="button" data-note-view-mode="full">全文</button>
+        </div>
+      </div>
+      <div class="detail-summary detail-body-copy reader-prose">${renderMarkdown(
+        isFullMode ? detail.body_full || detail.body_preview || detail.summary || "" : detail.body_preview || detail.summary || "",
+        { stripLeadingTitle: true, compact: !isFullMode, title: node.title }
+      )}</div>
     </section>
     ${
       outline
@@ -1091,7 +1209,7 @@ function renderNotePreview(node, detail) {
         : ""
     }
     <section class="detail-section">
-      <h3>章節預覽</h3>
+      <h3>${isFullMode ? "章節全文" : "章節預覽"}</h3>
       ${
         sectionCards ||
         `<p class="detail-summary">這篇頁面目前沒有可拆出的章節內容。</p>`
@@ -1126,6 +1244,16 @@ function renderRelationGroups(groups) {
 }
 
 document.addEventListener("click", (event) => {
+  const noteViewButton = event.target.closest("[data-note-view-mode]");
+  if (noteViewButton) {
+    const nextMode = noteViewButton.dataset.noteViewMode;
+    if (nextMode && nextMode !== state.noteViewMode) {
+      state.noteViewMode = nextMode;
+      renderDetail(state.nodeMap.get(state.selectedNodeId) || null);
+    }
+    return;
+  }
+
   const sectionJumpButton = event.target.closest(".section-jump-button");
   if (sectionJumpButton) {
     const target = document.getElementById(sectionJumpButton.dataset.sectionTarget || "");
@@ -1136,8 +1264,10 @@ document.addEventListener("click", (event) => {
   }
 
   const pill = event.target.closest(".relation-pill");
-  if (!pill) return;
-  const node = state.nodeMap.get(pill.dataset.nodeId);
+  const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
+  const targetButton = pill || inlineLink;
+  if (!targetButton) return;
+  const node = state.nodeMap.get(targetButton.dataset.nodeId);
   if (!node) return;
   if (node.kind === "domain") {
     focusDomain(node.domain);
@@ -1312,6 +1442,180 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function formatMultilineText(value) {
+  return escapeHtml(String(value || "")).replaceAll("\n", "<br>");
+}
+
+function renderProse(value) {
+  return renderMarkdown(value, { stripLeadingTitle: true });
+}
+
+function renderMarkdown(value, options = {}) {
+  const { compact = false, stripLeadingTitle = false, title = "" } = options;
+  const normalized = String(value || "").replaceAll("\r\n", "\n").trim();
+  if (!normalized) return "";
+
+  const prepared = stripLeadingTitle ? removeLeadingTitle(normalized, title) : normalized;
+  const protectedText = protectMathSegments(prepared);
+  const lines = protectedText.text.split("\n");
+  const blocks = [];
+
+  for (let index = 0; index < lines.length; ) {
+    const rawLine = lines[index];
+    const line = rawLine.trim();
+
+    if (!line) {
+      index += 1;
+      continue;
+    }
+
+    if (isMathTokenLine(line, protectedText.tokens)) {
+      blocks.push(`<div class="math-block">${restoreTokens(line, protectedText.tokens)}</div>`);
+      index += 1;
+      continue;
+    }
+
+    const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
+    if (headingMatch) {
+      const level = Math.min(6, headingMatch[1].length + 1);
+      blocks.push(`<h${level}>${renderInlineMarkup(headingMatch[2], protectedText.tokens)}</h${level}>`);
+      index += 1;
+      continue;
+    }
+
+    if (/^- /.test(line)) {
+      const items = [];
+      while (index < lines.length && /^- /.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().slice(2), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ul>${items.join("")}</ul>`);
+      continue;
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\d+\.\s/.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().replace(/^\d+\.\s/, ""), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ol>${items.join("")}</ol>`);
+      continue;
+    }
+
+    const paragraphLines = [];
+    while (index < lines.length) {
+      const candidate = lines[index].trim();
+      if (!candidate) break;
+      if (isMathTokenLine(candidate, protectedText.tokens)) break;
+      if (/^(#{1,6})\s+/.test(candidate) || /^- /.test(candidate) || /^\d+\.\s/.test(candidate)) break;
+      paragraphLines.push(lines[index]);
+      index += 1;
+    }
+
+    const paragraphHtml = renderInlineMarkup(paragraphLines.join(compact ? " " : "\n"), protectedText.tokens).replaceAll("\n", "<br>");
+    blocks.push(`<p>${paragraphHtml}</p>`);
+  }
+
+  return blocks.join("");
+}
+
+function removeLeadingTitle(value, title) {
+  const lines = value.split("\n");
+  let firstContentIndex = 0;
+  while (firstContentIndex < lines.length && !lines[firstContentIndex].trim()) firstContentIndex += 1;
+  if (firstContentIndex >= lines.length) return value;
+  const firstLine = lines[firstContentIndex].trim();
+  if (!firstLine.startsWith("#")) return value;
+  const normalizedTitle = firstLine.replace(/^#+\s*/, "").trim();
+  if (title && normalizedTitle !== String(title).trim()) return value;
+  lines.splice(firstContentIndex, 1);
+  while (lines[firstContentIndex] !== undefined && !lines[firstContentIndex].trim()) {
+    lines.splice(firstContentIndex, 1);
+  }
+  return lines.join("\n");
+}
+
+function protectMathSegments(text) {
+  const tokens = new Map();
+  let counter = 0;
+  let protectedText = text.replace(/\$\$[\s\S]+?\$\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: true });
+    return token;
+  });
+
+  protectedText = protectedText.replace(/\$(?!\$)([^$\n]|\\\$)+?\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: false });
+    return token;
+  });
+
+  return { text: protectedText, tokens };
+}
+
+function isMathTokenLine(line, tokens) {
+  return tokens.has(line) && Boolean(tokens.get(line)?.display);
+}
+
+function restoreTokens(text, tokens) {
+  let restored = text;
+  for (const [token, meta] of tokens.entries()) {
+    restored = restored.replaceAll(token, meta.raw);
+  }
+  return restored;
+}
+
+function renderInlineMarkup(text, tokens) {
+  const parts = String(text || "").split(/(@@MATH\d+@@|\[\[[^\]]+\]\]|`[^`]+`)/g);
+  return parts
+    .filter((part) => part !== "")
+    .map((part) => {
+      if (tokens.has(part)) return tokens.get(part).raw;
+      if (part.startsWith("[[")) return renderWikiLink(part);
+      const codeMatch = part.match(/^`([^`]+)`$/);
+      if (codeMatch) return `<code>${escapeHtml(codeMatch[1])}</code>`;
+      return escapeHtml(part);
+    })
+    .join("");
+}
+
+function renderWikiLink(rawLink) {
+  const match = rawLink.match(/^\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]$/);
+  if (!match) return escapeHtml(rawLink);
+  const targetTitle = String(match[1] || "").trim();
+  const label = String(match[2] || match[1] || "").trim();
+  const targetNode = findNodeByTitle(targetTitle);
+  if (!targetNode) {
+    return `<span class="inline-note-link unresolved">${escapeHtml(label)}</span>`;
+  }
+  return `<button class="inline-note-link" type="button" data-node-id="${escapeHtml(targetNode.id)}">${escapeHtml(label)}</button>`;
+}
+
+function findNodeByTitle(title) {
+  return state.graph?.noteNodes?.find((node) => node.title === title) || null;
+}
+
+function scheduleMathTypeset(container) {
+  if (!container) return;
+  if (window.MathJax?.typesetPromise) {
+    if (typeof window.MathJax.typesetClear === "function") {
+      window.MathJax.typesetClear([container]);
+    }
+    window.MathJax.typesetPromise([container]).catch((error) => {
+      console.error("Math typeset failed", error);
+    });
+    return;
+  }
+  window.setTimeout(() => scheduleMathTypeset(container), 120);
+}
+
+function syncReadingLayout(isReaderMode) {
+  els.workspace.classList.toggle("reader-mode", isReaderMode);
+  els.graphPanel.classList.toggle("reader-hidden", isReaderMode);
+  els.detailPanel.classList.toggle("reader-panel", isReaderMode);
 }
 
 function cssEscape(value) {

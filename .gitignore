@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+.knowledge-base.local.json
 
 .tmp_physics_seed/
 tmp_pdf_preview/

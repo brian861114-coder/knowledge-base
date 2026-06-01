@@ -104,9 +104,18 @@ Note:
 
 When syncing this repo to another computer, check these files first:
 
+- [.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\.knowledge-base.local.example.json)
+  - copy this to `.knowledge-base.local.json`
+  - set the local Python path
+  - set the local prototype host and port
+  - record the local vault path for operator reference
+- `.knowledge-base.local.json`
+  - this file is intentionally local-only and ignored by Git
+  - use it instead of editing shared scripts when possible
+
 - [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
-  - verify `$preferredPython`
-  - verify the default port `4173` is still appropriate
+  - now reads `.knowledge-base.local.json` first
+  - also supports `KB_PYTHON_PATH`, `KB_PROTOTYPE_HOST`, and `KB_PROTOTYPE_PORT`
 - [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
   - usually portable now, but verify it still launches the local `.ps1` correctly
 - [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
@@ -185,6 +194,12 @@ Start the local server with:
 Then open:
 
 [http://127.0.0.1:4173/prototype/](http://127.0.0.1:4173/prototype/)
+
+If another machine uses a different Python install or port:
+
+1. Copy `.knowledge-base.local.example.json` to `.knowledge-base.local.json`
+2. Update the local values there
+3. Run `.\start_prototype.cmd`
 
 ## Export Workflow
 

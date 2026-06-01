@@ -57,28 +57,39 @@ If working on another machine:
 2. confirm the repo checkout path
 3. update any path assumptions before running exports
 
+Recommended local config file:
+
+- copy [C:\Users\brian\Downloads\vibe_coding\knowledge database\.knowledge-base.local.example.json](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\.knowledge-base.local.example.json)
+  to `.knowledge-base.local.json`
+- this local file is ignored by Git
+- use it for machine-specific values instead of editing shared scripts when possible
+
 ## Files To Reconfigure On Another Machine
 
 These are the main machine-specific files to check after moving the repo:
 
 1. [start_prototype.ps1](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.ps1)
-   - check `$preferredPython`
-   - check the default local port
-   - this is the main startup file most likely to need adjustment
+   - reads `.knowledge-base.local.json`
+   - supports `KB_PYTHON_PATH`, `KB_PROTOTYPE_HOST`, and `KB_PROTOTYPE_PORT`
+   - this is the main startup file most likely to need adjustment only if config support is insufficient
 2. [start_prototype.cmd](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\start_prototype.cmd)
    - usually portable
    - confirm it still calls the local PowerShell script correctly
-3. [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
+3. `.knowledge-base.local.json`
+   - set the local Python path
+   - set the local prototype host and port
+   - optionally store the local vault path for operator reference
+4. [README.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\README.md)
    - update any path examples shown to future users
-4. [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
+5. [MAINTENANCE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\MAINTENANCE.md)
    - update the recorded local paths and example commands
-5. [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
+6. [AI_HANDOFF.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\AI_HANDOFF.md)
    - update the repo path
    - update the vault path
    - update command examples if they include absolute paths
-6. [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
+7. [PROJECT_ARCHITECTURE.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\PROJECT_ARCHITECTURE.md)
    - update the external vault path reference
-7. [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
+8. [physics_database_build_manifest.md](C:\Users\brian\Downloads\vibe_coding\knowledge%20database\physics_database_build_manifest.md)
    - update the recorded build environment paths
 
 Usually not machine-specific:
@@ -111,6 +122,14 @@ Use this sequence for most work:
 Expected local URL:
 
 [http://127.0.0.1:4173/prototype/](http://127.0.0.1:4173/prototype/)
+
+Optional environment-variable override:
+
+```powershell
+$env:KB_PYTHON_PATH = "C:\Python311\python.exe"
+$env:KB_PROTOTYPE_PORT = "4174"
+.\start_prototype.cmd
+```
 
 ### Re-export note details
 

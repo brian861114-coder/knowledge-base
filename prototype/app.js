@@ -1,4 +1,4 @@
-const graphUrl = "../physics_graph.json";
+﻿const graphUrl = "../physics_graph.json";
 const noteDetailsUrl = "../physics_note_details.json";
 const primaryEdgeTypes = new Set([
   "organized_by",
@@ -11,6 +11,13 @@ const primaryEdgeTypes = new Set([
   "measures",
   "related_to",
 ]);
+const structuralEdgeTypes = new Set(["organized_by", "requires"]);
+const overviewNodeTypes = new Set(["map"]);
+const overviewSearchLimit = 14;
+const domainSeedLimit = 16;
+const domainSupportLimit = 6;
+const localPrimaryLimit = 10;
+const localSupportLimit = 4;
 const wikilinkPattern = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g;
 
 const state = {
@@ -29,6 +36,9 @@ const state = {
   selectedNodeId: null,
   noteViewMode: "preview",
   draggingNodeId: null,
+  suppressNodeClickUntil: 0,
+  mentionPattern: null,
+  mentionTargets: new Map(),
   pointerOffset: { x: 0, y: 0 },
   viewport: {
     scale: 1,
@@ -54,7 +64,7 @@ const els = {
   graphFrame: document.getElementById("graphFrame"),
   graphCanvas: document.getElementById("graphCanvas"),
   nodesLayer: document.getElementById("nodesLayer"),
-  workspace: document.querySelector(".workspace"),
+  workspace: document.querySelector(".workspace-shell"),
   graphPanel: document.querySelector(".graph-panel"),
   detailPanel: document.querySelector(".detail-panel"),
   detailCard: document.getElementById("detailCard"),
@@ -104,8 +114,8 @@ init().catch((error) => {
   console.error(error);
   els.detailCard.classList.remove("empty");
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">Load Error</p>
-    <h2>無法載入 graph 資料</h2>
+    <p class="detail-kicker">載入錯誤</p>
+    <h2>無法載入知識地圖資料</h2>
     <p class="detail-summary">${escapeHtml(String(error.message || error))}</p>
   `;
 });
@@ -125,6 +135,7 @@ async function init() {
   state.noteDetails = rawNoteDetails;
 
   buildStats(graph);
+  buildMentionIndex(graph);
   buildModeButtons();
   buildFilters(graph);
   buildDomainOverview();
@@ -190,7 +201,7 @@ function normalizeGraph(rawGraph) {
       type: "domain",
       kind: "domain",
       domain,
-      summary: domainDescriptions[domain] || "以該領域為核心的主題群。",
+      summary: domainDescriptions[domain] || "尚未補上這個領域的導覽說明。",
       tags: ["domain-hub"],
       path: "",
       degree: edgeCount,
@@ -259,7 +270,7 @@ function normalizeGraph(rawGraph) {
 function buildStats(graph) {
   const stats = [
     { label: "節點", value: graph.noteNodes.length },
-    { label: "關聯", value: graph.edges.filter((edge) => primaryEdgeTypes.has(edge.type)).length },
+    { label: "關係", value: graph.edges.filter((edge) => primaryEdgeTypes.has(edge.type)).length },
     { label: "領域", value: graph.domains.length },
     { label: "頁型", value: graph.types.length },
   ];
@@ -284,7 +295,7 @@ function buildStats(graph) {
         .join("")}
     </div>
     <div class="stat-box">
-      <div class="stat-label">領域分布</div>
+      <div class="stat-label">領域分佈</div>
       <div class="detail-summary">${escapeHtml(domainBreakdown)}</div>
     </div>
   `;
@@ -366,14 +377,15 @@ function buildDomainOverview() {
     card.type = "button";
     card.className = `domain-card ${state.focusedDomain === meta.domain ? "active" : ""}`;
     card.innerHTML = `
-      <div class="domain-card-kicker">Domain Cluster</div>
+      <div class="domain-card-kicker">領域群組</div>
+      <div class="domain-card-count">${meta.count}</div>
       <h3>${escapeHtml(meta.domain)}</h3>
       <p>${escapeHtml(meta.description)}</p>
       <div class="domain-card-meta">
-        <span class="domain-metric">${meta.count} 節點</span>
         <span class="domain-metric">${meta.maps} 導覽頁</span>
         <span class="domain-metric">${meta.laws} 定律</span>
       </div>
+      <div class="domain-card-footer">點擊進入聚焦</div>
     `;
     card.addEventListener("click", () => focusDomain(meta.domain));
     els.domainOverview.appendChild(card);
@@ -446,6 +458,7 @@ function layoutVisibleGraph(resetPositions = false) {
   const prepared = state.viewMode === "overview" ? prepareOverviewGraph() : prepareDomainGraph();
   state.visibleNodes = prepared.nodes;
   state.visibleEdges = prepared.edges;
+  syncVisibleNodeRefs(prepared.nodes);
 
   updateGraphHint();
   updateFocusBanner();
@@ -490,182 +503,6 @@ function layoutVisibleGraph(resetPositions = false) {
   applyViewportTransform();
   drawGraph(width, height);
   renderDetail(state.nodeMap.get(state.selectedNodeId) || null);
-}
-
-function prepareOverviewGraph() {
-  const nodes = state.graph.domainNodes.filter((node) => state.domainSelection.has(node.domain));
-  const allowed = new Set(nodes.map((node) => node.id));
-  const edges = state.graph.domainEdges.filter(
-    (edge) => allowed.has(edge.source) && allowed.has(edge.target)
-  );
-  return { nodes, edges };
-}
-
-function prepareDomainGraph() {
-  const domain = state.focusedDomain && state.domainSelection.has(state.focusedDomain)
-    ? state.focusedDomain
-    : [...state.domainSelection][0];
-
-  if (!domain) {
-    state.viewMode = "overview";
-    syncModeButtons();
-    return prepareOverviewGraph();
-  }
-
-  state.focusedDomain = domain;
-  const primaryNodes = state.graph.noteNodes.filter((node) => {
-    const matchesDomain = node.domain === domain;
-    const matchesType = state.typeSelection.has(node.type);
-    const matchesSearch = !state.searchTerm || node.searchText.includes(state.searchTerm);
-    return matchesDomain && matchesType && matchesSearch;
-  });
-
-  const supportIds = new Set();
-  const primaryIds = new Set(primaryNodes.map((node) => node.id));
-  for (const edge of state.graph.edges) {
-    if (!primaryEdgeTypes.has(edge.type)) continue;
-    if (primaryIds.has(edge.source) && !primaryIds.has(edge.target)) supportIds.add(edge.target);
-    if (primaryIds.has(edge.target) && !primaryIds.has(edge.source)) supportIds.add(edge.source);
-  }
-
-  const supportNodes = [...supportIds]
-    .map((id) => state.nodeMap.get(id))
-    .filter(Boolean)
-    .filter((node) => node.kind === "note")
-    .slice(0, 10)
-    .map((node) => ({ ...node, support: true }));
-
-  const merged = dedupeNodes([...primaryNodes, ...supportNodes]);
-  const visibleIds = new Set(merged.map((node) => node.id));
-  const edges = state.graph.edges.filter((edge) => {
-    if (!primaryEdgeTypes.has(edge.type)) return false;
-    return visibleIds.has(edge.source) && visibleIds.has(edge.target);
-  });
-
-  const anchors = new Map();
-  for (const node of merged) node.anchorKey = node.id;
-  return { nodes: merged, edges, anchors };
-}
-
-function updateGraphHint() {
-  els.backToOverviewToolbarButton.hidden = state.viewMode !== "domain";
-  els.graphHint.textContent =
-    state.viewMode === "overview"
-      ? "先選一個領域，再展開該領域內的概念、定律與物理量。可用滑鼠滾輪縮放、拖曳空白處平移。"
-      : `目前聚焦在「${state.focusedDomain}」。主節點採環狀排布，較淡的節點是跨領域支撐節點。`;
-}
-
-function updateFocusBanner() {
-  if (state.viewMode !== "domain" || !state.focusedDomain) {
-    els.focusBanner.hidden = true;
-    els.focusBanner.innerHTML = "";
-    return;
-  }
-
-  const primaryCount = state.visibleNodes.filter((node) => !node.support).length;
-  const supportCount = state.visibleNodes.filter((node) => node.support).length;
-  els.focusBanner.hidden = false;
-  els.focusBanner.innerHTML = `
-    <div>
-      <p class="eyebrow">Focused Domain</p>
-      <p><strong>${escapeHtml(state.focusedDomain)}</strong> 目前顯示 ${primaryCount} 個主節點，外加 ${supportCount} 個跨領域支撐節點。</p>
-    </div>
-    <div class="focus-actions">
-      <button id="backToOverviewButton" class="ghost-button" type="button">回到總覽</button>
-    </div>
-  `;
-  els.focusBanner.querySelector("#backToOverviewButton").addEventListener("click", () => {
-    state.viewMode = "overview";
-    state.focusedDomain = null;
-    syncModeButtons();
-    buildDomainOverview();
-    layoutVisibleGraph(true);
-  });
-}
-
-function ensureNodeElements(visibleNodes) {
-  const activeIds = new Set(visibleNodes.map((node) => node.id));
-  for (const child of [...els.nodesLayer.children]) {
-    if (!activeIds.has(child.dataset.id)) child.remove();
-  }
-
-  for (const node of visibleNodes) {
-    let element = els.nodesLayer.querySelector(`[data-id="${cssEscape(node.id)}"]`);
-    if (!element) {
-      element = document.createElement("button");
-      element.type = "button";
-      element.className = "node";
-      element.dataset.id = node.id;
-      element.addEventListener("click", () => {
-        if (node.kind === "domain") {
-          focusDomain(node.domain);
-          return;
-        }
-        state.selectedNodeId = node.id;
-        drawGraph();
-        renderDetail(node);
-        updateNodeStates();
-      });
-      element.addEventListener("pointerdown", (event) => {
-        if (node.kind === "domain") return;
-        startDrag(event, node);
-      });
-      els.nodesLayer.appendChild(element);
-    }
-
-    element.className = "node";
-    if (node.kind === "domain") element.classList.add("domain-node");
-    if (node.support) element.classList.add("support");
-    element.dataset.id = node.id;
-    element.dataset.type = node.type;
-    element.innerHTML = renderNodeContent(node);
-    node.element = element;
-    const rect = element.getBoundingClientRect();
-    node.boxWidth = Math.max(rect.width || 140, node.kind === "domain" ? 170 : 110);
-    node.boxHeight = Math.max(rect.height || 68, node.kind === "domain" ? 92 : 70);
-  }
-
-  updateNodeStates();
-}
-
-function renderNodeContent(node) {
-  if (node.kind === "domain") {
-    return `
-      <div class="node-badge">
-        <span class="swatch type-map"></span>
-        <span>${escapeHtml(typeLabel.domain)}</span>
-      </div>
-      <div class="node-title">${escapeHtml(node.title)}</div>
-      <div class="node-meta">${node.memberCount} 個節點</div>
-    `;
-  }
-
-  return `
-    <div class="node-badge">
-      <span class="swatch type-${escapeHtml(node.type)}"></span>
-      <span>${escapeHtml(typeLabel[node.type] || node.type)}</span>
-    </div>
-    <div class="node-title">${escapeHtml(node.title)}</div>
-    <div class="node-meta">${escapeHtml(node.support ? `支撐節點 · ${node.domain}` : node.domain || "未分類")}</div>
-  `;
-}
-
-function updateNodeStates() {
-  const selected = state.selectedNodeId ? state.nodeMap.get(state.selectedNodeId) : null;
-  const connected = selected ? new Set(connectedNodeIds(selected.id)) : null;
-
-  for (const node of state.visibleNodes) {
-    const element = node.element;
-    element.classList.toggle("selected", node.id === state.selectedNodeId);
-    element.classList.toggle(
-      "dimmed",
-      Boolean(selected) &&
-        node.kind !== "domain" &&
-        node.id !== selected.id &&
-        !connected.has(node.id)
-    );
-    if (node.kind === "domain") element.classList.remove("dimmed");
-  }
 }
 
 function buildDomainAnchors(width, height, nodes) {
@@ -726,9 +563,15 @@ function buildFocusAnchors(width, height, nodes, domain) {
 function runSimulation(nodes, edges, anchors, width, height) {
   cancelAnimationFrame(state.layoutFrame);
   const visibleSet = new Set(nodes.map((node) => node.id));
-  const selectedConnections = state.selectedNodeId ? new Set(connectedNodeIds(state.selectedNodeId)) : null;
+  let tickCount = 0;
+  let stableFrames = 0;
+  const maxTicks = state.viewMode === "domain" ? 240 : 180;
+  const stableFrameTarget = 16;
 
   const tick = () => {
+    tickCount += 1;
+    const selectedConnections = state.selectedNodeId ? new Set(connectedNodeIds(state.selectedNodeId)) : null;
+
     for (const node of nodes) {
       const anchor = anchors.get(node.anchorKey || node.domain || "未分類");
       if (!anchor || node.kind === "domain") continue;
@@ -812,12 +655,17 @@ function runSimulation(nodes, edges, anchors, width, height) {
       target.vy -= fy;
     }
 
+    let totalMotion = 0;
+    let maxSpeed = 0;
     for (const node of nodes) {
       if (state.draggingNodeId === node.id) continue;
       const connectionBoost = selectedConnections && selectedConnections.has(node.id) ? 1.05 : 1;
       const friction = node.kind === "domain" ? 0.68 : state.viewMode === "domain" ? 0.7 : 0.78;
       node.vx *= friction * connectionBoost;
       node.vy *= friction * connectionBoost;
+      const speed = Math.hypot(node.vx, node.vy);
+      totalMotion += speed;
+      maxSpeed = Math.max(maxSpeed, speed);
       const halfW = Math.max((node.boxWidth || 120) / 2 + 14, node.kind === "domain" ? 94 : 54);
       const halfH = Math.max((node.boxHeight || 72) / 2 + 14, node.kind === "domain" ? 94 : 54);
       node.x = clamp(node.x + node.vx, halfW, width - halfW);
@@ -827,6 +675,15 @@ function runSimulation(nodes, edges, anchors, width, height) {
     }
 
     drawGraph(width, height);
+    const averageMotion = nodes.length ? totalMotion / nodes.length : 0;
+    const settled = maxSpeed < 0.08 && averageMotion < 0.035;
+    stableFrames = settled ? stableFrames + 1 : 0;
+
+    if (stableFrames >= stableFrameTarget || tickCount >= maxTicks) {
+      state.layoutFrame = null;
+      return;
+    }
+
     state.layoutFrame = requestAnimationFrame(tick);
   };
 
@@ -855,15 +712,15 @@ function resolveCollisions(nodes) {
         const dir = dx === 0 ? (i % 2 === 0 ? -1 : 1) : Math.sign(dx);
         if (a.kind !== "domain") a.x -= dir * push;
         if (b.kind !== "domain") b.x += dir * push;
-        a.vx -= dir * 0.28;
-        b.vx += dir * 0.28;
+        a.vx -= dir * 0.16;
+        b.vx += dir * 0.16;
       } else {
         const push = overlapY / 2;
         const dir = dy === 0 ? (i % 2 === 0 ? -1 : 1) : Math.sign(dy);
         if (a.kind !== "domain") a.y -= dir * push;
         if (b.kind !== "domain") b.y += dir * push;
-        a.vy -= dir * 0.28;
-        b.vy += dir * 0.28;
+        a.vy -= dir * 0.16;
+        b.vy += dir * 0.16;
       }
     }
   }
@@ -972,9 +829,10 @@ function renderDetail(node) {
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">Node Detail</p>
-      <h2>沒有可顯示的節點</h2>
-      <p class="detail-summary">請調整搜尋字詞或篩選條件。</p>
+      <p class="detail-kicker">節點詳情</p>
+      <h2>選取一個節點</h2>
+      <p class="detail-summary">右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。</p>
+      <div class="detail-empty-note">先從總覽選一個領域，或直接點擊任一節點。</div>
     `;
     return;
   }
@@ -984,24 +842,24 @@ function renderDetail(node) {
     const byType = countBy(members, (item) => typeLabel[item.type] || item.type);
     els.detailCard.className = "detail-card";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">Domain Hub</p>
+      <p class="detail-kicker">領域樞紐</p>
       <h2>${escapeHtml(node.title)}</h2>
       <p class="detail-summary">${escapeHtml(node.summary)}</p>
       <div class="detail-meta">
-        ${detailMetaBox("節點數", String(node.memberCount))}
-        ${detailMetaBox("跨域關聯", String(node.degree))}
-        ${detailMetaBox("主要頁型", escapeHtml(Object.keys(byType).join(" / ")))}
-        ${detailMetaBox("操作", "點下方按鈕進入領域聚焦")}
+        ${detailMetaBox("成員節點", String(node.memberCount))}
+        ${detailMetaBox("跨域連結", String(node.degree))}
+        ${detailMetaBox("包含頁型", escapeHtml(Object.keys(byType).join(" / ")))}
+        ${detailMetaBox("視角", "領域樞紐與導覽入口")}
       </div>
       <div class="detail-grid">
         <section class="detail-section">
-          <h3>頁型分布</h3>
+          <h3>頁型分佈</h3>
           <div class="detail-tags">${renderPills(Object.entries(byType).map(([label, count]) => `${label} ${count}`))}</div>
         </section>
         <section class="detail-section">
-          <h3>下一步</h3>
+          <h3>操作</h3>
           <div class="focus-actions">
-            <button id="detailFocusButton" class="ghost-button" type="button">展開 ${escapeHtml(node.title)}</button>
+            <button id="detailFocusButton" class="ghost-button" type="button">聚焦 ${escapeHtml(node.title)}</button>
           </div>
         </section>
       </div>
@@ -1015,7 +873,11 @@ function renderDetail(node) {
   const incoming = (state.incomingMap.get(node.id) || []).filter((edge) => primaryEdgeTypes.has(edge.type));
   const outgoingGroups = groupRelations(outgoing, "target");
   const incomingGroups = groupRelations(incoming, "source");
-  const resolvedSummary = node.summary || noteDetail?.summary || noteDetail?.body_preview || "這個節點目前只有結構化關聯，尚未找到更完整的頁面摘要。";
+  const resolvedSummary =
+    node.summary ||
+    noteDetail?.summary ||
+    noteDetail?.body_preview ||
+    "這個節點還沒有整理好的摘要。可以先從相關連結或完整筆記內容查看。";
   const resolvedPath = node.path || noteDetail?.path || "";
 
   if (isReaderMode) {
@@ -1033,8 +895,8 @@ function renderDetail(node) {
     <div class="detail-meta">
       ${detailMetaBox("領域", node.domain || "未分類")}
       ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-      ${detailMetaBox("連結度", String(node.degree))}
-      ${detailMetaBox("檔案路徑", resolvedPath)}
+      ${detailMetaBox("連結數", String(node.degree))}
+      ${detailMetaBox("來源路徑", resolvedPath)}
     </div>
     <div class="detail-grid">
       ${renderNotePreview(node, noteDetail)}
@@ -1043,11 +905,11 @@ function renderDetail(node) {
         <div class="detail-tags">${renderPills(node.tags)}</div>
       </section>
       <section class="detail-section">
-        <h3>它連出去的關係</h3>
+        <h3>指向其他節點</h3>
         ${renderRelationGroups(outgoingGroups)}
       </section>
       <section class="detail-section">
-        <h3>哪些頁面連到它</h3>
+        <h3>哪些節點連到這裡</h3>
         ${renderRelationGroups(incomingGroups)}
       </section>
     </div>
@@ -1087,11 +949,11 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
   return `
     <div class="reader-shell">
       <div class="reader-toolbar">
-        <div class="detail-view-toggle" role="tablist" aria-label="頁面閱讀模式">
-          <button class="detail-view-button" type="button" data-note-view-mode="preview">回到側欄</button>
-          <button class="detail-view-button active" type="button" data-note-view-mode="full">全文閱讀</button>
+        <div class="detail-view-toggle" role="tablist" aria-label="筆記檢視模式">
+          <button class="detail-view-button" type="button" data-note-view-mode="preview">預覽模式</button>
+          <button class="detail-view-button active" type="button" data-note-view-mode="full">全文模式</button>
         </div>
-        <button class="ghost-button" type="button" data-note-view-mode="preview">回到圖譜</button>
+        <button class="ghost-button" type="button" data-note-view-mode="preview">返回預覽</button>
       </div>
 
       <article class="reader-article">
@@ -1102,8 +964,8 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
           <div class="reader-meta-grid">
             ${detailMetaBox("領域", node.domain || "未分類")}
             ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-            ${detailMetaBox("連結度", String(node.degree))}
-            ${detailMetaBox("檔案路徑", resolvedPath)}
+            ${detailMetaBox("連結數", String(node.degree))}
+            ${detailMetaBox("來源路徑", resolvedPath)}
           </div>
         </header>
 
@@ -1111,7 +973,7 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
           outline
             ? `
         <section class="reader-outline-panel">
-          <p class="detail-kicker">章節目錄</p>
+          <p class="detail-kicker">文章大綱</p>
           <div class="reader-outline-list">${outline}</div>
         </section>
         `
@@ -1131,11 +993,11 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
             <div class="detail-tags">${renderPills(node.tags)}</div>
           </section>
           <section class="reader-footer-panel">
-            <p class="detail-kicker">它連出去的關係</p>
+            <p class="detail-kicker">指向其他節點</p>
             ${renderRelationGroups(outgoingGroups)}
           </section>
           <section class="reader-footer-panel">
-            <p class="detail-kicker">哪些頁面連到它</p>
+            <p class="detail-kicker">哪些節點連到這裡</p>
             ${renderRelationGroups(incomingGroups)}
           </section>
         </footer>
@@ -1148,8 +1010,8 @@ function renderNotePreview(node, detail) {
   if (!detail) {
     return `
       <section class="detail-section">
-        <h3>章節預覽</h3>
-        <p class="detail-summary">目前沒有對應的 Obsidian 頁面預覽資料。</p>
+        <h3>筆記預覽</h3>
+        <p class="detail-summary">這個節點還沒有對應的 Obsidian 匯出內容。</p>
       </section>
     `;
   }
@@ -1174,7 +1036,7 @@ function renderNotePreview(node, detail) {
     .map(
       (section, index) => `
         <article class="section-preview-card" id="${escapeHtml(buildSectionTargetId(node.id, index))}">
-          <p class="detail-kicker">Section</p>
+          <p class="detail-kicker">章節</p>
           <h4>${escapeHtml(section.title)}</h4>
           <div class="reader-prose compact-prose">${renderMarkdown(
             isFullMode ? section.content || section.preview || "" : section.preview || "",
@@ -1188,8 +1050,8 @@ function renderNotePreview(node, detail) {
   return `
     <section class="detail-section">
       <div class="detail-section-heading">
-        <h3>${isFullMode ? "頁面全文" : "頁面預覽"}</h3>
-        <div class="detail-view-toggle" role="tablist" aria-label="頁面閱讀模式">
+        <h3>${isFullMode ? "筆記全文" : "筆記預覽"}</h3>
+        <div class="detail-view-toggle" role="tablist" aria-label="筆記檢視模式">
           <button class="detail-view-button ${!isFullMode ? "active" : ""}" type="button" data-note-view-mode="preview">預覽</button>
           <button class="detail-view-button ${isFullMode ? "active" : ""}" type="button" data-note-view-mode="full">全文</button>
         </div>
@@ -1203,7 +1065,7 @@ function renderNotePreview(node, detail) {
       outline
         ? `
     <section class="detail-section">
-      <h3>章節目錄</h3>
+      <h3>文章大綱</h3>
       <div class="detail-outline">${outline}</div>
     </section>`
         : ""
@@ -1212,7 +1074,7 @@ function renderNotePreview(node, detail) {
       <h3>${isFullMode ? "章節全文" : "章節預覽"}</h3>
       ${
         sectionCards ||
-        `<p class="detail-summary">這篇頁面目前沒有可拆出的章節內容。</p>`
+        `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
       }
     </section>
   `;
@@ -1224,7 +1086,7 @@ function buildSectionTargetId(nodeId, index) {
 
 function renderRelationGroups(groups) {
   if (groups.length === 0) {
-    return `<p class="detail-summary">目前沒有可顯示的已解析關聯。</p>`;
+    return `<p class="detail-summary">目前沒有可顯示的關聯節點。</p>`;
   }
   return groups
     .map(
@@ -1320,18 +1182,34 @@ function connectedNodeIds(nodeId) {
   return ids;
 }
 
-function startDrag(event, node) {
-  event.preventDefault();
-  state.draggingNodeId = node.id;
+function startDragGesture(event, node) {
+  if (event.button !== 0) return;
   const rect = els.graphFrame.getBoundingClientRect();
-  const pointerX = event.clientX - rect.left;
-  const pointerY = event.clientY - rect.top;
-  state.pointerOffset.x = node.x - pointerX;
-  state.pointerOffset.y = node.y - pointerY;
+  const originX = event.clientX;
+  const originY = event.clientY;
+  const dragThreshold = 6;
+  let dragging = false;
+
+  const beginDrag = (pointerX, pointerY) => {
+    event.preventDefault();
+    state.draggingNodeId = node.id;
+    state.pointerOffset.x = node.x - pointerX;
+    state.pointerOffset.y = node.y - pointerY;
+    dragging = true;
+  };
 
   const onMove = (moveEvent) => {
     const moveX = moveEvent.clientX - rect.left;
     const moveY = moveEvent.clientY - rect.top;
+
+    if (!dragging) {
+      const deltaX = moveEvent.clientX - originX;
+      const deltaY = moveEvent.clientY - originY;
+      if (Math.hypot(deltaX, deltaY) < dragThreshold) return;
+      beginDrag(moveX, moveY);
+      state.suppressNodeClickUntil = performance.now() + 250;
+    }
+
     node.x = clamp(moveX + state.pointerOffset.x, 54, rect.width - 54);
     node.y = clamp(moveY + state.pointerOffset.y, 54, rect.height - 54);
     node.vx = 0;
@@ -1342,9 +1220,11 @@ function startDrag(event, node) {
   };
 
   const onUp = () => {
-    state.draggingNodeId = null;
     window.removeEventListener("pointermove", onMove);
     window.removeEventListener("pointerup", onUp);
+    if (!dragging) return;
+    state.draggingNodeId = null;
+    layoutVisibleGraph(false);
   };
 
   window.addEventListener("pointermove", onMove);
@@ -1444,6 +1324,10 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function escapeAttribute(value) {
+  return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
 function formatMultilineText(value) {
   return escapeHtml(String(value || "")).replaceAll("\n", "<br>");
 }
@@ -1473,6 +1357,13 @@ function renderMarkdown(value, options = {}) {
 
     if (isMathTokenLine(line, protectedText.tokens)) {
       blocks.push(`<div class="math-block">${restoreTokens(line, protectedText.tokens)}</div>`);
+      index += 1;
+      continue;
+    }
+
+    const imageBlockHtml = renderImageBlock(line, protectedText.tokens);
+    if (imageBlockHtml) {
+      blocks.push(imageBlockHtml);
       index += 1;
       continue;
     }
@@ -1568,18 +1459,84 @@ function restoreTokens(text, tokens) {
   return restored;
 }
 
+function renderImageBlock(text, tokens) {
+  const restored = restoreTokens(String(text || "").trim(), tokens);
+  const image = parseMarkdownImage(restored);
+  if (!image) return "";
+  return buildImageFigure(image);
+}
+
 function renderInlineMarkup(text, tokens) {
-  const parts = String(text || "").split(/(@@MATH\d+@@|\[\[[^\]]+\]\]|`[^`]+`)/g);
+  const parts = String(text || "").split(/(@@MATH\d+@@|!\[[^\]]*?\]\([^)\n]+?\)|\[\[[^\]]+\]\]|`[^`]+`)/g);
   return parts
     .filter((part) => part !== "")
     .map((part) => {
       if (tokens.has(part)) return tokens.get(part).raw;
+      if (part.startsWith("![")) {
+        const image = parseMarkdownImage(part);
+        return image ? buildInlineImage(image) : escapeHtml(part);
+      }
       if (part.startsWith("[[")) return renderWikiLink(part);
       const codeMatch = part.match(/^`([^`]+)`$/);
       if (codeMatch) return `<code>${escapeHtml(codeMatch[1])}</code>`;
-      return escapeHtml(part);
+      return autoLinkPlainMentions(part);
     })
     .join("");
+}
+
+function parseMarkdownImage(raw) {
+  const match = String(raw || "").trim().match(/^!\[([^\]]*)\]\((.+)\)$/);
+  if (!match) return null;
+
+  const alt = String(match[1] || "").trim();
+  const parsedDestination = parseImageDestination(match[2]);
+  if (!parsedDestination || !isSafeImageUrl(parsedDestination.src)) return null;
+
+  return {
+    alt,
+    src: parsedDestination.src,
+    caption: parsedDestination.title || alt,
+  };
+}
+
+function parseImageDestination(value) {
+  const trimmed = String(value || "").trim();
+  if (!trimmed) return null;
+
+  const titledMatch = trimmed.match(/^(.+?)\s+(?:"([^"]+)"|'([^']+)')$/);
+  if (titledMatch) {
+    return {
+      src: titledMatch[1].trim(),
+      title: String(titledMatch[2] || titledMatch[3] || "").trim(),
+    };
+  }
+
+  return {
+    src: trimmed,
+    title: "",
+  };
+}
+
+function isSafeImageUrl(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) return false;
+  return !normalized.startsWith("javascript:") && !normalized.startsWith("data:text/html");
+}
+
+function buildImageFigure(image) {
+  const captionHtml = image.caption
+    ? `<figcaption class="content-figure-caption">${escapeHtml(image.caption)}</figcaption>`
+    : "";
+  return `
+    <figure class="content-figure">
+      <img class="content-image" src="${escapeAttribute(image.src)}" alt="${escapeAttribute(image.alt)}" loading="lazy">
+      ${captionHtml}
+    </figure>
+  `;
+}
+
+function buildInlineImage(image) {
+  return `<img class="content-image inline-image" src="${escapeAttribute(image.src)}" alt="${escapeAttribute(image.alt)}" loading="lazy">`;
 }
 
 function renderWikiLink(rawLink) {
@@ -1594,8 +1551,71 @@ function renderWikiLink(rawLink) {
   return `<button class="inline-note-link" type="button" data-node-id="${escapeHtml(targetNode.id)}">${escapeHtml(label)}</button>`;
 }
 
+function buildMentionIndex(graph) {
+  const mentionTargets = new Map();
+  for (const node of graph.noteNodes) {
+    const title = String(node.title || "").trim();
+    if (!title) continue;
+    const hasCjk = /[\u3400-\u9fff]/.test(title);
+    const asciiLettersOnly = /^[A-Za-z0-9\s\-+*/.=()]+$/.test(title);
+    if (!hasCjk && (title.length < 3 || asciiLettersOnly && title.length < 4)) continue;
+    if (!mentionTargets.has(title)) mentionTargets.set(title, node);
+  }
+
+  const titles = [...mentionTargets.keys()].sort((a, b) => b.length - a.length || localeCompareZh(a, b));
+  state.mentionTargets = mentionTargets;
+  state.mentionPattern = titles.length
+    ? new RegExp(titles.map((title) => escapeRegex(title)).join("|"), "g")
+    : null;
+}
+
+function autoLinkPlainMentions(text) {
+  const source = String(text || "");
+  if (!source || !state.mentionPattern || !state.mentionTargets.size) return escapeHtml(source);
+
+  const fragments = [];
+  let cursor = 0;
+  let matchCount = 0;
+  const maxMatchesPerChunk = 8;
+  state.mentionPattern.lastIndex = 0;
+
+  for (const match of source.matchAll(state.mentionPattern)) {
+    const title = match[0];
+    const start = match.index ?? -1;
+    if (start < 0 || start < cursor) continue;
+    const targetNode = state.mentionTargets.get(title);
+    if (!targetNode) continue;
+
+    if (start > cursor) {
+      fragments.push(escapeHtml(source.slice(cursor, start)));
+    }
+
+    if (matchCount >= maxMatchesPerChunk) {
+      fragments.push(escapeHtml(source.slice(start)));
+      cursor = source.length;
+      break;
+    }
+
+    fragments.push(
+      `<button class="inline-note-link auto-linked" type="button" data-node-id="${escapeHtml(targetNode.id)}">${escapeHtml(title)}</button>`
+    );
+    cursor = start + title.length;
+    matchCount += 1;
+  }
+
+  if (cursor < source.length) {
+    fragments.push(escapeHtml(source.slice(cursor)));
+  }
+
+  return fragments.join("");
+}
+
 function findNodeByTitle(title) {
   return state.graph?.noteNodes?.find((node) => node.title === title) || null;
+}
+
+function escapeRegex(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function scheduleMathTypeset(container) {
@@ -1613,12 +1633,399 @@ function scheduleMathTypeset(container) {
 }
 
 function syncReadingLayout(isReaderMode) {
-  els.workspace.classList.toggle("reader-mode", isReaderMode);
-  els.graphPanel.classList.toggle("reader-hidden", isReaderMode);
-  els.detailPanel.classList.toggle("reader-panel", isReaderMode);
+  els.workspace?.classList.toggle("reader-mode", isReaderMode);
+  els.graphPanel?.classList.toggle("reader-hidden", isReaderMode);
+  els.detailPanel?.classList.toggle("reader-panel", isReaderMode);
 }
 
 function cssEscape(value) {
   if (window.CSS?.escape) return window.CSS.escape(String(value));
   return String(value).replaceAll('"', '\\"');
+}
+
+function syncVisibleNodeRefs(nodes) {
+  for (const node of nodes) {
+    state.nodeMap.set(node.id, node);
+  }
+}
+
+function selectOverviewNodesForDomain(domain) {
+  const domainNotes = state.graph.noteNodes.filter(
+    (node) => node.domain === domain && state.typeSelection.has(node.type)
+  );
+  const maps = domainNotes
+    .filter((node) => overviewNodeTypes.has(node.type))
+    .sort(compareFocusNodes)
+    .slice(0, 2);
+  const hub = domainNotes
+    .filter((node) => !overviewNodeTypes.has(node.type))
+    .sort((a, b) => b.degree - a.degree || compareFocusNodes(a, b))[0];
+  return hub ? [...maps, { ...hub, overviewHub: true }] : maps;
+}
+
+function collectMatchingNodes({ domains, types, searchTerm, limit, includeMapsFirst = false }) {
+  const allowedDomains = new Set(domains);
+  const allowedTypes = new Set(types);
+  const matches = state.graph.noteNodes.filter((node) => {
+    if (!allowedDomains.has(node.domain)) return false;
+    if (!allowedTypes.has(node.type)) return false;
+    if (!searchTerm) return true;
+    return node.searchText.includes(searchTerm);
+  });
+  matches.sort((a, b) => {
+    const mapBoost = includeMapsFirst
+      ? Number(overviewNodeTypes.has(b.type)) - Number(overviewNodeTypes.has(a.type))
+      : 0;
+    if (mapBoost) return mapBoost;
+    return b.degree - a.degree || compareFocusNodes(a, b);
+  });
+  return matches.slice(0, limit).map((node) => ({ ...node }));
+}
+
+function buildDomainSeedNodes(domain, filteredNodes) {
+  const ranked = [...filteredNodes].sort((a, b) => {
+    const typeWeight = seedTypeWeight(a.type) - seedTypeWeight(b.type);
+    if (typeWeight !== 0) return typeWeight;
+    return b.degree - a.degree || compareFocusNodes(a, b);
+  });
+  const maps = ranked.filter((node) => node.type === "map").slice(0, 2);
+  const others = ranked.filter((node) => node.type !== "map");
+  const selected = dedupeNodes([...maps, ...others]).slice(0, domainSeedLimit);
+  return selected.map((node) => ({ ...node }));
+}
+
+function rankRelatedNodes(nodes) {
+  return dedupeNodes(nodes).sort((a, b) => {
+    const typeWeight = seedTypeWeight(a.type) - seedTypeWeight(b.type);
+    if (typeWeight !== 0) return typeWeight;
+    return b.degree - a.degree || compareFocusNodes(a, b);
+  });
+}
+
+function seedTypeWeight(type) {
+  const order = {
+    map: 0,
+    law: 1,
+    concept: 2,
+    quantity: 3,
+    mathematical_tool: 4,
+    experiment: 5,
+  };
+  return order[type] ?? 99;
+}
+
+function dedupeEdges(edges) {
+  const seen = new Set();
+  const result = [];
+  for (const edge of edges) {
+    const key = `${edge.source}|${edge.target}|${edge.type}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(edge);
+  }
+  return result;
+}
+
+function describeNodeMeta(node) {
+  if (node.focal) return `焦點節點 · ${node.domain || "未分類"}`;
+  if (node.overviewHub) return `高連結樞紐 · ${node.domain || "未分類"}`;
+  if (node.support) return `支撐節點 · ${node.domain || "未分類"}`;
+  return node.domain || "未分類";
+}
+
+function collectSupportNodes(seedNodes, { limit }) {
+  const primaryIds = new Set(seedNodes.map((node) => node.id));
+  const supportIds = new Set();
+  for (const edge of state.graph.edges) {
+    if (!structuralEdgeTypes.has(edge.type)) continue;
+    if (primaryIds.has(edge.source) && !primaryIds.has(edge.target)) supportIds.add(edge.target);
+    if (primaryIds.has(edge.target) && !primaryIds.has(edge.source)) supportIds.add(edge.source);
+  }
+  return rankRelatedNodes(
+    [...supportIds]
+      .map((id) => state.nodeMap.get(id))
+      .filter(Boolean)
+      .filter((node) => node.kind === "note" && state.typeSelection.has(node.type))
+  )
+    .slice(0, limit)
+    .map((node) => ({ ...node, support: true }));
+}
+
+function prepareLocalNeighborhood(domain, filteredNodes, selectedNode) {
+  const filteredIds = new Set(filteredNodes.map((node) => node.id));
+  if (!filteredIds.has(selectedNode.id)) return null;
+
+  const directPrimary = [];
+  const directSupport = [];
+  for (const edge of state.graph.edges) {
+    if (!primaryEdgeTypes.has(edge.type)) continue;
+    const otherId =
+      edge.source === selectedNode.id ? edge.target : edge.target === selectedNode.id ? edge.source : null;
+    if (!otherId) continue;
+    const other = state.nodeMap.get(otherId);
+    if (!other || other.kind !== "note") continue;
+    if (other.domain === domain && filteredIds.has(other.id)) directPrimary.push(other);
+    else directSupport.push(other);
+  }
+
+  const rankedPrimary = rankRelatedNodes(directPrimary).slice(0, localPrimaryLimit);
+  const rankedSupport = rankRelatedNodes(directSupport)
+    .filter((node) => state.typeSelection.has(node.type))
+    .slice(0, localSupportLimit)
+    .map((node) => ({ ...node, support: true }));
+  const fallbackSeed = buildDomainSeedNodes(domain, filteredNodes).slice(0, 6);
+  const nodes = dedupeNodes([
+    { ...selectedNode, focal: true },
+    ...rankedPrimary.map((node) => ({ ...node })),
+    ...rankedSupport,
+    ...fallbackSeed.map((node) => ({ ...node })),
+  ]).sort((a, b) => {
+    const focusBoost = Number(Boolean(b.focal)) - Number(Boolean(a.focal));
+    if (focusBoost) return focusBoost;
+    return compareFocusNodes(a, b);
+  });
+
+  const visibleIds = new Set(nodes.map((node) => node.id));
+  const edges = state.graph.edges.filter((edge) => {
+    if (!visibleIds.has(edge.source) || !visibleIds.has(edge.target)) return false;
+    if (edge.source === selectedNode.id || edge.target === selectedNode.id) {
+      return primaryEdgeTypes.has(edge.type);
+    }
+    return structuralEdgeTypes.has(edge.type);
+  });
+
+  const anchors = new Map();
+  for (const node of nodes) {
+    if (node.focal) node.anchorKey = "focus";
+    else if (node.support) node.anchorKey = "support";
+    else node.anchorKey = node.type;
+  }
+  return { nodes, edges: dedupeEdges(edges), anchors };
+}
+
+function prepareOverviewGraph() {
+  const domainNodes = state.graph.domainNodes.filter((node) => state.domainSelection.has(node.domain));
+  const curatedNodes = state.searchTerm
+    ? collectMatchingNodes({
+        domains: [...state.domainSelection],
+        types: [...state.typeSelection],
+        searchTerm: state.searchTerm,
+        limit: overviewSearchLimit,
+        includeMapsFirst: true,
+      })
+    : state.graph.domains.flatMap((domain) => selectOverviewNodesForDomain(domain));
+  const noteNodes = dedupeNodes(curatedNodes).map((node) => ({ ...node }));
+  const visibleNodes = dedupeNodes([...domainNodes, ...noteNodes]);
+  const visibleIds = new Set(visibleNodes.map((node) => node.id));
+  const noteIds = new Set(noteNodes.map((node) => node.id));
+  const edges = [
+    ...state.graph.domainEdges.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target)),
+    ...noteNodes.map((node) => ({
+      source: `domain::${node.domain || "未分類"}`,
+      target: node.id,
+      type: "organized_by",
+      synthetic: true,
+    })),
+    ...state.graph.edges.filter((edge) => {
+      if (!structuralEdgeTypes.has(edge.type)) return false;
+      return noteIds.has(edge.source) && noteIds.has(edge.target);
+    }),
+  ];
+
+  for (const node of noteNodes) node.anchorKey = node.domain || "未分類";
+  return { nodes: visibleNodes, edges: dedupeEdges(edges) };
+}
+
+function prepareDomainGraph() {
+  const domain = state.focusedDomain && state.domainSelection.has(state.focusedDomain)
+    ? state.focusedDomain
+    : [...state.domainSelection][0];
+
+  if (!domain) {
+    state.viewMode = "overview";
+    syncModeButtons();
+    return prepareOverviewGraph();
+  }
+
+  state.focusedDomain = domain;
+  const filteredNodes = state.graph.noteNodes.filter((node) => {
+    const matchesDomain = node.domain === domain;
+    const matchesType = state.typeSelection.has(node.type);
+    const matchesSearch = !state.searchTerm || node.searchText.includes(state.searchTerm);
+    return matchesDomain && matchesType && matchesSearch;
+  });
+
+  const selectedNode = state.nodeMap.get(state.selectedNodeId);
+  if (selectedNode && selectedNode.kind === "note" && selectedNode.domain === domain) {
+    const focused = prepareLocalNeighborhood(domain, filteredNodes, selectedNode);
+    if (focused) return focused;
+  }
+
+  const seedNodes = buildDomainSeedNodes(domain, filteredNodes);
+  const supportNodes = collectSupportNodes(seedNodes, { limit: domainSupportLimit });
+  const merged = dedupeNodes([...seedNodes, ...supportNodes]).sort(compareFocusNodes);
+  const visibleIds = new Set(merged.map((node) => node.id));
+  const edges = state.graph.edges.filter((edge) => {
+    if (!structuralEdgeTypes.has(edge.type)) return false;
+    return visibleIds.has(edge.source) && visibleIds.has(edge.target);
+  });
+
+  const anchors = new Map();
+  for (const node of merged) node.anchorKey = node.support ? `${domain}-support` : node.type;
+  return { nodes: merged, edges: dedupeEdges(edges), anchors };
+}
+
+function updateGraphHint() {
+  els.backToOverviewToolbarButton.hidden = state.viewMode !== "domain";
+  const selectedNode = state.nodeMap.get(state.selectedNodeId);
+  const isLocalFocus = Boolean(
+    state.viewMode === "domain" &&
+      selectedNode &&
+      selectedNode.kind === "note" &&
+      selectedNode.domain === state.focusedDomain
+  );
+  els.graphHint.textContent =
+    state.viewMode === "overview"
+      ? "總覽只保留領域樞紐、導覽頁與少量高連結節點。先選領域，再深入局部子圖。"
+      : isLocalFocus
+        ? `目前以「${state.focusedDomain}」中的「${selectedNode.title}」為中心，只顯示直接相關與必要支撐節點。`
+        : `目前聚焦在「${state.focusedDomain}」。先看核心節點骨架，再點任一節點切換成局部子圖。`;
+}
+
+function updateFocusBanner() {
+  if (state.viewMode !== "domain" || !state.focusedDomain) {
+    els.focusBanner.hidden = true;
+    els.focusBanner.innerHTML = "";
+    return;
+  }
+
+  const primaryCount = state.visibleNodes.filter((node) => !node.support).length;
+  const supportCount = state.visibleNodes.filter((node) => node.support).length;
+  const selectedNode = state.nodeMap.get(state.selectedNodeId);
+  const isLocalFocus = Boolean(
+    selectedNode &&
+      selectedNode.kind === "note" &&
+      selectedNode.domain === state.focusedDomain &&
+      state.visibleNodes.some((node) => node.id === selectedNode.id)
+  );
+
+  els.focusBanner.hidden = false;
+  els.focusBanner.innerHTML = `
+    <div class="focus-banner-copy">
+      <p class="eyebrow">${isLocalFocus ? "局部子圖" : "領域聚焦"}</p>
+      <p>
+        <strong>${escapeHtml(state.focusedDomain)}</strong>
+        ${
+          isLocalFocus
+            ? ` 目前圍繞「${escapeHtml(selectedNode.title)}」顯示 ${primaryCount} 個核心節點與 ${supportCount} 個跨域支撐節點。`
+            : ` 目前只顯示 ${primaryCount} 個核心節點與 ${supportCount} 個支撐節點，避免整張圖一次攤平。`
+        }
+      </p>
+    </div>
+    <div class="focus-banner-metrics">
+      <span class="focus-banner-metric">${primaryCount} 核心節點</span>
+      <span class="focus-banner-metric">${supportCount} 支撐節點</span>
+    </div>
+    <div class="focus-actions focus-banner-actions">
+      <button id="backToOverviewButton" class="ghost-button" type="button">回到總覽</button>
+    </div>
+  `;
+  els.focusBanner.querySelector("#backToOverviewButton").addEventListener("click", () => {
+    state.viewMode = "overview";
+    state.focusedDomain = null;
+    syncModeButtons();
+    buildDomainOverview();
+    layoutVisibleGraph(true);
+  });
+}
+
+function ensureNodeElements(visibleNodes) {
+  const activeIds = new Set(visibleNodes.map((node) => node.id));
+  for (const child of [...els.nodesLayer.children]) {
+    if (!activeIds.has(child.dataset.id)) child.remove();
+  }
+
+  for (const node of visibleNodes) {
+    let element = els.nodesLayer.querySelector(`[data-id="${cssEscape(node.id)}"]`);
+    if (!element) {
+      element = document.createElement("button");
+      element.type = "button";
+      element.className = "node";
+      element.dataset.id = node.id;
+      element.addEventListener("click", () => {
+        if (performance.now() < state.suppressNodeClickUntil) return;
+        const liveNode = state.nodeMap.get(node.id);
+        if (!liveNode) return;
+        if (liveNode.kind === "domain") {
+          focusDomain(liveNode.domain);
+          return;
+        }
+        state.selectedNodeId = liveNode.id;
+        drawGraph();
+        renderDetail(liveNode);
+        updateNodeStates();
+      });
+      element.addEventListener("pointerdown", (event) => {
+        const liveNode = state.nodeMap.get(node.id);
+        if (!liveNode || liveNode.kind === "domain") return;
+        startDrag(event, liveNode);
+      });
+      els.nodesLayer.appendChild(element);
+    }
+
+    element.className = "node";
+    if (node.kind === "domain") element.classList.add("domain-node");
+    if (node.support) element.classList.add("support");
+    element.dataset.id = node.id;
+    element.dataset.type = node.type;
+    element.innerHTML = renderNodeContent(node);
+    node.element = element;
+    const rect = element.getBoundingClientRect();
+    node.boxWidth = Math.max(rect.width || 140, node.kind === "domain" ? 170 : 110);
+    node.boxHeight = Math.max(rect.height || 68, node.kind === "domain" ? 92 : 70);
+  }
+
+  updateNodeStates();
+}
+
+function renderNodeContent(node) {
+  if (node.kind === "domain") {
+    return `
+      <div class="node-badge">
+        <span class="swatch type-map"></span>
+        <span>${escapeHtml(typeLabel.domain)}</span>
+      </div>
+      <div class="node-title">${escapeHtml(node.title)}</div>
+      <div class="node-meta">${node.memberCount} 個節點</div>
+    `;
+  }
+
+  return `
+    <div class="node-badge">
+      <span class="swatch type-${escapeHtml(node.type)}"></span>
+      <span>${escapeHtml(typeLabel[node.type] || node.type)}</span>
+    </div>
+    <div class="node-title">${escapeHtml(node.title)}</div>
+    <div class="node-meta">${escapeHtml(describeNodeMeta(node))}</div>
+  `;
+}
+
+function updateNodeStates() {
+  const selected = state.selectedNodeId ? state.nodeMap.get(state.selectedNodeId) : null;
+  const connected = selected ? new Set(connectedNodeIds(selected.id)) : null;
+
+  for (const node of state.visibleNodes) {
+    const element = node.element;
+    element.classList.toggle("selected", node.id === state.selectedNodeId);
+    element.classList.toggle("focal", Boolean(node.focal));
+    element.classList.toggle("overview-hub", Boolean(node.overviewHub));
+    element.classList.toggle(
+      "dimmed",
+      Boolean(selected) &&
+        node.kind !== "domain" &&
+        node.id !== selected.id &&
+        !connected.has(node.id)
+    );
+    if (node.kind === "domain") element.classList.remove("dimmed");
+  }
 }

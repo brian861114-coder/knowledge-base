@@ -31,7 +31,7 @@ The project is no longer just a seed prototype. It currently includes:
   - optics
   - modern physics
   - fluid mechanics
-- `178` notes exported into the frontend dataset
+- `245` notes exported into the frontend dataset
 - a graph export and note-detail export used by the prototype
 - full-page reading mode in the frontend
 - full-note export support, not only previews
@@ -39,6 +39,44 @@ The project is no longer just a seed prototype. It currently includes:
 - expanded concept and law pages with stronger university-level explanations
 - step-by-step derivation sections added to core concept and core law notes
 - bridge-note and method-page batches added to reduce isolated concept pages and turn the vault into a more connected analysis system
+- recent expansion batches closed major coverage gaps in circuits, induction, rotational dynamics, equilibrium, elasticity, and introductory thermodynamics
+
+## Current Incomplete List
+
+The knowledge base is now structurally much stronger, but it is not finished.  
+The highest-value remaining gaps are:
+
+- thermodynamics follow-up pages
+  - `熱膨脹`
+  - `熱機`
+  - `效率`
+- AC / resonance cleanup
+  - `RLC電路`
+- wave and optics bridge pages
+  - `波速`
+  - `波長`
+  - `頻率`
+  - `折射率`
+  - `薄膜干涉`
+  - `單縫繞射`
+  - `雙縫干涉`
+
+Areas that now have a usable backbone but may still need density and refinement:
+
+- rotational dynamics
+  - now includes `轉動版牛頓第二定律`, `平行軸定理`, `角動量守恆`, `進動`, `陀螺`
+- equilibrium and elasticity
+  - now includes `機械平衡`, `靜力平衡`, `彈性`, `應力`, `應變`, `楊氏模數`, `剪切模數`, `體積彈性模數`
+- circuits through induction and AC foundations
+  - now includes `電流`, `電阻`, `電動勢`, `直流電路`, `基爾霍夫` laws, `自感`, `互感`, `阻抗`, `感抗`, `電容抗`, `變壓器`
+- introductory thermodynamics
+  - now includes `比熱`, `潛熱`, `理想氣體`, `狀態方程`, `分子運動論`
+
+Completion standard remains unchanged:
+
+- broken `[[wikilink]]` targets = `0`
+- broken frontmatter relation targets = `0`
+- math issues = `0`
 
 ## Current Architecture
 

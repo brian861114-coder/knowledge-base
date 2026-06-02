@@ -172,6 +172,71 @@
       ]
     },
     {
+      "id": "基爾霍夫電壓定律",
+      "title": "基爾霍夫電壓定律",
+      "type": "law",
+      "summary": "基爾霍夫電壓定律指出沿封閉回路的電位升降總和為零，是迴路分析的核心。",
+      "path": "01_laws/基爾霍夫電壓定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "law"
+      ]
+    },
+    {
+      "id": "基爾霍夫電流定律",
+      "title": "基爾霍夫電流定律",
+      "type": "law",
+      "summary": "基爾霍夫電流定律指出流入節點的總電流等於流出節點的總電流，本質上反映電荷守恆。",
+      "path": "01_laws/基爾霍夫電流定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "law"
+      ]
+    },
+    {
+      "id": "安培-馬克士威方程",
+      "title": "安培-馬克士威方程",
+      "type": "law",
+      "summary": "安培-馬克士威方程把導電電流與位移電流一起納入磁場來源，是麥克斯威方程組的關鍵一環。",
+      "path": "01_laws/安培-馬克士威方程.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "law"
+      ]
+    },
+    {
+      "id": "安培定律",
+      "title": "安培定律",
+      "type": "law",
+      "summary": "安培定律把封閉路徑上的磁場環流與其包圍的總電流連起來，是高對稱磁場分析的核心工具。",
+      "path": "01_laws/安培定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "law"
+      ]
+    },
+    {
+      "id": "平行軸定理",
+      "title": "平行軸定理",
+      "type": "law",
+      "summary": "平行軸定理給出剛體繞任一平行於質心軸的轉軸時，其轉動慣量與質心轉動慣量之間的關係。",
+      "path": "01_laws/平行軸定理.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "law"
+      ]
+    },
+    {
       "id": "庫侖定律",
       "title": "庫侖定律",
       "type": "law",
@@ -194,6 +259,19 @@
       "tags": [
         "physics",
         "optics",
+        "law"
+      ]
+    },
+    {
+      "id": "楞次定律",
+      "title": "楞次定律",
+      "type": "law",
+      "summary": "楞次定律規定感應電流的方向總是反抗造成它的磁通量變化，保證能量守恆不被破壞。",
+      "path": "01_laws/楞次定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
         "law"
       ]
     },
@@ -246,6 +324,19 @@
       "tags": [
         "physics",
         "力學",
+        "law"
+      ]
+    },
+    {
+      "id": "焦耳定律",
+      "title": "焦耳定律",
+      "type": "law",
+      "summary": "焦耳定律描述電流通過電阻時產生熱的速率，是電能轉換為熱能的基本定律。",
+      "path": "01_laws/焦耳定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
         "law"
       ]
     },
@@ -341,6 +432,19 @@
       ]
     },
     {
+      "id": "狀態方程",
+      "title": "狀態方程",
+      "type": "law",
+      "summary": "理想氣體狀態方程把壓力、體積、溫度與粒子數連成單一關係，是氣體模型的核心方程。",
+      "path": "01_laws/狀態方程.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "law"
+      ]
+    },
+    {
       "id": "理想氣體方程式",
       "title": "理想氣體方程式",
       "type": "law",
@@ -350,6 +454,19 @@
       "tags": [
         "physics",
         "熱學與熱力學",
+        "law"
+      ]
+    },
+    {
+      "id": "畢奧-沙伐定律",
+      "title": "畢奧-沙伐定律",
+      "type": "law",
+      "summary": "畢奧-沙伐定律給出微小電流元對空間某點磁場的貢獻，是磁場直接計算的基本定律。",
+      "path": "01_laws/畢奧-沙伐定律.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
         "law"
       ]
     },
@@ -393,6 +510,19 @@
       ]
     },
     {
+      "id": "角動量守恆",
+      "title": "角動量守恆",
+      "type": "law",
+      "summary": "在系統所受外轉矩為零時，總角動量保持不變，是轉動問題的關鍵守恆律。",
+      "path": "01_laws/角動量守恆.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "law"
+      ]
+    },
+    {
       "id": "質能等價",
       "title": "質能等價",
       "type": "law",
@@ -402,6 +532,32 @@
       "tags": [
         "physics",
         "近代物理",
+        "law"
+      ]
+    },
+    {
+      "id": "轉動版牛頓第二定律",
+      "title": "轉動版牛頓第二定律",
+      "type": "law",
+      "summary": "轉動版牛頓第二定律把合轉矩與角加速度連起來，是剛體動力學的核心方程。",
+      "path": "01_laws/轉動版牛頓第二定律.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "law"
+      ]
+    },
+    {
+      "id": "轉動運動學方程",
+      "title": "轉動運動學方程",
+      "type": "law",
+      "summary": "在角加速度為常數時，轉動運動學方程給出角位移、角速度與時間之間的標準關係。",
+      "path": "01_laws/轉動運動學方程.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
         "law"
       ]
     },
@@ -458,6 +614,45 @@
       ]
     },
     {
+      "id": "rc電路",
+      "title": "RC電路",
+      "type": "concept",
+      "summary": "RC電路由電阻與電容器組成，用來描述充放電、時間常數與交流濾波等典型現象。",
+      "path": "02_concepts/RC電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
+      "id": "rlc電路",
+      "title": "RLC電路",
+      "type": "concept",
+      "summary": "RLC電路同時包含電阻、電感與電容器，是研究交流頻率響應與共振現象的標準模型。",
+      "path": "02_concepts/RLC電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
+      "id": "rl電路",
+      "title": "RL電路",
+      "type": "concept",
+      "summary": "RL電路由電阻與電感組成，其暫態行為由自感效應主導，是理解電流建立與衰減的重要模型。",
+      "path": "02_concepts/RL電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "不可逆過程",
       "title": "不可逆過程",
       "type": "concept",
@@ -467,6 +662,19 @@
       "tags": [
         "physics",
         "熱學與熱力學"
+      ]
+    },
+    {
+      "id": "並聯電路",
+      "title": "並聯電路",
+      "type": "concept",
+      "summary": "並聯電路中各支路共享相同端電壓，但總電流會在支路間分配。",
+      "path": "02_concepts/並聯電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
       ]
     },
     {
@@ -482,6 +690,32 @@
       ]
     },
     {
+      "id": "串聯電路",
+      "title": "串聯電路",
+      "type": "concept",
+      "summary": "串聯電路中元件首尾相接，流過每個元件的電流相同，而總電位差會分配到各元件上。",
+      "path": "02_concepts/串聯電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
+      "id": "互感",
+      "title": "互感",
+      "type": "concept",
+      "summary": "互感是某一回路中的電流變化，透過磁通量耦合在另一回路中產生感應電動勢的現象。",
+      "path": "02_concepts/互感.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "交流電",
       "title": "交流電",
       "type": "concept",
@@ -494,6 +728,19 @@
       ]
     },
     {
+      "id": "介電常數",
+      "title": "介電常數",
+      "type": "concept",
+      "summary": "介電常數描述材料對外加電場的回應強弱，是刻畫電介質效應的重要參數。",
+      "path": "02_concepts/介電常數.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "位移",
       "title": "位移",
       "type": "concept",
@@ -503,6 +750,32 @@
       "tags": [
         "physics",
         "力學"
+      ]
+    },
+    {
+      "id": "位移電流",
+      "title": "位移電流",
+      "type": "concept",
+      "summary": "位移電流是麥克斯威為修正安培定律而引入的項，用來描述時間變化電場所造成的磁場效應。",
+      "path": "02_concepts/位移電流.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
+      "id": "位移電流修正",
+      "title": "位移電流修正",
+      "type": "concept",
+      "summary": "位移電流修正是馬克士威為安培定律加入的補項，用來維持連續性與自洽性。",
+      "path": "02_concepts/位移電流修正.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
       ]
     },
     {
@@ -590,6 +863,19 @@
       ]
     },
     {
+      "id": "內電阻",
+      "title": "內電阻",
+      "type": "concept",
+      "summary": "內電阻描述實際電源自身對電流的阻礙，解釋了端電壓為何會隨負載而改變。",
+      "path": "02_concepts/內電阻.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "全反射",
       "title": "全反射",
       "type": "concept",
@@ -611,6 +897,19 @@
       "tags": [
         "physics",
         "振動與波動"
+      ]
+    },
+    {
+      "id": "分子運動論",
+      "title": "分子運動論",
+      "type": "concept",
+      "summary": "分子運動論用大量微觀粒子的運動來解釋氣體的壓力、溫度與內能，是理想氣體模型的微觀基礎。",
+      "path": "02_concepts/分子運動論.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "concept"
       ]
     },
     {
@@ -747,6 +1046,19 @@
       ]
     },
     {
+      "id": "定軸轉動運動學",
+      "title": "定軸轉動運動學",
+      "type": "concept",
+      "summary": "定軸轉動運動學研究剛體繞固定轉軸時的角位移、角速度與角加速度關係。",
+      "path": "02_concepts/定軸轉動運動學.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
       "id": "對稱性",
       "title": "對稱性",
       "type": "concept",
@@ -852,6 +1164,19 @@
       "tags": [
         "physics",
         "力學"
+      ]
+    },
+    {
+      "id": "彈性",
+      "title": "彈性",
+      "type": "concept",
+      "summary": "彈性描述物體在受力變形後恢復原狀的傾向，是材料力學與固體形變分析的基礎。",
+      "path": "02_concepts/彈性.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
       ]
     },
     {
@@ -1024,6 +1349,19 @@
       ]
     },
     {
+      "id": "機械平衡",
+      "title": "機械平衡",
+      "type": "concept",
+      "summary": "機械平衡指物體在平移與轉動上都沒有加速度，是靜力學與結構分析的核心條件。",
+      "path": "02_concepts/機械平衡.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
       "id": "機械波",
       "title": "機械波",
       "type": "concept",
@@ -1110,6 +1448,32 @@
       ]
     },
     {
+      "id": "滾動運動",
+      "title": "滾動運動",
+      "type": "concept",
+      "summary": "滾動運動同時包含平移與轉動，是連接剛體運動學與能量分析的重要主題。",
+      "path": "02_concepts/滾動運動.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
+      "id": "潛熱",
+      "title": "潛熱",
+      "type": "concept",
+      "summary": "潛熱描述物質在相變過程中於溫度不變時吸收或放出的熱量。",
+      "path": "02_concepts/潛熱.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "concept"
+      ]
+    },
+    {
       "id": "無限平面電場",
       "title": "無限平面電場",
       "type": "concept",
@@ -1182,6 +1546,19 @@
       ]
     },
     {
+      "id": "理想氣體",
+      "title": "理想氣體",
+      "type": "concept",
+      "summary": "理想氣體模型把分子視為體積可忽略、只在碰撞時交互作用的粒子，是熱學與統計物理的基礎近似。",
+      "path": "02_concepts/理想氣體.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "concept"
+      ]
+    },
+    {
       "id": "理想流體近似",
       "title": "理想流體近似",
       "type": "concept",
@@ -1191,6 +1568,19 @@
       "tags": [
         "physics",
         "流體力學"
+      ]
+    },
+    {
+      "id": "直流電路",
+      "title": "直流電路",
+      "type": "concept",
+      "summary": "直流電路研究在穩態條件下電流、電位差與電阻之間的關係，是電磁學中最基本的模型之一。",
+      "path": "02_concepts/直流電路.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
       ]
     },
     {
@@ -1227,6 +1617,19 @@
       "tags": [
         "physics",
         "光學"
+      ]
+    },
+    {
+      "id": "碰撞",
+      "title": "碰撞",
+      "type": "concept",
+      "summary": "碰撞研究物體在短時間強作用下如何交換動量與能量，是動量守恆應用的核心主題。",
+      "path": "02_concepts/碰撞.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
       ]
     },
     {
@@ -1326,6 +1729,19 @@
       ]
     },
     {
+      "id": "節點分析",
+      "title": "節點分析",
+      "type": "concept",
+      "summary": "節點分析以節點電位為未知量，利用基爾霍夫電流定律建立方程，是並聯與多支路電路的標準方法。",
+      "path": "02_concepts/節點分析.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "簡諧運動",
       "title": "簡諧運動",
       "type": "concept",
@@ -1422,6 +1838,19 @@
       ]
     },
     {
+      "id": "自感",
+      "title": "自感",
+      "type": "concept",
+      "summary": "自感是回路中電流變化時，由自身磁通量變化而產生感應電動勢的現象。",
+      "path": "02_concepts/自感.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "自由度",
       "title": "自由度",
       "type": "concept",
@@ -1483,6 +1912,19 @@
       ]
     },
     {
+      "id": "角動量與碰撞",
+      "title": "角動量與碰撞",
+      "type": "concept",
+      "summary": "角動量與碰撞研究粒子或剛體在碰撞過程中如何以角動量守恆約束碰後運動。",
+      "path": "02_concepts/角動量與碰撞.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
       "id": "解析度",
       "title": "解析度",
       "type": "concept",
@@ -1492,6 +1934,19 @@
       "tags": [
         "physics",
         "光學"
+      ]
+    },
+    {
+      "id": "變壓器",
+      "title": "變壓器",
+      "type": "concept",
+      "summary": "變壓器利用互感與交流磁通量變化，在不同線圈之間傳遞能量並改變電壓與電流比例。",
+      "path": "02_concepts/變壓器.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
       ]
     },
     {
@@ -1507,6 +1962,19 @@
       ]
     },
     {
+      "id": "軌道角動量",
+      "title": "軌道角動量",
+      "type": "concept",
+      "summary": "軌道角動量描述物體繞某參考點運動時的角動量，是中心力與軌道運動的核心量。",
+      "path": "02_concepts/軌道角動量.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
       "id": "轉矩",
       "title": "轉矩",
       "type": "concept",
@@ -1519,6 +1987,19 @@
       ]
     },
     {
+      "id": "迴路分析",
+      "title": "迴路分析",
+      "type": "concept",
+      "summary": "迴路分析以回路電流為未知量，利用基爾霍夫電壓定律建立方程，是串聯與多迴路電路的標準方法。",
+      "path": "02_concepts/迴路分析.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "連續譜",
       "title": "連續譜",
       "type": "concept",
@@ -1528,6 +2009,19 @@
       "tags": [
         "physics",
         "近代物理"
+      ]
+    },
+    {
+      "id": "進動",
+      "title": "進動",
+      "type": "concept",
+      "summary": "進動是高速旋轉物體在外轉矩作用下，角動量方向緩慢改變的現象。",
+      "path": "02_concepts/進動.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
       ]
     },
     {
@@ -1580,6 +2074,19 @@
       ]
     },
     {
+      "id": "陀螺",
+      "title": "陀螺",
+      "type": "concept",
+      "summary": "陀螺是具有顯著自旋角動量的系統，其穩定性與進動行為是角動量物理的經典展示。",
+      "path": "02_concepts/陀螺.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "concept"
+      ]
+    },
+    {
       "id": "離散能階",
       "title": "離散能階",
       "type": "concept",
@@ -1589,6 +2096,19 @@
       "tags": [
         "physics",
         "近代物理"
+      ]
+    },
+    {
+      "id": "電介質",
+      "title": "電介質",
+      "type": "concept",
+      "summary": "電介質是在外電場下會極化但不形成自由導電電流的材料，能顯著影響電容器行為。",
+      "path": "02_concepts/電介質.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
       ]
     },
     {
@@ -1642,6 +2162,19 @@
       ]
     },
     {
+      "id": "電場能",
+      "title": "電場能",
+      "type": "concept",
+      "summary": "電場能描述能量以電場形式儲存在系統中的方式，是理解電容器與場觀點的重要概念。",
+      "path": "02_concepts/電場能.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "電場能量",
       "title": "電場能量",
       "type": "concept",
@@ -1666,6 +2199,19 @@
       ]
     },
     {
+      "id": "電磁場能量流",
+      "title": "電磁場能量流",
+      "type": "concept",
+      "summary": "電磁場能量流描述能量如何在空間中隨電場與磁場共同傳遞，是場觀點下的能量運輸概念。",
+      "path": "02_concepts/電磁場能量流.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "電磁波",
       "title": "電磁波",
       "type": "concept",
@@ -1678,6 +2224,19 @@
       ]
     },
     {
+      "id": "電磁波傳播",
+      "title": "電磁波傳播",
+      "type": "concept",
+      "summary": "電磁波傳播描述變動電場與磁場如何彼此驅動並在空間中自我維持地向前傳播。",
+      "path": "02_concepts/電磁波傳播.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "concept"
+      ]
+    },
+    {
       "id": "電通量",
       "title": "電通量",
       "type": "concept",
@@ -1687,6 +2246,19 @@
       "tags": [
         "physics",
         "electromagnetism",
+        "concept"
+      ]
+    },
+    {
+      "id": "靜力平衡",
+      "title": "靜力平衡",
+      "type": "concept",
+      "summary": "靜力平衡是機械平衡的特殊情況，物體保持靜止且合力與合轉矩皆為零。",
+      "path": "02_concepts/靜力平衡.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
         "concept"
       ]
     },
@@ -1751,6 +2323,32 @@
       ]
     },
     {
+      "id": "剪切模數",
+      "title": "剪切模數",
+      "type": "quantity",
+      "summary": "剪切模數量化材料抵抗剪切形變的能力，是描述橫向變形的重要參數。",
+      "path": "03_quantities/剪切模數.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "剪應力",
+      "title": "剪應力",
+      "type": "quantity",
+      "summary": "剪應力表示平行於截面的內力強度，是描述材料剪切變形的基本量。",
+      "path": "03_quantities/剪應力.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
       "id": "加速度",
       "title": "加速度",
       "type": "quantity",
@@ -1773,6 +2371,19 @@
       "tags": [
         "physics",
         "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "坡印廷向量",
+      "title": "坡印廷向量",
+      "type": "quantity",
+      "summary": "坡印廷向量量化電磁場每單位面積、每單位時間的能量流率，是描述電磁能量傳輸方向與強度的量。",
+      "path": "03_quantities/坡印廷向量.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
         "quantity"
       ]
     },
@@ -1816,6 +2427,71 @@
       ]
     },
     {
+      "id": "感抗",
+      "title": "感抗",
+      "type": "quantity",
+      "summary": "感抗量化電感在交流電路中對電流變化的阻礙效果，頻率越高通常越大。",
+      "path": "03_quantities/感抗.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "應力",
+      "title": "應力",
+      "type": "quantity",
+      "summary": "應力表示單位面積上承受的內力強度，是描述材料受力狀態的基本量。",
+      "path": "03_quantities/應力.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "應變",
+      "title": "應變",
+      "type": "quantity",
+      "summary": "應變量化材料形變的相對大小，是描述伸長、壓縮或剪切變形的基本量。",
+      "path": "03_quantities/應變.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "楊氏模數",
+      "title": "楊氏模數",
+      "type": "quantity",
+      "summary": "楊氏模數量化材料在拉伸或壓縮時抵抗形變的能力，是描述縱向彈性的核心參數。",
+      "path": "03_quantities/楊氏模數.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "比熱",
+      "title": "比熱",
+      "type": "quantity",
+      "summary": "比熱量化單位質量物質升高單位溫度所需的熱量，是熱學最基本的材料參數之一。",
+      "path": "03_quantities/比熱.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "quantity"
+      ]
+    },
+    {
       "id": "流量",
       "title": "流量",
       "type": "quantity",
@@ -1825,6 +2501,58 @@
       "tags": [
         "physics",
         "fluid-mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "磁通量",
+      "title": "磁通量",
+      "type": "quantity",
+      "summary": "磁通量量化磁場穿過某個面積的總效果，是理解電磁感應的核心量。",
+      "path": "03_quantities/磁通量.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "角位移",
+      "title": "角位移",
+      "type": "quantity",
+      "summary": "角位移描述物體繞固定軸轉過的角度，是轉動運動學最基本的量。",
+      "path": "03_quantities/角位移.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "角加速度",
+      "title": "角加速度",
+      "type": "quantity",
+      "summary": "角加速度描述角速度隨時間的變化，是轉動版的加速度。",
+      "path": "03_quantities/角加速度.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "角速度",
+      "title": "角速度",
+      "type": "quantity",
+      "summary": "角速度描述物體轉動快慢與方向，是轉動運動學的核心量。",
+      "path": "03_quantities/角速度.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
         "quantity"
       ]
     },
@@ -1842,6 +2570,32 @@
       ]
     },
     {
+      "id": "轉動動能",
+      "title": "轉動動能",
+      "type": "quantity",
+      "summary": "轉動動能是物體因轉動而具有的能量，與轉動慣量和角速度有關。",
+      "path": "03_quantities/轉動動能.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "轉動慣量",
+      "title": "轉動慣量",
+      "type": "quantity",
+      "summary": "轉動慣量量化物體對角加速度的抗拒程度，是轉動版的慣性質量。",
+      "path": "03_quantities/轉動慣量.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
       "id": "速度",
       "title": "速度",
       "type": "quantity",
@@ -1851,6 +2605,19 @@
       "tags": [
         "physics",
         "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "阻抗",
+      "title": "阻抗",
+      "type": "quantity",
+      "summary": "阻抗是交流電路中對電流的總體阻礙，結合了電阻與反應性元件的效果。",
+      "path": "03_quantities/阻抗.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
         "quantity"
       ]
     },
@@ -1881,6 +2648,71 @@
       ]
     },
     {
+      "id": "電功率",
+      "title": "電功率",
+      "type": "quantity",
+      "summary": "電功率表示電路中每單位時間進行的電能轉換速率，是分析耗能與輸出的核心量。",
+      "path": "03_quantities/電功率.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "電動勢",
+      "title": "電動勢",
+      "type": "quantity",
+      "summary": "電動勢是非靜電作用對單位電荷提供的能量，決定電源推動電荷繞行回路的能力。",
+      "path": "03_quantities/電動勢.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "電容抗",
+      "title": "電容抗",
+      "type": "quantity",
+      "summary": "電容抗量化電容器在交流電路中對電流的反應效果，頻率越高通常越小。",
+      "path": "03_quantities/電容抗.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "電感",
+      "title": "電感",
+      "type": "quantity",
+      "summary": "電感衡量回路以磁場儲能並反抗電流變化的能力，是感應與交流分析的重要參數。",
+      "path": "03_quantities/電感.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "電流",
+      "title": "電流",
+      "type": "quantity",
+      "summary": "電流是單位時間內穿過截面的電荷量，描述電荷流動的強弱與方向。",
+      "path": "03_quantities/電流.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
       "id": "電荷",
       "title": "電荷",
       "type": "quantity",
@@ -1890,6 +2722,45 @@
       "tags": [
         "physics",
         "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "電阻",
+      "title": "電阻",
+      "type": "quantity",
+      "summary": "電阻量化材料或元件阻礙電流通過的程度，是電路分析中的核心參數。",
+      "path": "03_quantities/電阻.md",
+      "domain": "電磁學",
+      "tags": [
+        "physics",
+        "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "體應變",
+      "title": "體應變",
+      "type": "quantity",
+      "summary": "體應變量化材料體積相對改變的程度，是研究可壓縮性與體積彈性模數的基本量。",
+      "path": "03_quantities/體應變.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "體積彈性模數",
+      "title": "體積彈性模數",
+      "type": "quantity",
+      "summary": "體積彈性模數量化材料抵抗體積改變的能力，常用來描述流體與固體的可壓縮性。",
+      "path": "03_quantities/體積彈性模數.md",
+      "domain": "力學",
+      "tags": [
+        "physics",
+        "mechanics",
         "quantity"
       ]
     },
@@ -3799,7 +4670,52 @@
     },
     {
       "source": "電磁學總覽",
+      "target": "電流",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電阻",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電動勢",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "直流電路",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "安培定律",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "畢奧-沙伐定律",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "磁通量",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
       "target": "法拉第定律",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "楞次定律",
+      "type": "organized_by"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電感",
       "type": "organized_by"
     },
     {
@@ -4035,6 +4951,81 @@
     {
       "source": "電磁學總覽",
       "target": "面積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "畢奧-沙伐定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "交流電",
       "type": "wikilink"
     },
     {
@@ -4438,6 +5429,321 @@
       "type": "wikilink"
     },
     {
+      "source": "基爾霍夫電壓定律",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "直流電路",
+      "type": "requires"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "電動勢",
+      "type": "requires"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "基爾霍夫電流定律",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "基爾霍夫電流定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電壓定律",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "直流電路",
+      "type": "requires"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "基爾霍夫電壓定律",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "基爾霍夫電壓定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "基爾霍夫電流定律",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "安培定律",
+      "type": "requires"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "位移電流",
+      "type": "requires"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "電場",
+      "type": "requires"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "電磁波",
+      "type": "related_to"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "麥克斯威方程組",
+      "type": "related_to"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "安培定律",
+      "type": "related_to"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "積分",
+      "type": "formalized_by"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "位移電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培-馬克士威方程",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "安培定律",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "安培定律",
+      "target": "向量",
+      "type": "requires"
+    },
+    {
+      "source": "安培定律",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "安培定律",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "安培定律",
+      "target": "畢奧-沙伐定律",
+      "type": "related_to"
+    },
+    {
+      "source": "安培定律",
+      "target": "麥克斯威方程組",
+      "type": "related_to"
+    },
+    {
+      "source": "安培定律",
+      "target": "積分",
+      "type": "formalized_by"
+    },
+    {
+      "source": "安培定律",
+      "target": "畢奧-沙伐定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "畢奧-沙伐定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "安培定律",
+      "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "轉動慣量",
+      "type": "requires"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "質心",
+      "type": "requires"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "平行軸定理",
+      "target": "滾動運動",
+      "type": "wikilink"
+    },
+    {
       "source": "庫侖定律",
       "target": "電荷",
       "type": "requires"
@@ -4698,6 +6004,81 @@
       "type": "wikilink"
     },
     {
+      "source": "楞次定律",
+      "target": "磁通量",
+      "type": "requires"
+    },
+    {
+      "source": "楞次定律",
+      "target": "電動勢",
+      "type": "requires"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "楞次定律",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "楞次定律",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "楞次定律",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "楞次定律",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "楞次定律",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
       "source": "機械能守恆",
       "target": "功能定理",
       "type": "requires"
@@ -4834,6 +6215,21 @@
     },
     {
       "source": "歐姆定律",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "歐姆定律",
       "target": "電場",
       "type": "requires"
     },
@@ -4903,8 +6299,33 @@
       "type": "wikilink"
     },
     {
+      "source": "歐姆定律",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "歐姆定律",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
       "source": "法拉第定律",
       "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "法拉第定律",
+      "target": "磁通量",
       "type": "requires"
     },
     {
@@ -4978,6 +6399,26 @@
       "type": "wikilink"
     },
     {
+      "source": "法拉第定律",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第定律",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第定律",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "法拉第定律",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
       "source": "火箭方程",
       "target": "動量",
       "type": "requires"
@@ -5035,6 +6476,81 @@
     {
       "source": "火箭方程",
       "target": "推進",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電功率",
+      "type": "related_to"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電功率",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "焦耳定律",
+      "target": "直流電路",
       "type": "wikilink"
     },
     {
@@ -5923,6 +7439,51 @@
       "type": "wikilink"
     },
     {
+      "source": "狀態方程",
+      "target": "理想氣體",
+      "type": "requires"
+    },
+    {
+      "source": "狀態方程",
+      "target": "壓力",
+      "type": "requires"
+    },
+    {
+      "source": "狀態方程",
+      "target": "溫度",
+      "type": "requires"
+    },
+    {
+      "source": "狀態方程",
+      "target": "分子運動論",
+      "type": "related_to"
+    },
+    {
+      "source": "狀態方程",
+      "target": "分子運動論",
+      "type": "wikilink"
+    },
+    {
+      "source": "狀態方程",
+      "target": "理想氣體",
+      "type": "wikilink"
+    },
+    {
+      "source": "狀態方程",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "狀態方程",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "狀態方程",
+      "target": "分子運動論",
+      "type": "wikilink"
+    },
+    {
       "source": "理想氣體方程式",
       "target": "壓力",
       "type": "requires"
@@ -5990,6 +7551,76 @@
     {
       "source": "理想氣體方程式",
       "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "向量",
+      "type": "requires"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "磁力",
+      "type": "related_to"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "安培定律",
+      "type": "related_to"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "積分",
+      "type": "formalized_by"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "磁力",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "畢奧-沙伐定律",
+      "target": "積分",
       "type": "wikilink"
     },
     {
@@ -6253,6 +7884,61 @@
       "type": "wikilink"
     },
     {
+      "source": "角動量守恆",
+      "target": "角動量",
+      "type": "requires"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "轉矩",
+      "type": "requires"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "進動",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "陀螺",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "角動量",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "轉矩",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "進動",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量守恆",
+      "target": "陀螺",
+      "type": "wikilink"
+    },
+    {
       "source": "質能等價",
       "target": "狹義相對論",
       "type": "requires"
@@ -6285,6 +7971,131 @@
     {
       "source": "質能等價",
       "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉矩",
+      "type": "requires"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "角加速度",
+      "type": "requires"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉動慣量",
+      "type": "requires"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "角動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉矩",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "角加速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "牛頓第二定律",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "角加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動版牛頓第二定律",
+      "target": "滾動運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角位移",
+      "type": "requires"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角速度",
+      "type": "requires"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角加速度",
+      "type": "requires"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "定軸轉動運動學",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角位移",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角加速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "定軸轉動運動學",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動運動學方程",
+      "target": "角加速度",
       "type": "wikilink"
     },
     {
@@ -6888,6 +8699,306 @@
       "type": "wikilink"
     },
     {
+      "source": "rc電路",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "rc電路",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "rc電路",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容抗",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "rc電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "rc電路",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電感",
+      "type": "requires"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "rlc電路",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "阻抗",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "感抗",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電容抗",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電感",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "rlc電路",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "rlc電路",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "rl電路",
+      "target": "電感",
+      "type": "requires"
+    },
+    {
+      "source": "rl電路",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "rl電路",
+      "target": "自感",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "感抗",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "電感",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "rl電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "自感",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "自感",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "rl電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
       "source": "不可逆過程",
       "target": "可逆過程",
       "type": "requires"
@@ -7010,6 +9121,96 @@
     {
       "source": "不可逆過程",
       "target": "統計物理",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "直流電路",
+      "type": "requires"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "並聯電路",
+      "target": "串聯電路",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "節點分析",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "基爾霍夫電流定律",
+      "type": "related_to"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "基爾霍夫電流定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "基爾霍夫電流定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "並聯電路",
+      "target": "節點分析",
       "type": "wikilink"
     },
     {
@@ -7178,8 +9379,203 @@
       "type": "wikilink"
     },
     {
+      "source": "串聯電路",
+      "target": "直流電路",
+      "type": "requires"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "串聯電路",
+      "target": "並聯電路",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "迴路分析",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "基爾霍夫電壓定律",
+      "type": "related_to"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "基爾霍夫電壓定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "串聯電路",
+      "target": "迴路分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "電感",
+      "type": "requires"
+    },
+    {
+      "source": "互感",
+      "target": "磁通量",
+      "type": "requires"
+    },
+    {
+      "source": "互感",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "互感",
+      "target": "變壓器",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "互感",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "變壓器",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感",
+      "target": "變壓器",
+      "type": "wikilink"
+    },
+    {
       "source": "交流電",
       "target": "歐姆定律",
+      "type": "requires"
+    },
+    {
+      "source": "交流電",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "交流電",
+      "target": "電動勢",
+      "type": "requires"
+    },
+    {
+      "source": "交流電",
+      "target": "電感",
       "type": "requires"
     },
     {
@@ -7248,6 +9644,36 @@
       "type": "wikilink"
     },
     {
+      "source": "介電常數",
+      "target": "電介質",
+      "type": "requires"
+    },
+    {
+      "source": "介電常數",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "介電常數",
+      "target": "平行板電容器",
+      "type": "related_to"
+    },
+    {
+      "source": "介電常數",
+      "target": "電介質",
+      "type": "wikilink"
+    },
+    {
+      "source": "介電常數",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "介電常數",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
       "source": "位移",
       "target": "向量",
       "type": "requires"
@@ -7345,6 +9771,146 @@
     {
       "source": "位移",
       "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "電場",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流",
+      "target": "安培定律",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流",
+      "target": "麥克斯威方程組",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流",
+      "target": "電磁波",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流",
+      "target": "電容器",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流",
+      "target": "安培定律",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "安培定律",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "位移電流",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "電磁波",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "麥克斯威方程組",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "安培-馬克士威方程",
+      "type": "related_to"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "安培-馬克士威方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "位移電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "位移電流修正",
+      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -8008,6 +10574,86 @@
       "type": "wikilink"
     },
     {
+      "source": "內電阻",
+      "target": "電動勢",
+      "type": "requires"
+    },
+    {
+      "source": "內電阻",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "內電阻",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "內電阻",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "串聯電路",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "內電阻",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "內電阻",
+      "target": "串聯電路",
+      "type": "wikilink"
+    },
+    {
       "source": "全反射",
       "target": "折射定律",
       "type": "requires"
@@ -8235,6 +10881,56 @@
     {
       "source": "共振",
       "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子運動論",
+      "target": "理想氣體",
+      "type": "requires"
+    },
+    {
+      "source": "分子運動論",
+      "target": "動能",
+      "type": "requires"
+    },
+    {
+      "source": "分子運動論",
+      "target": "內能",
+      "type": "related_to"
+    },
+    {
+      "source": "分子運動論",
+      "target": "溫度",
+      "type": "related_to"
+    },
+    {
+      "source": "分子運動論",
+      "target": "狀態方程",
+      "type": "related_to"
+    },
+    {
+      "source": "分子運動論",
+      "target": "理想氣體",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子運動論",
+      "target": "狀態方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子運動論",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子運動論",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子運動論",
+      "target": "溫度",
       "type": "wikilink"
     },
     {
@@ -9498,6 +12194,71 @@
       "type": "wikilink"
     },
     {
+      "source": "定軸轉動運動學",
+      "target": "角位移",
+      "type": "requires"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角速度",
+      "type": "requires"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角加速度",
+      "type": "requires"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "轉動運動學方程",
+      "type": "related_to"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角位移",
+      "type": "related_to"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角加速度",
+      "type": "related_to"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "角加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "轉動運動學方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "定軸轉動運動學",
+      "target": "滾動運動",
+      "type": "wikilink"
+    },
+    {
       "source": "對稱性",
       "target": "向量",
       "type": "requires"
@@ -10380,6 +13141,61 @@
     {
       "source": "廣義座標",
       "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "彈性",
+      "target": "虎克定律",
+      "type": "requires"
+    },
+    {
+      "source": "彈性",
+      "target": "力",
+      "type": "requires"
+    },
+    {
+      "source": "彈性",
+      "target": "機械平衡",
+      "type": "related_to"
+    },
+    {
+      "source": "彈性",
+      "target": "應力",
+      "type": "related_to"
+    },
+    {
+      "source": "彈性",
+      "target": "應變",
+      "type": "related_to"
+    },
+    {
+      "source": "彈性",
+      "target": "虎克定律",
+      "type": "related_to"
+    },
+    {
+      "source": "彈性",
+      "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "彈性",
+      "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "彈性",
+      "target": "應力",
+      "type": "wikilink"
+    },
+    {
+      "source": "彈性",
+      "target": "應變",
+      "type": "wikilink"
+    },
+    {
+      "source": "彈性",
+      "target": "機械平衡",
       "type": "wikilink"
     },
     {
@@ -12003,6 +14819,86 @@
       "type": "wikilink"
     },
     {
+      "source": "機械平衡",
+      "target": "牛頓第二定律",
+      "type": "requires"
+    },
+    {
+      "source": "機械平衡",
+      "target": "轉矩",
+      "type": "requires"
+    },
+    {
+      "source": "機械平衡",
+      "target": "向量",
+      "type": "requires"
+    },
+    {
+      "source": "機械平衡",
+      "target": "靜力平衡",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "質心",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "轉矩",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "重力",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "牛頓第二定律",
+      "type": "related_to"
+    },
+    {
+      "source": "機械平衡",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "機械平衡",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械平衡",
+      "target": "靜力平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械平衡",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械平衡",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械平衡",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "機械平衡",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
       "source": "機械波",
       "target": "三角函數",
       "type": "requires"
@@ -12678,6 +15574,96 @@
       "type": "wikilink"
     },
     {
+      "source": "滾動運動",
+      "target": "角速度",
+      "type": "requires"
+    },
+    {
+      "source": "滾動運動",
+      "target": "轉動動能",
+      "type": "requires"
+    },
+    {
+      "source": "滾動運動",
+      "target": "速度",
+      "type": "requires"
+    },
+    {
+      "source": "滾動運動",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "滾動運動",
+      "target": "機械能守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "滾動運動",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "滾動運動",
+      "target": "轉動動能",
+      "type": "related_to"
+    },
+    {
+      "source": "滾動運動",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "滾動運動",
+      "target": "轉動動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "滾動運動",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "滾動運動",
+      "target": "機械能守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "潛熱",
+      "target": "熱",
+      "type": "requires"
+    },
+    {
+      "source": "潛熱",
+      "target": "溫度",
+      "type": "requires"
+    },
+    {
+      "source": "潛熱",
+      "target": "比熱",
+      "type": "related_to"
+    },
+    {
+      "source": "潛熱",
+      "target": "熱力學第一定律",
+      "type": "related_to"
+    },
+    {
+      "source": "潛熱",
+      "target": "熱",
+      "type": "wikilink"
+    },
+    {
+      "source": "潛熱",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "潛熱",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
       "source": "無限平面電場",
       "target": "高斯定律",
       "type": "requires"
@@ -13278,6 +16264,61 @@
       "type": "wikilink"
     },
     {
+      "source": "理想氣體",
+      "target": "溫度",
+      "type": "requires"
+    },
+    {
+      "source": "理想氣體",
+      "target": "壓力",
+      "type": "requires"
+    },
+    {
+      "source": "理想氣體",
+      "target": "分子運動論",
+      "type": "requires"
+    },
+    {
+      "source": "理想氣體",
+      "target": "狀態方程",
+      "type": "related_to"
+    },
+    {
+      "source": "理想氣體",
+      "target": "內能",
+      "type": "related_to"
+    },
+    {
+      "source": "理想氣體",
+      "target": "熱力學第一定律",
+      "type": "related_to"
+    },
+    {
+      "source": "理想氣體",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體",
+      "target": "分子運動論",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體",
+      "target": "狀態方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "理想氣體",
+      "target": "內能",
+      "type": "wikilink"
+    },
+    {
       "source": "理想流體近似",
       "target": "密度",
       "type": "requires"
@@ -13410,6 +16451,96 @@
     {
       "source": "理想流體近似",
       "target": "紊流",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "直流電路",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "直流電路",
+      "target": "電阻",
+      "type": "requires"
+    },
+    {
+      "source": "直流電路",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電容器",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電阻",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "直流電路",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "直流電路",
+      "target": "交流電",
       "type": "wikilink"
     },
     {
@@ -13713,6 +16844,61 @@
       "type": "wikilink"
     },
     {
+      "source": "碰撞",
+      "target": "動量",
+      "type": "requires"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量守恆",
+      "type": "requires"
+    },
+    {
+      "source": "碰撞",
+      "target": "角動量與碰撞",
+      "type": "related_to"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量",
+      "type": "related_to"
+    },
+    {
+      "source": "碰撞",
+      "target": "動能",
+      "type": "related_to"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞",
+      "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "碰撞",
+      "target": "角動量與碰撞",
+      "type": "wikilink"
+    },
+    {
       "source": "碰撞分析",
       "target": "動量",
       "type": "requires"
@@ -13930,6 +17116,16 @@
     {
       "source": "磁場",
       "target": "電磁波",
+      "type": "related_to"
+    },
+    {
+      "source": "磁場",
+      "target": "安培定律",
+      "type": "related_to"
+    },
+    {
+      "source": "磁場",
+      "target": "畢奧-沙伐定律",
       "type": "related_to"
     },
     {
@@ -14445,6 +17641,86 @@
     {
       "source": "算符",
       "target": "複數",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "基爾霍夫電流定律",
+      "type": "requires"
+    },
+    {
+      "source": "節點分析",
+      "target": "並聯電路",
+      "type": "requires"
+    },
+    {
+      "source": "節點分析",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "節點分析",
+      "target": "迴路分析",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "基爾霍夫電流定律",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "節點分析",
+      "target": "基爾霍夫電流定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "並聯電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "基爾霍夫電流定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "並聯電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "迴路分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "節點分析",
+      "target": "直流電路",
       "type": "wikilink"
     },
     {
@@ -15448,6 +18724,106 @@
       "type": "wikilink"
     },
     {
+      "source": "自感",
+      "target": "電感",
+      "type": "requires"
+    },
+    {
+      "source": "自感",
+      "target": "磁通量",
+      "type": "requires"
+    },
+    {
+      "source": "自感",
+      "target": "電流",
+      "type": "requires"
+    },
+    {
+      "source": "自感",
+      "target": "rl電路",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "電感",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "自感",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "rl電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "自感",
+      "target": "rl電路",
+      "type": "wikilink"
+    },
+    {
       "source": "自由度",
       "target": "向量",
       "type": "requires"
@@ -16093,6 +19469,71 @@
       "type": "wikilink"
     },
     {
+      "source": "角動量與碰撞",
+      "target": "角動量守恆",
+      "type": "requires"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "碰撞",
+      "type": "requires"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "轉動慣量",
+      "type": "requires"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "角動量",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "角動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "碰撞",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "角動量與碰撞",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
       "source": "解析度",
       "target": "繞射",
       "type": "requires"
@@ -16185,6 +19626,96 @@
     {
       "source": "解析度",
       "target": "相位",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "互感",
+      "type": "requires"
+    },
+    {
+      "source": "變壓器",
+      "target": "交流電",
+      "type": "requires"
+    },
+    {
+      "source": "變壓器",
+      "target": "法拉第定律",
+      "type": "requires"
+    },
+    {
+      "source": "變壓器",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "變壓器",
+      "target": "位移電流",
+      "type": "related_to"
+    },
+    {
+      "source": "變壓器",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "變壓器",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "變壓器",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "變壓器",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "互感",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "互感",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "變壓器",
+      "target": "電動勢",
       "type": "wikilink"
     },
     {
@@ -16285,6 +19816,61 @@
     {
       "source": "質心",
       "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "角動量",
+      "type": "requires"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "萬有引力定律",
+      "type": "requires"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "向量",
+      "type": "requires"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "重力",
+      "type": "related_to"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "角動量",
+      "type": "related_to"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "角動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "萬有引力定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "軌道角動量",
+      "target": "重力",
       "type": "wikilink"
     },
     {
@@ -16358,6 +19944,86 @@
       "type": "wikilink"
     },
     {
+      "source": "迴路分析",
+      "target": "基爾霍夫電壓定律",
+      "type": "requires"
+    },
+    {
+      "source": "迴路分析",
+      "target": "串聯電路",
+      "type": "requires"
+    },
+    {
+      "source": "迴路分析",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "迴路分析",
+      "target": "節點分析",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "基爾霍夫電壓定律",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "迴路分析",
+      "target": "基爾霍夫電壓定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "串聯電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "基爾霍夫電壓定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "串聯電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "節點分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "迴路分析",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
       "source": "連續譜",
       "target": "離散能階",
       "type": "requires"
@@ -16440,6 +20106,66 @@
     {
       "source": "連續譜",
       "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "進動",
+      "target": "角動量守恆",
+      "type": "requires"
+    },
+    {
+      "source": "進動",
+      "target": "轉矩",
+      "type": "requires"
+    },
+    {
+      "source": "進動",
+      "target": "角動量",
+      "type": "requires"
+    },
+    {
+      "source": "進動",
+      "target": "陀螺",
+      "type": "related_to"
+    },
+    {
+      "source": "進動",
+      "target": "角動量",
+      "type": "related_to"
+    },
+    {
+      "source": "進動",
+      "target": "轉矩",
+      "type": "related_to"
+    },
+    {
+      "source": "進動",
+      "target": "角動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "進動",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "進動",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "進動",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "進動",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "進動",
+      "target": "陀螺",
       "type": "wikilink"
     },
     {
@@ -16888,6 +20614,76 @@
       "type": "wikilink"
     },
     {
+      "source": "陀螺",
+      "target": "角動量",
+      "type": "requires"
+    },
+    {
+      "source": "陀螺",
+      "target": "進動",
+      "type": "requires"
+    },
+    {
+      "source": "陀螺",
+      "target": "轉動慣量",
+      "type": "requires"
+    },
+    {
+      "source": "陀螺",
+      "target": "進動",
+      "type": "related_to"
+    },
+    {
+      "source": "陀螺",
+      "target": "角動量",
+      "type": "related_to"
+    },
+    {
+      "source": "陀螺",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "陀螺",
+      "target": "角動量守恆",
+      "type": "related_to"
+    },
+    {
+      "source": "陀螺",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "進動",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "角動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "進動",
+      "type": "wikilink"
+    },
+    {
+      "source": "陀螺",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
       "source": "離散能階",
       "target": "量子化",
       "type": "requires"
@@ -17000,6 +20796,56 @@
     {
       "source": "離散能階",
       "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "電場",
+      "type": "requires"
+    },
+    {
+      "source": "電介質",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "電介質",
+      "target": "平行板電容器",
+      "type": "related_to"
+    },
+    {
+      "source": "電介質",
+      "target": "介電常數",
+      "type": "related_to"
+    },
+    {
+      "source": "電介質",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電介質",
+      "target": "介電常數",
       "type": "wikilink"
     },
     {
@@ -17593,6 +21439,56 @@
       "type": "wikilink"
     },
     {
+      "source": "電場能",
+      "target": "電場",
+      "type": "requires"
+    },
+    {
+      "source": "電場能",
+      "target": "電容器",
+      "type": "requires"
+    },
+    {
+      "source": "電場能",
+      "target": "電位差",
+      "type": "requires"
+    },
+    {
+      "source": "電場能",
+      "target": "平行板電容器",
+      "type": "related_to"
+    },
+    {
+      "source": "電場能",
+      "target": "電場",
+      "type": "related_to"
+    },
+    {
+      "source": "電場能",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "電場能",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場能",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
       "source": "電場能量",
       "target": "電位能",
       "type": "requires"
@@ -17843,6 +21739,66 @@
       "type": "wikilink"
     },
     {
+      "source": "電磁場能量流",
+      "target": "電場",
+      "type": "requires"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "磁場",
+      "type": "requires"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "電磁波",
+      "type": "requires"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "麥克斯威方程組",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "坡印廷向量",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "安培-馬克士威方程",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "坡印廷向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁場能量流",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
       "source": "電磁波",
       "target": "麥克斯威方程組",
       "type": "requires"
@@ -18053,6 +22009,71 @@
       "type": "wikilink"
     },
     {
+      "source": "電磁波傳播",
+      "target": "電磁波",
+      "type": "requires"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "安培-馬克士威方程",
+      "type": "requires"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "法拉第定律",
+      "type": "requires"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "電磁場能量流",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "坡印廷向量",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "安培-馬克士威方程",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "安培-馬克士威方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "坡印廷向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁波傳播",
+      "target": "電磁場能量流",
+      "type": "wikilink"
+    },
+    {
       "source": "電通量",
       "target": "電場",
       "type": "requires"
@@ -18215,6 +22236,66 @@
     {
       "source": "電通量",
       "target": "面積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "機械平衡",
+      "type": "requires"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "轉矩",
+      "type": "requires"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "質心",
+      "type": "related_to"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "轉矩",
+      "type": "related_to"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "重力",
+      "type": "related_to"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "牛頓第二定律",
+      "type": "related_to"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "向量",
+      "type": "formalized_by"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "機械平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "質心",
+      "type": "wikilink"
+    },
+    {
+      "source": "靜力平衡",
+      "target": "彈性",
       "type": "wikilink"
     },
     {
@@ -18768,6 +22849,61 @@
       "type": "wikilink"
     },
     {
+      "source": "剪切模數",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "剪切模數",
+      "target": "剪應力",
+      "type": "related_to"
+    },
+    {
+      "source": "剪切模數",
+      "target": "應變",
+      "type": "related_to"
+    },
+    {
+      "source": "剪切模數",
+      "target": "虎克定律",
+      "type": "related_to"
+    },
+    {
+      "source": "剪切模數",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "剪切模數",
+      "target": "剪應力",
+      "type": "wikilink"
+    },
+    {
+      "source": "剪切模數",
+      "target": "應變",
+      "type": "wikilink"
+    },
+    {
+      "source": "剪應力",
+      "target": "剪切模數",
+      "type": "related_to"
+    },
+    {
+      "source": "剪應力",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "剪應力",
+      "target": "剪切模數",
+      "type": "wikilink"
+    },
+    {
+      "source": "剪應力",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
       "source": "加速度",
       "target": "速度",
       "type": "related_to"
@@ -18900,6 +23036,46 @@
     {
       "source": "動量",
       "target": "動量守恆",
+      "type": "wikilink"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電磁場能量流",
+      "type": "related_to"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電磁波",
+      "type": "related_to"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "安培-馬克士威方程",
+      "type": "related_to"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電磁場能量流",
+      "type": "wikilink"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電磁波",
+      "type": "wikilink"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "坡印廷向量",
+      "target": "磁場",
       "type": "wikilink"
     },
     {
@@ -19088,6 +23264,186 @@
       "type": "wikilink"
     },
     {
+      "source": "感抗",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "感抗",
+      "target": "rl電路",
+      "type": "related_to"
+    },
+    {
+      "source": "感抗",
+      "target": "rlc電路",
+      "type": "related_to"
+    },
+    {
+      "source": "感抗",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "感抗",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "感抗",
+      "target": "rl電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "感抗",
+      "target": "rlc電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "感抗",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "感抗",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "應力",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "應力",
+      "target": "應變",
+      "type": "related_to"
+    },
+    {
+      "source": "應力",
+      "target": "虎克定律",
+      "type": "related_to"
+    },
+    {
+      "source": "應力",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "應力",
+      "target": "應變",
+      "type": "wikilink"
+    },
+    {
+      "source": "應力",
+      "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "應變",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "應變",
+      "target": "應力",
+      "type": "related_to"
+    },
+    {
+      "source": "應變",
+      "target": "虎克定律",
+      "type": "related_to"
+    },
+    {
+      "source": "應變",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "應變",
+      "target": "應力",
+      "type": "wikilink"
+    },
+    {
+      "source": "應變",
+      "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "應力",
+      "type": "related_to"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "應變",
+      "type": "related_to"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "虎克定律",
+      "type": "related_to"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "應力",
+      "type": "wikilink"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "應變",
+      "type": "wikilink"
+    },
+    {
+      "source": "楊氏模數",
+      "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "比熱",
+      "target": "熱",
+      "type": "related_to"
+    },
+    {
+      "source": "比熱",
+      "target": "溫度",
+      "type": "related_to"
+    },
+    {
+      "source": "比熱",
+      "target": "理想氣體",
+      "type": "related_to"
+    },
+    {
+      "source": "比熱",
+      "target": "熱力學第一定律",
+      "type": "related_to"
+    },
+    {
+      "source": "比熱",
+      "target": "熱",
+      "type": "wikilink"
+    },
+    {
+      "source": "比熱",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "比熱",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
       "source": "流量",
       "target": "速度",
       "type": "related_to"
@@ -19145,6 +23501,131 @@
     {
       "source": "流量",
       "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "磁場",
+      "type": "related_to"
+    },
+    {
+      "source": "磁通量",
+      "target": "電動勢",
+      "type": "related_to"
+    },
+    {
+      "source": "磁通量",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "磁通量",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "磁通量",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "磁場",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "磁通量",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "角位移",
+      "target": "定軸轉動運動學",
+      "type": "related_to"
+    },
+    {
+      "source": "角位移",
+      "target": "定軸轉動運動學",
+      "type": "wikilink"
+    },
+    {
+      "source": "角位移",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "角位移",
+      "target": "角加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "角加速度",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "角加速度",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "角加速度",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "角加速度",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "角速度",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "角速度",
+      "target": "角加速度",
+      "type": "related_to"
+    },
+    {
+      "source": "角速度",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "角速度",
+      "target": "角加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "角速度",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "角速度",
+      "target": "滾動運動",
       "type": "wikilink"
     },
     {
@@ -19248,6 +23729,71 @@
       "type": "wikilink"
     },
     {
+      "source": "轉動動能",
+      "target": "轉動慣量",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動動能",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動動能",
+      "target": "滾動運動",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動動能",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動動能",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動動能",
+      "target": "滾動運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "角速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "角加速度",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "轉動動能",
+      "type": "related_to"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "角速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "角加速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "轉動動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "轉動慣量",
+      "target": "轉矩",
+      "type": "wikilink"
+    },
+    {
       "source": "速度",
       "target": "時間",
       "type": "related_to"
@@ -19338,6 +23884,66 @@
       "type": "wikilink"
     },
     {
+      "source": "阻抗",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "阻抗",
+      "target": "rlc電路",
+      "type": "related_to"
+    },
+    {
+      "source": "阻抗",
+      "target": "rl電路",
+      "type": "related_to"
+    },
+    {
+      "source": "阻抗",
+      "target": "rc電路",
+      "type": "related_to"
+    },
+    {
+      "source": "阻抗",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "rl電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "rc電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "rlc電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "阻抗",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
       "source": "雷諾數",
       "target": "黏滯力",
       "type": "related_to"
@@ -19478,6 +24084,251 @@
       "type": "wikilink"
     },
     {
+      "source": "電功率",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電功率",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "電功率",
+      "target": "焦耳定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電功率",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電功率",
+      "target": "焦耳定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電功率",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電功率",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電功率",
+      "target": "焦耳定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電功率",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "電動勢",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電動勢",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "電動勢",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電動勢",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電動勢",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電動勢",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容抗",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "電容抗",
+      "target": "rc電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電容抗",
+      "target": "rlc電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電容抗",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容抗",
+      "target": "rc電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容抗",
+      "target": "rlc電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容抗",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容抗",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "電感",
+      "target": "磁通量",
+      "type": "related_to"
+    },
+    {
+      "source": "電感",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "電感",
+      "target": "法拉第定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電感",
+      "target": "楞次定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電感",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電感",
+      "target": "磁通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電感",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電感",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電感",
+      "target": "楞次定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "電荷",
+      "type": "related_to"
+    },
+    {
+      "source": "電流",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電流",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "電流",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電流",
+      "target": "安培定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電流",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電流",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
       "source": "電荷",
       "target": "電場",
       "type": "related_to"
@@ -19605,6 +24456,111 @@
     {
       "source": "電荷",
       "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "電流",
+      "type": "related_to"
+    },
+    {
+      "source": "電阻",
+      "target": "電位差",
+      "type": "related_to"
+    },
+    {
+      "source": "電阻",
+      "target": "直流電路",
+      "type": "related_to"
+    },
+    {
+      "source": "電阻",
+      "target": "歐姆定律",
+      "type": "related_to"
+    },
+    {
+      "source": "電阻",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "直流電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "電阻",
+      "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "體應變",
+      "target": "體積彈性模數",
+      "type": "related_to"
+    },
+    {
+      "source": "體應變",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "體應變",
+      "target": "體積彈性模數",
+      "type": "wikilink"
+    },
+    {
+      "source": "體應變",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "體應變",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "壓力",
+      "type": "related_to"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "體應變",
+      "type": "related_to"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "壓力",
+      "type": "wikilink"
+    },
+    {
+      "source": "體積彈性模數",
+      "target": "體應變",
       "type": "wikilink"
     },
     {

@@ -75,6 +75,7 @@ const els = {
   resetViewButton: document.getElementById("resetViewButton"),
   graphHint: document.getElementById("graphHint"),
   topnavButtons: document.querySelectorAll(".topnav-item"),
+  brandLink: document.querySelector(".brand-link"),
 };
 
 const typeLabel = {
@@ -456,6 +457,30 @@ function bindEvents() {
   });
 
   window.addEventListener("resize", () => layoutVisibleGraph());
+
+  // Brand click → reset to homepage
+  els.brandLink?.addEventListener("click", (event) => {
+    event.preventDefault();
+    // Reset all state
+    state.searchTerm = "";
+    els.searchInput.value = "";
+    state.selectedNodeId = null;
+    state.focusedDomain = null;
+    state.viewMode = "overview";
+    state.domainSelection = new Set(state.graph?.domains || []);
+    state.typeSelection = new Set(state.graph?.types || []);
+    state.noteViewMode = "preview";
+    buildModeButtons();
+    buildFilters(state.graph);
+    buildDomainOverview();
+    resetViewport();
+    layoutVisibleGraph(true);
+    renderDetail(null);
+    // Reset topnav to graph
+    for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+    const graphBtn = document.querySelector('[data-view="graph"]');
+    if (graphBtn) graphBtn.classList.add("is-active");
+  });
 
   // Topnav view switching
   for (const btn of els.topnavButtons) {

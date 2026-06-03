@@ -359,7 +359,12 @@ def replace_section(text: str, start_heading: str, end_heading: str, block: str)
     )
     new_text, count = pattern.subn(block.rstrip(), text, count=1)
     if count != 1:
-        raise ValueError(f"Could not replace section {start_heading}")
+        # Section not found — insert before end_heading instead
+        marker = f"\n{end_heading}\n"
+        if marker in text:
+            return text.replace(marker, "\n" + block.rstrip() + "\n\n" + end_heading + "\n", 1)
+        # Last resort: append before closing
+        return text.rstrip() + "\n\n" + block.rstrip() + "\n"
     return new_text
 
 

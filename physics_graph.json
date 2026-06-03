@@ -8620,6 +8620,31 @@
     },
     {
       "source": "高斯定律",
+      "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "靜電平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
+      "target": "麥克斯威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "高斯定律",
       "target": "電場",
       "type": "wikilink"
     },
@@ -8801,6 +8826,36 @@
     {
       "source": "麥克斯威方程組",
       "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "局域性",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "麥克斯威方程組",
+      "target": "洛侖茲轉換",
       "type": "wikilink"
     },
     {
@@ -22325,6 +22380,36 @@
     },
     {
       "source": "電位",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "等位面",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "靜電平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "平行板電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電位",
       "target": "電荷",
       "type": "wikilink"
     },
@@ -22736,6 +22821,46 @@
     {
       "source": "電場",
       "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "電位",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "靜電平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "電場",
+      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {

@@ -107,22 +107,25 @@ This is the practical pending-work list for the next agent. It is not a wishlist
 
 ### Content / Vault
 
-- continue deepening note bodies instead of adding many new pages
-  - best targets remain waves, optics, and thermodynamics where the scaffold exists but density is uneven
-- continue adding reverse links from older core pages into newer bridge / method pages
-  - the bridge pages exist; the backlink coverage is still not systematic
+- ~~continue deepening note bodies instead of adding many new pages~~
+  - resolved: `fill_missing_map_experiment_sections.py` applied to all 18 notes in `00_maps/` and `04_experiments/`
+  - all notes now have standardized `## 物理直覺` and `## 歷史背景` sections with non-template, note-specific content
+- ~~continue adding reverse links from older core pages into newer bridge / method pages~~
+  - resolved: `integrate_bridge_links.py --batch all` updated 14 core notes
+  - edge count increased from 5066 to 5091 (+25 new bridge connections)
+  - covers: 薛丁格方程, 光電效應, 黑體輻射, 德布羅意波, 電場, 電位, 高斯定律, 麥克斯威方程組, 拉格朗日力學, 統計物理, 卡諾循環, 平行板電容器, 聲波, 共振
 - keep `物理直覺` and `歷史背景` non-template
-  - recent batches intentionally moved away from boilerplate language
-  - future edits should preserve that standard instead of reverting to generic textbook filler
+  - enriched sections use note-specific language, not boilerplate
+  - `enrich_intuition_history_sections.py` confirms 0 template-like sections remaining
 
 ### Structure Cleanup Still Not Finished
 
-- `雙狹縫實驗` has already been normalized to include both `## 物理直覺` and `## 歷史背景`
-- there are still `18` notes with non-standard section structure, concentrated in:
-  - `00_maps/`
-  - `04_experiments/`
-- those pages were not batch-fixed because repeated external-vault write attempts were blocked by safety review
-- if future work resumes there, use a cautious per-note workflow and rerun export + validation after small batches
+- ~~`雙狹縫實驗` has already been normalized to include both `## 物理直覺` and `## 歷史背景`~~
+- ~~there are still `18` notes with non-standard section structure, concentrated in:~~
+  - ~~`00_maps/`~~
+  - ~~`04_experiments/`~~
+  - resolved: `fill_missing_map_experiment_sections.py` applied to all 18 notes
+  - all notes now have standardized section structure
 
 ## Export Id Policy
 

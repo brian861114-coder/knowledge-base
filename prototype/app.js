@@ -1324,9 +1324,12 @@ function renderNotesListView() {
       const graphBtn = document.querySelector('[data-view="graph"]');
       if (graphBtn) graphBtn.classList.add("is-active");
 
+      // Focus the domain first so the node becomes visible in the graph
+      if (node.domain) focusDomain(node.domain);
       state.selectedNodeId = node.id;
       renderDetail(node);
-      layoutVisibleGraph(true);
+      updateNodeStates();
+      drawGraph();
     });
   }
 }

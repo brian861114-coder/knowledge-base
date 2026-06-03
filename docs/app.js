@@ -1,4 +1,4 @@
-const graphUrl = "./physics_graph.json";
+﻿const graphUrl = "./physics_graph.json";
 const noteDetailsUrl = "./physics_note_details.json";
 const primaryEdgeTypes = new Set([
   "organized_by",
@@ -74,6 +74,8 @@ const els = {
   backToOverviewToolbarButton: document.getElementById("backToOverviewToolbarButton"),
   resetViewButton: document.getElementById("resetViewButton"),
   graphHint: document.getElementById("graphHint"),
+  topnavButtons: document.querySelectorAll(".topnav-item"),
+  brandLink: document.querySelector(".brand-link"),
 };
 
 const typeLabel = {
@@ -119,6 +121,15 @@ init().catch((error) => {
     <p class="detail-summary">${escapeHtml(String(error.message || error))}</p>
   `;
 });
+
+function getNoteDetail(nodeId) {
+  return (
+    state.noteDetails[nodeId] ||
+    state.noteDetails[String(nodeId).toLowerCase()] ||
+    state.noteDetails[String(nodeId).replaceAll(" ", "-")] ||
+    null
+  );
+}
 
 async function init() {
   const [graphResponse, detailResponse] = await Promise.all([fetch(graphUrl), fetch(noteDetailsUrl)]);
@@ -332,7 +343,20 @@ function syncModeButtons() {
 function buildFilters(graph) {
   state.domainSelection = new Set(graph.domains);
   state.typeSelection = new Set(graph.types);
-  renderChipGroup(els.domainFilters, graph.domains, state.domainSelection, () => {
+  const domainItems = graph.domains.map((domain) => ({
+    value: domain,
+    label: domain,
+    count: graph.noteNodes.filter((node) => (node.domain || "未分類") === domain).length,
+    color: filterSwatchColor("domain", domain),
+  }));
+  const typeItems = graph.types.map((type) => ({
+    value: type,
+    label: typeLabel[type] || type,
+    count: graph.noteNodes.filter((node) => node.type === type).length,
+    color: filterSwatchColor("type", type),
+  }));
+
+  renderSidebarFilterGroup(els.domainFilters, domainItems, state.domainSelection, () => {
     if (state.focusedDomain && !state.domainSelection.has(state.focusedDomain)) {
       state.focusedDomain = null;
       state.viewMode = "overview";
@@ -341,13 +365,7 @@ function buildFilters(graph) {
     buildDomainOverview();
     layoutVisibleGraph(true);
   });
-  renderChipGroup(
-    els.typeFilters,
-    graph.types,
-    state.typeSelection,
-    () => layoutVisibleGraph(true),
-    (value) => typeLabel[value] || value
-  );
+  renderSidebarFilterGroup(els.typeFilters, typeItems, state.typeSelection, () => layoutVisibleGraph(true));
 }
 
 function renderChipGroup(container, values, selection, onChange, labeler = (value) => value) {
@@ -439,6 +457,57 @@ function bindEvents() {
   });
 
   window.addEventListener("resize", () => layoutVisibleGraph());
+
+  // Brand click → reset to homepage
+  els.brandLink?.addEventListener("click", (event) => {
+    event.preventDefault();
+    // Reset all state
+    state.searchTerm = "";
+    els.searchInput.value = "";
+    state.selectedNodeId = null;
+    state.focusedDomain = null;
+    state.viewMode = "overview";
+    state.domainSelection = new Set(state.graph?.domains || []);
+    state.typeSelection = new Set(state.graph?.types || []);
+    state.noteViewMode = "preview";
+    buildModeButtons();
+    buildFilters(state.graph);
+    buildDomainOverview();
+    resetViewport();
+    layoutVisibleGraph(true);
+    renderDetail(null);
+    // Reset topnav to graph
+    for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+    const graphBtn = document.querySelector('[data-view="graph"]');
+    if (graphBtn) graphBtn.classList.add("is-active");
+  });
+
+  // Topnav view switching
+  for (const btn of els.topnavButtons) {
+    btn.addEventListener("click", () => {
+      const view = btn.dataset.view;
+      for (const other of els.topnavButtons) other.classList.remove("is-active");
+      btn.classList.add("is-active");
+
+      if (view === "search") {
+        renderSearchView();
+      } else if (view === "notes") {
+        renderNotesListView();
+      } else if (view === "settings") {
+        renderSettingsView();
+      } else if (view === "graph") {
+        // Return to graph view
+        state.selectedNodeId = null;
+        state.focusedDomain = null;
+        state.viewMode = "overview";
+        syncModeButtons();
+        buildDomainOverview();
+        resetViewport();
+        layoutVisibleGraph(true);
+        renderDetail(null);
+      }
+    });
+  }
 }
 
 function focusDomain(domain) {
@@ -465,7 +534,14 @@ function layoutVisibleGraph(resetPositions = false) {
   updateFocusBanner();
 
   if (!prepared.nodes.some((node) => node.id === state.selectedNodeId)) {
-    state.selectedNodeId = prepared.nodes[0]?.id ?? null;
+    // Only reset if selectedNodeId is truly not in the visible set
+    // Check if it's a note node that exists but isn't rendered yet
+    const existingNode = state.nodeMap.get(state.selectedNodeId);
+    if (existingNode && existingNode.kind !== "domain") {
+      // Keep the selected note node even if not in visible set
+    } else {
+      state.selectedNodeId = prepared.nodes[0]?.id ?? null;
+    }
   }
 
   ensureNodeElements(prepared.nodes);
@@ -507,6 +583,57 @@ function layoutVisibleGraph(resetPositions = false) {
   if (state.selectedNodeId !== previousSelectedNodeId) {
     scrollReadingToTop();
   }
+}
+
+function renderSidebarFilterGroup(container, items, selection, onChange) {
+  container.innerHTML = "";
+  for (const item of items) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `chip filter-item ${selection.has(item.value) ? "active" : ""}`;
+    button.dataset.value = item.value;
+    button.innerHTML = `
+      <span class="filter-item-main">
+        <span class="filter-dot" style="--filter-dot:${escapeAttribute(item.color)}"></span>
+        <span class="filter-item-label">${escapeHtml(item.label)}</span>
+      </span>
+      <span class="filter-item-count">${escapeHtml(String(item.count))}</span>
+    `;
+    button.addEventListener("click", () => {
+      if (selection.has(item.value) && selection.size > 1) selection.delete(item.value);
+      else if (!selection.has(item.value)) selection.add(item.value);
+      button.classList.toggle("active", selection.has(item.value));
+      onChange();
+    });
+    container.appendChild(button);
+  }
+}
+
+function filterSwatchColor(kind, value) {
+  if (kind === "type") {
+    const typePalette = {
+      map: "var(--type-map)",
+      law: "var(--type-law)",
+      concept: "var(--type-concept)",
+      quantity: "var(--type-quantity)",
+      mathematical_tool: "var(--type-mathematical_tool)",
+      domain: "var(--accent)",
+    };
+    return typePalette[value] || "var(--accent)";
+  }
+
+  const domainPalette = {
+    力學: "#315f98",
+    電磁學: "#3c8b8f",
+    熱學與熱力學: "#b75e31",
+    振動與波動: "#8c5ea9",
+    光學: "#77905a",
+    近代物理: "#6d7b93",
+    流體力學: "#4f8fa8",
+    數學工具: "#9b6b35",
+    未分類: "#a1a6b1",
+  };
+  return domainPalette[value] || "#7b8797";
 }
 
 function buildDomainAnchors(width, height, nodes) {
@@ -830,6 +957,11 @@ function renderDetail(node) {
   const isReaderMode = Boolean(node && node.kind !== "domain" && state.noteViewMode === "full");
   syncReadingLayout(isReaderMode);
 
+  if (!isReaderMode && activeSectionObserver) {
+    activeSectionObserver.disconnect();
+    activeSectionObserver = null;
+  }
+
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
@@ -872,7 +1004,7 @@ function renderDetail(node) {
     return;
   }
 
-  const noteDetail = state.noteDetails[node.id] || null;
+  const noteDetail = getNoteDetail(node.id);
   const outgoing = state.graph.edges.filter((edge) => edge.source === node.id && primaryEdgeTypes.has(edge.type));
   const incoming = (state.incomingMap.get(node.id) || []).filter((edge) => primaryEdgeTypes.has(edge.type));
   const outgoingGroups = groupRelations(outgoing, "target");
@@ -888,6 +1020,7 @@ function renderDetail(node) {
     els.detailCard.className = "detail-card reader";
     els.detailCard.innerHTML = renderReaderMode(node, noteDetail, resolvedSummary, resolvedPath, outgoingGroups, incomingGroups);
     scheduleMathTypeset(els.detailCard);
+    setupSectionObserver(node.id);
     return;
   }
 
@@ -931,7 +1064,8 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
           type="button"
           data-section-target="${escapeHtml(buildSectionTargetId(node.id, index))}"
         >
-          ${escapeHtml(section.title)}
+          <span class="reader-outline-index">${index + 1}</span>
+          <span class="reader-outline-title">${escapeHtml(section.title)}</span>
         </button>
       `
     )
@@ -960,55 +1094,64 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
         <button class="ghost-button" type="button" data-note-view-mode="preview">返回預覽</button>
       </div>
 
-      <article class="reader-article">
-        <header class="reader-header">
-          <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
-          <h1>${escapeHtml(node.title)}</h1>
-          <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
-          <div class="reader-meta-grid">
-            ${detailMetaBox("領域", node.domain || "未分類")}
-            ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-            ${detailMetaBox("連結數", String(node.degree))}
-            ${detailMetaBox("來源路徑", resolvedPath)}
+        <article class="reader-article">
+          <div class="reader-layout ${outline ? "has-outline" : ""}">
+            ${
+              outline
+                ? `
+            <aside class="reader-outline-panel">
+              <div class="reader-outline-header">
+                <p class="detail-kicker">文章目錄</p>
+                <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
+              </div>
+              <div class="reader-outline-list">${outline}</div>
+            </aside>
+            `
+                : ""
+            }
+
+            <div class="reader-main">
+              <header class="reader-header">
+                <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+                <h1>${escapeHtml(node.title)}</h1>
+                <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
+                <div class="reader-meta-grid">
+                  ${detailMetaBox("領域", node.domain || "未分類")}
+                  ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
+                  ${detailMetaBox("連結數", String(node.degree))}
+                  ${detailMetaBox("來源路徑", resolvedPath)}
+                </div>
+              </header>
+
+              <div class="reader-body-shell">
+                <section class="reader-content">
+                  ${
+                    articleSections ||
+                    `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+                  }
+                </section>
+              </div>
+
+              <footer class="reader-footer-grid">
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">標籤</p>
+                  <div class="detail-tags">${renderPills(node.tags)}</div>
+                </section>
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">指向其他節點</p>
+                  ${renderRelationGroups(outgoingGroups)}
+                </section>
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">哪些節點連到這裡</p>
+                  ${renderRelationGroups(incomingGroups)}
+                </section>
+              </footer>
+            </div>
           </div>
-        </header>
-
-        ${
-          outline
-            ? `
-        <section class="reader-outline-panel">
-          <p class="detail-kicker">文章大綱</p>
-          <div class="reader-outline-list">${outline}</div>
-        </section>
-        `
-            : ""
-        }
-
-        <section class="reader-content">
-          ${
-            articleSections ||
-            `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
-          }
-        </section>
-
-        <footer class="reader-footer-grid">
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">標籤</p>
-            <div class="detail-tags">${renderPills(node.tags)}</div>
-          </section>
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">指向其他節點</p>
-            ${renderRelationGroups(outgoingGroups)}
-          </section>
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">哪些節點連到這裡</p>
-            ${renderRelationGroups(incomingGroups)}
-          </section>
-        </footer>
-      </article>
-    </div>
-  `;
-}
+        </article>
+      </div>
+    `;
+  }
 
 function renderNotePreview(node, detail) {
   if (!detail) {
@@ -1030,7 +1173,8 @@ function renderNotePreview(node, detail) {
           type="button"
           data-section-target="${escapeHtml(buildSectionTargetId(node.id, index))}"
         >
-          ${escapeHtml(section.title)}
+          <span class="reader-outline-index">${index + 1}</span>
+          <span class="reader-outline-title">${escapeHtml(section.title)}</span>
         </button>
       `
     )
@@ -1068,24 +1212,59 @@ function renderNotePreview(node, detail) {
     ${
       outline
         ? `
-    <section class="detail-section">
-      <h3>文章大綱</h3>
+    <section class="detail-section preview-outline-panel">
+      <div class="detail-section-heading">
+        <h3>文章目錄</h3>
+        <p class="detail-section-caption">點選章節直接跳到對應段落。</p>
+      </div>
       <div class="detail-outline">${outline}</div>
     </section>`
         : ""
     }
-    <section class="detail-section">
+    <section class="detail-section preview-sections-panel">
       <h3>${isFullMode ? "章節全文" : "章節預覽"}</h3>
-      ${
-        sectionCards ||
-        `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
-      }
+      <div class="preview-sections-grid">
+        ${
+          sectionCards ||
+          `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
+        }
+      </div>
     </section>
   `;
 }
 
 function buildSectionTargetId(nodeId, index) {
   return `section-${nodeId}-${index}`.replaceAll(" ", "-");
+}
+
+let activeSectionObserver = null;
+
+function setupSectionObserver(nodeId) {
+  if (activeSectionObserver) {
+    activeSectionObserver.disconnect();
+    activeSectionObserver = null;
+  }
+
+  const sections = els.detailCard.querySelectorAll(".reader-section-block");
+  const buttons = els.detailCard.querySelectorAll(".reader-outline-button");
+  if (!sections.length || !buttons.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const targetId = entry.target.id;
+          for (const btn of buttons) {
+            btn.classList.toggle("is-active", btn.dataset.sectionTarget === targetId);
+          }
+        }
+      }
+    },
+    { rootMargin: "-10% 0px -60% 0px", threshold: 0 }
+  );
+
+  for (const section of sections) observer.observe(section);
+  activeSectionObserver = observer;
 }
 
 function renderRelationGroups(groups) {
@@ -1109,6 +1288,141 @@ function renderRelationGroups(groups) {
     .join("");
 }
 
+function renderNotesListView() {
+  if (!state.graph) return;
+  const notes = [...state.graph.noteNodes].sort((a, b) =>
+    (a.domain || "").localeCompare(b.domain || "") || a.title.localeCompare(b.title, "zh-Hant")
+  );
+
+  const grouped = {};
+  for (const note of notes) {
+    const domain = note.domain || "未分類";
+    if (!grouped[domain]) grouped[domain] = [];
+    grouped[domain].push(note);
+  }
+
+  let html = `<p class="detail-kicker">筆記瀏覽</p>
+    <h2>全部筆記（${notes.length}）</h2>
+    <p class="detail-summary">依領域分組，點選筆記可切換到圖譜檢視並聚焦該節點。</p>
+    <div class="detail-grid">`;
+
+  for (const [domain, domainNotes] of Object.entries(grouped)) {
+    html += `<section class="detail-section">
+      <h3>${escapeHtml(domain)}（${domainNotes.length}）</h3>
+      <div class="detail-tags">${domainNotes.map(
+        (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
+      ).join("")}</div>
+    </section>`;
+  }
+
+  html += `</div>`;
+
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = html;
+}
+
+function renderSettingsView() {
+  const noteCount = state.graph?.noteNodes.length || 0;
+  const edgeCount = state.graph?.edges.length || 0;
+  const domainCount = state.graph?.domains.length || 0;
+
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = `
+    <p class="detail-kicker">設定</p>
+    <h2>物理學知識圖譜</h2>
+    <p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>
+    <div class="detail-meta">
+      ${detailMetaBox("筆記數", String(noteCount))}
+      ${detailMetaBox("關係數", String(edgeCount))}
+      ${detailMetaBox("領域數", String(domainCount))}
+      ${detailMetaBox("版本", "prototype")}
+    </div>
+    <div class="detail-grid">
+      <section class="detail-section">
+        <h3>關於</h3>
+        <div class="detail-summary rich-summary">
+          <p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>
+          <p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h3>技術</h3>
+        <div class="detail-tags">${renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"])}</div>
+      </section>
+    </div>
+  `;
+}
+
+function renderSearchView() {
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = `
+    <p class="detail-kicker">搜尋</p>
+    <h2>搜尋知識圖譜</h2>
+    <p class="detail-summary">輸入關鍵字搜尋概念、定律、物理量、實驗、數學工具。</p>
+    <label class="search search-view-input">
+      <input id="searchViewInput" type="search" placeholder="例如：牛頓、熵、波函數、折射率…" autofocus>
+    </label>
+    <div id="searchViewResults" class="detail-grid"></div>
+  `;
+
+  const input = document.getElementById("searchViewInput");
+  const results = document.getElementById("searchViewResults");
+
+  if (!input || !results) return;
+
+  input.focus();
+
+  input.addEventListener("input", () => {
+    const query = input.value.trim().toLowerCase();
+    if (!query) {
+      results.innerHTML = `<p class="detail-summary">輸入關鍵字後會即時顯示搜尋結果。</p>`;
+      return;
+    }
+
+    const matches = state.graph.noteNodes.filter((n) => n.searchText.includes(query)).slice(0, 50);
+
+    if (!matches.length) {
+      results.innerHTML = `<p class="detail-summary">找不到符合「${escapeHtml(input.value.trim())}」的筆記。</p>`;
+      return;
+    }
+
+    // Group by domain
+    const grouped = {};
+    for (const note of matches) {
+      const domain = note.domain || "未分類";
+      if (!grouped[domain]) grouped[domain] = [];
+      grouped[domain].push(note);
+    }
+
+    let html = `<p class="detail-summary">找到 ${matches.length} 筆結果${matches.length === 50 ? "（顯示前 50 筆）" : ""}</p>`;
+    for (const [domain, notes] of Object.entries(grouped)) {
+      html += `<section class="detail-section">
+        <h3>${escapeHtml(domain)}（${notes.length}）</h3>
+        <div class="detail-tags">${notes.map(
+          (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
+        ).join("")}</div>
+      </section>`;
+    }
+    results.innerHTML = html;
+
+    // Wire up result pills
+    for (const pill of results.querySelectorAll(".note-pill")) {
+      pill.addEventListener("click", () => {
+        const nodeId = pill.dataset.nodeId;
+        const node = state.nodeMap.get(nodeId);
+        if (!node) return;
+        for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+        const graphBtn = document.querySelector('[data-view="graph"]');
+        if (graphBtn) graphBtn.classList.add("is-active");
+
+        state.selectedNodeId = node.id;
+        renderDetail(node);
+        layoutVisibleGraph(true);
+      });
+    }
+  });
+}
+
 document.addEventListener("click", (event) => {
   const noteViewButton = event.target.closest("[data-note-view-mode]");
   if (noteViewButton) {
@@ -1120,7 +1434,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const sectionJumpButton = event.target.closest(".section-jump-button");
+  const sectionJumpButton = event.target.closest(".section-jump-button, .reader-outline-button");
   if (sectionJumpButton) {
     const target = document.getElementById(sectionJumpButton.dataset.sectionTarget || "");
     if (target) {
@@ -1129,18 +1443,25 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const pill = event.target.closest(".relation-pill");
+  const pill = event.target.closest(".relation-pill, .note-pill");
   const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
   const targetButton = pill || inlineLink;
   if (!targetButton) return;
   const node = state.nodeMap.get(targetButton.dataset.nodeId);
   if (!node) return;
+  // Switch topnav to graph when clicking from notes/search view
+  if (targetButton.classList.contains("note-pill")) {
+    for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+    const graphBtn = document.querySelector('[data-view="graph"]');
+    if (graphBtn) graphBtn.classList.add("is-active");
+  }
   if (node.kind === "domain") {
     focusDomain(node.domain);
     return;
   }
-  if (state.viewMode === "overview" && node.domain) focusDomain(node.domain);
+  // Set selectedNodeId BEFORE focusDomain so layoutVisibleGraph doesn't reset it
   state.selectedNodeId = node.id;
+  if (node.domain) focusDomain(node.domain);
   renderDetail(node);
   scrollReadingToTop();
   updateNodeStates();
@@ -2005,24 +2326,24 @@ function ensureNodeElements(visibleNodes) {
 }
 
 function renderNodeContent(node) {
-  if (node.kind === "domain") {
+  const isMedallion = node.kind === "domain" || node.focal || node.overviewHub || node.type === "map";
+
+  if (isMedallion) {
     return `
-      <div class="node-badge">
-        <span class="swatch type-map"></span>
-        <span>${escapeHtml(typeLabel.domain)}</span>
+      <div class="node-shell node-shell-medallion">
+        <div class="node-core">
+          <div class="node-core-title">${escapeHtml(node.title)}</div>
+        </div>
       </div>
-      <div class="node-title">${escapeHtml(node.title)}</div>
-      <div class="node-meta">${node.memberCount} 個節點</div>
     `;
   }
 
   return `
-    <div class="node-badge">
-      <span class="swatch type-${escapeHtml(node.type)}"></span>
-      <span>${escapeHtml(typeLabel[node.type] || node.type)}</span>
+    <div class="node-shell node-shell-badge">
+      <div class="node-core">
+        <div class="node-title">${escapeHtml(node.title)}</div>
+      </div>
     </div>
-    <div class="node-title">${escapeHtml(node.title)}</div>
-    <div class="node-meta">${escapeHtml(describeNodeMeta(node))}</div>
   `;
 }
 

@@ -85,20 +85,25 @@ This is the practical pending-work list for the next agent. It is not a wishlist
 
 ### Frontend
 
-- fix the remaining mojibake / broken static UI copy in `prototype/index.html`
-  - current damage is visible in the HTML title, brand text, top navigation, sidebar headings, graph toolbar copy, legend labels, and detail-panel empty state
-  - `prototype/app.js` already contains a lot of correct dynamic Chinese copy, so the next pass should start with static HTML strings first
-- unify product copy across `prototype/index.html` and `prototype/app.js`
-  - mode labels, graph hints, panel headings, and reader labels still need one consistent tone
-- keep refining full-page reader mode
-  - current direction is correct: left-side table of contents and right-side article body
-  - likely next work: reduce topbar weight in reader mode, improve current-section highlighting, and tighten article width / whitespace balance
-- improve left sidebar information architecture
-  - make it read more like navigation than a filter stack
-  - recommended order: search -> mode -> domains -> types -> dataset summary
-- continue graph typography cleanup
-  - node title wrapping rules still need care for long Chinese titles
-  - graph toolbar hierarchy should read like a tool area, not like a second page hero
+- ~~fix the remaining mojibake / broken static UI copy in `prototype/index.html`~~
+  - resolved: all static Chinese copy in index.html is now correct and consistent
+- ~~unify product copy across `prototype/index.html` and `prototype/app.js`~~
+  - resolved: mode labels, graph hints, panel headings, and reader labels now use consistent Chinese throughout
+- ~~keep refining full-page reader mode~~
+  - topbar weight reduced in reader mode (brand subtitle hidden, nav dimmed)
+  - article width tightened from 920px to 740px for better reading flow
+  - IntersectionObserver-based current-section highlighting added to outline panel
+  - active outline button receives accent border + background highlight
+- ~~improve left sidebar information architecture~~
+  - reorder complete: search → mode → domains → types → dataset summary (moved from top to bottom)
+  - reads more like navigation now, with the data summary as a reference at the bottom
+- ~~continue graph typography cleanup~~
+  - node-title max-width: 7ch → 8ch, keep-all + overflow-wrap, center-align
+  - node-core-title max-width: 8ch → 9ch
+  - focal/domain-node max-width: 8.5ch → 10ch
+  - support node max-width: 6.5ch → 7.5ch
+  - line-height improved to 1.3 for better multi-line Chinese title rendering
+  - graph toolbar hierarchy already reads as a tool area
 
 ### Content / Vault
 

@@ -1045,6 +1045,28 @@ body:has(.workspace-shell.reader-mode) .brand p {
   background: var(--accent-soft);
 }
 
+.search-view-input {
+  display: block;
+  margin: 16px 0;
+}
+
+.search-view-input input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 1.05rem;
+  background: var(--panel-strong);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 160ms ease;
+}
+
+.search-view-input input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
 .detail-outline,
 .reader-outline-list {
   grid-template-columns: 1fr;

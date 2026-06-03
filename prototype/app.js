@@ -490,8 +490,7 @@ function bindEvents() {
       btn.classList.add("is-active");
 
       if (view === "search") {
-        els.searchInput.focus();
-        els.searchInput.scrollIntoView({ behavior: "smooth", block: "center" });
+        renderSearchView();
       } else if (view === "notes") {
         renderNotesListView();
       } else if (view === "settings") {
@@ -1362,6 +1361,76 @@ function renderSettingsView() {
       </section>
     </div>
   `;
+}
+
+function renderSearchView() {
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = `
+    <p class="detail-kicker">搜尋</p>
+    <h2>搜尋知識圖譜</h2>
+    <p class="detail-summary">輸入關鍵字搜尋概念、定律、物理量、實驗、數學工具。</p>
+    <label class="search search-view-input">
+      <input id="searchViewInput" type="search" placeholder="例如：牛頓、熵、波函數、折射率…" autofocus>
+    </label>
+    <div id="searchViewResults" class="detail-grid"></div>
+  `;
+
+  const input = document.getElementById("searchViewInput");
+  const results = document.getElementById("searchViewResults");
+
+  if (!input || !results) return;
+
+  input.focus();
+
+  input.addEventListener("input", () => {
+    const query = input.value.trim().toLowerCase();
+    if (!query) {
+      results.innerHTML = `<p class="detail-summary">輸入關鍵字後會即時顯示搜尋結果。</p>`;
+      return;
+    }
+
+    const matches = state.graph.noteNodes.filter((n) => n.searchText.includes(query)).slice(0, 50);
+
+    if (!matches.length) {
+      results.innerHTML = `<p class="detail-summary">找不到符合「${escapeHtml(input.value.trim())}」的筆記。</p>`;
+      return;
+    }
+
+    // Group by domain
+    const grouped = {};
+    for (const note of matches) {
+      const domain = note.domain || "未分類";
+      if (!grouped[domain]) grouped[domain] = [];
+      grouped[domain].push(note);
+    }
+
+    let html = `<p class="detail-summary">找到 ${matches.length} 筆結果${matches.length === 50 ? "（顯示前 50 筆）" : ""}</p>`;
+    for (const [domain, notes] of Object.entries(grouped)) {
+      html += `<section class="detail-section">
+        <h3>${escapeHtml(domain)}（${notes.length}）</h3>
+        <div class="detail-tags">${notes.map(
+          (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
+        ).join("")}</div>
+      </section>`;
+    }
+    results.innerHTML = html;
+
+    // Wire up result pills
+    for (const pill of results.querySelectorAll(".note-pill")) {
+      pill.addEventListener("click", () => {
+        const nodeId = pill.dataset.nodeId;
+        const node = state.nodeMap.get(nodeId);
+        if (!node) return;
+        for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+        const graphBtn = document.querySelector('[data-view="graph"]');
+        if (graphBtn) graphBtn.classList.add("is-active");
+
+        state.selectedNodeId = node.id;
+        renderDetail(node);
+        layoutVisibleGraph(true);
+      });
+    }
+  });
 }
 
 document.addEventListener("click", (event) => {

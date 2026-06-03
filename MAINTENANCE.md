@@ -224,7 +224,8 @@ After exports or frontend changes, verify all of the following:
 5. A law page renders display equations correctly
 6. A page with inline math renders `$...$` correctly
 7. A page with `[[wikilink]]` content shows clickable internal links
-8. The page can switch between graph exploration and reading without layout breakage
+8. A page with `![image](...)` content renders diagrams and captions correctly
+9. The page can switch between graph exploration and reading without layout breakage
 
 Suggested representative pages:
 
@@ -240,10 +241,11 @@ When editing notes, keep these priorities:
 1. Use valid Obsidian math formatting
    - inline math: `$...$`
    - display math: `$$...$$`
-2. Keep the frontmatter schema intact
-3. Preserve note-type folder conventions
-4. Prefer meaningful section headings over giant undifferentiated text blocks
-5. Keep wikilinks consistent with actual note titles
+2. For frontend-served diagrams, prefer repo-relative image paths such as `../assets/example.png`
+3. Keep the frontmatter schema intact
+4. Preserve note-type folder conventions
+5. Prefer meaningful section headings over giant undifferentiated text blocks
+6. Keep wikilinks consistent with actual note titles
 
 For university-level quality, content should aim to include:
 
@@ -318,6 +320,16 @@ Check:
 2. Is the note using `$$...$$` for display math?
 3. Is the page being served over HTTP rather than `file://`?
 4. Did the frontend load MathJax successfully?
+
+### Problem: Images do not render in the reader
+
+Check:
+
+1. Is the note using Markdown image syntax `![alt](path "caption")`?
+2. If it is a local asset, is the file available under the repo-served `assets/` folder or another HTTP-served relative path?
+3. Is the image URL relative to the rendered page rather than a Windows absolute path?
+4. Is the prototype being served over HTTP rather than `file://`?
+5. Did `physics_note_details.json` get re-exported after the note edit?
 
 ### Problem: Full-page reader mode looks broken
 

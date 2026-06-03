@@ -1028,60 +1028,64 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
         <button class="ghost-button" type="button" data-note-view-mode="preview">返回預覽</button>
       </div>
 
-      <article class="reader-article">
-        <header class="reader-header">
-          <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
-          <h1>${escapeHtml(node.title)}</h1>
-          <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
-          <div class="reader-meta-grid">
-            ${detailMetaBox("領域", node.domain || "未分類")}
-            ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-            ${detailMetaBox("連結數", String(node.degree))}
-            ${detailMetaBox("來源路徑", resolvedPath)}
-          </div>
-        </header>
-
-        <div class="reader-body-shell ${outline ? "has-outline" : ""}">
-          ${
-            outline
-              ? `
-          <aside class="reader-outline-panel">
-            <div class="reader-outline-header">
-              <p class="detail-kicker">文章目錄</p>
-              <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
-            </div>
-            <div class="reader-outline-list">${outline}</div>
-          </aside>
-          `
-              : ""
-          }
-
-          <section class="reader-content">
+        <article class="reader-article">
+          <div class="reader-layout ${outline ? "has-outline" : ""}">
             ${
-              articleSections ||
-              `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+              outline
+                ? `
+            <aside class="reader-outline-panel">
+              <div class="reader-outline-header">
+                <p class="detail-kicker">文章目錄</p>
+                <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
+              </div>
+              <div class="reader-outline-list">${outline}</div>
+            </aside>
+            `
+                : ""
             }
-          </section>
-        </div>
 
-        <footer class="reader-footer-grid">
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">標籤</p>
-            <div class="detail-tags">${renderPills(node.tags)}</div>
-          </section>
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">指向其他節點</p>
-            ${renderRelationGroups(outgoingGroups)}
-          </section>
-          <section class="reader-footer-panel">
-            <p class="detail-kicker">哪些節點連到這裡</p>
-            ${renderRelationGroups(incomingGroups)}
-          </section>
-        </footer>
-      </article>
-    </div>
-  `;
-}
+            <div class="reader-main">
+              <header class="reader-header">
+                <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+                <h1>${escapeHtml(node.title)}</h1>
+                <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
+                <div class="reader-meta-grid">
+                  ${detailMetaBox("領域", node.domain || "未分類")}
+                  ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
+                  ${detailMetaBox("連結數", String(node.degree))}
+                  ${detailMetaBox("來源路徑", resolvedPath)}
+                </div>
+              </header>
+
+              <div class="reader-body-shell">
+                <section class="reader-content">
+                  ${
+                    articleSections ||
+                    `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+                  }
+                </section>
+              </div>
+
+              <footer class="reader-footer-grid">
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">標籤</p>
+                  <div class="detail-tags">${renderPills(node.tags)}</div>
+                </section>
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">指向其他節點</p>
+                  ${renderRelationGroups(outgoingGroups)}
+                </section>
+                <section class="reader-footer-panel">
+                  <p class="detail-kicker">哪些節點連到這裡</p>
+                  ${renderRelationGroups(incomingGroups)}
+                </section>
+              </footer>
+            </div>
+          </div>
+        </article>
+      </div>
+    `;
+  }
 
 function renderNotePreview(node, detail) {
   if (!detail) {

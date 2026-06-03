@@ -79,6 +79,46 @@ Current work is therefore less about obvious missing cornerstone pages and more 
 - adding targeted reverse links from older core pages into the new bridge pages
 - increasing density in waves, optics, and thermodynamics where the skeleton now exists but many notes are still shorter than the mechanics and electromagnetism core
 
+## Agent Handoff: Pending Modifications
+
+This is the practical pending-work list for the next agent. It is not a wishlist; it is the short list of things that are still genuinely unfinished or visibly rough.
+
+### Frontend
+
+- fix the remaining mojibake / broken static UI copy in `prototype/index.html`
+  - current damage is visible in the HTML title, brand text, top navigation, sidebar headings, graph toolbar copy, legend labels, and detail-panel empty state
+  - `prototype/app.js` already contains a lot of correct dynamic Chinese copy, so the next pass should start with static HTML strings first
+- unify product copy across `prototype/index.html` and `prototype/app.js`
+  - mode labels, graph hints, panel headings, and reader labels still need one consistent tone
+- keep refining full-page reader mode
+  - current direction is correct: left-side table of contents and right-side article body
+  - likely next work: reduce topbar weight in reader mode, improve current-section highlighting, and tighten article width / whitespace balance
+- improve left sidebar information architecture
+  - make it read more like navigation than a filter stack
+  - recommended order: search -> mode -> domains -> types -> dataset summary
+- continue graph typography cleanup
+  - node title wrapping rules still need care for long Chinese titles
+  - graph toolbar hierarchy should read like a tool area, not like a second page hero
+
+### Content / Vault
+
+- continue deepening note bodies instead of adding many new pages
+  - best targets remain waves, optics, and thermodynamics where the scaffold exists but density is uneven
+- continue adding reverse links from older core pages into newer bridge / method pages
+  - the bridge pages exist; the backlink coverage is still not systematic
+- keep `物理直覺` and `歷史背景` non-template
+  - recent batches intentionally moved away from boilerplate language
+  - future edits should preserve that standard instead of reverting to generic textbook filler
+
+### Structure Cleanup Still Not Finished
+
+- `雙狹縫實驗` has already been normalized to include both `## 物理直覺` and `## 歷史背景`
+- there are still `18` notes with non-standard section structure, concentrated in:
+  - `00_maps/`
+  - `04_experiments/`
+- those pages were not batch-fixed because repeated external-vault write attempts were blocked by safety review
+- if future work resumes there, use a cautious per-note workflow and rerun export + validation after small batches
+
 ## Export Id Policy
 
 The export layer now keeps note ids in their canonical mixed-case form instead of forcing everything to lowercase slugs.

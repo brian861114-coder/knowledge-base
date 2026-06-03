@@ -1,37 +1,45 @@
 # AI Handoff
 
-This file is for the next AI agent that takes over the project.
+This file is for the next agent continuing work on this repository.
 
 ## What This Project Is
 
 This workspace builds a physics knowledge-base system around an Obsidian vault.
 
-There are two distinct locations:
+There are two distinct locations on this machine:
 
 - Workspace repo:
-  `C:\Users\brian\Downloads\vibe_coding\knowledge database`
-- Obsidian vault output:
-  `C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database`
+  `C:\Users\brian\Downloads\vibe_coding\knowledge_map`
+- Obsidian vault content:
+  `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
 
 Do not confuse them.
 
-- Code, docs, prototype, exports, and skill files stay in the repo.
-- Generated Obsidian markdown pages go to the vault path.
+- Code, docs, prototype, exports, and local config stay in the repo.
+- Physics Markdown note content lives in the vault.
 
 ## Current State
 
 The project already has:
 
 - A structured physics encyclopedia schema
-- A demo agent skill for Obsidian generation/export
-- A working frontend prototype
-- First batch and second batch note generation scripts
+- Seed, second-batch, and third-batch generation scripts
+- Enrichment scripts for concept pages and remaining page types
 - Exported graph JSON and note detail JSON
+- A working frontend prototype with reader mode and math rendering
 
-The frontend prototype currently reads:
+The frontend currently reads:
 
 - `physics_graph.json`
 - `physics_note_details.json`
+
+Export ids now preserve canonical mixed-case note names such as:
+
+- `RC電路`
+- `RL電路`
+- `RLC電路`
+
+Do not assume exported ids are always lowercase slugs anymore.
 
 ## Current Page Types
 
@@ -48,84 +56,58 @@ Treat these as stable unless the user explicitly wants schema changes.
 
 Key prototype behaviors already implemented:
 
-- Domain overview
-- Domain focus mode
-- Ring-based focused layout
-- Node collision avoidance
-- Zoom and pan
-- Back-to-overview control
-- Scrollable right-hand detail panel
-- Obsidian note preview in the detail panel
+- Graph exploration
+- Side-panel note preview
+- Full-page reader mode
 - Section table of contents with jump navigation
+- Clickable internal note links
+- MathJax support for `$...$` and `$$...$$`
 
-Do not accidentally regress these.
-
-## Current Note Batches
-
-### First batch
-
-- 8 map pages
-- Initial mechanics, math, thermodynamics, electromagnetism, optics, and fluid entries
-
-### Second batch
-
-Focused on:
-
-- Mechanics
-- Mathematical tools
-- Electromagnetism
-
-Added items such as:
-
-- `牛頓第一定律`
-- `牛頓第三定律`
-- `機械能守恆`
-- `自由體圖`
-- `重力`
-- `摩擦力`
-- `速度`
-- `高斯定律`
-- `電位`
-- `電通量`
-- `內積`
-- `外積`
-- `偏導數`
-- `梯度`
+Do not regress these accidentally.
 
 ## How To Continue Safely
 
 ### When generating more content
 
 1. Keep the existing frontmatter shape.
-2. Keep fixed section headings by page type.
-3. Prefer adding new notes over rewriting working notes unless the user asks.
-4. Update related `map` pages when a new cluster becomes important.
+2. Keep stable section headings by page type.
+3. Prefer adding or enriching notes over disruptive rewrites unless the user asks.
+4. Re-export JSON after vault content changes.
 
 ### When updating the frontend
 
-1. Refresh JSON exports after vault content changes.
-2. Keep HTTP serving; do not rely on local file loading.
-3. Verify focused-domain views still avoid overlap.
-4. Verify the right-hand panel still renders note previews and jump links.
+1. Keep HTTP serving; do not rely on local file loading.
+2. Verify graph exploration still loads.
+3. Verify side-panel preview still works.
+4. Verify full-page reader mode still renders equations and internal links correctly.
 
 ### When touching exports
 
-The exporter relation mapping is important. If you change frontmatter fields, also update:
+If frontmatter fields change, update both:
 
 - `obsidian-knowledge-map-demo/scripts/export_graph.py`
-- any note-generation scripts that populate those fields
+- the generation or enrichment scripts that populate those fields
+
+If id-generation rules change, update all three:
+
+- `tools/export_note_details.py`
+- `obsidian-knowledge-map-demo/scripts/export_graph.py`
+- `tools/validate_knowledge_base.py`
+
+The current strategy is:
+
+- exported ids keep the original note stem casing
+- relation and wikilink resolution still normalize targets for tolerant matching
+- the frontend has a small compatibility fallback while old and new exports coexist
 
 ## Recommended Next Step
 
-The most valuable next move is not micro-polish on the frontend.
+The highest-value next step is still content depth and reverse-link density, not ornamental UI work:
 
-It is to generate the third batch of notes:
-
-- 力學: `萬有引力定律`, `位能`, `保守力`
-- 電磁學: `等位面`, `平行板電容器`, `電場能量`
-- 波動: `簡諧運動`, `駐波`, `共振`
-
-That will improve the graph more than another round of UI tweaks.
+1. Increase coverage in underdeveloped physics areas.
+2. Add more worked examples and derivations.
+3. Add targeted reverse links from older core pages into the newer bridge pages.
+4. Add stronger validation for broken links and malformed math.
 
 ## Quick Commands
 
@@ -140,16 +122,16 @@ Export graph:
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\obsidian-knowledge-map-demo\scripts\export_graph.py' `
-  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_graph.json'
 ```
 
-Export detail previews:
+Export note details:
 
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\tools\export_note_details.py' `
-  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database' `
   --out '.\physics_note_details.json'
 ```
 
@@ -158,12 +140,19 @@ Generate second batch again:
 ```powershell
 & 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\tools\generate_physics_second_batch.py' `
-  --vault 'C:\Users\brian\OneDrive\文件\Obsidian Vault\Project\knowledge database'
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database'
+```
+
+Generate third batch again:
+
+```powershell
+& 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\tools\generate_physics_third_batch.py' `
+  --vault 'C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database'
 ```
 
 ## Final Warning
 
-This project only works cleanly because the structure is currently disciplined.
+This project works because the note structure is disciplined.
 
-If a future agent starts free-writing notes without respecting the schema, the graph quality will collapse fast.
-
+If a future agent ignores the schema and starts free-writing notes, export quality and graph quality will degrade quickly.

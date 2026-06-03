@@ -614,7 +614,7 @@
       ]
     },
     {
-      "id": "rc電路",
+      "id": "RC電路",
       "title": "RC電路",
       "type": "concept",
       "summary": "RC電路由電阻與電容器組成，用來描述充放電、時間常數與交流濾波等典型現象。",
@@ -627,10 +627,10 @@
       ]
     },
     {
-      "id": "rlc電路",
+      "id": "RLC電路",
       "title": "RLC電路",
       "type": "concept",
-      "summary": "RLC電路同時包含電阻、電感與電容器，是研究交流頻率響應與共振現象的標準模型。",
+      "summary": "RLC電路同時包含電阻、電感與電容器，是交流共振、阻尼與頻率選擇現象的標準模型。",
       "path": "02_concepts/RLC電路.md",
       "domain": "電磁學",
       "tags": [
@@ -640,7 +640,7 @@
       ]
     },
     {
-      "id": "rl電路",
+      "id": "RL電路",
       "title": "RL電路",
       "type": "concept",
       "summary": "RL電路由電阻與電感組成，其暫態行為由自感效應主導，是理解電流建立與衰減的重要模型。",
@@ -995,6 +995,19 @@
       "tags": [
         "physics",
         "熱學與熱力學"
+      ]
+    },
+    {
+      "id": "單縫繞射",
+      "title": "單縫繞射",
+      "type": "concept",
+      "summary": "單縫繞射描述光通過有限寬度狹縫後形成的擴散與明暗分布，是波動光學的經典模型。",
+      "path": "02_concepts/單縫繞射.md",
+      "domain": "光學",
+      "tags": [
+        "physics",
+        "optics",
+        "concept"
       ]
     },
     {
@@ -1522,6 +1535,32 @@
       ]
     },
     {
+      "id": "熱機",
+      "title": "熱機",
+      "type": "concept",
+      "summary": "熱機把高溫熱源提供的部分熱量轉換為機械功，是熱力學第一、第二定律的經典應用。",
+      "path": "02_concepts/熱機.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "concept"
+      ]
+    },
+    {
+      "id": "熱膨脹",
+      "title": "熱膨脹",
+      "type": "concept",
+      "summary": "熱膨脹描述材料因溫度上升而尺寸增加的現象，是熱學、材料性質與工程應用之間的橋接主題。",
+      "path": "02_concepts/熱膨脹.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "concept"
+      ]
+    },
+    {
       "id": "熵",
       "title": "熵",
       "type": "concept",
@@ -1876,6 +1915,19 @@
       ]
     },
     {
+      "id": "薄膜干涉",
+      "title": "薄膜干涉",
+      "type": "concept",
+      "summary": "薄膜干涉描述光在薄層介質上下表面反射後產生的相位差與干涉現象，是波動光學的重要模型。",
+      "path": "02_concepts/薄膜干涉.md",
+      "domain": "光學",
+      "tags": [
+        "physics",
+        "optics",
+        "concept"
+      ]
+    },
+    {
       "id": "薛丁格方程",
       "title": "薛丁格方程",
       "type": "concept",
@@ -2083,6 +2135,19 @@
       "tags": [
         "physics",
         "mechanics",
+        "concept"
+      ]
+    },
+    {
+      "id": "雙縫干涉",
+      "title": "雙縫干涉",
+      "type": "concept",
+      "summary": "雙縫干涉描述兩個相干波源疊加後形成規律明暗條紋，是波動性最經典的展示之一。",
+      "path": "02_concepts/雙縫干涉.md",
+      "domain": "光學",
+      "tags": [
+        "physics",
+        "optics",
         "concept"
       ]
     },
@@ -2466,6 +2531,32 @@
       ]
     },
     {
+      "id": "折射率",
+      "title": "折射率",
+      "type": "quantity",
+      "summary": "折射率量化光在介質中的傳播速度相對於真空的減慢程度，是幾何光學的核心參數。",
+      "path": "03_quantities/折射率.md",
+      "domain": "光學",
+      "tags": [
+        "physics",
+        "optics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "效率",
+      "title": "效率",
+      "type": "quantity",
+      "summary": "效率量化系統把輸入能量轉成有用輸出的比例，是分析熱機與能量轉換裝置的核心量。",
+      "path": "03_quantities/效率.md",
+      "domain": "熱力學",
+      "tags": [
+        "physics",
+        "thermodynamics",
+        "quantity"
+      ]
+    },
+    {
       "id": "楊氏模數",
       "title": "楊氏模數",
       "type": "quantity",
@@ -2488,6 +2579,32 @@
       "tags": [
         "physics",
         "thermodynamics",
+        "quantity"
+      ]
+    },
+    {
+      "id": "波速",
+      "title": "波速",
+      "type": "quantity",
+      "summary": "波速描述波形在介質或空間中傳播的速度，是波動分析最基本的量之一。",
+      "path": "03_quantities/波速.md",
+      "domain": "振動與波動",
+      "tags": [
+        "physics",
+        "waves",
+        "quantity"
+      ]
+    },
+    {
+      "id": "波長",
+      "title": "波長",
+      "type": "quantity",
+      "summary": "波長是波在空間中一個完整週期對應的長度，是波動結構最直觀的尺度。",
+      "path": "03_quantities/波長.md",
+      "domain": "振動與波動",
+      "tags": [
+        "physics",
+        "waves",
         "quantity"
       ]
     },
@@ -2735,6 +2852,19 @@
       "tags": [
         "physics",
         "electromagnetism",
+        "quantity"
+      ]
+    },
+    {
+      "id": "頻率",
+      "title": "頻率",
+      "type": "quantity",
+      "summary": "頻率表示每秒完成多少次振動或週期，是連接時間尺度與波動尺度的核心量。",
+      "path": "03_quantities/頻率.md",
+      "domain": "振動與波動",
+      "tags": [
+        "physics",
+        "waves",
         "quantity"
       ]
     },
@@ -8699,302 +8829,337 @@
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電阻",
       "type": "requires"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容器",
       "type": "requires"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電位差",
       "type": "requires"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "直流電路",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "交流電",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容抗",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電阻",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電位差",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "歐姆定律",
       "type": "related_to"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電阻",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容器",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "交流電",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容抗",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電阻",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容器",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電位差",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "直流電路",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "交流電",
       "type": "wikilink"
     },
     {
-      "source": "rc電路",
+      "source": "RC電路",
       "target": "電容抗",
       "type": "wikilink"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電阻",
       "type": "requires"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電感",
       "type": "requires"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電容器",
       "type": "requires"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "交流電",
+      "type": "requires"
+    },
+    {
+      "source": "RLC電路",
+      "target": "RL電路",
       "type": "related_to"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
+      "target": "RC電路",
+      "type": "related_to"
+    },
+    {
+      "source": "RLC電路",
+      "target": "變壓器",
+      "type": "related_to"
+    },
+    {
+      "source": "RLC電路",
       "target": "阻抗",
       "type": "related_to"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "感抗",
       "type": "related_to"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電容抗",
       "type": "related_to"
     },
     {
-      "source": "rlc電路",
-      "target": "電阻",
-      "type": "related_to"
-    },
-    {
-      "source": "rlc電路",
-      "target": "電感",
-      "type": "related_to"
-    },
-    {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "歐姆定律",
       "type": "related_to"
     },
     {
-      "source": "rlc電路",
-      "target": "楞次定律",
-      "type": "related_to"
-    },
-    {
-      "source": "rlc電路",
-      "target": "阻抗",
-      "type": "wikilink"
-    },
-    {
-      "source": "rlc電路",
-      "target": "交流電",
-      "type": "wikilink"
-    },
-    {
-      "source": "rlc電路",
-      "target": "阻抗",
-      "type": "wikilink"
-    },
-    {
-      "source": "rlc電路",
-      "target": "感抗",
-      "type": "wikilink"
-    },
-    {
-      "source": "rlc電路",
-      "target": "電容抗",
-      "type": "wikilink"
-    },
-    {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電阻",
       "type": "wikilink"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電感",
       "type": "wikilink"
     },
     {
-      "source": "rlc電路",
+      "source": "RLC電路",
       "target": "電容器",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RLC電路",
+      "target": "電阻",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "電感",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "電容器",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "阻抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "感抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "RL電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC電路",
+      "target": "RC電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "RL電路",
       "target": "電阻",
       "type": "requires"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電感",
       "type": "requires"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電流",
       "type": "requires"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "自感",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "交流電",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "感抗",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電阻",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電感",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電流",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "歐姆定律",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "楞次定律",
       "type": "related_to"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電阻",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電感",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "自感",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "交流電",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "感抗",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電阻",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電感",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "電流",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "自感",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "感抗",
       "type": "wikilink"
     },
     {
-      "source": "rl電路",
+      "source": "RL電路",
       "target": "交流電",
       "type": "wikilink"
     },
@@ -11686,6 +11851,41 @@
     {
       "source": "可逆過程",
       "target": "積分",
+      "type": "wikilink"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "繞射",
+      "type": "requires"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "波長",
+      "type": "requires"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "雙縫干涉",
+      "type": "related_to"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "波長",
+      "type": "related_to"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "繞射",
+      "type": "wikilink"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "單縫繞射",
+      "target": "雙縫干涉",
       "type": "wikilink"
     },
     {
@@ -16019,6 +16219,101 @@
       "type": "wikilink"
     },
     {
+      "source": "熱機",
+      "target": "熱力學第一定律",
+      "type": "requires"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第二定律",
+      "type": "requires"
+    },
+    {
+      "source": "熱機",
+      "target": "卡諾循環",
+      "type": "requires"
+    },
+    {
+      "source": "熱機",
+      "target": "卡諾循環",
+      "type": "related_to"
+    },
+    {
+      "source": "熱機",
+      "target": "效率",
+      "type": "related_to"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第一定律",
+      "type": "related_to"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第二定律",
+      "type": "related_to"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱機",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱機",
+      "target": "效率",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱機",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "溫度",
+      "type": "requires"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "熱",
+      "type": "requires"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "彈性",
+      "type": "related_to"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "溫度",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "熱",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱膨脹",
+      "target": "彈性",
+      "type": "wikilink"
+    },
+    {
       "source": "熵",
       "target": "熱",
       "type": "requires"
@@ -18740,7 +19035,7 @@
     },
     {
       "source": "自感",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "related_to"
     },
     {
@@ -18790,7 +19085,7 @@
     },
     {
       "source": "自感",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "wikilink"
     },
     {
@@ -18820,7 +19115,7 @@
     },
     {
       "source": "自感",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "wikilink"
     },
     {
@@ -19086,6 +19381,66 @@
     {
       "source": "自由體圖",
       "target": "摩擦力",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "干涉",
+      "type": "requires"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "折射率",
+      "type": "requires"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "波長",
+      "type": "requires"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "雙縫干涉",
+      "type": "related_to"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "波長",
+      "type": "related_to"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "折射率",
+      "type": "related_to"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "折射率",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "折射率",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "薄膜干涉",
+      "target": "雙縫干涉",
       "type": "wikilink"
     },
     {
@@ -20681,6 +21036,51 @@
     {
       "source": "陀螺",
       "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "干涉",
+      "type": "requires"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "波長",
+      "type": "requires"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "薄膜干涉",
+      "type": "related_to"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "單縫繞射",
+      "type": "related_to"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "波長",
+      "type": "related_to"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "薄膜干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "雙縫干涉",
+      "target": "單縫繞射",
       "type": "wikilink"
     },
     {
@@ -23270,12 +23670,12 @@
     },
     {
       "source": "感抗",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "related_to"
     },
     {
       "source": "感抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "related_to"
     },
     {
@@ -23290,12 +23690,12 @@
     },
     {
       "source": "感抗",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "wikilink"
     },
     {
       "source": "感抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "wikilink"
     },
     {
@@ -23366,6 +23766,81 @@
     {
       "source": "應變",
       "target": "虎克定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射率",
+      "target": "折射定律",
+      "type": "related_to"
+    },
+    {
+      "source": "折射率",
+      "target": "惠更斯原理",
+      "type": "related_to"
+    },
+    {
+      "source": "折射率",
+      "target": "折射定律",
+      "type": "related_to"
+    },
+    {
+      "source": "折射率",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射率",
+      "target": "折射定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射率",
+      "target": "惠更斯原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射率",
+      "target": "薄膜干涉",
+      "type": "wikilink"
+    },
+    {
+      "source": "效率",
+      "target": "熱機",
+      "type": "related_to"
+    },
+    {
+      "source": "效率",
+      "target": "卡諾循環",
+      "type": "related_to"
+    },
+    {
+      "source": "效率",
+      "target": "熱力學第二定律",
+      "type": "related_to"
+    },
+    {
+      "source": "效率",
+      "target": "熱力學第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "效率",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "效率",
+      "target": "熱機",
+      "type": "wikilink"
+    },
+    {
+      "source": "效率",
+      "target": "卡諾循環",
+      "type": "wikilink"
+    },
+    {
+      "source": "效率",
+      "target": "熱力學第二定律",
       "type": "wikilink"
     },
     {
@@ -23441,6 +23916,76 @@
     {
       "source": "比熱",
       "target": "熱力學第一定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "波速",
+      "target": "機械波",
+      "type": "related_to"
+    },
+    {
+      "source": "波速",
+      "target": "聲波",
+      "type": "related_to"
+    },
+    {
+      "source": "波速",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "波速",
+      "target": "頻率",
+      "type": "wikilink"
+    },
+    {
+      "source": "波速",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "波速",
+      "target": "聲波",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "機械波",
+      "type": "related_to"
+    },
+    {
+      "source": "波長",
+      "target": "聲波",
+      "type": "related_to"
+    },
+    {
+      "source": "波長",
+      "target": "頻率",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "波速",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "波速",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "頻率",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "波長",
+      "target": "聲波",
       "type": "wikilink"
     },
     {
@@ -23890,17 +24435,17 @@
     },
     {
       "source": "阻抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "related_to"
     },
     {
       "source": "阻抗",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "related_to"
     },
     {
       "source": "阻抗",
-      "target": "rc電路",
+      "target": "RC電路",
       "type": "related_to"
     },
     {
@@ -23920,17 +24465,17 @@
     },
     {
       "source": "阻抗",
-      "target": "rl電路",
+      "target": "RL電路",
       "type": "wikilink"
     },
     {
       "source": "阻抗",
-      "target": "rc電路",
+      "target": "RC電路",
       "type": "wikilink"
     },
     {
       "source": "阻抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "wikilink"
     },
     {
@@ -24190,12 +24735,12 @@
     },
     {
       "source": "電容抗",
-      "target": "rc電路",
+      "target": "RC電路",
       "type": "related_to"
     },
     {
       "source": "電容抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "related_to"
     },
     {
@@ -24205,12 +24750,12 @@
     },
     {
       "source": "電容抗",
-      "target": "rc電路",
+      "target": "RC電路",
       "type": "wikilink"
     },
     {
       "source": "電容抗",
-      "target": "rlc電路",
+      "target": "RLC電路",
       "type": "wikilink"
     },
     {
@@ -24506,6 +25051,56 @@
     {
       "source": "電阻",
       "target": "歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "機械波",
+      "type": "related_to"
+    },
+    {
+      "source": "頻率",
+      "target": "聲波",
+      "type": "related_to"
+    },
+    {
+      "source": "頻率",
+      "target": "交流電",
+      "type": "related_to"
+    },
+    {
+      "source": "頻率",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "交流電",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "波速",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "波長",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "聲波",
+      "type": "wikilink"
+    },
+    {
+      "source": "頻率",
+      "target": "交流電",
       "type": "wikilink"
     },
     {

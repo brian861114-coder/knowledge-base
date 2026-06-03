@@ -56,7 +56,7 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
 
 
 def note_id_from_path(path: Path) -> str:
-    return path.stem.strip().lower().replace(" ", "-")
+    return path.stem.strip().replace(" ", "-")
 
 
 def extract_title(frontmatter: dict, body: str, path: Path) -> str:
@@ -76,7 +76,43 @@ def normalize_target(value: str) -> str:
     return value.strip().lower().replace(" ", "-")
 
 
-def extract_frontmatter_edges(node_id: str, frontmatter: dict) -> list[dict]:
+def build_note_index(md_files: list[Path]) -> tuple[list[dict], dict[str, str]]:
+    notes = []
+    alias_to_id: dict[str, str] = {}
+
+    for file_path in md_files:
+        text = file_path.read_text(encoding="utf-8")
+        frontmatter, body = parse_frontmatter(text)
+        note_id = note_id_from_path(file_path)
+        title = extract_title(frontmatter, body, file_path)
+        tags = frontmatter.get("tags", [])
+        if not isinstance(tags, list):
+            tags = []
+
+        notes.append(
+            {
+                "file_path": file_path,
+                "frontmatter": frontmatter,
+                "body": body,
+                "id": note_id,
+                "title": title,
+                "tags": tags,
+            }
+        )
+
+        for alias in {file_path.stem, title, note_id}:
+            normalized = normalize_target(str(alias))
+            alias_to_id.setdefault(normalized, note_id)
+
+    return notes, alias_to_id
+
+
+def resolve_target_id(target: str, alias_to_id: dict[str, str]) -> str:
+    normalized = normalize_target(target)
+    return alias_to_id.get(normalized, normalized)
+
+
+def extract_frontmatter_edges(node_id: str, frontmatter: dict, alias_to_id: dict[str, str]) -> list[dict]:
     edges = []
     for field_name, edge_type in RELATION_FIELDS.items():
         raw = frontmatter.get(field_name, [])
@@ -97,7 +133,7 @@ def extract_frontmatter_edges(node_id: str, frontmatter: dict) -> list[dict]:
             edges.append(
                 {
                     "source": node_id,
-                    "target": normalize_target(target),
+                    "target": resolve_target_id(target, alias_to_id),
                     "type": edge_type,
                 }
             )
@@ -108,16 +144,15 @@ def export_graph(vault: Path) -> dict:
     nodes = []
     edges = []
     md_files = sorted(vault.rglob("*.md"))
+    notes, alias_to_id = build_note_index(md_files)
 
-    for file_path in md_files:
-        text = file_path.read_text(encoding="utf-8")
-        frontmatter, body = parse_frontmatter(text)
-        node_id = note_id_from_path(file_path)
-        title = extract_title(frontmatter, body, file_path)
-        tags = frontmatter.get("tags", [])
-        if not isinstance(tags, list):
-            tags = []
-
+    for note in notes:
+        file_path = note["file_path"]
+        frontmatter = note["frontmatter"]
+        body = note["body"]
+        node_id = note["id"]
+        title = note["title"]
+        tags = note["tags"]
         nodes.append(
             {
                 "id": node_id,
@@ -130,13 +165,13 @@ def export_graph(vault: Path) -> dict:
             }
         )
 
-        edges.extend(extract_frontmatter_edges(node_id, frontmatter))
+        edges.extend(extract_frontmatter_edges(node_id, frontmatter, alias_to_id))
 
         for target in extract_links(body):
             edges.append(
                 {
                     "source": node_id,
-                    "target": normalize_target(target),
+                    "target": resolve_target_id(target, alias_to_id),
                     "type": "wikilink",
                 }
             )

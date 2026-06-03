@@ -165,20 +165,22 @@ def validate_exports(repo: Path, note_ids: set[str], expected_count: int) -> tup
         graph_payload = json.loads(graph_path.read_text(encoding="utf-8"))
 
     detail_ids = set(details_payload.keys())
+    normalized_detail_ids = {normalize_target(note_id) for note_id in detail_ids}
     graph_nodes = graph_payload.get("nodes", [])
     graph_edges = graph_payload.get("edges", [])
     graph_ids = {str(node.get("id", "")) for node in graph_nodes if node.get("id")}
+    normalized_graph_ids = {normalize_target(node_id) for node_id in graph_ids}
 
     if len(detail_ids) != expected_count:
         errors.append(f"note details count mismatch: expected {expected_count}, got {len(detail_ids)}")
     if len(graph_nodes) != expected_count:
         errors.append(f"graph node count mismatch: expected {expected_count}, got {len(graph_nodes)}")
 
-    missing_detail_ids = sorted(note_ids - detail_ids)
+    missing_detail_ids = sorted(note_ids - normalized_detail_ids)
     if missing_detail_ids:
         errors.append(f"note details missing ids: {', '.join(missing_detail_ids[:10])}")
 
-    missing_graph_ids = sorted(note_ids - graph_ids)
+    missing_graph_ids = sorted(note_ids - normalized_graph_ids)
     if missing_graph_ids:
         errors.append(f"graph export missing ids: {', '.join(missing_graph_ids[:10])}")
 
@@ -186,7 +188,7 @@ def validate_exports(repo: Path, note_ids: set[str], expected_count: int) -> tup
         {
             str(edge.get("target", ""))
             for edge in graph_edges
-            if str(edge.get("target", "")) and str(edge.get("target", "")) not in graph_ids
+            if str(edge.get("target", "")) and normalize_target(str(edge.get("target", ""))) not in normalized_graph_ids
         }
     )
     if unknown_edge_targets:

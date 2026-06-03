@@ -31,7 +31,7 @@ The project is no longer just a seed prototype. It currently includes:
   - optics
   - modern physics
   - fluid mechanics
-- `245` notes exported into the frontend dataset
+- `255` notes exported into the frontend dataset
 - a graph export and note-detail export used by the prototype
 - full-page reading mode in the frontend
 - full-note export support, not only previews
@@ -43,8 +43,7 @@ The project is no longer just a seed prototype. It currently includes:
 
 ## Current Incomplete List
 
-The knowledge base is now structurally much stronger, but it is not finished.  
-The highest-value remaining gaps are:
+The previously documented high-priority gaps have now been filled:
 
 - thermodynamics follow-up pages
   - `熱膨脹`
@@ -71,6 +70,31 @@ Areas that now have a usable backbone but may still need density and refinement:
   - now includes `電流`, `電阻`, `電動勢`, `直流電路`, `基爾霍夫` laws, `自感`, `互感`, `阻抗`, `感抗`, `電容抗`, `變壓器`
 - introductory thermodynamics
   - now includes `比熱`, `潛熱`, `理想氣體`, `狀態方程`, `分子運動論`
+- wave and optics bridge layer
+  - now includes `波速`, `波長`, `頻率`, `折射率`, `薄膜干涉`, `單縫繞射`, `雙縫干涉`
+
+Current work is therefore less about obvious missing cornerstone pages and more about:
+
+- deepening existing note bodies
+- adding targeted reverse links from older core pages into the new bridge pages
+- increasing density in waves, optics, and thermodynamics where the skeleton now exists but many notes are still shorter than the mechanics and electromagnetism core
+
+## Export Id Policy
+
+The export layer now keeps note ids in their canonical mixed-case form instead of forcing everything to lowercase slugs.
+
+Examples:
+
+- `RC電路`
+- `RL電路`
+- `RLC電路`
+
+This applies to:
+
+- `physics_note_details.json` keys
+- `physics_graph.json` node ids
+
+Link resolution and validation still use normalized matching internally, so existing `[[wikilink]]` and frontmatter relation targets remain tolerant to case and spacing differences.
 
 Completion standard remains unchanged:
 

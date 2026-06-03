@@ -34,8 +34,8 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
     return data, body
 
 
-def slugify_path(path: Path) -> str:
-    return path.stem.strip().lower().replace(" ", "-")
+def note_id_from_path(path: Path) -> str:
+    return path.stem.strip().replace(" ", "-")
 
 
 def clean_text(value: str) -> str:
@@ -77,9 +77,10 @@ def build_details(vault: Path) -> dict:
     for file_path in sorted(vault.rglob("*.md")):
         text = file_path.read_text(encoding="utf-8")
         frontmatter, body = parse_frontmatter(text)
-        node_id = slugify_path(file_path)
+        node_id = note_id_from_path(file_path)
         cleaned_body = clean_text(body)
         payload[node_id] = {
+            "id": node_id,
             "path": file_path.relative_to(vault).as_posix(),
             "title": frontmatter.get("title", file_path.stem),
             "summary": frontmatter.get("summary", ""),

@@ -120,6 +120,15 @@ init().catch((error) => {
   `;
 });
 
+function getNoteDetail(nodeId) {
+  return (
+    state.noteDetails[nodeId] ||
+    state.noteDetails[String(nodeId).toLowerCase()] ||
+    state.noteDetails[String(nodeId).replaceAll(" ", "-")] ||
+    null
+  );
+}
+
 async function init() {
   const [graphResponse, detailResponse] = await Promise.all([fetch(graphUrl), fetch(noteDetailsUrl)]);
   if (!graphResponse.ok) {
@@ -332,7 +341,20 @@ function syncModeButtons() {
 function buildFilters(graph) {
   state.domainSelection = new Set(graph.domains);
   state.typeSelection = new Set(graph.types);
-  renderChipGroup(els.domainFilters, graph.domains, state.domainSelection, () => {
+  const domainItems = graph.domains.map((domain) => ({
+    value: domain,
+    label: domain,
+    count: graph.noteNodes.filter((node) => (node.domain || "未分類") === domain).length,
+    color: filterSwatchColor("domain", domain),
+  }));
+  const typeItems = graph.types.map((type) => ({
+    value: type,
+    label: typeLabel[type] || type,
+    count: graph.noteNodes.filter((node) => node.type === type).length,
+    color: filterSwatchColor("type", type),
+  }));
+
+  renderSidebarFilterGroup(els.domainFilters, domainItems, state.domainSelection, () => {
     if (state.focusedDomain && !state.domainSelection.has(state.focusedDomain)) {
       state.focusedDomain = null;
       state.viewMode = "overview";
@@ -341,13 +363,7 @@ function buildFilters(graph) {
     buildDomainOverview();
     layoutVisibleGraph(true);
   });
-  renderChipGroup(
-    els.typeFilters,
-    graph.types,
-    state.typeSelection,
-    () => layoutVisibleGraph(true),
-    (value) => typeLabel[value] || value
-  );
+  renderSidebarFilterGroup(els.typeFilters, typeItems, state.typeSelection, () => layoutVisibleGraph(true));
 }
 
 function renderChipGroup(container, values, selection, onChange, labeler = (value) => value) {
@@ -454,6 +470,7 @@ function focusDomain(domain) {
 function layoutVisibleGraph(resetPositions = false) {
   cancelAnimationFrame(state.layoutFrame);
   if (resetPositions) resetViewport();
+  const previousSelectedNodeId = state.selectedNodeId;
 
   const prepared = state.viewMode === "overview" ? prepareOverviewGraph() : prepareDomainGraph();
   state.visibleNodes = prepared.nodes;
@@ -503,6 +520,60 @@ function layoutVisibleGraph(resetPositions = false) {
   applyViewportTransform();
   drawGraph(width, height);
   renderDetail(state.nodeMap.get(state.selectedNodeId) || null);
+  if (state.selectedNodeId !== previousSelectedNodeId) {
+    scrollReadingToTop();
+  }
+}
+
+function renderSidebarFilterGroup(container, items, selection, onChange) {
+  container.innerHTML = "";
+  for (const item of items) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `chip filter-item ${selection.has(item.value) ? "active" : ""}`;
+    button.dataset.value = item.value;
+    button.innerHTML = `
+      <span class="filter-item-main">
+        <span class="filter-dot" style="--filter-dot:${escapeAttribute(item.color)}"></span>
+        <span class="filter-item-label">${escapeHtml(item.label)}</span>
+      </span>
+      <span class="filter-item-count">${escapeHtml(String(item.count))}</span>
+    `;
+    button.addEventListener("click", () => {
+      if (selection.has(item.value) && selection.size > 1) selection.delete(item.value);
+      else if (!selection.has(item.value)) selection.add(item.value);
+      button.classList.toggle("active", selection.has(item.value));
+      onChange();
+    });
+    container.appendChild(button);
+  }
+}
+
+function filterSwatchColor(kind, value) {
+  if (kind === "type") {
+    const typePalette = {
+      map: "var(--type-map)",
+      law: "var(--type-law)",
+      concept: "var(--type-concept)",
+      quantity: "var(--type-quantity)",
+      mathematical_tool: "var(--type-mathematical_tool)",
+      domain: "var(--accent)",
+    };
+    return typePalette[value] || "var(--accent)";
+  }
+
+  const domainPalette = {
+    力學: "#315f98",
+    電磁學: "#3c8b8f",
+    熱學與熱力學: "#b75e31",
+    振動與波動: "#8c5ea9",
+    光學: "#77905a",
+    近代物理: "#6d7b93",
+    流體力學: "#4f8fa8",
+    數學工具: "#9b6b35",
+    未分類: "#a1a6b1",
+  };
+  return domainPalette[value] || "#7b8797";
 }
 
 function buildDomainAnchors(width, height, nodes) {
@@ -868,7 +939,7 @@ function renderDetail(node) {
     return;
   }
 
-  const noteDetail = state.noteDetails[node.id] || null;
+  const noteDetail = getNoteDetail(node.id);
   const outgoing = state.graph.edges.filter((edge) => edge.source === node.id && primaryEdgeTypes.has(edge.type));
   const incoming = (state.incomingMap.get(node.id) || []).filter((edge) => primaryEdgeTypes.has(edge.type));
   const outgoingGroups = groupRelations(outgoing, "target");
@@ -927,7 +998,8 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
           type="button"
           data-section-target="${escapeHtml(buildSectionTargetId(node.id, index))}"
         >
-          ${escapeHtml(section.title)}
+          <span class="reader-outline-index">${index + 1}</span>
+          <span class="reader-outline-title">${escapeHtml(section.title)}</span>
         </button>
       `
     )
@@ -969,23 +1041,28 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
           </div>
         </header>
 
-        ${
-          outline
-            ? `
-        <section class="reader-outline-panel">
-          <p class="detail-kicker">文章大綱</p>
-          <div class="reader-outline-list">${outline}</div>
-        </section>
-        `
-            : ""
-        }
-
-        <section class="reader-content">
+        <div class="reader-body-shell ${outline ? "has-outline" : ""}">
           ${
-            articleSections ||
-            `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+            outline
+              ? `
+          <aside class="reader-outline-panel">
+            <div class="reader-outline-header">
+              <p class="detail-kicker">文章目錄</p>
+              <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
+            </div>
+            <div class="reader-outline-list">${outline}</div>
+          </aside>
+          `
+              : ""
           }
-        </section>
+
+          <section class="reader-content">
+            ${
+              articleSections ||
+              `<div class="reader-prose">${renderProse(fallbackBody)}</div>`
+            }
+          </section>
+        </div>
 
         <footer class="reader-footer-grid">
           <section class="reader-footer-panel">
@@ -1026,7 +1103,8 @@ function renderNotePreview(node, detail) {
           type="button"
           data-section-target="${escapeHtml(buildSectionTargetId(node.id, index))}"
         >
-          ${escapeHtml(section.title)}
+          <span class="reader-outline-index">${index + 1}</span>
+          <span class="reader-outline-title">${escapeHtml(section.title)}</span>
         </button>
       `
     )
@@ -1064,18 +1142,23 @@ function renderNotePreview(node, detail) {
     ${
       outline
         ? `
-    <section class="detail-section">
-      <h3>文章大綱</h3>
+    <section class="detail-section preview-outline-panel">
+      <div class="detail-section-heading">
+        <h3>文章目錄</h3>
+        <p class="detail-section-caption">點選章節直接跳到對應段落。</p>
+      </div>
       <div class="detail-outline">${outline}</div>
     </section>`
         : ""
     }
-    <section class="detail-section">
+    <section class="detail-section preview-sections-panel">
       <h3>${isFullMode ? "章節全文" : "章節預覽"}</h3>
-      ${
-        sectionCards ||
-        `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
-      }
+      <div class="preview-sections-grid">
+        ${
+          sectionCards ||
+          `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
+        }
+      </div>
     </section>
   `;
 }
@@ -1116,7 +1199,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const sectionJumpButton = event.target.closest(".section-jump-button");
+  const sectionJumpButton = event.target.closest(".section-jump-button, .reader-outline-button");
   if (sectionJumpButton) {
     const target = document.getElementById(sectionJumpButton.dataset.sectionTarget || "");
     if (target) {
@@ -1138,6 +1221,7 @@ document.addEventListener("click", (event) => {
   if (state.viewMode === "overview" && node.domain) focusDomain(node.domain);
   state.selectedNodeId = node.id;
   renderDetail(node);
+  scrollReadingToTop();
   updateNodeStates();
   drawGraph();
 });
@@ -1632,6 +1716,16 @@ function scheduleMathTypeset(container) {
   window.setTimeout(() => scheduleMathTypeset(container), 120);
 }
 
+function scrollReadingToTop() {
+  window.requestAnimationFrame(() => {
+    els.detailCard?.scrollTo({ top: 0, behavior: "auto" });
+    els.detailPanel?.scrollTo?.({ top: 0, behavior: "auto" });
+    if (state.noteViewMode === "full") {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  });
+}
+
 function syncReadingLayout(isReaderMode) {
   els.workspace?.classList.toggle("reader-mode", isReaderMode);
   els.graphPanel?.classList.toggle("reader-hidden", isReaderMode);
@@ -1963,6 +2057,7 @@ function ensureNodeElements(visibleNodes) {
         state.selectedNodeId = liveNode.id;
         drawGraph();
         renderDetail(liveNode);
+        scrollReadingToTop();
         updateNodeStates();
       });
       element.addEventListener("pointerdown", (event) => {
@@ -1989,24 +2084,24 @@ function ensureNodeElements(visibleNodes) {
 }
 
 function renderNodeContent(node) {
-  if (node.kind === "domain") {
+  const isMedallion = node.kind === "domain" || node.focal || node.overviewHub || node.type === "map";
+
+  if (isMedallion) {
     return `
-      <div class="node-badge">
-        <span class="swatch type-map"></span>
-        <span>${escapeHtml(typeLabel.domain)}</span>
+      <div class="node-shell node-shell-medallion">
+        <div class="node-core">
+          <div class="node-core-title">${escapeHtml(node.title)}</div>
+        </div>
       </div>
-      <div class="node-title">${escapeHtml(node.title)}</div>
-      <div class="node-meta">${node.memberCount} 個節點</div>
     `;
   }
 
   return `
-    <div class="node-badge">
-      <span class="swatch type-${escapeHtml(node.type)}"></span>
-      <span>${escapeHtml(typeLabel[node.type] || node.type)}</span>
+    <div class="node-shell node-shell-badge">
+      <div class="node-core">
+        <div class="node-title">${escapeHtml(node.title)}</div>
+      </div>
     </div>
-    <div class="node-title">${escapeHtml(node.title)}</div>
-    <div class="node-meta">${escapeHtml(describeNodeMeta(node))}</div>
   `;
 }
 

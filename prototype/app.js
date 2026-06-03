@@ -74,6 +74,7 @@ const els = {
   backToOverviewToolbarButton: document.getElementById("backToOverviewToolbarButton"),
   resetViewButton: document.getElementById("resetViewButton"),
   graphHint: document.getElementById("graphHint"),
+  topnavButtons: document.querySelectorAll(".topnav-item"),
 };
 
 const typeLabel = {
@@ -455,6 +456,34 @@ function bindEvents() {
   });
 
   window.addEventListener("resize", () => layoutVisibleGraph());
+
+  // Topnav view switching
+  for (const btn of els.topnavButtons) {
+    btn.addEventListener("click", () => {
+      const view = btn.dataset.view;
+      for (const other of els.topnavButtons) other.classList.remove("is-active");
+      btn.classList.add("is-active");
+
+      if (view === "search") {
+        els.searchInput.focus();
+        els.searchInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else if (view === "notes") {
+        renderNotesListView();
+      } else if (view === "settings") {
+        renderSettingsView();
+      } else if (view === "graph") {
+        // Return to graph view
+        state.selectedNodeId = null;
+        state.focusedDomain = null;
+        state.viewMode = "overview";
+        syncModeButtons();
+        buildDomainOverview();
+        resetViewport();
+        layoutVisibleGraph(true);
+        renderDetail(null);
+      }
+    });
+  }
 }
 
 function focusDomain(domain) {
@@ -1226,6 +1255,86 @@ function renderRelationGroups(groups) {
         </div>`
     )
     .join("");
+}
+
+function renderNotesListView() {
+  if (!state.graph) return;
+  const notes = [...state.graph.noteNodes].sort((a, b) =>
+    (a.domain || "").localeCompare(b.domain || "") || a.title.localeCompare(b.title, "zh-Hant")
+  );
+
+  const grouped = {};
+  for (const note of notes) {
+    const domain = note.domain || "未分類";
+    if (!grouped[domain]) grouped[domain] = [];
+    grouped[domain].push(note);
+  }
+
+  let html = `<p class="detail-kicker">筆記瀏覽</p>
+    <h2>全部筆記（${notes.length}）</h2>
+    <p class="detail-summary">依領域分組，點選筆記可切換到圖譜檢視並聚焦該節點。</p>
+    <div class="detail-grid">`;
+
+  for (const [domain, domainNotes] of Object.entries(grouped)) {
+    html += `<section class="detail-section">
+      <h3>${escapeHtml(domain)}（${domainNotes.length}）</h3>
+      <div class="detail-tags">${renderPills(domainNotes.map((n) => n.title))}</div>
+    </section>`;
+  }
+
+  html += `</div>`;
+
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = html;
+
+  // Wire up pills to switch back to graph view and focus the node
+  for (const pill of els.detailCard.querySelectorAll(".pill")) {
+    pill.style.cursor = "pointer";
+    pill.addEventListener("click", () => {
+      const node = state.graph.noteNodes.find((n) => n.title === pill.textContent);
+      if (!node) return;
+      // Switch topnav back to graph
+      for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+      const graphBtn = document.querySelector('[data-view="graph"]');
+      if (graphBtn) graphBtn.classList.add("is-active");
+
+      state.selectedNodeId = node.id;
+      renderDetail(node);
+      layoutVisibleGraph(true);
+    });
+  }
+}
+
+function renderSettingsView() {
+  const noteCount = state.graph?.noteNodes.length || 0;
+  const edgeCount = state.graph?.edges.length || 0;
+  const domainCount = state.graph?.domains.length || 0;
+
+  els.detailCard.className = "detail-card";
+  els.detailCard.innerHTML = `
+    <p class="detail-kicker">設定</p>
+    <h2>物理學知識圖譜</h2>
+    <p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>
+    <div class="detail-meta">
+      ${detailMetaBox("筆記數", String(noteCount))}
+      ${detailMetaBox("關係數", String(edgeCount))}
+      ${detailMetaBox("領域數", String(domainCount))}
+      ${detailMetaBox("版本", "prototype")}
+    </div>
+    <div class="detail-grid">
+      <section class="detail-section">
+        <h3>關於</h3>
+        <div class="detail-summary rich-summary">
+          <p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>
+          <p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h3>技術</h3>
+        <div class="detail-tags">${renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"])}</div>
+      </section>
+    </div>
+  `;
 }
 
 document.addEventListener("click", (event) => {

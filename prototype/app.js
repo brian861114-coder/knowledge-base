@@ -897,6 +897,11 @@ function renderDetail(node) {
   const isReaderMode = Boolean(node && node.kind !== "domain" && state.noteViewMode === "full");
   syncReadingLayout(isReaderMode);
 
+  if (!isReaderMode && activeSectionObserver) {
+    activeSectionObserver.disconnect();
+    activeSectionObserver = null;
+  }
+
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
@@ -955,6 +960,7 @@ function renderDetail(node) {
     els.detailCard.className = "detail-card reader";
     els.detailCard.innerHTML = renderReaderMode(node, noteDetail, resolvedSummary, resolvedPath, outgoingGroups, incomingGroups);
     scheduleMathTypeset(els.detailCard);
+    setupSectionObserver(node.id);
     return;
   }
 
@@ -1169,6 +1175,36 @@ function renderNotePreview(node, detail) {
 
 function buildSectionTargetId(nodeId, index) {
   return `section-${nodeId}-${index}`.replaceAll(" ", "-");
+}
+
+let activeSectionObserver = null;
+
+function setupSectionObserver(nodeId) {
+  if (activeSectionObserver) {
+    activeSectionObserver.disconnect();
+    activeSectionObserver = null;
+  }
+
+  const sections = els.detailCard.querySelectorAll(".reader-section-block");
+  const buttons = els.detailCard.querySelectorAll(".reader-outline-button");
+  if (!sections.length || !buttons.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const targetId = entry.target.id;
+          for (const btn of buttons) {
+            btn.classList.toggle("is-active", btn.dataset.sectionTarget === targetId);
+          }
+        }
+      }
+    },
+    { rootMargin: "-10% 0px -60% 0px", threshold: 0 }
+  );
+
+  for (const section of sections) observer.observe(section);
+  activeSectionObserver = observer;
 }
 
 function renderRelationGroups(groups) {

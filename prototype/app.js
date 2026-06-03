@@ -1452,8 +1452,9 @@ document.addEventListener("click", (event) => {
     focusDomain(node.domain);
     return;
   }
-  if (state.viewMode === "overview" && node.domain) focusDomain(node.domain);
+  // Set selectedNodeId BEFORE focusDomain so layoutVisibleGraph doesn't reset it
   state.selectedNodeId = node.id;
+  if (node.domain) focusDomain(node.domain);
   renderDetail(node);
   scrollReadingToTop();
   updateNodeStates();

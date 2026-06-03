@@ -1036,6 +1036,15 @@ body:has(.workspace-shell.reader-mode) .brand p {
   flex-wrap: wrap;
 }
 
+.note-pill {
+  cursor: pointer;
+}
+
+.note-pill:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .detail-outline,
 .reader-outline-list {
   grid-template-columns: 1fr;

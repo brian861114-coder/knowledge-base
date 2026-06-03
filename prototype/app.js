@@ -1303,7 +1303,9 @@ function renderNotesListView() {
   for (const [domain, domainNotes] of Object.entries(grouped)) {
     html += `<section class="detail-section">
       <h3>${escapeHtml(domain)}（${domainNotes.length}）</h3>
-      <div class="detail-tags">${renderPills(domainNotes.map((n) => n.title))}</div>
+      <div class="detail-tags">${domainNotes.map(
+        (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
+      ).join("")}</div>
     </section>`;
   }
 
@@ -1313,10 +1315,10 @@ function renderNotesListView() {
   els.detailCard.innerHTML = html;
 
   // Wire up pills to switch back to graph view and focus the node
-  for (const pill of els.detailCard.querySelectorAll(".pill")) {
-    pill.style.cursor = "pointer";
+  for (const pill of els.detailCard.querySelectorAll(".note-pill")) {
     pill.addEventListener("click", () => {
-      const node = state.graph.noteNodes.find((n) => n.title === pill.textContent);
+      const nodeId = pill.dataset.nodeId;
+      const node = state.nodeMap.get(nodeId);
       if (!node) return;
       // Switch topnav back to graph
       for (const btn of els.topnavButtons) btn.classList.remove("is-active");

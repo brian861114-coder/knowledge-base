@@ -534,7 +534,14 @@ function layoutVisibleGraph(resetPositions = false) {
   updateFocusBanner();
 
   if (!prepared.nodes.some((node) => node.id === state.selectedNodeId)) {
-    state.selectedNodeId = prepared.nodes[0]?.id ?? null;
+    // Only reset if selectedNodeId is truly not in the visible set
+    // Check if it's a note node that exists but isn't rendered yet
+    const existingNode = state.nodeMap.get(state.selectedNodeId);
+    if (existingNode && existingNode.kind !== "domain") {
+      // Keep the selected note node even if not in visible set
+    } else {
+      state.selectedNodeId = prepared.nodes[0]?.id ?? null;
+    }
   }
 
   ensureNodeElements(prepared.nodes);

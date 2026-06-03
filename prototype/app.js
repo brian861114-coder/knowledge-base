@@ -1312,26 +1312,6 @@ function renderNotesListView() {
 
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = html;
-
-  // Wire up pills to switch back to graph view and focus the node
-  for (const pill of els.detailCard.querySelectorAll(".note-pill")) {
-    pill.addEventListener("click", () => {
-      const nodeId = pill.dataset.nodeId;
-      const node = state.nodeMap.get(nodeId);
-      if (!node) return;
-      // Switch topnav back to graph
-      for (const btn of els.topnavButtons) btn.classList.remove("is-active");
-      const graphBtn = document.querySelector('[data-view="graph"]');
-      if (graphBtn) graphBtn.classList.add("is-active");
-
-      // Focus the domain first so the node becomes visible in the graph
-      if (node.domain) focusDomain(node.domain);
-      state.selectedNodeId = node.id;
-      renderDetail(node);
-      updateNodeStates();
-      drawGraph();
-    });
-  }
 }
 
 function renderSettingsView() {
@@ -1456,12 +1436,18 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const pill = event.target.closest(".relation-pill");
+  const pill = event.target.closest(".relation-pill, .note-pill");
   const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
   const targetButton = pill || inlineLink;
   if (!targetButton) return;
   const node = state.nodeMap.get(targetButton.dataset.nodeId);
   if (!node) return;
+  // Switch topnav to graph when clicking from notes/search view
+  if (targetButton.classList.contains("note-pill")) {
+    for (const btn of els.topnavButtons) btn.classList.remove("is-active");
+    const graphBtn = document.querySelector('[data-view="graph"]');
+    if (graphBtn) graphBtn.classList.add("is-active");
+  }
   if (node.kind === "domain") {
     focusDomain(node.domain);
     return;

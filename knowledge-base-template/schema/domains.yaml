@@ -1,0 +1,40 @@
+# 領域定義
+# 定義知識庫的領域分類
+# 每個 domain 對應一個知識領域
+
+domains:
+  - id: mechanics
+    label: 力學
+    description: "從運動、力、能量與動量開始，是整張地圖的骨架。"
+
+  - id: vibrations_and_waves
+    label: 振動與波動
+    description: "把粒子運動延伸成週期振盪與波的傳播。"
+
+  - id: thermodynamics
+    label: 熱學與熱力學
+    description: "聚焦巨觀系統中的熱、內能、熵與循環。"
+
+  - id: electromagnetism
+    label: 電磁學
+    description: "從電荷與電場出發，擴展到磁、感應與電磁波。"
+
+  - id: optics
+    label: 光學
+    description: "在幾何光學與波動光學之間切換視角。"
+
+  - id: modern_physics
+    label: 近代物理
+    description: "經典理論失效後，往相對論與量子入門展開。"
+
+  - id: fluid_mechanics
+    label: 流體力學
+    description: "將力學延伸到液體與氣體的連續介質。"
+
+  - id: mathematical_tools
+    label: 數學工具
+    description: "不是完整數學百科，而是解釋數學在物理裡拿來做什麼。"
+
+  - id: uncategorized
+    label: 未分類
+    description: "尚未歸入正式領域的節點或過渡內容。"

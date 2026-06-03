@@ -1,0 +1,9 @@
+{
+  "vault_path": "C:\\Users\\brian\\Downloads\\MyVault\\knowledge-base",
+  "python_path": "python",
+  "prototype_host": "127.0.0.1",
+  "prototype_port": 4173,
+  "export_prefix": "",
+  "note_details_filename": "note_details.json",
+  "graph_filename": "graph.json"
+}

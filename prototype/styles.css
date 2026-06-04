@@ -420,6 +420,24 @@ body:has(.workspace-shell.reader-mode) .brand p {
   box-shadow: 0 8px 18px rgba(31, 27, 22, 0.06);
 }
 
+.filter-mode-toggle {
+  padding: 4px 10px;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: rgba(47, 100, 163, 0.06);
+  border-color: rgba(47, 100, 163, 0.18);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.filter-mode-toggle:hover {
+  background: rgba(47, 100, 163, 0.12);
+  border-color: rgba(47, 100, 163, 0.3);
+}
+
 .focus-banner {
   display: flex;
   align-items: center;

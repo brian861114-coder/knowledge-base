@@ -30,6 +30,7 @@ const state = {
   visibleEdges: [],
   domainSelection: new Set(),
   typeSelection: new Set(),
+  filterMode: "taxonomy",
   viewMode: "overview",
   focusedDomain: null,
   searchTerm: "",
@@ -59,6 +60,8 @@ const els = {
   viewModeButtons: document.getElementById("viewModeButtons"),
   focusBanner: document.getElementById("focusBanner"),
   domainFilters: document.getElementById("domainFilters"),
+  filterModeToggle: document.getElementById("filterModeToggle"),
+  domainSectionTitle: document.getElementById("domainSectionTitle"),
   typeFilters: document.getElementById("typeFilters"),
   domainOverview: document.getElementById("domainOverview"),
   graphFrame: document.getElementById("graphFrame"),
@@ -112,6 +115,48 @@ const domainDescriptions = {
   未分類: "尚未歸入正式領域的節點或過渡內容。",
 };
 
+const taxonomyLabels = {
+  mechanics: "力學",
+  electromagnetism: "電磁學",
+  waves_optics: "波動與光學",
+  foundations: "基礎總論",
+  thermo_fluids: "熱學與流體",
+  modern_physics: "近代物理",
+  analytical_dynamics: "解析動力學",
+};
+
+const taxonomyDescriptions = {
+  mechanics: "從運動、力、能量與動量開始，是整張地圖的骨架。",
+  electromagnetism: "從電荷與電場出發，擴展到磁、感應與電磁波。",
+  waves_optics: "週期振盪、波的傳播，以及幾何光學與波動光學。",
+  foundations: "物理的基礎概念、參考系、守恆律與場論觀點。",
+  thermo_fluids: "巨觀系統中的熱、內能、熵、循環，以及流體連續介質。",
+  modern_physics: "經典理論失效後，往相對論與量子入門展開。",
+  analytical_dynamics: "拉格朗日與哈密頓力學、相空間、混沌與非線性動力系統。",
+};
+
+const taxonomyColorPalette = {
+  mechanics: "#315f98",
+  electromagnetism: "#3c8b8f",
+  waves_optics: "#8c5ea9",
+  foundations: "#9b6b35",
+  thermo_fluids: "#b75e31",
+  modern_physics: "#6d7b93",
+  analytical_dynamics: "#4f8fa8",
+};
+
+const domainColorPalette = {
+  力學: "#315f98",
+  電磁學: "#3c8b8f",
+  熱學與熱力學: "#b75e31",
+  振動與波動: "#8c5ea9",
+  光學: "#77905a",
+  近代物理: "#6d7b93",
+  流體力學: "#4f8fa8",
+  數學工具: "#9b6b35",
+  未分類: "#a1a6b1",
+};
+
 init().catch((error) => {
   console.error(error);
   els.detailCard.classList.remove("empty");
@@ -121,6 +166,45 @@ init().catch((error) => {
     <p class="detail-summary">${escapeHtml(String(error.message || error))}</p>
   `;
 });
+
+function getActiveDomain(node) {
+  if (state.filterMode === "taxonomy") {
+    return node.taxonomy_domain || "未分類";
+  }
+  return node.domain || "未分類";
+}
+
+function getActiveDomainDescriptions() {
+  return state.filterMode === "taxonomy" ? taxonomyDescriptions : domainDescriptions;
+}
+
+function getActiveColorPalette() {
+  return state.filterMode === "taxonomy" ? taxonomyColorPalette : domainColorPalette;
+}
+
+function getDomainLabel(domain) {
+  if (state.filterMode === "taxonomy") {
+    return taxonomyLabels[domain] || domain;
+  }
+  return domain;
+}
+
+function switchFilterMode() {
+  state.filterMode = state.filterMode === "taxonomy" ? "domain" : "taxonomy";
+  state.focusedDomain = null;
+  state.viewMode = "overview";
+  // Rebuild domain layer with new grouping
+  const g = state.graph;
+  const newGraph = rebuildDomainLayer(g.noteNodes, g.edges, state.nodeMap, state.incomingMap);
+  state.graph = newGraph;
+  // Update UI
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
+  syncModeButtons();
+  buildFilters(newGraph);
+  buildDomainOverview();
+  buildStats(newGraph);
+  layoutVisibleGraph(true);
+}
 
 function getNoteDetail(nodeId) {
   return (
@@ -159,6 +243,7 @@ function normalizeGraph(rawGraph) {
   const baseNodes = rawGraph.nodes.map((node, index) => ({
     ...node,
     domain: node.domain || inferDomainFromTags(node.tags || []),
+    taxonomy_domain: node.taxonomy_domain || "",
     tags: node.tags || [],
     x: 0,
     y: 0,
@@ -167,7 +252,7 @@ function normalizeGraph(rawGraph) {
     degree: 0,
     support: false,
     kind: "note",
-    searchText: [node.title, node.summary, node.type, node.domain, ...(node.tags || [])]
+    searchText: [node.title, node.summary, node.type, node.domain, node.taxonomy_domain, ...(node.tags || [])]
       .filter(Boolean)
       .join(" ")
       .toLowerCase(),
@@ -197,22 +282,35 @@ function normalizeGraph(rawGraph) {
     incomingMap.get(edge.target).push(edge);
   }
 
-  const domains = unique(baseNodes.map((node) => node.domain || "未分類")).sort(localeCompareZh);
+  return rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap);
+}
+
+function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
+  // Remove old domain nodes from maps
+  for (const [key, val] of nodeMap) {
+    if (key.startsWith("domain::")) nodeMap.delete(key);
+  }
+  for (const [key, val] of incomingMap) {
+    if (key.startsWith("domain::")) incomingMap.delete(key);
+  }
+
+  const descs = getActiveDomainDescriptions();
+  const domains = unique(baseNodes.map((node) => getActiveDomain(node))).sort(localeCompareZh);
   const domainNodes = domains.map((domain, index) => {
-    const domainMembers = baseNodes.filter((node) => (node.domain || "未分類") === domain);
+    const domainMembers = baseNodes.filter((node) => getActiveDomain(node) === domain);
     const edgeCount = edges.filter((edge) => {
       const source = nodeMap.get(edge.source);
       const target = nodeMap.get(edge.target);
       if (!source || !target) return false;
-      return source.domain === domain || target.domain === domain;
+      return getActiveDomain(source) === domain || getActiveDomain(target) === domain;
     }).length;
     return {
       id: `domain::${domain}`,
-      title: domain,
+      title: getDomainLabel(domain),
       type: "domain",
       kind: "domain",
       domain,
-      summary: domainDescriptions[domain] || "尚未補上這個領域的導覽說明。",
+      summary: descs[domain] || "尚未補上這個領域的導覽說明。",
       tags: ["domain-hub"],
       path: "",
       degree: edgeCount,
@@ -222,7 +320,7 @@ function normalizeGraph(rawGraph) {
       vx: 0,
       vy: 0,
       support: false,
-      searchText: `${domain} ${(domainDescriptions[domain] || "").toLowerCase()}`,
+      searchText: `${getDomainLabel(domain)} ${(descs[domain] || "").toLowerCase()}`,
       _order: 1000 + index,
     };
   });
@@ -236,8 +334,8 @@ function normalizeGraph(rawGraph) {
     const source = nodeMap.get(edge.source);
     const target = nodeMap.get(edge.target);
     if (!source || !target) continue;
-    const sourceDomain = source.domain || "未分類";
-    const targetDomain = target.domain || "未分類";
+    const sourceDomain = getActiveDomain(source);
+    const targetDomain = getActiveDomain(target);
     if (sourceDomain === targetDomain) continue;
     const key = [sourceDomain, targetDomain].sort(localeCompareZh).join("|");
     const current = domainEdgeMap.get(key) || {
@@ -255,8 +353,8 @@ function normalizeGraph(rawGraph) {
   state.nodeMap = nodeMap;
   state.incomingMap = incomingMap;
   state.domainMeta = domainNodes.map((domainNode) => {
-    const maps = baseNodes.filter((node) => node.domain === domainNode.domain && node.type === "map").length;
-    const laws = baseNodes.filter((node) => node.domain === domainNode.domain && node.type === "law").length;
+    const maps = baseNodes.filter((node) => getActiveDomain(node) === domainNode.domain && node.type === "map").length;
+    const laws = baseNodes.filter((node) => getActiveDomain(node) === domainNode.domain && node.type === "law").length;
     return {
       id: domainNode.id,
       domain: domainNode.domain,
@@ -288,8 +386,8 @@ function buildStats(graph) {
 
   const domainBreakdown = graph.domains
     .map((domain) => {
-      const count = graph.noteNodes.filter((node) => (node.domain || "未分類") === domain).length;
-      return `${domain} ${count}`;
+      const count = graph.noteNodes.filter((node) => getActiveDomain(node) === domain).length;
+      return `${getDomainLabel(domain)} ${count}`;
     })
     .join(" / ");
 
@@ -345,8 +443,8 @@ function buildFilters(graph) {
   state.typeSelection = new Set(graph.types);
   const domainItems = graph.domains.map((domain) => ({
     value: domain,
-    label: domain,
-    count: graph.noteNodes.filter((node) => (node.domain || "未分類") === domain).length,
+    label: getDomainLabel(domain),
+    count: graph.noteNodes.filter((node) => getActiveDomain(node) === domain).length,
     color: filterSwatchColor("domain", domain),
   }));
   const typeItems = graph.types.map((type) => ({
@@ -394,10 +492,12 @@ function buildDomainOverview() {
     const card = document.createElement("button");
     card.type = "button";
     card.className = `domain-card ${state.focusedDomain === meta.domain ? "active" : ""}`;
+    const label = getDomainLabel(meta.domain);
+    const kicker = state.filterMode === "taxonomy" ? "taxonomy domain" : "領域群組";
     card.innerHTML = `
-      <div class="domain-card-kicker">領域群組</div>
+      <div class="domain-card-kicker">${kicker}</div>
       <div class="domain-card-count">${meta.count}</div>
-      <h3>${escapeHtml(meta.domain)}</h3>
+      <h3>${escapeHtml(label)}</h3>
       <p>${escapeHtml(meta.description)}</p>
       <div class="domain-card-meta">
         <span class="domain-metric">${meta.maps} 導覽頁</span>
@@ -414,6 +514,10 @@ function bindEvents() {
   els.searchInput.addEventListener("input", () => {
     state.searchTerm = els.searchInput.value.trim().toLowerCase();
     layoutVisibleGraph(true);
+  });
+
+  els.filterModeToggle?.addEventListener("click", () => {
+    switchFilterMode();
   });
 
   els.resetViewButton.addEventListener("click", () => {
@@ -557,7 +661,7 @@ function layoutVisibleGraph(resetPositions = false) {
 
   for (const node of prepared.nodes) {
     if (resetPositions || !Number.isFinite(node.x) || !Number.isFinite(node.y) || node.x === 0) {
-      const anchor = anchors.get(node.anchorKey || node.domain || "未分類") || { x: width / 2, y: height / 2 };
+      const anchor = anchors.get(node.anchorKey || getActiveDomain(node)) || { x: width / 2, y: height / 2 };
       const radius =
         state.viewMode === "domain"
           ? node.kind === "domain"
@@ -622,22 +726,12 @@ function filterSwatchColor(kind, value) {
     return typePalette[value] || "var(--accent)";
   }
 
-  const domainPalette = {
-    力學: "#315f98",
-    電磁學: "#3c8b8f",
-    熱學與熱力學: "#b75e31",
-    振動與波動: "#8c5ea9",
-    光學: "#77905a",
-    近代物理: "#6d7b93",
-    流體力學: "#4f8fa8",
-    數學工具: "#9b6b35",
-    未分類: "#a1a6b1",
-  };
-  return domainPalette[value] || "#7b8797";
+  const palette = getActiveColorPalette();
+  return palette[value] || "#7b8797";
 }
 
 function buildDomainAnchors(width, height, nodes) {
-  const domainKeys = unique(nodes.map((node) => node.anchorKey || node.domain || "未分類")).sort(localeCompareZh);
+  const domainKeys = unique(nodes.map((node) => node.anchorKey || getActiveDomain(node))).sort(localeCompareZh);
   const anchors = new Map();
   const cx = width / 2;
   const cy = height / 2;
@@ -704,7 +798,7 @@ function runSimulation(nodes, edges, anchors, width, height) {
     const selectedConnections = state.selectedNodeId ? new Set(connectedNodeIds(state.selectedNodeId)) : null;
 
     for (const node of nodes) {
-      const anchor = anchors.get(node.anchorKey || node.domain || "未分類");
+      const anchor = anchors.get(node.anchorKey || getActiveDomain(node));
       if (!anchor || node.kind === "domain") continue;
       const tension =
         state.viewMode === "domain"
@@ -974,7 +1068,7 @@ function renderDetail(node) {
   }
 
   if (node.kind === "domain") {
-    const members = state.graph.noteNodes.filter((candidate) => candidate.domain === node.domain);
+    const members = state.graph.noteNodes.filter((candidate) => getActiveDomain(candidate) === node.domain);
     const byType = countBy(members, (item) => typeLabel[item.type] || item.type);
     els.detailCard.className = "detail-card";
     els.detailCard.innerHTML = `
@@ -1030,7 +1124,7 @@ function renderDetail(node) {
     <h2>${escapeHtml(node.title)}</h2>
     <div class="detail-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
     <div class="detail-meta">
-      ${detailMetaBox("領域", node.domain || "未分類")}
+      ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
       ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
       ${detailMetaBox("連結數", String(node.degree))}
       ${detailMetaBox("來源路徑", resolvedPath)}
@@ -1116,7 +1210,7 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
                 <h1>${escapeHtml(node.title)}</h1>
                 <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
                 <div class="reader-meta-grid">
-                  ${detailMetaBox("領域", node.domain || "未分類")}
+                  ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
                   ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
                   ${detailMetaBox("連結數", String(node.degree))}
                   ${detailMetaBox("來源路徑", resolvedPath)}
@@ -1461,7 +1555,7 @@ document.addEventListener("click", (event) => {
   }
   // Set selectedNodeId BEFORE focusDomain so layoutVisibleGraph doesn't reset it
   state.selectedNodeId = node.id;
-  if (node.domain) focusDomain(node.domain);
+  if (getActiveDomain(node) !== "未分類") focusDomain(getActiveDomain(node));
   renderDetail(node);
   scrollReadingToTop();
   updateNodeStates();
@@ -1987,7 +2081,7 @@ function syncVisibleNodeRefs(nodes) {
 
 function selectOverviewNodesForDomain(domain) {
   const domainNotes = state.graph.noteNodes.filter(
-    (node) => node.domain === domain && state.typeSelection.has(node.type)
+    (node) => getActiveDomain(node) === domain && state.typeSelection.has(node.type)
   );
   const maps = domainNotes
     .filter((node) => overviewNodeTypes.has(node.type))
@@ -2003,7 +2097,7 @@ function collectMatchingNodes({ domains, types, searchTerm, limit, includeMapsFi
   const allowedDomains = new Set(domains);
   const allowedTypes = new Set(types);
   const matches = state.graph.noteNodes.filter((node) => {
-    if (!allowedDomains.has(node.domain)) return false;
+    if (!allowedDomains.has(getActiveDomain(node))) return false;
     if (!allowedTypes.has(node.type)) return false;
     if (!searchTerm) return true;
     return node.searchText.includes(searchTerm);
@@ -2063,10 +2157,11 @@ function dedupeEdges(edges) {
 }
 
 function describeNodeMeta(node) {
-  if (node.focal) return `焦點節點 · ${node.domain || "未分類"}`;
-  if (node.overviewHub) return `高連結樞紐 · ${node.domain || "未分類"}`;
-  if (node.support) return `支撐節點 · ${node.domain || "未分類"}`;
-  return node.domain || "未分類";
+  const label = getDomainLabel(getActiveDomain(node));
+  if (node.focal) return `焦點節點 · ${label}`;
+  if (node.overviewHub) return `高連結樞紐 · ${label}`;
+  if (node.support) return `支撐節點 · ${label}`;
+  return label;
 }
 
 function collectSupportNodes(seedNodes, { limit }) {
@@ -2100,7 +2195,7 @@ function prepareLocalNeighborhood(domain, filteredNodes, selectedNode) {
     if (!otherId) continue;
     const other = state.nodeMap.get(otherId);
     if (!other || other.kind !== "note") continue;
-    if (other.domain === domain && filteredIds.has(other.id)) directPrimary.push(other);
+    if (getActiveDomain(other) === domain && filteredIds.has(other.id)) directPrimary.push(other);
     else directSupport.push(other);
   }
 
@@ -2157,7 +2252,7 @@ function prepareOverviewGraph() {
   const edges = [
     ...state.graph.domainEdges.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target)),
     ...noteNodes.map((node) => ({
-      source: `domain::${node.domain || "未分類"}`,
+      source: `domain::${getActiveDomain(node)}`,
       target: node.id,
       type: "organized_by",
       synthetic: true,
@@ -2168,7 +2263,7 @@ function prepareOverviewGraph() {
     }),
   ];
 
-  for (const node of noteNodes) node.anchorKey = node.domain || "未分類";
+  for (const node of noteNodes) node.anchorKey = getActiveDomain(node);
   return { nodes: visibleNodes, edges: dedupeEdges(edges) };
 }
 
@@ -2185,14 +2280,14 @@ function prepareDomainGraph() {
 
   state.focusedDomain = domain;
   const filteredNodes = state.graph.noteNodes.filter((node) => {
-    const matchesDomain = node.domain === domain;
+    const matchesDomain = getActiveDomain(node) === domain;
     const matchesType = state.typeSelection.has(node.type);
     const matchesSearch = !state.searchTerm || node.searchText.includes(state.searchTerm);
     return matchesDomain && matchesType && matchesSearch;
   });
 
   const selectedNode = state.nodeMap.get(state.selectedNodeId);
-  if (selectedNode && selectedNode.kind === "note" && selectedNode.domain === domain) {
+  if (selectedNode && selectedNode.kind === "note" && getActiveDomain(selectedNode) === domain) {
     const focused = prepareLocalNeighborhood(domain, filteredNodes, selectedNode);
     if (focused) return focused;
   }
@@ -2218,7 +2313,7 @@ function updateGraphHint() {
     state.viewMode === "domain" &&
       selectedNode &&
       selectedNode.kind === "note" &&
-      selectedNode.domain === state.focusedDomain
+      getActiveDomain(selectedNode) === state.focusedDomain
   );
   els.graphHint.textContent =
     state.viewMode === "overview"
@@ -2241,7 +2336,7 @@ function updateFocusBanner() {
   const isLocalFocus = Boolean(
     selectedNode &&
       selectedNode.kind === "note" &&
-      selectedNode.domain === state.focusedDomain &&
+      getActiveDomain(selectedNode) === state.focusedDomain &&
       state.visibleNodes.some((node) => node.id === selectedNode.id)
   );
 

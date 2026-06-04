@@ -248,6 +248,8 @@ Completed so far:
   - `02_concepts/thermo_fluids/`
   - `02_concepts/waves_optics/` *(26 notes, migrated 2026-06-04)*
   - `02_concepts/foundations/` *(25 notes, migrated 2026-06-04)*
+  - `02_concepts/mechanics/` *(31 notes, migrated 2026-06-04)*
+  - `02_concepts/electromagnetism/` *(40 notes, migrated 2026-06-04)*
 
 Planned target taxonomy for concepts:
 
@@ -315,8 +317,9 @@ Open structure and maintenance work worth tracking right now:
 - move the remaining flat `02_concepts/*.md` pages into taxonomy subfolders in controlled batches
   - ~~`waves_optics`~~ ✅ done (2026-06-04)
   - ~~`foundations`~~ ✅ done (2026-06-04)
-  - next batch: `mechanics` (31 files)
-  - hold `electromagnetism` (40 files) until last because it has the densest cross-links
+  - ~~`mechanics`~~ ✅ done (2026-06-04)
+  - ~~`electromagnetism`~~ ✅ done (2026-06-04)
+  - **All concept notes are now in taxonomy subfolders. No flat `.md` files remain in `02_concepts/`.**
 - decide whether to keep the legacy `domain` field as-is or gradually align it with `taxonomy_domain`
 - update the frontend and any downstream tooling to expose taxonomy-based browsing and filtering
 - keep `README.md`, `AI_HANDOFF.md`, and `MAINTENANCE.md` aligned with the new structure and migration state
@@ -330,10 +333,10 @@ If continuing the taxonomy rollout, use this order:
 
 1. ~~move `02_concepts/waves_optics`~~ ✅
 2. ~~move `02_concepts/foundations`~~ ✅
-3. move `02_concepts/mechanics` (31 files)
-4. move `02_concepts/electromagnetism` (40 files)
+3. ~~move `02_concepts/mechanics`~~ ✅
+4. ~~move `02_concepts/electromagnetism`~~ ✅
 
-That order keeps the highest-crosslink domains for last, which is the least stupid way to do this.
+All four batches are complete. `02_concepts/` is now fully organized into taxonomy subfolders.
 
 ## Maintainer Workflow
 

@@ -4513,11 +4513,6 @@
       "type": "wikilink"
     },
     {
-      "source": "光學總覽",
-      "target": "偏振",
-      "type": "wikilink"
-    },
-    {
       "source": "分析力學與非線性動力系統圖",
       "target": "廣義座標",
       "type": "organized_by"
@@ -5759,31 +5754,6 @@
     },
     {
       "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "駐波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "共振",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "都卜勒效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
       "target": "簡諧運動",
       "type": "wikilink"
     },
@@ -5855,16 +5825,6 @@
     {
       "source": "振動與波動總覽",
       "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "振動與波動總覽",
-      "target": "共振",
       "type": "wikilink"
     },
     {
@@ -6009,52 +5969,12 @@
     },
     {
       "source": "數學工具總覽",
-      "target": "內積",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "外積",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "三角函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
       "target": "導數",
       "type": "wikilink"
     },
     {
       "source": "數學工具總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
       "target": "偏導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "梯度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "散度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "旋度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "面積分",
       "type": "wikilink"
     },
     {
@@ -6134,45 +6054,10 @@
     },
     {
       "source": "數學工具總覽",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
       "target": "電磁學總覽",
       "type": "wikilink"
     },
     {
-      "source": "數學工具總覽",
-      "target": "梯度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "散度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "旋度",
-      "type": "wikilink"
-    },
-    {
-      "source": "數學工具總覽",
-      "target": "面積分",
-      "type": "wikilink"
-    },
-    {
       "source": "流體力學總覽",
       "target": "密度",
       "type": "organized_by"
@@ -6235,31 +6120,6 @@
     {
       "source": "流體力學總覽",
       "target": "密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "流量",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流體力學總覽",
-      "target": "阿基米德原理",
       "type": "wikilink"
     },
     {
@@ -6739,31 +6599,6 @@
     },
     {
       "source": "熱學與熱力學總覽",
-      "target": "內能",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "理想氣體方程式",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熱力學第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熵",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
-      "target": "熱力學第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱學與熱力學總覽",
       "target": "溫度",
       "type": "wikilink"
     },
@@ -7209,16 +7044,6 @@
     },
     {
       "source": "近代物理總覽",
-      "target": "黑體輻射",
-      "type": "wikilink"
-    },
-    {
-      "source": "近代物理總覽",
-      "target": "光電效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "近代物理總覽",
       "target": "狹義相對論",
       "type": "wikilink"
     },
@@ -7555,11 +7380,6 @@
     {
       "source": "電磁學核心概念圖",
       "target": "通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學核心概念圖",
-      "target": "環流",
       "type": "wikilink"
     },
     {
@@ -8059,67 +7879,12 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "電動勢",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
       "target": "電流",
       "type": "wikilink"
     },
     {
       "source": "電磁學總覽",
-      "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "直流電路",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
       "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電流密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電荷守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "畢奧-沙伐定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "磁場",
       "type": "wikilink"
     },
     {
@@ -8129,57 +7894,7 @@
     },
     {
       "source": "電磁學總覽",
-      "target": "磁通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "法拉第定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "楞次定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "電感",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "交流電",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
       "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "法拉第定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "畢奧-沙伐定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁學總覽",
-      "target": "麥克斯威方程組",
       "type": "wikilink"
     },
     {

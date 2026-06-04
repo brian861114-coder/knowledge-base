@@ -21,7 +21,7 @@
       "summary": "把拉格朗日、哈密頓、相空間與非線性混沌主線接成一張進階導覽頁。",
       "path": "00_maps/分析力學與非線性動力系統圖.md",
       "domain": "",
-      "taxonomy_domain": "mechanics",
+      "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
         "analytical-mechanics",
@@ -140,6 +140,20 @@
       "tags": [
         "physics",
         "thermodynamics",
+        "map"
+      ]
+    },
+    {
+      "id": "物理基礎概念總覽",
+      "title": "物理基礎概念總覽",
+      "type": "map",
+      "summary": "物理的基礎概念不是入門廢話，而是所有領域共享的語言：參考系、力、能量、場、守恆與平衡。",
+      "path": "00_maps/物理基礎概念總覽.md",
+      "domain": "",
+      "taxonomy_domain": "foundations",
+      "tags": [
+        "physics",
+        "foundations",
         "map"
       ]
     },
@@ -6740,6 +6754,326 @@
     {
       "source": "熱學與熱力學總覽",
       "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "參考系",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "慣性參考系",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "力",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "能量",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆律",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "對稱性",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "平衡",
+      "type": "organized_by"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "參考系",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "慣性參考系",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "力",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "能量",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆律",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "對稱性",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "平衡",
+      "type": "requires"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "慣性參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "非慣性參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "時間",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "慣性",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "伽利略變換",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "洛侖茲轉換",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "能量",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "對稱性",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆律",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆量",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "不穩定平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "穩態",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "暫態",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "邊界條件",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "慣性參考系",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "位移",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "時間",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "力",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "相互作用",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "功",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "能量",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "動能",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "位能",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "場論觀點",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "對稱性",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆律",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "守恆量",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "平衡",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "穩態",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "邊界條件",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "力學核心概念圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "電磁學核心概念圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "數學工具總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "物理基礎概念總覽",
+      "target": "導數",
       "type": "wikilink"
     },
     {

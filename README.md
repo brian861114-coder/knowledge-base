@@ -320,8 +320,8 @@ Open structure and maintenance work worth tracking right now:
   - ~~`mechanics`~~ ✅ done (2026-06-04)
   - ~~`electromagnetism`~~ ✅ done (2026-06-04)
   - **All concept notes are now in taxonomy subfolders. No flat `.md` files remain in `02_concepts/`.**
-- decide whether to keep the legacy `domain` field as-is or gradually align it with `taxonomy_domain`
-- update the frontend and any downstream tooling to expose taxonomy-based browsing and filtering
+- decide whether to keep the legacy `domain` field as-is or gradually align it with `taxonomy_domain` *(both fields now coexist; frontend toggle switches between them)*
+- ~~update the frontend and any downstream tooling to expose taxonomy-based browsing and filtering~~ ✅ done (2026-06-04)
 - keep `README.md`, `AI_HANDOFF.md`, and `MAINTENANCE.md` aligned with the new structure and migration state
 - keep `docs/` deploy files synchronized with `prototype/` after frontend changes
 - keep treating the external Obsidian vault as source of truth; never patch exported JSON as if it were canonical content

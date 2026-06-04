@@ -22,13 +22,28 @@ The Obsidian vault is the content database.
 
 ## Current Status
 
-The physics knowledge base is feature-complete.
+The physics knowledge base is in active structure-hardening and taxonomy cleanup, not just raw content expansion.
 
-- `255` notes covering 8 domains
-- `5091` graph edges (relationships)
+- `318` notes exported
+- `6376` graph edges (relationships)
 - `0` broken wikilinks
 - `0` broken frontmatter relations
 - `0` math issues
+
+Recent progress:
+
+- expanded the source vault substantially across mechanics, optics, electromagnetism, analytical mechanics, nonlinear dynamics, and supporting bridge pages
+- added second-layer taxonomy metadata to all `02_concepts` notes:
+  - `taxonomy_domain`
+  - `cluster`
+  - `level`
+- added six secondary navigation maps in `00_maps/`
+- completed the first structural split of `02_concepts/` into real subfolders for:
+  - `analytical_dynamics`
+  - `modern_physics`
+  - `thermo_fluids`
+
+The repo is now beyond “content exists”; the main work has shifted to keeping the growing vault navigable and structurally coherent.
 
 ### Domains
 
@@ -132,34 +147,41 @@ Knowledge-base vault folder used by this project:
 
 ### Local Development
 
-```bash
-# Start prototype
-python -m http.server 4173
-# Open http://127.0.0.1:4173/prototype/
+```powershell
+# Start prototype with the repo's local wrapper
+.\start_prototype.cmd
 
 # Export + validate
-python tools/run_exports.py
+python .\tools\run_exports.py
 
 # Validate only
-python tools/validate_knowledge_base.py
+python .\tools\validate_knowledge_base.py
 ```
+
+Expected local URL:
+
+- [http://127.0.0.1:4173/prototype/](http://127.0.0.1:4173/prototype/)
 
 ### GitHub Pages
 
 The `docs/` folder is deployed to GitHub Pages.
 To update it after content changes:
 
-```bash
+```powershell
 # Re-export
-python tools/run_exports.py
+python .\tools\run_exports.py
 
-# Copy to docs/
-cp physics_graph.json docs/
-cp physics_note_details.json docs/
-cp prototype/app.js docs/
+# Copy deploy artifacts to docs/
+Copy-Item .\physics_graph.json .\docs\physics_graph.json -Force
+Copy-Item .\physics_note_details.json .\docs\physics_note_details.json -Force
+Copy-Item .\prototype\app.js .\docs\app.js -Force
+Copy-Item .\prototype\index.html .\docs\index.html -Force
+Copy-Item .\prototype\styles.css .\docs\styles.css -Force
 
 # Commit and push
-git add docs/ && git commit -m "update docs" && git push
+git add .\docs
+git commit -m "Update docs deploy artifacts"
+git push
 ```
 
 ## Export Workflow
@@ -205,6 +227,37 @@ The vault is organized by note type:
 - `03_quantities/`
 - `04_experiments/`
 - `05_mathematical_tools/`
+
+### Current Concept Taxonomy Progress
+
+`02_concepts/` is no longer treated as a flat bucket.
+
+Completed so far:
+
+- all concept notes now have `taxonomy_domain`, `cluster`, and `level` frontmatter
+- new secondary map pages were added for:
+  - mechanics
+  - waves/optics
+  - electromagnetism
+  - thermo/fluids
+  - modern physics
+  - analytical mechanics and nonlinear dynamics
+- these concept subfolders are already live in the source vault:
+  - `02_concepts/analytical_dynamics/`
+  - `02_concepts/modern_physics/`
+  - `02_concepts/thermo_fluids/`
+  - `02_concepts/waves_optics/` *(26 notes, migrated 2026-06-04)*
+  - `02_concepts/foundations/` *(25 notes, migrated 2026-06-04)*
+
+Planned target taxonomy for concepts:
+
+- `02_concepts/foundations/`
+- `02_concepts/mechanics/`
+- `02_concepts/waves_optics/`
+- `02_concepts/electromagnetism/`
+- `02_concepts/thermo_fluids/`
+- `02_concepts/modern_physics/`
+- `02_concepts/analytical_dynamics/`
 
 ## Main Scripts
 
@@ -254,6 +307,33 @@ See [knowledge-base-template/README.md](knowledge-base-template/README.md) for d
 4. Re-export `physics_graph.json` if graph structure changed
 5. Refresh the prototype
 6. Copy updated JSON to `docs/` and push for GitHub Pages
+
+## Current Follow-Up Work
+
+Open structure and maintenance work worth tracking right now:
+
+- move the remaining flat `02_concepts/*.md` pages into taxonomy subfolders in controlled batches
+  - ~~`waves_optics`~~ ✅ done (2026-06-04)
+  - ~~`foundations`~~ ✅ done (2026-06-04)
+  - next batch: `mechanics` (31 files)
+  - hold `electromagnetism` (40 files) until last because it has the densest cross-links
+- decide whether to keep the legacy `domain` field as-is or gradually align it with `taxonomy_domain`
+- update the frontend and any downstream tooling to expose taxonomy-based browsing and filtering
+- keep `README.md`, `AI_HANDOFF.md`, and `MAINTENANCE.md` aligned with the new structure and migration state
+- keep `docs/` deploy files synchronized with `prototype/` after frontend changes
+- keep treating the external Obsidian vault as source of truth; never patch exported JSON as if it were canonical content
+- rerun export plus validation after every vault batch
+
+### Recommended Next Step
+
+If continuing the taxonomy rollout, use this order:
+
+1. ~~move `02_concepts/waves_optics`~~ ✅
+2. ~~move `02_concepts/foundations`~~ ✅
+3. move `02_concepts/mechanics` (31 files)
+4. move `02_concepts/electromagnetism` (40 files)
+
+That order keeps the highest-crosslink domains for last, which is the least stupid way to do this.
 
 ## Maintainer Workflow
 

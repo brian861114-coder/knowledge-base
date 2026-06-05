@@ -13668,6 +13668,21 @@
     },
     {
       "source": "分岔",
+      "target": "相圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "分岔",
+      "target": "吸引子",
+      "type": "wikilink"
+    },
+    {
+      "source": "分岔",
+      "target": "非線性系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "分岔",
       "target": "混沌",
       "type": "wikilink"
     },
@@ -13682,6 +13697,11 @@
       "type": "wikilink"
     },
     {
+      "source": "分岔",
+      "target": "初始條件敏感性",
+      "type": "wikilink"
+    },
+    {
       "source": "初始條件敏感性",
       "target": "非線性系統",
       "type": "requires"
@@ -13708,6 +13728,16 @@
     },
     {
       "source": "初始條件敏感性",
+      "target": "非線性系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "初始條件敏感性",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "初始條件敏感性",
       "target": "混沌",
       "type": "wikilink"
     },
@@ -13719,6 +13749,11 @@
     {
       "source": "初始條件敏感性",
       "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "初始條件敏感性",
+      "target": "吸引子",
       "type": "wikilink"
     },
     {
@@ -13753,6 +13788,21 @@
     },
     {
       "source": "吸引子",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "吸引子",
+      "target": "非線性系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "吸引子",
+      "target": "分岔",
+      "type": "wikilink"
+    },
+    {
+      "source": "吸引子",
       "target": "相圖",
       "type": "wikilink"
     },
@@ -13764,6 +13814,16 @@
     {
       "source": "吸引子",
       "target": "龐加萊截面",
+      "type": "wikilink"
+    },
+    {
+      "source": "吸引子",
+      "target": "分岔",
+      "type": "wikilink"
+    },
+    {
+      "source": "吸引子",
+      "target": "李雅普諾夫指數",
       "type": "wikilink"
     },
     {
@@ -13813,6 +13873,21 @@
     },
     {
       "source": "哈密頓量",
+      "target": "拉格朗日力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "哈密頓量",
+      "target": "廣義座標",
+      "type": "wikilink"
+    },
+    {
+      "source": "哈密頓量",
+      "target": "作用量",
+      "type": "wikilink"
+    },
+    {
+      "source": "哈密頓量",
       "target": "哈密頓方程",
       "type": "wikilink"
     },
@@ -13824,6 +13899,16 @@
     {
       "source": "哈密頓量",
       "target": "正則變換",
+      "type": "wikilink"
+    },
+    {
+      "source": "哈密頓量",
+      "target": "泊松括號",
+      "type": "wikilink"
+    },
+    {
+      "source": "哈密頓量",
+      "target": "諾特定理",
       "type": "wikilink"
     },
     {
@@ -14073,6 +14158,21 @@
     },
     {
       "source": "正則變換",
+      "target": "哈密頓方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "正則變換",
+      "target": "泊松括號",
+      "type": "wikilink"
+    },
+    {
+      "source": "正則變換",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "正則變換",
       "target": "相空間",
       "type": "wikilink"
     },
@@ -14084,6 +14184,11 @@
     {
       "source": "正則變換",
       "target": "哈密頓量",
+      "type": "wikilink"
+    },
+    {
+      "source": "正則變換",
+      "target": "諾特定理",
       "type": "wikilink"
     },
     {
@@ -14193,6 +14298,26 @@
     },
     {
       "source": "混沌",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "混沌",
+      "target": "初始條件敏感性",
+      "type": "wikilink"
+    },
+    {
+      "source": "混沌",
+      "target": "分岔",
+      "type": "wikilink"
+    },
+    {
+      "source": "混沌",
+      "target": "非線性系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "混沌",
       "target": "初始條件敏感性",
       "type": "wikilink"
     },
@@ -14207,6 +14332,16 @@
       "type": "wikilink"
     },
     {
+      "source": "混沌",
+      "target": "分岔",
+      "type": "wikilink"
+    },
+    {
+      "source": "混沌",
+      "target": "龐加萊截面",
+      "type": "wikilink"
+    },
+    {
       "source": "相圖",
       "target": "相空間",
       "type": "requires"
@@ -14243,12 +14378,32 @@
     },
     {
       "source": "相圖",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "相圖",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "相圖",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "相圖",
       "target": "吸引子",
       "type": "wikilink"
     },
     {
       "source": "相圖",
       "target": "龐加萊截面",
+      "type": "wikilink"
+    },
+    {
+      "source": "相圖",
+      "target": "分岔",
       "type": "wikilink"
     },
     {
@@ -14293,6 +14448,21 @@
     },
     {
       "source": "相空間",
+      "target": "廣義座標",
+      "type": "wikilink"
+    },
+    {
+      "source": "相空間",
+      "target": "哈密頓量",
+      "type": "wikilink"
+    },
+    {
+      "source": "相空間",
+      "target": "向量",
+      "type": "wikilink"
+    },
+    {
+      "source": "相空間",
       "target": "哈密頓量",
       "type": "wikilink"
     },
@@ -14304,6 +14474,11 @@
     {
       "source": "相空間",
       "target": "正則變換",
+      "type": "wikilink"
+    },
+    {
+      "source": "相空間",
+      "target": "相圖",
       "type": "wikilink"
     },
     {
@@ -14573,6 +14748,21 @@
     },
     {
       "source": "非線性系統",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "非線性系統",
+      "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "非線性系統",
+      "target": "導數",
+      "type": "wikilink"
+    },
+    {
+      "source": "非線性系統",
       "target": "混沌",
       "type": "wikilink"
     },
@@ -14589,6 +14779,11 @@
     {
       "source": "非線性系統",
       "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "非線性系統",
+      "target": "正常模態",
       "type": "wikilink"
     },
     {
@@ -14623,6 +14818,21 @@
     },
     {
       "source": "龐加萊截面",
+      "target": "相空間",
+      "type": "wikilink"
+    },
+    {
+      "source": "龐加萊截面",
+      "target": "相圖",
+      "type": "wikilink"
+    },
+    {
+      "source": "龐加萊截面",
+      "target": "非線性系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "龐加萊截面",
       "target": "相圖",
       "type": "wikilink"
     },
@@ -14634,6 +14844,11 @@
     {
       "source": "龐加萊截面",
       "target": "吸引子",
+      "type": "wikilink"
+    },
+    {
+      "source": "龐加萊截面",
+      "target": "分岔",
       "type": "wikilink"
     },
     {

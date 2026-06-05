@@ -1,5 +1,5 @@
-﻿const graphUrl = "../physics_graph.json";
-const noteDetailsUrl = "../physics_note_details.json";
+﻿const graphUrl = "./physics_graph.json";
+const noteDetailsUrl = "./physics_note_details.json";
 const primaryEdgeTypes = new Set([
   "organized_by",
   "requires",

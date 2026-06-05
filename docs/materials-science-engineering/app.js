@@ -4,6 +4,8 @@
 // 若將 graph.json 與 note_details.json 放在同目錄：
 const graphUrl = "./graph.json";
 const noteDetailsUrl = "./note_details.json";
+const graphEnUrl = "./graph_en.json";
+const noteDetailsEnUrl = "./note_details_en.json";
 // 若使用 standalone 模式（嵌入 JS），註解上面兩行，取消下面兩行：
 // const graphUrl = null;
 // const noteDetailsUrl = null;
@@ -30,6 +32,7 @@ const wikilinkPattern = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g;
 const state = {
   graph: null,
   noteDetails: {},
+  noteDetailsEn: {},
   nodeMap: new Map(),
   incomingMap: new Map(),
   domainMeta: [],
@@ -43,6 +46,7 @@ const state = {
   searchTerm: "",
   selectedNodeId: null,
   noteViewMode: "preview",
+  language: localStorage.getItem("kb_language") || "zh-Hant",
   draggingNodeId: null,
   suppressNodeClickUntil: 0,
   mentionPattern: null,
@@ -89,60 +93,360 @@ const els = {
 };
 
 const typeLabel = {
-  map: "Map",
-  law: "Principle",
-  concept: "Concept",
-  quantity: "Property",
-  mathematical_tool: "Characterization",
-  experiment: "Process",
-  domain: "Domain",
+  map: { "zh-Hant": "導覽頁", en: "Map" },
+  law: { "zh-Hant": "原理", en: "Principle" },
+  concept: { "zh-Hant": "概念", en: "Concept" },
+  quantity: { "zh-Hant": "性質", en: "Property" },
+  mathematical_tool: { "zh-Hant": "表徵", en: "Characterization" },
+  experiment: { "zh-Hant": "製程", en: "Process" },
+  domain: { "zh-Hant": "領域", en: "Domain" },
 };
 
 const relationLabel = {
-  organized_by: "主題收納",
-  requires: "先備關係",
-  formalized_by: "數學支撐",
-  derives_to: "可推出",
-  uses: "直接使用",
-  verified_by: "實驗驗證",
-  explains: "進階視角",
-  measures: "量測對應",
-  related_to: "相關概念",
-  wikilink: "文內連結",
+  organized_by: { "zh-Hant": "主題收納", en: "Organized by" },
+  requires: { "zh-Hant": "先備關係", en: "Prerequisite" },
+  formalized_by: { "zh-Hant": "數學支撐", en: "Formalized by" },
+  derives_to: { "zh-Hant": "可推出", en: "Derives to" },
+  uses: { "zh-Hant": "直接使用", en: "Uses" },
+  verified_by: { "zh-Hant": "實驗驗證", en: "Verified by" },
+  explains: { "zh-Hant": "進階視角", en: "Explains" },
+  measures: { "zh-Hant": "量測對應", en: "Measures" },
+  related_to: { "zh-Hant": "相關概念", en: "Related to" },
+  wikilink: { "zh-Hant": "文內連結", en: "Inline link" },
 };
 
 const domainDescriptions = {
-  Foundations: "Bonding, thermodynamics, kinetics, diffusion, and phase behavior.",
-  "Material Classes": "Metals, ceramics, polymers, composites, semiconductors, and related families.",
-  "Structure and Defects": "Crystal structure, defects, interfaces, grains, and microstructure across scales.",
-  Properties: "Mechanical, electrical, thermal, optical, and chemical response.",
-  Processing: "Thermal, chemical, mechanical, and additive routes used to build structure.",
-  Characterization: "Diffraction, microscopy, and analysis methods that make structural claims testable.",
-  "Failure Analysis": "Fracture, corrosion, degradation, and service-driven damage interpretation.",
-  Applications: "Energy, electronics, biomedical, structural, and extreme-environment use cases.",
-  Uncategorized: "Nodes not yet assigned to a stable domain.",
+  Foundations: {
+    "zh-Hant": "鍵結、熱力學、動力學、擴散與相行為。",
+    en: "Bonding, thermodynamics, kinetics, diffusion, and phase behavior.",
+  },
+  "Material Classes": {
+    "zh-Hant": "金屬、陶瓷、高分子、複合材料、半導體等主要材料族群。",
+    en: "Metals, ceramics, polymers, composites, semiconductors, and related families.",
+  },
+  "Structure and Defects": {
+    "zh-Hant": "晶體結構、缺陷、介面、晶粒與跨尺度微觀組織。",
+    en: "Crystal structure, defects, interfaces, grains, and microstructure across scales.",
+  },
+  Properties: {
+    "zh-Hant": "機械、電、熱、光學與化學反應行為。",
+    en: "Mechanical, electrical, thermal, optical, and chemical response.",
+  },
+  Processing: {
+    "zh-Hant": "用來建立與改變結構的熱、化學、機械與增材製程。",
+    en: "Thermal, chemical, mechanical, and additive routes used to build structure.",
+  },
+  Characterization: {
+    "zh-Hant": "讓結構判斷可被驗證的繞射、顯微與分析方法。",
+    en: "Diffraction, microscopy, and analysis methods that make structural claims testable.",
+  },
+  "Failure Analysis": {
+    "zh-Hant": "斷裂、腐蝕、劣化與服役損傷判讀。",
+    en: "Fracture, corrosion, degradation, and service-driven damage interpretation.",
+  },
+  Applications: {
+    "zh-Hant": "能源、電子、生醫、結構與極端環境應用。",
+    en: "Energy, electronics, biomedical, structural, and extreme-environment use cases.",
+  },
+  Uncategorized: {
+    "zh-Hant": "尚未分配到穩定領域的節點。",
+    en: "Nodes not yet assigned to a stable domain.",
+  },
 };
 
 const taxonomyLabels = {
-  fundamentals: "Foundations",
-  material_classes: "Material Classes",
-  structure: "Structure",
-  properties: "Properties",
-  processing: "Processing",
-  characterization: "Characterization",
-  failure: "Failure",
-  applications: "Applications",
+  fundamentals: { "zh-Hant": "基礎", en: "Foundations" },
+  material_classes: { "zh-Hant": "材料類別", en: "Material Classes" },
+  structure: { "zh-Hant": "結構與缺陷", en: "Structure" },
+  properties: { "zh-Hant": "性質", en: "Properties" },
+  processing: { "zh-Hant": "製程", en: "Processing" },
+  characterization: { "zh-Hant": "表徵", en: "Characterization" },
+  failure: { "zh-Hant": "失效", en: "Failure" },
+  applications: { "zh-Hant": "應用", en: "Applications" },
 };
 
 const taxonomyDescriptions = {
-  fundamentals: "Core principles that explain why materials prefer certain structures and transformations.",
-  material_classes: "Recurring families of materials with characteristic bonding, structure, and process windows.",
-  structure: "Atomic arrangement, defects, interfaces, grains, and mesoscale organization.",
-  properties: "How materials respond mechanically, thermally, electrically, chemically, or optically.",
-  processing: "Routes that change internal structure and therefore change performance.",
-  characterization: "Evidence-producing methods used to identify phases, defects, morphology, and texture.",
-  failure: "Ways materials crack, corrode, degrade, or lose function in service.",
-  applications: "Application clusters where property targets and process constraints meet.",
+  fundamentals: {
+    "zh-Hant": "解釋材料為何偏好特定結構與轉變的核心原理。",
+    en: "Core principles that explain why materials prefer certain structures and transformations.",
+  },
+  material_classes: {
+    "zh-Hant": "具有典型鍵結、結構與製程窗口的常見材料家族。",
+    en: "Recurring families of materials with characteristic bonding, structure, and process windows.",
+  },
+  structure: {
+    "zh-Hant": "原子排列、缺陷、介面、晶粒與中尺度組織。",
+    en: "Atomic arrangement, defects, interfaces, grains, and mesoscale organization.",
+  },
+  properties: {
+    "zh-Hant": "材料在機械、熱、電、化學或光學上的反應方式。",
+    en: "How materials respond mechanically, thermally, electrically, chemically, or optically.",
+  },
+  processing: {
+    "zh-Hant": "改變內部結構、進而改變性能的製程路徑。",
+    en: "Routes that change internal structure and therefore change performance.",
+  },
+  characterization: {
+    "zh-Hant": "用於辨識相、缺陷、形貌與紋理的證據生成方法。",
+    en: "Evidence-producing methods used to identify phases, defects, morphology, and texture.",
+  },
+  failure: {
+    "zh-Hant": "材料在服役中開裂、腐蝕、劣化或失去功能的方式。",
+    en: "Ways materials crack, corrode, degrade, or lose function in service.",
+  },
+  applications: {
+    "zh-Hant": "性質目標與製程限制交會的應用集群。",
+    en: "Application clusters where property targets and process constraints meet.",
+  },
+};
+
+const uiText = {
+  "zh-Hant": {
+    "brand.title": "材料科學與工程知識圖譜",
+    "brand.tagline": "雙語互動材料知識庫",
+    "brand.homeAria": "回到知識圖譜首頁",
+    "nav.search": "搜尋",
+    "nav.notes": "筆記",
+    "nav.graph": "圖譜",
+    "nav.settings": "設定",
+    "sidebar.search.title": "搜尋",
+    "sidebar.search.kicker": "Query",
+    "sidebar.search.label": "搜尋節點",
+    "sidebar.search.placeholder": "搜尋概念、性質、製程、表徵方法…",
+    "sidebar.mode.title": "檢視模式",
+    "sidebar.mode.kicker": "Mode",
+    "sidebar.filter.toggle": "領域 / Taxonomy",
+    "sidebar.filter.title": "切換分類視角",
+    "sidebar.type.title": "頁型",
+    "sidebar.type.kicker": "Type",
+    "sidebar.atlas.title": "圖譜摘要",
+    "sidebar.atlas.kicker": "Atlas",
+    "graph.title": "圖譜工作區",
+    "graph.zoomOut": "縮小",
+    "graph.zoomIn": "放大",
+    "graph.fit": "適應畫面",
+    "graph.backToOverview": "回到總覽",
+    "graph.reset": "重設視圖",
+    "legend.title": "圖例",
+    "legend.map": "導覽頁",
+    "legend.law": "原理",
+    "legend.concept": "概念",
+    "legend.quantity": "性質",
+    "legend.characterization": "表徵",
+    "detail.empty.kicker": "節點詳情",
+    "detail.empty.title": "選取一個節點",
+    "detail.empty.summary": "右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。",
+    "detail.empty.note": "先從總覽選一個領域，或直接點擊任一節點。",
+    appTitle: "材料科學與工程知識圖譜",
+    loadErrorKicker: "載入錯誤",
+    loadErrorTitle: "無法載入知識地圖資料",
+    filterModeTaxonomy: "Taxonomy",
+    filterModeDomain: "領域",
+    missingDomainGuide: "尚未補上這個領域的導覽說明。",
+    detailEmptyKicker: "節點詳情",
+    detailEmptyTitle: "選取一個節點",
+    detailEmptySummary: "右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。",
+    detailEmptyNote: "先從總覽選一個領域，或直接點擊任一節點。",
+    viewOverview: "總覽",
+    viewGraph: "圖譜",
+    viewSearch: "搜尋",
+    viewNotes: "筆記",
+    viewSettings: "設定",
+    graphHintOverview: "總覽只保留領域樞紐、導覽頁與少量高連結節點。先選領域，再深入局部子圖。",
+    graphHintDomain: "目前聚焦在「{domain}」。先看核心節點骨架，再點任一節點切換成局部子圖。",
+    graphHintLocal: "目前以「{domain}」中的「{title}」為中心，只顯示直接相關與必要支撐節點。",
+    focusLocalEyebrow: "局部子圖",
+    focusDomainEyebrow: "領域聚焦",
+    focusLocalText: "目前圍繞「{title}」顯示 {primary} 個核心節點與 {support} 個跨域支撐節點。",
+    focusDomainText: "目前只顯示 {primary} 個核心節點與 {support} 個支撐節點，避免整張圖一次攤平。",
+    focusPrimaryMetric: "{count} 核心節點",
+    focusSupportMetric: "{count} 支撐節點",
+    backToOverview: "回到總覽",
+    detailDomainKicker: "領域樞紐",
+    detailMembers: "成員節點",
+    detailCrossLinks: "跨域連結",
+    detailContainedTypes: "包含頁型",
+    detailPerspective: "視角",
+    detailPerspectiveValue: "領域樞紐與導覽入口",
+    detailTypeDistribution: "頁型分佈",
+    detailActions: "操作",
+    detailFocusDomain: "聚焦 {title}",
+    detailFallbackSummary: "這個節點還沒有整理好的摘要。可以先從相關連結或完整筆記內容查看。",
+    metaDomain: "領域",
+    metaType: "頁型",
+    metaLinks: "連結數",
+    metaPath: "來源路徑",
+    sectionTags: "標籤",
+    sectionOutgoing: "指向其他節點",
+    sectionIncoming: "哪些節點連到這裡",
+    readerTabPreview: "預覽模式",
+    readerTabFull: "全文模式",
+    readerBackPreview: "返回預覽",
+    readerOutlineTitle: "文章目錄",
+    readerOutlineCaption: "從定義、機制到延伸概念，直接跳到對應段落。",
+    readerNoExport: "這個節點還沒有對應的 Obsidian 匯出內容。",
+    previewTitle: "筆記預覽",
+    fullTitle: "筆記全文",
+    previewShort: "預覽",
+    fullShort: "全文",
+    outlineSection: "文章目錄",
+    outlineCaption: "點選章節直接跳到對應段落。",
+    sectionPreview: "章節預覽",
+    sectionFull: "章節全文",
+    sectionKicker: "章節",
+    noSections: "這份筆記還沒有切分好的章節內容。",
+    noRelations: "目前沒有可顯示的關聯節點。",
+    notesKicker: "筆記瀏覽",
+    notesTitle: "全部筆記（{count}）",
+    notesSummary: "依領域分組，點選筆記可切換到圖譜檢視並聚焦該節點。",
+    settingsKicker: "設定",
+    settingsTitle: "材料科學與工程知識圖譜",
+    settingsSummary: "可在這裡切換全中文或全英文介面與內容。",
+    settingsAbout: "關於",
+    settingsLanguage: "語言",
+    settingsLanguageSummary: "切換後會同步更新介面文字、節點標題、摘要與筆記全文。",
+    settingsLanguageZh: "全中文",
+    settingsLanguageEn: "全英文",
+    settingsTech: "技術",
+    settingsVersion: "版本",
+    statsNotes: "筆記數",
+    statsEdges: "關係數",
+    statsDomains: "領域數",
+    aboutP1: "本專案是一個材料科學與工程知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。",
+    aboutP2: "涵蓋結構與尺度、性質、製程、表徵、失效與應用等主幹，並提供中英雙語切換。",
+    searchKicker: "搜尋",
+    searchTitle: "搜尋知識圖譜",
+    searchSummary: "輸入關鍵字搜尋概念、性質、製程、表徵方法與應用。",
+    searchPlaceholder: "例如：差排、X 光繞射、熱處理、腐蝕…",
+    searchIdle: "輸入關鍵字後會即時顯示搜尋結果。",
+    searchNoResults: "找不到符合「{query}」的筆記。",
+    searchResults: "找到 {count} 筆結果{suffix}",
+    searchResultsLimitSuffix: "（顯示前 50 筆）",
+    uncategorized: "未分類",
+  },
+  en: {
+    "brand.title": "Materials Science and Engineering Knowledge Atlas",
+    "brand.tagline": "Bilingual Interactive Materials Knowledge Base",
+    "brand.homeAria": "Back to atlas home",
+    "nav.search": "Search",
+    "nav.notes": "Notes",
+    "nav.graph": "Graph",
+    "nav.settings": "Settings",
+    "sidebar.search.title": "Search",
+    "sidebar.search.kicker": "Query",
+    "sidebar.search.label": "Search nodes",
+    "sidebar.search.placeholder": "Search concepts, properties, processes, methods...",
+    "sidebar.mode.title": "View Mode",
+    "sidebar.mode.kicker": "Mode",
+    "sidebar.filter.toggle": "Domain / Taxonomy",
+    "sidebar.filter.title": "Switch grouping lens",
+    "sidebar.type.title": "Type",
+    "sidebar.type.kicker": "Type",
+    "sidebar.atlas.title": "Atlas Summary",
+    "sidebar.atlas.kicker": "Atlas",
+    "graph.title": "Graph Workspace",
+    "graph.zoomOut": "Zoom Out",
+    "graph.zoomIn": "Zoom In",
+    "graph.fit": "Fit View",
+    "graph.backToOverview": "Back to Overview",
+    "graph.reset": "Reset View",
+    "legend.title": "Legend",
+    "legend.map": "Map",
+    "legend.law": "Principle",
+    "legend.concept": "Concept",
+    "legend.quantity": "Property",
+    "legend.characterization": "Characterization",
+    "detail.empty.kicker": "Node Detail",
+    "detail.empty.title": "Select a node",
+    "detail.empty.summary": "The panel on the right shows the page summary, domain, note type, prerequisites, and outward connections.",
+    "detail.empty.note": "Start from an overview domain, or click any node directly.",
+    appTitle: "Materials Science and Engineering Knowledge Atlas",
+    loadErrorKicker: "Load Error",
+    loadErrorTitle: "Unable to load knowledge graph data",
+    filterModeTaxonomy: "Taxonomy",
+    filterModeDomain: "Domain",
+    missingDomainGuide: "No guide text has been written for this domain yet.",
+    detailEmptyKicker: "Node Detail",
+    detailEmptyTitle: "Select a node",
+    detailEmptySummary: "The panel on the right shows the page summary, domain, note type, prerequisites, and outward connections.",
+    detailEmptyNote: "Start from an overview domain, or click any node directly.",
+    viewOverview: "Overview",
+    viewGraph: "Graph",
+    viewSearch: "Search",
+    viewNotes: "Notes",
+    viewSettings: "Settings",
+    graphHintOverview: "Overview keeps only domain hubs, map pages, and a small number of highly connected nodes. Pick a domain first, then drill into a local subgraph.",
+    graphHintDomain: "Currently focused on “{domain}”. Start with the core skeleton, then click any node to switch to a local subgraph.",
+    graphHintLocal: "Currently centered on “{title}” inside “{domain}”, showing only directly related nodes and required support nodes.",
+    focusLocalEyebrow: "Local Subgraph",
+    focusDomainEyebrow: "Domain Focus",
+    focusLocalText: "Showing {primary} core nodes and {support} cross-domain support nodes around “{title}”.",
+    focusDomainText: "Showing only {primary} core nodes and {support} support nodes to avoid flattening the whole graph at once.",
+    focusPrimaryMetric: "{count} core nodes",
+    focusSupportMetric: "{count} support nodes",
+    backToOverview: "Back to overview",
+    detailDomainKicker: "Domain Hub",
+    detailMembers: "Member nodes",
+    detailCrossLinks: "Cross-domain links",
+    detailContainedTypes: "Included types",
+    detailPerspective: "View",
+    detailPerspectiveValue: "Domain hub and navigation entry",
+    detailTypeDistribution: "Type distribution",
+    detailActions: "Actions",
+    detailFocusDomain: "Focus {title}",
+    detailFallbackSummary: "This node does not have a polished summary yet. Check the linked notes or full note body first.",
+    metaDomain: "Domain",
+    metaType: "Type",
+    metaLinks: "Links",
+    metaPath: "Source path",
+    sectionTags: "Tags",
+    sectionOutgoing: "Outgoing links",
+    sectionIncoming: "Incoming links",
+    readerTabPreview: "Preview",
+    readerTabFull: "Full Note",
+    readerBackPreview: "Back to preview",
+    readerOutlineTitle: "Outline",
+    readerOutlineCaption: "Jump straight to the matching section, from definitions to mechanisms and extensions.",
+    readerNoExport: "This node does not have exported Obsidian content yet.",
+    previewTitle: "Note Preview",
+    fullTitle: "Full Note",
+    previewShort: "Preview",
+    fullShort: "Full",
+    outlineSection: "Outline",
+    outlineCaption: "Click a section to jump to its matching block.",
+    sectionPreview: "Section Preview",
+    sectionFull: "Full Sections",
+    sectionKicker: "Section",
+    noSections: "This note does not have sectioned content yet.",
+    noRelations: "No related nodes are available to show.",
+    notesKicker: "Note Browser",
+    notesTitle: "All Notes ({count})",
+    notesSummary: "Grouped by domain. Click a note to jump back into the graph and focus that node.",
+    settingsKicker: "Settings",
+    settingsTitle: "Materials Science and Engineering Knowledge Atlas",
+    settingsSummary: "Switch the interface and note content between full Chinese and full English here.",
+    settingsAbout: "About",
+    settingsLanguage: "Language",
+    settingsLanguageSummary: "Switching updates UI labels, node titles, summaries, and full note content together.",
+    settingsLanguageZh: "Chinese",
+    settingsLanguageEn: "English",
+    settingsTech: "Tech",
+    settingsVersion: "Version",
+    statsNotes: "Notes",
+    statsEdges: "Edges",
+    statsDomains: "Domains",
+    aboutP1: "This project is a materials science and engineering knowledge-atlas prototype that exports structured Obsidian notes into JSON for interactive graph exploration and full-note reading.",
+    aboutP2: "It covers structure and scales, properties, processing, characterization, failure, and applications, with bilingual switching across the experience.",
+    searchKicker: "Search",
+    searchTitle: "Search the Knowledge Atlas",
+    searchSummary: "Search concepts, properties, processes, characterization methods, and applications.",
+    searchPlaceholder: "For example: dislocation, X-ray diffraction, heat treatment, corrosion...",
+    searchIdle: "Results will appear as you type.",
+    searchNoResults: "No notes matched “{query}”.",
+    searchResults: "{count} result(s){suffix}",
+    searchResultsLimitSuffix: " (showing first 50)",
+    uncategorized: "Uncategorized",
+  },
 };
 
 const taxonomyColorPalette = {
@@ -172,17 +476,151 @@ init().catch((error) => {
   console.error(error);
   els.detailCard.classList.remove("empty");
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">載入錯誤</p>
-    <h2>無法載入知識地圖資料</h2>
+    <p class="detail-kicker">${escapeHtml(t("loadErrorKicker"))}</p>
+    <h2>${escapeHtml(t("loadErrorTitle"))}</h2>
     <p class="detail-summary">${escapeHtml(String(error.message || error))}</p>
   `;
 });
 
+function t(key, vars = {}) {
+  const pack = uiText[state.language] || uiText["zh-Hant"];
+  let value = pack[key] ?? uiText["zh-Hant"][key] ?? key;
+  for (const [name, replacement] of Object.entries(vars)) {
+    value = value.replaceAll(`{${name}}`, String(replacement));
+  }
+  return value;
+}
+
+function getLocalizedLabel(map, key) {
+  const value = map[key];
+  if (!value) return key;
+  return value[state.language] || value["zh-Hant"] || key;
+}
+
+function getNodeTitle(node) {
+  if (!node) return "";
+  return state.language === "en"
+    ? node.title_en || node.title
+    : node.title_zh || node.title;
+}
+
+function getNodeSummary(node) {
+  if (!node) return "";
+  return state.language === "en"
+    ? node.summary_en || node.summary
+    : node.summary_zh || node.summary;
+}
+
+function getDetailSummary(detail) {
+  if (!detail) return "";
+  return state.language === "en"
+    ? detail.summary_en || detail.summary
+    : detail.summary_zh || detail.summary;
+}
+
+function getDetailBody(detail, mode = "full") {
+  if (!detail) return "";
+  const fullKey = state.language === "en" ? "body_full_en" : "body_full";
+  const previewKey = state.language === "en" ? "body_preview_en" : "body_preview";
+  if (mode === "preview") return detail[previewKey] || detail.body_preview || "";
+  return detail[fullKey] || detail.body_full || detail[previewKey] || detail.body_preview || "";
+}
+
+function getDetailSections(detail) {
+  if (!detail) return [];
+  return state.language === "en"
+    ? detail.sections_en || detail.sections || []
+    : detail.sections || [];
+}
+
+function getTypeLabel(type) {
+  return getLocalizedLabel(typeLabel, type);
+}
+
+function getRelationLabel(type) {
+  return getLocalizedLabel(relationLabel, type);
+}
+
+function getLocaleCompare(a, b) {
+  return String(a || "").localeCompare(String(b || ""), state.language === "en" ? "en" : "zh-Hant");
+}
+
+function applyShellI18n() {
+  document.documentElement.lang = state.language === "en" ? "en" : "zh-Hant";
+  document.title = t("appTitle");
+  for (const element of document.querySelectorAll("[data-i18n]")) {
+    element.textContent = t(element.dataset.i18n);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
+    element.setAttribute("placeholder", t(element.dataset.i18nPlaceholder));
+  }
+  for (const element of document.querySelectorAll("[data-i18n-title]")) {
+    element.setAttribute("title", t(element.dataset.i18nTitle));
+  }
+  for (const element of document.querySelectorAll("[data-i18n-aria-label]")) {
+    element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
+  }
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? t("filterModeTaxonomy") : t("filterModeDomain");
+}
+
+function applyContentLanguage() {
+  if (!state.graph) return;
+  for (const node of state.graph.noteNodes || []) {
+    node.title = state.language === "en" ? node.title_en || node.title_zh || node.title : node.title_zh || node.title_en || node.title;
+    node.summary = state.language === "en" ? node.summary_en || node.summary_zh || node.summary : node.summary_zh || node.summary_en || node.summary;
+  }
+
+  for (const detail of Object.values(state.noteDetails || {})) {
+    detail.title = state.language === "en" ? detail.title_en || detail.title_zh || detail.title : detail.title_zh || detail.title_en || detail.title;
+    detail.summary = state.language === "en" ? detail.summary_en || detail.summary_zh || detail.summary : detail.summary_zh || detail.summary_en || detail.summary;
+    detail.body_preview = state.language === "en"
+      ? detail.body_preview_en || detail.body_preview_zh || detail.body_preview
+      : detail.body_preview_zh || detail.body_preview_en || detail.body_preview;
+    detail.body_full = state.language === "en"
+      ? detail.body_full_en || detail.body_full_zh || detail.body_full
+      : detail.body_full_zh || detail.body_full_en || detail.body_full;
+    detail.sections = state.language === "en"
+      ? detail.sections_en || detail.sections_zh || detail.sections
+      : detail.sections_zh || detail.sections_en || detail.sections;
+  }
+}
+
+function refreshLocalizedUI() {
+  applyShellI18n();
+  if (state.graph) {
+    const refreshed = rebuildDomainLayer(state.graph.noteNodes, state.graph.edges, state.nodeMap, state.incomingMap);
+    state.graph = refreshed;
+    buildStats(refreshed);
+    buildMentionIndex(refreshed);
+    buildModeButtons();
+    buildFilters(refreshed);
+    buildDomainOverview();
+  }
+  const activeView = document.querySelector(".topnav-item.is-active")?.dataset.view || "graph";
+  if (activeView === "search") {
+    renderSearchView();
+  } else if (activeView === "notes") {
+    renderNotesListView();
+  } else if (activeView === "settings") {
+    renderSettingsView();
+  } else {
+    layoutVisibleGraph(true);
+  }
+}
+
+function setLanguage(language) {
+  if (!language || language === state.language) return;
+  state.language = language;
+  localStorage.setItem("kb_language", language);
+  applyContentLanguage();
+  refreshLocalizedUI();
+}
+
 function getActiveDomain(node) {
   if (state.filterMode === "taxonomy") {
-    return node.taxonomy_domain || "未分類";
+    return node.taxonomy_domain || t("uncategorized");
   }
-  return node.domain || "未分類";
+  return node.domain || t("uncategorized");
 }
 
 function getActiveDomainDescriptions() {
@@ -195,9 +633,9 @@ function getActiveColorPalette() {
 
 function getDomainLabel(domain) {
   if (state.filterMode === "taxonomy") {
-    return taxonomyLabels[domain] || domain;
+    return getLocalizedLabel(taxonomyLabels, domain);
   }
-  return domain;
+  return state.language === "en" ? domain : getLocalizedLabel(taxonomyLabels, domain) || domain;
 }
 
 function switchFilterMode() {
@@ -210,7 +648,7 @@ function switchFilterMode() {
   const newGraph = rebuildDomainLayer(g.noteNodes, g.edges, state.nodeMap, state.incomingMap);
   state.graph = newGraph;
   // Update UI
-  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? t("filterModeTaxonomy") : t("filterModeDomain");
   syncModeButtons();
   buildFilters(newGraph);
   buildDomainOverview();
@@ -228,33 +666,66 @@ function getNoteDetail(nodeId) {
 }
 
 async function init() {
-  const [graphResponse, detailResponse] = await Promise.all([fetch(graphUrl), fetch(noteDetailsUrl)]);
+  applyShellI18n();
+  const [graphResponse, detailResponse, graphEnResponse, detailEnResponse] = await Promise.all([
+    fetch(graphUrl),
+    fetch(noteDetailsUrl),
+    fetch(graphEnUrl),
+    fetch(noteDetailsEnUrl),
+  ]);
   if (!graphResponse.ok) {
     throw new Error(`HTTP ${graphResponse.status} while loading ${graphUrl}`);
   }
   if (!detailResponse.ok) {
     throw new Error(`HTTP ${detailResponse.status} while loading ${noteDetailsUrl}`);
   }
-
-  const [rawGraph, rawNoteDetails] = await Promise.all([graphResponse.json(), detailResponse.json()]);
-  const graph = normalizeGraph(rawGraph);
+  const [rawGraph, rawNoteDetails, rawGraphEn, rawNoteDetailsEn] = await Promise.all([
+    graphResponse.json(),
+    detailResponse.json(),
+    graphEnResponse.ok ? graphEnResponse.json() : Promise.resolve({ nodes: [], edges: [] }),
+    detailEnResponse.ok ? detailEnResponse.json() : Promise.resolve({}),
+  ]);
+  const graph = normalizeGraph(rawGraph, rawGraphEn);
   state.graph = graph;
   state.noteDetails = rawNoteDetails;
+  state.noteDetailsEn = rawNoteDetailsEn;
 
+  for (const [id, detail] of Object.entries(state.noteDetails)) {
+    const enDetail = state.noteDetailsEn[id];
+    detail.title_zh = detail.title;
+    detail.summary_zh = detail.summary;
+    detail.body_preview_zh = detail.body_preview;
+    detail.body_full_zh = detail.body_full;
+    detail.sections_zh = detail.sections;
+    if (enDetail) {
+      detail.title_en = enDetail.title;
+      detail.summary_en = enDetail.summary;
+      detail.body_preview_en = enDetail.body_preview;
+      detail.body_full_en = enDetail.body_full;
+      detail.sections_en = enDetail.sections;
+    }
+  }
+
+  applyContentLanguage();
   buildStats(graph);
   buildMentionIndex(graph);
   buildModeButtons();
   buildFilters(graph);
   buildDomainOverview();
-  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? t("filterModeTaxonomy") : t("filterModeDomain");
   bindEvents();
   resetViewport();
   layoutVisibleGraph(true);
 }
 
-function normalizeGraph(rawGraph) {
+function normalizeGraph(rawGraph, rawGraphEn = { nodes: [] }) {
+  const enNodes = new Map((rawGraphEn?.nodes || []).map((node) => [node.id, node]));
   const baseNodes = rawGraph.nodes.map((node, index) => ({
     ...node,
+    title_zh: node.title,
+    summary_zh: node.summary,
+    title_en: enNodes.get(node.id)?.title || node.title,
+    summary_en: enNodes.get(node.id)?.summary || node.summary,
     domain: node.domain || inferDomainFromTags(node.tags || []),
     taxonomy_domain: node.taxonomy_domain || "",
     tags: node.tags || [],
@@ -265,7 +736,16 @@ function normalizeGraph(rawGraph) {
     degree: 0,
     support: false,
     kind: "note",
-    searchText: [node.title, node.summary, node.type, node.domain, node.taxonomy_domain, ...(node.tags || [])]
+    searchText: [
+      node.title,
+      node.summary,
+      enNodes.get(node.id)?.title,
+      enNodes.get(node.id)?.summary,
+      node.type,
+      node.domain,
+      node.taxonomy_domain,
+      ...(node.tags || []),
+    ]
       .filter(Boolean)
       .join(" ")
       .toLowerCase(),
@@ -320,10 +800,14 @@ function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
     return {
       id: `domain::${domain}`,
       title: getDomainLabel(domain),
+      title_zh: getLocalizedLabel(taxonomyLabels, domain) || domain,
+      title_en: domain,
       type: "domain",
       kind: "domain",
       domain,
-      summary: descs[domain] || "尚未補上這個領域的導覽說明。",
+      summary: (descs[domain] && (descs[domain][state.language] || descs[domain]["zh-Hant"])) || t("missingDomainGuide"),
+      summary_zh: (descs[domain] && descs[domain]["zh-Hant"]) || t("missingDomainGuide"),
+      summary_en: (descs[domain] && descs[domain].en) || t("missingDomainGuide"),
       tags: ["domain-hub"],
       path: "",
       degree: edgeCount,
@@ -333,7 +817,15 @@ function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
       vx: 0,
       vy: 0,
       support: false,
-      searchText: `${getDomainLabel(domain)} ${(descs[domain] || "").toLowerCase()}`,
+      searchText: [
+        getLocalizedLabel(taxonomyLabels, domain),
+        domain,
+        descs[domain]?.["zh-Hant"],
+        descs[domain]?.en,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase(),
       _order: 1000 + index,
     };
   });
@@ -391,10 +883,10 @@ function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
 
 function buildStats(graph) {
   const stats = [
-    { label: "節點", value: graph.noteNodes.length },
-    { label: "關係", value: graph.edges.filter((edge) => primaryEdgeTypes.has(edge.type)).length },
-    { label: "領域", value: graph.domains.length },
-    { label: "頁型", value: graph.types.length },
+    { label: t("statsNotes"), value: graph.noteNodes.length },
+    { label: t("statsEdges"), value: graph.edges.filter((edge) => primaryEdgeTypes.has(edge.type)).length },
+    { label: t("statsDomains"), value: graph.domains.length },
+    { label: t("metaType"), value: graph.types.length },
   ];
 
   const domainBreakdown = graph.domains
@@ -417,7 +909,7 @@ function buildStats(graph) {
         .join("")}
     </div>
     <div class="stat-box">
-      <div class="stat-label">領域分佈</div>
+      <div class="stat-label">${escapeHtml(t("statsDomains"))}</div>
       <div class="detail-summary">${escapeHtml(domainBreakdown)}</div>
     </div>
   `;
@@ -425,8 +917,8 @@ function buildStats(graph) {
 
 function buildModeButtons() {
   const modes = [
-    { value: "overview", label: "總覽" },
-    { value: "domain", label: "領域聚焦" },
+    { value: "overview", label: t("viewOverview") },
+    { value: "domain", label: state.language === "en" ? "Domain Focus" : "領域聚焦" },
   ];
   els.viewModeButtons.innerHTML = "";
   for (const mode of modes) {
@@ -462,7 +954,7 @@ function buildFilters(graph) {
   }));
   const typeItems = graph.types.map((type) => ({
     value: type,
-    label: typeLabel[type] || type,
+    label: getTypeLabel(type),
     count: graph.noteNodes.filter((node) => node.type === type).length,
     color: filterSwatchColor("type", type),
   }));
@@ -506,17 +998,17 @@ function buildDomainOverview() {
     card.type = "button";
     card.className = `domain-card ${state.focusedDomain === meta.domain ? "active" : ""}`;
     const label = getDomainLabel(meta.domain);
-    const kicker = state.filterMode === "taxonomy" ? "taxonomy domain" : "領域群組";
+    const kicker = state.filterMode === "taxonomy" ? t("filterModeTaxonomy") : t("filterModeDomain");
     card.innerHTML = `
       <div class="domain-card-kicker">${kicker}</div>
       <div class="domain-card-count">${meta.count}</div>
       <h3>${escapeHtml(label)}</h3>
       <p>${escapeHtml(meta.description)}</p>
       <div class="domain-card-meta">
-        <span class="domain-metric">${meta.maps} 導覽頁</span>
-        <span class="domain-metric">${meta.laws} 定律</span>
+        <span class="domain-metric">${meta.maps} ${escapeHtml(getTypeLabel("map"))}</span>
+        <span class="domain-metric">${meta.laws} ${escapeHtml(getTypeLabel("law"))}</span>
       </div>
-      <div class="domain-card-footer">點擊進入聚焦</div>
+      <div class="domain-card-footer">${escapeHtml(state.language === "en" ? "Click to focus" : "點擊進入聚焦")}</div>
     `;
     card.addEventListener("click", () => focusDomain(meta.domain));
     els.domainOverview.appendChild(card);
@@ -1072,37 +1564,37 @@ function renderDetail(node) {
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">節點詳情</p>
-      <h2>選取一個節點</h2>
-      <p class="detail-summary">右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。</p>
-      <div class="detail-empty-note">先從總覽選一個領域，或直接點擊任一節點。</div>
+      <p class="detail-kicker">${escapeHtml(t("detailEmptyKicker"))}</p>
+      <h2>${escapeHtml(t("detailEmptyTitle"))}</h2>
+      <p class="detail-summary">${escapeHtml(t("detailEmptySummary"))}</p>
+      <div class="detail-empty-note">${escapeHtml(t("detailEmptyNote"))}</div>
     `;
     return;
   }
 
   if (node.kind === "domain") {
     const members = state.graph.noteNodes.filter((candidate) => getActiveDomain(candidate) === node.domain);
-    const byType = countBy(members, (item) => typeLabel[item.type] || item.type);
+    const byType = countBy(members, (item) => getTypeLabel(item.type));
     els.detailCard.className = "detail-card";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">領域樞紐</p>
+      <p class="detail-kicker">${escapeHtml(t("detailDomainKicker"))}</p>
       <h2>${escapeHtml(node.title)}</h2>
       <p class="detail-summary">${escapeHtml(node.summary)}</p>
       <div class="detail-meta">
-        ${detailMetaBox("成員節點", String(node.memberCount))}
-        ${detailMetaBox("跨域連結", String(node.degree))}
-        ${detailMetaBox("包含頁型", escapeHtml(Object.keys(byType).join(" / ")))}
-        ${detailMetaBox("視角", "領域樞紐與導覽入口")}
+        ${detailMetaBox(t("detailMembers"), String(node.memberCount))}
+        ${detailMetaBox(t("detailCrossLinks"), String(node.degree))}
+        ${detailMetaBox(t("detailContainedTypes"), escapeHtml(Object.keys(byType).join(" / ")))}
+        ${detailMetaBox(t("detailPerspective"), t("detailPerspectiveValue"))}
       </div>
       <div class="detail-grid">
         <section class="detail-section">
-          <h3>頁型分佈</h3>
+          <h3>${escapeHtml(t("detailTypeDistribution"))}</h3>
           <div class="detail-tags">${renderPills(Object.entries(byType).map(([label, count]) => `${label} ${count}`))}</div>
         </section>
         <section class="detail-section">
-          <h3>操作</h3>
+          <h3>${escapeHtml(t("detailActions"))}</h3>
           <div class="focus-actions">
-            <button id="detailFocusButton" class="ghost-button" type="button">聚焦 ${escapeHtml(node.title)}</button>
+            <button id="detailFocusButton" class="ghost-button" type="button">${escapeHtml(t("detailFocusDomain", { title: node.title }))}</button>
           </div>
         </section>
       </div>
@@ -1120,7 +1612,7 @@ function renderDetail(node) {
     node.summary ||
     noteDetail?.summary ||
     noteDetail?.body_preview ||
-    "這個節點還沒有整理好的摘要。可以先從相關連結或完整筆記內容查看。";
+    t("detailFallbackSummary");
   const resolvedPath = node.path || noteDetail?.path || "";
 
   if (isReaderMode) {
@@ -1133,27 +1625,27 @@ function renderDetail(node) {
 
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+    <p class="detail-kicker">${escapeHtml(getTypeLabel(node.type))}</p>
     <h2>${escapeHtml(node.title)}</h2>
     <div class="detail-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
     <div class="detail-meta">
-      ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
-      ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-      ${detailMetaBox("連結數", String(node.degree))}
-      ${detailMetaBox("來源路徑", resolvedPath)}
+      ${detailMetaBox(t("metaDomain"), getDomainLabel(getActiveDomain(node)))}
+      ${detailMetaBox(t("metaType"), getTypeLabel(node.type))}
+      ${detailMetaBox(t("metaLinks"), String(node.degree))}
+      ${detailMetaBox(t("metaPath"), resolvedPath)}
     </div>
     <div class="detail-grid">
       ${renderNotePreview(node, noteDetail)}
       <section class="detail-section">
-        <h3>標籤</h3>
+        <h3>${escapeHtml(t("sectionTags"))}</h3>
         <div class="detail-tags">${renderPills(node.tags)}</div>
       </section>
       <section class="detail-section">
-        <h3>指向其他節點</h3>
+        <h3>${escapeHtml(t("sectionOutgoing"))}</h3>
         ${renderRelationGroups(outgoingGroups)}
       </section>
       <section class="detail-section">
-        <h3>哪些節點連到這裡</h3>
+        <h3>${escapeHtml(t("sectionIncoming"))}</h3>
         ${renderRelationGroups(incomingGroups)}
       </section>
     </div>
@@ -1194,11 +1686,11 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
   return `
     <div class="reader-shell">
       <div class="reader-toolbar">
-        <div class="detail-view-toggle" role="tablist" aria-label="筆記檢視模式">
-          <button class="detail-view-button" type="button" data-note-view-mode="preview">預覽模式</button>
-          <button class="detail-view-button active" type="button" data-note-view-mode="full">全文模式</button>
+        <div class="detail-view-toggle" role="tablist" aria-label="${escapeHtml(state.language === "en" ? "Note view mode" : "筆記檢視模式")}">
+          <button class="detail-view-button" type="button" data-note-view-mode="preview">${escapeHtml(t("readerTabPreview"))}</button>
+          <button class="detail-view-button active" type="button" data-note-view-mode="full">${escapeHtml(t("readerTabFull"))}</button>
         </div>
-        <button class="ghost-button" type="button" data-note-view-mode="preview">返回預覽</button>
+        <button class="ghost-button" type="button" data-note-view-mode="preview">${escapeHtml(t("readerBackPreview"))}</button>
       </div>
 
         <article class="reader-article">
@@ -1208,8 +1700,8 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
                 ? `
             <aside class="reader-outline-panel">
               <div class="reader-outline-header">
-                <p class="detail-kicker">文章目錄</p>
-                <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
+                <p class="detail-kicker">${escapeHtml(t("readerOutlineTitle"))}</p>
+                <p class="reader-outline-caption">${escapeHtml(t("readerOutlineCaption"))}</p>
               </div>
               <div class="reader-outline-list">${outline}</div>
             </aside>
@@ -1219,14 +1711,14 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
 
             <div class="reader-main">
               <header class="reader-header">
-                <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+                <p class="detail-kicker">${escapeHtml(getTypeLabel(node.type))}</p>
                 <h1>${escapeHtml(node.title)}</h1>
                 <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
                 <div class="reader-meta-grid">
-                  ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
-                  ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-                  ${detailMetaBox("連結數", String(node.degree))}
-                  ${detailMetaBox("來源路徑", resolvedPath)}
+                  ${detailMetaBox(t("metaDomain"), getDomainLabel(getActiveDomain(node)))}
+                  ${detailMetaBox(t("metaType"), getTypeLabel(node.type))}
+                  ${detailMetaBox(t("metaLinks"), String(node.degree))}
+                  ${detailMetaBox(t("metaPath"), resolvedPath)}
                 </div>
               </header>
 
@@ -1241,15 +1733,15 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
 
               <footer class="reader-footer-grid">
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">標籤</p>
+                  <p class="detail-kicker">${escapeHtml(t("sectionTags"))}</p>
                   <div class="detail-tags">${renderPills(node.tags)}</div>
                 </section>
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">指向其他節點</p>
+                  <p class="detail-kicker">${escapeHtml(t("sectionOutgoing"))}</p>
                   ${renderRelationGroups(outgoingGroups)}
                 </section>
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">哪些節點連到這裡</p>
+                  <p class="detail-kicker">${escapeHtml(t("sectionIncoming"))}</p>
                   ${renderRelationGroups(incomingGroups)}
                 </section>
               </footer>
@@ -1264,8 +1756,8 @@ function renderNotePreview(node, detail) {
   if (!detail) {
     return `
       <section class="detail-section">
-        <h3>筆記預覽</h3>
-        <p class="detail-summary">這個節點還沒有對應的 Obsidian 匯出內容。</p>
+        <h3>${escapeHtml(t("previewTitle"))}</h3>
+        <p class="detail-summary">${escapeHtml(t("readerNoExport"))}</p>
       </section>
     `;
   }
@@ -1291,7 +1783,7 @@ function renderNotePreview(node, detail) {
     .map(
       (section, index) => `
         <article class="section-preview-card" id="${escapeHtml(buildSectionTargetId(node.id, index))}">
-          <p class="detail-kicker">章節</p>
+          <p class="detail-kicker">${escapeHtml(t("sectionKicker"))}</p>
           <h4>${escapeHtml(section.title)}</h4>
           <div class="reader-prose compact-prose">${renderMarkdown(
             isFullMode ? section.content || section.preview || "" : section.preview || "",
@@ -1305,10 +1797,10 @@ function renderNotePreview(node, detail) {
   return `
     <section class="detail-section">
       <div class="detail-section-heading">
-        <h3>${isFullMode ? "筆記全文" : "筆記預覽"}</h3>
-        <div class="detail-view-toggle" role="tablist" aria-label="筆記檢視模式">
-          <button class="detail-view-button ${!isFullMode ? "active" : ""}" type="button" data-note-view-mode="preview">預覽</button>
-          <button class="detail-view-button ${isFullMode ? "active" : ""}" type="button" data-note-view-mode="full">全文</button>
+        <h3>${escapeHtml(isFullMode ? t("fullTitle") : t("previewTitle"))}</h3>
+        <div class="detail-view-toggle" role="tablist" aria-label="${escapeHtml(state.language === "en" ? "Note view mode" : "筆記檢視模式")}">
+          <button class="detail-view-button ${!isFullMode ? "active" : ""}" type="button" data-note-view-mode="preview">${escapeHtml(t("previewShort"))}</button>
+          <button class="detail-view-button ${isFullMode ? "active" : ""}" type="button" data-note-view-mode="full">${escapeHtml(t("fullShort"))}</button>
         </div>
       </div>
       <div class="detail-summary detail-body-copy reader-prose">${renderMarkdown(
@@ -1321,19 +1813,19 @@ function renderNotePreview(node, detail) {
         ? `
     <section class="detail-section preview-outline-panel">
       <div class="detail-section-heading">
-        <h3>文章目錄</h3>
-        <p class="detail-section-caption">點選章節直接跳到對應段落。</p>
+        <h3>${escapeHtml(t("outlineSection"))}</h3>
+        <p class="detail-section-caption">${escapeHtml(t("outlineCaption"))}</p>
       </div>
       <div class="detail-outline">${outline}</div>
     </section>`
         : ""
     }
     <section class="detail-section preview-sections-panel">
-      <h3>${isFullMode ? "章節全文" : "章節預覽"}</h3>
+      <h3>${escapeHtml(isFullMode ? t("sectionFull") : t("sectionPreview"))}</h3>
       <div class="preview-sections-grid">
         ${
           sectionCards ||
-          `<p class="detail-summary">這份筆記還沒有切分好的章節內容。</p>`
+          `<p class="detail-summary">${escapeHtml(t("noSections"))}</p>`
         }
       </div>
     </section>
@@ -1376,13 +1868,13 @@ function setupSectionObserver(nodeId) {
 
 function renderRelationGroups(groups) {
   if (groups.length === 0) {
-    return `<p class="detail-summary">目前沒有可顯示的關聯節點。</p>`;
+    return `<p class="detail-summary">${escapeHtml(t("noRelations"))}</p>`;
   }
   return groups
     .map(
       (group) => `
         <div class="relation-group">
-          <p class="detail-kicker">${escapeHtml(relationLabel[group.type] || group.type)}</p>
+          <p class="detail-kicker">${escapeHtml(getRelationLabel(group.type))}</p>
           <div class="relation-list">
             ${group.items
               .map(
@@ -1403,19 +1895,19 @@ function renderNotesListView() {
 
   const grouped = {};
   for (const note of notes) {
-    const domain = note.domain || "未分類";
+    const domain = note.domain || t("uncategorized");
     if (!grouped[domain]) grouped[domain] = [];
     grouped[domain].push(note);
   }
 
-  let html = `<p class="detail-kicker">筆記瀏覽</p>
-    <h2>全部筆記（${notes.length}）</h2>
-    <p class="detail-summary">依領域分組，點選筆記可切換到圖譜檢視並聚焦該節點。</p>
+  let html = `<p class="detail-kicker">${escapeHtml(t("notesKicker"))}</p>
+    <h2>${escapeHtml(t("notesTitle", { count: notes.length }))}</h2>
+    <p class="detail-summary">${escapeHtml(t("notesSummary"))}</p>
     <div class="detail-grid">`;
 
   for (const [domain, domainNotes] of Object.entries(grouped)) {
     html += `<section class="detail-section">
-      <h3>${escapeHtml(domain)}（${domainNotes.length}）</h3>
+      <h3>${escapeHtml(getDomainLabel(domain))}（${domainNotes.length}）</h3>
       <div class="detail-tags">${domainNotes.map(
         (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
       ).join("")}</div>
@@ -1435,39 +1927,53 @@ function renderSettingsView() {
 
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">設定</p>
-    <h2>物理學知識圖譜</h2>
-    <p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>
+    <p class="detail-kicker">${escapeHtml(t("settingsKicker"))}</p>
+    <h2>${escapeHtml(t("settingsTitle"))}</h2>
+    <p class="detail-summary">${escapeHtml(t("settingsSummary"))}</p>
     <div class="detail-meta">
-      ${detailMetaBox("筆記數", String(noteCount))}
-      ${detailMetaBox("關係數", String(edgeCount))}
-      ${detailMetaBox("領域數", String(domainCount))}
-      ${detailMetaBox("版本", "prototype")}
+      ${detailMetaBox(t("statsNotes"), String(noteCount))}
+      ${detailMetaBox(t("statsEdges"), String(edgeCount))}
+      ${detailMetaBox(t("statsDomains"), String(domainCount))}
+      ${detailMetaBox(t("settingsVersion"), "prototype")}
     </div>
     <div class="detail-grid">
       <section class="detail-section">
-        <h3>關於</h3>
+        <h3>${escapeHtml(t("settingsAbout"))}</h3>
         <div class="detail-summary rich-summary">
-          <p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>
-          <p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>
+          <p>${escapeHtml(t("aboutP1"))}</p>
+          <p>${escapeHtml(t("aboutP2"))}</p>
         </div>
       </section>
       <section class="detail-section">
-        <h3>技術</h3>
+        <h3>${escapeHtml(t("settingsLanguage"))}</h3>
+        <p class="detail-summary">${escapeHtml(t("settingsLanguageSummary"))}</p>
+        <div class="detail-tags settings-language-group">
+          <button class="pill note-pill ${state.language === "zh-Hant" ? "active" : ""}" type="button" data-language-option="zh-Hant">${escapeHtml(t("settingsLanguageZh"))}</button>
+          <button class="pill note-pill ${state.language === "en" ? "active" : ""}" type="button" data-language-option="en">${escapeHtml(t("settingsLanguageEn"))}</button>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h3>${escapeHtml(t("settingsTech"))}</h3>
         <div class="detail-tags">${renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"])}</div>
       </section>
     </div>
   `;
+
+  for (const button of els.detailCard.querySelectorAll("[data-language-option]")) {
+    button.addEventListener("click", () => {
+      setLanguage(button.dataset.languageOption);
+    });
+  }
 }
 
 function renderSearchView() {
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">搜尋</p>
-    <h2>搜尋知識圖譜</h2>
-    <p class="detail-summary">輸入關鍵字搜尋概念、定律、物理量、實驗、數學工具。</p>
+    <p class="detail-kicker">${escapeHtml(t("searchKicker"))}</p>
+    <h2>${escapeHtml(t("searchTitle"))}</h2>
+    <p class="detail-summary">${escapeHtml(t("searchSummary"))}</p>
     <label class="search search-view-input">
-      <input id="searchViewInput" type="search" placeholder="例如：牛頓、熵、波函數、折射率…" autofocus>
+      <input id="searchViewInput" type="search" placeholder="${escapeAttribute(t("searchPlaceholder"))}" autofocus>
     </label>
     <div id="searchViewResults" class="detail-grid"></div>
   `;
@@ -1482,29 +1988,29 @@ function renderSearchView() {
   input.addEventListener("input", () => {
     const query = input.value.trim().toLowerCase();
     if (!query) {
-      results.innerHTML = `<p class="detail-summary">輸入關鍵字後會即時顯示搜尋結果。</p>`;
+      results.innerHTML = `<p class="detail-summary">${escapeHtml(t("searchIdle"))}</p>`;
       return;
     }
 
     const matches = state.graph.noteNodes.filter((n) => n.searchText.includes(query)).slice(0, 50);
 
     if (!matches.length) {
-      results.innerHTML = `<p class="detail-summary">找不到符合「${escapeHtml(input.value.trim())}」的筆記。</p>`;
+      results.innerHTML = `<p class="detail-summary">${escapeHtml(t("searchNoResults", { query: input.value.trim() }))}</p>`;
       return;
     }
 
     // Group by domain
     const grouped = {};
     for (const note of matches) {
-      const domain = note.domain || "未分類";
+      const domain = note.domain || t("uncategorized");
       if (!grouped[domain]) grouped[domain] = [];
       grouped[domain].push(note);
     }
 
-    let html = `<p class="detail-summary">找到 ${matches.length} 筆結果${matches.length === 50 ? "（顯示前 50 筆）" : ""}</p>`;
+    let html = `<p class="detail-summary">${escapeHtml(t("searchResults", { count: matches.length, suffix: matches.length === 50 ? t("searchResultsLimitSuffix") : "" }))}</p>`;
     for (const [domain, notes] of Object.entries(grouped)) {
       html += `<section class="detail-section">
-        <h3>${escapeHtml(domain)}（${notes.length}）</h3>
+        <h3>${escapeHtml(getDomainLabel(domain))}（${notes.length}）</h3>
         <div class="detail-tags">${notes.map(
           (n) => `<button class="pill note-pill" type="button" data-node-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`
         ).join("")}</div>
@@ -1568,7 +2074,7 @@ document.addEventListener("click", (event) => {
   }
   // Set selectedNodeId BEFORE focusDomain so layoutVisibleGraph doesn't reset it
   state.selectedNodeId = node.id;
-  if (getActiveDomain(node) !== "未分類") focusDomain(getActiveDomain(node));
+  if (getActiveDomain(node) !== t("uncategorized")) focusDomain(getActiveDomain(node));
   renderDetail(node);
   scrollReadingToTop();
   updateNodeStates();
@@ -1666,18 +2172,18 @@ function startDragGesture(event, node) {
 
 function inferDomainFromTags(tags) {
   const domainTagMap = {
-    mechanics: "力學",
-    thermodynamics: "熱學與熱力學",
-    electromagnetism: "電磁學",
-    optics: "光學",
-    "fluid-mechanics": "流體力學",
-    waves: "振動與波動",
-    mathematics: "數學工具",
+    mechanics: state.language === "en" ? "Mechanics" : "力學",
+    thermodynamics: state.language === "en" ? "Thermodynamics" : "熱學與熱力學",
+    electromagnetism: state.language === "en" ? "Electromagnetism" : "電磁學",
+    optics: state.language === "en" ? "Optics" : "光學",
+    "fluid-mechanics": state.language === "en" ? "Fluid Mechanics" : "流體力學",
+    waves: state.language === "en" ? "Waves" : "振動與波動",
+    mathematics: state.language === "en" ? "Mathematics" : "數學工具",
   };
   for (const tag of tags) {
     if (domainTagMap[tag]) return domainTagMap[tag];
   }
-  return "未分類";
+  return t("uncategorized");
 }
 
 function detailMetaBox(label, value) {
@@ -1690,7 +2196,7 @@ function detailMetaBox(label, value) {
 }
 
 function renderPills(values) {
-  if (!values || values.length === 0) return `<span class="pill">無</span>`;
+  if (!values || values.length === 0) return `<span class="pill">${escapeHtml(state.language === "en" ? "None" : "無")}</span>`;
   return values.map((value) => `<span class="pill">${escapeHtml(value)}</span>`).join("");
 }
 
@@ -1745,7 +2251,7 @@ function clamp(value, min, max) {
 }
 
 function localeCompareZh(a, b) {
-  return String(a).localeCompare(String(b), "zh-Hant");
+  return String(a).localeCompare(String(b), state.language === "en" ? "en" : "zh-Hant");
 }
 
 function escapeHtml(value) {
@@ -2044,7 +2550,16 @@ function autoLinkPlainMentions(text) {
 }
 
 function findNodeByTitle(title) {
-  return state.graph?.noteNodes?.find((node) => node.title === title) || null;
+  const needle = String(title || "").trim();
+  return (
+    state.graph?.noteNodes?.find(
+      (node) =>
+        node.title === needle ||
+        node.title_zh === needle ||
+        node.title_en === needle ||
+        node.id === needle.replaceAll(" ", "-")
+    ) || null
+  );
 }
 
 function escapeRegex(value) {
@@ -2171,9 +2686,9 @@ function dedupeEdges(edges) {
 
 function describeNodeMeta(node) {
   const label = getDomainLabel(getActiveDomain(node));
-  if (node.focal) return `焦點節點 · ${label}`;
-  if (node.overviewHub) return `高連結樞紐 · ${label}`;
-  if (node.support) return `支撐節點 · ${label}`;
+  if (node.focal) return `${state.language === "en" ? "Focused Node" : "焦點節點"} · ${label}`;
+  if (node.overviewHub) return `${state.language === "en" ? "High-Link Hub" : "高連結樞紐"} · ${label}`;
+  if (node.support) return `${state.language === "en" ? "Support Node" : "支撐節點"} · ${label}`;
   return label;
 }
 
@@ -2330,10 +2845,10 @@ function updateGraphHint() {
   );
   els.graphHint.textContent =
     state.viewMode === "overview"
-      ? "總覽只保留領域樞紐、導覽頁與少量高連結節點。先選領域，再深入局部子圖。"
+      ? t("graphHintOverview")
       : isLocalFocus
-        ? `目前以「${state.focusedDomain}」中的「${selectedNode.title}」為中心，只顯示直接相關與必要支撐節點。`
-        : `目前聚焦在「${state.focusedDomain}」。先看核心節點骨架，再點任一節點切換成局部子圖。`;
+        ? t("graphHintLocal", { domain: getDomainLabel(state.focusedDomain), title: selectedNode.title })
+        : t("graphHintDomain", { domain: getDomainLabel(state.focusedDomain) });
 }
 
 function updateFocusBanner() {
@@ -2356,22 +2871,22 @@ function updateFocusBanner() {
   els.focusBanner.hidden = false;
   els.focusBanner.innerHTML = `
     <div class="focus-banner-copy">
-      <p class="eyebrow">${isLocalFocus ? "局部子圖" : "領域聚焦"}</p>
+      <p class="eyebrow">${escapeHtml(isLocalFocus ? t("focusLocalEyebrow") : t("focusDomainEyebrow"))}</p>
       <p>
-        <strong>${escapeHtml(state.focusedDomain)}</strong>
+        <strong>${escapeHtml(getDomainLabel(state.focusedDomain))}</strong>
         ${
           isLocalFocus
-            ? ` 目前圍繞「${escapeHtml(selectedNode.title)}」顯示 ${primaryCount} 個核心節點與 ${supportCount} 個跨域支撐節點。`
-            : ` 目前只顯示 ${primaryCount} 個核心節點與 ${supportCount} 個支撐節點，避免整張圖一次攤平。`
+            ? ` ${escapeHtml(t("focusLocalText", { title: selectedNode.title, primary: primaryCount, support: supportCount }))}`
+            : ` ${escapeHtml(t("focusDomainText", { primary: primaryCount, support: supportCount }))}`
         }
       </p>
     </div>
     <div class="focus-banner-metrics">
-      <span class="focus-banner-metric">${primaryCount} 核心節點</span>
-      <span class="focus-banner-metric">${supportCount} 支撐節點</span>
+      <span class="focus-banner-metric">${escapeHtml(t("focusPrimaryMetric", { count: primaryCount }))}</span>
+      <span class="focus-banner-metric">${escapeHtml(t("focusSupportMetric", { count: supportCount }))}</span>
     </div>
     <div class="focus-actions focus-banner-actions">
-      <button id="backToOverviewButton" class="ghost-button" type="button">回到總覽</button>
+      <button id="backToOverviewButton" class="ghost-button" type="button">${escapeHtml(t("backToOverview"))}</button>
     </div>
   `;
   els.focusBanner.querySelector("#backToOverviewButton").addEventListener("click", () => {

@@ -310,6 +310,18 @@ body:has(.workspace-shell.reader-mode) .brand p {
   color: var(--accent);
 }
 
+.note-pill.active {
+  border-color: transparent;
+  background: rgba(47, 100, 163, 0.08);
+  color: var(--accent);
+}
+
+.settings-language-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .filter-item {
   flex-direction: row;
   justify-content: space-between;

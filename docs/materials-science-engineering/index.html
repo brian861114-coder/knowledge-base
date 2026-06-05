@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>知識圖譜</title>
+  <title>材料科學與工程知識圖譜</title>
   <link rel="stylesheet" href="./styles.css">
   <script>
     window.MathJax = {
@@ -23,14 +23,14 @@
   <div class="shell">
     <header class="topbar">
       <div class="brand">
-      <h1><a href="#" class="brand-link" aria-label="回到首頁">知識圖譜</a></h1>
-      <p>知識的脈絡，一目瞭然</p>
+        <h1><a href="#" class="brand-link" aria-label="回到知識圖譜首頁" data-i18n="brand.title" data-i18n-aria-label="brand.homeAria">材料科學與工程知識圖譜</a></h1>
+        <p data-i18n="brand.tagline">雙語互動材料知識庫</p>
       </div>
       <nav class="topnav" aria-label="Primary">
-        <button class="topnav-item" type="button" data-view="search">搜尋</button>
-        <button class="topnav-item" type="button" data-view="notes">筆記</button>
-        <button class="topnav-item is-active" type="button" data-view="graph">圖譜</button>
-        <button class="topnav-item" type="button" data-view="settings">設定</button>
+        <button class="topnav-item" type="button" data-view="search" data-i18n="nav.search">搜尋</button>
+        <button class="topnav-item" type="button" data-view="notes" data-i18n="nav.notes">筆記</button>
+        <button class="topnav-item is-active" type="button" data-view="graph" data-i18n="nav.graph">圖譜</button>
+        <button class="topnav-item" type="button" data-view="settings" data-i18n="nav.settings">設定</button>
       </nav>
       <button class="topbar-orbit" type="button" aria-label="View controls">+</button>
     </header>
@@ -39,19 +39,19 @@
       <aside class="control-sidebar controls">
         <section class="sidebar-section">
           <div class="sidebar-section-head">
-            <h2>搜尋</h2>
-            <span>Query</span>
+            <h2 data-i18n="sidebar.search.title">搜尋</h2>
+            <span data-i18n="sidebar.search.kicker">Query</span>
           </div>
           <label class="search">
-            <span>搜尋節點</span>
-            <input id="searchInput" type="search" placeholder="搜尋概念、定律、現象、人物…">
+            <span data-i18n="sidebar.search.label">搜尋節點</span>
+            <input id="searchInput" type="search" placeholder="搜尋概念、性質、製程、表徵方法…" data-i18n-placeholder="sidebar.search.placeholder">
           </label>
         </section>
 
         <section class="sidebar-section">
           <div class="sidebar-section-head">
-            <h2>瀏覽模式</h2>
-            <span>Mode</span>
+            <h2 data-i18n="sidebar.mode.title">檢視模式</h2>
+            <span data-i18n="sidebar.mode.kicker">Mode</span>
           </div>
           <div id="viewModeButtons" class="chips"></div>
         </section>
@@ -59,23 +59,23 @@
         <section class="sidebar-section">
           <div class="sidebar-section-head">
             <h2 id="domainSectionTitle">Taxonomy</h2>
-            <button id="filterModeToggle" class="ghost-button filter-mode-toggle" type="button" title="切換分類模式">領域 / Taxonomy</button>
+            <button id="filterModeToggle" class="ghost-button filter-mode-toggle" type="button" title="切換分類視角" data-i18n="sidebar.filter.toggle" data-i18n-title="sidebar.filter.title">領域 / Taxonomy</button>
           </div>
           <div id="domainFilters" class="sidebar-list chips"></div>
         </section>
 
         <section class="sidebar-section">
           <div class="sidebar-section-head">
-            <h2>類型</h2>
-            <span>Type</span>
+            <h2 data-i18n="sidebar.type.title">頁型</h2>
+            <span data-i18n="sidebar.type.kicker">Type</span>
           </div>
           <div id="typeFilters" class="sidebar-list chips"></div>
         </section>
 
         <section class="sidebar-section sidebar-summary">
           <div class="sidebar-section-head">
-            <h2>總覽</h2>
-            <span>Atlas</span>
+            <h2 data-i18n="sidebar.atlas.title">圖譜摘要</h2>
+            <span data-i18n="sidebar.atlas.kicker">Atlas</span>
           </div>
           <div class="hero-stats" id="heroStats"></div>
         </section>
@@ -84,15 +84,15 @@
       <section class="graph-workspace">
         <div class="graph-toolbar">
           <div class="graph-toolbar-copy">
-            <h2>圖譜視圖</h2>
-            <p id="graphHint">點選節點查看摘要與關聯，拖曳節點可重新整理局部佈局。</p>
+            <h2 data-i18n="graph.title">圖譜工作區</h2>
+            <p id="graphHint">總覽只保留領域樞紐、導覽頁與少量高連結節點。先選領域，再深入局部子圖。</p>
           </div>
           <div class="toolbar-actions">
-            <button id="zoomOutButton" class="ghost-button" type="button">縮小</button>
-            <button id="zoomInButton" class="ghost-button" type="button">放大</button>
-            <button id="fitViewButton" class="ghost-button" type="button">置中</button>
-            <button id="backToOverviewToolbarButton" class="ghost-button" type="button" hidden>回到總覽</button>
-            <button id="resetViewButton" class="ghost-button" type="button">重置視圖</button>
+            <button id="zoomOutButton" class="ghost-button" type="button" data-i18n="graph.zoomOut">縮小</button>
+            <button id="zoomInButton" class="ghost-button" type="button" data-i18n="graph.zoomIn">放大</button>
+            <button id="fitViewButton" class="ghost-button" type="button" data-i18n="graph.fit">適應畫面</button>
+            <button id="backToOverviewToolbarButton" class="ghost-button" type="button" hidden data-i18n="graph.backToOverview">回到總覽</button>
+            <button id="resetViewButton" class="ghost-button" type="button" data-i18n="graph.reset">重設視圖</button>
           </div>
         </div>
 
@@ -105,13 +105,13 @@
             <canvas id="graphCanvas"></canvas>
             <div id="nodesLayer" class="nodes-layer"></div>
             <div class="graph-overlay graph-legend-panel">
-              <div class="legend-heading">圖例</div>
+              <div class="legend-heading" data-i18n="legend.title">圖例</div>
               <div class="legend">
-                <span><i class="swatch type-map"></i>導覽頁</span>
-                <span><i class="swatch type-law"></i>定律</span>
-                <span><i class="swatch type-concept"></i>概念</span>
-                <span><i class="swatch type-quantity"></i>物理量</span>
-                <span><i class="swatch type-mathematical_tool"></i>數學工具</span>
+                <span><i class="swatch type-map"></i><span data-i18n="legend.map">導覽頁</span></span>
+                <span><i class="swatch type-law"></i><span data-i18n="legend.law">原理</span></span>
+                <span><i class="swatch type-concept"></i><span data-i18n="legend.concept">概念</span></span>
+                <span><i class="swatch type-quantity"></i><span data-i18n="legend.quantity">性質</span></span>
+                <span><i class="swatch type-mathematical_tool"></i><span data-i18n="legend.characterization">表徵</span></span>
               </div>
             </div>
           </div>
@@ -120,10 +120,10 @@
 
       <aside class="detail-panel">
         <div id="detailCard" class="detail-card empty">
-          <p class="detail-kicker">節點詳情</p>
-          <h2>選取一個節點</h2>
-          <p class="detail-summary">右側會顯示該頁的摘要、領域、頁型，以及它在這張物理知識地圖中的前置關係與延伸方向。</p>
-          <div class="detail-empty-note">先從左側選一個領域，或直接點擊中央圖譜中的節點。</div>
+          <p class="detail-kicker" data-i18n="detail.empty.kicker">節點詳情</p>
+          <h2 data-i18n="detail.empty.title">選取一個節點</h2>
+          <p class="detail-summary" data-i18n="detail.empty.summary">右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。</p>
+          <div class="detail-empty-note" data-i18n="detail.empty.note">先從總覽選一個領域，或直接點擊任一節點。</div>
         </div>
       </aside>
     </main>

@@ -44,6 +44,11 @@ def main() -> None:
          "--vault", str(vault), "--out", str(out_dir / "graph.json")],
         "export graph",
     )
+    run_step(
+        [python_exe, str(repo / "tools" / "export_english_snapshot.py"),
+         "--out-dir", str(out_dir)],
+        "export english snapshot",
+    )
 
     if not args.skip_validate:
         run_step(

@@ -1,0 +1,108 @@
+section_schemas:
+  concept:
+    required:
+      - heading: "Why it matters"
+        description: "Explain why the concept matters inside materials science."
+        anchor: true
+      - heading: "Core idea"
+        description: "Give the working definition and interpretive frame."
+      - heading: "Links"
+        description: "Connect the concept to structure, processing, properties, or applications."
+        anchor: true
+    optional:
+      - heading: "Key examples"
+      - heading: "Common mistakes"
+      - heading: "See also"
+
+  law:
+    required:
+      - heading: "Why it matters"
+        description: "State the practical role of the principle."
+        anchor: true
+      - heading: "Core relation"
+        description: "Summarize the governing rule, mechanism, or trend."
+      - heading: "Links"
+        description: "Tie the principle to nearby notes."
+        anchor: true
+    optional:
+      - heading: "Typical consequences"
+      - heading: "Limits"
+      - heading: "See also"
+
+  quantity:
+    required:
+      - heading: "Why it matters"
+        description: "Explain what decisions depend on this property."
+        anchor: true
+      - heading: "Definition"
+        description: "Define the property and note typical units or test context."
+      - heading: "What controls it"
+        description: "List the strongest structure and processing drivers."
+        anchor: true
+    optional:
+      - heading: "How it is measured"
+      - heading: "Tradeoffs"
+      - heading: "See also"
+
+  experiment:
+    required:
+      - heading: "Why it matters"
+        description: "Explain why the process matters for materials design or manufacturing."
+        anchor: true
+      - heading: "Workflow"
+        description: "Describe the main steps or stages."
+      - heading: "Structure impact"
+        description: "State how the process changes phases, defects, texture, or microstructure."
+        anchor: true
+    optional:
+      - heading: "Key parameters"
+      - heading: "Common defects"
+      - heading: "See also"
+
+  mathematical_tool:
+    required:
+      - heading: "Why it matters"
+        description: "Explain what this method reveals that other methods do not."
+        anchor: true
+      - heading: "What it measures"
+        description: "Specify the signal and the information extracted from it."
+      - heading: "Interpretation"
+        description: "Explain how to read the output without overclaiming."
+        anchor: true
+    optional:
+      - heading: "Sample requirements"
+      - heading: "Limits"
+      - heading: "See also"
+
+  map:
+    required:
+      - heading: "Why this map exists"
+        description: "State what the map organizes and how to use it."
+        anchor: true
+      - heading: "Map structure"
+        description: "Explain the major clusters and their relationships."
+        anchor: true
+    optional:
+      - heading: "Recommended order"
+      - heading: "Core links"
+      - heading: "Expansion targets"
+
+bridge_schemas:
+  cross_topic_bridge:
+    required:
+      - heading: "Why this bridge matters"
+        anchor: true
+      - heading: "Concept transfer"
+    optional:
+      - heading: "Pitfalls"
+      - heading: "See also"
+
+  method_page:
+    required:
+      - heading: "Method role"
+        anchor: true
+      - heading: "Workflow"
+      - heading: "Interpretation"
+    optional:
+      - heading: "Failure modes"
+      - heading: "See also"

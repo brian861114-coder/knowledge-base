@@ -1,0 +1,47 @@
+# Materials science note types
+
+types:
+  - id: concept
+    label: Concept
+    label_en: concept
+    folder: "02_concepts"
+    color: "#648356"
+    description: "Interpretive notes for entities, classes, structures, and mechanisms."
+
+  - id: law
+    label: Principle
+    label_en: principle
+    folder: "01_principles"
+    color: "#315f98"
+    description: "Foundational rules, mechanisms, and governing relationships."
+
+  - id: quantity
+    label: Property
+    label_en: property
+    folder: "03_properties"
+    color: "#83589a"
+    description: "Property-focused notes with definitions, units, and controlling factors."
+
+  - id: experiment
+    label: Process
+    label_en: process
+    folder: "04_processes"
+    color: "#ae5a31"
+    description: "Processing, manufacturing, or test workflows that change structure or measure behavior."
+
+  - id: mathematical_tool
+    label: Characterization
+    label_en: characterization
+    folder: "05_characterization"
+    color: "#2f7f7f"
+    description: "Methods used to observe phases, defects, composition, texture, and morphology."
+
+  - id: map
+    label: Map
+    label_en: map
+    folder: "00_maps"
+    color: "#9b6b35"
+    description: "Navigation pages that explain how related notes fit together."
+
+label_overrides:
+  mathematical_tool: "Characterization"

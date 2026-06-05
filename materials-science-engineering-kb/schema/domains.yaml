@@ -1,0 +1,91 @@
+# Materials science taxonomy and domain schema
+
+taxonomy_domains:
+  - id: fundamentals
+    label: Foundations
+    label_en: Foundations
+    color: "#526c8b"
+    description: "Core ideas that explain why materials behave the way they do."
+
+  - id: material_classes
+    label: Material Classes
+    label_en: Material Classes
+    color: "#7b8751"
+    description: "Families of materials such as metals, ceramics, polymers, and composites."
+
+  - id: structure
+    label: Structure
+    label_en: Structure
+    color: "#8e5f47"
+    description: "Atomic arrangement, defects, interfaces, and microstructure across scales."
+
+  - id: properties
+    label: Properties
+    label_en: Properties
+    color: "#7a5896"
+    description: "Mechanical, electrical, thermal, optical, and chemical response."
+
+  - id: processing
+    label: Processing
+    label_en: Processing
+    color: "#b36a36"
+    description: "Manufacturing and treatment routes that create or modify structure."
+
+  - id: characterization
+    label: Characterization
+    label_en: Characterization
+    color: "#3d7d88"
+    description: "Methods used to measure structure, composition, phases, and defects."
+
+  - id: failure
+    label: Failure
+    label_en: Failure
+    color: "#a24d58"
+    description: "Mechanisms by which materials degrade, crack, corrode, or fail in service."
+
+  - id: applications
+    label: Applications
+    label_en: Applications
+    color: "#4d8f73"
+    description: "Application clusters where property targets and process constraints meet."
+
+domains:
+  - id: Foundations
+    label: Foundations
+    taxonomy: fundamentals
+    description: "Bonding, thermodynamics, kinetics, diffusion, and phase behavior."
+
+  - id: Material Classes
+    label: Material Classes
+    taxonomy: material_classes
+    description: "Metals, ceramics, polymers, composites, semiconductors, and related families."
+
+  - id: Structure and Defects
+    label: Structure and Defects
+    taxonomy: structure
+    description: "Crystal structures, point defects, dislocations, interfaces, grains, and microstructure."
+
+  - id: Properties
+    label: Properties
+    taxonomy: properties
+    description: "Property definitions, trends, and structure-property relationships."
+
+  - id: Processing
+    label: Processing
+    taxonomy: processing
+    description: "Thermal, chemical, mechanical, and additive routes used to make materials."
+
+  - id: Characterization
+    label: Characterization
+    taxonomy: characterization
+    description: "Microscopy, diffraction, spectroscopy, and related analysis methods."
+
+  - id: Failure Analysis
+    label: Failure Analysis
+    taxonomy: failure
+    description: "Fracture, corrosion, fatigue, creep, and service-life degradation."
+
+  - id: Applications
+    label: Applications
+    taxonomy: applications
+    description: "Energy, electronics, biomedical, structural, and extreme-environment use cases."

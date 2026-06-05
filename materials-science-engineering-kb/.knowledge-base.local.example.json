@@ -1,0 +1,9 @@
+{
+  "_comment1": "Copy this file to .knowledge-base.local.json and edit the values.",
+  "_comment2": "vault_path can point to the included starter vault or to an external Obsidian vault.",
+  "_comment3": "python_path is optional when the default python is fine.",
+  "_comment4": "out_dir is optional. Leave it empty to export into the repo root.",
+  "vault_path": "./vault",
+  "python_path": "",
+  "out_dir": "./prototype"
+}

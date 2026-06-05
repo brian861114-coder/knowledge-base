@@ -860,7 +860,7 @@
       "type": "law",
       "summary": "連續方程是守恆律的局部表達模板，無論在流體中的質量守恆，或在電磁學中的電荷守恆，本質上都在說某區域內的存量變化必須由流入流出來解釋。",
       "path": "01_laws/連續方程.md",
-      "domain": "跨領域",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -943,7 +943,7 @@
       "type": "concept",
       "summary": "作用量把一整條運動路徑的動力學資訊壓成單一泛函，是變分法與拉格朗日力學的核心對象。",
       "path": "02_concepts/analytical_dynamics/作用量.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -998,7 +998,7 @@
       "type": "concept",
       "summary": "哈密頓量是把系統寫成廣義座標與廣義動量函數後得到的核心生成量，在很多情況下與總能量密切相關。",
       "path": "02_concepts/analytical_dynamics/哈密頓量.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1012,7 +1012,7 @@
       "type": "concept",
       "summary": "廣義座標是為了最有效描述系統自由度而選擇的變數，是拉格朗日力學能大幅簡化複雜系統的關鍵入口。",
       "path": "02_concepts/analytical_dynamics/廣義座標.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1025,7 +1025,7 @@
       "type": "concept",
       "summary": "拉格朗日力學用能量與變分觀點重寫經典力學，特別適合多自由度、有約束與高對稱系統。",
       "path": "02_concepts/analytical_dynamics/拉格朗日力學.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1038,7 +1038,7 @@
       "type": "concept",
       "summary": "正則變換是在保留哈密頓方程形式不變的前提下，對相空間變數做的變換。",
       "path": "02_concepts/analytical_dynamics/正則變換.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1052,7 +1052,7 @@
       "type": "concept",
       "summary": "泊松括號描述相空間中兩個函數之間的基本代數關係，並可用來表達哈密頓系統的時間演化。",
       "path": "02_concepts/analytical_dynamics/泊松括號.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1094,7 +1094,7 @@
       "type": "concept",
       "summary": "相空間是以座標與動量共同作為座標軸的狀態空間，用來完整表示系統即時狀態與其演化軌道。",
       "path": "02_concepts/analytical_dynamics/相空間.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1108,7 +1108,7 @@
       "type": "concept",
       "summary": "約束是限制系統可行運動或可行配置的條件，負責把原本鬆散的多變數問題壓縮成真正可用的自由度結構。",
       "path": "02_concepts/analytical_dynamics/約束.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1121,7 +1121,7 @@
       "type": "concept",
       "summary": "自由度是描述系統狀態所需的獨立變數數目，決定了問題要用多少座標、多少方程，以及哪些簡化是合法的。",
       "path": "02_concepts/analytical_dynamics/自由度.md",
-      "domain": "力學",
+      "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
       "tags": [
         "physics",
@@ -1705,7 +1705,7 @@
       "type": "concept",
       "summary": "不穩定平衡是系統在平衡點附近只要受到微小擾動，就會偏離原位置而不是回復的平衡型態。",
       "path": "02_concepts/foundations/不穩定平衡.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1719,7 +1719,7 @@
       "type": "concept",
       "summary": "伽利略變換描述古典力學中兩個相對等速運動慣性參考系之間的座標與速度關係。",
       "path": "02_concepts/foundations/伽利略變換.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1733,7 +1733,7 @@
       "type": "concept",
       "summary": "位移描述物體位置的改變量，關心的是初末狀態之間的向量差，而不是走過的路長。",
       "path": "02_concepts/foundations/位移.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1746,7 +1746,7 @@
       "type": "concept",
       "summary": "位能是由位置或構型決定的能量描述，讓保守力問題能用能量差來處理。",
       "path": "02_concepts/foundations/位能.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1759,7 +1759,7 @@
       "type": "concept",
       "summary": "力是改變物體動量或運動狀態的交互作用描述，不是物體前進所必須持續供應的神秘推手。",
       "path": "02_concepts/foundations/力.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1773,7 +1773,7 @@
       "type": "concept",
       "summary": "功描述力沿位移方向轉移能量的效果，是把受力分析和能量觀點接起來的橋梁。",
       "path": "02_concepts/foundations/功.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1786,7 +1786,7 @@
       "type": "concept",
       "summary": "動能衡量物體因運動而具有的能量，直接連到速度大小與受力做功。",
       "path": "02_concepts/foundations/動能.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1799,7 +1799,7 @@
       "type": "concept",
       "summary": "參考系是描述位置、速度與加速度所依附的觀測框架；不同參考系會改變運動量的表達形式，但不該被你誤認成物體真的換了命運。",
       "path": "02_concepts/foundations/參考系.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1827,7 +1827,7 @@
       "type": "concept",
       "summary": "場論觀點把相互作用改寫成場在空間與時間中的分布與演化，而不再停留在遠距離瞬時作用的粒子圖像。",
       "path": "02_concepts/foundations/場論觀點.md",
-      "domain": "電磁學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1854,7 +1854,7 @@
       "type": "concept",
       "summary": "守恆量是在系統演化過程中保持不變的物理量，是簡化動力學並揭露對稱性的核心工具。",
       "path": "02_concepts/foundations/守恆量.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1867,7 +1867,7 @@
       "type": "concept",
       "summary": "對稱性幫助我們看出哪些量守恆、哪些方程形式自然成立，是現代理論的深層結構。",
       "path": "02_concepts/foundations/對稱性.md",
-      "domain": "近代物理",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1880,7 +1880,7 @@
       "type": "concept",
       "summary": "平衡表示系統在淨力與淨力矩上都達到抵消，因此平移與轉動狀態不再改變。",
       "path": "02_concepts/foundations/平衡.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1893,7 +1893,7 @@
       "type": "concept",
       "summary": "慣性描述物體維持原本運動狀態的傾向，是理解牛頓第一定律的核心。",
       "path": "02_concepts/foundations/慣性.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1906,7 +1906,7 @@
       "type": "concept",
       "summary": "慣性參考系是牛頓定律以最簡單形式成立的參考架構。",
       "path": "02_concepts/foundations/慣性參考系.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1919,7 +1919,7 @@
       "type": "concept",
       "summary": "時間是描述事件先後與變化過程的基本參數，幾乎所有運動與演化問題都要依賴它。",
       "path": "02_concepts/foundations/時間.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1946,7 +1946,7 @@
       "type": "concept",
       "summary": "洛侖茲轉換是狹義相對論中的時空座標轉換規則，取代了牛頓式伽利略轉換。",
       "path": "02_concepts/foundations/洛侖茲轉換.md",
-      "domain": "近代物理",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1959,7 +1959,7 @@
       "type": "concept",
       "summary": "相互作用強調物理系統中的效應來自對象彼此之間的關係，而不是單方面施加。",
       "path": "02_concepts/foundations/相互作用.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1972,7 +1972,7 @@
       "type": "concept",
       "summary": "穩定平衡指系統受小擾動後傾向回到原平衡位置的狀態。",
       "path": "02_concepts/foundations/穩定平衡.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -1999,7 +1999,7 @@
       "type": "concept",
       "summary": "能量是統整不同物理過程的一般量，讓變化、轉換與守恆能放在同一框架下分析。",
       "path": "02_concepts/foundations/能量.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -2012,7 +2012,7 @@
       "type": "concept",
       "summary": "邊界條件規定系統在邊界上的可接受行為，是把一般方程收斂成特定物理解的關鍵限制。",
       "path": "02_concepts/foundations/邊界條件.md",
-      "domain": "數學工具",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -2025,7 +2025,7 @@
       "type": "concept",
       "summary": "非慣性參考系是本身帶有加速度或轉動的觀測框架；在其中使用牛頓定律時，必須引入慣性力來補償座標系本身的加速效果。",
       "path": "02_concepts/foundations/非慣性參考系.md",
-      "domain": "力學",
+      "domain": "物理總論",
       "taxonomy_domain": "foundations",
       "tags": [
         "physics",
@@ -2488,7 +2488,7 @@
       "type": "concept",
       "summary": "局域性強調物理作用與場量可在空間中的每一點被定義，系統演化依賴當地狀態而不是粗暴的整體瞬時遠距離規則。",
       "path": "02_concepts/modern_physics/局域性.md",
-      "domain": "電磁學",
+      "domain": "近代物理",
       "taxonomy_domain": "modern_physics",
       "tags": [
         "physics",
@@ -3122,7 +3122,7 @@
       "type": "concept",
       "summary": "散射研究粒子或波遇到位能、介質或目標後如何改變傳播方向與振幅，是把相互作用模型接到可測截面與穿透結果的橋接頁。",
       "path": "02_concepts/waves_optics/散射.md",
-      "domain": "近代物理",
+      "domain": "振動與波動",
       "taxonomy_domain": "waves_optics",
       "tags": [
         "physics",
@@ -5148,6 +5148,11 @@
     },
     {
       "source": "力學核心概念圖",
+      "target": "力學總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學核心概念圖",
       "target": "振動與波動總覽",
       "type": "wikilink"
     },
@@ -5389,6 +5394,31 @@
     {
       "source": "力學總覽",
       "target": "角動量",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "低摩擦滑車實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "兩滑車碰撞實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "滑軌能量轉換實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "扭秤實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "力學總覽",
+      "target": "天平",
       "type": "wikilink"
     },
     {
@@ -5678,6 +5708,16 @@
     },
     {
       "source": "振動波動與光學概念圖",
+      "target": "振動與波動總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動波動與光學概念圖",
+      "target": "光學總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動波動與光學概念圖",
       "target": "電磁學核心概念圖",
       "type": "wikilink"
     },
@@ -5864,6 +5904,11 @@
     {
       "source": "振動與波動總覽",
       "target": "共振",
+      "type": "wikilink"
+    },
+    {
+      "source": "振動與波動總覽",
+      "target": "雙狹縫實驗",
       "type": "wikilink"
     },
     {
@@ -6524,6 +6569,16 @@
     {
       "source": "熱學與流體概念圖",
       "target": "伯努力方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與流體概念圖",
+      "target": "熱學與熱力學總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "熱學與流體概念圖",
+      "target": "流體力學總覽",
       "type": "wikilink"
     },
     {
@@ -7303,6 +7358,11 @@
     },
     {
       "source": "近代物理概念圖",
+      "target": "近代物理總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "近代物理概念圖",
       "target": "分析力學與非線性動力系統圖",
       "type": "wikilink"
     },
@@ -7743,6 +7803,11 @@
     },
     {
       "source": "電磁學核心概念圖",
+      "target": "電磁學總覽",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學核心概念圖",
       "target": "振動波動與光學概念圖",
       "type": "wikilink"
     },
@@ -8154,6 +8219,16 @@
     {
       "source": "電磁學總覽",
       "target": "通量",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "密立根油滴實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "電磁學總覽",
+      "target": "法拉第冰桶實驗",
       "type": "wikilink"
     },
     {

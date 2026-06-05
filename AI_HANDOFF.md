@@ -20,16 +20,21 @@ Do not confuse them.
 
 ## Current State
 
-The project is feature-complete for the physics knowledge base. All items in the README Agent Handoff section have been resolved.
+The project is feature-complete for the physics knowledge base.
+The remaining work is operational: keep exports current after vault edits, keep `docs/` synchronized with `prototype/`, and keep the maintenance documents aligned with the real workflow.
 
 ### What's built
 
-- A structured physics encyclopedia with 255 notes, 5091 edges
-- 8 domains: mechanics, electromagnetism, optics, thermodynamics, modern physics, fluid mechanics, vibrations & waves, mathematical tools
-- 6 note types: map, law, concept, quantity, experiment, mathematical_tool
+- A structured physics encyclopedia with **319 notes, 6383 edges**
+- **7 taxonomy domains**: mechanics, electromagnetism, waves_optics, foundations, thermo_fluids, modern_physics, analytical_dynamics
+- **6 note types**: map (15), law (52), concept (178), quantity (49), experiment (11), mathematical_tool (14)
 - Full bridge/method page layer connecting cross-topic concepts
 - Standardized section structure across all notes (物理直覺 + 歷史背景)
 - Reverse links from 14 core notes to bridge pages
+- All notes have `taxonomy_domain` frontmatter (319/319)
+- All `02_concepts/` notes organized into 7 taxonomy subfolders (0 flat files remaining)
+- 15 map pages covering all 7 taxonomy domains
+- Map pages have inline descriptions for all wikilinks
 
 ### Frontend features
 
@@ -42,14 +47,16 @@ The project is feature-complete for the physics knowledge base. All items in the
 - Brand title click resets to homepage
 - Sidebar reordered: Search → Mode → Domain → Type → Summary
 - Responsive design with mobile breakpoints
+- **Taxonomy/Domain toggle**: switches between 7 taxonomy domains (English) and 13 legacy domains (Chinese)
+- localStorage persistence for filter mode preference
 
 ### Key files
 
 | File | Purpose |
 |------|---------|
 | `prototype/index.html` | Frontend entry point |
-| `prototype/app.js` | All frontend logic (~2360 lines) |
-| `prototype/styles.css` | All styles (~1400 lines) |
+| `prototype/app.js` | All frontend logic (~2470 lines) |
+| `prototype/styles.css` | All styles (~1470 lines) |
 | `physics_graph.json` | Exported graph data (nodes + edges) |
 | `physics_note_details.json` | Exported note content (sections + frontmatter) |
 | `tools/run_exports.py` | One-command export + validate |
@@ -61,14 +68,20 @@ The project is feature-complete for the physics knowledge base. All items in the
 ### Validation status
 
 ```
-notes: 255
-note details: 255
-graph nodes: 255
-graph edges: 5091
+notes: 319
+note details: 319
+graph nodes: 319
+graph edges: 6383
 broken wikilinks: 0
 broken frontmatter relations: 0
 math issues: 0
 ```
+
+### What is still worth checking
+
+- If vault content changes, rerun `python .\tools\run_exports.py` before trusting the JSON exports.
+- If frontend files change under `prototype/`, copy the matching deploy artifacts into `docs/` before publishing.
+- If local machine paths or startup assumptions change, update `README.md`, `MAINTENANCE.md`, and this file together.
 
 ## How To Continue Safely
 
@@ -85,6 +98,7 @@ math issues: 0
 2. Verify graph exploration still loads.
 3. Verify side-panel preview still works.
 4. Verify full-page reader mode still renders equations and internal links correctly.
+5. The taxonomy/domain toggle uses `getActiveDomain(node)` — all domain-dependent logic must go through this helper.
 
 ### When touching exports
 
@@ -97,17 +111,24 @@ If frontmatter fields change, update both:
 
 Start prototype:
 
-```bash
+```powershell
 cd C:/Users/brian/Downloads/vibe_coding/knowledge_map
-python -m http.server 4173
+.\start_prototype.cmd
 # Open http://127.0.0.1:4173/prototype/
 ```
 
 Export + validate:
 
-```bash
+```powershell
 cd C:/Users/brian/Downloads/vibe_coding/knowledge_map
-python tools/run_exports.py
+python .\tools\run_exports.py
+```
+
+Deploy to GitHub Pages:
+
+```powershell
+cd C:/Users/brian/Downloads/vibe_coding/knowledge_map
+bash scripts/deploy.sh
 ```
 
 ## Reusable Template

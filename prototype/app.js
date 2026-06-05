@@ -30,7 +30,7 @@ const state = {
   visibleEdges: [],
   domainSelection: new Set(),
   typeSelection: new Set(),
-  filterMode: "taxonomy",
+  filterMode: localStorage.getItem("kb_filterMode") || "taxonomy",
   viewMode: "overview",
   focusedDomain: null,
   searchTerm: "",
@@ -191,6 +191,7 @@ function getDomainLabel(domain) {
 
 function switchFilterMode() {
   state.filterMode = state.filterMode === "taxonomy" ? "domain" : "taxonomy";
+  localStorage.setItem("kb_filterMode", state.filterMode);
   state.focusedDomain = null;
   state.viewMode = "overview";
   // Rebuild domain layer with new grouping
@@ -234,6 +235,7 @@ async function init() {
   buildModeButtons();
   buildFilters(graph);
   buildDomainOverview();
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
   bindEvents();
   resetViewport();
   layoutVisibleGraph(true);

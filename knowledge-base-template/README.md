@@ -159,6 +159,10 @@ section_schemas:
 2. 在 Vault 的對應筆記 frontmatter 中設定 `domain` 欄位
 3. 重新匯出
 
+### Taxonomy 支援（選用）
+
+若知識庫需要第二層分類（如英文 taxonomy + 中文 domain 並存），可在 frontmatter 加入 `taxonomy_domain` 欄位。主專案的 `export_graph.py` 已支援將此欄位匯出到 graph JSON，前端可透過 `filterMode` toggle 切換顯示。詳見主專案的 `AI_HANDOFF.md`。
+
 ### 自訂前端
 
 1. 修改 `prototype/index.html` 中的標題與品牌文案

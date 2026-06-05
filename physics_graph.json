@@ -40438,6 +40438,11 @@
     },
     {
       "source": "微分方程",
+      "target": "δ函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
       "target": "導數",
       "type": "wikilink"
     },

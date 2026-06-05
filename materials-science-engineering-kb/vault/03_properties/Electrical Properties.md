@@ -6,8 +6,8 @@ domain: Properties
 taxonomy_domain: properties
 tags: [electrical]
 prerequisites: [[[Atomic Bonding and Cohesion]]]
-measurement_methods: [[[X-ray Diffraction]]]
-related_concepts: [[[Semiconductor Materials]], [[Thin Film Deposition]]]
+measurement_methods: [[[X-ray Diffraction]], [[Electrochemical Impedance Spectroscopy]], [[X-ray Photoelectron Spectroscopy]]]
+related_concepts: [[[Semiconductor Materials]], [[Thin Film Deposition]], [[Carrier Mobility]], [[Dielectric Response]], [[Optical Properties]]]
 ---
 
 ## Why it matters
@@ -20,4 +20,4 @@ This property cluster includes conductivity, resistivity, carrier mobility, diel
 
 ## What controls it
 
-Bonding, band structure, defects, interfaces, composition gradients, and microstructure all matter. Thin films are especially sensitive because residual stress, texture, and interface quality can distort transport severely.
+Bonding, band structure, defects, interfaces, composition gradients, and microstructure all matter. [[Carrier Mobility]] and [[Dielectric Response]] are two major subcases that split conduction from polarization-dominated response. Thin films are especially sensitive because residual stress, texture, and interface quality can distort transport severely.

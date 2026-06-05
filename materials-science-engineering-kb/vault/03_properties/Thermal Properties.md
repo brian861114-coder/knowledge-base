@@ -6,7 +6,7 @@ domain: Properties
 taxonomy_domain: properties
 tags: [thermal]
 prerequisites: [[[Atomic Bonding and Cohesion]]]
-related_concepts: [[[Ceramics]], [[Polymers]], [[Battery Materials]]]
+related_concepts: [[[Ceramics]], [[Polymers]], [[Battery Materials]], [[Thermal Expansion]], [[Glass Transition and Thermal Transitions]], [[Thermoelectric Transport Tradeoffs]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ This cluster includes thermal conductivity, heat capacity, thermal expansion, th
 
 ## What controls it
 
-Bonding strength, crystal structure, porosity, interfaces, and microstructural disorder all shape thermal response. In application settings, mismatch in thermal expansion is often as important as intrinsic conductivity.
+Bonding strength, crystal structure, porosity, interfaces, and microstructural disorder all shape thermal response. [[Thermal Expansion]] and [[Glass Transition and Thermal Transitions]] are major subcases that matter in assemblies and soft materials. In application settings, mismatch in thermal expansion is often as important as intrinsic conductivity, and in functional systems the property may be entangled with [[Thermoelectric Transport Tradeoffs]].

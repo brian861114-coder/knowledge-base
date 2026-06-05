@@ -5,8 +5,8 @@ summary: Corrosion is the chemically or electrochemically driven degradation of 
 domain: Failure Analysis
 taxonomy_domain: failure
 tags: [corrosion]
-related_concepts: [[[Microstructure]], [[Biomaterials]], [[Battery Materials]]]
-measurement_methods: [[[Scanning Electron Microscopy]]]
+related_concepts: [[[Microstructure]], [[Biomaterials]], [[Battery Materials]], [[Pitting and Localized Corrosion]], [[Stress Corrosion Cracking]]]
+measurement_methods: [[[Scanning Electron Microscopy]], [[Corrosion Testing]], [[X-ray Photoelectron Spectroscopy]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ Corrosion depends on thermodynamic driving force, kinetics, environment, and loc
 
 ## Links
 
-[[Microstructure]] matters because local galvanic differences and interface structure can localize attack. [[Battery Materials]] and [[Biomaterials]] both treat surface stability as a primary design variable rather than an afterthought.
+[[Microstructure]] matters because local galvanic differences and interface structure can localize attack. [[Pitting and Localized Corrosion]] and [[Stress Corrosion Cracking]] are major downstream routes where that localization becomes dangerous. [[Battery Materials]] and [[Biomaterials]] both treat surface stability as a primary design variable rather than an afterthought.

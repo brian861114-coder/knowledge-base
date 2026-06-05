@@ -6,7 +6,7 @@ domain: Processing
 taxonomy_domain: processing
 tags: [thin-films]
 prerequisites: [[[Diffusion in Solids]]]
-related_concepts: [[[Electrical Properties]], [[Semiconductor Materials]]]
+related_concepts: [[[Electrical Properties]], [[Semiconductor Materials]], [[Thin Film Growth and Residual Stress]], [[Residual Stress]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ The method may be physical, chemical, vapor-based, solution-based, or electroche
 
 ## Structure impact
 
-Deposition controls thickness, texture, residual stress, grain morphology, defect density, and interface quality. Those features strongly influence [[Electrical Properties]] and failure risk.
+Deposition controls thickness, texture, residual stress, grain morphology, defect density, and interface quality. Those features emerge through [[Thin Film Growth and Residual Stress]] and strongly influence [[Electrical Properties]] and failure risk.

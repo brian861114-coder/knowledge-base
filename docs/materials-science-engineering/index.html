@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知識圖譜</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"]],
+        displayMath: [["$$", "$$"]],
+        processEscapes: true,
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+      },
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+      <h1><a href="#" class="brand-link" aria-label="回到首頁">知識圖譜</a></h1>
+      <p>知識的脈絡，一目瞭然</p>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <button class="topnav-item" type="button" data-view="search">搜尋</button>
+        <button class="topnav-item" type="button" data-view="notes">筆記</button>
+        <button class="topnav-item is-active" type="button" data-view="graph">圖譜</button>
+        <button class="topnav-item" type="button" data-view="settings">設定</button>
+      </nav>
+      <button class="topbar-orbit" type="button" aria-label="View controls">+</button>
+    </header>
+
+    <main class="workspace-shell">
+      <aside class="control-sidebar controls">
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>搜尋</h2>
+            <span>Query</span>
+          </div>
+          <label class="search">
+            <span>搜尋節點</span>
+            <input id="searchInput" type="search" placeholder="搜尋概念、定律、現象、人物…">
+          </label>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>瀏覽模式</h2>
+            <span>Mode</span>
+          </div>
+          <div id="viewModeButtons" class="chips"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2 id="domainSectionTitle">Taxonomy</h2>
+            <button id="filterModeToggle" class="ghost-button filter-mode-toggle" type="button" title="切換分類模式">領域 / Taxonomy</button>
+          </div>
+          <div id="domainFilters" class="sidebar-list chips"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>類型</h2>
+            <span>Type</span>
+          </div>
+          <div id="typeFilters" class="sidebar-list chips"></div>
+        </section>
+
+        <section class="sidebar-section sidebar-summary">
+          <div class="sidebar-section-head">
+            <h2>總覽</h2>
+            <span>Atlas</span>
+          </div>
+          <div class="hero-stats" id="heroStats"></div>
+        </section>
+      </aside>
+
+      <section class="graph-workspace">
+        <div class="graph-toolbar">
+          <div class="graph-toolbar-copy">
+            <h2>圖譜視圖</h2>
+            <p id="graphHint">點選節點查看摘要與關聯，拖曳節點可重新整理局部佈局。</p>
+          </div>
+          <div class="toolbar-actions">
+            <button id="zoomOutButton" class="ghost-button" type="button">縮小</button>
+            <button id="zoomInButton" class="ghost-button" type="button">放大</button>
+            <button id="fitViewButton" class="ghost-button" type="button">置中</button>
+            <button id="backToOverviewToolbarButton" class="ghost-button" type="button" hidden>回到總覽</button>
+            <button id="resetViewButton" class="ghost-button" type="button">重置視圖</button>
+          </div>
+        </div>
+
+        <div id="focusBanner" class="focus-banner" hidden></div>
+
+        <div id="domainOverview" class="domain-overview"></div>
+
+        <section class="graph-panel">
+          <div id="graphFrame" class="graph-frame">
+            <canvas id="graphCanvas"></canvas>
+            <div id="nodesLayer" class="nodes-layer"></div>
+            <div class="graph-overlay graph-legend-panel">
+              <div class="legend-heading">圖例</div>
+              <div class="legend">
+                <span><i class="swatch type-map"></i>導覽頁</span>
+                <span><i class="swatch type-law"></i>定律</span>
+                <span><i class="swatch type-concept"></i>概念</span>
+                <span><i class="swatch type-quantity"></i>物理量</span>
+                <span><i class="swatch type-mathematical_tool"></i>數學工具</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="detail-panel">
+        <div id="detailCard" class="detail-card empty">
+          <p class="detail-kicker">節點詳情</p>
+          <h2>選取一個節點</h2>
+          <p class="detail-summary">右側會顯示該頁的摘要、領域、頁型，以及它在這張物理知識地圖中的前置關係與延伸方向。</p>
+          <div class="detail-empty-note">先從左側選一個領域，或直接點擊中央圖譜中的節點。</div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

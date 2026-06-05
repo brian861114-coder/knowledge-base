@@ -5,7 +5,7 @@ summary: Thermogravimetric analysis measures mass change with temperature or tim
 domain: Characterization
 taxonomy_domain: characterization
 tags: [tga]
-related_concepts: [[[Oxidation]], [[Glass Transition and Thermal Transitions]], [[Corrosion Resistance]], [[Polymer Processing]]]
+related_concepts: [[[Oxidation]], [[Glass Transition and Thermal Transitions]], [[Corrosion Resistance]], [[Polymer Processing]], [[Powder Processing and Compaction]]]
 measured_quantities: [[[Oxidation Resistance]], [[Glass Transition and Thermal Transitions]]]
 ---
 

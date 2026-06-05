@@ -6,7 +6,7 @@ domain: Structure and Defects
 taxonomy_domain: structure
 tags: [phases, morphology]
 prerequisites: [[[Phase Equilibria and Phase Diagrams]], [[Microstructure]]]
-related_concepts: [[[Mechanical Properties]], [[Corrosion]], [[Precipitation Hardening]]]
+related_concepts: [[[Mechanical Properties]], [[Corrosion]], [[Precipitation Hardening]], [[Solidification and Microsegregation]], [[Nucleation and Growth]]]
 ---
 
 ## Why it matters
@@ -21,7 +21,7 @@ A hard phase that is fine and dispersed behaves differently from the same phase 
 
 ## Links
 
-[[Precipitation Hardening]] is a direct example where fraction and morphology control strengthening efficiency. [[Mechanical Properties]] and [[Corrosion]] often depend on whether a phase is continuous, brittle, galvanically active, or crack-deflecting.
+[[Precipitation Hardening]] is a direct example where fraction and morphology control strengthening efficiency. [[Solidification and Microsegregation]] and [[Nucleation and Growth]] help create the phase topology that later processes inherit. [[Mechanical Properties]] and [[Corrosion]] often depend on whether a phase is continuous, brittle, galvanically active, or crack-deflecting.
 
 ## Key examples
 

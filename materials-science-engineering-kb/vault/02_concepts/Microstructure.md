@@ -6,7 +6,7 @@ domain: Structure and Defects
 taxonomy_domain: structure
 tags: [microstructure]
 prerequisites: [[[Crystal Structure]], [[Phase Transformation Kinetics]]]
-related_concepts: [[[Mechanical Properties]], [[Corrosion]]]
+related_concepts: [[[Mechanical Properties]], [[Corrosion]], [[Residual Stress]], [[Dendritic and Cellular Solidification]], [[Particle Packing and Porosity]]]
 ---
 
 ## Why it matters
@@ -19,7 +19,7 @@ Microstructure captures phase fractions, grain morphology, interfaces, texture, 
 
 ## Links
 
-[[Mechanical Properties]] are typically read through a microstructural lens. [[Corrosion]] often localizes at specific phases or interfaces. [[Heat Treatment]] is largely a tool for editing microstructure rather than chemistry.
+[[Mechanical Properties]] are typically read through a microstructural lens. [[Corrosion]] often localizes at specific phases or interfaces. [[Residual Stress]], [[Dendritic and Cellular Solidification]], and [[Particle Packing and Porosity]] are all specific structural subcases that strongly affect how the microstructure behaves. [[Heat Treatment]] is largely a tool for editing microstructure rather than chemistry.
 
 ## Key examples
 

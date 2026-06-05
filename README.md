@@ -3,6 +3,7 @@
 Interactive university-level physics knowledge base backed by an Obsidian vault, with a local graph-reading prototype and generation/export tooling.
 
 **Live Demo**: https://brian861114-coder.github.io/knowledge-base/
+**Materials Science Subpage**: https://brian861114-coder.github.io/knowledge-base/materials-science-engineering/
 
 ## What This Repo Is
 
@@ -110,7 +111,7 @@ Obsidian vault Markdown notes
 ```text
 knowledge-base/
   assets/                         Frontend-served static diagrams and figures
-  docs/                           GitHub Pages deployment (prototype + data)
+  docs/                           GitHub Pages deployment (physics root + materials subpage)
   prototype/                      Frontend prototype (local dev)
   tools/                          Note generation / enrichment / export scripts
   obsidian-knowledge-map-demo/    Graph export demo script source
@@ -177,6 +178,14 @@ Copy-Item .\physics_note_details.json .\docs\physics_note_details.json -Force
 Copy-Item .\prototype\app.js .\docs\app.js -Force
 Copy-Item .\prototype\index.html .\docs\index.html -Force
 Copy-Item .\prototype\styles.css .\docs\styles.css -Force
+
+# Sync the materials-science subpage
+New-Item -ItemType Directory -Force .\docs\materials-science-engineering | Out-Null
+Copy-Item .\materials-science-engineering-kb\prototype\app.js .\docs\materials-science-engineering\app.js -Force
+Copy-Item .\materials-science-engineering-kb\prototype\index.html .\docs\materials-science-engineering\index.html -Force
+Copy-Item .\materials-science-engineering-kb\prototype\styles.css .\docs\materials-science-engineering\styles.css -Force
+Copy-Item .\materials-science-engineering-kb\prototype\graph.json .\docs\materials-science-engineering\graph.json -Force
+Copy-Item .\materials-science-engineering-kb\prototype\note_details.json .\docs\materials-science-engineering\note_details.json -Force
 
 # Commit and push
 git add .\docs
@@ -308,7 +317,9 @@ See [knowledge-base-template/README.md](knowledge-base-template/README.md) for d
 3. Re-export `physics_note_details.json`
 4. Re-export `physics_graph.json` if graph structure changed
 5. Refresh the prototype
-6. Copy updated JSON to `docs/` and push for GitHub Pages
+6. Copy updated deploy artifacts to `docs/`
+7. If the materials-science knowledge base changed, also sync `docs/materials-science-engineering/`
+8. Push for GitHub Pages
 
 ## Current Follow-Up Work
 

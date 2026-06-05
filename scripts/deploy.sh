@@ -12,6 +12,12 @@ cp physics_note_details.json docs/
 cp prototype/app.js docs/
 cp prototype/index.html docs/
 cp prototype/styles.css docs/
+mkdir -p docs/materials-science-engineering
+cp materials-science-engineering-kb/prototype/app.js docs/materials-science-engineering/
+cp materials-science-engineering-kb/prototype/index.html docs/materials-science-engineering/
+cp materials-science-engineering-kb/prototype/styles.css docs/materials-science-engineering/
+cp materials-science-engineering-kb/prototype/graph.json docs/materials-science-engineering/
+cp materials-science-engineering-kb/prototype/note_details.json docs/materials-science-engineering/
 echo "  docs/ synced"
 
 echo "[3/5] Staging changes..."

@@ -5,7 +5,7 @@ summary: Corrosion testing measures mass loss, electrochemical response, localiz
 domain: Characterization
 taxonomy_domain: characterization
 tags: [corrosion-testing]
-related_concepts: [[[Corrosion]], [[Corrosion Resistance]], [[Electrochemical Stability]], [[Surface Engineering]]]
+related_concepts: [[[Corrosion]], [[Corrosion Resistance]], [[Electrochemical Stability]], [[Surface Engineering]], [[Pitting and Localized Corrosion]], [[Stress Corrosion Cracking]]]
 measured_quantities: [[[Corrosion Resistance]]]
 ---
 
@@ -15,7 +15,7 @@ Corrosion arguments are cheap until the environment is specified and the damage 
 
 ## What it measures
 
-Corrosion testing can target reaction rate, pitting tendency, passivation behavior, galvanic interaction, or long-term degradation depending on the method and environment.
+Corrosion testing can target reaction rate, pitting tendency, passivation behavior, galvanic interaction, cracking susceptibility, or long-term degradation depending on the method and environment.
 
 ## Interpretation
 

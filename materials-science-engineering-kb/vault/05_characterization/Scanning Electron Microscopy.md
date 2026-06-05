@@ -5,7 +5,7 @@ summary: Scanning electron microscopy reveals surface morphology, fracture featu
 domain: Characterization
 taxonomy_domain: characterization
 tags: [sem]
-related_concepts: [[[Microstructure]], [[Fracture Mechanisms]], [[Corrosion]], [[Energy-Dispersive Spectroscopy]]]
+related_concepts: [[[Microstructure]], [[Fracture Mechanisms]], [[Corrosion]], [[Energy-Dispersive Spectroscopy]], [[Ductile Fracture]], [[Brittle Fracture]], [[Pitting and Localized Corrosion]]]
 measured_quantities: [[[Mechanical Properties]], [[Corrosion Resistance]]]
 ---
 
@@ -19,4 +19,4 @@ SEM gathers electron signals that encode topography and near-surface contrast. W
 
 ## Interpretation
 
-SEM is strongest when morphology matters: pores, fracture surfaces, particle packing, coating continuity, and corrosion damage. It does not replace diffraction or transmission methods, but it often tells you where to look next.
+SEM is strongest when morphology matters: pores, fracture surfaces, particle packing, coating continuity, pits, and corrosion damage. It does not replace diffraction or transmission methods, but it often tells you where to look next and is central to distinguishing features associated with [[Ductile Fracture]], [[Brittle Fracture]], and localized corrosion.

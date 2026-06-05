@@ -6,7 +6,7 @@ domain: Material Classes
 taxonomy_domain: material_classes
 tags: [magnetic]
 prerequisites: [[[Electrical Properties]], [[Crystal Structure]]]
-related_concepts: [[[Magnetic Response]], [[Microstructure]], [[Thermal Properties]]]
+related_concepts: [[[Magnetic Response]], [[Microstructure]], [[Thermal Properties]], [[Optical Properties]]]
 ---
 
 ## Why it matters

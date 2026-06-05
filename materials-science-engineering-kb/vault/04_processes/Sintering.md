@@ -6,7 +6,7 @@ domain: Processing
 taxonomy_domain: processing
 tags: [sintering]
 prerequisites: [[[Diffusion in Solids]]]
-related_concepts: [[[Ceramics]], [[Microstructure]]]
+related_concepts: [[[Ceramics]], [[Microstructure]], [[Particle Packing and Porosity]], [[Powder Processing and Compaction]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ Powder compacts are heated so that neck growth, pore shrinkage, and mass transpo
 
 ## Structure impact
 
-Sintering changes porosity, grain growth, neck formation, and phase distribution. Those shifts dominate strength, conductivity, fracture sensitivity, and reliability.
+Sintering changes porosity, grain growth, neck formation, and phase distribution. In effect it rewrites [[Particle Packing and Porosity]] into a denser structural state shaped by the starting green body from [[Powder Processing and Compaction]]. Those shifts dominate strength, conductivity, fracture sensitivity, and reliability.

@@ -7,7 +7,7 @@ taxonomy_domain: properties
 tags: [corrosion-resistance]
 prerequisites: [[[Corrosion]], [[Microstructure]]]
 measurement_methods: [[[Corrosion Testing]], [[Scanning Electron Microscopy]]]
-related_concepts: [[[Surface Engineering]], [[Biomaterials]], [[Battery Materials]]]
+related_concepts: [[[Surface Engineering]], [[Biomaterials]], [[Battery Materials]], [[Pitting and Localized Corrosion]], [[Stress Corrosion Cracking]], [[Hydrogen Embrittlement]]]
 ---
 
 ## Why it matters
@@ -20,4 +20,4 @@ Corrosion resistance measures the ability to limit reaction rate, prevent locali
 
 ## What controls it
 
-Alloy chemistry, phase contrast, impurity segregation, residual stress, surface condition, passivation behavior, and environment all matter. The wrong surface state can destroy an otherwise sensible bulk design.
+Alloy chemistry, phase contrast, impurity segregation, residual stress, surface condition, passivation behavior, and environment all matter. The wrong surface state can destroy an otherwise sensible bulk design and shift the dominant failure route toward [[Pitting and Localized Corrosion]], [[Stress Corrosion Cracking]], or even [[Hydrogen Embrittlement]].

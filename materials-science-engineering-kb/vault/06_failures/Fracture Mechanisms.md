@@ -6,8 +6,8 @@ domain: Failure Analysis
 taxonomy_domain: failure
 tags: [fracture]
 prerequisites: [[[Mechanical Properties]], [[Crystal Defects]]]
-related_concepts: [[[Ceramics]], [[Additive Manufacturing]], [[Grain Boundaries]], [[Planar Defects and Twins]]]
-measurement_methods: [[[Scanning Electron Microscopy]]]
+related_concepts: [[[Ceramics]], [[Additive Manufacturing]], [[Grain Boundaries]], [[Planar Defects and Twins]], [[Ductile Fracture]], [[Brittle Fracture]], [[Interfacial Delamination]]]
+measurement_methods: [[[Scanning Electron Microscopy]], [[Mechanical Testing]], [[Impact Testing]]]
 ---
 
 ## Why it matters
@@ -20,4 +20,4 @@ Fracture behavior depends on defect severity, local stress state, crack-tip proc
 
 ## Links
 
-[[Ceramics]] are often dominated by flaw sensitivity and brittle fracture. [[Additive Manufacturing]] can introduce porosity and anisotropy that redirect crack initiation and growth.
+[[Ceramics]] are often dominated by flaw sensitivity and brittle fracture. [[Additive Manufacturing]] can introduce porosity and anisotropy that redirect crack initiation and growth. [[Ductile Fracture]], [[Brittle Fracture]], and [[Interfacial Delamination]] are useful subcases rather than decorative subclasses.

@@ -6,7 +6,7 @@ domain: Processing
 taxonomy_domain: processing
 tags: [additive]
 prerequisites: [[[Phase Transformation Kinetics]]]
-related_concepts: [[[Microstructure]], [[Fracture Mechanisms]]]
+related_concepts: [[[Microstructure]], [[Fracture Mechanisms]], [[Solidification and Microsegregation]], [[Residual Stress]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ Material is deposited or selectively fused in layers while thermal history evolv
 
 ## Structure impact
 
-Residual stress, porosity, anisotropy, melt-pool history, and rapid solidification features can dominate final behavior. That makes characterization and failure analysis mandatory rather than optional.
+Residual stress, porosity, anisotropy, melt-pool history, and rapid solidification features can dominate final behavior. Many of those features are directly tied to [[Solidification and Microsegregation]] and retained [[Residual Stress]]. That makes characterization and failure analysis mandatory rather than optional.

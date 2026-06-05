@@ -6,7 +6,7 @@ domain: Failure Analysis
 taxonomy_domain: failure
 tags: [environment-assisted]
 prerequisites: [[[Corrosion]], [[Fracture Mechanisms]]]
-related_concepts: [[[Corrosion Resistance]], [[Biomaterials]], [[High-Temperature Alloys]]]
+related_concepts: [[[Corrosion Resistance]], [[Biomaterials]], [[High-Temperature Alloys]], [[Stress Corrosion Cracking]], [[Corrosion Fatigue]]]
 measurement_methods: [[[Corrosion Testing]], [[Scanning Electron Microscopy]]]
 ---
 
@@ -20,4 +20,4 @@ Chemical reaction, hydrogen uptake, localized dissolution, or film rupture can r
 
 ## Links
 
-[[Corrosion Resistance]] matters because surface stability often controls susceptibility. [[Biomaterials]] and other implanted or fluid-exposed systems cannot ignore this coupling.
+[[Corrosion Resistance]] matters because surface stability often controls susceptibility. [[Stress Corrosion Cracking]] and [[Corrosion Fatigue]] are concrete subcases where the coupling becomes operationally important. [[Biomaterials]] and other implanted or fluid-exposed systems cannot ignore this coupling.

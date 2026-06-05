@@ -6,7 +6,7 @@ domain: Characterization
 taxonomy_domain: characterization
 tags: [xrd]
 related_concepts: [[[Crystal Structure]], [[Phase Equilibria and Phase Diagrams]], [[Unit Cell and Crystal Symmetry]], [[Microscopy Diffraction and Spectroscopy Map]]]
-measured_quantities: [[[Electrical Properties]], [[Thermal Properties]], [[Oxidation Resistance]]]
+measured_quantities: [[[Electrical Properties]], [[Thermal Properties]], [[Oxidation Resistance]], [[Residual Stress]]]
 ---
 
 ## Why it matters
@@ -19,4 +19,4 @@ The method measures diffraction from periodic atomic arrangements. Peak position
 
 ## Interpretation
 
-XRD is powerful but not omniscient. It is excellent for phase-level questions and weak for direct imaging. It should be read together with microstructural evidence rather than treated as a universal truth machine.
+XRD is powerful but not omniscient. It is excellent for phase-level questions and weak for direct imaging. It can sometimes be used to infer [[Residual Stress]] through lattice-strain-sensitive measurements, but only with the correct assumptions and geometry. It should be read together with microstructural evidence rather than treated as a universal truth machine.

@@ -6,8 +6,8 @@ domain: Properties
 taxonomy_domain: properties
 tags: [magnetic-response]
 prerequisites: [[[Magnetic Materials]], [[Microstructure]]]
-measurement_methods: [[[Mechanical Testing]]]
-related_concepts: [[[Thermal Properties]], [[Nanomaterials]], [[Computational Materials Design]]]
+measurement_methods: [[[Mechanical Testing]], [[Raman Spectroscopy]]]
+related_concepts: [[[Thermal Properties]], [[Nanomaterials]], [[Computational Materials Design]], [[Optical Properties]]]
 ---
 
 ## Why it matters

@@ -5,8 +5,8 @@ summary: Raman spectroscopy probes vibrational signatures that reveal bonding, p
 domain: Characterization
 taxonomy_domain: characterization
 tags: [raman]
-related_concepts: [[[Semiconductor Materials]], [[Dielectric Materials]], [[Thermal Properties]], [[Nanomaterials]]]
-measured_quantities: [[[Carrier Mobility]], [[Glass Transition and Thermal Transitions]]]
+related_concepts: [[[Semiconductor Materials]], [[Dielectric Materials]], [[Thermal Properties]], [[Nanomaterials]], [[Optical Properties]]]
+measured_quantities: [[[Carrier Mobility]], [[Glass Transition and Thermal Transitions]], [[Optical Properties]]]
 ---
 
 ## Why it matters

@@ -7,7 +7,7 @@ taxonomy_domain: properties
 tags: [fatigue]
 prerequisites: [[[Mechanical Properties]], [[Fatigue Crack Growth]]]
 measurement_methods: [[[Mechanical Testing]], [[Scanning Electron Microscopy]]]
-related_concepts: [[[Fatigue]], [[Fracture Toughness]], [[Thermomechanical Processing]]]
+related_concepts: [[[Fatigue]], [[Fracture Toughness]], [[Thermomechanical Processing]], [[Corrosion Fatigue]], [[Thermal Fatigue]]]
 ---
 
 ## Why it matters
@@ -20,4 +20,4 @@ Fatigue resistance summarizes tolerance to cyclic damage initiation and propagat
 
 ## What controls it
 
-Surface condition, defect population, residual stress, grain structure, environment, and load ratio all matter. Processing routes that improve static strength can either help or hurt fatigue depending on how they change defects and crack-initiation sites.
+Surface condition, defect population, residual stress, grain structure, environment, and load ratio all matter. Processing routes that improve static strength can either help or hurt fatigue depending on how they change defects and crack-initiation sites. In service, the apparent fatigue resistance can collapse further when the dominant mode becomes [[Corrosion Fatigue]] or [[Thermal Fatigue]] rather than laboratory-air cycling.

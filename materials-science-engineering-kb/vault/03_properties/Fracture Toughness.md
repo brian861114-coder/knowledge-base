@@ -7,7 +7,7 @@ taxonomy_domain: properties
 tags: [fracture]
 prerequisites: [[[Mechanical Properties]], [[Fracture Mechanisms]]]
 measurement_methods: [[[Mechanical Testing]], [[Scanning Electron Microscopy]]]
-related_concepts: [[[Fatigue Resistance]], [[Ceramics]], [[Composites]]]
+related_concepts: [[[Fatigue Resistance]], [[Ceramics]], [[Composites]], [[Ductile Fracture]], [[Brittle Fracture]], [[Interfacial Delamination]]]
 ---
 
 ## Why it matters
@@ -20,4 +20,4 @@ Fracture toughness quantifies resistance to crack growth under a specified loadi
 
 ## What controls it
 
-Microstructural toughening routes, plastic zone behavior, interface quality, flaw population, and environment all matter. Attempts to maximize strength often reduce toughness if they suppress energy-dissipating mechanisms too aggressively.
+Microstructural toughening routes, plastic zone behavior, interface quality, flaw population, and environment all matter. [[Ductile Fracture]] generally reflects greater local energy dissipation, while [[Brittle Fracture]] and [[Interfacial Delamination]] are often associated with lower damage tolerance. Attempts to maximize strength often reduce toughness if they suppress energy-dissipating mechanisms too aggressively.

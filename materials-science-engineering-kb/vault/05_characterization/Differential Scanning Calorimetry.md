@@ -5,7 +5,7 @@ summary: Differential scanning calorimetry measures heat flow associated with th
 domain: Characterization
 taxonomy_domain: characterization
 tags: [dsc]
-related_concepts: [[[Glass Transition and Thermal Transitions]], [[Polymer Processing]], [[Thermal Properties]], [[Biomaterials]]]
+related_concepts: [[[Glass Transition and Thermal Transitions]], [[Polymer Processing]], [[Thermal Properties]], [[Biomaterials]], [[Annealing]], [[Quenching and Tempering]]]
 measured_quantities: [[[Glass Transition and Thermal Transitions]], [[Thermal Properties]]]
 ---
 
@@ -15,7 +15,7 @@ DSC is one of the cleanest tools for proving that a thermal event exists rather 
 
 ## What it measures
 
-The method tracks differential heat flow between sample and reference as temperature changes, revealing endothermic and exothermic events tied to transitions or reactions.
+The method tracks differential heat flow between sample and reference as temperature changes, revealing endothermic and exothermic events tied to transitions or reactions. It is often useful for tracking whether routes such as [[Annealing]] or [[Quenching and Tempering]] actually changed thermal events or precipitation behavior.
 
 ## Interpretation
 

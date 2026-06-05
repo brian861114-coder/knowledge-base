@@ -6,7 +6,7 @@ domain: Material Classes
 taxonomy_domain: material_classes
 tags: [dielectrics]
 prerequisites: [[[Electrical Properties]], [[Defect Chemistry and Point Defects]]]
-related_concepts: [[[Dielectric Response]], [[Corrosion Resistance]], [[Thin Film Deposition]]]
+related_concepts: [[[Dielectric Response]], [[Corrosion Resistance]], [[Thin Film Deposition]], [[Optical Properties]]]
 ---
 
 ## Why it matters

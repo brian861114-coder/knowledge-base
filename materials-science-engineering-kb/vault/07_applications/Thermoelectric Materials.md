@@ -6,7 +6,7 @@ domain: Applications
 taxonomy_domain: applications
 tags: [thermoelectrics]
 prerequisites: [[[Electrical Properties]], [[Thermal Properties]]]
-related_concepts: [[[Nanomaterials]], [[Computational Materials Design]], [[Defect Chemistry and Point Defects]]]
+related_concepts: [[[Nanomaterials]], [[Computational Materials Design]], [[Defect Chemistry and Point Defects]], [[Thermoelectric Transport Tradeoffs]]]
 ---
 
 ## Why it matters

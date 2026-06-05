@@ -6,7 +6,7 @@ domain: Applications
 taxonomy_domain: applications
 tags: [semiconductors]
 prerequisites: [[[Electrical Properties]], [[Thin Film Deposition]]]
-related_concepts: [[[Crystal Defects]], [[X-ray Diffraction]]]
+related_concepts: [[[Crystal Defects]], [[X-ray Diffraction]], [[Carrier Mobility]], [[Optical Properties]]]
 ---
 
 ## Why it matters

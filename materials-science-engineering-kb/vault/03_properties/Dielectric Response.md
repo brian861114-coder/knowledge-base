@@ -7,7 +7,7 @@ taxonomy_domain: properties
 tags: [dielectric-response]
 prerequisites: [[[Dielectric Materials]], [[Electrical Properties]]]
 measurement_methods: [[[Electrochemical Impedance Spectroscopy]]]
-related_concepts: [[[Thin Film Deposition]], [[Defect Chemistry and Point Defects]], [[Thermal Properties]]]
+related_concepts: [[[Thin Film Deposition]], [[Defect Chemistry and Point Defects]], [[Thermal Properties]], [[Optical Properties]]]
 ---
 
 ## Why it matters

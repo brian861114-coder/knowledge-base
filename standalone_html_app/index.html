@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Knowledge Map</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"]],
+        displayMath: [["$$", "$$"]],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <h1><a href="#" class="brand-link" aria-label="回到知識地圖首頁">Physics Knowledge Map</a></h1>
+        <p>可直接雙擊開啟的本機 HTML 應用</p>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <button class="topnav-item" type="button" data-view="search">Search</button>
+        <button class="topnav-item" type="button" data-view="notes">Notes</button>
+        <button class="topnav-item is-active" type="button" data-view="graph">Graph</button>
+        <button class="topnav-item" type="button" data-view="settings">Settings</button>
+      </nav>
+      <button class="topbar-orbit" type="button" aria-label="View controls">+</button>
+    </header>
+
+    <main class="workspace-shell">
+      <aside class="control-sidebar controls">
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>搜尋</h2>
+            <span>Query</span>
+          </div>
+          <label class="search">
+            <span>搜尋節點</span>
+            <input id="searchInput" type="search" placeholder="搜尋概念、定律、物理量或數學工具">
+          </label>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>檢視模式</h2>
+            <span>Mode</span>
+          </div>
+          <div id="viewModeButtons" class="chips"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2 id="domainSectionTitle">Taxonomy</h2>
+            <button id="filterModeToggle" class="ghost-button filter-mode-toggle" type="button" title="切換分組模式">領域 / Taxonomy</button>
+          </div>
+          <div id="domainFilters" class="sidebar-list chips"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-section-head">
+            <h2>節點類型</h2>
+            <span>Type</span>
+          </div>
+          <div id="typeFilters" class="sidebar-list chips"></div>
+        </section>
+
+        <section class="sidebar-section sidebar-summary">
+          <div class="sidebar-section-head">
+            <h2>摘要</h2>
+            <span>Atlas</span>
+          </div>
+          <div class="hero-stats" id="heroStats"></div>
+        </section>
+      </aside>
+
+      <section class="graph-workspace">
+        <div class="graph-toolbar">
+          <div class="graph-toolbar-copy">
+            <h2>圖譜工作區</h2>
+            <p id="graphHint">先從總覽挑一個領域，再進入局部子圖。這個版本已經把資料包進同資料夾，直接雙擊開啟即可使用。</p>
+          </div>
+          <div class="toolbar-actions">
+            <button id="zoomOutButton" class="ghost-button" type="button">縮小</button>
+            <button id="zoomInButton" class="ghost-button" type="button">放大</button>
+            <button id="fitViewButton" class="ghost-button" type="button">置中</button>
+            <button id="backToOverviewToolbarButton" class="ghost-button" type="button" hidden>回到總覽</button>
+            <button id="resetViewButton" class="ghost-button" type="button">重設視圖</button>
+          </div>
+        </div>
+
+        <div id="focusBanner" class="focus-banner" hidden></div>
+
+        <div id="domainOverview" class="domain-overview"></div>
+
+        <section class="graph-panel">
+          <div id="graphFrame" class="graph-frame">
+            <canvas id="graphCanvas"></canvas>
+            <div id="nodesLayer" class="nodes-layer"></div>
+            <div class="graph-overlay graph-legend-panel">
+              <div class="legend-heading">Legend</div>
+              <div class="legend">
+                <span><i class="swatch type-map"></i>導覽頁</span>
+                <span><i class="swatch type-law"></i>定律</span>
+                <span><i class="swatch type-concept"></i>概念</span>
+                <span><i class="swatch type-quantity"></i>物理量</span>
+                <span><i class="swatch type-mathematical_tool"></i>數學工具</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="detail-panel">
+        <div id="detailCard" class="detail-card empty">
+          <p class="detail-kicker">選取節點</p>
+          <h2>從圖上挑一個節點開始</h2>
+          <p class="detail-summary">右側會顯示該筆知識的摘要、關聯節點、段落結構，以及完整閱讀模式入口。這個離線版不需要啟動本機伺服器。</p>
+          <div class="detail-empty-note">如果內容本身還有亂碼，那是現有匯出資料的編碼問題，不是這個 HTML 應用的載入機制失敗。</div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="./graph-data.js"></script>
+  <script src="./note-details-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -161,6 +161,7 @@ def export_graph(vault: Path) -> dict:
                 "summary": frontmatter.get("summary", ""),
                 "path": file_path.relative_to(vault).as_posix(),
                 "domain": frontmatter.get("domain", ""),
+                "taxonomy_domain": frontmatter.get("taxonomy_domain", ""),
                 "tags": tags,
             }
         )

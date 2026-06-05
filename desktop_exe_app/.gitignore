@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.tmp_npm_cache/
+.tmp_electron_cache/
+.tmp_builder_cache/

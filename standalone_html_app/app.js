@@ -1,5 +1,5 @@
-﻿const graphUrl = "./physics_graph.json";
-const noteDetailsUrl = "./physics_note_details.json";
+const rawEmbeddedGraph = window.__PHYSICS_GRAPH__;
+const rawEmbeddedNoteDetails = window.__PHYSICS_NOTE_DETAILS__;
 const primaryEdgeTypes = new Set([
   "organized_by",
   "requires",
@@ -217,15 +217,12 @@ function getNoteDetail(nodeId) {
 }
 
 async function init() {
-  const [graphResponse, detailResponse] = await Promise.all([fetch(graphUrl), fetch(noteDetailsUrl)]);
-  if (!graphResponse.ok) {
-    throw new Error(`HTTP ${graphResponse.status} while loading ${graphUrl}`);
-  }
-  if (!detailResponse.ok) {
-    throw new Error(`HTTP ${detailResponse.status} while loading ${noteDetailsUrl}`);
+  if (!rawEmbeddedGraph || !rawEmbeddedNoteDetails) {
+    throw new Error("Embedded data is missing. Please keep graph-data.js and note-details-data.js in the same folder.");
   }
 
-  const [rawGraph, rawNoteDetails] = await Promise.all([graphResponse.json(), detailResponse.json()]);
+  const rawGraph = rawEmbeddedGraph;
+  const rawNoteDetails = rawEmbeddedNoteDetails;
   const graph = normalizeGraph(rawGraph);
   state.graph = graph;
   state.noteDetails = rawNoteDetails;

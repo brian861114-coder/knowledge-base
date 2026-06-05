@@ -1,0 +1,42 @@
+{
+  "name": "physics-knowledge-map-desktop",
+  "version": "1.0.0",
+  "description": "Windows desktop wrapper for the Physics Knowledge Map standalone HTML app.",
+  "main": "main.js",
+  "author": "Codex",
+  "private": true,
+  "scripts": {
+    "sync-app": "powershell -ExecutionPolicy Bypass -File .\\build-desktop.ps1 -SyncOnly",
+    "start": "electron .",
+    "build": "electron-builder --win portable",
+    "build:desktop": "powershell -ExecutionPolicy Bypass -File .\\build-desktop.ps1"
+  },
+  "build": {
+    "appId": "com.brian.physicsknowledgemap",
+    "productName": "Physics Knowledge Map",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**",
+      "build/**"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}

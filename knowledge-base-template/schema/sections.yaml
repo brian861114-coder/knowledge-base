@@ -5,6 +5,9 @@
 # anchor_keywords: 用於定位插入位置的關鍵字
 # 當需要插入新 section 時，會在第一個匹配的 anchor keyword 之前插入
 
+# 注意：以下 section 名稱對應到前端閱讀模式的 .reader-section-block 渲染，
+# 且部分 section 在 enrich 腳本中有特殊處理邏輯（如 推導、歷史背景）。
+
 section_schemas:
   concept:
     required:
@@ -31,6 +34,8 @@ section_schemas:
         anchor: true
       - heading: "數學表述"
         description: "正式的數學公式與符號定義"
+      - heading: "推導"
+        description: "從基本原理推導此定律（該領域知識庫品質的重要指標）"
       - heading: "歷史背景"
         description: "定律的發現過程"
         anchor: true

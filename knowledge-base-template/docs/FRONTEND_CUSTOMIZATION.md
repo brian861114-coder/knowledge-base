@@ -86,8 +86,8 @@ const typeLabel = {
 如果要支援多個知識庫，修改 `prototype/app.js` 頂部：
 
 ```javascript
-const graphUrl = "../physics_graph.json";
-const noteDetailsUrl = "../physics_note_details.json";
+const graphUrl = "./graph.json";
+const noteDetailsUrl = "./note_details.json";
 ```
 
 改為從 URL 參數讀取：

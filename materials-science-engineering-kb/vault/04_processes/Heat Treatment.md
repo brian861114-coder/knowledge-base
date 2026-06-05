@@ -1,22 +1,21 @@
 ---
-title: Heat Treatment
+title: 熱處理
 type: experiment
-summary: Heat treatment uses controlled thermal history to alter phases, defect density, and microstructure in order to shift properties.
+summary: 熱處理利用受控的熱歷史來改變物相、缺陷密度和微觀結構，以改變性能。
 domain: Processing
 taxonomy_domain: processing
 tags: [heat-treatment]
-prerequisites: [[[Phase Equilibria and Phase Diagrams]], [[Phase Transformation Kinetics]]]
-related_concepts: [[[Microstructure]], [[Mechanical Properties]], [[Phase Fraction and Morphology]], [[Precipitation Hardening]]]
+prerequisites: [[[Phase Equilibria and Phase Diagrams|相平衡和相圖]], [[Phase Transformation Kinetics|相變動力學]]]
+related_concepts: [[[Microstructure|微觀組織]], [[Mechanical Properties|機械性質]], [[Phase Fraction and Morphology|相分率與形貌]], [[Precipitation Hardening|沉澱硬化]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+熱處理是最清晰的證明之一，它證明了工藝歷史與成分一樣重要。
 
-Heat treatment is one of the cleanest demonstrations that process history can be as important as composition.
+## 工作流程
 
-## Workflow
+熱處理途徑通常包括加熱、保持和冷卻階段，選擇用於驅動溶解、成核、生長、恢復、重結晶或沉澱物。
 
-A heat-treatment route typically includes heating, holding, and cooling stages chosen to drive dissolution, nucleation, growth, recovery, recrystallization, or precipitation.
+## 結構影響
 
-## Structure impact
-
-The process can change grain size, precipitate state, residual stress, phase distribution, and defect density. In other words, it rewrites [[Phase Fraction and Morphology]] and often drives [[Precipitation Hardening]]. Those changes feed directly into [[Mechanical Properties]] and sometimes into [[Electrical Properties]] as well.
+此過程可改變晶粒尺寸、析出物狀態、殘餘應力、相分佈和缺陷密度。換句話說，它會重寫 [[Phase Fraction and Morphology|相分率與形貌]] 並經常驅動 [[Precipitation Hardening|沉澱硬化]]。這些變更直接輸入到 [[Mechanical Properties|機械性質]] 中，有時也會輸入到 [[Electrical Properties|電性]] 中。

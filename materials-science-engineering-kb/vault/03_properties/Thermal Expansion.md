@@ -1,23 +1,22 @@
 ---
-title: Thermal Expansion
+title: 熱膨脹
 type: quantity
-summary: Thermal expansion describes how a material changes dimension with temperature and is a major source of thermal mismatch stress in joined or constrained systems.
+summary: 熱膨脹描述了材料如何隨溫度改變尺寸，並且是連接或約束系統中熱失配應力的主要來源。
 domain: Properties
 taxonomy_domain: properties
 tags: [thermal-expansion]
-prerequisites: [[[Thermal Properties]], [[Atomic Bonding and Cohesion]]]
-measurement_methods: [[[Differential Scanning Calorimetry]], [[X-ray Diffraction]]]
-related_concepts: [[[Residual Stress]], [[Thermal Fatigue]], [[Coatings and Protective Layers]]]
+prerequisites: [[[Thermal Properties|熱性質]], [[Atomic Bonding and Cohesion|原子鍵和內聚力]]]
+measurement_methods: [[[Differential Scanning Calorimetry|差示掃描量熱]], [[X-ray Diffraction|X 光繞射]]]
+related_concepts: [[[Residual Stress|殘餘應力]], [[Thermal Fatigue|熱疲勞]], [[Coatings and Protective Layers|塗層和保護層]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+許多熱故障實際上是膨脹失配故障。材料本身可能是穩定的，但組裝卻不穩定。
 
-Many thermal failures are really expansion-mismatch failures. The material itself may be stable, but the assembly is not.
+## 定義
 
-## Definition
+熱膨脹通常透過可能隨溫度、取向和相態變化的係數來量化尺寸隨溫度的變化。
 
-Thermal expansion quantifies dimensional change with temperature, commonly through a coefficient that may vary with temperature, orientation, and phase state.
+## 是什麼控制它
 
-## What controls it
-
-Bond anharmonicity, crystal structure, anisotropy, porosity, and phase composition all matter. In composites, coatings, and multilayers, mismatch among constituents is often more important than the absolute expansion of any one phase.
+鍵的非和諧性、晶體結構、各向異性、孔隙率和相組成都很重要。在複合材料、塗層和多層材料中，成分之間的不匹配通常比任何一相的絕對膨脹更重要。

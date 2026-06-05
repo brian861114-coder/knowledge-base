@@ -1,22 +1,21 @@
 ---
-title: Surface States and Interface Traps
+title: 表面態和界面陷阱
 type: concept
-summary: Surface states and interface traps are electronic defect states at surfaces or interfaces that can capture carriers, alter band alignment, and degrade device behavior.
+summary: 表面態和界面陷阱是表面或介面上的電子缺陷態，它們可以捕獲載流子、改變能帶排列並降低裝置性能。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [surface-states]
-prerequisites: [[[Doping and Carrier Control]], [[Interfacial Engineering]]]
-related_concepts: [[[Semiconductor Materials]], [[Dielectric Materials]], [[X-ray Photoelectron Spectroscopy]]]
+prerequisites: [[[Doping and Carrier Control|摻雜和載子控制]], [[Interfacial Engineering|介面工程]]]
+related_concepts: [[[Semiconductor Materials|半導體材料]], [[Dielectric Materials|介電材料]], [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+早在散裝材料看起來明顯錯誤之前，設備行為常常會在介面上故障。
 
-Device behavior often fails at the interface long before the bulk material looks obviously wrong.
+## 核心思想
 
-## Core idea
+對稱性破缺、懸空鍵、偏析、污染和非理想化學會產生局部狀態，捕捉電荷並扭曲傳輸或轉換行為。
 
-Broken symmetry, dangling bonds, segregation, contamination, and non-ideal chemistry create localized states that trap charge and distort transport or switching behavior.
+## 連結
 
-## Links
-
-[[X-ray Photoelectron Spectroscopy]] helps identify chemistry tied to these states. [[Dielectric Materials]] and [[Semiconductor Materials]] are both highly sensitive to poorly controlled interface traps.
+[[X-ray Photoelectron Spectroscopy|X 光光電子能譜]] 有助於識別與這些狀態相關的化學物質。 [[Dielectric Materials|介電材料]] 和 [[Semiconductor Materials|半導體材料]] 對控制不良的界面陷阱高度敏感。

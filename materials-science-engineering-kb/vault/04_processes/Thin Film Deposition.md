@@ -1,22 +1,21 @@
 ---
-title: Thin Film Deposition
+title: 薄膜沉積
 type: experiment
-summary: Thin film deposition creates surface-bound layers whose structure and interfaces are often the main functional material rather than a minor coating.
+summary: 薄膜沉積形成表面結合層，其結構和界面通常是主要功能性材料而不是次要塗層。
 domain: Processing
 taxonomy_domain: processing
 tags: [thin-films]
-prerequisites: [[[Diffusion in Solids]]]
-related_concepts: [[[Electrical Properties]], [[Semiconductor Materials]], [[Thin Film Growth and Residual Stress]], [[Residual Stress]]]
+prerequisites: [[[Diffusion in Solids|固體中的擴散]]]
+related_concepts: [[[Electrical Properties|電性]], [[Semiconductor Materials|半導體材料]], [[Thin Film Growth and Residual Stress|薄膜生長和殘餘應力]], [[Residual Stress|殘餘應力]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+薄膜是電子、光學、屏障、塗層和許多能源設備的核心。在這些系統中，介面控制不是可選的。
 
-Thin films are central to electronics, optics, barriers, coatings, and many energy devices. In these systems, interface control is not optional.
+## 工作流程
 
-## Workflow
+此方法可以是物理性的、化學性的、基於蒸氣的、基於溶液的或電化學的。無論採用何種路線，關鍵變數通常包括通量、基材條件、溫度和環境化學成分。
 
-The method may be physical, chemical, vapor-based, solution-based, or electrochemical. Regardless of route, key variables usually include flux, substrate condition, temperature, and ambient chemistry.
+## 結構影響
 
-## Structure impact
-
-Deposition controls thickness, texture, residual stress, grain morphology, defect density, and interface quality. Those features emerge through [[Thin Film Growth and Residual Stress]] and strongly influence [[Electrical Properties]] and failure risk.
+沉積控制厚度、織構、殘餘應力、晶粒形態、缺陷密度和界面質量。這些功能透過 [[Thin Film Growth and Residual Stress|薄膜生長和殘餘應力]] 出現，並強烈影響 [[Electrical Properties|電性]] 和失敗風險。

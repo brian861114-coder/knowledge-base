@@ -1,22 +1,21 @@
 ---
-title: Rapid Solidification
+title: 快速凝固
 type: experiment
-summary: Rapid solidification uses very high cooling rates to trap metastable structures, suppress segregation, and refine microstructure.
+summary: 快速凝固使用非常高的冷卻速率來捕捉亞穩態結構、抑制偏析並細化微觀結構。
 domain: Processing
 taxonomy_domain: processing
 tags: [rapid-solidification]
-prerequisites: [[[Phase Transformation Kinetics]], [[Phase Stability in Complex Alloys]]]
-related_concepts: [[[Nanomaterials]], [[High-Entropy Alloys]], [[Additive Manufacturing]]]
+prerequisites: [[[Phase Transformation Kinetics|相變動力學]], [[Phase Stability in Complex Alloys|複雜合金的相穩定性]]]
+related_concepts: [[[Nanomaterials|奈米材料]], [[High-Entropy Alloys|高熵合金]], [[Additive Manufacturing|增材製造]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+快速凝固是超越平衡並迫使材料進入在給定時間的情況下不會選擇的結構的最乾淨的方法之一。
 
-Rapid solidification is one of the cleanest ways to outrun equilibrium and force a material into structures it would not choose if given time.
+## 工作流程
 
-## Workflow
+該路線依賴極端的熱提取，以便在高度非平衡條件下發生成核、生長和分配。這可能發生在熔體紡絲、霧化或某些添加劑製程。
 
-The route relies on extreme thermal extraction so that nucleation, growth, and partitioning occur under highly nonequilibrium conditions. That can happen in melt spinning, atomization, or some additive processes.
+## 結構影響
 
-## Structure impact
-
-Cooling-rate extremes can refine grains, retain supersaturation, reduce segregation length scales, and stabilize metastable phases. Those effects matter for both functional and structural systems.
+極端冷卻速率可以細化晶粒、維持過飽和度、減少偏析長度並穩定亞穩態相。這些影響對於功能和結構系統都很重要。

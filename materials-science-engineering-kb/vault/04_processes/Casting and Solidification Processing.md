@@ -1,22 +1,21 @@
 ---
-title: Casting and Solidification Processing
+title: 鑄造及凝固加工
 type: experiment
-summary: Casting and solidification processing shape components through liquid-to-solid transformation while simultaneously imposing segregation, grain structure, shrinkage, and defect evolution.
+summary: 透過液固轉變來鑄造和凝固加工形狀部件，同時施加偏析、晶粒結構、收縮和缺陷演變。
 domain: Processing
 taxonomy_domain: processing
 tags: [casting]
-prerequisites: [[[Solidification and Microsegregation]], [[Nucleation and Growth]]]
-related_concepts: [[[Dendritic and Cellular Solidification]], [[Residual Stress]], [[Microstructure]]]
+prerequisites: [[[Solidification and Microsegregation|凝固和微觀偏析]], [[Nucleation and Growth|成核與生長]]]
+related_concepts: [[[Dendritic and Cellular Solidification|樹枝狀和細胞凝固]], [[Residual Stress|殘餘應力]], [[Microstructure|微觀組織]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+鑄造是工程中最古老的工藝之一，但它在結構上仍然不樂觀。凝固路徑寫下了許多缺陷和異質性，以後的處理必須修復這些缺陷和異質性。
 
-Casting is one of the oldest processes in engineering, but it remains structurally unforgiving. The solidification path writes many of the defects and heterogeneities that later processing has to fix.
+## 工作流程
 
-## Workflow
+將熔融材料澆注、注射或以其他方式引入模具或成形空間中，然後在控制熱量提取、成核密度、補縮和收縮行為的熱邊界條件下固化。
 
-Molten material is poured, injected, or otherwise introduced into a mold or shaped space and then solidified under a thermal boundary condition that controls heat extraction, nucleation density, feeding, and shrinkage behavior.
+## 結構影響
 
-## Structure impact
-
-The process sets grain morphology, segregation length scale, porosity risk, dendritic pattern, and often residual stress distribution. These structural outcomes feed directly into [[Microstructure]], later heat-treatment response, and crack susceptibility.
+此過程設定晶粒形態、偏析長度尺度、孔隙風險、枝晶模式以及殘餘應力分佈。這些結構結果直接影響 [[Microstructure|微觀組織]]、後續熱處理反應和裂紋敏感性。

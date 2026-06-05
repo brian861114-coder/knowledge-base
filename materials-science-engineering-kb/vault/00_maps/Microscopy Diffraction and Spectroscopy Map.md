@@ -1,24 +1,23 @@
 ---
-title: Microscopy Diffraction and Spectroscopy Map
+title: 顯微、繞射與光譜圖
 type: map
-summary: A map for methods that resolve morphology, phase, chemistry, orientation, and bonding state across scales.
+summary: 跨尺度解析形態、相、化學、方向和鍵結狀態的方法圖。
 domain: Characterization
 taxonomy_domain: characterization
 tags: [microscopy, diffraction, spectroscopy]
-includes: [[[X-ray Diffraction]], [[Scanning Electron Microscopy]], [[Transmission Electron Microscopy]], [[Energy-Dispersive Spectroscopy]], [[Electron Backscatter Diffraction]], [[X-ray Photoelectron Spectroscopy]], [[Raman Spectroscopy]], [[Atomic Force Microscopy]], [[Atom Probe Tomography]]]
-recommended_order: [[[X-ray Diffraction]], [[Scanning Electron Microscopy]], [[Energy-Dispersive Spectroscopy]], [[Electron Backscatter Diffraction]], [[Transmission Electron Microscopy]], [[X-ray Photoelectron Spectroscopy]], [[Raman Spectroscopy]], [[Atom Probe Tomography]]]
+includes: [[[X-ray Diffraction|X 光繞射]], [[Scanning Electron Microscopy|掃描式電子顯微鏡]], [[Transmission Electron Microscopy|穿透式電子顯微鏡]], [[Energy-Dispersive Spectroscopy|能量散射 X 光譜]], [[Electron Backscatter Diffraction|電子背向散射繞射]], [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]], [[Raman Spectroscopy|拉曼光譜]], [[Atomic Force Microscopy|原子力顯微鏡]], [[Atom Probe Tomography|原子探針斷層掃描]]]
+recommended_order: [[[X-ray Diffraction|X 光繞射]], [[Scanning Electron Microscopy|掃描式電子顯微鏡]], [[Energy-Dispersive Spectroscopy|能量散射 X 光譜]], [[Electron Backscatter Diffraction|電子背向散射繞射]], [[Transmission Electron Microscopy|穿透式電子顯微鏡]], [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]], [[Raman Spectroscopy|拉曼光譜]], [[Atom Probe Tomography|原子探針斷層掃描]]]
 ---
+## 為什麼這張地圖存在
 
-## Why this map exists
+這些方法都會輸出影像、圖、光譜或峰值，但它們不回答相同的問題。將它們視為可互換是懶惰的行為，並且會產生錯誤的推論。
 
-These methods all output images, maps, spectra, or peaks, but they do not answer the same questions. Treating them as interchangeable is lazy and produces bad inference.
+## 地圖結構
 
-## Map structure
+[[X-ray Diffraction|X 光繞射]] 回答體相和晶格問題。 [[Scanning Electron Microscopy|掃描式電子顯微鏡]] 回答形態和斷裂面問題。 [[Energy-Dispersive Spectroscopy|能量散射 X 光譜]] 加入局部元素對比度，而 [[Electron Backscatter Diffraction|電子背向散射繞射]] 加入取向和晶粒結構資訊。
 
-[[X-ray Diffraction]] answers bulk phase and lattice questions. [[Scanning Electron Microscopy]] answers morphology and fracture-surface questions. [[Energy-Dispersive Spectroscopy]] adds local elemental contrast, while [[Electron Backscatter Diffraction]] adds orientation and grain-structure information.
+[[Transmission Electron Microscopy|穿透式電子顯微鏡]] 推動缺陷和介面規模。 [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]] 是表面化學專家，[[Raman Spectroscopy|拉曼光譜]] 是鍵結和振動指紋專家，[[Atom Probe Tomography|原子探針斷層掃描]] 是近原子成分專家。
 
-[[Transmission Electron Microscopy]] pushes to defect and interface scale. [[X-ray Photoelectron Spectroscopy]] is the surface-chemistry specialist, [[Raman Spectroscopy]] is the bonding and vibrational fingerprint specialist, and [[Atom Probe Tomography]] is the near-atomic composition specialist.
+## 核心鏈接
 
-## Core links
-
-The correct method pairing depends on what you are trying to prove. XRD plus SEM is a different evidentiary stack from TEM plus XPS, and pretending otherwise is how people overclaim from weak data.
+正確的方法配對取決於您要證明的內容。 XRD 加 SEM 與 TEM 加 XPS 是不同的證據堆疊，人們如何從薄弱的數據中誇大其詞。

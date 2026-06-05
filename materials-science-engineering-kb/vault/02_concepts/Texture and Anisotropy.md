@@ -1,32 +1,31 @@
 ---
-title: Texture and Anisotropy
+title: 紋理與各向異性
 type: concept
-summary: Texture and anisotropy describe how preferred orientation or directional structure causes properties and deformation behavior to depend on direction.
+summary: 紋理和各向異性描述了首選方向或定向結構如何導致​​屬性和變形行為依賴於方向。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [texture, anisotropy]
-prerequisites: [[[Unit Cell and Crystal Symmetry]], [[Microstructure]]]
-related_concepts: [[[Electron Backscatter Diffraction]], [[Mechanical Properties]], [[Electrical Properties]]]
+prerequisites: [[[Unit Cell and Crystal Symmetry|單位晶胞與晶體對稱性]], [[Microstructure|微觀組織]]]
+related_concepts: [[[Electron Backscatter Diffraction|電子背向散射繞射]], [[Mechanical Properties|機械性質]], [[Electrical Properties|電性]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+兩個具有相同化學成分和相含量的樣本可能表現不同，只是因為它們的方向分佈不同。方向很重要。
 
-Two specimens with the same chemistry and phase content can behave differently simply because their orientations are distributed differently. Direction matters.
+## 核心思想
 
-## Core idea
+各向異性意味著屬性取決於方向。織構是指多晶聚集體具有非隨機取向分佈。當許多晶粒具有相似的方向時，宏觀響應反映了方向偏差，而不是平均到接近各向同性。
 
-Anisotropy means a property depends on direction. Texture means a polycrystalline aggregate has a non-random orientation distribution. When many grains share similar orientations, the macroscopic response reflects that directional bias rather than averaging out to near-isotropy.
+這對於屈服、成形性、磁響應、電導率、熱膨脹和斷裂路徑選擇很重要。
 
-This matters for yielding, formability, magnetic response, conductivity, thermal expansion, and fracture path selection.
+## 連結
 
-## Links
+[[Electron Backscatter Diffraction|電子背向散射繞射]] 是映射方向和紋理的最直接工具之一。 [[Mechanical Properties|機械性質]] 和 [[Electrical Properties|電性]] 都可以繼承紋理的強方向依賴。 [[Unit Cell and Crystal Symmetry|單位晶胞與晶體對稱性]] 首先解釋了為什麼某些方向在結構上是不相等的。
 
-[[Electron Backscatter Diffraction]] is one of the most direct tools for mapping orientation and texture. [[Mechanical Properties]] and [[Electrical Properties]] can both inherit strong directional dependence from texture. [[Unit Cell and Crystal Symmetry]] explains why certain directions are structurally inequivalent in the first place.
+## 關鍵範例
 
-## Key examples
+軋製金屬板材通常表現出強烈的紋理，這會影響可成形性和製耳行為。薄膜可以顯示出改變電導率或介電響應的首選生長方向。
 
-Rolled sheet metals often show strong texture, which affects formability and earing behavior. Thin films can show preferred growth orientation that changes conductivity or dielectric response.
+## 常見錯誤
 
-## Common mistakes
-
-Do not assume polycrystalline always means isotropic. That only becomes approximately true when orientations are sufficiently random and other directional features are weak.
+不要假設多晶總是意味著各向同性。只有當方向足夠隨機且其他方向特徵較弱時，這才大致正確。

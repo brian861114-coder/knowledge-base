@@ -1,22 +1,21 @@
 ---
-title: Tensile Testing
+title: 拉伸試驗
 type: mathematical_tool
-summary: Tensile testing measures how a material deforms and fails under controlled uniaxial tension, providing baseline strength and ductility data.
+summary: 拉伸測試測量材料在受控單軸拉伸下如何變形和失效，提供基線強度和延展性數據。
 domain: Characterization
 taxonomy_domain: characterization
 tags: [tensile]
-related_concepts: [[[Mechanical Properties]], [[Fracture Toughness]], [[Fatigue Resistance]], [[Thermomechanical Processing]]]
-measured_quantities: [[[Mechanical Properties]], [[Fatigue Resistance]]]
+related_concepts: [[[Mechanical Properties|機械性質]], [[Fracture Toughness|斷裂韌性]], [[Fatigue Resistance|抗疲勞性]], [[Thermomechanical Processing|熱機械加工]]]
+measured_quantities: [[[Mechanical Properties|機械性質]], [[Fatigue Resistance|抗疲勞性]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+拉伸測試之所以成為基礎測試是有原因的。這是從關於「強」或「延展性」的模糊說法到實際可以比較的數字的最快途徑。
 
-Tensile testing is basic for a reason. It is the fastest route from vague claims about "strong" or "ductile" to numbers that can actually be compared.
+## 它測量什麼
 
-## What it measures
+此方法在測量應力應變響應的同時，將增加的拉伸載荷施加到定義的樣本幾何形狀上。從這個曲線中，工程師提取彈性響應、屈服行為、極限強度、伸長率，有時還會提取加工硬化行為。
 
-The method applies increasing tensile load to a defined specimen geometry while measuring stress-strain response. From that curve, engineers extract elastic response, yield behavior, ultimate strength, elongation, and sometimes work-hardening behavior.
+## 解釋
 
-## Interpretation
-
-A tensile test is foundational, not complete. It says little by itself about crack tolerance, cyclic life, or contact-driven damage. It becomes more valuable when read together with [[Fracture Mechanisms]], [[Hardness Testing]], and microstructural evidence such as [[Scanning Electron Microscopy]].
+拉伸測試是基礎性的，而不是完整的。它本身並沒有提及裂紋容限、循環壽命或接觸驅動損壞。當與 [[Fracture Mechanisms|斷裂機制]]、[[Hardness Testing|硬度試驗]] 和微觀結構證據（例如 [[Scanning Electron Microscopy|掃描式電子顯微鏡]]）一起閱讀時，它會變得更有價值。

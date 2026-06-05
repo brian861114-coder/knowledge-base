@@ -1,22 +1,21 @@
 ---
-title: Quenching and Tempering
+title: 調質
 type: experiment
-summary: Quenching and tempering use rapid cooling followed by controlled reheating to create and then refine high-strength metastable microstructures.
+summary: 淬火和回火採用快速冷卻，然後受控再加熱以創建並細化高強度亞穩態微觀結構。
 domain: Processing
 taxonomy_domain: processing
 tags: [quench, temper]
-prerequisites: [[[Phase Transformation Kinetics]], [[Heat Treatment]]]
-related_concepts: [[[Residual Stress]], [[Precipitation Hardening]], [[Mechanical Properties]]]
+prerequisites: [[[Phase Transformation Kinetics|相變動力學]], [[Heat Treatment|熱處理]]]
+related_concepts: [[[Residual Stress|殘餘應力]], [[Precipitation Hardening|沉澱硬化]], [[Mechanical Properties|機械性質]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+這條路線顯示了結構冶金的核心權衡：快速冷卻後立即提供高強度的微觀結構通常應力太大或太脆而無法直接使用。
 
-This route shows the central tradeoff of structural metallurgy: the microstructure that gives high strength right after rapid cooling is often too stressed or brittle to use directly.
+## 工作流程
 
-## Workflow
+將材料加熱到適當的相場，快速冷卻以抑制平衡轉變路徑，然後重新加熱到較低溫度，以便淬火結構可以鬆弛或分解成更可用的狀態。
 
-The material is heated to a suitable phase field, rapidly cooled to suppress equilibrium transformation pathways, and then reheated to a lower temperature so that the as-quenched structure can relax or decompose into a more usable state.
+## 結構影響
 
-## Structure impact
-
-Quenching can generate supersaturation, transformation products far from equilibrium, and large residual stresses. Tempering partially relieves those stresses and allows controlled redistribution of defects and second phases, shifting the balance among strength, toughness, and dimensional stability.
+淬火會產生過飽和、遠離平衡的轉變產物、大的殘餘應力。回火可部分緩解這些應力，並允許缺陷和第二相受控重新分佈，從而改變強度、韌性和尺寸穩定性之間的平衡。

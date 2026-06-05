@@ -1,20 +1,19 @@
 ---
-title: Solidification Transformation and Heat-Treatment Map
+title: 凝固、相變與熱處理圖
 type: map
-summary: A map for the major thermal pathways that generate microstructure through freezing, transformation, quenching, tempering, annealing, and precipitation.
+summary: 透過冷凍、相變、淬火、回火、退火和沈澱生成微觀結構的主要熱路徑圖。
 domain: Processing
 taxonomy_domain: processing
 tags: [solidification, heat-treatment]
-includes: [[[Solidification and Microsegregation]], [[Nucleation and Growth]], [[Phase Transformation Kinetics]], [[Casting and Solidification Processing]], [[Rapid Solidification]], [[Heat Treatment]], [[Annealing]], [[Quenching and Tempering]], [[Precipitation Hardening]], [[Phase Fraction and Morphology]]]
-recommended_order: [[[Nucleation and Growth]], [[Solidification and Microsegregation]], [[Phase Transformation Kinetics]], [[Casting and Solidification Processing]], [[Heat Treatment]], [[Annealing]], [[Quenching and Tempering]], [[Precipitation Hardening]]]
+includes: [[[Solidification and Microsegregation|凝固和微觀偏析]], [[Nucleation and Growth|成核與生長]], [[Phase Transformation Kinetics|相變動力學]], [[Casting and Solidification Processing|鑄造及凝固加工]], [[Rapid Solidification|快速凝固]], [[Heat Treatment|熱處理]], [[Annealing|退火]], [[Quenching and Tempering|調質]], [[Precipitation Hardening|沉澱硬化]], [[Phase Fraction and Morphology|相分率與形貌]]]
+recommended_order: [[[Nucleation and Growth|成核與生長]], [[Solidification and Microsegregation|凝固和微觀偏析]], [[Phase Transformation Kinetics|相變動力學]], [[Casting and Solidification Processing|鑄造及凝固加工]], [[Heat Treatment|熱處理]], [[Annealing|退火]], [[Quenching and Tempering|調質]], [[Precipitation Hardening|沉澱硬化]]]
 ---
+## 為什麼這張地圖存在
 
-## Why this map exists
+這是材料科學中結構工程的熱支柱。在這裡，成分、冷卻路徑、保持時間和先前的缺陷狀態成為實際的相分佈和形態。
 
-This is the thermal backbone of structural engineering in materials science. It is where composition, cooling path, hold time, and prior defect state become actual phase distribution and morphology.
+## 地圖結構
 
-## Map structure
+[[Solidification and Microsegregation|凝固和微觀偏析]] 解釋了凍結留下的第一個結構印記。 [[Phase Transformation Kinetics|相變動力學]] 然後解釋了當系統重新加熱、淬火、老化或以其他方式偏離或返回平衡時會發生什麼。
 
-[[Solidification and Microsegregation]] explains the first structural imprint left by freezing. [[Phase Transformation Kinetics]] then explains what can happen afterward when the system is reheated, quenched, aged, or otherwise driven away from or back toward equilibrium.
-
-[[Annealing]], [[Quenching and Tempering]], and [[Precipitation Hardening]] are the most common controlled routes for rewriting [[Phase Fraction and Morphology]]. [[Rapid Solidification]] sits here because it captures structures that ordinary cooling would not preserve.
+[[Annealing|退火]]、[[Quenching and Tempering|調質]] 和 [[Precipitation Hardening|沉澱硬化]] 是重寫 [[Phase Fraction and Morphology|相分率與形貌]] 最常見的控制路線。 [[Rapid Solidification|快速凝固]] 坐落在這裡是因為它捕捉了普通冷卻無法保留的結構。

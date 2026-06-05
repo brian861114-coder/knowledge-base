@@ -1,22 +1,21 @@
 ---
-title: Diffusion in Solids
+title: 固體中的擴散
 type: law
-summary: Diffusion controls mass transport in solids and therefore underlies homogenization, sintering, precipitation, oxidation, and many heat treatments.
+summary: 擴散控制固體中的質量傳遞，因此是均質化、燒結、沉澱、氧化和許多熱處理的基礎。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [diffusion]
-related_concepts: [[[Crystal Defects]], [[Microstructure]]]
-used_in: [[[Heat Treatment]], [[Sintering]], [[Thin Film Deposition]]]
+related_concepts: [[[Crystal Defects|晶體缺陷]], [[Microstructure|微觀組織]]]
+used_in: [[[Heat Treatment|熱處理]], [[Sintering|燒結]], [[Thin Film Deposition|薄膜沉積]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+擴散是材料工程中的核心限速過程之一。許多加工路線實際上只是受控擴散問題，周圍環繞著昂貴的設備。
 
-Diffusion is one of the core rate-limiting processes in materials engineering. Many processing routes are really just controlled diffusion problems with expensive equipment wrapped around them.
+## 核心關係
 
-## Core relation
+原子遷移是因為濃度梯度、化學勢或缺陷群體產生了驅動力。擴散速率很大程度取決於溫度以及空位、晶界和界面等路徑。
 
-Atoms migrate because gradients in concentration, chemical potential, or defect populations create a driving force. The diffusion rate depends strongly on temperature and on pathways such as vacancies, grain boundaries, and interfaces.
+## 連結
 
-## Links
-
-[[Crystal Defects]] matter because vacancies and interfaces act as transport pathways. [[Heat Treatment]] and [[Sintering]] depend on diffusion to redistribute species and reduce stored energy. [[Microstructure]] evolves when diffusion enables precipitates, grain growth, or phase redistribution.
+[[Crystal Defects|晶體缺陷]] 很重要，因為空位和介面充當傳輸路徑。 [[Heat Treatment|熱處理]] 和 [[Sintering|燒結]] 依靠擴散來重新分配物質並減少儲存的能量。當擴散導致沉澱、晶粒生長或相重新分佈時，[[Microstructure|微觀組織]] 就會演化。

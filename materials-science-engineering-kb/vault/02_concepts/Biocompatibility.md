@@ -1,22 +1,21 @@
 ---
-title: Biocompatibility
+title: 生物相容性
 type: concept
-summary: Biocompatibility describes whether a material can perform its intended biological function without producing unacceptable local or systemic response.
+summary: 生物相容性描述了材料是否能夠發揮其預期的生物功能而不產生不可接受的局部或全身反應。
 domain: Applications
 taxonomy_domain: applications
 tags: [biocompatibility]
-prerequisites: [[[Biomaterials]], [[Surface Engineering]]]
-related_concepts: [[[Corrosion Resistance]], [[Tribology and Wear]], [[Atomic Force Microscopy]]]
+prerequisites: [[[Biomaterials|生物材料]], [[Surface Engineering|表面工程]]]
+related_concepts: [[[Corrosion Resistance|耐蝕性]], [[Tribology and Wear|摩擦學和磨損]], [[Atomic Force Microscopy|原子力顯微鏡]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+機械存活但引發錯誤生物反應的材料仍是失敗的生物材料。
 
-A material that survives mechanically but triggers the wrong biological response is still a failed biomaterial.
+## 核心思想
 
-## Core idea
+生物相容性取決於化學、地形、磨損碎片、腐蝕產物、蛋白質、細胞和特定的生物環境。它不是附加在材料系列上的固有永久標籤。
 
-Biocompatibility depends on chemistry, topography, wear debris, corrosion products, proteins, cells, and the specific biological environment. It is not an intrinsic permanent label attached to a material family.
+## 連結
 
-## Links
-
-[[Surface Engineering]] matters because the body sees the surface first. [[Corrosion Resistance]] matters because degradation products can drive biological failure even when the bulk component still looks intact.
+[[Surface Engineering|表面工程]] 很重要，因為身體首先看到的是表面。 [[Corrosion Resistance|耐蝕性]] 很重要，因為即使大部分成分看起來仍然完好無損，降解產物也會導致生物失效。

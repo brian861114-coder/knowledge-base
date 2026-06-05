@@ -1,25 +1,24 @@
 ---
-title: Brittle Fracture
+title: 脆性斷裂
 type: concept
-summary: Brittle fracture is crack propagation with little plastic deformation, often driven by cleavage, flaw sensitivity, or weak interfaces under stress.
+summary: 脆性斷裂是塑性變形很小的裂紋擴展，通常由解理、缺陷敏感性或應力下的弱界面驅動。
 domain: Failure Analysis
 taxonomy_domain: failure
 tags: [brittle-fracture]
-prerequisites: [[[Fracture Mechanisms]], [[Ceramics]]]
-related_concepts: [[[Fracture Toughness]], [[Hydrogen Embrittlement]], [[Scanning Electron Microscopy]]]
-measurement_methods: [[[Mechanical Testing]], [[Scanning Electron Microscopy]], [[Impact Testing]]]
+prerequisites: [[[Fracture Mechanisms|斷裂機制]], [[Ceramics|陶瓷]]]
+related_concepts: [[[Fracture Toughness|斷裂韌性]], [[Hydrogen Embrittlement|氫脆]], [[Scanning Electron Microscopy|掃描式電子顯微鏡]]]
+measurement_methods: [[[Mechanical Testing|機械試驗]], [[Scanning Electron Microscopy|掃描式電子顯微鏡]], [[Impact Testing|衝擊試驗]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+脆性斷裂很危險，因為它幾乎沒有發出任何警告。一旦滿足局部條件，故障可能是突然的和災難性的。
 
-Brittle fracture is dangerous because it offers little warning. Once the local condition is satisfied, failure can be abrupt and catastrophic.
+## 核心思想
 
-## Core idea
+在脆性斷裂中，材料在裂紋擴展之前不會透過塑性耗散太多能量。裂紋擴展可能沿著解理面、薄弱界面或脆化區域，並且對缺陷尺寸的敏感度變得嚴重。
 
-In brittle fracture, the material does not dissipate much energy through plasticity before the crack advances. Crack propagation may follow cleavage planes, weak interfaces, or embrittled regions, and sensitivity to defect size becomes severe.
+溫度、應變率、三軸應力狀態和脆化物質都可以使材料變得更脆。
 
-Temperature, strain rate, triaxial stress state, and embrittling species can all shift a material toward more brittle behavior.
+## 連結
 
-## Links
-
-[[Impact Testing]] is often used to expose brittle-transition tendencies. [[Hydrogen Embrittlement]] is one route by which a material that is normally more tolerant can become brittle under service conditions.
+[[Impact Testing|衝擊試驗]] 通常用於暴露脆性轉變傾向。 [[Hydrogen Embrittlement|氫脆]] 是通常具有較高耐受性的材料在使用條件下變脆的一種途徑。

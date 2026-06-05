@@ -1,22 +1,21 @@
 ---
-title: Metals
+title: 金屬
 type: concept
-summary: Metals are typically good conductors with deformable crystal structures, making them central to structural, thermal, and electrical engineering.
+summary: 金屬通常是具有可變形晶體結構的良好導體，這使其成為結構、熱和電氣工程的核心。
 domain: Material Classes
 taxonomy_domain: material_classes
 tags: [metals]
-prerequisites: [[[Atomic Bonding and Cohesion]], [[Crystal Structure]]]
-related_concepts: [[[Heat Treatment]], [[Mechanical Properties]]]
+prerequisites: [[[Atomic Bonding and Cohesion|原子鍵和內聚力]], [[Crystal Structure|晶體結構]]]
+related_concepts: [[[Heat Treatment|熱處理]], [[Mechanical Properties|機械性質]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+金屬仍然是承載系統的預設工程材料，因為它們比大多數替代品更好地結合了可加工性、導電性和損傷容限。
 
-Metals remain the default engineering materials for load-bearing systems because they combine processability, conductivity, and damage tolerance better than most alternatives.
+## 核心思想
 
-## Core idea
+金屬鍵合支援電子遷移率並且通常允許基於位錯的塑性。這種組合驅動了通常的金屬輪廓：有用的延展性、強大的工藝敏感度和廣泛的合金設計空間。
 
-Metallic bonding supports electron mobility and often allows dislocation-based plasticity. That combination drives the usual metal profile: useful ductility, strong process sensitivity, and broad alloy design space.
+## 連結
 
-## Links
-
-[[Heat Treatment]] is especially important for metals because phase content and defect density can be tuned aggressively. [[Mechanical Properties]] often become the primary screening layer for metallic systems.
+[[Heat Treatment|熱處理]] 對於金屬尤其重要，因為可以積極調整相含量和缺陷密度。 [[Mechanical Properties|機械性質]] 通常成為金屬系統的主要屏蔽。

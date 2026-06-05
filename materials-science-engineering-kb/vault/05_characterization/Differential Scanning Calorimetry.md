@@ -1,22 +1,21 @@
 ---
-title: Differential Scanning Calorimetry
+title: 差示掃描量熱
 type: mathematical_tool
-summary: Differential scanning calorimetry measures heat flow associated with thermal transitions such as glass transition, melting, crystallization, curing, or reaction.
+summary: 差示掃描量熱法測量與玻璃化轉變、熔化、結晶、固化或反應等熱轉變相關的熱流。
 domain: Characterization
 taxonomy_domain: characterization
 tags: [dsc]
-related_concepts: [[[Glass Transition and Thermal Transitions]], [[Polymer Processing]], [[Thermal Properties]], [[Biomaterials]], [[Annealing]], [[Quenching and Tempering]]]
-measured_quantities: [[[Glass Transition and Thermal Transitions]], [[Thermal Properties]]]
+related_concepts: [[[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]], [[Polymer Processing|聚合物加工]], [[Thermal Properties|熱性質]], [[Biomaterials|生物材料]], [[Annealing|退火]], [[Quenching and Tempering|調質]]]
+measured_quantities: [[[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]], [[Thermal Properties|熱性質]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+DSC 是證明熱事件存在的最簡潔的工具之一，而不僅僅是用手寫的語言來描述它。
 
-DSC is one of the cleanest tools for proving that a thermal event exists rather than merely describing it with hand-wavy language.
+## 它測量什麼
 
-## What it measures
+此方法隨著溫度變化追蹤樣品和參考之間的熱流差，揭示與轉變或反應相關的吸熱和放熱事件。它通常可用於追蹤 [[Annealing|退火]] 或 [[Quenching and Tempering|調質]] 等路線是否確實改變了熱事件或降水行為。
 
-The method tracks differential heat flow between sample and reference as temperature changes, revealing endothermic and exothermic events tied to transitions or reactions. It is often useful for tracking whether routes such as [[Annealing]] or [[Quenching and Tempering]] actually changed thermal events or precipitation behavior.
+## 解釋
 
-## Interpretation
-
-Heating rate, sample mass, atmosphere, and prior thermal history all matter. A transition that looks obvious in one protocol can move, broaden, or disappear under another.
+加熱速率、樣品品質、氣氛和先前的熱歷史都很重要。在一種協議中看起來很明顯的轉變在另一種協議中可能會移動、擴大或消失。

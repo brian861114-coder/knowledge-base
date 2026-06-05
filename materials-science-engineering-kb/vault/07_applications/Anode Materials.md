@@ -1,22 +1,21 @@
 ---
-title: Anode Materials
+title: 負極材料
 type: concept
-summary: Anode materials host ion insertion, alloying, plating, or conversion processes that strongly influence safety, kinetics, and cycle life.
+summary: 陽極材料承載離子插入、合金化、電鍍或轉化過程，這些過程強烈影響安全性、動力學和循環壽命。
 domain: Applications
 taxonomy_domain: applications
 tags: [anodes]
-prerequisites: [[[Battery Materials]], [[Electrochemical Stability]]]
-related_concepts: [[[Solid Electrolytes]], [[Cathode Materials]], [[Surface Engineering]]]
+prerequisites: [[[Battery Materials|電池材料]], [[Electrochemical Stability|電化學穩定性]]]
+related_concepts: [[[Solid Electrolytes|固體電解質]], [[Cathode Materials|正極材料]], [[Surface Engineering|表面工程]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+陽極是許多電化學系統累積最劇烈權衡的地方：快速動力學、不穩定的界面、體積變化和故障風險。
 
-Anodes are where many electrochemical systems accumulate their most violent tradeoffs: fast kinetics, unstable interfaces, volume change, and failure risk.
+## 核心思想
 
-## Core idea
+有用的陽極必須支持可逆電荷存儲，同時控制相間形成、形態演化和機械損傷。最有吸引力的高容量路徑往往會產生最醜陋的穩定性問題。
 
-Useful anodes must support reversible charge storage while controlling interphase formation, morphology evolution, and mechanical damage. The most attractive high-capacity pathways often create the ugliest stability problems.
+## 連結
 
-## Links
-
-[[Surface Engineering]] can stabilize the near-surface environment. [[Solid Electrolytes]] change the interface problem rather than eliminating it, which is why anode compatibility remains central.
+[[Surface Engineering|表面工程]]可以穩定近地表環境。 [[Solid Electrolytes|固體電解質]] 改變了介面問題而不是消除它，這就是為什麼陽極相容性仍然是核心的原因。

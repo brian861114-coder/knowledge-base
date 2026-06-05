@@ -1,23 +1,22 @@
 ---
-title: Dielectric Response
+title: 介電響應
 type: quantity
-summary: Dielectric response describes how a material polarizes, stores electric field energy, and leaks or breaks down under applied voltage.
+summary: 介電響應描述了材料在施加電壓下如何極化、儲存電場能量以及洩漏或擊穿。
 domain: Properties
 taxonomy_domain: properties
 tags: [dielectric-response]
-prerequisites: [[[Dielectric Materials]], [[Electrical Properties]]]
-measurement_methods: [[[Electrochemical Impedance Spectroscopy]]]
-related_concepts: [[[Thin Film Deposition]], [[Defect Chemistry and Point Defects]], [[Thermal Properties]], [[Optical Properties]]]
+prerequisites: [[[Dielectric Materials|介電材料]], [[Electrical Properties|電性]]]
+measurement_methods: [[[Electrochemical Impedance Spectroscopy|電化學阻抗譜]]]
+related_concepts: [[[Thin Film Deposition|薄膜沉積]], [[Defect Chemistry and Point Defects|缺陷化學和點缺陷]], [[Thermal Properties|熱性質]], [[Optical Properties|光學性質]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+有用的介電性能不僅僅是高介電常數。它是極化、洩漏、擊穿風險和製程相容性之間的整體平衡。
 
-Useful dielectric behavior is never just high permittivity. It is the whole balance among polarization, leakage, breakdown risk, and process compatibility.
+## 定義
 
-## Definition
+此簇包括介電常數、介電損耗、擊穿行為和場相關穩定性。相關指標取決於目標是絕緣、能量儲存、感測還是電容耦合。
 
-This cluster includes permittivity, dielectric loss, breakdown behavior, and field-dependent stability. The relevant metric depends on whether the goal is insulation, energy storage, sensing, or capacitive coupling.
+## 是什麼控制它
 
-## What controls it
-
-Defects, interfaces, porosity, phase constitution, thickness, and temperature all matter. Film quality and local chemistry can dominate more strongly than bulk composition.
+缺陷、界面、孔隙率、相構成、厚度和溫度都很重要。薄膜質量和局部化學比本體成分更占主導地位。

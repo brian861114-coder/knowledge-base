@@ -1,23 +1,22 @@
 ---
-title: Viscoelastic Response
+title: 黏彈性響應
 type: quantity
-summary: Viscoelastic response describes time-dependent stiffness, damping, relaxation, and recovery in polymeric and other soft material systems.
+summary: 黏彈性響應描述了聚合物和其他軟材料系統中隨時間變化的剛度、阻尼、鬆弛和恢復。
 domain: Properties
 taxonomy_domain: properties
 tags: [viscoelastic]
-prerequisites: [[[Polymer Viscoelasticity]], [[Mechanical Properties]]]
-measurement_methods: [[[Mechanical Testing]]]
-related_concepts: [[[Polymer Processing]], [[Biomaterials]], [[Polymers]]]
+prerequisites: [[[Polymer Viscoelasticity|聚合物黏彈性]], [[Mechanical Properties|機械性質]]]
+measurement_methods: [[[Mechanical Testing|機械試驗]]]
+related_concepts: [[[Polymer Processing|聚合物加工]], [[Biomaterials|生物材料]], [[Polymers|聚合物]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+在軟系統中，性能取決於您要求材料承載負載的時間和方式。脫離時間尺度，沒有誠實的靜態答案。
 
-In soft systems, performance depends on when and how you ask the material to carry load. There is no honest static answer divorced from time scale.
+## 定義
 
-## Definition
+黏彈性響應捕捉應力鬆弛、蠕變柔量、滯後、阻尼和速率敏感剛度。它是時間依賴性分子遷移率的屬性水平表達。
 
-Viscoelastic response captures stress relaxation, creep compliance, hysteresis, damping, and rate-sensitive stiffness. It is the property-level expression of time-dependent molecular mobility.
+## 是什麼控制它
 
-## What controls it
-
-Temperature, strain rate, crosslink density, crystallinity, plasticization, and prior processing history all matter. Even modest changes in thermal history can move a polymer into a completely different operating regime.
+溫度、應變速率、交聯密度、結晶度、塑化和先前的加工歷史都很重要。即使熱歷史的微小變化也可以使聚合物進入完全不同的操作狀態。

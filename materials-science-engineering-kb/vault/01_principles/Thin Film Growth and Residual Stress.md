@@ -1,23 +1,22 @@
 ---
-title: Thin Film Growth and Residual Stress
+title: 薄膜生長和殘餘應力
 type: law
-summary: Thin film growth and residual stress govern how films nucleate, coalesce, texture, and store internal stress during and after deposition.
+summary: 薄膜生長和殘餘應力決定著沉積過程中和沈積後薄膜的成核、聚結、紋理和儲存內應力的方式。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [thin-film-growth, residual-stress]
-prerequisites: [[[Nucleation and Growth]], [[Interfacial Engineering]]]
-related_concepts: [[[Residual Stress]], [[Texture and Anisotropy]], [[Thin Film Deposition]]]
-used_in: [[[Surface Engineering]], [[Semiconductor Materials]]]
+prerequisites: [[[Nucleation and Growth|成核與生長]], [[Interfacial Engineering|介面工程]]]
+related_concepts: [[[Residual Stress|殘餘應力]], [[Texture and Anisotropy|紋理與各向異性]], [[Thin Film Deposition|薄膜沉積]]]
+used_in: [[[Surface Engineering|表面工程]], [[Semiconductor Materials|半導體材料]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+薄膜不僅僅是小塊固體。它們的結構是在強基質約束、強表面效應和通常強烈的非平衡通量條件下形成的。
 
-Thin films are not just small bulk solids. Their structure forms under strong substrate constraint, strong surface effects, and often intense nonequilibrium flux conditions.
+## 核心關係
 
-## Core relation
+薄膜結構透過島形核、聚結、競爭生長、紋理選擇、缺陷合併以及熱應力或內在應力的發展而演變。殘餘應力可能由熱膨脹失配、原子噴丸、聚結力、相變或生長缺陷累積所引起。
 
-Film structure evolves through island nucleation, coalescence, competitive growth, texture selection, defect incorporation, and thermal or intrinsic stress development. Residual stress can arise from thermal-expansion mismatch, atomistic peening, coalescence forces, phase change, or growth defect accumulation.
+## 連結
 
-## Links
-
-[[Residual Stress]] is the structural consequence that often survives after deposition. [[Thin Film Deposition]] is the process route, but the actual film quality is governed by these growth and stress mechanisms. [[Texture and Anisotropy]] matters because film orientation selection can control electrical, dielectric, or mechanical response.
+[[Residual Stress|殘餘應力]] 是沉積後通常保留下來的結構後果。 [[Thin Film Deposition|薄膜沉積]] 是製程路線，但實際的薄膜品質受這些生長和應力機制的控制。 [[Texture and Anisotropy|紋理與各向異性]] 很重要，因為薄膜方向的選擇可以控制電氣、介電或機械響應。

@@ -1,23 +1,22 @@
 ---
-title: Oxidation
+title: 氧化
 type: concept
-summary: Oxidation is high-temperature chemical degradation driven by oxygen reaction, scale growth, and scale failure under thermal and environmental exposure.
+summary: 氧化是在熱和環境暴露下由氧反應、水垢生長和水垢失效驅動的高溫化學降解。
 domain: Failure Analysis
 taxonomy_domain: failure
 tags: [oxidation]
-prerequisites: [[[Oxidation Resistance]], [[Corrosion]]]
-related_concepts: [[[High-Temperature Alloys]], [[Thermal Properties]], [[Surface Engineering]]]
-measurement_methods: [[[Corrosion Testing]]]
+prerequisites: [[[Oxidation Resistance|抗氧化性]], [[Corrosion|腐蝕]]]
+related_concepts: [[[High-Temperature Alloys|高溫合金]], [[Thermal Properties|熱性質]], [[Surface Engineering|表面工程]]]
+measurement_methods: [[[Corrosion Testing|腐蝕測試]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+高溫氧化通常被視為表面變色，直到它破壞附著力、橫截面或塗層完整性。這種自滿情緒就是導致服務失敗的原因。
 
-High-temperature oxidation is often written off as surface discoloration until it destroys adhesion, cross section, or coating integrity. That complacency is how service failures happen.
+## 核心思想
 
-## Core idea
+氧化是透過基質和生長規模中的傳輸和反應而發生的。保護行為取決於尺度連續性、依從性和缺陷介導的傳輸。
 
-Oxidation evolves through transport and reaction in both the substrate and the growing scale. Protective behavior depends on scale continuity, adherence, and defect-mediated transport.
+## 連結
 
-## Links
-
-[[Oxidation Resistance]] is the property lens, while [[High-Temperature Alloys]] is one application cluster where oxidation and creep must both be managed at the same time.
+[[Oxidation Resistance|抗氧化性]] 是屬性透鏡，而 [[High-Temperature Alloys|高溫合金]] 是必須同時管理氧化和蠕變的應用程式叢集。

@@ -1,32 +1,31 @@
 ---
-title: Amorphous Structure
+title: 非晶結構
 type: concept
-summary: Amorphous structure describes materials with short-range atomic order but no long-range translational periodicity, leading to distinctive transport, deformation, and thermal behavior.
+summary: 非晶結構描述了具有短程原子有序性但沒有長程平移週期性的材料，從而導致獨特的傳輸、變形和熱行為。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [amorphous]
-prerequisites: [[[Atomic Bonding and Cohesion]], [[Thermal Properties]]]
-related_concepts: [[[Glass Transition and Thermal Transitions]], [[Polymers]], [[X-ray Diffraction]]]
+prerequisites: [[[Atomic Bonding and Cohesion|原子鍵和內聚力]], [[Thermal Properties|熱性質]]]
+related_concepts: [[[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]], [[Polymers|聚合物]], [[X-ray Diffraction|X 光繞射]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+並非所有固體都是結晶的，將無定形材料視為「不完美的晶體」在概念上是錯誤的。它們缺乏長程週期性，改變了它們的變形、鬆弛和熱響應方式。
 
-Not all solids are crystalline, and treating amorphous materials as "imperfect crystals" is conceptually wrong. Their lack of long-range periodicity changes how they deform, relax, and respond thermally.
+## 核心思想
 
-## Core idea
+非晶材料在短距離內保留局部配位和鍵合偏好，但它們在長距離內不表現出週期性重複。這種結構條件消除了傳統的位錯介導的滑移，並改變了密度波動、自由體積和熱歷史影響行為的方式。
 
-Amorphous materials preserve local coordination and bonding preferences over short distances, but they do not exhibit periodic repetition over long distances. That structural condition removes conventional dislocation-mediated slip and changes how density fluctuations, free volume, and thermal history affect behavior.
+這就是為什麼玻璃、許多聚合物和一些金屬玻璃表現出明顯的轉變現象，例如玻璃轉變，而不是通常意義上的急劇晶體熔化。
 
-This is why glasses, many polymers, and some metallic glasses show distinct transition phenomena such as glass transition rather than sharp crystalline melting in the usual sense.
+## 連結
 
-## Links
+[[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]] 是非晶結構最明顯的結果之一。 [[Polymers|聚合物]] 通常包含非晶區和半晶區，因此它們的反應取決於這些結構狀態之間的平衡。 [[X-ray Diffraction|X 光繞射]] 揭示了這種差異，因為非晶態系統表現出廣泛的擴散特徵，而不是尖銳的布拉格峰。
 
-[[Glass Transition and Thermal Transitions]] is one of the clearest consequences of amorphous structure. [[Polymers]] often contain both amorphous and semicrystalline regions, so their response depends on the balance between those structural states. [[X-ray Diffraction]] reveals the difference because amorphous systems show broad diffuse features rather than sharp Bragg peaks.
+## 關鍵範例
 
-## Key examples
+矽酸鹽玻璃是典型的無機例子。許多工程聚合物含有控制透明度、韌性和軟化行為的無定形域。金屬玻璃顯示非晶結構也可以存在於高強度但異常變形局部的合金中。
 
-Silicate glass is the classic inorganic example. Many engineering polymers contain amorphous domains that govern transparency, toughness, and softening behavior. Metallic glasses show how amorphous structure can also exist in alloys with high strength but unusual deformation localization.
+## 常見錯誤
 
-## Common mistakes
-
-Amorphous does not mean random in every sense. Short-range order still exists. Also, amorphous does not automatically mean weak; some amorphous systems are strong but fail through localized shear rather than ordinary crystal plasticity.
+無定形並不意味著在任何意義上都是隨機的。短線整理依然存在。此外，無定形並不意味著弱。有些非晶態系統很堅固，但會因局部剪切而不是普通晶體塑性而失效。

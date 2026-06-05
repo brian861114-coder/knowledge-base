@@ -1,22 +1,21 @@
 ---
-title: Powder Processing and Compaction
+title: 粉末加工和壓實
 type: experiment
-summary: Powder processing and compaction create a shaped particulate body whose packing state, contact network, and green density strongly influence later densification and final structure.
+summary: 粉末加工和壓實形成成型顆粒體，其堆積狀態、接觸網絡和生坯密度強烈影響後續緻密化和最終結構。
 domain: Processing
 taxonomy_domain: processing
 tags: [powder-processing]
-prerequisites: [[[Sintering]], [[Particle Packing and Porosity]]]
-related_concepts: [[[Microstructure]], [[Wear Resistance]], [[Ceramics]]]
+prerequisites: [[[Sintering|燒結]], [[Particle Packing and Porosity|顆粒堆積和孔隙率]]]
+related_concepts: [[[Microstructure|微觀組織]], [[Wear Resistance|耐磨性]], [[Ceramics|陶瓷]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+當燒結開始時，許多最終的結構可能性已經受到粉末的選擇、混合、包裝和壓實方式的限制。
 
-By the time sintering starts, many of the final structural possibilities are already constrained by how the powder was selected, mixed, packed, and compacted.
+## 工作流程
 
-## Workflow
+路線包括粉末生產或選擇、調節、混合、可能的黏合劑添加、成型和壓製成生坯。每個階段都會改變顆粒接觸、密度梯度和缺陷風險。
 
-The route includes powder production or selection, conditioning, blending, possible binder addition, shaping, and compaction into a green body. Each stage changes particle contact, density gradients, and defect risk.
+## 結構影響
 
-## Structure impact
-
-The process sets pore distribution, packing heterogeneity, green strength, and local density variation. Those features control how the body densifies during [[Sintering]] and how likely it is to retain flaws or distort during later thermal treatment.
+此過程設定了孔隙分佈、填充不均勻性、生坯強度和局部密度變化。這些特徵控制著主體在 [[Sintering|燒結]] 過程中如何緻密化，以及在以後的熱處理過程中保留缺陷或變形的可能性。

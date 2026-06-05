@@ -1,32 +1,31 @@
 ---
-title: Planar Defects and Twins
+title: 平面缺陷與雙晶
 type: concept
-summary: Planar defects such as stacking faults, antiphase boundaries, and twins modify local crystal registry across a plane and can strongly affect deformation, transformation, and functional response.
+summary: 諸如堆疊層錯、反相邊界和孿晶之類的平面缺陷會改變整個平面上的局部晶體註冊表，並強烈影響變形、轉變和功能響應。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [planar-defects]
-prerequisites: [[[Crystal Defects]], [[Dislocations]]]
-related_concepts: [[[Texture and Anisotropy]], [[Transmission Electron Microscopy]], [[Phase Transformation Kinetics]]]
+prerequisites: [[[Crystal Defects|晶體缺陷]], [[Dislocations|差排]]]
+related_concepts: [[[Texture and Anisotropy|紋理與各向異性]], [[Transmission Electron Microscopy|穿透式電子顯微鏡]], [[Phase Transformation Kinetics|相變動力學]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+平面缺陷位於原子缺陷和完整微觀結構之間。它們通常控制晶體如何變形、轉變或適應應變。
 
-Planar defects sit between atomic defects and full microstructure. They often control how crystals deform, transform, or accommodate strain.
+## 核心思想
 
-## Core idea
+平面缺陷是原子排列的二維不連續性。堆疊層錯改變了密堆積結構中的層順序。孿生是透過跨邊界的特定對稱操作相關的區域。其他平面缺陷可能是由排序、變換或不完美的晶格註冊引起的。
 
-A planar defect is a two-dimensional discontinuity in atomic arrangement. Stacking faults alter layer sequence in close-packed structures. Twins are regions related by a specific symmetry operation across a boundary. Other planar defects can arise from ordering, transformations, or imperfect lattice registry.
+這些缺陷很重要，因為它們會改變局部能量、滑移障礙高度，有時會改變材料可用的轉變路徑。
 
-These defects matter because they change local energy, barrier heights for slip, and sometimes the transformation pathway available to the material.
+## 連結
 
-## Links
+常常需要 [[Transmission Electron Microscopy|穿透式電子顯微鏡]] 來清楚解析這些功能。當形變孿晶重新定向局部晶體方向時，[[Texture and Anisotropy|紋理與各向異性]] 可能會受到影響。 [[Phase Transformation Kinetics|相變動力學]] 很重要，因為一些平面缺陷直接參與成核或相變調節。
 
-[[Transmission Electron Microscopy]] is frequently needed to resolve these features clearly. [[Texture and Anisotropy]] can be influenced when deformation twins reorient local crystal directions. [[Phase Transformation Kinetics]] matters because some planar defects participate directly in nucleation or transformation accommodation.
+## 關鍵範例
 
-## Key examples
+機械孿生會導致普通滑移受到限制的系統變形。堆疊層錯在密堆積系統中尤其重要，因為它們會改變局部序列並影響位錯行為。
 
-Mechanical twinning can contribute to deformation in systems where ordinary slip is limited. Stacking faults are especially important in close-packed systems because they alter local sequence and can influence dislocation behavior.
+## 常見錯誤
 
-## Common mistakes
-
-Do not collapse all planar defects into "grain boundaries." A twin boundary and a random high-angle grain boundary are not the same structure and do not play the same mechanical role.
+不要將所有平面缺陷塌陷為「晶界」。孿晶界和隨機大角度晶界不是相同的結構，並且不發揮相同的力學作用。

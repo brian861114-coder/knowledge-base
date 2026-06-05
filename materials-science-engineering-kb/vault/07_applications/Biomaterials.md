@@ -1,21 +1,20 @@
 ---
-title: Biomaterials
+title: 生物材料
 type: concept
-summary: Biomaterials are materials designed to function in biological environments where mechanics, chemistry, surface state, and host response all matter.
+summary: 生物材料是設計用於在生物環境中發揮作用的材料，其中力學、化學、表面狀態和宿主響應都很重要。
 domain: Applications
 taxonomy_domain: applications
 tags: [biomaterials]
-related_concepts: [[[Polymers]], [[Corrosion]], [[Mechanical Properties]]]
+related_concepts: [[[Polymers|聚合物]], [[Corrosion|腐蝕]], [[Mechanical Properties|機械性質]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+生物材料不利於簡化的材料選擇。當化學、磨損和生物反應出現時，在空氣中看起來堅固或惰性的材料可能會完全失效。
 
-Biomaterials punish simplistic material selection. A material that looks strong or inert in air can fail completely when chemistry, wear, and biological response enter the picture.
+## 核心思想
 
-## Core idea
+生物材料必須同時滿足生物相容性、耐腐蝕性、表面行為以及與組織或設備功能的機械匹配方面的限制。
 
-Biomaterials must meet simultaneous constraints in biocompatibility, corrosion resistance, surface behavior, and mechanical match with tissue or device function.
+## 連結
 
-## Links
-
-[[Polymers]] matter because compliance and chemistry can be tuned. [[Corrosion]] matters because degradation products and surface instability directly affect service safety. [[Mechanical Properties]] matter because mismatch with surrounding tissue can create failure even when chemistry is acceptable.
+[[Polymers|聚合物]] 很重要，因為合規性和化學反應可以調整。 [[Corrosion|腐蝕]] 很重要，因為降解產物和表面不穩定直接影響使用安全性。 [[Mechanical Properties|機械性質]] 很重要，因為即使化學反應是可以接受的，與周圍組織的不匹配也會導致失敗。

@@ -1,23 +1,22 @@
 ---
-title: Oxidation Resistance
+title: 抗氧化性
 type: quantity
-summary: Oxidation resistance describes how well a material resists high-temperature reaction with oxygen while maintaining structure and function.
+summary: 抗氧化性描述了材料在保持結構和功能的同時抵抗與氧氣發生高溫反應的能力。
 domain: Properties
 taxonomy_domain: properties
 tags: [oxidation-resistance]
-prerequisites: [[[Corrosion Resistance]], [[Thermal Properties]]]
-measurement_methods: [[[Corrosion Testing]]]
-related_concepts: [[[Oxidation]], [[High-Temperature Alloys]], [[Surface Engineering]]]
+prerequisites: [[[Corrosion Resistance|耐蝕性]], [[Thermal Properties|熱性質]]]
+measurement_methods: [[[Corrosion Testing|腐蝕測試]]]
+related_concepts: [[[Oxidation|氧化]], [[High-Temperature Alloys|高溫合金]], [[Surface Engineering|表面工程]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+在高溫下，氧化會在機械塌陷變得明顯之前悄悄地消耗截面厚度、毒害界面並破壞保護性微觀結構。
 
-At elevated temperature, oxidation can quietly consume section thickness, poison interfaces, and destroy protective microstructures long before mechanical collapse becomes obvious.
+## 定義
 
-## Definition
+抗氧化性衡量在高溫暴露期間形成穩定保護層或以其他方式限制氧驅動降解的能力。
 
-Oxidation resistance measures the ability to form stable protective scales or otherwise limit oxygen-driven degradation during high-temperature exposure.
+## 是什麼控制它
 
-## What controls it
-
-Alloy chemistry, diffusion rates, defect chemistry in the scale, thermal cycling, and interface adhesion all matter. Protective oxides help only when they remain continuous and adherent.
+合金化學、擴散速率、氧化皮中的缺陷化學、熱循環和界面黏附力都很重要。保護性氧化物只有在保持連續和黏附時才有用。

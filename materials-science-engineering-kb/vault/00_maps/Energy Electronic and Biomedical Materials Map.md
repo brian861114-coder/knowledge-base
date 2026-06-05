@@ -1,20 +1,19 @@
 ---
-title: Energy Electronic and Biomedical Materials Map
+title: 能源電子與生物醫學材料圖譜
 type: map
-summary: A map for application clusters where performance targets sharply constrain structure, chemistry, and processing.
+summary: 應用集群圖，其中性能目標嚴格限制結構、化學和加工。
 domain: Applications
 taxonomy_domain: applications
 tags: [applications]
-includes: [[[Battery Materials]], [[Semiconductor Materials]], [[Biomaterials]], [[Thin Film Deposition]], [[Electrical Properties]], [[Corrosion]]]
-recommended_order: [[[Material Classes]], [[Electrical Properties]], [[Thin Film Deposition]], [[Battery Materials]], [[Semiconductor Materials]], [[Biomaterials]]]
+includes: [[[Battery Materials|電池材料]], [[Semiconductor Materials|半導體材料]], [[Biomaterials|生物材料]], [[Thin Film Deposition|薄膜沉積]], [[Electrical Properties|電性]], [[Corrosion|腐蝕]]]
+recommended_order: [[[Material Classes|材料類別]], [[Electrical Properties|電性]], [[Thin Film Deposition|薄膜沉積]], [[Battery Materials|電池材料]], [[Semiconductor Materials|半導體材料]], [[Biomaterials|生物材料]]]
 ---
+## 為什麼這張地圖存在
 
-## Why this map exists
+應用筆記是材料科學不再抽象的地方。它們迫使知識庫回答一個更困難的問題：哪些結構和流程在實際限制下有用。
 
-Application notes are where materials science stops being abstract. They force the knowledge base to answer a harder question: which structures and processes are useful under actual constraints.
+## 地圖結構
 
-## Map structure
+[[Battery Materials|電池材料]] 強調離子傳輸、電化學穩定性和界面控制。 [[Semiconductor Materials|半導體材料]] 強調缺陷、薄膜和電活性結構。 [[Biomaterials|生物材料]] 強調腐蝕行為、生物相容性和表面工程。
 
-[[Battery Materials]] emphasize ionic transport, electrochemical stability, and interface control. [[Semiconductor Materials]] emphasize defects, thin films, and electrically active structure. [[Biomaterials]] emphasize corrosion behavior, biocompatibility, and surface engineering.
-
-These clusters are different, but they all depend on the same underlying core: structure control, property targets, reliable processing, and defensible characterization.
+這些集群各不相同，但它們都依賴相同的底層核心：結構控制、屬性目標、可靠的處理和可防禦的表徵。

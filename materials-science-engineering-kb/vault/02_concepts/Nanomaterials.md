@@ -1,22 +1,21 @@
 ---
-title: Nanomaterials
+title: 奈米材料
 type: concept
-summary: Nanomaterials are materials whose functional or structural behavior is strongly shaped by nanoscale dimensions, interfaces, and confinement effects.
+summary: 奈米材料是指其功能或結構行為受到奈米級尺寸、界面和限制效應強烈影響的材料。
 domain: Material Classes
 taxonomy_domain: material_classes
 tags: [nano]
-prerequisites: [[[Microstructure]], [[Interfacial Engineering]]]
-related_concepts: [[[Mechanical Properties]], [[Electrical Properties]], [[Atom Probe Tomography]]]
+prerequisites: [[[Microstructure|微觀組織]], [[Interfacial Engineering|介面工程]]]
+related_concepts: [[[Mechanical Properties|機械性質]], [[Electrical Properties|電性]], [[Atom Probe Tomography|原子探針斷層掃描]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+在奈米尺度上，界面不再是一個校正項，而是變成一個系統。這幾乎改變了所有舒適的整體假設。
 
-At nanoscale dimensions, interfaces stop being a correction term and become the system. That changes nearly every comfortable bulk assumption.
+## 核心思想
 
-## Core idea
+高表面積分數、限制、短擴散距離和界面主導的能量學可以改變輸運、穩定性、強度、催化行為和光學響應。
 
-High surface-area fraction, confinement, short diffusion distances, and interface-dominated energetics can shift transport, stability, strength, catalytic behavior, and optical response.
+## 連結
 
-## Links
-
-[[Interfacial Engineering]] becomes central because surface chemistry and boundary quality dominate response. [[Atom Probe Tomography]] and other high-resolution methods matter because bulk averages hide too much at this scale.
+[[Interfacial Engineering|介面工程]] 成為核心，因為表面化學和邊界品質主導反應。 [[Atom Probe Tomography|原子探針斷層掃描]] 和其他高解析度方法很重要，因為批量平均值在此比例下隱藏了太多內容。

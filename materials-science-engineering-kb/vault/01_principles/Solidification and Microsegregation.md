@@ -1,23 +1,22 @@
 ---
-title: Solidification and Microsegregation
+title: 凝固和微觀偏析
 type: law
-summary: Solidification and microsegregation govern how liquid transforms into solid and how solute redistributes during freezing, often imprinting long-lived microstructural heterogeneity.
+summary: 凝固和微觀偏析控制液體如何轉變為固體以及溶質在冷凍過程中如何重新分佈，通常會留下長期的微觀結構異質性。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [solidification, segregation]
-prerequisites: [[[Nucleation and Growth]], [[Diffusion in Solids]]]
-related_concepts: [[[Phase Fraction and Morphology]], [[Dendritic and Cellular Solidification]], [[Casting and Solidification Processing]]]
-used_in: [[[Rapid Solidification]], [[Additive Manufacturing]]]
+prerequisites: [[[Nucleation and Growth|成核與生長]], [[Diffusion in Solids|固體中的擴散]]]
+related_concepts: [[[Phase Fraction and Morphology|相分率與形貌]], [[Dendritic and Cellular Solidification|樹枝狀和細胞凝固]], [[Casting and Solidification Processing|鑄造及凝固加工]]]
+used_in: [[[Rapid Solidification|快速凝固]], [[Additive Manufacturing|增材製造]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+第一個凝固路徑通常決定了每個後續過程必須忍受或修復的結構問題。
 
-The first solidification path often decides the structural problems that every later process must either live with or repair.
+## 核心關係
 
-## Core relation
+在凝固過程中，溶質很少在每個瞬間都均勻地融入固體中。固液界面的分配，加上固體中的有限擴散和液體中的有限傳輸，產生了稱為微偏析的濃度梯度。這些梯度影響後期的相變、局部熔化行為、沉澱物形成和腐蝕敏感性。
 
-During solidification, solute is rarely incorporated uniformly into the solid at every instant. Partitioning at the solid-liquid interface, combined with limited diffusion in the solid and finite transport in the liquid, produces concentration gradients known as microsegregation. Those gradients influence later phase transformation, local melting behavior, precipitate formation, and corrosion susceptibility.
+## 連結
 
-## Links
-
-[[Dendritic and Cellular Solidification]] is one common structural expression of this process. [[Rapid Solidification]] can suppress segregation length scale by reducing the time available for redistribution. [[Additive Manufacturing]] often inherits nonequilibrium segregation and thermal gradients that echo classical solidification problems.
+[[Dendritic and Cellular Solidification|樹枝狀和細胞凝固]] 是這個過程的常見結構表達式。 [[Rapid Solidification|快速凝固]] 可以透過減少可用於重新分佈的時間來抑制偏析長度尺度。 [[Additive Manufacturing|增材製造]] 通常繼承非平衡偏析和熱梯度，這與經典凝固問題相呼應。

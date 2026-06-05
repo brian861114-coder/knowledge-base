@@ -1,23 +1,22 @@
 ---
-title: Phase Stability in Complex Alloys
+title: 複雜合金的相穩定性
 type: law
-summary: Phase stability in complex alloys governs whether multicomponent systems remain single-phase, decompose, order, or segregate during processing and service.
+summary: 複雜合金的相穩定性決定著多組分系統在加工和使用過程中是否保持單相、分解、有序或偏析。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [complex-alloys]
-prerequisites: [[[Phase Equilibria and Phase Diagrams]], [[Diffusion in Solids]]]
-related_concepts: [[[High-Entropy Alloys]], [[Oxidation Resistance]], [[Rapid Solidification]]]
-used_in: [[[Computational Materials Design]]]
+prerequisites: [[[Phase Equilibria and Phase Diagrams|相平衡和相圖]], [[Diffusion in Solids|固體中的擴散]]]
+related_concepts: [[[High-Entropy Alloys|高熵合金]], [[Oxidation Resistance|抗氧化性]], [[Rapid Solidification|快速凝固]]]
+used_in: [[[Computational Materials Design|計算材料設計]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+多元合金創造機會正是因為它們製造混亂。穩定性是有用的複雜性和昂貴的微觀結構混亂之間的界限。
 
-Multicomponent alloys create opportunities precisely because they create chaos. Stability is the line between useful complexity and expensive microstructural confusion.
+## 核心關係
 
-## Core relation
+競爭的焓和熵貢獻、緩慢或加速的分配以及亞穩態加工路徑決定了複雜的組合物是否在結構上保持有用。處理似乎完成後，服務溫度可以完全重寫階段故事。
 
-Competing enthalpic and entropic contributions, sluggish or accelerated partitioning, and metastable processing paths determine whether a complex composition stays structurally useful. Service temperature can completely rewrite the phase story after processing seems finished.
+## 連結
 
-## Links
-
-[[High-Entropy Alloys]] are the obvious application cluster, but the logic also matters for advanced steels, superalloys, and compositionally complex coatings. [[Rapid Solidification]] often exploits metastable capture before equilibrium decomposition catches up.
+[[High-Entropy Alloys|高熵合金]] 是明顯的應用集群，但其邏輯對於先進鋼、高溫合金和成分複雜的塗層也很重要。 [[Rapid Solidification|快速凝固]] 經常在平衡分解趕上之前利用亞穩態捕獲。

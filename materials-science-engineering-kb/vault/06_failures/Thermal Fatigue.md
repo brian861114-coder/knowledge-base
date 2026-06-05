@@ -1,23 +1,22 @@
 ---
-title: Thermal Fatigue
+title: 熱疲勞
 type: concept
-summary: Thermal fatigue is damage accumulation caused by repeated temperature cycling that generates cyclic thermal stress, mismatch strain, and microstructural degradation.
+summary: 熱疲勞是由重複的溫度循環引起的損傷累積，產生循環熱應力、不匹配應變和微觀結構退化。
 domain: Failure Analysis
 taxonomy_domain: failure
 tags: [thermal-fatigue]
-prerequisites: [[[Fatigue]], [[Thermal Properties]]]
-related_concepts: [[[Oxidation]], [[High-Temperature Alloys]], [[Coatings and Protective Layers]]]
-measurement_methods: [[[Mechanical Testing]], [[Scanning Electron Microscopy]], [[Thermogravimetric Analysis]]]
+prerequisites: [[[Fatigue|疲勞]], [[Thermal Properties|熱性質]]]
+related_concepts: [[[Oxidation|氧化]], [[High-Temperature Alloys|高溫合金]], [[Coatings and Protective Layers|塗層和保護層]]]
+measurement_methods: [[[Mechanical Testing|機械試驗]], [[Scanning Electron Microscopy|掃描式電子顯微鏡]], [[Thermogravimetric Analysis|熱重分析]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+即使外部機械負載看起來不大，結構也可能在熱循環下失效。溫度梯度和膨脹不匹配會產生其自身的破壞性應力歷史。
 
-A structure can fail under thermal cycling even when the external mechanical load seems modest. Temperature gradients and expansion mismatch can generate their own damaging stress histories.
+## 核心思想
 
-## Core idea
+由於不同區域或成分的膨脹和收縮不同，反覆加熱和冷卻會產生循環應變。隨著時間的推移，這會導致裂紋成核、界面退化，並與氧化或蠕變相結合，嚴重縮短使用壽命。
 
-Repeated heating and cooling produce cyclic strain because different regions or constituents expand and contract differently. Over time this can nucleate cracks, degrade interfaces, and combine with oxidation or creep to shorten life severely.
+## 連結
 
-## Links
-
-[[Oxidation]] often worsens thermal-fatigue resistance by damaging the surface and interfaces during high-temperature exposure. [[Coatings and Protective Layers]] can help or hurt depending on their adhesion and thermal-expansion match.
+[[Oxidation|氧化]] 在高溫暴露過程中通常會損害表面和界面，惡化耐熱疲勞性能。 [[Coatings and Protective Layers|塗層和保護層]] 可能會有所幫助或有害，這取決於它們的黏附力和熱膨脹匹配。

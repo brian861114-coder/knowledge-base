@@ -1,23 +1,22 @@
 ---
-title: Strengthening Mechanisms
+title: 強化機制
 type: law
-summary: Strengthening mechanisms raise resistance to deformation by making dislocation motion, interfacial motion, or damage initiation more difficult.
+summary: 強化機制透過使位錯運動、界面運動或損傷發生更加困難來提高抗變形能力。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [strengthening]
-prerequisites: [[[Crystal Defects]], [[Microstructure]]]
-related_concepts: [[[Mechanical Properties]], [[Grain Boundaries]], [[Precipitation Hardening]]]
-used_in: [[[Heat Treatment]], [[Thermomechanical Processing]]]
+prerequisites: [[[Crystal Defects|晶體缺陷]], [[Microstructure|微觀組織]]]
+related_concepts: [[[Mechanical Properties|機械性質]], [[Grain Boundaries|晶界]], [[Precipitation Hardening|沉澱硬化]]]
+used_in: [[[Heat Treatment|熱處理]], [[Thermomechanical Processing|熱機械加工]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+大多數材料工程並不是要發明新定律。它是關於操縱一小部分強化路線而不破壞財產概況的其餘部分。
 
-Most materials engineering is not about inventing new laws. It is about manipulating a small set of strengthening routes without wrecking the rest of the property profile.
+## 核心關係
 
-## Core relation
+當微觀結構阻礙位錯或裂紋尖端塑性等變形載體時，強度就會上升。晶粒細化、固溶硬化、加工硬化和沈澱硬化都透過此邏輯進行操作，但每條具體路線都會在延展性、韌性、電導率或穩定性方面帶來不同的損失。
 
-Strength rises when the microstructure obstructs deformation carriers such as dislocations or crack-tip plasticity. Grain refinement, solid-solution hardening, work hardening, and precipitation hardening all operate through that logic, but each exact route carries different penalties in ductility, toughness, conductivity, or stability.
+## 連結
 
-## Links
-
-[[Precipitation Hardening]] is one specific strengthening route that depends strongly on thermal history. [[Thermomechanical Processing]] combines deformation and heat to tune the same barriers more deliberately. [[Mechanical Properties]] records the resulting tradeoffs.
+[[Precipitation Hardening|沉澱硬化]] 是一種強烈依賴熱歷史的特定增強路線。 [[Thermomechanical Processing|熱機械加工]] 結合變形和熱來更刻意調整相同的障礙物。 [[Mechanical Properties|機械性質]] 記錄最終的權衡。

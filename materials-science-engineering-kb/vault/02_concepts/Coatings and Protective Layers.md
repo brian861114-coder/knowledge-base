@@ -1,22 +1,21 @@
 ---
-title: Coatings and Protective Layers
+title: 塗層和保護層
 type: concept
-summary: Coatings and protective layers are engineered surface-bound systems that provide barrier, adhesion, wear, optical, electrical, or biological functions beyond the bulk substrate.
+summary: 塗層和保護層是工程表面結合系統，可提供超出本體基材的阻隔、黏附、耐磨、光學、電氣或生物功能。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [coatings]
-prerequisites: [[[Thin Film Deposition]], [[Surface Engineering]]]
-related_concepts: [[[Corrosion Resistance]], [[Wear Resistance]], [[X-ray Photoelectron Spectroscopy]]]
+prerequisites: [[[Thin Film Deposition|薄膜沉積]], [[Surface Engineering|表面工程]]]
+related_concepts: [[[Corrosion Resistance|耐蝕性]], [[Wear Resistance|耐磨性]], [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+材料工程師承認，僅使用塊狀基材是不夠的。
 
-Coatings are where materials engineers admit that the bulk substrate alone is not enough.
+## 核心思想
 
-## Core idea
+塗層的作用必須不只是存在。它必須能夠黏附、承受壓力和環境，並隨著時間的推移保持預期的介面功能。
 
-A coating must do more than exist. It has to adhere, survive stress and environment, and preserve the intended interface function over time.
+## 連結
 
-## Links
-
-[[Corrosion Resistance]] and [[Wear Resistance]] are two of the most common reasons coatings exist. [[X-ray Photoelectron Spectroscopy]] helps determine whether the protective chemistry really formed.
+[[Corrosion Resistance|耐蝕性]] 和 [[Wear Resistance|耐磨性]] 是塗層存在的兩個最常見原因。 [[X-ray Photoelectron Spectroscopy|X 光光電子能譜]] 有助於確定保護性化學物質是否真正形成。

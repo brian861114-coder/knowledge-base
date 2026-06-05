@@ -1,22 +1,21 @@
 ---
-title: Residual Stress
+title: 殘餘應力
 type: concept
-summary: Residual stress is internal stress retained in a material after processing or service history, even when no external load is currently applied.
+summary: 殘餘應力是材料在加工或使用歷史後保留的內應力，即使目前沒有施加外部負載。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [residual-stress]
-prerequisites: [[[Mechanical Properties]], [[Thin Film Growth and Residual Stress]]]
-related_concepts: [[[Thermal Fatigue]], [[Interfacial Delamination]], [[X-ray Diffraction]]]
+prerequisites: [[[Mechanical Properties|機械性質]], [[Thin Film Growth and Residual Stress|薄膜生長和殘餘應力]]]
+related_concepts: [[[Thermal Fatigue|熱疲勞]], [[Interfacial Delamination|介面分層]], [[X-ray Diffraction|X 光繞射]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+殘餘應力是最常見的隱藏結構變數之一。在服務載入開始之前，它就可以增強、削弱、扭曲、破裂或分層系統。
 
-Residual stress is one of the most common hidden structural variables. It can strengthen, weaken, distort, crack, or delaminate a system before service loading even begins.
+## 核心思想
 
-## Core idea
+當材料的不同區域在冷卻、轉變、變形、沉積、連接或受限化學變化過程中經歷不相容的應變歷史時，就會產生殘餘應力。在某些情況下，應力可能是有益的，例如工程壓表面應力，但當它促進開裂、翹曲或界面失效時，應力可能是有害的。
 
-Residual stress arises when different regions of a material experience incompatible strain history during cooling, transformation, deformation, deposition, joining, or constrained chemical change. The stress may be beneficial in some cases, such as engineered compressive surface stress, or harmful when it promotes cracking, warpage, or interfacial failure.
+## 連結
 
-## Links
-
-[[Thermal Fatigue]] and [[Interfacial Delamination]] often depend strongly on residual stress state. [[X-ray Diffraction]] can sometimes infer stress indirectly through lattice-strain-related peak shifts, while thin-film systems rely heavily on understanding stress generation during growth.
+[[Thermal Fatigue|熱疲勞]] 和 [[Interfacial Delamination|介面分層]] 通常很大程度取決於殘餘應力狀態。 [[X-ray Diffraction|X 光繞射]] 有時可以透過晶格應變相關的峰移間接推斷應力，而薄膜系統在很大程度上依賴於理解生長過程中應力的產生。

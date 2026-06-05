@@ -1,23 +1,22 @@
 ---
-title: Ductility and Plastic Flow
+title: 延性與塑性流動
 type: quantity
-summary: Ductility and plastic flow describe the extent and character of irreversible deformation a material can accommodate before fracture or instability.
+summary: 延展性和塑性流動描述了材料在斷裂或不穩定之前可以承受的不可逆變形的程度和特徵。
 domain: Properties
 taxonomy_domain: properties
 tags: [ductility, plasticity]
-prerequisites: [[[Mechanical Properties]], [[Dislocations]]]
-measurement_methods: [[[Tensile Testing]], [[Mechanical Testing]]]
-related_concepts: [[[Ductile Fracture]], [[Texture and Anisotropy]], [[Thermomechanical Processing]]]
+prerequisites: [[[Mechanical Properties|機械性質]], [[Dislocations|差排]]]
+measurement_methods: [[[Tensile Testing|拉伸試驗]], [[Mechanical Testing|機械試驗]]]
+related_concepts: [[[Ductile Fracture|延性斷裂]], [[Texture and Anisotropy|紋理與各向異性]], [[Thermomechanical Processing|熱機械加工]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+延展性通常是將耐受性結構材料與在幾何形狀、負荷或製造缺陷不理想時突然失效的結構材料區分開來的。
 
-Ductility is often what separates a tolerant structural material from one that fails abruptly when geometry, loading, or manufacturing imperfections are not ideal.
+## 定義
 
-## Definition
+延展性是指在斷裂前承受顯著塑性應變的能力，而塑性流動則描述了在載重下永久變形的機制和路徑。
 
-Ductility refers to the ability to undergo significant plastic strain before fracture, while plastic flow describes the mechanisms and path by which permanent deformation develops under load.
+## 是什麼控制它
 
-## What controls it
-
-Slip availability, dislocation interactions, defect density, constraint, temperature, strain rate, and phase morphology all matter. A material can have high strength but poor ductility if its structure suppresses plastic accommodation or localizes strain too aggressively.
+滑移可用性、位錯交互作用、缺陷密度、限制、溫度、應變率和相形態都很重要。如果材料的結構抑制塑性調節或過度局部化應變，則材料可能具有高強度但延展性差。

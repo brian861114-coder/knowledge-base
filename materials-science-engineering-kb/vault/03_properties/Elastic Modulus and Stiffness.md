@@ -1,23 +1,22 @@
 ---
-title: Elastic Modulus and Stiffness
+title: 彈性模數與剛性
 type: quantity
-summary: Elastic modulus and stiffness describe resistance to reversible deformation under load and set the baseline compliance of a material or structure.
+summary: 彈性模量和剛度描述了在負載下對可逆變形的抵抗力，並設定材料或結構的基線柔量。
 domain: Properties
 taxonomy_domain: properties
 tags: [elasticity, stiffness]
-prerequisites: [[[Mechanical Properties]], [[Atomic Bonding and Cohesion]]]
-measurement_methods: [[[Tensile Testing]], [[Nanoindentation]]]
-related_concepts: [[[Unit Cell and Crystal Symmetry]], [[Texture and Anisotropy]], [[Mechanical Testing]]]
+prerequisites: [[[Mechanical Properties|機械性質]], [[Atomic Bonding and Cohesion|原子鍵和內聚力]]]
+measurement_methods: [[[Tensile Testing|拉伸試驗]], [[Nanoindentation|奈米壓痕]]]
+related_concepts: [[[Unit Cell and Crystal Symmetry|單位晶胞與晶體對稱性]], [[Texture and Anisotropy|紋理與各向異性]], [[Mechanical Testing|機械試驗]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+強度告訴您材料何時屈服或斷裂。剛度可以告訴您在發生這種情況之前它是否會變形太多。混淆兩者是基本但常見的現象。
 
-Strength tells you when a material yields or breaks. Stiffness tells you whether it deflects too much long before that happens. Confusing the two is basic but common.
+## 定義
 
-## Definition
+彈性模量測量可逆狀態下應力和應變之間的比例響應。在材料層面，它反映了黏合剛度、晶體幾何形狀和方向相關響應，而不是損傷容限或塑性能力。
 
-Elastic modulus measures the proportional response between stress and strain in the reversible regime. At the material level it reflects bond stiffness, crystal geometry, and direction-dependent response rather than damage tolerance or plastic capacity.
+## 是什麼控制它
 
-## What controls it
-
-Bonding strength, atomic spacing, crystallographic direction, porosity, and phase composition all matter. [[Texture and Anisotropy]] becomes important in textured polycrystals and composites because the apparent modulus can vary strongly with direction.
+結合強度、原子間距、晶體方向、孔隙率和相組成都很重要。 [[Texture and Anisotropy|紋理與各向異性]] 在織構多晶和複合材料中變得很重要，因為表觀模量隨方向變化很大。

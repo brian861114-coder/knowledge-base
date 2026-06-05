@@ -1,23 +1,22 @@
 ---
-title: Recovery Recrystallization and Grain Growth
+title: 回復、再結晶與晶粒成長
 type: law
-summary: Recovery, recrystallization, and grain growth describe how defect-stored energy is reduced during thermal exposure and how new grain structures form and coarsen.
+summary: 恢復、再結晶和晶粒生長描述了熱暴露期間缺陷儲存能量如何減少以及新晶粒結構如何形成和粗化。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [recrystallization, grain-growth]
-prerequisites: [[[Dislocations]], [[Grain Boundaries]]]
-related_concepts: [[[Annealing]], [[Thermomechanical Processing]], [[Texture and Anisotropy]]]
-used_in: [[[Heat Treatment]], [[Annealing]]]
+prerequisites: [[[Dislocations|差排]], [[Grain Boundaries|晶界]]]
+related_concepts: [[[Annealing|退火]], [[Thermomechanical Processing|熱機械加工]], [[Texture and Anisotropy|紋理與各向異性]]]
+used_in: [[[Heat Treatment|熱處理]], [[Annealing|退火]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+變形材料不會永遠保持結構凍結。在給定溫度和時間的情況下，它們會重新組織，而這種重組可以恢復延展性、消除強化或創造新的紋理狀態。
 
-Deformed materials do not stay structurally frozen forever. Given temperature and time, they reorganize, and that reorganization can either restore ductility, erase strengthening, or create a new texture state.
+## 核心關係
 
-## Core relation
+恢復主要透過缺陷重排來減少儲存的能量，而不必更換晶粒結構。再結晶形成新的低缺陷晶粒，消耗嚴重變形的區域。當系統在再結晶後或在高溫下未變形多晶中繼續降低界面能時，晶粒生長會使邊界網絡變粗。
 
-Recovery reduces stored energy mainly through defect rearrangement without necessarily replacing the grain structure. Recrystallization forms new low-defect grains that consume heavily deformed regions. Grain growth then coarsens the boundary network when the system continues reducing interfacial energy after recrystallization or in undeformed polycrystals at elevated temperature.
+## 連結
 
-## Links
-
-[[Annealing]] is the main process route that exploits these mechanisms intentionally. [[Thermomechanical Processing]] often uses deformation plus controlled reheating to tune when recovery, recrystallization, or grain growth becomes dominant. [[Texture and Anisotropy]] can change significantly because recrystallized grains do not necessarily inherit the same orientation distribution as the deformed state.
+[[Annealing|退火]] 是有意利用這些機制的主要流程路線。 [[Thermomechanical Processing|熱機械加工]] 通常使用變形加上受控再加熱來調整恢復、再結晶或晶粒生長占主導地位的時間。 [[Texture and Anisotropy|紋理與各向異性]] 可能會發生顯著變化，因為再結晶晶粒不一定會繼承與變形狀態相同的取向分佈。

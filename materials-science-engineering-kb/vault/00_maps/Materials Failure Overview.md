@@ -1,24 +1,23 @@
 ---
-title: Materials Failure Overview
+title: 材料失效總覽
 type: map
-summary: A top-level map of materials failure modes across fracture, fatigue, creep, corrosion, oxidation, wear, and coupled environment-assisted damage.
+summary: 涵蓋斷裂、疲勞、蠕變、腐蝕、氧化、磨損和耦合環境輔助損壞的材料失效模式的頂級圖。
 domain: Failure Analysis
 taxonomy_domain: failure
 tags: [failure, overview]
-includes: [[[Fracture and Crack Propagation Map]], [[Environmental and Chemical Degradation Map]], [[Mechanical Degradation and Lifetime Map]], [[Fracture Mechanisms]], [[Corrosion]], [[Fatigue]], [[Creep]], [[Oxidation]], [[Tribology and Wear]]]
-recommended_order: [[[Fracture and Crack Propagation Map]], [[Mechanical Degradation and Lifetime Map]], [[Environmental and Chemical Degradation Map]], [[Fracture Mechanisms]], [[Corrosion]], [[Fatigue]], [[Creep]]]
+includes: [[[Fracture and Crack Propagation Map|斷裂與裂紋擴展圖]], [[Environmental and Chemical Degradation Map|環境與化學劣化圖]], [[Mechanical Degradation and Lifetime Map|機械退化和壽命圖]], [[Fracture Mechanisms|斷裂機制]], [[Corrosion|腐蝕]], [[Fatigue|疲勞]], [[Creep|蠕動]], [[Oxidation|氧化]], [[Tribology and Wear|摩擦學和磨損]]]
+recommended_order: [[[Fracture and Crack Propagation Map|斷裂與裂紋擴展圖]], [[Mechanical Degradation and Lifetime Map|機械退化和壽命圖]], [[Environmental and Chemical Degradation Map|環境與化學劣化圖]], [[Fracture Mechanisms|斷裂機制]], [[Corrosion|腐蝕]], [[Fatigue|疲勞]], [[Creep|蠕動]]]
 ---
+## 為什麼這張地圖存在
 
-## Why this map exists
+失敗不是一個話題。在這裡，力學、化學、結構和服役歷史最終不再假裝可以單獨研究。
 
-Failure is not one topic. It is the place where mechanics, chemistry, structure, and service history finally stop pretending they can be studied separately.
+## 地圖結構
 
-## Map structure
+[[Fracture and Crack Propagation Map|斷裂與裂紋擴展圖]] 涵蓋裂紋萌生、裂紋擴展以及延性、脆性、界面和循環斷裂路徑之間的差異。 [[Mechanical Degradation and Lifetime Map|機械退化和壽命圖]] 涵蓋與時間和週期相關的壽命損失，例如疲勞和蠕變。
 
-[[Fracture and Crack Propagation Map]] covers crack initiation, crack growth, and the distinction between ductile, brittle, interfacial, and cyclic fracture routes. [[Mechanical Degradation and Lifetime Map]] covers time- and cycle-dependent life loss such as fatigue and creep.
+[[Environmental and Chemical Degradation Map|環境與化學劣化圖]] 涵蓋腐蝕、氧化、氫相關降解和環境輔助開裂。 [[Tribology and Wear|摩擦學和磨損]] 部分分開，因為即使本體化學成分保持不變，接觸驅動的故障也會產生其自身的損壞邏輯。
 
-[[Environmental and Chemical Degradation Map]] covers corrosion, oxidation, hydrogen-related degradation, and environment-assisted cracking. [[Tribology and Wear]] sits partly apart because contact-driven failure creates its own damage logic even when bulk chemistry remains unchanged.
+## 推薦順序
 
-## Recommended order
-
-Start with fracture if the failure question is crack-dominated. Start with environmental degradation if chemistry or service medium is central. Then bring the branches back together, because many real failures are mixed-mode and mixed-cause rather than clean textbook categories.
+如果故障問題以裂縫為主，則從斷裂開始。如果化學或服務介質是核心，則從環境退化開始。然後將分支重新組合在一起，因為許多真正的失敗是混合模式和混合原因，而不是乾淨的教科書類別。

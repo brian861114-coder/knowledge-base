@@ -1,22 +1,21 @@
 ---
-title: Surface Functionalization
+title: 表面功能化
 type: experiment
-summary: Surface functionalization modifies near-surface chemistry or molecular attachment to tune wetting, adhesion, bio-response, catalytic behavior, or sensing performance.
+summary: 表面功能化改變近表面化學或分子附著，以調節潤濕、黏附、生物響應、催化行為或感測性能。
 domain: Processing
 taxonomy_domain: processing
 tags: [functionalization]
-prerequisites: [[[Surface Engineering]], [[Biocompatibility]]]
-related_concepts: [[[Biomaterials]], [[Coatings and Protective Layers]], [[Atomic Force Microscopy]]]
+prerequisites: [[[Surface Engineering|表面工程]], [[Biocompatibility|生物相容性]]]
+related_concepts: [[[Biomaterials|生物材料]], [[Coatings and Protective Layers|塗層和保護層]], [[Atomic Force Microscopy|原子力顯微鏡]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+有時，失效和有用之間的區別在於界面處的幾個分子層。
 
-Sometimes the difference between failure and usefulness is a few molecular layers at the interface.
+## 工作流程
 
-## Workflow
+功能化途徑包括接枝、等離子體處理、化學附著、自組裝層和相關的化學特異性表面修飾步驟。
 
-Functionalization routes include grafting, plasma treatment, chemical attachment, self-assembled layers, and related chemistry-specific surface modification steps.
+## 結構影響
 
-## Structure impact
-
-The process changes local chemistry, charge state, wettability, bonding opportunities, and often biological interaction. These are small-scale changes with system-level consequences.
+這個過程改變了局部化學、電荷狀態、潤濕性、鍵結機會，通常也改變了生物相互作用。這些都是小規模的變化，會產生系統級的後果。

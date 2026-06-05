@@ -1,22 +1,21 @@
 ---
-title: Atomic Force Microscopy
+title: 原子力顯微鏡
 type: mathematical_tool
-summary: Atomic force microscopy maps surface topography and near-surface interaction behavior at high spatial resolution through probe-sample interaction.
+summary: 原子力顯微鏡透過探針與樣品的相互作用以高空間分辨率繪製表面形貌和近表面相互作用行為。
 domain: Characterization
 taxonomy_domain: characterization
 tags: [afm]
-related_concepts: [[[Biocompatibility]], [[Surface Functionalization]], [[Coatings and Protective Layers]], [[Nanomaterials]]]
-measured_quantities: [[[Wear Resistance]], [[Corrosion Resistance]]]
+related_concepts: [[[Biocompatibility|生物相容性]], [[Surface Functionalization|表面功能化]], [[Coatings and Protective Layers|塗層和保護層]], [[Nanomaterials|奈米材料]]]
+measured_quantities: [[[Wear Resistance|耐磨性]], [[Corrosion Resistance|耐蝕性]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+當表面是設備、介面或生物接觸區域時，奈米級形貌不是裝飾資料。
 
-When the surface is the device, the interface, or the biological contact zone, nanoscale topography is not cosmetic data.
+## 它測量什麼
 
-## What it measures
+AFM 追蹤探針與樣品的相互作用以產生形貌，並在某些模式下產生局部機械或相互作用對比。它對於粗糙度、奈米級圖案和局部表面狀態變化特別有用。
 
-AFM tracks probe-sample interaction to generate topography and, in some modes, local mechanical or interaction contrast. It is especially useful for roughness, nanoscale patterning, and local surface-state variation.
+## 解釋
 
-## Interpretation
-
-Tip condition, scan mode, environment, and sample softness all matter. AFM reveals local truth, not automatic whole-component truth.
+尖端狀況、掃描模式、環境和樣品柔軟度都很重要。 AFM 揭示的是局部事實，而不是自動的整體事實。

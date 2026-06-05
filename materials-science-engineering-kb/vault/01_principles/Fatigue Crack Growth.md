@@ -1,23 +1,22 @@
 ---
-title: Fatigue Crack Growth
+title: 疲勞裂紋擴展
 type: law
-summary: Fatigue crack growth explains how repeated loading gradually extends cracks even when each individual load cycle stays below immediate fracture conditions.
+summary: 疲勞裂紋擴展解釋了即使每個單獨的載荷循環保持在直接斷裂條件以下，重複載荷如何逐漸擴展裂縫。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [fatigue]
-prerequisites: [[[Fracture Mechanisms]], [[Mechanical Properties]]]
-related_concepts: [[[Fatigue Resistance]], [[Fatigue]], [[Fracture Toughness]]]
-used_in: [[[Mechanical Testing]]]
+prerequisites: [[[Fracture Mechanisms|斷裂機制]], [[Mechanical Properties|機械性質]]]
+related_concepts: [[[Fatigue Resistance|抗疲勞性]], [[Fatigue|疲勞]], [[Fracture Toughness|斷裂韌性]]]
+used_in: [[[Mechanical Testing|機械試驗]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+疲勞會破壞在靜態分析下看起來安全的零件。這是經典的工程學教訓：重複的侮辱勝過單一事件的力量。
 
-Fatigue kills parts that look safe under static analysis. It is the classic engineering lesson that repeated insult beats single-event strength.
+## 核心關係
 
-## Core relation
+在循環負荷下，裂紋尖端會經歷反覆的局部塑性和漸進損傷。小缺陷或表面缺陷可能會導致裂紋成核，一旦裂紋擴展成為穩定循環驅動，剩餘壽命更多地取決於生長速率而不是初始屈服強度。
 
-Under cyclic loading, crack tips experience repeated local plasticity and progressive damage. Small defects or surface imperfections can nucleate cracks, and once crack growth becomes stable-cycle driven, remaining life depends more on growth rate than on initial yield strength.
+## 連結
 
-## Links
-
-[[Fatigue Resistance]] is the design-facing property note, while [[Fatigue]] captures the service failure mode. [[Fracture Toughness]] still matters because cyclic cracks eventually transition into final unstable fracture.
+[[Fatigue Resistance|抗疲勞性]] 是設計導向的屬性註釋，而 [[Fatigue|疲勞]] 會擷取服務故障模式。 [[Fracture Toughness|斷裂韌性]] 仍然很重要，因為循環裂縫最終會轉變為最終的不穩定斷裂。

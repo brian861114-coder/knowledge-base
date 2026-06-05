@@ -1,22 +1,21 @@
 ---
-title: Computational Materials Design
+title: 計算材料設計
 type: mathematical_tool
-summary: Computational materials design uses simulations, databases, and optimization workflows to narrow materials search space and explain structure-property trends.
+summary: 計算材料設計使用模擬、資料庫和最佳化工作流程來縮小材料搜尋空間並解釋結構性能趨勢。
 domain: Characterization
 taxonomy_domain: characterization
 tags: [computational-design]
-related_concepts: [[[High-Entropy Alloys]], [[Phase Stability in Complex Alloys]], [[Defect Chemistry and Point Defects]], [[Thermoelectric Materials]]]
-measured_quantities: [[[Magnetic Response]], [[Dielectric Response]], [[Oxidation Resistance]]]
+related_concepts: [[[High-Entropy Alloys|高熵合金]], [[Phase Stability in Complex Alloys|複雜合金的相穩定性]], [[Defect Chemistry and Point Defects|缺陷化學和點缺陷]], [[Thermoelectric Materials|熱電材料]]]
+measured_quantities: [[[Magnetic Response|磁性響應]], [[Dielectric Response|介電響應]], [[Oxidation Resistance|抗氧化性]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+現代材料空間太大，無法進行盲目的試誤。計算並不能取代實驗，但如果沒有計算，探索往往淪為代價高昂的徘徊。
 
-Modern materials spaces are too large for blind trial-and-error. Computation does not replace experiment, but without it the search often degenerates into expensive wandering.
+## 它測量什麼
 
-## What it measures
+本註釋涵蓋預測和解釋工作流程，而不是一個實體訊號。典型的輸出包括相位穩定性估計、缺陷能量學、傳輸趨勢和排名候選系統。
 
-This note spans predictive and interpretive workflows rather than one physical signal. Typical outputs include phase stability estimates, defect energetics, transport trends, and ranked candidate systems.
+## 解釋
 
-## Interpretation
-
-The value of computation depends on model assumptions, data quality, and how tightly predictions are tied back to characterization and processing reality. Simulation without validation is just elegant speculation.
+計算的價值取決於模型假設、資料品質以及預測與表徵和處理現實的緊密程度。未經驗證的模擬只是優雅的猜測。

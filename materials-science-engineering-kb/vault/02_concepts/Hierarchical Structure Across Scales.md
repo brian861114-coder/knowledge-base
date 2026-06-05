@@ -1,32 +1,31 @@
 ---
-title: Hierarchical Structure Across Scales
+title: 跨尺度的層次結構
 type: concept
-summary: Hierarchical structure across scales describes how atomic, nanoscale, microscale, and mesoscale features combine to produce emergent material behavior.
+summary: 跨尺度的層次結構描述了原子、奈米尺度、微米尺度和介觀尺度特徵如何結合起來產生湧現的材料行為。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [multiscale]
-prerequisites: [[[Microstructure]], [[Nanomaterials]]]
-related_concepts: [[[Mechanical Properties]], [[Biomaterials]], [[Fiber-Reinforced Composites]]]
+prerequisites: [[[Microstructure|微觀組織]], [[Nanomaterials|奈米材料]]]
+related_concepts: [[[Mechanical Properties|機械性質]], [[Biomaterials|生物材料]], [[Fiber-Reinforced Composites|纖維增強複合材料]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+許多先進材料不受單一主導特徵的控制。他們的行為產生於相互作用的結構層面，這就是為什麼單一尺度思維經常失敗的原因。
 
-Many advanced materials are not controlled by a single dominant feature. Their behavior emerges from interacting structural levels, which is why single-scale thinking often fails.
+## 核心思想
 
-## Core idea
+分層結構意味著相關特徵存在於多個嵌套尺度上：最小尺度上的原子鍵合和缺陷化學、中間尺度上的沉澱物或界面、較大尺度上的晶粒和相網絡以及更大尺度上的結構或孔隙率。整個系統的反應取決於這些層級如何相互加強或削弱。
 
-Hierarchical structure means relevant features exist at several nested scales: atomic bonding and defect chemistry at the smallest scale, precipitates or interfaces at intermediate scales, grains and phase networks at larger scales, and architecture or porosity at still larger scales. The response of the full system depends on how these levels reinforce or undermine each other.
+這在生物材料、複合材料、細胞材料和許多仿生系統中尤其重要，在這些系統中，良好的性能範圍來自跨尺度的組織，而不是來自一種特殊的成分。
 
-This is especially important in biomaterials, composites, cellular materials, and many bioinspired systems, where a favorable performance envelope comes from organization across scales rather than from one extraordinary constituent.
+## 連結
 
-## Links
+[[Fiber-Reinforced Composites|纖維增強複合材料]] 是一個經典案例，其中纖維、基體、界面和層壓結構都很重要。 [[Biomaterials|生物材料]] 通常同時依賴分層表面和體結構。 [[Mechanical Properties|機械性質]] 和功能屬性都成為這些系統中的多尺度問題。
 
-[[Fiber-Reinforced Composites]] are a classic case where fiber, matrix, interface, and laminate architecture all matter. [[Biomaterials]] often rely on hierarchical surface and bulk structure simultaneously. [[Mechanical Properties]] and functional properties both become multiscale problems in these systems.
+## 關鍵範例
 
-## Key examples
+骨骼是一個明顯的生物學例子，而許多複合材料層壓板和塗層多層系統則是工程例子。當沉澱物、亞晶粒、晶粒和相網絡都在一起時，即使是傳統合金也可以表現出分層行為。
 
-Bone is an obvious biological example, while many composite laminates and coated multilayer systems are engineering examples. Even conventional alloys can show hierarchical behavior when precipitates, subgrains, grains, and phase networks all matter together.
+## 常見錯誤
 
-## Common mistakes
-
-Do not use "multiscale" as a vague compliment. It should name real structural levels and explain how they couple to a property or failure mechanism.
+不要使用「多尺度」作為含糊的讚美。它應該命名真實的結構層級並解釋它們如何與屬性或故障機制耦合。

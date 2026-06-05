@@ -1,22 +1,21 @@
 ---
-title: Thermal Properties
+title: 熱性質
 type: quantity
-summary: Thermal properties describe heat storage, heat transport, expansion, and temperature stability in a material system.
+summary: 熱特性描述了材料系統中的熱儲存、熱傳輸、膨脹和溫度穩定性。
 domain: Properties
 taxonomy_domain: properties
 tags: [thermal]
-prerequisites: [[[Atomic Bonding and Cohesion]]]
-related_concepts: [[[Ceramics]], [[Polymers]], [[Battery Materials]], [[Thermal Expansion]], [[Glass Transition and Thermal Transitions]], [[Thermoelectric Transport Tradeoffs]]]
+prerequisites: [[[Atomic Bonding and Cohesion|原子鍵和內聚力]]]
+related_concepts: [[[Ceramics|陶瓷]], [[Polymers|聚合物]], [[Battery Materials|電池材料]], [[Thermal Expansion|熱膨脹]], [[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]], [[Thermoelectric Transport Tradeoffs|熱電傳輸權衡]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+溫度早在壓力之前就毀了許多設計。熱限制通常是隱藏的設計殺手，而不是整體要求。
 
-Temperature ruins many designs long before stress does. Thermal limits are often hidden design killers rather than headline requirements.
+## 定義
 
-## Definition
+此簇包括熱導率、熱容量、熱膨脹、抗熱震性和轉變溫度。
 
-This cluster includes thermal conductivity, heat capacity, thermal expansion, thermal shock resistance, and transition temperatures.
+## 是什麼控制它
 
-## What controls it
-
-Bonding strength, crystal structure, porosity, interfaces, and microstructural disorder all shape thermal response. [[Thermal Expansion]] and [[Glass Transition and Thermal Transitions]] are major subcases that matter in assemblies and soft materials. In application settings, mismatch in thermal expansion is often as important as intrinsic conductivity, and in functional systems the property may be entangled with [[Thermoelectric Transport Tradeoffs]].
+黏合強度、晶體結構、孔隙率、界面和微觀結構紊亂都會影響熱響應。 [[Thermal Expansion|熱膨脹]] 和 [[Glass Transition and Thermal Transitions|玻璃轉移與熱轉變]] 是在組件和軟材料中重要的主要子情況。在應用設定中，熱膨脹失配通常與本徵電導率一樣重要，並且在功能係統中，該屬性可能與 [[Thermoelectric Transport Tradeoffs|熱電傳輸權衡]] 糾纏在一起。

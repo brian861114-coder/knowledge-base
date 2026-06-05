@@ -1,30 +1,29 @@
 ---
-title: Interfacial Engineering
+title: 介面工程
 type: concept
-summary: Interfacial engineering deliberately modifies surfaces and interfaces to control adhesion, transport, corrosion, reaction pathways, and mechanical load transfer.
+summary: 界面工程有意修改表面和界面，以控制黏附、傳輸、腐蝕、反應途徑和機械載荷傳遞。
 domain: Structure and Defects
 taxonomy_domain: structure
 tags: [interfaces]
-prerequisites: [[[Microstructure]], [[Corrosion]]]
-related_concepts: [[[Fiber-Reinforced Composites]], [[Thin Film Deposition]], [[Surface Engineering]]]
+prerequisites: [[[Microstructure|微觀組織]], [[Corrosion|腐蝕]]]
+related_concepts: [[[Fiber-Reinforced Composites|纖維增強複合材料]], [[Thin Film Deposition|薄膜沉積]], [[Surface Engineering|表面工程]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+介面是乾淨的教科書屬性消失的地方。它們也是實用材料工程在大部分戰鬥中獲勝或失敗的地方。
 
-Interfaces are where clean textbook properties go to die. They are also where practical materials engineering wins or loses most of its battles.
+## 核心思想
 
-## Core idea
+界面有其自己的化學性質、缺陷結構、應力狀態和傳輸行為。工程師透過改變粗糙度、成分、塗層、梯度或黏合狀態來利用這一點來重定向系統級行為。
 
-An interface has its own chemistry, defect structure, stress state, and transport behavior. Engineers exploit that by changing roughness, composition, coatings, gradients, or bonding state to redirect system-level behavior.
+## 連結
 
-## Links
+[[Surface Engineering|表面工程]] 是流程槓桿。 [[Fiber-Reinforced Composites|纖維增強複合材料]] 和 [[Battery Materials|電池材料]] 是介面故障通常主導整個系統效能的應用領域。
 
-[[Surface Engineering]] is the process lever. [[Fiber-Reinforced Composites]] and [[Battery Materials]] are application areas where interfacial failure often dominates whole-system performance.
+## 關鍵範例
 
-## Key examples
+在複合材料中，界面強度控制著載荷是否有效轉移或分層占主導地位。在電池中，界面化學可以控制阻抗增長和循環壽命。在塗層中，界面處的附著力和殘餘應力可以決定保護是否持續存在或剝落。
 
-In composites, interface strength controls whether load transfers effectively or delamination dominates. In batteries, interface chemistry can control impedance growth and cycle life. In coatings, adhesion and residual stress at the interface can determine whether protection persists or spalls away.
+## 常見錯誤
 
-## Common mistakes
-
-Do not talk about interfaces as if they are geometrically thin but mechanically irrelevant. Interfaces often control the entire system. Also, an interface is not defined only by roughness; chemistry, residual stress, and defect structure matter just as much.
+不要談論接口，就好像它們在幾何上很薄但在機械上無關一樣。介面通常控制整個系統。此外，界面不僅由粗糙度來定義；它還由粗糙度來定義。化學成分、殘餘應力和缺陷結構同樣重要。

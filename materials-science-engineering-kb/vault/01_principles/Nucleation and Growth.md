@@ -1,23 +1,22 @@
 ---
-title: Nucleation and Growth
+title: 成核與生長
 type: law
-summary: Nucleation and growth govern how new phases, grains, precipitates, and structural domains first appear and then expand during transformation.
+summary: 成核和生長控制新相、晶粒、沉澱物和結構域如何首先出現，然後在轉變過程中擴展。
 domain: Foundations
 taxonomy_domain: fundamentals
 tags: [nucleation, growth]
-prerequisites: [[[Phase Equilibria and Phase Diagrams]], [[Phase Transformation Kinetics]]]
-related_concepts: [[[Phase Fraction and Morphology]], [[Precipitation Hardening]], [[Solidification and Microsegregation]]]
-used_in: [[[Casting and Solidification Processing]], [[Annealing]], [[Thin Film Deposition]]]
+prerequisites: [[[Phase Equilibria and Phase Diagrams|相平衡和相圖]], [[Phase Transformation Kinetics|相變動力學]]]
+related_concepts: [[[Phase Fraction and Morphology|相分率與形貌]], [[Precipitation Hardening|沉澱硬化]], [[Solidification and Microsegregation|凝固和微觀偏析]]]
+used_in: [[[Casting and Solidification Processing|鑄造及凝固加工]], [[Annealing|退火]], [[Thin Film Deposition|薄膜沉積]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+轉變不會簡單地同時在所有地方發生。它從某個地方開始，付出能量成本，然後在新介面的創建和大量自由能的減少之間進行競爭。
 
-A transformation does not simply happen everywhere at once. It begins somewhere, pays an energetic cost, and then competes between new-interface creation and bulk free-energy reduction.
+## 核心關係
 
-## Core relation
+成核需要克服與界面形成和結構重排相關的能量障礙。一旦形成穩定的核，生長速率取決於傳輸、局部驅動力、界面遷移率和熱歷史。成核速率和生長速率之間的平衡很大程度上決定了最終特徵尺寸和形狀。
 
-Nucleation requires overcoming an energy barrier associated with interface formation and structural rearrangement. Once a stable nucleus forms, growth rate depends on transport, local driving force, interface mobility, and thermal history. The balance between nucleation rate and growth rate strongly determines final feature size and morphology.
+## 連結
 
-## Links
-
-[[Phase Fraction and Morphology]] is largely the record of how nucleation and growth unfolded. [[Precipitation Hardening]] depends on creating many useful nuclei without allowing them to coarsen excessively. [[Casting and Solidification Processing]] is one of the most obvious applications because freezing structure is a nucleation-and-growth problem from the start.
+[[Phase Fraction and Morphology|相分率與形貌]] 主要是成核和生長如何展開的記錄。 [[Precipitation Hardening|沉澱硬化]] 依賴於創建許多有用的核而不讓它們過度粗化。 [[Casting and Solidification Processing|鑄造及凝固加工]] 是最明顯的應用之一，因為凍結結構從一開始就是一個成核和生長問題。

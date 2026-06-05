@@ -1,22 +1,21 @@
 ---
-title: Fiber-Reinforced Composites
+title: 纖維增強複合材料
 type: concept
-summary: Fiber-reinforced composites use high-aspect-ratio reinforcements and matrix-interface design to create directional stiffness, strength, and damage-tolerance profiles.
+summary: 纖維增強複合材料使用高縱橫比增強材料和基體界面設計來創建方向剛度、強度和損傷容限曲線。
 domain: Material Classes
 taxonomy_domain: material_classes
 tags: [fiber-composites]
-prerequisites: [[[Composites]], [[Interfacial Engineering]]]
-related_concepts: [[[Mechanical Properties]], [[Fracture Toughness]], [[Surface Engineering]]]
+prerequisites: [[[Composites|複合材料]], [[Interfacial Engineering|介面工程]]]
+related_concepts: [[[Mechanical Properties|機械性質]], [[Fracture Toughness|斷裂韌性]], [[Surface Engineering|表面工程]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+纖維增強複合材料是建築作為材料的最明顯的例子之一。它們的性能與方向、界面品質和損傷演變密不可分。
 
-Fiber-reinforced composites are one of the clearest cases where architecture is the material. Their performance is inseparable from orientation, interface quality, and damage evolution.
+## 核心思想
 
-## Core idea
+載重傳遞是透過鋼筋、基體和界面的共同作用而發生的。相同的成分可能表現出色或較差，具體取決於排列、空隙含量和界面黏附力。
 
-Load transfer occurs through reinforcement, matrix, and interface acting together. The same constituents can perform brilliantly or badly depending on alignment, void content, and interfacial adhesion.
+## 連結
 
-## Links
-
-[[Interfacial Engineering]] matters because the interface often decides whether load transfer or delamination dominates. [[Fracture Toughness]] is complicated here because crack deflection, pullout, and delamination can all contribute.
+[[Interfacial Engineering|介面工程]] 很重要，因為介面通常決定負載轉移還是分層占主導地位。 [[Fracture Toughness|斷裂韌性]] 在這裡很複雜，因為裂紋偏轉、拔出和分層都會產生影響。

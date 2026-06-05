@@ -1,22 +1,21 @@
 ---
-title: Sintering
+title: 燒結
 type: experiment
-summary: Sintering densifies powders through thermal activation and transport processes that reduce surface energy and pore volume.
+summary: 燒結透過熱活化和傳輸過程使粉末緻密化，從而降低表面能和孔體積。
 domain: Processing
 taxonomy_domain: processing
 tags: [sintering]
-prerequisites: [[[Diffusion in Solids]]]
-related_concepts: [[[Ceramics]], [[Microstructure]], [[Particle Packing and Porosity]], [[Powder Processing and Compaction]]]
+prerequisites: [[[Diffusion in Solids|固體中的擴散]]]
+related_concepts: [[[Ceramics|陶瓷]], [[Microstructure|微觀組織]], [[Particle Packing and Porosity|顆粒堆積和孔隙率]], [[Powder Processing and Compaction|粉末加工和壓實]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+燒結對於陶瓷、粉末冶金和許多先進功能材料來說是基礎，因為高性能零件通常是從填充粉末而不是鑄造散裝固體開始的。
 
-Sintering is fundamental for ceramics, powder metallurgy, and many advanced functional materials because high-performance parts often begin as packed powders rather than cast bulk solids.
+## 工作流程
 
-## Workflow
+粉末壓塊被加熱，使頸部生長、毛孔收縮和質量傳輸逐漸使主體緻密。氣氛、溫度、時間和顆粒大小都很重要。
 
-Powder compacts are heated so that neck growth, pore shrinkage, and mass transport progressively densify the body. Atmosphere, temperature, time, and particle size matter heavily.
+## 結構影響
 
-## Structure impact
-
-Sintering changes porosity, grain growth, neck formation, and phase distribution. In effect it rewrites [[Particle Packing and Porosity]] into a denser structural state shaped by the starting green body from [[Powder Processing and Compaction]]. Those shifts dominate strength, conductivity, fracture sensitivity, and reliability.
+燒結會改變孔隙率、晶粒生長、頸部形成和相分佈。實際上，它將 [[Particle Packing and Porosity|顆粒堆積和孔隙率]] 重寫為由 [[Powder Processing and Compaction|粉末加工和壓實]] 的起始生坯形成的更緻密的結構狀態。這些變化決定了強度、導電性、斷裂敏感性和可靠性。

@@ -1,22 +1,21 @@
 ---
-title: Thermomechanical Processing
+title: 熱機械加工
 type: experiment
-summary: Thermomechanical processing combines deformation and thermal treatment to control texture, defect density, recrystallization, and final microstructure.
+summary: 熱機械加工結合變形和熱處理來控制織構、缺陷密度、再結晶和最終微觀結構。
 domain: Processing
 taxonomy_domain: processing
 tags: [thermomechanical]
-prerequisites: [[[Strengthening Mechanisms]], [[Heat Treatment]]]
-related_concepts: [[[Microstructure]], [[Fatigue Resistance]], [[Creep Resistance]]]
+prerequisites: [[[Strengthening Mechanisms|強化機制]], [[Heat Treatment|熱處理]]]
+related_concepts: [[[Microstructure|微觀組織]], [[Fatigue Resistance|抗疲勞性]], [[Creep Resistance|抗蠕變性]]]
 ---
+## 為什麼這很重要
 
-## Why it matters
+如果熱處理透過溫度來編輯微觀結構，那麼熱機械加工則透過溫度加上儲存的變形來編輯它。這個額外的槓桿就是它如此強大的原因。
 
-If heat treatment edits microstructure with temperature, thermomechanical processing edits it with temperature plus stored deformation. That extra lever is why it is so powerful.
+## 工作流程
 
-## Workflow
+典型的路線混合了受控變形、回復、再結晶，有時還混合了時效或相變。順序很重要，因為每一步都會重寫從前一步繼承的缺陷狀態。
 
-A typical route mixes controlled deformation, recovery, recrystallization, and sometimes aging or phase transformation. The sequence matters because each step rewrites the defect state inherited from the previous one.
+## 結構影響
 
-## Structure impact
-
-The process changes grain size, texture, dislocation density, residual stress, and precipitate distribution. Those changes strongly affect [[Fatigue Resistance]], [[Mechanical Properties]], and in some systems [[Creep Resistance]].
+此過程會改變晶粒尺寸、織構、位錯密度、殘餘應力和析出物分佈。這些變更強烈影響 [[Fatigue Resistance|抗疲勞性]]、[[Mechanical Properties|機械性質]]，在某些系統中也會影響 [[Creep Resistance|抗蠕變性]]。

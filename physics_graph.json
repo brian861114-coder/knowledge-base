@@ -39408,6 +39408,31 @@
     },
     {
       "source": "δ函數",
+      "target": "點電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "δ函數",
+      "target": "格林函數",
+      "type": "wikilink"
+    },
+    {
+      "source": "δ函數",
+      "target": "脈衝響應",
+      "type": "wikilink"
+    },
+    {
+      "source": "δ函數",
+      "target": "傅立葉變換",
+      "type": "wikilink"
+    },
+    {
+      "source": "δ函數",
+      "target": "庫侖定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "δ函數",
       "target": "傅立葉分析",
       "type": "wikilink"
     },
@@ -39748,7 +39773,32 @@
     },
     {
       "source": "傅立葉分析",
-      "target": "不確定性原理",
+      "target": "波動方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "傅立葉分析",
+      "target": "繞射",
+      "type": "wikilink"
+    },
+    {
+      "source": "傅立葉分析",
+      "target": "聲學",
+      "type": "wikilink"
+    },
+    {
+      "source": "傅立葉分析",
+      "target": "量子力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "傅立葉分析",
+      "target": "熱傳導",
+      "type": "wikilink"
+    },
+    {
+      "source": "傅立葉分析",
+      "target": "交流電",
       "type": "wikilink"
     },
     {
@@ -40093,6 +40143,36 @@
     },
     {
       "source": "向量微積分總論",
+      "target": "高斯定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
+      "target": "安培定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
+      "target": "法拉第定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
+      "target": "馬克士威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
+      "target": "流體力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
+      "target": "熱傳導",
+      "type": "wikilink"
+    },
+    {
+      "source": "向量微積分總論",
       "target": "梯度",
       "type": "wikilink"
     },
@@ -40343,6 +40423,36 @@
     },
     {
       "source": "張量",
+      "target": "應力",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
+      "target": "應變",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
+      "target": "轉動慣量",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
+      "target": "電磁場張量",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
+      "target": "彈性力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
+      "target": "連續介質力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "張量",
       "target": "向量",
       "type": "wikilink"
     },
@@ -40443,6 +40553,36 @@
     },
     {
       "source": "微分方程",
+      "target": "牛頓第二定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
+      "target": "波動方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
+      "target": "熱傳導",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
+      "target": "薛丁格方程",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
+      "target": "馬克士威方程組",
+      "type": "wikilink"
+    },
+    {
+      "source": "微分方程",
       "target": "導數",
       "type": "wikilink"
     },
@@ -40533,7 +40673,42 @@
     },
     {
       "source": "指數函數",
-      "target": "熵",
+      "target": "RC電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "放射性衰變",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "機械波",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "波茲曼分布",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "阻尼振動",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "流體力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "指數函數",
+      "target": "藥代動力學",
       "type": "wikilink"
     },
     {
@@ -41128,6 +41303,36 @@
     },
     {
       "source": "泰勒展開",
+      "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
+      "target": "單擺",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
+      "target": "電偶極",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
+      "target": "狹義相對論",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
+      "target": "熱力學勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
+      "target": "誤差傳播",
+      "type": "wikilink"
+    },
+    {
+      "source": "泰勒展開",
       "target": "導數",
       "type": "wikilink"
     },
@@ -41468,6 +41673,31 @@
     },
     {
       "source": "線性代數總覽",
+      "target": "矩陣",
+      "type": "wikilink"
+    },
+    {
+      "source": "線性代數總覽",
+      "target": "量子力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "線性代數總覽",
+      "target": "簡正模",
+      "type": "wikilink"
+    },
+    {
+      "source": "線性代數總覽",
+      "target": "電路分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "線性代數總覽",
+      "target": "主成分分析",
+      "type": "wikilink"
+    },
+    {
+      "source": "線性代數總覽",
       "target": "向量",
       "type": "wikilink"
     },
@@ -41549,6 +41779,31 @@
     {
       "source": "群論基礎",
       "target": "諾特定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "群論基礎",
+      "target": "諾特定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "群論基礎",
+      "target": "粒子物理",
+      "type": "wikilink"
+    },
+    {
+      "source": "群論基礎",
+      "target": "晶體結構",
+      "type": "wikilink"
+    },
+    {
+      "source": "群論基礎",
+      "target": "角動量量子化",
+      "type": "wikilink"
+    },
+    {
+      "source": "群論基礎",
+      "target": "標準模型",
       "type": "wikilink"
     },
     {
@@ -41653,12 +41908,12 @@
     },
     {
       "source": "自然對數",
-      "target": "波茲曼常數",
+      "target": "熱力學第二定律",
       "type": "wikilink"
     },
     {
       "source": "自然對數",
-      "target": "放射性衰變",
+      "target": "波茲曼分布",
       "type": "wikilink"
     },
     {
@@ -41668,12 +41923,22 @@
     },
     {
       "source": "自然對數",
-      "target": "分貝",
+      "target": "放射性衰變",
       "type": "wikilink"
     },
     {
       "source": "自然對數",
-      "target": "地震",
+      "target": "聲強",
+      "type": "wikilink"
+    },
+    {
+      "source": "自然對數",
+      "target": "電磁波吸收",
+      "type": "wikilink"
+    },
+    {
+      "source": "自然對數",
+      "target": "藥代動力學",
       "type": "wikilink"
     },
     {
@@ -41930,6 +42195,31 @@
       "source": "變分法",
       "target": "最佳控制理論",
       "type": "uses"
+    },
+    {
+      "source": "變分法",
+      "target": "拉格朗日力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "變分法",
+      "target": "最小作用量原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "變分法",
+      "target": "費馬原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "變分法",
+      "target": "哈密頓力學",
+      "type": "wikilink"
+    },
+    {
+      "source": "變分法",
+      "target": "最佳控制理論",
+      "type": "wikilink"
     },
     {
       "source": "變分法",

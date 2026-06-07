@@ -10974,11 +10974,6 @@
     },
     {
       "source": "庫侖定律",
-      "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖定律",
       "target": "電場",
       "type": "wikilink"
     },
@@ -12114,11 +12109,6 @@
     },
     {
       "source": "法拉第定律",
-      "target": "電動勢",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
       "target": "磁通量",
       "type": "wikilink"
     },
@@ -12674,27 +12664,12 @@
     },
     {
       "source": "熱力學第零定律",
-      "target": "溫度",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
-      "target": "熱平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
       "target": "熱平衡",
       "type": "wikilink"
     },
     {
       "source": "熱力學第零定律",
       "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
-      "target": "統計物理",
       "type": "wikilink"
     },
     {
@@ -15425,11 +15400,6 @@
     {
       "source": "麥克斯威方程組",
       "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "狹義相對論",
       "type": "wikilink"
     },
     {

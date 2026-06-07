@@ -230,7 +230,7 @@
       "id": "功能定理",
       "title": "功能定理",
       "type": "law",
-      "summary": "功能定理（功-能定理）指出，合外力對物體所做的淨功等於其動能的變化：$W_{\\text{net}} = \\Delta K = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$。它把力在空間上的累積效應與運動狀態直接連結，是 [[能量方法]] 分析的起點。",
+      "summary": "功能定理（功-能定理）指出，合外力對物體所做的淨功等於其動能的變化：$W_{\\text{net}} = \\Delta K = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$。它把力在空間上的累積效應與運動狀態直接連結，是 能量方法 分析的起點。",
       "path": "01_laws/功能定理.md",
       "domain": "力學",
       "taxonomy_domain": "mechanics",
@@ -1072,7 +1072,7 @@
       "id": "正則變換",
       "title": "正則變換",
       "type": "concept",
-      "summary": "正則變換是 [[哈密頓力學]] 中保持辛結構的座標變換，將舊的正則座標 $(q, p)$ 映射到新的 $(Q, P)$，同時維持哈密頓方程的形式不變。它是簡化可積系統、導出作用量-角度變數與 [[微擾理論]] 的核心數學工具。",
+      "summary": "正則變換是 哈密頓力學 中保持辛結構的座標變換，將舊的正則座標 $(q, p)$ 映射到新的 $(Q, P)$，同時維持哈密頓方程的形式不變。它是簡化可積系統、導出作用量-角度變數與 微擾理論 的核心數學工具。",
       "path": "02_concepts/analytical_dynamics/正則變換.md",
       "domain": "動力系統",
       "taxonomy_domain": "analytical_dynamics",
@@ -1224,7 +1224,7 @@
       "id": "RC電路",
       "title": "RC電路",
       "type": "concept",
-      "summary": "RC電路由電阻 $R$ 和電容 $C$ 串聯而成，充放電過程遵循 $V(t) = V_0 e^{-t/RC}$ 的指數衰減，時間常數 $\\tau = RC$ 決定響應速度。它是理解 [[濾波器]]、計時電路與暫態響應的起點。",
+      "summary": "RC電路由電阻 $R$ 和電容 $C$ 串聯而成，充放電過程遵循 $V(t) = V_0 e^{-t/RC}$ 的指數衰減，時間常數 $\\tau = RC$ 決定響應速度。它是理解 濾波器、計時電路與暫態響應的起點。",
       "path": "02_concepts/electromagnetism/RC電路.md",
       "domain": "電磁學",
       "taxonomy_domain": "electromagnetism",
@@ -1319,7 +1319,7 @@
       "id": "串聯電路",
       "title": "串聯電路",
       "type": "concept",
-      "summary": "串聯電路中所有元件依序連接，流過每個元件的電流相同，總電阻為各電阻之和：$R_{\\text{total}} = R_1 + R_2 + \\cdots$。電壓依電阻比例分配，是 [[電路分析]] 中最基本的連接方式之一。",
+      "summary": "串聯電路中所有元件依序連接，流過每個元件的電流相同，總電阻為各電阻之和：$R_{\\text{total}} = R_1 + R_2 + \\cdots$。電壓依電阻比例分配，是 電路分析 中最基本的連接方式之一。",
       "path": "02_concepts/electromagnetism/串聯電路.md",
       "domain": "電磁學",
       "taxonomy_domain": "electromagnetism",
@@ -9794,11 +9794,6 @@
     },
     {
       "source": "伯努力方程",
-      "target": "高度",
-      "type": "related_to"
-    },
-    {
-      "source": "伯努力方程",
       "target": "能量守恆",
       "type": "related_to"
     },
@@ -10634,11 +10629,6 @@
     },
     {
       "source": "安培-馬克士威方程",
-      "target": "向量微分",
-      "type": "formalized_by"
-    },
-    {
-      "source": "安培-馬克士威方程",
       "target": "位移電流修正",
       "type": "wikilink"
     },
@@ -10699,11 +10689,6 @@
     },
     {
       "source": "安培定律",
-      "target": "長直導線",
-      "type": "related_to"
-    },
-    {
-      "source": "安培定律",
       "target": "磁場",
       "type": "related_to"
     },
@@ -10721,11 +10706,6 @@
       "source": "安培定律",
       "target": "高斯定律",
       "type": "related_to"
-    },
-    {
-      "source": "安培定律",
-      "target": "向量積分",
-      "type": "formalized_by"
     },
     {
       "source": "安培定律",
@@ -11394,11 +11374,6 @@
     },
     {
       "source": "斯涅爾定律",
-      "target": "光速",
-      "type": "requires"
-    },
-    {
-      "source": "斯涅爾定律",
       "target": "折射率",
       "type": "requires"
     },
@@ -11580,11 +11555,6 @@
     {
       "source": "楞次定律",
       "target": "自感",
-      "type": "related_to"
-    },
-    {
-      "source": "楞次定律",
-      "target": "渦電流",
       "type": "related_to"
     },
     {
@@ -12480,16 +12450,6 @@
     {
       "source": "焦耳定律",
       "target": "電路",
-      "type": "related_to"
-    },
-    {
-      "source": "焦耳定律",
-      "target": "熱效應",
-      "type": "related_to"
-    },
-    {
-      "source": "焦耳定律",
-      "target": "功率-$p-=-iv$",
       "type": "related_to"
     },
     {
@@ -13684,16 +13644,6 @@
     },
     {
       "source": "狀態方程",
-      "target": "波義耳定律",
-      "type": "related_to"
-    },
-    {
-      "source": "狀態方程",
-      "target": "查理定律",
-      "type": "related_to"
-    },
-    {
-      "source": "狀態方程",
       "target": "理想氣體",
       "type": "wikilink"
     },
@@ -13884,17 +13834,7 @@
     },
     {
       "source": "畢奧-沙伐定律",
-      "target": "向量叉積",
-      "type": "requires"
-    },
-    {
-      "source": "畢奧-沙伐定律",
       "target": "安培定律",
-      "type": "related_to"
-    },
-    {
-      "source": "畢奧-沙伐定律",
-      "target": "磁場疊加",
       "type": "related_to"
     },
     {
@@ -13916,11 +13856,6 @@
       "source": "畢奧-沙伐定律",
       "target": "庫侖定律",
       "type": "related_to"
-    },
-    {
-      "source": "畢奧-沙伐定律",
-      "target": "向量積分",
-      "type": "formalized_by"
     },
     {
       "source": "畢奧-沙伐定律",
@@ -18949,17 +18884,7 @@
     },
     {
       "source": "導體",
-      "target": "電子",
-      "type": "requires"
-    },
-    {
-      "source": "導體",
       "target": "電介質",
-      "type": "related_to"
-    },
-    {
-      "source": "導體",
-      "target": "半導體",
       "type": "related_to"
     },
     {
@@ -19334,11 +19259,6 @@
     },
     {
       "source": "無限平面電場",
-      "target": "電荷密度",
-      "type": "requires"
-    },
-    {
-      "source": "無限平面電場",
       "target": "高斯定律",
       "type": "related_to"
     },
@@ -19354,18 +19274,8 @@
     },
     {
       "source": "無限平面電場",
-      "target": "電荷密度",
-      "type": "related_to"
-    },
-    {
-      "source": "無限平面電場",
       "target": "高斯定律",
       "type": "related_to"
-    },
-    {
-      "source": "無限平面電場",
-      "target": "對稱性分析",
-      "type": "formalized_by"
     },
     {
       "source": "無限平面電場",
@@ -24494,11 +24404,6 @@
     },
     {
       "source": "慣性參考系",
-      "target": "相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "慣性參考系",
       "target": "牛頓第一定律",
       "type": "related_to"
     },
@@ -24555,16 +24460,6 @@
     {
       "source": "時間",
       "target": "慣性參考系",
-      "type": "related_to"
-    },
-    {
-      "source": "時間",
-      "target": "相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "時間",
-      "target": "牛頓運動定律",
       "type": "related_to"
     },
     {
@@ -24761,11 +24656,6 @@
       "source": "相互作用",
       "target": "牛頓第三定律",
       "type": "requires"
-    },
-    {
-      "source": "相互作用",
-      "target": "基本相互作用",
-      "type": "related_to"
     },
     {
       "source": "相互作用",
@@ -28774,26 +28664,6 @@
     },
     {
       "source": "局域性",
-      "target": "光速",
-      "type": "requires"
-    },
-    {
-      "source": "局域性",
-      "target": "場論",
-      "type": "related_to"
-    },
-    {
-      "source": "局域性",
-      "target": "相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "局域性",
-      "target": "量子糾纏",
-      "type": "related_to"
-    },
-    {
-      "source": "局域性",
       "target": "場",
       "type": "wikilink"
     },
@@ -31349,16 +31219,6 @@
     },
     {
       "source": "分子運動論",
-      "target": "理想氣體狀態方程",
-      "type": "related_to"
-    },
-    {
-      "source": "分子運動論",
-      "target": "統計學",
-      "type": "formalized_by"
-    },
-    {
-      "source": "分子運動論",
       "target": "動量",
       "type": "wikilink"
     },
@@ -32765,11 +32625,6 @@
     {
       "source": "理想氣體",
       "target": "溫度",
-      "type": "related_to"
-    },
-    {
-      "source": "理想氣體",
-      "target": "理想氣體狀態方程",
       "type": "related_to"
     },
     {
@@ -36664,16 +36519,6 @@
     },
     {
       "source": "剪切模數",
-      "target": "楊氏模量",
-      "type": "related_to"
-    },
-    {
-      "source": "剪切模數",
-      "target": "體積模量",
-      "type": "related_to"
-    },
-    {
-      "source": "剪切模數",
       "target": "泊松比",
       "type": "related_to"
     },
@@ -36909,11 +36754,6 @@
     },
     {
       "source": "坡印廷向量",
-      "target": "向量叉積",
-      "type": "formalized_by"
-    },
-    {
-      "source": "坡印廷向量",
       "target": "電磁場能量流",
       "type": "wikilink"
     },
@@ -36936,21 +36776,6 @@
       "source": "基本電荷",
       "target": "電荷",
       "type": "requires"
-    },
-    {
-      "source": "基本電荷",
-      "target": "電子",
-      "type": "requires"
-    },
-    {
-      "source": "基本電荷",
-      "target": "電子",
-      "type": "related_to"
-    },
-    {
-      "source": "基本電荷",
-      "target": "質子",
-      "type": "related_to"
     },
     {
       "source": "基本電荷",
@@ -37089,11 +36914,6 @@
     },
     {
       "source": "感抗",
-      "target": "交流電路",
-      "type": "related_to"
-    },
-    {
-      "source": "感抗",
       "target": "阻抗",
       "type": "related_to"
     },
@@ -37175,11 +36995,6 @@
     {
       "source": "應力",
       "target": "應變",
-      "type": "related_to"
-    },
-    {
-      "source": "應力",
-      "target": "楊氏模量",
       "type": "related_to"
     },
     {
@@ -38189,11 +38004,6 @@
     },
     {
       "source": "阻抗",
-      "target": "交流電路",
-      "type": "related_to"
-    },
-    {
-      "source": "阻抗",
       "target": "RLC電路",
       "type": "related_to"
     },
@@ -38606,11 +38416,6 @@
       "source": "電容抗",
       "target": "交流電",
       "type": "requires"
-    },
-    {
-      "source": "電容抗",
-      "target": "交流電路",
-      "type": "related_to"
     },
     {
       "source": "電容抗",

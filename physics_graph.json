@@ -13098,11 +13098,6 @@
     },
     {
       "source": "疊加原理",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "疊加原理",
       "target": "庫侖定律",
       "type": "wikilink"
     },
@@ -13179,6 +13174,11 @@
     {
       "source": "疊加原理",
       "target": "電偶極矩",
+      "type": "wikilink"
+    },
+    {
+      "source": "疊加原理",
+      "target": "疊加原理相關概念",
       "type": "wikilink"
     },
     {
@@ -13623,16 +13623,6 @@
     },
     {
       "source": "角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量定理",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量定理",
       "target": "動量定理",
       "type": "wikilink"
     },
@@ -13734,41 +13724,6 @@
     {
       "source": "諾特定理",
       "target": "守恆量",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "守恆律",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "守恆量",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "歐拉－拉格朗日方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "諾特定理",
-      "target": "角動量守恆",
       "type": "wikilink"
     },
     {
@@ -14578,7 +14533,7 @@
     },
     {
       "source": "電荷守恆",
-      "target": "連續方程",
+      "target": "電荷守恆相關概念",
       "type": "wikilink"
     },
     {
@@ -19857,6 +19812,11 @@
       "type": "wikilink"
     },
     {
+      "source": "鏡像法",
+      "target": "鏡像法相關概念",
+      "type": "wikilink"
+    },
+    {
       "source": "電介質",
       "target": "電場",
       "type": "requires"
@@ -21054,6 +21014,11 @@
     {
       "source": "電容器",
       "target": "電荷",
+      "type": "wikilink"
+    },
+    {
+      "source": "電容器",
+      "target": "電容器相關概念",
       "type": "wikilink"
     },
     {

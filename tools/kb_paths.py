@@ -14,6 +14,14 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
+def is_ignored_note_path(path: Path, vault_root: Path) -> bool:
+    try:
+        parts = path.relative_to(vault_root).parts
+    except ValueError:
+        parts = path.parts
+    return any(part.startswith("_bak") for part in parts)
+
+
 def decode_path_value(value: str) -> str:
     return UNICODE_ESCAPE_RE.sub(lambda match: chr(int(match.group(1), 16)), value)
 

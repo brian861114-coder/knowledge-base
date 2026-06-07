@@ -7,7 +7,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from kb_paths import repo_root, resolve_vault_path
+from kb_paths import is_ignored_note_path, repo_root, resolve_vault_path
 
 
 WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]")
@@ -80,7 +80,7 @@ def math_issues(body: str, note_path: str) -> list[str]:
 
 
 def collect_vault_diagnostics(vault: Path) -> dict:
-    files = sorted(vault.rglob("*.md"))
+    files = sorted(file_path for file_path in vault.rglob("*.md") if not is_ignored_note_path(file_path, vault))
     note_ids: set[str] = set()
     paths: list[str] = []
     titles: list[str] = []

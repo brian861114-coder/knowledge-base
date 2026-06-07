@@ -23,13 +23,23 @@ The Obsidian vault is the content database.
 
 ## Current Status
 
-The physics knowledge base is in active structure-hardening and taxonomy cleanup, not just raw content expansion.
+The physics knowledge base is still in active structure-hardening and taxonomy cleanup, and the current live state validates cleanly again.
 
-- `318` notes exported
-- `6376` graph edges (relationships)
+Latest validation snapshot from `2026-06-07` against the active vault configured for this checkout:
+
+- `330` vault notes
+- `330` exported note details
+- `330` graph nodes
+- `7473` graph edges (relationships)
 - `0` broken wikilinks
 - `0` broken frontmatter relations
 - `0` math issues
+- `0` duplicate titles
+
+Implication:
+
+- the active vault and exported JSON are back in sync
+- `_bak_*` backup directories are now ignored by the export and validation pipeline, so they no longer pollute note counts or duplicate-title checks
 
 Recent progress:
 
@@ -136,13 +146,19 @@ Project workspace:
 
 `C:\Users\brian\Downloads\vibe_coding\knowledge_map`
 
-Obsidian vault root:
+Obsidian vault root currently used by the validator:
 
 `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian`
 
-Knowledge-base vault folder used by this project:
+Knowledge-base vault folder currently used by this project:
 
 `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+
+Active validator path on `2026-06-07`:
+
+`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+
+Do not assume older handoff docs or screenshots still point at the same vault path. Confirm with `.knowledge-base.local.json` or rerun validation first.
 
 ## Quick Start
 
@@ -225,6 +241,8 @@ Completion standard:
 - broken `[[wikilink]]` targets = `0`
 - broken frontmatter relation targets = `0`
 - math issues = `0`
+
+The current live state meets that standard again as of `2026-06-07`.
 
 ## Vault Structure
 

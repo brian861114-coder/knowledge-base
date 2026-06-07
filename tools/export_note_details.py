@@ -6,6 +6,8 @@ import json
 import re
 from pathlib import Path
 
+from kb_paths import is_ignored_note_path
+
 
 HEADING_RE = re.compile(r"^(#{2,3})\s+(.+)$", re.MULTILINE)
 
@@ -75,6 +77,8 @@ def extract_sections(body: str) -> list[dict]:
 def build_details(vault: Path) -> dict:
     payload = {}
     for file_path in sorted(vault.rglob("*.md")):
+        if is_ignored_note_path(file_path, vault):
+            continue
         text = file_path.read_text(encoding="utf-8")
         frontmatter, body = parse_frontmatter(text)
         node_id = note_id_from_path(file_path)

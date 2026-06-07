@@ -165,6 +165,11 @@ This split is intentional.
 - Repo = tooling and project logic
 - Vault = encyclopedia content
 
+Operational caveat:
+
+- do not assume older docs still point at the active vault path
+- the correct path should be confirmed from `.knowledge-base.local.json` or a fresh validator run
+
 ## Recommended Future Structure
 
 The next durable upgrade should be:

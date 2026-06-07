@@ -43,7 +43,7 @@ Current workspace:
 
 `C:\Users\brian\Downloads\vibe_coding\knowledge_map`
 
-Current vault root:
+Current vault root used by the validator:
 
 `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian`
 
@@ -56,6 +56,10 @@ If working on another machine:
 1. locate the vault first
 2. confirm the repo checkout path
 3. update any path assumptions before running exports
+
+Important:
+
+- if a README or older handoff document mentions a different vault path, trust the active local config and a fresh validator run over the old document
 
 Recommended local config file:
 
@@ -110,6 +114,8 @@ Use this sequence for most work:
 5. Start the prototype
 6. Verify representative pages
 7. Commit the related script, frontend, and export updates together
+
+Before step 1, confirm the active vault path if there is any doubt. This repo already had documented path drift.
 
 ## Common Commands
 
@@ -167,6 +173,22 @@ This is the normal operator path. It runs both exports and then checks:
 ```powershell
 python .\tools\validate_knowledge_base.py
 ```
+
+### Current validation snapshot
+
+Most recent direct run in this repo on `2026-06-07`:
+
+- notes: `330`
+- note details: `330`
+- graph nodes: `330`
+- graph edges: `7473`
+- broken wikilinks: `0`
+- broken frontmatter relations: `0`
+- math issues: `0`
+- duplicate titles: `0`
+
+That means the active vault and exported JSON are currently back in sync.
+The export and validation pipeline now ignores `_bak_*` backup directories so they do not count as live notes.
 
 ### Check working tree
 

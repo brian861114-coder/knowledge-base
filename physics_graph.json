@@ -4508,286 +4508,6 @@
         "physics",
         "mathematics"
       ]
-    },
-    {
-      "id": "01_laws_斯涅爾定律",
-      "title": "斯涅爾定律",
-      "type": "law",
-      "summary": "斯涅爾定律描述光通過介面時入射角與折射角之間的定量關係，也就是常說的折射定律。",
-      "path": "_bak_frac_fix/01_laws_斯涅爾定律.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_角動量定理",
-      "title": "角動量定理",
-      "type": "law",
-      "summary": "角動量定理指出外力矩的合量等於角動量對時間的變化率，是轉動問題對應於動量定理的核心關係。",
-      "path": "_bak_frac_fix/01_laws_角動量定理.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_電磁波方程",
-      "title": "電磁波方程",
-      "type": "law",
-      "summary": "電磁波方程描述真空中的電場與磁場如何滿足波動方程，並以光速傳播。",
-      "path": "_bak_frac_fix/01_laws_電磁波方程.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "law"
-      ]
-    },
-    {
-      "id": "03_quantities_波印廷向量",
-      "title": "波印廷向量",
-      "type": "quantity",
-      "summary": "波印廷向量表示電磁能量流密度；更常見也更標準的譯名是坡印廷向量。",
-      "path": "_bak_frac_fix/03_quantities_波印廷向量.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "quantity"
-      ]
-    },
-    {
-      "id": "03_quantities_真空光速",
-      "title": "真空光速",
-      "type": "quantity",
-      "summary": "真空光速是電磁波在真空中的傳播速度，也是相對論中時空結構的基本常數。",
-      "path": "_bak_frac_fix/03_quantities_真空光速.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "quantity"
-      ]
-    },
-    {
-      "id": "01_laws_斯涅爾定律",
-      "title": "斯涅爾定律",
-      "type": "law",
-      "summary": "斯涅爾定律描述光通過介面時入射角與折射角之間的定量關係，也就是常說的折射定律。",
-      "path": "_bak_latex_fix/01_laws_斯涅爾定律.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_焦耳定律",
-      "title": "焦耳定律",
-      "type": "law",
-      "summary": "焦耳定律描述電流通過電阻時產生熱的速率，是電能轉換為熱能的基本定律。",
-      "path": "_bak_latex_fix/01_laws_焦耳定律.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_角動量定理",
-      "title": "角動量定理",
-      "type": "law",
-      "summary": "角動量定理指出外力矩的合量等於角動量對時間的變化率，是轉動問題對應於動量定理的核心關係。",
-      "path": "_bak_latex_fix/01_laws_角動量定理.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_電磁波方程",
-      "title": "電磁波方程",
-      "type": "law",
-      "summary": "電磁波方程描述真空中的電場與磁場如何滿足波動方程，並以光速傳播。",
-      "path": "_bak_latex_fix/01_laws_電磁波方程.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "law"
-      ]
-    },
-    {
-      "id": "02_concepts_electromagnetism_環流",
-      "title": "環流",
-      "type": "concept",
-      "summary": "環流是向量場沿閉合路徑的線積分，用來衡量場是否沿迴圈方向累積效應，常出現在安培定律與渦旋結構中。",
-      "path": "_bak_latex_fix/02_concepts_electromagnetism_環流.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "concept"
-      ]
-    },
-    {
-      "id": "02_concepts_mechanics_角衝量",
-      "title": "角衝量",
-      "type": "concept",
-      "summary": "角衝量是轉矩對時間的累積效果，對應角動量的改變量，地位相當於轉動問題中的衝量。",
-      "path": "_bak_latex_fix/02_concepts_mechanics_角衝量.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "concept"
-      ]
-    },
-    {
-      "id": "03_quantities_泊松比",
-      "title": "泊松比",
-      "type": "quantity",
-      "summary": "泊松比描述材料在單軸拉伸或壓縮時，橫向應變與縱向應變之間的比例關係。",
-      "path": "_bak_latex_fix/03_quantities_泊松比.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "quantity"
-      ]
-    },
-    {
-      "id": "03_quantities_波印廷向量",
-      "title": "波印廷向量",
-      "type": "quantity",
-      "summary": "波印廷向量表示電磁能量流密度；更常見也更標準的譯名是坡印廷向量。",
-      "path": "_bak_latex_fix/03_quantities_波印廷向量.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "quantity"
-      ]
-    },
-    {
-      "id": "03_quantities_真空光速",
-      "title": "真空光速",
-      "type": "quantity",
-      "summary": "真空光速是電磁波在真空中的傳播速度，也是相對論中時空結構的基本常數。",
-      "path": "_bak_latex_fix/03_quantities_真空光速.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "quantity"
-      ]
-    },
-    {
-      "id": "01_laws_斯涅爾定律",
-      "title": "斯涅爾定律",
-      "type": "law",
-      "summary": "斯涅爾定律描述光通過介面時入射角與折射角之間的定量關係，也就是常說的折射定律。",
-      "path": "_bak_tab_fix/01_laws_斯涅爾定律.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_角動量定理",
-      "title": "角動量定理",
-      "type": "law",
-      "summary": "角動量定理指出外力矩的合量等於角動量對時間的變化率，是轉動問題對應於動量定理的核心關係。",
-      "path": "_bak_tab_fix/01_laws_角動量定理.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "law"
-      ]
-    },
-    {
-      "id": "01_laws_電磁波方程",
-      "title": "電磁波方程",
-      "type": "law",
-      "summary": "電磁波方程描述真空中的電場與磁場如何滿足波動方程，並以光速傳播。",
-      "path": "_bak_tab_fix/01_laws_電磁波方程.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "law"
-      ]
-    },
-    {
-      "id": "02_concepts_mechanics_角衝量",
-      "title": "角衝量",
-      "type": "concept",
-      "summary": "角衝量是轉矩對時間的累積效果，對應角動量的改變量，地位相當於轉動問題中的衝量。",
-      "path": "_bak_tab_fix/02_concepts_mechanics_角衝量.md",
-      "domain": "力學",
-      "taxonomy_domain": "mechanics",
-      "tags": [
-        "physics",
-        "mechanics",
-        "concept"
-      ]
-    },
-    {
-      "id": "03_quantities_波印廷向量",
-      "title": "波印廷向量",
-      "type": "quantity",
-      "summary": "波印廷向量表示電磁能量流密度；更常見也更標準的譯名是坡印廷向量。",
-      "path": "_bak_tab_fix/03_quantities_波印廷向量.md",
-      "domain": "電磁學",
-      "taxonomy_domain": "electromagnetism",
-      "tags": [
-        "physics",
-        "electromagnetism",
-        "quantity"
-      ]
-    },
-    {
-      "id": "03_quantities_真空光速",
-      "title": "真空光速",
-      "type": "quantity",
-      "summary": "真空光速是電磁波在真空中的傳播速度，也是相對論中時空結構的基本常數。",
-      "path": "_bak_tab_fix/03_quantities_真空光速.md",
-      "domain": "光學",
-      "taxonomy_domain": "waves_optics",
-      "tags": [
-        "physics",
-        "optics",
-        "quantity"
-      ]
     }
   ],
   "edges": [
@@ -39633,47 +39353,12 @@
     },
     {
       "source": "δ函數",
-      "target": "格林函數",
-      "type": "related_to"
-    },
-    {
-      "source": "δ函數",
-      "target": "傅立葉變換",
-      "type": "related_to"
-    },
-    {
-      "source": "δ函數",
-      "target": "點電荷",
-      "type": "related_to"
-    },
-    {
-      "source": "δ函數",
       "target": "高斯定律",
       "type": "related_to"
     },
     {
       "source": "δ函數",
       "target": "高斯定律",
-      "type": "uses"
-    },
-    {
-      "source": "δ函數",
-      "target": "點電荷",
-      "type": "uses"
-    },
-    {
-      "source": "δ函數",
-      "target": "格林函數",
-      "type": "uses"
-    },
-    {
-      "source": "δ函數",
-      "target": "脈衝響應",
-      "type": "uses"
-    },
-    {
-      "source": "δ函數",
-      "target": "傅立葉變換",
       "type": "uses"
     },
     {
@@ -39684,26 +39369,6 @@
     {
       "source": "δ函數",
       "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "δ函數",
-      "target": "點電荷",
-      "type": "wikilink"
-    },
-    {
-      "source": "δ函數",
-      "target": "格林函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "δ函數",
-      "target": "脈衝響應",
-      "type": "wikilink"
-    },
-    {
-      "source": "δ函數",
-      "target": "傅立葉變換",
       "type": "wikilink"
     },
     {
@@ -39719,11 +39384,6 @@
     {
       "source": "δ函數",
       "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "δ函數",
-      "target": "格林函數",
       "type": "wikilink"
     },
     {
@@ -40018,17 +39678,7 @@
     },
     {
       "source": "傅立葉分析",
-      "target": "波動方程",
-      "type": "uses"
-    },
-    {
-      "source": "傅立葉分析",
       "target": "繞射",
-      "type": "uses"
-    },
-    {
-      "source": "傅立葉分析",
-      "target": "聲學",
       "type": "uses"
     },
     {
@@ -40043,32 +39693,7 @@
     },
     {
       "source": "傅立葉分析",
-      "target": "濾波器",
-      "type": "uses"
-    },
-    {
-      "source": "傅立葉分析",
-      "target": "不確定性原理",
-      "type": "uses"
-    },
-    {
-      "source": "傅立葉分析",
-      "target": "波動方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "傅立葉分析",
       "target": "繞射",
-      "type": "wikilink"
-    },
-    {
-      "source": "傅立葉分析",
-      "target": "聲學",
-      "type": "wikilink"
-    },
-    {
-      "source": "傅立葉分析",
-      "target": "量子力學",
       "type": "wikilink"
     },
     {
@@ -40378,21 +40003,6 @@
     },
     {
       "source": "向量微積分總論",
-      "target": "格林定理",
-      "type": "related_to"
-    },
-    {
-      "source": "向量微積分總論",
-      "target": "斯托克斯定理",
-      "type": "related_to"
-    },
-    {
-      "source": "向量微積分總論",
-      "target": "高斯定理",
-      "type": "related_to"
-    },
-    {
-      "source": "向量微積分總論",
       "target": "高斯定律",
       "type": "uses"
     },
@@ -40413,11 +40023,6 @@
     },
     {
       "source": "向量微積分總論",
-      "target": "流體力學",
-      "type": "uses"
-    },
-    {
-      "source": "向量微積分總論",
       "target": "熱傳導",
       "type": "uses"
     },
@@ -40434,16 +40039,6 @@
     {
       "source": "向量微積分總論",
       "target": "法拉第定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "向量微積分總論",
-      "target": "馬克士威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "向量微積分總論",
-      "target": "流體力學",
       "type": "wikilink"
     },
     {
@@ -40688,21 +40283,6 @@
     },
     {
       "source": "張量",
-      "target": "電磁場張量",
-      "type": "uses"
-    },
-    {
-      "source": "張量",
-      "target": "彈性力學",
-      "type": "uses"
-    },
-    {
-      "source": "張量",
-      "target": "連續介質力學",
-      "type": "uses"
-    },
-    {
-      "source": "張量",
       "target": "應力",
       "type": "wikilink"
     },
@@ -40714,21 +40294,6 @@
     {
       "source": "張量",
       "target": "轉動慣量",
-      "type": "wikilink"
-    },
-    {
-      "source": "張量",
-      "target": "電磁場張量",
-      "type": "wikilink"
-    },
-    {
-      "source": "張量",
-      "target": "彈性力學",
-      "type": "wikilink"
-    },
-    {
-      "source": "張量",
-      "target": "連續介質力學",
       "type": "wikilink"
     },
     {
@@ -40783,11 +40348,6 @@
     },
     {
       "source": "微分方程",
-      "target": "格林函數",
-      "type": "related_to"
-    },
-    {
-      "source": "微分方程",
       "target": "牛頓第二定律",
       "type": "uses"
     },
@@ -40803,17 +40363,7 @@
     },
     {
       "source": "微分方程",
-      "target": "波動方程",
-      "type": "uses"
-    },
-    {
-      "source": "微分方程",
       "target": "熱傳導",
-      "type": "uses"
-    },
-    {
-      "source": "微分方程",
-      "target": "擴散",
       "type": "uses"
     },
     {
@@ -40843,22 +40393,12 @@
     },
     {
       "source": "微分方程",
-      "target": "波動方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "微分方程",
       "target": "熱傳導",
       "type": "wikilink"
     },
     {
       "source": "微分方程",
       "target": "薛丁格方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "微分方程",
-      "target": "馬克士威方程組",
       "type": "wikilink"
     },
     {
@@ -40879,11 +40419,6 @@
     {
       "source": "微分方程",
       "target": "泰勒展開",
-      "type": "wikilink"
-    },
-    {
-      "source": "微分方程",
-      "target": "格林函數",
       "type": "wikilink"
     },
     {
@@ -40918,17 +40453,7 @@
     },
     {
       "source": "指數函數",
-      "target": "放射性衰變",
-      "type": "uses"
-    },
-    {
-      "source": "指數函數",
       "target": "機械波",
-      "type": "uses"
-    },
-    {
-      "source": "指數函數",
-      "target": "波茲曼分布",
       "type": "uses"
     },
     {
@@ -40939,16 +40464,6 @@
     {
       "source": "指數函數",
       "target": "阻尼振動",
-      "type": "uses"
-    },
-    {
-      "source": "指數函數",
-      "target": "流體力學",
-      "type": "uses"
-    },
-    {
-      "source": "指數函數",
-      "target": "藥代動力學",
       "type": "uses"
     },
     {
@@ -40958,17 +40473,7 @@
     },
     {
       "source": "指數函數",
-      "target": "放射性衰變",
-      "type": "wikilink"
-    },
-    {
-      "source": "指數函數",
       "target": "機械波",
-      "type": "wikilink"
-    },
-    {
-      "source": "指數函數",
-      "target": "波茲曼分布",
       "type": "wikilink"
     },
     {
@@ -40979,16 +40484,6 @@
     {
       "source": "指數函數",
       "target": "阻尼振動",
-      "type": "wikilink"
-    },
-    {
-      "source": "指數函數",
-      "target": "流體力學",
-      "type": "wikilink"
-    },
-    {
-      "source": "指數函數",
-      "target": "藥代動力學",
       "type": "wikilink"
     },
     {
@@ -41523,17 +41018,7 @@
     },
     {
       "source": "泰勒展開",
-      "target": "微積分",
-      "type": "requires"
-    },
-    {
-      "source": "泰勒展開",
       "target": "導數",
-      "type": "related_to"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "級數",
       "type": "related_to"
     },
     {
@@ -41553,32 +41038,12 @@
     },
     {
       "source": "泰勒展開",
-      "target": "單擺",
-      "type": "uses"
-    },
-    {
-      "source": "泰勒展開",
       "target": "阻尼振動",
       "type": "uses"
     },
     {
       "source": "泰勒展開",
-      "target": "電偶極",
-      "type": "uses"
-    },
-    {
-      "source": "泰勒展開",
       "target": "狹義相對論",
-      "type": "uses"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "熱力學勢",
-      "type": "uses"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "誤差傳播",
       "type": "uses"
     },
     {
@@ -41588,27 +41053,7 @@
     },
     {
       "source": "泰勒展開",
-      "target": "單擺",
-      "type": "wikilink"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "電偶極",
-      "type": "wikilink"
-    },
-    {
-      "source": "泰勒展開",
       "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "熱力學勢",
-      "type": "wikilink"
-    },
-    {
-      "source": "泰勒展開",
-      "target": "誤差傳播",
       "type": "wikilink"
     },
     {
@@ -41913,67 +41358,12 @@
     },
     {
       "source": "線性代數總覽",
-      "target": "特徵值",
-      "type": "related_to"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "量子態",
-      "type": "related_to"
-    },
-    {
-      "source": "線性代數總覽",
       "target": "矩陣",
       "type": "uses"
     },
     {
       "source": "線性代數總覽",
-      "target": "量子力學",
-      "type": "uses"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "簡正模",
-      "type": "uses"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "電路分析",
-      "type": "uses"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "主成分分析",
-      "type": "uses"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "圖論",
-      "type": "uses"
-    },
-    {
-      "source": "線性代數總覽",
       "target": "矩陣",
-      "type": "wikilink"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "量子力學",
-      "type": "wikilink"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "簡正模",
-      "type": "wikilink"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "電路分析",
-      "type": "wikilink"
-    },
-    {
-      "source": "線性代數總覽",
-      "target": "主成分分析",
       "type": "wikilink"
     },
     {
@@ -42038,52 +41428,12 @@
     },
     {
       "source": "群論基礎",
-      "target": "粒子物理",
-      "type": "uses"
-    },
-    {
-      "source": "群論基礎",
-      "target": "晶體結構",
-      "type": "uses"
-    },
-    {
-      "source": "群論基礎",
-      "target": "角動量量子化",
-      "type": "uses"
-    },
-    {
-      "source": "群論基礎",
-      "target": "標準模型",
-      "type": "uses"
-    },
-    {
-      "source": "群論基礎",
       "target": "諾特定理",
       "type": "wikilink"
     },
     {
       "source": "群論基礎",
       "target": "諾特定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "群論基礎",
-      "target": "粒子物理",
-      "type": "wikilink"
-    },
-    {
-      "source": "群論基礎",
-      "target": "晶體結構",
-      "type": "wikilink"
-    },
-    {
-      "source": "群論基礎",
-      "target": "角動量量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "群論基礎",
-      "target": "標準模型",
       "type": "wikilink"
     },
     {
@@ -42113,11 +41463,6 @@
     },
     {
       "source": "自然對數",
-      "target": "微積分",
-      "type": "requires"
-    },
-    {
-      "source": "自然對數",
       "target": "指數函數",
       "type": "related_to"
     },
@@ -42128,17 +41473,7 @@
     },
     {
       "source": "自然對數",
-      "target": "波茲曼分布",
-      "type": "related_to"
-    },
-    {
-      "source": "自然對數",
       "target": "RC電路",
-      "type": "related_to"
-    },
-    {
-      "source": "自然對數",
-      "target": "放射性衰變",
       "type": "related_to"
     },
     {
@@ -42153,32 +41488,7 @@
     },
     {
       "source": "自然對數",
-      "target": "波茲曼分布",
-      "type": "uses"
-    },
-    {
-      "source": "自然對數",
       "target": "RC電路",
-      "type": "uses"
-    },
-    {
-      "source": "自然對數",
-      "target": "放射性衰變",
-      "type": "uses"
-    },
-    {
-      "source": "自然對數",
-      "target": "聲強",
-      "type": "uses"
-    },
-    {
-      "source": "自然對數",
-      "target": "電磁波吸收",
-      "type": "uses"
-    },
-    {
-      "source": "自然對數",
-      "target": "藥代動力學",
       "type": "uses"
     },
     {
@@ -42193,42 +41503,12 @@
     },
     {
       "source": "自然對數",
-      "target": "波茲曼分布",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
       "target": "RC電路",
       "type": "wikilink"
     },
     {
       "source": "自然對數",
-      "target": "放射性衰變",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
-      "target": "聲強",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
-      "target": "電磁波吸收",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
-      "target": "藥代動力學",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
       "target": "指數函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
-      "target": "微積分",
       "type": "wikilink"
     },
     {
@@ -42239,11 +41519,6 @@
     {
       "source": "自然對數",
       "target": "RC電路",
-      "type": "wikilink"
-    },
-    {
-      "source": "自然對數",
-      "target": "波茲曼分布",
       "type": "wikilink"
     },
     {
@@ -42438,21 +41713,11 @@
     },
     {
       "source": "變分法",
-      "target": "哈密頓力學",
-      "type": "related_to"
-    },
-    {
-      "source": "變分法",
       "target": "微分方程",
       "type": "related_to"
     },
     {
       "source": "變分法",
-      "target": "泛函分析",
-      "type": "related_to"
-    },
-    {
-      "source": "變分法",
       "target": "拉格朗日力學",
       "type": "uses"
     },
@@ -42463,42 +41728,12 @@
     },
     {
       "source": "變分法",
-      "target": "費馬原理",
-      "type": "uses"
-    },
-    {
-      "source": "變分法",
-      "target": "哈密頓力學",
-      "type": "uses"
-    },
-    {
-      "source": "變分法",
-      "target": "最佳控制理論",
-      "type": "uses"
-    },
-    {
-      "source": "變分法",
       "target": "拉格朗日力學",
       "type": "wikilink"
     },
     {
       "source": "變分法",
       "target": "最小作用量原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "變分法",
-      "target": "費馬原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "變分法",
-      "target": "哈密頓力學",
-      "type": "wikilink"
-    },
-    {
-      "source": "變分法",
-      "target": "最佳控制理論",
       "type": "wikilink"
     },
     {
@@ -42639,1691 +41874,6 @@
     {
       "source": "面積分",
       "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "光線模型",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "碰撞",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "邊界條件",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "波長",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "頻率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "狹義相對論",
-      "type": "explains"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "光線模型",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電流",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電阻",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電位差",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "直流電路",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電功率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電流",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電阻",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "歐姆定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電功率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "電位差",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_焦耳定律",
-      "target": "直流電路",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "碰撞",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "邊界條件",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "波長",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "頻率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "狹義相對論",
-      "type": "explains"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "場",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "向量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "通量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "磁場",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "電場",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "通量",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "安培定律",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "法拉第定律",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "法拉第定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "面積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "法拉第定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_electromagnetism_環流",
-      "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "碰撞",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量定理",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "彈性",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "應變",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "應力",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "楊氏模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "剪切模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "體積彈性模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "應變",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "應力",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "彈性",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_泊松比",
-      "target": "楊氏模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "光線模型",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "三角函數",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "惠更斯原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_斯涅爾定律",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "碰撞",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉動版牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_角動量定理",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "requires"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "邊界條件",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "波長",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "頻率",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "derives_to"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "狹義相對論",
-      "type": "explains"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "電磁波傳播",
-      "type": "wikilink"
-    },
-    {
-      "source": "01_laws_電磁波方程",
-      "target": "真空光速",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "requires"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "碰撞",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量定理",
-      "type": "related_to"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "向量",
-      "type": "formalized_by"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "衝量",
-      "type": "wikilink"
-    },
-    {
-      "source": "02_concepts_mechanics_角衝量",
-      "target": "角動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "坡印廷向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁場能量流",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_波印廷向量",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "related_to"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "電磁波方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "03_quantities_真空光速",
-      "target": "狹義相對論",
       "type": "wikilink"
     }
   ]

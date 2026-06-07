@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
 
@@ -25,6 +26,10 @@ RELATION_FIELDS = {
     "includes": "organized_by",
     "recommended_order": "requires",
 }
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO_ROOT / "tools"))
+from kb_paths import is_ignored_note_path
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
@@ -143,7 +148,7 @@ def extract_frontmatter_edges(node_id: str, frontmatter: dict, alias_to_id: dict
 def export_graph(vault: Path) -> dict:
     nodes = []
     edges = []
-    md_files = sorted(vault.rglob("*.md"))
+    md_files = sorted(file_path for file_path in vault.rglob("*.md") if not is_ignored_note_path(file_path, vault))
     notes, alias_to_id = build_note_index(md_files)
 
     for note in notes:

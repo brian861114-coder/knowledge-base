@@ -20,12 +20,17 @@ Do not confuse them.
 
 ## Current State
 
-The project is feature-complete for the physics knowledge base.
-The remaining work is operational: keep exports current after vault edits, keep `docs/` synchronized with `prototype/`, and keep the maintenance documents aligned with the real workflow.
+The project is back in a clean operational state after re-aligning the active vault and exported JSON.
+
+As of `2026-06-07`, the immediate priorities are:
+
+- keep exports current after future vault edits
+- keep `docs/` synchronized with `prototype/`
+- treat `_bak_*` directories as backups only; the toolchain now ignores them
 
 ### What's built
 
-- A structured physics encyclopedia with **319 notes, 6383 edges**
+- A structured physics encyclopedia whose active vault currently validates as **330 notes and 7473 edges**
 - **7 taxonomy domains**: mechanics, electromagnetism, waves_optics, foundations, thermo_fluids, modern_physics, analytical_dynamics
 - **6 note types**: map (15), law (52), concept (178), quantity (49), experiment (11), mathematical_tool (14)
 - Full bridge/method page layer connecting cross-topic concepts
@@ -68,20 +73,23 @@ The remaining work is operational: keep exports current after vault edits, keep 
 ### Validation status
 
 ```
-notes: 319
-note details: 319
-graph nodes: 319
-graph edges: 6383
+notes: 330
+note details: 330
+graph nodes: 330
+graph edges: 7473
 broken wikilinks: 0
 broken frontmatter relations: 0
 math issues: 0
+duplicate titles: 0
 ```
 
 ### What is still worth checking
 
+- The active vault path should be treated as whatever `.knowledge-base.local.json` and the validator resolve now, not whatever older docs used to say.
 - If vault content changes, rerun `python .\tools\run_exports.py` before trusting the JSON exports.
 - If frontend files change under `prototype/`, copy the matching deploy artifacts into `docs/` before publishing.
 - If local machine paths or startup assumptions change, update `README.md`, `MAINTENANCE.md`, and this file together.
+- If counts or "0 broken links" claims appear elsewhere in the repo, rerun validation before trusting them.
 
 ## How To Continue Safely
 

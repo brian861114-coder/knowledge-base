@@ -10184,26 +10184,6 @@
     },
     {
       "source": "反射定律",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律",
       "target": "光線模型",
       "type": "wikilink"
     },
@@ -10994,11 +10974,6 @@
     },
     {
       "source": "庫侖定律",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖定律",
       "target": "高斯定律",
       "type": "wikilink"
     },
@@ -11010,21 +10985,6 @@
     {
       "source": "庫侖定律",
       "target": "電位",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖定律",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖定律",
-      "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖定律",
-      "target": "場論觀點",
       "type": "wikilink"
     },
     {
@@ -11184,27 +11144,12 @@
     },
     {
       "source": "折射定律",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "折射定律",
-      "target": "惠更斯原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "折射定律",
       "target": "全反射",
       "type": "wikilink"
     },
     {
       "source": "折射定律",
       "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "折射定律",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -11674,16 +11619,6 @@
     },
     {
       "source": "機械能守恆",
-      "target": "非保守力",
-      "type": "wikilink"
-    },
-    {
-      "source": "機械能守恆",
-      "target": "保守力",
-      "type": "wikilink"
-    },
-    {
-      "source": "機械能守恆",
       "target": "功能定理",
       "type": "wikilink"
     },
@@ -11705,16 +11640,6 @@
     {
       "source": "機械能守恆",
       "target": "保守力",
-      "type": "wikilink"
-    },
-    {
-      "source": "機械能守恆",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "機械能守恆",
-      "target": "拉格朗日力學",
       "type": "wikilink"
     },
     {
@@ -11826,16 +11751,6 @@
       "source": "歐姆定律",
       "target": "法拉第定律",
       "type": "related_to"
-    },
-    {
-      "source": "歐姆定律",
-      "target": "電位差",
-      "type": "wikilink"
-    },
-    {
-      "source": "歐姆定律",
-      "target": "電流密度",
-      "type": "wikilink"
     },
     {
       "source": "歐姆定律",
@@ -12209,26 +12124,6 @@
     },
     {
       "source": "法拉第定律",
-      "target": "偏導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
-      "target": "磁通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
-      "target": "電動勢",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
-      "target": "磁通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
       "target": "電動勢",
       "type": "wikilink"
     },
@@ -12265,16 +12160,6 @@
     {
       "source": "法拉第定律",
       "target": "電動勢",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "法拉第定律",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -12649,11 +12534,6 @@
     },
     {
       "source": "熱力學第二定律",
-      "target": "可逆過程",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第二定律",
       "target": "不可逆過程",
       "type": "wikilink"
     },
@@ -12665,11 +12545,6 @@
     {
       "source": "熱力學第二定律",
       "target": "熱傳導",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第二定律",
-      "target": "統計物理",
       "type": "wikilink"
     },
     {
@@ -12789,11 +12664,6 @@
     },
     {
       "source": "熱力學第零定律",
-      "target": "熱平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
       "target": "溫度",
       "type": "wikilink"
     },
@@ -12824,17 +12694,7 @@
     },
     {
       "source": "熱力學第零定律",
-      "target": "熱平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
       "target": "統計物理",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱力學第零定律",
-      "target": "熱平衡",
       "type": "wikilink"
     },
     {
@@ -13014,11 +12874,6 @@
     },
     {
       "source": "牛頓第一定律",
-      "target": "狹義相對論",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第一定律",
       "target": "低摩擦滑車實驗",
       "type": "wikilink"
     },
@@ -13165,11 +13020,6 @@
     {
       "source": "牛頓第三定律",
       "target": "力",
-      "type": "wikilink"
-    },
-    {
-      "source": "牛頓第三定律",
-      "target": "場論觀點",
       "type": "wikilink"
     },
     {
@@ -13724,21 +13574,6 @@
     },
     {
       "source": "理想氣體方程式",
-      "target": "理想氣體",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "理想氣體",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "相互作用",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
       "target": "熱力學第一定律",
       "type": "wikilink"
     },
@@ -13750,21 +13585,6 @@
     {
       "source": "理想氣體方程式",
       "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "理想氣體",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "分子運動論",
       "type": "wikilink"
     },
     {
@@ -14259,11 +14079,6 @@
     },
     {
       "source": "虎克定律",
-      "target": "穩定平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "虎克定律",
       "target": "牛頓第二定律",
       "type": "wikilink"
     },
@@ -14344,11 +14159,6 @@
     },
     {
       "source": "角動量守恆",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量守恆",
       "target": "動量守恆",
       "type": "wikilink"
     },
@@ -14385,26 +14195,6 @@
     {
       "source": "角動量守恆",
       "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量守恆",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量守恆",
-      "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量守恆",
-      "target": "進動",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量守恆",
-      "target": "陀螺",
       "type": "wikilink"
     },
     {
@@ -14763,26 +14553,6 @@
       "type": "related_to"
     },
     {
-      "source": "轉動運動學方程",
-      "target": "定軸轉動運動學",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉動運動學方程",
-      "target": "角位移",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉動運動學方程",
-      "target": "角速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉動運動學方程",
-      "target": "角加速度",
-      "type": "wikilink"
-    },
-    {
       "source": "連續方程",
       "target": "密度",
       "type": "requires"
@@ -14879,37 +14649,12 @@
     },
     {
       "source": "連續方程",
-      "target": "守恆量",
-      "type": "wikilink"
-    },
-    {
-      "source": "連續方程",
-      "target": "電流密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "連續方程",
-      "target": "守恆律",
-      "type": "wikilink"
-    },
-    {
-      "source": "連續方程",
       "target": "守恆律",
       "type": "wikilink"
     },
     {
       "source": "連續方程",
       "target": "電流密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "連續方程",
-      "target": "守恆律",
-      "type": "wikilink"
-    },
-    {
-      "source": "連續方程",
-      "target": "場論觀點",
       "type": "wikilink"
     },
     {
@@ -15074,11 +14819,6 @@
     },
     {
       "source": "阿基米德原理",
-      "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "阿基米德原理",
       "target": "密度",
       "type": "wikilink"
     },
@@ -15120,16 +14860,6 @@
     {
       "source": "阿基米德原理",
       "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "阿基米德原理",
-      "target": "平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "阿基米德原理",
-      "target": "質心",
       "type": "wikilink"
     },
     {
@@ -15200,16 +14930,6 @@
     {
       "source": "電磁波方程",
       "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁波方程",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁波方程",
-      "target": "真空光速",
       "type": "wikilink"
     },
     {
@@ -15484,31 +15204,6 @@
     },
     {
       "source": "高斯定律",
-      "target": "電通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "高斯定律",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "高斯定律",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "高斯定律",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "高斯定律",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "高斯定律",
       "target": "電荷",
       "type": "wikilink"
     },
@@ -15684,21 +15379,6 @@
     },
     {
       "source": "麥克斯威方程組",
-      "target": "介電常數",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "電流密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "偏導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
       "target": "電磁波",
       "type": "wikilink"
     },
@@ -15730,16 +15410,6 @@
     {
       "source": "麥克斯威方程組",
       "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "位移電流",
       "type": "wikilink"
     },
     {
@@ -15845,11 +15515,6 @@
     {
       "source": "麥克斯威方程組",
       "target": "位移電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "麥克斯威方程組",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -16164,16 +15829,6 @@
     },
     {
       "source": "初始條件敏感性",
-      "target": "非線性系統",
-      "type": "wikilink"
-    },
-    {
-      "source": "初始條件敏感性",
-      "target": "相空間",
-      "type": "wikilink"
-    },
-    {
-      "source": "初始條件敏感性",
       "target": "混沌",
       "type": "wikilink"
     },
@@ -16361,11 +16016,6 @@
       "source": "哈密頓量",
       "target": "向量",
       "type": "formalized_by"
-    },
-    {
-      "source": "哈密頓量",
-      "target": "廣義座標",
-      "type": "wikilink"
     },
     {
       "source": "哈密頓量",
@@ -16709,21 +16359,6 @@
     },
     {
       "source": "拉格朗日力學",
-      "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "拉格朗日力學",
-      "target": "廣義座標",
-      "type": "wikilink"
-    },
-    {
-      "source": "拉格朗日力學",
-      "target": "作用量",
-      "type": "wikilink"
-    },
-    {
-      "source": "拉格朗日力學",
       "target": "對稱性",
       "type": "wikilink"
     },
@@ -16775,16 +16410,6 @@
     {
       "source": "拉格朗日力學",
       "target": "廣義座標",
-      "type": "wikilink"
-    },
-    {
-      "source": "拉格朗日量",
-      "target": "動能",
-      "type": "wikilink"
-    },
-    {
-      "source": "拉格朗日量",
-      "target": "位能",
       "type": "wikilink"
     },
     {
@@ -16855,21 +16480,6 @@
     {
       "source": "正則變換",
       "target": "相空間",
-      "type": "wikilink"
-    },
-    {
-      "source": "正則變換",
-      "target": "哈密頓方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "正則變換",
-      "target": "泊松括號",
-      "type": "wikilink"
-    },
-    {
-      "source": "正則變換",
-      "target": "守恆量",
       "type": "wikilink"
     },
     {
@@ -16951,11 +16561,6 @@
       "source": "泊松括號",
       "target": "向量",
       "type": "formalized_by"
-    },
-    {
-      "source": "泊松括號",
-      "target": "相空間",
-      "type": "wikilink"
     },
     {
       "source": "泊松括號",
@@ -17134,21 +16739,6 @@
     },
     {
       "source": "相圖",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "相圖",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "相圖",
-      "target": "相空間",
-      "type": "wikilink"
-    },
-    {
-      "source": "相圖",
       "target": "吸引子",
       "type": "wikilink"
     },
@@ -17201,11 +16791,6 @@
       "source": "相空間",
       "target": "矩陣",
       "type": "formalized_by"
-    },
-    {
-      "source": "相空間",
-      "target": "自由度",
-      "type": "wikilink"
     },
     {
       "source": "相空間",
@@ -17424,21 +17009,6 @@
     },
     {
       "source": "非線性系統",
-      "target": "相空間",
-      "type": "wikilink"
-    },
-    {
-      "source": "非線性系統",
-      "target": "矩陣",
-      "type": "wikilink"
-    },
-    {
-      "source": "非線性系統",
-      "target": "導數",
-      "type": "wikilink"
-    },
-    {
-      "source": "非線性系統",
       "target": "疊加原理",
       "type": "wikilink"
     },
@@ -17538,6 +17108,16 @@
       "type": "wikilink"
     },
     {
+      "source": "LC振盪電路",
+      "target": "LC振盪電路",
+      "type": "wikilink"
+    },
+    {
+      "source": "LC電路",
+      "target": "LC電路",
+      "type": "wikilink"
+    },
+    {
       "source": "RC電路",
       "target": "電阻",
       "type": "requires"
@@ -17594,21 +17174,6 @@
     },
     {
       "source": "RC電路",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "RC電路",
-      "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "RC電路",
-      "target": "電位差",
-      "type": "wikilink"
-    },
-    {
-      "source": "RC電路",
       "target": "電阻",
       "type": "wikilink"
     },
@@ -17645,6 +17210,11 @@
     {
       "source": "RC電路",
       "target": "電容抗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RLC-共振實驗",
+      "target": "RLC-共振實驗",
       "type": "wikilink"
     },
     {
@@ -17745,6 +17315,11 @@
     {
       "source": "RLC電路",
       "target": "RLC-共振實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "RL暫態響應實驗",
+      "target": "RL暫態響應實驗",
       "type": "wikilink"
     },
     {
@@ -17998,6 +17573,11 @@
       "type": "wikilink"
     },
     {
+      "source": "串並聯電路實驗",
+      "target": "串並聯電路實驗",
+      "type": "wikilink"
+    },
+    {
       "source": "串聯電路",
       "target": "直流電路",
       "type": "requires"
@@ -18205,6 +17785,11 @@
     {
       "source": "互感",
       "target": "電動勢",
+      "type": "wikilink"
+    },
+    {
+      "source": "互感係數",
+      "target": "互感係數",
       "type": "wikilink"
     },
     {
@@ -18665,6 +18250,11 @@
     {
       "source": "內電阻",
       "target": "電流",
+      "type": "wikilink"
+    },
+    {
+      "source": "共振頻率",
+      "target": "共振頻率",
       "type": "wikilink"
     },
     {
@@ -19229,22 +18819,17 @@
     },
     {
       "source": "庫侖常數",
-      "target": "真空電容率",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖常數",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "庫侖常數",
       "target": "電場強度",
       "type": "wikilink"
     },
     {
       "source": "庫侖常數",
       "target": "真空電容率",
+      "type": "wikilink"
+    },
+    {
+      "source": "極化",
+      "target": "極化",
       "type": "wikilink"
     },
     {
@@ -19413,6 +18998,11 @@
       "type": "wikilink"
     },
     {
+      "source": "畢奧-沙伐實驗",
+      "target": "畢奧-沙伐實驗",
+      "type": "wikilink"
+    },
+    {
       "source": "發電機原理",
       "target": "電磁感應",
       "type": "wikilink"
@@ -19504,21 +19094,6 @@
     },
     {
       "source": "直流電路",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "直流電路",
-      "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "直流電路",
-      "target": "電位差",
-      "type": "wikilink"
-    },
-    {
-      "source": "直流電路",
       "target": "電流",
       "type": "wikilink"
     },
@@ -19555,6 +19130,11 @@
     {
       "source": "直流電路",
       "target": "電位差",
+      "type": "wikilink"
+    },
+    {
+      "source": "真空電容率",
+      "target": "真空電容率",
       "type": "wikilink"
     },
     {
@@ -19749,11 +19329,6 @@
     },
     {
       "source": "磁場",
-      "target": "場論觀點",
-      "type": "wikilink"
-    },
-    {
-      "source": "磁場",
       "target": "法拉第定律",
       "type": "wikilink"
     },
@@ -19825,21 +19400,6 @@
     {
       "source": "等位面",
       "target": "靜電平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "等位面",
-      "target": "靜電平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "等位面",
-      "target": "拉普拉斯方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "等位面",
-      "target": "邊界條件",
       "type": "wikilink"
     },
     {
@@ -19940,16 +19500,6 @@
     {
       "source": "節點分析",
       "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "節點分析法",
-      "target": "基爾霍夫電流定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "節點分析法",
-      "target": "歐姆定律",
       "type": "wikilink"
     },
     {
@@ -20079,36 +19629,6 @@
     },
     {
       "source": "螺線管",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管",
-      "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管",
-      "target": "電磁鐵",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管",
-      "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管磁場",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "螺線管磁場",
       "target": "螺線管",
       "type": "wikilink"
     },
@@ -20224,27 +19744,7 @@
     },
     {
       "source": "趨膚效應",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "趨膚效應",
-      "target": "電導率",
-      "type": "wikilink"
-    },
-    {
-      "source": "趨膚效應",
-      "target": "交流電",
-      "type": "wikilink"
-    },
-    {
-      "source": "趨膚效應",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "趨膚效應",
-      "target": "電導率",
+      "target": "趨膚效應",
       "type": "wikilink"
     },
     {
@@ -20335,16 +19835,6 @@
     {
       "source": "迴路分析",
       "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "迴路分析法",
-      "target": "基爾霍夫電壓定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "迴路分析法",
-      "target": "歐姆定律",
       "type": "wikilink"
     },
     {
@@ -21013,6 +20503,11 @@
       "type": "wikilink"
     },
     {
+      "source": "電位移",
+      "target": "電位移",
+      "type": "wikilink"
+    },
+    {
       "source": "電位能",
       "target": "電位",
       "type": "requires"
@@ -21080,11 +20575,6 @@
     {
       "source": "電位能",
       "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電位能",
-      "target": "場論觀點",
       "type": "wikilink"
     },
     {
@@ -21394,16 +20884,6 @@
     },
     {
       "source": "電場",
-      "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場",
       "target": "庫侖定律",
       "type": "wikilink"
     },
@@ -21494,27 +20974,7 @@
     },
     {
       "source": "電場強度",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場強度",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場強度",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場強度",
-      "target": "庫侖定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場強度",
-      "target": "電位",
+      "target": "電場強度",
       "type": "wikilink"
     },
     {
@@ -21739,21 +21199,6 @@
     },
     {
       "source": "電場能量",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場能量",
-      "target": "電場能",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場能量",
-      "target": "電容器",
-      "type": "wikilink"
-    },
-    {
-      "source": "電場能量",
       "target": "電場能",
       "type": "wikilink"
     },
@@ -21809,27 +21254,12 @@
     },
     {
       "source": "電壓",
-      "target": "電位",
+      "target": "電壓",
       "type": "wikilink"
     },
     {
-      "source": "電壓",
-      "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電壓",
-      "target": "電位",
-      "type": "wikilink"
-    },
-    {
-      "source": "電壓",
-      "target": "歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電壓",
-      "target": "電流",
+      "source": "電容",
+      "target": "電容",
       "type": "wikilink"
     },
     {
@@ -21943,13 +21373,8 @@
       "type": "wikilink"
     },
     {
-      "source": "電導率",
-      "target": "電阻",
-      "type": "wikilink"
-    },
-    {
-      "source": "電導率",
-      "target": "局部歐姆定律",
+      "source": "電容率",
+      "target": "電容率",
       "type": "wikilink"
     },
     {
@@ -21965,6 +21390,11 @@
     {
       "source": "電導率",
       "target": "導體",
+      "type": "wikilink"
+    },
+    {
+      "source": "電極化率",
+      "target": "電極化率",
       "type": "wikilink"
     },
     {
@@ -22070,16 +21500,6 @@
     {
       "source": "電磁場能量流",
       "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁感應",
-      "target": "磁通量",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁感應",
-      "target": "法拉第定律",
       "type": "wikilink"
     },
     {
@@ -22404,47 +21824,12 @@
     },
     {
       "source": "電磁鐵",
-      "target": "安培定律",
+      "target": "電磁鐵",
       "type": "wikilink"
     },
     {
-      "source": "電磁鐵",
-      "target": "螺線管",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁鐵",
-      "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁鐵",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁鐵",
-      "target": "螺線管",
-      "type": "wikilink"
-    },
-    {
-      "source": "電磁鐵",
-      "target": "磁場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電路歐姆定律",
-      "target": "電壓",
-      "type": "wikilink"
-    },
-    {
-      "source": "電路歐姆定律",
-      "target": "電流",
-      "type": "wikilink"
-    },
-    {
-      "source": "電路歐姆定律",
-      "target": "電阻",
+      "source": "電路",
+      "target": "電路",
       "type": "wikilink"
     },
     {
@@ -22569,22 +21954,12 @@
     },
     {
       "source": "電通量",
-      "target": "高斯定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電通量",
       "target": "面積分",
       "type": "wikilink"
     },
     {
       "source": "電通量",
       "target": "電荷",
-      "type": "wikilink"
-    },
-    {
-      "source": "電通量",
-      "target": "高斯定律",
       "type": "wikilink"
     },
     {
@@ -22884,11 +22259,6 @@
     },
     {
       "source": "伽利略變換",
-      "target": "洛侖茲轉換",
-      "type": "wikilink"
-    },
-    {
-      "source": "伽利略變換",
       "target": "參考系",
       "type": "wikilink"
     },
@@ -22980,16 +22350,6 @@
     {
       "source": "位移",
       "target": "功",
-      "type": "wikilink"
-    },
-    {
-      "source": "位移",
-      "target": "牛頓第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "位移",
-      "target": "功能定理",
       "type": "wikilink"
     },
     {
@@ -23168,6 +22528,11 @@
       "type": "wikilink"
     },
     {
+      "source": "偏微分方程",
+      "target": "偏微分方程",
+      "type": "wikilink"
+    },
+    {
       "source": "力",
       "target": "向量",
       "type": "requires"
@@ -23245,11 +22610,6 @@
     {
       "source": "力",
       "target": "牛頓第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "力",
-      "target": "哈密頓量",
       "type": "wikilink"
     },
     {
@@ -23624,11 +22984,6 @@
     },
     {
       "source": "場",
-      "target": "場論觀點",
-      "type": "wikilink"
-    },
-    {
-      "source": "場",
       "target": "電場",
       "type": "wikilink"
     },
@@ -23909,11 +23264,6 @@
     },
     {
       "source": "守恆律",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "守恆律",
       "target": "對稱性",
       "type": "wikilink"
     },
@@ -23940,16 +23290,6 @@
     {
       "source": "守恆律",
       "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "守恆律",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "守恆律",
-      "target": "角動量守恆",
       "type": "wikilink"
     },
     {
@@ -24140,11 +23480,6 @@
     {
       "source": "對稱性",
       "target": "場論觀點",
-      "type": "wikilink"
-    },
-    {
-      "source": "對稱性",
-      "target": "質能等價",
       "type": "wikilink"
     },
     {
@@ -24364,11 +23699,6 @@
     },
     {
       "source": "慣性",
-      "target": "牛頓第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "慣性",
       "target": "慣性參考系",
       "type": "wikilink"
     },
@@ -24520,11 +23850,6 @@
     {
       "source": "暫態",
       "target": "RLC電路",
-      "type": "wikilink"
-    },
-    {
-      "source": "暫態",
-      "target": "穩態",
       "type": "wikilink"
     },
     {
@@ -24811,21 +24136,6 @@
       "source": "穩態",
       "target": "交流電",
       "type": "related_to"
-    },
-    {
-      "source": "穩態",
-      "target": "熱力學第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "穩態",
-      "target": "可逆過程",
-      "type": "wikilink"
-    },
-    {
-      "source": "穩態",
-      "target": "不可逆過程",
-      "type": "wikilink"
     },
     {
       "source": "穩態",
@@ -25354,11 +24664,6 @@
     },
     {
       "source": "保守力",
-      "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "保守力",
       "target": "位能",
       "type": "wikilink"
     },
@@ -25399,17 +24704,17 @@
     },
     {
       "source": "克卜勒問題",
-      "target": "中心力",
-      "type": "wikilink"
-    },
-    {
-      "source": "克卜勒問題",
-      "target": "有效位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "克卜勒問題",
       "target": "牛頓萬有引力定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "克卜勒軌道",
+      "target": "克卜勒軌道",
+      "type": "wikilink"
+    },
+    {
+      "source": "分子振動光譜",
+      "target": "分子振動光譜",
       "type": "wikilink"
     },
     {
@@ -25459,11 +24764,6 @@
     },
     {
       "source": "剛體",
-      "target": "彈性",
-      "type": "wikilink"
-    },
-    {
-      "source": "剛體",
       "target": "轉矩",
       "type": "wikilink"
     },
@@ -25510,21 +24810,6 @@
     {
       "source": "剛體",
       "target": "質心",
-      "type": "wikilink"
-    },
-    {
-      "source": "功率",
-      "target": "功",
-      "type": "wikilink"
-    },
-    {
-      "source": "功率",
-      "target": "能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "功率",
-      "target": "速度",
       "type": "wikilink"
     },
     {
@@ -25639,16 +24924,6 @@
     },
     {
       "source": "勢能井",
-      "target": "機械能守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "勢能井",
-      "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "勢能井",
       "target": "簡諧運動",
       "type": "wikilink"
     },
@@ -25670,6 +24945,16 @@
     {
       "source": "勢能井",
       "target": "簡諧運動",
+      "type": "wikilink"
+    },
+    {
+      "source": "卡文迪許實驗",
+      "target": "卡文迪許實驗",
+      "type": "wikilink"
+    },
+    {
+      "source": "單擺運動實驗",
+      "target": "單擺運動實驗",
       "type": "wikilink"
     },
     {
@@ -25853,6 +25138,16 @@
       "type": "wikilink"
     },
     {
+      "source": "廣義速度",
+      "target": "廣義速度",
+      "type": "wikilink"
+    },
+    {
+      "source": "引力位能",
+      "target": "引力位能",
+      "type": "wikilink"
+    },
+    {
       "source": "張力",
       "target": "力",
       "type": "requires"
@@ -26010,6 +25305,16 @@
     {
       "source": "彈性",
       "target": "剪切模數",
+      "type": "wikilink"
+    },
+    {
+      "source": "拉格朗日乘數",
+      "target": "拉格朗日乘數",
+      "type": "wikilink"
+    },
+    {
+      "source": "拉格朗日乘數法",
+      "target": "拉格朗日乘數法",
       "type": "wikilink"
     },
     {
@@ -26408,6 +25713,11 @@
       "type": "wikilink"
     },
     {
+      "source": "正則座標",
+      "target": "正則座標",
+      "type": "wikilink"
+    },
+    {
       "source": "滾動",
       "target": "滾動運動",
       "type": "requires"
@@ -26436,21 +25746,6 @@
       "source": "滾動",
       "target": "轉動版牛頓第二定律",
       "type": "related_to"
-    },
-    {
-      "source": "滾動",
-      "target": "摩擦力",
-      "type": "wikilink"
-    },
-    {
-      "source": "滾動",
-      "target": "摩擦力",
-      "type": "wikilink"
-    },
-    {
-      "source": "滾動",
-      "target": "滾動運動",
-      "type": "wikilink"
     },
     {
       "source": "滾動",
@@ -26613,16 +25908,6 @@
       "type": "wikilink"
     },
     {
-      "source": "物理擺",
-      "target": "轉動慣量",
-      "type": "wikilink"
-    },
-    {
-      "source": "物理擺",
-      "target": "平行軸定理",
-      "type": "wikilink"
-    },
-    {
       "source": "碰撞",
       "target": "動量",
       "type": "requires"
@@ -26769,26 +26054,6 @@
     },
     {
       "source": "碰撞分析",
-      "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞分析",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞分析",
-      "target": "動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞分析",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞分析",
       "target": "質心",
       "type": "wikilink"
     },
@@ -26799,22 +26064,7 @@
     },
     {
       "source": "碰撞理論",
-      "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞理論",
-      "target": "碰撞",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞理論",
-      "target": "碰撞",
-      "type": "wikilink"
-    },
-    {
-      "source": "碰撞理論",
-      "target": "動量守恆",
+      "target": "碰撞理論",
       "type": "wikilink"
     },
     {
@@ -26855,11 +26105,6 @@
     {
       "source": "章動",
       "target": "進動",
-      "type": "wikilink"
-    },
-    {
-      "source": "章動",
-      "target": "角動量守恆",
       "type": "wikilink"
     },
     {
@@ -26984,32 +26229,7 @@
     },
     {
       "source": "能量守恆",
-      "target": "動能",
-      "type": "wikilink"
-    },
-    {
-      "source": "能量守恆",
-      "target": "位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "能量守恆",
-      "target": "功",
-      "type": "wikilink"
-    },
-    {
-      "source": "能量守恆",
-      "target": "動能",
-      "type": "wikilink"
-    },
-    {
-      "source": "能量守恆",
-      "target": "位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "能量守恆",
-      "target": "諾特定理",
+      "target": "能量守恆",
       "type": "wikilink"
     },
     {
@@ -27120,16 +26340,6 @@
     {
       "source": "自由體圖",
       "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "自由體圖",
-      "target": "質量",
-      "type": "wikilink"
-    },
-    {
-      "source": "自由體圖",
-      "target": "加速度",
       "type": "wikilink"
     },
     {
@@ -27350,21 +26560,6 @@
     {
       "source": "角動量",
       "target": "角動量定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量",
-      "target": "對稱性",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量",
-      "target": "角動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "角動量",
-      "target": "對稱性",
       "type": "wikilink"
     },
     {
@@ -27865,16 +27060,6 @@
     {
       "source": "轉矩",
       "target": "圓周運動",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉矩",
-      "target": "角動量",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉矩",
-      "target": "角動量",
       "type": "wikilink"
     },
     {
@@ -28413,6 +27598,16 @@
       "type": "wikilink"
     },
     {
+      "source": "非完整系統",
+      "target": "非完整系統",
+      "type": "wikilink"
+    },
+    {
+      "source": "體積",
+      "target": "體積",
+      "type": "wikilink"
+    },
+    {
       "source": "光電效應",
       "target": "電磁波",
       "type": "requires"
@@ -28500,11 +27695,6 @@
     {
       "source": "光電效應",
       "target": "薛丁格方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "光電效應",
-      "target": "量子化",
       "type": "wikilink"
     },
     {
@@ -28794,11 +27984,6 @@
     },
     {
       "source": "德布羅意波",
-      "target": "本徵態",
-      "type": "wikilink"
-    },
-    {
-      "source": "德布羅意波",
       "target": "光電效應",
       "type": "wikilink"
     },
@@ -28840,11 +28025,6 @@
     {
       "source": "德布羅意波",
       "target": "波粒二象性",
-      "type": "wikilink"
-    },
-    {
-      "source": "德布羅意波",
-      "target": "薛丁格方程",
       "type": "wikilink"
     },
     {
@@ -28916,11 +28096,6 @@
       "source": "期望值",
       "target": "複數",
       "type": "formalized_by"
-    },
-    {
-      "source": "期望值",
-      "target": "可觀測量",
-      "type": "wikilink"
     },
     {
       "source": "期望值",
@@ -29105,11 +28280,6 @@
     {
       "source": "本徵態",
       "target": "量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "本徵態",
-      "target": "可觀測量",
       "type": "wikilink"
     },
     {
@@ -29704,11 +28874,6 @@
     },
     {
       "source": "狹義相對論",
-      "target": "麥克斯威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "狹義相對論",
       "target": "參考系",
       "type": "wikilink"
     },
@@ -30139,11 +29304,6 @@
     },
     {
       "source": "薛丁格方程",
-      "target": "機率振幅",
-      "type": "wikilink"
-    },
-    {
-      "source": "薛丁格方程",
       "target": "波函數",
       "type": "wikilink"
     },
@@ -30594,11 +29754,6 @@
     },
     {
       "source": "量子化",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "量子化",
       "target": "黑體輻射",
       "type": "wikilink"
     },
@@ -30859,11 +30014,6 @@
     },
     {
       "source": "黑體輻射",
-      "target": "量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "黑體輻射",
       "target": "熱平衡",
       "type": "wikilink"
     },
@@ -31109,11 +30259,6 @@
     },
     {
       "source": "內能",
-      "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "內能",
       "target": "理想氣體",
       "type": "wikilink"
     },
@@ -31135,16 +30280,6 @@
     {
       "source": "內能",
       "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "內能",
-      "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "內能",
-      "target": "統計物理",
       "type": "wikilink"
     },
     {
@@ -31423,11 +30558,6 @@
       "type": "wikilink"
     },
     {
-      "source": "卡諾循環",
-      "target": "熱力學第二定律",
-      "type": "wikilink"
-    },
-    {
       "source": "可逆過程",
       "target": "熱平衡",
       "type": "requires"
@@ -31823,43 +30953,18 @@
       "type": "wikilink"
     },
     {
-      "source": "流線",
-      "target": "流速",
+      "source": "氣體定律驗證實驗",
+      "target": "氣體定律驗證實驗",
       "type": "wikilink"
     },
     {
       "source": "流線",
-      "target": "伯努力方程",
+      "target": "流線",
       "type": "wikilink"
     },
     {
-      "source": "流線",
+      "source": "流速",
       "target": "流速",
-      "type": "wikilink"
-    },
-    {
-      "source": "流速",
-      "target": "速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "流速",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流速",
-      "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "流量測量",
-      "target": "流速",
-      "type": "wikilink"
-    },
-    {
-      "source": "流量測量",
-      "target": "連續方程",
       "type": "wikilink"
     },
     {
@@ -31955,11 +31060,6 @@
     {
       "source": "溫度",
       "target": "可逆過程",
-      "type": "wikilink"
-    },
-    {
-      "source": "溫度",
-      "target": "熱平衡",
       "type": "wikilink"
     },
     {
@@ -32248,6 +31348,11 @@
       "type": "wikilink"
     },
     {
+      "source": "熱力學",
+      "target": "熱力學",
+      "type": "wikilink"
+    },
+    {
       "source": "熱平衡",
       "target": "溫度",
       "type": "requires"
@@ -32429,22 +31534,7 @@
     },
     {
       "source": "熱膨脹",
-      "target": "溫度",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱膨脹",
-      "target": "熱",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱膨脹",
-      "target": "彈性",
-      "type": "wikilink"
-    },
-    {
-      "source": "熱膨脹",
-      "target": "彈性",
+      "target": "熱膨脹",
       "type": "wikilink"
     },
     {
@@ -32688,6 +31778,11 @@
       "type": "wikilink"
     },
     {
+      "source": "理想氣體熱力學",
+      "target": "理想氣體熱力學",
+      "type": "wikilink"
+    },
+    {
       "source": "理想流體近似",
       "target": "密度",
       "type": "requires"
@@ -32736,11 +31831,6 @@
       "source": "理想流體近似",
       "target": "連續方程",
       "type": "related_to"
-    },
-    {
-      "source": "理想流體近似",
-      "target": "伯努力方程",
-      "type": "wikilink"
     },
     {
       "source": "理想流體近似",
@@ -32889,11 +31979,6 @@
     },
     {
       "source": "等溫過程",
-      "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "等溫過程",
       "target": "熱力學第一定律",
       "type": "wikilink"
     },
@@ -33090,6 +32175,11 @@
     {
       "source": "絕熱過程",
       "target": "等溫過程",
+      "type": "wikilink"
+    },
+    {
+      "source": "統計力學",
+      "target": "統計力學",
       "type": "wikilink"
     },
     {
@@ -33353,28 +32443,18 @@
       "type": "wikilink"
     },
     {
-      "source": "飛機升力",
-      "target": "伯努力方程",
+      "source": "能量均分定理",
+      "target": "能量均分定理",
+      "type": "wikilink"
+    },
+    {
+      "source": "范德瓦耳斯方程",
+      "target": "范德瓦耳斯方程",
       "type": "wikilink"
     },
     {
       "source": "飛機升力",
-      "target": "流速",
-      "type": "wikilink"
-    },
-    {
-      "source": "飛機升力",
-      "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "飛機升力",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "飛機升力",
-      "target": "流線",
+      "target": "飛機升力",
       "type": "wikilink"
     },
     {
@@ -33674,27 +32754,7 @@
     },
     {
       "source": "光的波動說",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "光的波動說",
-      "target": "馬克士威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "光的波動說",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "光的波動說",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "光的波動說",
-      "target": "繞射",
+      "target": "光的波動說",
       "type": "wikilink"
     },
     {
@@ -33754,11 +32814,6 @@
     },
     {
       "source": "光線模型",
-      "target": "薄透鏡公式",
-      "type": "wikilink"
-    },
-    {
-      "source": "光線模型",
       "target": "邊界條件",
       "type": "wikilink"
     },
@@ -33785,16 +32840,6 @@
     {
       "source": "光線模型",
       "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "入射角",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "入射角",
-      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -33900,11 +32945,6 @@
     {
       "source": "全反射",
       "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "全反射",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -34158,31 +33198,6 @@
       "type": "wikilink"
     },
     {
-      "source": "反射",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射",
-      "target": "折射",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射",
-      "target": "全反射",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射角",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射角",
-      "target": "入射角",
-      "type": "wikilink"
-    },
-    {
       "source": "反射角",
       "target": "反射定律",
       "type": "wikilink"
@@ -34268,21 +33283,6 @@
       "type": "wikilink"
     },
     {
-      "source": "受迫振動",
-      "target": "頻率",
-      "type": "wikilink"
-    },
-    {
-      "source": "受迫振動",
-      "target": "相位",
-      "type": "wikilink"
-    },
-    {
-      "source": "受迫振動",
-      "target": "簡諧運動",
-      "type": "wikilink"
-    },
-    {
       "source": "單縫繞射",
       "target": "繞射",
       "type": "requires"
@@ -34301,36 +33301,6 @@
       "source": "單縫繞射",
       "target": "波長",
       "type": "related_to"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "繞射",
-      "type": "wikilink"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "波長",
-      "type": "wikilink"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "雙縫干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "雙縫干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "單縫繞射",
-      "target": "波長",
-      "type": "wikilink"
     },
     {
       "source": "單縫繞射",
@@ -34394,21 +33364,6 @@
     },
     {
       "source": "干涉",
-      "target": "波函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "干涉",
-      "target": "疊加原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "干涉",
-      "target": "可觀測量",
-      "type": "wikilink"
-    },
-    {
-      "source": "干涉",
       "target": "疊加原理",
       "type": "wikilink"
     },
@@ -34439,17 +33394,7 @@
     },
     {
       "source": "平面鏡成像",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "平面鏡成像",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "平面鏡成像",
-      "target": "球面鏡公式",
+      "target": "平面鏡成像",
       "type": "wikilink"
     },
     {
@@ -34505,16 +33450,6 @@
     {
       "source": "惠更斯原理",
       "target": "雙狹縫實驗",
-      "type": "wikilink"
-    },
-    {
-      "source": "惠更斯原理",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "惠更斯原理",
-      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -34665,6 +33600,11 @@
     {
       "source": "折射",
       "target": "折射率",
+      "type": "wikilink"
+    },
+    {
+      "source": "折射率量測實驗",
+      "target": "折射率量測實驗",
       "type": "wikilink"
     },
     {
@@ -35168,33 +34108,8 @@
       "type": "wikilink"
     },
     {
-      "source": "正常模態",
-      "target": "頻率",
-      "type": "wikilink"
-    },
-    {
-      "source": "正常模態",
-      "target": "模態",
-      "type": "wikilink"
-    },
-    {
-      "source": "正常模態",
-      "target": "共振",
-      "type": "wikilink"
-    },
-    {
       "source": "球面鏡公式",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "球面鏡公式",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "球面鏡公式",
-      "target": "透鏡公式",
+      "target": "球面鏡公式",
       "type": "wikilink"
     },
     {
@@ -35410,11 +34325,6 @@
     {
       "source": "相干性",
       "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "相干性",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -35519,11 +34429,6 @@
     },
     {
       "source": "簡諧運動",
-      "target": "穩定平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "簡諧運動",
       "target": "虎克定律",
       "type": "wikilink"
     },
@@ -35549,16 +34454,6 @@
     },
     {
       "source": "簡諧運動",
-      "target": "交流電",
-      "type": "wikilink"
-    },
-    {
-      "source": "簡諧運動",
-      "target": "正常模態",
-      "type": "wikilink"
-    },
-    {
-      "source": "簡諧運動",
       "target": "穩定平衡",
       "type": "wikilink"
     },
@@ -35645,11 +34540,6 @@
     {
       "source": "繞射",
       "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -35794,11 +34684,6 @@
     },
     {
       "source": "聲波",
-      "target": "理想氣體",
-      "type": "wikilink"
-    },
-    {
-      "source": "聲波",
       "target": "機械波",
       "type": "wikilink"
     },
@@ -35853,11 +34738,6 @@
       "type": "wikilink"
     },
     {
-      "source": "色散",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
       "source": "薄膜干涉",
       "target": "干涉",
       "type": "requires"
@@ -35890,21 +34770,6 @@
     {
       "source": "薄膜干涉",
       "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "薄膜干涉",
-      "target": "波長",
-      "type": "wikilink"
-    },
-    {
-      "source": "薄膜干涉",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "薄膜干涉",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -35989,11 +34854,6 @@
     },
     {
       "source": "解析度",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
       "target": "顯微鏡",
       "type": "wikilink"
     },
@@ -36025,16 +34885,6 @@
     {
       "source": "解析度",
       "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "費馬原理",
-      "target": "折射率",
-      "type": "wikilink"
-    },
-    {
-      "source": "費馬原理",
-      "target": "變分法",
       "type": "wikilink"
     },
     {
@@ -36050,11 +34900,6 @@
     {
       "source": "費馬原理",
       "target": "最小作用量原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "透鏡公式",
-      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -36259,11 +35104,6 @@
     },
     {
       "source": "雙縫干涉",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "雙縫干涉",
       "target": "干涉",
       "type": "wikilink"
     },
@@ -36360,16 +35200,6 @@
     {
       "source": "顯微鏡",
       "target": "偏振",
-      "type": "wikilink"
-    },
-    {
-      "source": "顯微鏡",
-      "target": "解析度",
-      "type": "wikilink"
-    },
-    {
-      "source": "顯微鏡",
-      "target": "解析度",
       "type": "wikilink"
     },
     {
@@ -36450,16 +35280,6 @@
     {
       "source": "駐波",
       "target": "共振",
-      "type": "wikilink"
-    },
-    {
-      "source": "駐波",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "駐波",
-      "target": "邊界條件",
       "type": "wikilink"
     },
     {
@@ -36570,16 +35390,6 @@
     {
       "source": "剪應力",
       "target": "剪切模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "剪應力",
-      "target": "剪切模數",
-      "type": "wikilink"
-    },
-    {
-      "source": "剪應力",
-      "target": "彈性",
       "type": "wikilink"
     },
     {
@@ -36680,11 +35490,6 @@
     {
       "source": "動量",
       "target": "動量守恆",
-      "type": "wikilink"
-    },
-    {
-      "source": "動量",
-      "target": "對稱性",
       "type": "wikilink"
     },
     {
@@ -37054,17 +35859,7 @@
     },
     {
       "source": "應變",
-      "target": "彈性",
-      "type": "wikilink"
-    },
-    {
-      "source": "應變",
-      "target": "應力",
-      "type": "wikilink"
-    },
-    {
-      "source": "應變",
-      "target": "虎克定律",
+      "target": "應變",
       "type": "wikilink"
     },
     {
@@ -37090,11 +35885,6 @@
     {
       "source": "折射率",
       "target": "薄膜干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "折射率",
-      "target": "電磁波",
       "type": "wikilink"
     },
     {
@@ -37659,11 +36449,6 @@
     },
     {
       "source": "角位移",
-      "target": "定軸轉動運動學",
-      "type": "wikilink"
-    },
-    {
-      "source": "角位移",
       "target": "角速度",
       "type": "wikilink"
     },
@@ -37684,12 +36469,7 @@
     },
     {
       "source": "角加速度",
-      "target": "角速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "角加速度",
-      "target": "轉動慣量",
+      "target": "角加速度",
       "type": "wikilink"
     },
     {
@@ -38094,16 +36874,6 @@
     },
     {
       "source": "雷諾數",
-      "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "雷諾數",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "雷諾數",
       "target": "層流",
       "type": "wikilink"
     },
@@ -38235,11 +37005,6 @@
     {
       "source": "電偶極矩",
       "target": "電場",
-      "type": "wikilink"
-    },
-    {
-      "source": "電偶極矩",
-      "target": "疊加原理",
       "type": "wikilink"
     },
     {
@@ -38534,6 +37299,21 @@
     },
     {
       "source": "電導率與電阻率",
+      "target": "局部歐姆定律",
+      "type": "wikilink"
+    },
+    {
+      "source": "電導率與電阻率",
+      "target": "電場",
+      "type": "wikilink"
+    },
+    {
+      "source": "電導率與電阻率",
+      "target": "電流密度",
+      "type": "wikilink"
+    },
+    {
+      "source": "電導率與電阻率",
       "target": "電阻",
       "type": "wikilink"
     },
@@ -38709,11 +37489,6 @@
     },
     {
       "source": "電流",
-      "target": "守恆律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電流",
       "target": "電荷",
       "type": "wikilink"
     },
@@ -38810,11 +37585,6 @@
     {
       "source": "電流密度",
       "target": "連續方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "電流密度",
-      "target": "守恆律",
       "type": "wikilink"
     },
     {
@@ -39144,17 +37914,7 @@
     },
     {
       "source": "體積彈性模數",
-      "target": "彈性",
-      "type": "wikilink"
-    },
-    {
-      "source": "體積彈性模數",
-      "target": "壓力",
-      "type": "wikilink"
-    },
-    {
-      "source": "體積彈性模數",
-      "target": "體應變",
+      "target": "體積彈性模數",
       "type": "wikilink"
     },
     {
@@ -39408,26 +38168,6 @@
       "type": "wikilink"
     },
     {
-      "source": "功能定理驗證實驗",
-      "target": "功能定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "功能定理驗證實驗",
-      "target": "動能",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律驗證實驗",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "反射定律驗證實驗",
-      "target": "費馬原理",
-      "type": "wikilink"
-    },
-    {
       "source": "天平",
       "target": "密度",
       "type": "related_to"
@@ -39465,31 +38205,6 @@
     {
       "source": "天平",
       "target": "密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "天平",
-      "target": "質量",
-      "type": "wikilink"
-    },
-    {
-      "source": "天平",
-      "target": "密度",
-      "type": "wikilink"
-    },
-    {
-      "source": "天平",
-      "target": "平衡",
-      "type": "wikilink"
-    },
-    {
-      "source": "安培力實驗",
-      "target": "安培定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "安培力實驗",
-      "target": "磁力",
       "type": "wikilink"
     },
     {
@@ -39713,21 +38428,6 @@
       "type": "wikilink"
     },
     {
-      "source": "打點計時器",
-      "target": "位移",
-      "type": "wikilink"
-    },
-    {
-      "source": "打點計時器",
-      "target": "速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "打點計時器",
-      "target": "加速度",
-      "type": "wikilink"
-    },
-    {
       "source": "扭秤實驗",
       "target": "萬有引力定律",
       "type": "related_to"
@@ -39800,26 +38500,6 @@
     {
       "source": "扭秤實驗",
       "target": "轉矩",
-      "type": "wikilink"
-    },
-    {
-      "source": "文丘里管實驗",
-      "target": "伯努力方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "文丘里管實驗",
-      "target": "流速",
-      "type": "wikilink"
-    },
-    {
-      "source": "氣墊軌道碰撞實驗",
-      "target": "碰撞",
-      "type": "wikilink"
-    },
-    {
-      "source": "氣墊軌道碰撞實驗",
-      "target": "動量守恆",
       "type": "wikilink"
     },
     {
@@ -39973,36 +38653,6 @@
       "type": "wikilink"
     },
     {
-      "source": "相空間軌跡模擬",
-      "target": "相空間",
-      "type": "wikilink"
-    },
-    {
-      "source": "相空間軌跡模擬",
-      "target": "吸引子",
-      "type": "wikilink"
-    },
-    {
-      "source": "赫茲電磁波實驗",
-      "target": "電磁波傳播",
-      "type": "wikilink"
-    },
-    {
-      "source": "赫茲電磁波實驗",
-      "target": "馬克士威方程組",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉動慣量量測實驗",
-      "target": "轉動慣量",
-      "type": "wikilink"
-    },
-    {
-      "source": "轉動慣量量測實驗",
-      "target": "平行軸定理",
-      "type": "wikilink"
-    },
-    {
       "source": "運動感測器",
       "target": "簡諧運動",
       "type": "related_to"
@@ -40060,21 +38710,6 @@
     {
       "source": "運動感測器",
       "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "運動感測器",
-      "target": "速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "運動感測器",
-      "target": "加速度",
-      "type": "wikilink"
-    },
-    {
-      "source": "運動感測器",
-      "target": "簡諧運動",
       "type": "wikilink"
     },
     {
@@ -40160,36 +38795,6 @@
     {
       "source": "雙狹縫實驗",
       "target": "德布羅意波",
-      "type": "wikilink"
-    },
-    {
-      "source": "電導率量測實驗",
-      "target": "局部歐姆定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電導率量測實驗",
-      "target": "電導率",
-      "type": "wikilink"
-    },
-    {
-      "source": "電路驗證實驗",
-      "target": "基爾霍夫電流定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "電路驗證實驗",
-      "target": "基爾霍夫電壓定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "靜電場模擬實驗",
-      "target": "唯一性定理",
-      "type": "wikilink"
-    },
-    {
-      "source": "靜電場模擬實驗",
-      "target": "高斯定律",
       "type": "wikilink"
     },
     {

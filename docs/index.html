@@ -129,27 +129,6 @@
     </main>
   </div>
 
-  <button id="backToTop" class="back-to-top" type="button" aria-label="回到最上方" title="回到最上方">↑</button>
   <script src="./app.js" type="module"></script>
-  <script>
-    (() => {
-      const btn = document.getElementById('backToTop');
-      const scrollTarget = document.scrollingElement || document.documentElement;
-      let ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            btn.classList.toggle('is-visible', scrollTarget.scrollTop > 300);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }
-      document.addEventListener('scroll', onScroll, { passive: true });
-      btn.addEventListener('click', () => {
-        scrollTarget.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    })();
-  </script>
 </body>
 </html>

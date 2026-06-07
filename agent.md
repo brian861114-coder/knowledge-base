@@ -204,41 +204,99 @@ That matters because it proves at least one thing:
 
 Never trust README path examples without checking `.knowledge-base.local.json` or `KB_VAULT_PATH`.
 
-## 7. Verified current state in this session
+## 7. Current Project Status (as of 2026-06-07)
 
-The validator was run directly with the configured Python runtime:
+### Validation Snapshot
 
-```powershell
-& 'C:\Users\brian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' .\tools\validate_knowledge_base.py
-```
+vault: 355 notes (excluding _bak_ backup directory), 7423 graph edges
+0 broken wikilinks, 0 broken relations, 0 math issues, 0 duplicate titles
 
-Result: validation passed after two cleanup changes:
+### Content Quality Audit (10 Rules)
 
-- `_bak_*` backup directories are now ignored by the export and validation pipeline
-- broken links and broken frontmatter relations in the affected `05_mathematical_tools/` notes were cleaned up
+10-rule content quality audit performed on 2026-06-07. Rules: (1) No "不是A而是B", (2) Definition-first summary, (3) Concrete history, (4) Multi-aspect intuition, (5) Complete symbols, (6) Derivation with formulas, (7) Modern theory, (8) All sections substantive, (9) Wikilinks exist, (10) Related links grouped.
 
-Observed summary:
+**Pass rate: 234/355 (65%)** — up from 56/355 (15%) at start of session.
 
-Active validator path on `2026-06-07`:
+| Score | Count | Description |
+|-------|-------|-------------|
+| 0 (pass) | 234 | All 10 rules satisfied |
+| 1 | 0 | Single failure — cleared |
+| 2 | 0 | Double failure — cleared |
+| 3 | 77 | Triple failure (mostly 直覺+推導+符號) |
+| 4 | 32 | Quadruple failure |
+| 5 | 12 | Five failures |
 
-`C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
+Remaining 121 notes fail on:
+- 直覺 (物理直覺 < 100 chars): 92 notes
+- 推導 (no LaTeX or < 80 chars): 75 notes
+- 符號 (no table or no $): 36 notes
+- 現代理論 (generic template): 12 notes
+- 歷史 (no names/dates): 1 note
 
-- vault: `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
-- notes: `330`
-- note details: `330`
-- graph nodes: `330`
-- graph edges: `7473`
-- missing required fields: `0`
-- broken wikilinks: `0`
-- broken frontmatter relations: `0`
-- math issues: `0`
-- duplicate titles: `0`
+### Content Rewrite Progress (2026-06-07 session)
 
-Implications:
+| Batch | Notes | Scope | Status |
+|-------|-------|-------|--------|
+| Score-6 rewrite | 8 notes | Full rewrite (波粒二象性, 離散能階, 偏振, 共振, 散射, 繞射, 解析度, 密度) | ✅ Done |
+| 不是A而是B cleanup | 208 instances across 95 files | All instances removed | ✅ Done |
+| 現代理論 (domain-specific) | 206 notes | Replaced template text with specific content | ✅ Done |
+| 歷史背景 (domain-specific) | 204 notes | Added specific names/dates by domain | ✅ Done |
+| 符號表 (auto-extract) | 145 notes | Extracted symbols from formulas | ✅ Done |
+| 推導 (manual) | 76 notes | Wrote specific derivations with LaTeX | ✅ Done |
+| 物理直覺 (manual) | 15 notes | Wrote mechanism+analogy+blind spots | ✅ Done |
+| Remaining | 121 notes | Mostly 直覺+推導 | In progress |
 
-- the active vault and exported JSON are currently aligned again
-- `_bak_*` folders exist inside the vault tree but are intentionally treated as backup data, not live notes
-- future status claims should still be treated as stale unless validation has just been rerun
+### Key Lesson
+
+Automated scripts can fix structural issues (template removal, section stubs, symbol extraction) but CANNOT generate actual physics content (formulas, historical figures, multi-aspect intuition). Content quality requires per-note domain knowledge writing.
+
+### Standard Section Structure by Note Type
+
+All new pages MUST follow these section standards. Existing pages will be migrated in phases.
+
+| Type | Standard Section Order |
+|------|-----------------------|
+| **concept** | 概念摘要 → 嚴格定義 → **先備知識** → 核心公式 → 符號說明與單位 → 物理直覺 → 物理意義 → 推導 → 典型應用 → 常見誤解 → 歷史背景 → 現代理論視角 → 相關連結(含相關概念/物理量/實驗/衍生結果) |
+| **law** | 定律摘要 → 數學表述 → 符號說明與單位 → 物理直覺 → 物理意義 → 推導 → 適用條件 → 典型應用 → 常見誤解 → 歷史背景 → 現代理論視角 → 相關連結(含相關概念/物理量/實驗/衍生結果) |
+| **quantity** | 定義 → 數學表達 → 符號與單位 → 維度與量綱 → 物理直覺 → 物理意義 → 量測方式 → 出現於哪些定律 → 歷史背景 → 相關連結(含相關概念/物理量/實驗) |
+| **mathematical_tool** | 工具摘要 → 數學定義 → 幾何意義 → 為什麼物理需要它 → 在哪些主題中出現 → 典型操作 → 解題框架 → 物理直覺 → 歷史背景 → 常見誤解 → 相關工具 → 進一步視角 |
+| **experiment** | 實驗摘要 → 問題背景 → 裝置與方法 → 可觀測量 → 實驗結果 → 誤差與限制 → 物理直覺 → 歷史背景 → 歷史影響 → 相關概念 → 延伸價值 |
+| **map** | 地圖摘要 → 主要主題 → 關鍵概念 → 關鍵定律 → 典型問題類型 → 建議學習順序 → 先備知識 → 與其他領域的橋接 → 延伸方向 |
+
+### Renaming Rules (for migration)
+
+| Type | Old Name(s) | Standard Name |
+|------|-------------|---------------|
+| concept | 核心想法 | → 概念摘要 |
+| concept/law/quantity | 物理解讀 | → merge into 物理直覺 |
+| concept | 它在衡量什麼 / 這個概念在衡量什麼 | → 物理意義 |
+| concept | 先備與延伸連結 / 先備知識與延伸 | → 先備知識 |
+| concept/law | 與延伸定理的連接 / 與上下游概念的連接 | → 相關連結 |
+| law | 敘述 | → 定律摘要 |
+| law | 推導思路 / 逐步數學推導 | → 推導 |
+| quantity | 物理量摘要 / 為什麼需要這個物理量 / 這個物理量在衡量什麼 | → 定義 |
+| quantity | 數學表述 | → 數學表達 |
+| concept/law | 進一步視角 | → 現代理論視角 |
+| quantity | 出現於哪些定律 / 與下游定律的連接 | → 出現於哪些定律 |
+| all | 和既有節點的關係 / 同域參考 / 與某某的連接 | → 相關連結 |
+
+### Content Quality Rules
+
+1. **No "不是A而是B" pattern** — Direct definition first, not negation then assertion.
+2. **物理解讀 merged into 物理直覺** — Single rich intuition section instead of two thin ones.
+3. **Definition-first summaries** — State what it is, then where it's used.
+4. **Historical background must be concrete** — Include specific people, dates, experiments.
+5. **Physics intuition must be multi-aspect** — Mechanism, analogy, and common blind spots.
+6. **符號說明與單位 required** for any note containing formulas — Every variable must have name and SI unit.
+7. **推導 required** — Even a brief derivation chain. Not just a statement of the formula.
+8. **現代理論視角** for concept and law — How this concept is extended or reinterpreted in modern physics.
+
+### Known Content Issues
+
+1. **Section structure inconsistency** — Different note types (law, concept, quantity, mathematical_tool) use different section names. Many concept notes have 核心想法/概念摘要/物理解讀 overlapping sections. Laws lack standardized structure.
+2. **Formula completeness** — Many formulas presented without derivation steps, symbol explanations, or SI units. Mathematical_tool type needs: 定義→公式→推導→物理意義.
+3. **Missing 符號說明 in many notes** — Variables used in formulas are not listed with their meanings and units.
+4. **Review HTML accessibility snapshot** may show incomplete content due to `<div class="diff-*">` wrappers. Actual content is present — verify with `innerText` in console.
 
 ## 8. How to think about `tools/`
 
@@ -315,6 +373,13 @@ If you only touch main-project files, stage explicitly.
 - Edit the external vault Markdown, not `physics_note_details.json`.
 - Then run `tools/run_exports.py`.
 - Then inspect validator output.
+
+### If the task is to continue the Wikipedia-assisted cleanup flow
+
+- Use `tmp/review_sessions/wiki-pilot-20260607-120602/review.html` as the primary review artifact.
+- Do not assume the local review server is stable.
+- The current blocker is not candidate generation.
+- The current blocker is the final reviewed-change import/apply step.
 
 ### If the task is graph behavior or relation correctness
 

@@ -90,7 +90,7 @@
       "id": "數學工具總覽",
       "title": "數學工具總覽",
       "type": "map",
-      "summary": "這一區不是數學百科，而是整理哪些數學工具在普通物理裡最常用、各自拿來處理什麼問題。",
+      "summary": "這一區整理哪些數學工具在普通物理裡最常用、各自拿來處理什麼問題。",
       "path": "00_maps/數學工具總覽.md",
       "domain": "",
       "taxonomy_domain": "foundations",
@@ -147,7 +147,7 @@
       "id": "物理基礎概念總覽",
       "title": "物理基礎概念總覽",
       "type": "map",
-      "summary": "物理的基礎概念不是入門廢話，而是所有領域共享的語言：參考系、力、能量、場、守恆與平衡。",
+      "summary": "物理的基礎概念所有領域共享的語言：參考系、力、能量、場、守恆與平衡。",
       "path": "00_maps/物理基礎概念總覽.md",
       "domain": "",
       "taxonomy_domain": "foundations",
@@ -1962,7 +1962,7 @@
       "id": "電容器",
       "title": "電容器",
       "type": "concept",
-      "summary": "電容器是用來儲存電荷與能量的裝置，其核心不是元件外觀，而是電荷、位差與場能之間的關係。",
+      "summary": "電容器是用來儲存電荷與能量的裝置，其核心電荷、位差與場能之間的關係。",
       "path": "02_concepts/electromagnetism/電容器.md",
       "domain": "電磁學",
       "taxonomy_domain": "electromagnetism",
@@ -3292,7 +3292,7 @@
       "id": "波粒二象性",
       "title": "波粒二象性",
       "type": "concept",
-      "summary": "波粒二象性指出微觀對象不能只用純粒子或純波的單一圖像描述，而要依實驗與可觀測量選擇合適語言。",
+      "summary": "波粒二象性指出微觀對象在不同實驗安排下會呈現波動式或粒子式的可觀測特徵，這一性質由光電效應與干涉實驗共同逼出，是量子力學的基本出發點。",
       "path": "02_concepts/modern_physics/波粒二象性.md",
       "domain": "近代物理",
       "taxonomy_domain": "modern_physics",
@@ -3383,7 +3383,7 @@
       "id": "離散能階",
       "title": "離散能階",
       "type": "concept",
-      "summary": "離散能階表示某些束縛系統的能量只能取一組離散值，而不是連續變化，這是量子化最直觀的結果之一。",
+      "summary": "離散能階是指束縛態量子系統的能量只能取一組特定的離散值，這是薛丁格方程在束縛邊界條件下求解本徵值問題的直接結果。",
       "path": "02_concepts/modern_physics/離散能階.md",
       "domain": "近代物理",
       "taxonomy_domain": "modern_physics",
@@ -3844,7 +3844,7 @@
       "id": "偏振",
       "title": "偏振",
       "type": "concept",
-      "summary": "偏振描述橫波振動方向的結構，是理解光的波動性與電磁場方向性的關鍵概念。",
+      "summary": "偏振描述橫波的電場向量在垂直於傳播方向的平面上隨時間變化的軌跡，分為線偏振、圓偏振和橢圓偏振三種基本類型，是光學和電磁學的核心概念。",
       "path": "02_concepts/waves_optics/偏振.md",
       "domain": "光學",
       "taxonomy_domain": "waves_optics",
@@ -3909,7 +3909,7 @@
       "id": "共振",
       "title": "共振",
       "type": "concept",
-      "summary": "共振描述系統對接近固有頻率的驅動特別敏感，使振幅或能量吸收出現峰值的現象。",
+      "summary": "共振是當外部驅動頻率接近系統固有頻率時，系統穩態響應振幅或能量吸收出現峰值的現象，由受迫阻尼振動的頻率響應特性決定。",
       "path": "02_concepts/waves_optics/共振.md",
       "domain": "振動與波動",
       "taxonomy_domain": "waves_optics",
@@ -4056,7 +4056,7 @@
       "id": "散射",
       "title": "散射",
       "type": "concept",
-      "summary": "散射研究粒子或波遇到位能、介質或目標後如何改變傳播方向與振幅，是把相互作用模型接到可測截面與穿透結果的橋接頁。",
+      "summary": "散射是入射波或粒子遇到位能、介質或目標後，傳播方向、振幅或能量分布發生改變的過程，用散射截面和角分布描述可觀測結果。",
       "path": "02_concepts/waves_optics/散射.md",
       "domain": "振動與波動",
       "taxonomy_domain": "waves_optics",
@@ -4162,7 +4162,7 @@
       "id": "繞射",
       "title": "繞射",
       "type": "concept",
-      "summary": "繞射描述波遇到孔徑、障礙或邊界時的展開與角分布，是從波動幾何走向成像極限與解析度判準的關鍵橋接頁。",
+      "summary": "繞射是波通過孔徑或繞過障礙物時，因不同路徑的相位差而導致傳播方向展開和強度重新分布的現象，是波動光學的基本效應。",
       "path": "02_concepts/waves_optics/繞射.md",
       "domain": "光學",
       "taxonomy_domain": "waves_optics",
@@ -4215,7 +4215,7 @@
       "id": "解析度",
       "title": "解析度",
       "type": "concept",
-      "summary": "解析度衡量成像系統能否把彼此接近的細節分辨開來，是把繞射、孔徑與顯微鏡性能統一起來的判準頁。",
+      "summary": "解析度是成像系統區分兩個相鄰物點的能力，由繞射極限設定理論上限，用 Rayleigh 判準或 Sparrow 判準量化。",
       "path": "02_concepts/waves_optics/解析度.md",
       "domain": "光學",
       "taxonomy_domain": "waves_optics",
@@ -4419,7 +4419,7 @@
       "id": "密度",
       "title": "密度",
       "type": "quantity",
-      "summary": "密度描述單位體積內包含多少質量，是流體、材料與連續介質建模的基本量。",
+      "summary": "密度是單位體積內所含的質量，是描述物質緊密程度的基本物理量，廣泛用於流體力學、材料科學和熱力學。",
       "path": "03_quantities/密度.md",
       "domain": "流體力學",
       "taxonomy_domain": "thermo_fluids",
@@ -5301,7 +5301,7 @@
       "id": "δ函數",
       "title": "δ函數",
       "type": "mathematical_tool",
-      "summary": "δ函數不是傳統意義上的函數，而是一種「在單點集中全部貢獻」的分布，用來描述點電荷、點質量、瞬時脈衝、單位源——將離散系統用連續語言處理的橋樑。",
+      "summary": "δ函數一種「在單點集中全部貢獻」的分布，用來描述點電荷、點質量、瞬時脈衝、單位源——將離散系統用連續語言處理的橋樑。",
       "path": "05_mathematical_tools/δ函數.md",
       "domain": "",
       "taxonomy_domain": "foundations",
@@ -13560,11 +13560,6 @@
     {
       "source": "理想氣體方程式",
       "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "理想氣體方程式",
-      "target": "理想氣體",
       "type": "wikilink"
     },
     {
@@ -26329,21 +26324,6 @@
     },
     {
       "source": "自由體圖",
-      "target": "牛頓第一定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "自由體圖",
-      "target": "牛頓第二定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "自由體圖",
-      "target": "牛頓第三定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "自由體圖",
       "target": "重力",
       "type": "wikilink"
     },
@@ -28589,17 +28569,7 @@
     },
     {
       "source": "波粒二象性",
-      "target": "光電效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "德布羅意波",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "雙狹縫實驗",
+      "target": "薛丁格方程",
       "type": "wikilink"
     },
     {
@@ -28649,37 +28619,12 @@
     },
     {
       "source": "波粒二象性",
-      "target": "複數",
+      "target": "能量",
       "type": "wikilink"
     },
     {
       "source": "波粒二象性",
-      "target": "光電效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "雙狹縫實驗",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "光電效應",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "雙狹縫實驗",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "德布羅意波",
-      "type": "wikilink"
-    },
-    {
-      "source": "波粒二象性",
-      "target": "薛丁格方程",
+      "target": "動量",
       "type": "wikilink"
     },
     {
@@ -29779,21 +29724,6 @@
     },
     {
       "source": "離散能階",
-      "target": "能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "本徵態",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
       "target": "量子化",
       "type": "wikilink"
     },
@@ -29809,7 +29739,7 @@
     },
     {
       "source": "離散能階",
-      "target": "能量",
+      "target": "勢能井",
       "type": "wikilink"
     },
     {
@@ -29829,37 +29759,12 @@
     },
     {
       "source": "離散能階",
-      "target": "矩陣",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "連續譜",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
       "target": "薛丁格方程",
       "type": "wikilink"
     },
     {
       "source": "離散能階",
-      "target": "量子化",
-      "type": "wikilink"
-    },
-    {
-      "source": "離散能階",
-      "target": "勢能井",
+      "target": "能量",
       "type": "wikilink"
     },
     {
@@ -32474,11 +32379,6 @@
     },
     {
       "source": "黏滯力",
-      "target": "摩擦力",
-      "type": "wikilink"
-    },
-    {
-      "source": "黏滯力",
       "target": "剪應力",
       "type": "wikilink"
     },
@@ -32634,72 +32534,17 @@
     },
     {
       "source": "偏振",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "向量",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
       "target": "複數",
       "type": "wikilink"
     },
     {
       "source": "偏振",
-      "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "自由度",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "電磁波",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
       "target": "電磁波",
       "type": "wikilink"
     },
     {
       "source": "偏振",
       "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "折射定律",
       "type": "wikilink"
     },
     {
@@ -32709,17 +32554,7 @@
     },
     {
       "source": "偏振",
-      "target": "反射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "折射定律",
-      "type": "wikilink"
-    },
-    {
-      "source": "偏振",
-      "target": "干涉",
+      "target": "能量",
       "type": "wikilink"
     },
     {
@@ -33009,47 +32844,12 @@
     },
     {
       "source": "共振",
-      "target": "聲波",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "駐波",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "交流電",
+      "target": "模態",
       "type": "wikilink"
     },
     {
       "source": "共振",
       "target": "聲波",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "角頻率",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "聲波",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "交流電",
       "type": "wikilink"
     },
     {
@@ -33079,12 +32879,7 @@
     },
     {
       "source": "共振",
-      "target": "阻尼振動",
-      "type": "wikilink"
-    },
-    {
-      "source": "共振",
-      "target": "受迫振動",
+      "target": "能量",
       "type": "wikilink"
     },
     {
@@ -33664,21 +33459,6 @@
     },
     {
       "source": "散射",
-      "target": "相互作用",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "薛丁格方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "邊界條件",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
       "target": "波函數",
       "type": "wikilink"
     },
@@ -33694,12 +33474,7 @@
     },
     {
       "source": "散射",
-      "target": "能量",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "動量",
+      "target": "德布羅意波",
       "type": "wikilink"
     },
     {
@@ -33724,62 +33499,12 @@
     },
     {
       "source": "散射",
-      "target": "複數",
+      "target": "能量",
       "type": "wikilink"
     },
     {
       "source": "散射",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "相互作用",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "德布羅意波",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "波函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "位能",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "相互作用",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "穿隧",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "波函數",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "本徵態",
-      "type": "wikilink"
-    },
-    {
-      "source": "散射",
-      "target": "波函數",
+      "target": "動量",
       "type": "wikilink"
     },
     {
@@ -34479,6 +34204,11 @@
     },
     {
       "source": "繞射",
+      "target": "相位",
+      "type": "wikilink"
+    },
+    {
+      "source": "繞射",
       "target": "解析度",
       "type": "wikilink"
     },
@@ -34495,56 +34225,6 @@
     {
       "source": "繞射",
       "target": "相位",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "積分",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "複數",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "光線模型",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "惠更斯原理",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "解析度",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "光線模型",
-      "type": "wikilink"
-    },
-    {
-      "source": "繞射",
-      "target": "單縫繞射",
       "type": "wikilink"
     },
     {
@@ -34809,31 +34489,6 @@
     },
     {
       "source": "解析度",
-      "target": "光線模型",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
-      "target": "干涉",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
-      "target": "相位",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
-      "target": "顯微鏡",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
-      "target": "繞射",
-      "type": "wikilink"
-    },
-    {
-      "source": "解析度",
       "target": "繞射",
       "type": "wikilink"
     },
@@ -34849,12 +34504,12 @@
     },
     {
       "source": "解析度",
-      "target": "相位",
+      "target": "干涉",
       "type": "wikilink"
     },
     {
       "source": "解析度",
-      "target": "干涉",
+      "target": "相位",
       "type": "wikilink"
     },
     {
@@ -35639,11 +35294,6 @@
     },
     {
       "source": "密度",
-      "target": "狀態方程",
-      "type": "wikilink"
-    },
-    {
-      "source": "密度",
       "target": "伯努力方程",
       "type": "wikilink"
     },
@@ -35675,6 +35325,11 @@
     {
       "source": "密度",
       "target": "阿基米德原理",
+      "type": "wikilink"
+    },
+    {
+      "source": "密度",
+      "target": "內能",
       "type": "wikilink"
     },
     {

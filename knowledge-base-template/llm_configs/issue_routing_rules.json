@@ -1,0 +1,34 @@
+{
+  "routing_rules": [
+    {
+      "issue_category": "meaning_too_short",
+      "route_to": "weak_model",
+      "reason": "Safe for section-level expansion when the task includes the existing section and note summary."
+    },
+    {
+      "issue_category": "banned_pattern",
+      "route_to": "weak_model",
+      "reason": "Usually a local rewrite task with tight scope."
+    },
+    {
+      "issue_category": "ungrouped_related_links",
+      "route_to": "weak_model",
+      "reason": "Safe only if the existing section already contains valid wikilinks to reorganize."
+    },
+    {
+      "issue_category": "history_not_concrete",
+      "route_to": "evidence_gated_model",
+      "reason": "Only safe when the task includes explicit evidence such as names, years, or cited sources."
+    },
+    {
+      "issue_category": "derivation_too_short",
+      "route_to": "strong_model_or_human",
+      "reason": "Higher risk of fabricated logic."
+    },
+    {
+      "issue_category": "derivation_missing_formula",
+      "route_to": "strong_model_or_human",
+      "reason": "Higher risk of invented equations."
+    }
+  ]
+}

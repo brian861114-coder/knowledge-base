@@ -1,60 +1,38 @@
 #!/usr/bin/env python3
-"""Export an Obsidian vault into graph JSON.
-
-Produces a graph JSON file compatible with the frontend graph visualizer.
-
-Usage:
-  python tools/export_graph.py --vault /path/to/vault --out graph.json
-"""
 from __future__ import annotations
 
 import argparse
 import json
-import re
 from pathlib import Path
 
 from kb_config import (
-    TEMPLATE_ROOT,
-    WIKILINK_RE,
-    HEADING_RE,
     extract_links,
     note_id_from_path,
     normalize_target,
     parse_frontmatter,
     parse_frontmatter_data,
+    relation_fields,
 )
+from kb_paths import is_ignored_note_path
 
-# Map from frontmatter relation field names → edge type labels
-RELATION_FIELDS = {
+
+DEFAULT_EDGE_MAP = {
     "prerequisites": "requires",
+    "related_notes": "related_to",
     "related_concepts": "related_to",
-    "related_quantities": "related_to",
-    "related_laws": "related_to",
-    "experiments": "verified_by",
-    "math_tools": "formalized_by",
-    "derived_results": "derives_to",
-    "modern_connections": "explains",
-    "tested_laws": "verified_by",
-    "measured_quantities": "measures",
-    "measurement_methods": "measures",
-    "used_in": "uses",
+    "related_entities": "related_to",
+    "related_principles": "related_to",
+    "procedures": "uses",
+    "case_studies": "illustrated_by",
+    "examples": "illustrated_by",
+    "used_in": "used_in",
     "includes": "organized_by",
     "recommended_order": "requires",
+    "modern_connections": "extends_to",
 }
 
 
-def extract_title(frontmatter: dict, body: str, path: Path) -> str:
-    """從 frontmatter 或 body 的 # 標題提取節點標題。"""
-    if frontmatter.get("title"):
-        return str(frontmatter["title"])
-    match = HEADING_RE.search(body)
-    if match:
-        return match.group(1).strip()
-    return path.stem
-
-
 def build_note_index(md_files: list[Path]) -> tuple[list[dict], dict[str, str]]:
-    """建立筆記索引與別名對照表。"""
     notes = []
     alias_to_id: dict[str, str] = {}
 
@@ -63,19 +41,21 @@ def build_note_index(md_files: list[Path]) -> tuple[list[dict], dict[str, str]]:
         raw_fm, body = parse_frontmatter(text)
         frontmatter = parse_frontmatter_data(raw_fm)
         note_id = note_id_from_path(file_path)
-        title = extract_title(frontmatter, body, file_path)
+        title = str(frontmatter.get("title", file_path.stem))
         tags = frontmatter.get("tags", [])
         if not isinstance(tags, list):
             tags = []
 
-        notes.append({
-            "file_path": file_path,
-            "frontmatter": frontmatter,
-            "body": body,
-            "id": note_id,
-            "title": title,
-            "tags": tags,
-        })
+        notes.append(
+            {
+                "file_path": file_path,
+                "frontmatter": frontmatter,
+                "body": body,
+                "id": note_id,
+                "title": title,
+                "tags": tags,
+            }
+        )
 
         for alias in {file_path.stem, title, note_id}:
             normalized = normalize_target(str(alias))
@@ -85,15 +65,14 @@ def build_note_index(md_files: list[Path]) -> tuple[list[dict], dict[str, str]]:
 
 
 def resolve_target_id(target: str, alias_to_id: dict[str, str]) -> str:
-    """將 wikilink 目標解析為正式 node ID。"""
     normalized = normalize_target(target)
     return alias_to_id.get(normalized, normalized)
 
 
 def extract_frontmatter_edges(node_id: str, frontmatter: dict, alias_to_id: dict[str, str]) -> list[dict]:
-    """從 frontmatter 的關聯欄位提取邊。"""
     edges = []
-    for field_name, edge_type in RELATION_FIELDS.items():
+    for field_name in relation_fields():
+        edge_type = DEFAULT_EDGE_MAP.get(field_name, "related_to")
         raw = frontmatter.get(field_name, [])
         if isinstance(raw, str):
             items = [raw] if raw else []
@@ -109,19 +88,20 @@ def extract_frontmatter_edges(node_id: str, frontmatter: dict, alias_to_id: dict
             if target.startswith("[[") and target.endswith("]]"):
                 target = target[2:-2]
             target = target.split("|", 1)[0].strip()
-            edges.append({
-                "source": node_id,
-                "target": resolve_target_id(target, alias_to_id),
-                "type": edge_type,
-            })
+            edges.append(
+                {
+                    "source": node_id,
+                    "target": resolve_target_id(target, alias_to_id),
+                    "type": edge_type,
+                }
+            )
     return edges
 
 
 def export_graph(vault: Path) -> dict:
-    """主匯出函數：掃描 vault 中的所有 .md 檔案，生成圖譜 JSON。"""
     nodes = []
     edges = []
-    md_files = sorted(vault.rglob("*.md"))
+    md_files = sorted(file_path for file_path in vault.rglob("*.md") if not is_ignored_note_path(file_path, vault))
     notes, alias_to_id = build_note_index(md_files)
 
     for note in notes:
@@ -132,25 +112,28 @@ def export_graph(vault: Path) -> dict:
         title = note["title"]
         tags = note["tags"]
 
-        nodes.append({
-            "id": node_id,
-            "title": title,
-            "type": frontmatter.get("type", "note"),
-            "summary": frontmatter.get("summary", ""),
-            "path": file_path.relative_to(vault).as_posix(),
-            "domain": frontmatter.get("domain", ""),
-            "taxonomy_domain": frontmatter.get("taxonomy_domain", ""),
-            "tags": tags,
-        })
+        nodes.append(
+            {
+                "id": node_id,
+                "title": title,
+                "type": frontmatter.get("type", "note"),
+                "summary": frontmatter.get("summary", ""),
+                "path": file_path.relative_to(vault).as_posix(),
+                "domain": frontmatter.get("domain", ""),
+                "taxonomy_domain": frontmatter.get("taxonomy_domain", ""),
+                "tags": tags,
+            }
+        )
 
         edges.extend(extract_frontmatter_edges(node_id, frontmatter, alias_to_id))
-
         for target in extract_links(body):
-            edges.append({
-                "source": node_id,
-                "target": resolve_target_id(target, alias_to_id),
-                "type": "wikilink",
-            })
+            edges.append(
+                {
+                    "source": node_id,
+                    "target": resolve_target_id(target, alias_to_id),
+                    "type": "wikilink",
+                }
+            )
 
     return {"nodes": nodes, "edges": edges}
 

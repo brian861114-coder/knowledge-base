@@ -1,50 +1,90 @@
-# 筆記類型定義
-# 每個 type 對應 Vault 中的一個子資料夾
-# 修改此檔案即可擴充新的筆記類型
-
-types:
-  - id: concept
-    label: 概念
-    label_en: concept
-    folder: "02_concepts"
-    color: "#648356"
-    description: "核心概念、定義、理論框架"
-
-  - id: law
-    label: 定律
-    label_en: law
-    folder: "01_laws"
-    color: "#315f98"
-    description: "定律、定理、反應式"
-
-  - id: quantity
-    label: 物理量
-    label_en: quantity
-    folder: "03_quantities"
-    color: "#83589a"
-    description: "可量測的物理量、化學量、生物量"
-
-  - id: experiment
-    label: 實驗
-    label_en: experiment
-    folder: "04_experiments"
-    color: "#ae5a31"
-    description: "經典實驗、量測方法、儀器"
-
-  - id: mathematical_tool
-    label: 數學工具
-    label_en: mathematical_tool
-    folder: "05_mathematical_tools"
-    color: "#9b6b35"
-    description: "數學方法在本領域中的應用"
-
-  - id: map
-    label: 導覽頁
-    label_en: map
-    folder: "00_maps"
-    color: "#ae5a31"
-    description: "領域總覽、知識地圖入口"
-
-# 前端顯示用的 type 標籤對照
-label_overrides:
-  mathematical_tool: "數學工具"
+{
+  "types": [
+    {
+      "id": "map",
+      "label": "Map",
+      "label_en": "map",
+      "folder": "00_maps",
+      "color": "#ae5a31",
+      "description": "Navigation pages that organize a topic, explain scope, and sequence learning."
+    },
+    {
+      "id": "concept",
+      "label": "Concept",
+      "label_en": "concept",
+      "folder": "01_concepts",
+      "color": "#648356",
+      "description": "Core ideas, definitions, interpretations, and relationships."
+    },
+    {
+      "id": "principle",
+      "label": "Principle",
+      "label_en": "principle",
+      "folder": "02_principles",
+      "color": "#315f98",
+      "description": "Rules, laws, or governing statements with assumptions and consequences."
+    },
+    {
+      "id": "entity",
+      "label": "Entity",
+      "label_en": "entity",
+      "folder": "03_entities",
+      "color": "#83589a",
+      "description": "Objects, quantities, systems, or named things being described."
+    },
+    {
+      "id": "procedure",
+      "label": "Procedure",
+      "label_en": "procedure",
+      "folder": "04_procedures",
+      "color": "#9b6b35",
+      "description": "Methods, techniques, workflows, or derivation procedures."
+    },
+    {
+      "id": "case_study",
+      "label": "Case Study",
+      "label_en": "case_study",
+      "folder": "05_case_studies",
+      "color": "#6d7b93",
+      "description": "Examples, experiments, incidents, or applications with setup and results."
+    }
+  ],
+  "required_frontmatter": {
+    "base": ["type", "title", "summary"],
+    "require_domain_for": ["concept", "principle", "entity", "procedure", "case_study"]
+  },
+  "optional_frontmatter": {
+    "common": [
+      "tags",
+      "taxonomy_domain",
+      "cluster",
+      "level",
+      "prerequisites",
+      "related_notes",
+      "related_concepts",
+      "related_entities",
+      "related_principles",
+      "procedures",
+      "case_studies",
+      "examples",
+      "used_in",
+      "includes",
+      "recommended_order",
+      "modern_connections"
+    ]
+  },
+  "relation_fields": [
+    "prerequisites",
+    "related_notes",
+    "related_concepts",
+    "related_entities",
+    "related_principles",
+    "procedures",
+    "case_studies",
+    "examples",
+    "used_in",
+    "includes",
+    "recommended_order",
+    "modern_connections"
+  ]
+}

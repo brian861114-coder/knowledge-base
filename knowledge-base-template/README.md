@@ -1,255 +1,140 @@
-# Knowledge Base Template
+# Knowledge Base Template v2
 
-通用知識庫架構模板，基於 [physics knowledge_map](https://github.com/brian861114-coder/knowledge-base) 的開發經驗萃取而來。
+This directory is a reusable starter kit for building vault-backed knowledge bases with a schema-first workflow.
 
-## 核心理念
+It is not a populated project. It is the generic architecture extracted from the parent repository after the physics vault was migrated to:
 
-```
-Obsidian Vault (Markdown 筆記)
-  → YAML Schema 驅動（定義 type/domain/section 結構）
-  → Python 腳本自動化（豐富/匯出/驗證）
-  → JSON 匯出（graph.json + note_details.json）
-  → 前端原型（圖譜探索 + 全文閱讀模式）
-  → GitHub Pages 部署（自動化 deploy）
-```
+- strict section schema compliance
+- structure validation
+- content-quality auditing
+- schema-first note creation
+- section-level AI repair workflows
 
-**Source of Truth 分離原則：**
-- **Vault** = 內容（筆記、公式、連結）
-- **Repo** = 工具鏈（腳本、前端、schema、匯出資料）
+## What Is Included
 
----
+- `schema/`
+  - active template schema
+  - note types
+  - domains
+  - section rules
+  - rename rules
+  - content-audit rules
+- `tools/`
+  - export tools
+  - full validator
+  - structure validator
+  - content-quality auditor
+  - section normalizer
+  - schema-first note skeleton generator
+- `prototype/`
+  - lightweight graph and reading frontend
+- `docs/`
+  - operator workflow and customization guides
+- `llm_configs/`, `task_templates/`, `prompts/`
+  - generic section-repair workflow assets for weaker or stronger models
 
-## 目錄結構
+## Source Of Truth Rule
 
-```
-knowledge-base-template/
-├── README.md                          # 本文件
-├── schema/                            # 可配置的知識庫定義
-│   ├── note_types.yaml                # 筆記類型定義（6 種預設）
-│   ├── domains.yaml                   # 兩層領域分類（taxonomy + domain）
-│   └── sections.yaml                  # 每種 type 的標準 section 結構
-├── tools/                             # 工具腳本
-│   ├── kb_config.py                   # 共用配置載入器 + helper 函數
-│   ├── export_graph.py                # 匯出圖譜 JSON（含 frontmatter 關係 + wikilinks）
-│   ├── export_note_details.py         # 匯出筆記詳情 JSON（sections, previews）
-│   ├── validate.py                    # 驗證 vault + 匯出檔案一致性
-│   └── run_exports.py                 # 一鍵匯出 + 驗證
-├── prototype/                         # 前端原型（圖譜探索 + 閱讀模式）
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── standalone_html_app/               # 可離線使用的本機版（無需伺服器）
-│   └── README.md
-├── scripts/
-│   └── deploy.sh                      # GitHub Pages 部署腳本
-├── docs/                              # 架構文件
-│   ├── NEW_TOPIC_GUIDE.md             # 如何建立新知識庫（完整教學）
-│   ├── CONTENT_WORKFLOW.md            # 內容工作流程與品質標準
-│   └── FRONTEND_CUSTOMIZATION.md      # 前端客製化指南
-└── .knowledge-base.local.example.json # 本地配置範例
-```
+For any project created from this template:
 
----
+- the external Markdown vault is the source of truth
+- exported JSON is derived output
+- the frontend is only a viewer
 
-## 快速開始
+Do not treat `graph.json` or `note_details.json` as the database.
 
-### 建立新知識庫
+## Template v2 Upgrades
 
-1. **複製本模板資料夾**
-   ```bash
-   cp -r knowledge-base-template/ your-new-kb/
-   cd your-new-kb/
-   ```
+Compared with the old template, this version adds the reusable concepts that proved necessary in the parent project:
 
-2. **修改 `schema/` 下的 YAML 檔案**
-   - `note_types.yaml`：定義你的筆記類型（預設 6 種：map/law/concept/quantity/experiment/mathematical_tool）
-   - `domains.yaml`：定義你的分類（兩層：taxonomy_domain + domain）
-   - `sections.yaml`：定義每種 type 的強制與選用 section
+1. Schema-first note creation
+2. Separate structure and content validation layers
+3. Rename-rule driven migration support
+4. Section normalization tooling
+5. Section-level AI repair workflow scaffolding
+6. Definition-of-done discipline around export and validation
 
-3. **建立 Obsidian Vault 資料夾結構**
-   ```
-   your-vault/
-   ├── 00_maps/
-   ├── 01_laws/
-   ├── 02_concepts/
-   ├── 03_quantities/
-   ├── 04_experiments/
-   └── 05_mathematical_tools/
-   ```
+## Core Workflow
 
-4. **撰寫筆記**，使用標準 frontmatter：
-   ```yaml
-   ---
-   title: 你的筆記標題
-   type: concept          # 對應 note_types.yaml 中的 id
-   domain: 力學            # 對應 domains.yaml 中的 id
-   taxonomy_domain: mechanics  # 第一層分類（選用，用於前端 toggle）
-   tags: [標籤1, 標籤2]
-   prerequisites:
-     - "[[先備知識]]"
-   related_concepts:
-     - "[[相關概念]]"
-   ---
-   ```
+1. Define or adapt the schema under `schema/`
+2. Point the template at a real vault
+3. Generate new notes from the schema skeleton, not blank files
+4. Run structure validation
+5. Run content-quality audit
+6. Run export and full validation
+7. Publish or inspect the frontend
 
-5. **匯出並啟動前端**
-   ```bash
-   # 一鍵匯出 + 驗證
-   python tools/run_exports.py --vault /path/to/vault --out-dir ./docs
+## Main Commands
 
-   # 啟動本機伺服器
-   python -m http.server 4173
-   # 訪問 http://127.0.0.1:4173/prototype/
-   ```
+Generate a new schema-first note skeleton:
 
-6. **(選用) 部署到 GitHub Pages**
-   ```bash
-   bash scripts/deploy.sh "feat: initial knowledge base"
-   ```
-
----
-
-## Schema 配置說明
-
-### note_types.yaml
-
-定義知識庫支援的筆記類型。每個 type 對應 Vault 中的一個子資料夾。
-
-```yaml
-types:
-  - id: concept
-    label: 概念
-    folder: "02_concepts"
-    color: "#648356"
-    description: "核心概念與定義"
-
-  - id: map
-    label: 導覽頁
-    folder: "00_maps"
-    color: "#ae5a31"
-    description: "領域總覽、知識地圖入口"
+```powershell
+python .\tools\generate_note_skeleton.py --type concept --title "New Topic" --summary "One-line summary" --domain "core"
 ```
 
-### domains.yaml
+Run structure validation:
 
-支援**兩層分類系統**（taxonomy + domain），對應前端的 filterMode toggle。
-
-```yaml
-# 第一層：taxonomy_domain（用於總覽 toggle 切換）
-taxonomy_domains:
-  - id: mechanics
-    label: 力學
-    color: "#648356"
-    description: "從運動、力、能量與動量開始"
-
-# 第二層：domain（更細的分類）
-domains:
-  - id: 力學
-    label: 力學
-    taxonomy: mechanics
-    description: "從運動學到動力學的經典力學體系。"
+```powershell
+python .\tools\validate_structure.py --vault C:\path\to\vault
 ```
 
-### sections.yaml
+Run content-quality audit:
 
-定義每種 type 的標準 section 結構。這是可擴充性的核心。
-
-```yaml
-section_schemas:
-  concept:
-    required:
-      - heading: "物理直覺"
-        description: "用直覺語言解釋為什麼需要這個概念"
-        anchor: true
-      - heading: "定義"
-        description: "正式定義與數學表述"
-      - heading: "歷史背景"
-        description: "概念的發展脈絡"
-        anchor: true
-    optional:
-      - heading: "常見誤解"
-      - heading: "相關概念"
-      - heading: "延伸閱讀"
+```powershell
+python .\tools\audit_content_quality.py --vault C:\path\to\vault
 ```
 
-`anchor: true` 的 section 在 enrich 腳本中用於定位插入位置。
+Run export plus full validation:
 
----
-
-## 資料流架構
-
-```
-┌──────────────────┐     export_graph.py      ┌──────────────┐
-│                  │ ────────────────────────→ │  graph.json  │
-│  Obsidian Vault  │                           │  (nodes +    │
-│  (Markdown +     │     export_note_details   │   edges)     │
-│   frontmatter)   │ ────────────────────────→ │              │
-│                  │                           │note_details  │
-│                  │                           │  .json       │
-└──────────────────┘                           └──────┬───────┘
-                                                       │
-                                                       ▼
-                                              ┌──────────────────┐
-                                              │  前端 prototype  │
-                                              │  (graph + reader)│
-                                              │                  │
-                                              │  GitHub Pages    │
-                                              └──────────────────┘
+```powershell
+python .\tools\run_exports.py --vault C:\path\to\vault --out-dir .\docs
 ```
 
----
+Run full vault/export validation directly:
 
-## 與 physics 版本的對應關係
+```powershell
+python .\tools\validate.py --vault C:\path\to\vault --graph .\docs\graph.json --details .\docs\note_details.json
+```
 
-| 面向 | physics 版本 | 模板版本 |
-|------|-------------|---------|
-| 筆記類型 | 6 種（硬編碼） | YAML 配置 |
-| 領域 | 雙層（taxonomy + domain） | YAML 配置 |
-| Section 結構 | 依賴具體腳本 | 統一 schema.yaml |
-| 匯出腳本 | `tools/export_*.py` + `obsidian-knowledge-map-demo/scripts/` | 統一在 `tools/` 下 |
-| 前端 | 綁定 `physics_graph.json` | 可配置 `graph.json` / `note_details.json` |
-| 驗證 | `validate_knowledge_base.py`（物理專用） | `validate.py`（schema-driven） |
-| 離線版 | `standalone_html_app/` | 包含在模板中 |
-| 部署 | `scripts/deploy.sh` | 包含在模板中 |
+## Schema Notes
 
----
+The template uses `.yaml` filenames, but the shipped files are JSON-syntax payloads for deterministic loading.
 
-## 擴充指南
+That is deliberate.
 
-### 新增筆記類型
+- `tools/validate_structure.py`
+- `tools/audit_content_quality.py`
+- `tools/generate_note_skeleton.py`
+- `tools/normalize_sections.py`
 
-1. 在 `schema/note_types.yaml` 新增 type 定義（id, label, folder, color）
-2. 在 `schema/sections.yaml` 新增對應的 section schema
-3. 在 Vault 中建立對應資料夾
-4. 在 `prototype/app.js` 中的 `typeLabel` 物件新增對應標籤
-5. 在 `prototype/styles.css` 中的 `:root` 新增 `--type-{id}` 色彩變數
-6. 重新匯出
+all currently read them with `json.loads`.
 
-### 新增領域
+If you convert these files to real YAML, update every loader first.
 
-1. 在 `schema/domains.yaml` 的 `taxonomy_domains` 或 `domains` 區塊新增
-2. 在 Vault 的對應筆記 frontmatter 中設定 `domain` / `taxonomy_domain` 欄位
-3. 在 `prototype/app.js` 的 `domainDescriptions` 或 `taxonomyDescriptions` 物件新增描述
-4. 重新匯出
+## Generic Concepts Worth Reusing
 
-### 自訂前端
+This template deliberately preserves the following reusable patterns from the parent project:
 
-1. 修改 `prototype/index.html` 中的標題與品牌文案
-2. 修改 `prototype/app.js` 中的 `domainDescriptions` / `taxonomyDescriptions` / `domainColorPalette` / `taxonomyColorPalette`
-3. 修改 `prototype/styles.css` 中的色彩變數（`:root` 區塊）
+- schema-first contract
+- source-of-truth boundary
+- dual validator layers
+- migration via rename rules
+- section-only AI repair tasks
+- blocked-task handling
+- weak-model / strong-model routing
+- post-repair revalidation
 
----
+These are template-level patterns.
 
-## 技術需求
+The topic-specific repair scripts from the parent project are intentionally not copied here.
 
-- Python 3.11+
-- 無額外依賴（純標準庫；需要 `pyyaml` 來解析 schema YAML，但內建手動 parser fallback）
-- Obsidian（用於內容編輯）
-- 現代瀏覽器（用於前端原型）
-- Git + GitHub Pages（用於部署，選用）
+## Files To Read First
 
----
+- [agent.md](/C:/Users/brian/Downloads/vibe_coding/knowledge_map/knowledge-base-template/agent.md)
+- [docs/SCHEMA_FIRST_WORKFLOW.md](/C:/Users/brian/Downloads/vibe_coding/knowledge_map/knowledge-base-template/docs/SCHEMA_FIRST_WORKFLOW.md)
+- [docs/LLM_REPAIR_WORKFLOW.md](/C:/Users/brian/Downloads/vibe_coding/knowledge_map/knowledge-base-template/docs/LLM_REPAIR_WORKFLOW.md)
+- [docs/NEW_TOPIC_GUIDE.md](/C:/Users/brian/Downloads/vibe_coding/knowledge_map/knowledge-base-template/docs/NEW_TOPIC_GUIDE.md)
 
-## 參考專案
+## One-Line Summary
 
-- [physics knowledge-base](https://github.com/brian861114-coder/knowledge-base) — 319 筆節點、7301 條邊的物理知識圖譜，本模板的實作參考
+This template is a schema-first, vault-backed knowledge-base starter kit with export, structure validation, content auditing, and section-level AI repair scaffolding.

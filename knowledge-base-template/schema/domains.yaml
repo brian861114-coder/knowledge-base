@@ -1,89 +1,42 @@
-# 領域定義
-# 本知識庫支援兩層分類系統：
-# 1. taxonomy_domain — 英文分類 ID（用於前端 toggle 分頁），固定為 7 個領域
-# 2. domain — 中文領域名稱（更細的分類，用於前端領域視圖）
-#
-# 修改此檔案即可擴充新的領域
-
-# Taxonomy domains（第一層分類，用於圖譜總覽的 toggle 切換）
-taxonomy_domains:
-  - id: foundations
-    label: 基礎總論
-    label_en: Foundations
-    color: "#50678a"
-    description: "物理的基礎概念、參考系、守恆律與場論觀點。"
-
-  - id: mechanics
-    label: 力學
-    label_en: Mechanics
-    color: "#648356"
-    description: "從運動、力、能量與動量開始，是整張地圖的骨架。"
-
-  - id: electromagnetism
-    label: 電磁學
-    label_en: Electromagnetism
-    color: "#315f98"
-    description: "從電荷與電場出發，擴展到磁、感應與電磁波。"
-
-  - id: thermo_fluids
-    label: 熱學與流體
-    label_en: Thermo & Fluids
-    color: "#b56338"
-    description: "巨觀系統中的熱、內能、熵、循環，以及流體連續介質。"
-
-  - id: waves_optics
-    label: 波動與光學
-    label_en: Waves & Optics
-    color: "#309c6a"
-    description: "週期振盪、波的傳播，以及幾何光學與波動光學。"
-
-  - id: analytical_dynamics
-    label: 解析動力學
-    label_en: Analytical Dynamics
-    color: "#83589a"
-    description: "拉格朗日與哈密頓力學、相空間、混沌與非線性動力系統。"
-
-  - id: modern_physics
-    label: 近代物理
-    label_en: Modern Physics
-    color: "#a85064"
-    description: "經典理論失效後，往相對論與量子入門展開。"
-
-# Domain（第二層分類，更細的中文領域標籤）
-domains:
-  - id: 物理總論
-    label: 物理總論
-    taxonomy: foundations
-    description: "物理學的基本概念與共通框架。"
-  - id: 力學
-    label: 力學
-    taxonomy: mechanics
-    description: "從運動學到動力學的經典力學體系。"
-  - id: 動力系統
-    label: 動力系統
-    taxonomy: analytical_dynamics
-    description: "非線性動力系統、相空間分析。"
-  - id: 電磁學
-    label: 電磁學
-    taxonomy: electromagnetism
-    description: "從靜電到電磁波。"
-  - id: 熱力學
-    label: 熱力學
-    taxonomy: thermo_fluids
-    description: "熱力學定律與巨觀熱現象。"
-  - id: 流體力學
-    label: 流體力學
-    taxonomy: thermo_fluids
-    description: "連續介質力學。"
-  - id: 振動與波動
-    label: 振動與波動
-    taxonomy: waves_optics
-    description: "週期運動與波的傳播。"
-  - id: 光學
-    label: 光學
-    taxonomy: waves_optics
-    description: "幾何光學與波動光學。"
-  - id: 近代物理
-    label: 近代物理
-    taxonomy: modern_physics
-    description: "相對論與量子物理入門。"
+{
+  "taxonomy_domains": [
+    {
+      "id": "core",
+      "label": "Core",
+      "color": "#648356",
+      "description": "Foundational content that defines the main subject area."
+    },
+    {
+      "id": "methods",
+      "label": "Methods",
+      "color": "#315f98",
+      "description": "Tools, procedures, and repeatable analysis techniques."
+    },
+    {
+      "id": "applications",
+      "label": "Applications",
+      "color": "#ae5a31",
+      "description": "Examples, case studies, and downstream use cases."
+    }
+  ],
+  "domains": [
+    {
+      "id": "core",
+      "label": "Core",
+      "taxonomy": "core",
+      "description": "Main ideas, core entities, and governing principles."
+    },
+    {
+      "id": "methods",
+      "label": "Methods",
+      "taxonomy": "methods",
+      "description": "Procedures, representations, and technical workflows."
+    },
+    {
+      "id": "applications",
+      "label": "Applications",
+      "taxonomy": "applications",
+      "description": "Examples, cases, experiments, and real-world implementations."
+    }
+  ]
+}

@@ -15,9 +15,13 @@
   --shadow: 0 18px 42px rgba(31, 25, 19, 0.08);
   --type-map: #ae5a31;
   --type-law: #315f98;
+  --type-principle: #315f98;
   --type-concept: #648356;
   --type-quantity: #83589a;
+  --type-entity: #83589a;
   --type-mathematical_tool: #9b6b35;
+  --type-procedure: #9b6b35;
+  --type-case_study: #6d7b93;
 }
 
 * {
@@ -616,7 +620,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
 }
 
 .graph-frame::before {
-  content: "Knowledge Map Workspace";
+  content: "Graph Workspace";
   position: absolute;
   top: 14px;
   left: 16px;
@@ -696,6 +700,11 @@ body:has(.workspace-shell.reader-mode) .brand p {
   background: var(--type-law);
 }
 
+.type-principle,
+.swatch.type-principle {
+  background: var(--type-principle);
+}
+
 .type-concept,
 .swatch.type-concept {
   background: var(--type-concept);
@@ -706,9 +715,24 @@ body:has(.workspace-shell.reader-mode) .brand p {
   background: var(--type-quantity);
 }
 
+.type-entity,
+.swatch.type-entity {
+  background: var(--type-entity);
+}
+
 .type-mathematical_tool,
 .swatch.type-mathematical_tool {
   background: var(--type-mathematical_tool);
+}
+
+.type-procedure,
+.swatch.type-procedure {
+  background: var(--type-procedure);
+}
+
+.type-case_study,
+.swatch.type-case_study {
+  background: var(--type-case_study);
 }
 
 .node {
@@ -841,6 +865,11 @@ body:has(.workspace-shell.reader-mode) .brand p {
   --node-soft: rgba(232, 242, 255, 0.92);
 }
 
+.node[data-type="principle"] {
+  --node-accent: var(--type-principle);
+  --node-soft: rgba(232, 242, 255, 0.92);
+}
+
 .node[data-type="concept"] {
   --node-accent: var(--type-concept);
   --node-soft: rgba(236, 245, 232, 0.92);
@@ -851,9 +880,24 @@ body:has(.workspace-shell.reader-mode) .brand p {
   --node-soft: rgba(243, 236, 249, 0.92);
 }
 
+.node[data-type="entity"] {
+  --node-accent: var(--type-entity);
+  --node-soft: rgba(243, 236, 249, 0.92);
+}
+
 .node[data-type="mathematical_tool"] {
   --node-accent: var(--type-mathematical_tool);
   --node-soft: rgba(248, 239, 228, 0.92);
+}
+
+.node[data-type="procedure"] {
+  --node-accent: var(--type-procedure);
+  --node-soft: rgba(248, 239, 228, 0.92);
+}
+
+.node[data-type="case_study"] {
+  --node-accent: var(--type-case_study);
+  --node-soft: rgba(236, 240, 248, 0.92);
 }
 
 .node.domain-node {

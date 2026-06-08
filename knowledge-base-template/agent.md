@@ -2,236 +2,211 @@
 
 This file is for future agents working in `C:\Users\brian\Downloads\vibe_coding\knowledge_map\knowledge-base-template`.
 
-This directory is not a finished knowledge base. It is a reusable starter architecture for building new knowledge-base projects.
+This directory is a starter architecture, not a live knowledge base.
 
-## 1. What this template is
+## 1. What This Template Is
 
-This template packages the general system used by the parent project into a reusable skeleton:
+This template packages the reusable methods extracted from the parent project:
 
-1. schema-driven note model
-2. export scripts
-3. validation scripts
-4. lightweight frontend prototype
-5. GitHub Pages deployment helper
+1. schema-first note modeling
+2. export pipeline
+3. structure validation
+4. content-quality auditing
+5. note-section normalization
+6. schema-first note skeleton generation
+7. section-level AI repair scaffolding
 
-Important difference from a real project:
+It does not include:
 
-- this template does not include a real vault with live content
+- a populated vault
+- validated live counts
+- project-specific content
+- project-specific repair scripts
 
-That means you should treat it as scaffolding. Validation and export behavior are meaningful, but only after the user or another agent points it at a real vault or creates one.
+If you treat this directory as if it were a complete knowledge base, you are using it incorrectly.
 
-## 2. Core structure
+## 2. Source-Of-Truth Boundary
 
-Important directories:
+For any derived project:
+
+- the target Markdown vault is the source of truth
+- `graph.json` and `note_details.json` are derived artifacts
+- the frontend is a reader, not an authoring system
+
+Never patch exported JSON as the canonical content fix.
+
+## 3. Important Directories
 
 - `schema/`
-  - YAML definitions for note types, domains, and section requirements.
+  - note types
+  - domains
+  - section rules
+  - rename rules
+  - content rules
 - `tools/`
-  - Generic exporter, validator, config, and orchestration scripts.
+  - exporters
+  - validators
+  - skeleton generator
+  - normalizer
 - `prototype/`
-  - Frontend source.
-  - Unlike the materials-science subproject, this folder does not ship with populated `graph.json` and `note_details.json`.
+  - generic graph-reading frontend
 - `docs/`
-  - Guidance docs for using the template:
-    - `NEW_TOPIC_GUIDE.md`
-    - `CONTENT_WORKFLOW.md`
-    - `FRONTEND_CUSTOMIZATION.md`
-- `scripts/`
-  - Deployment helper.
-- `standalone_html_app/`
-  - Alternate static packaging layer.
+  - operator workflow
+  - new-topic guide
+  - frontend customization notes
+- `llm_configs/`
+  - issue routing and repair profiles
+- `task_templates/`
+  - JSON task contract examples
+- `prompts/`
+  - system/task prompt baselines for section-level repair
 
-There is no in-repo `vault/` here by default.
+## 4. Main Entrypoints
 
-## 3. Source-of-truth boundary
-
-For any project created from this template:
-
-- the target Obsidian vault is the source of truth
-- exported `graph.json` and `note_details.json` are derived artifacts
-- the frontend is a viewer, not the authoring system
-
-If someone starts editing exported JSON directly as if it were the database, they are misusing the template.
-
-## 4. Main entrypoints
-
-### Export and validate
-
-Primary operator entrypoint:
-
-- `tools/run_exports.py`
-
-It runs:
-
-1. `tools/export_note_details.py`
-2. `tools/export_graph.py`
-3. `tools/validate.py` unless `--skip-validate` is passed
-
-Supported flags:
-
-- `--vault`
-- `--out-dir`
-- `--skip-validate`
-
-Typical example:
+### Generate a new note from schema
 
 ```powershell
-python .\tools\run_exports.py --vault C:\path\to\your\vault --out-dir .\docs
+python .\tools\generate_note_skeleton.py --type concept --title "New Topic" --summary "One-line summary" --domain "core"
 ```
 
-### Validate only
+### Normalize legacy headings and section order
 
 ```powershell
-python .\tools\validate.py --vault C:\path\to\your\vault --graph .\docs\graph.json --details .\docs\note_details.json
+python .\tools\normalize_sections.py --vault C:\path\to\vault
 ```
 
-### Deploy
+### Validate section structure
 
-- `scripts/deploy.sh`
+```powershell
+python .\tools\validate_structure.py --vault C:\path\to\vault
+```
 
-Important warning:
+### Audit content quality
 
-- this script uses `git add -A`
+```powershell
+python .\tools\audit_content_quality.py --vault C:\path\to\vault
+```
 
-That is acceptable only if you deliberately want all current changes. In a real derived project, narrow staging is usually safer.
+### Export plus validate
 
-## 5. Config model
+```powershell
+python .\tools\run_exports.py --vault C:\path\to\vault --out-dir .\docs
+```
 
-Config resolution is handled in `tools/kb_config.py`.
+### Full validator only
 
-Vault resolution order:
+```powershell
+python .\tools\validate.py --vault C:\path\to\vault --graph .\docs\graph.json --details .\docs\note_details.json
+```
 
-1. CLI `--vault`
-2. `KB_VAULT_PATH`
-3. `.knowledge-base.local.json`
+## 5. Current Template Contract
 
-The example config file is:
+The template is schema-first.
 
-- `.knowledge-base.local.example.json`
+That means:
 
-Relevant fields:
+- note type decides section structure
+- section names come from schema, not from the model
+- required vs optional sections are contract rules
+- rename rules are the migration path
+- content rules describe what quality checks should enforce
 
-- `vault_path`
-- `python_path`
-- `out_dir`
+Do not let a model invent headings, reshuffle sections, or decide that required sections are optional.
 
-The example file is only a placeholder. It is not proof that any local vault exists.
+## 6. Schema Files
 
-## 6. Schema model
-
-This template is schema-first.
-
-Important files:
+Primary schema files:
 
 - `schema/note_types.yaml`
-  - type IDs, labels, folders, colors
 - `schema/domains.yaml`
-  - taxonomy domains plus display domains
 - `schema/sections.yaml`
-  - required and optional sections by note type
+- `schema/renaming_rules.yaml`
+- `schema/content_rules.yaml`
 
-The template's main value is that these files let a new topic area be reshaped without rewriting the whole stack from scratch.
+Important implementation detail:
 
-If you change schema semantics, inspect all of these together:
+- these files use JSON syntax inside `.yaml` files
+- validators and generators currently load them with `json.loads`
 
-- `tools/kb_config.py`
-- `tools/export_graph.py`
-- `tools/export_note_details.py`
-- `tools/validate.py`
-- `prototype/app.js`
+Do not silently convert them unless you update all loaders.
 
-## 7. Tooling layout
+## 7. Validator Layers
 
-Important scripts under `tools/`:
+The template now has two separate validator layers.
 
-- `kb_config.py`
-  - schema loading
-  - vault path resolution
-  - common parsing helpers
-- `export_graph.py`
-  - exports nodes and edges
-- `export_note_details.py`
-  - exports note detail payload
-- `validate.py`
-  - validates vault structure and export consistency
-- `run_exports.py`
-  - orchestration wrapper
+### Structure validator
 
-The entire template assumes the project remains structured and schema-compatible. If note format degenerates into free-form Markdown with no stable frontmatter discipline, the template loses most of its value.
+`tools/validate_structure.py`
 
-## 8. Frontend role
+Checks:
 
-The frontend under `prototype/` is a thin viewer layer:
+- missing required sections
+- required section order
+- conditional section requirements
+- optional section placement rules
+- legacy heading hits from rename rules
 
-- `index.html`
-- `app.js`
-- `styles.css`
+### Content-quality auditor
 
-Its job is to consume exported JSON and render:
+`tools/audit_content_quality.py`
 
-- graph exploration
-- note browsing
-- side-panel reading
-- reader mode
+Checks:
 
-It is not designed to parse arbitrary raw vault files directly in the browser.
+- banned filler phrases
+- too-short meaning sections
+- too-short derivations
+- history sections with no concrete anchor
+- formulas with missing symbol sections
+- related-links sections that contain links but no groups
 
-## 9. Documentation role
+### Full export validator
 
-The `docs/` folder here is not a deployment output folder in the same sense as the parent project's root `docs/`.
-Inside this template, `docs/` is mostly instructional content for people adapting the starter kit.
+`tools/validate.py`
 
-Key files:
+Checks:
 
-- `NEW_TOPIC_GUIDE.md`
-  - how to create a new domain-specific knowledge base from this template
-- `CONTENT_WORKFLOW.md`
-  - content authoring and export workflow
-- `FRONTEND_CUSTOMIZATION.md`
-  - frontend adjustment guidance
+- required frontmatter
+- broken wikilinks
+- broken frontmatter relation targets
+- duplicate titles and paths
+- basic math delimiter health
+- export consistency
 
-If an agent ignores these and starts reinventing the template structure manually, that is wasted effort.
+## 8. Recommended Workflow
 
-## 10. What this template is not
+When creating or modifying a derived project:
 
-It is not:
+1. Adapt the schema first
+2. Point the template at a real vault
+3. Generate new notes from skeletons, not blank files
+4. Fill content only inside schema-defined sections
+5. Run structure validation
+6. Run content-quality audit
+7. Run export and full validation
+8. Publish only after the validators are green
 
-- a complete knowledge base
-- a guarantee that the target vault exists
-- proof that current output JSON is valid
-- a substitute for project-specific handoff documentation once a derived project becomes real
+## 9. LLM Workflow
 
-Once a clone of this template grows into a real project, it should get its own `agent.md`, operational docs, and validated current-state notes.
+This template includes a generic section-repair workflow.
 
-## 11. Recommended agent workflow
+The intended pattern is:
 
-If the task is to start a new knowledge base from this template:
+1. validator or audit finds a specific issue
+2. build a section-level task JSON
+3. model returns only the target section payload
+4. a local tool applies the payload back into the note
+5. validators rerun
 
-1. define schema in `schema/`
-2. prepare or point to a real vault
-3. set `.knowledge-base.local.json`
-4. run `tools/run_exports.py`
-5. inspect frontend output
-6. write project-specific docs instead of relying forever on template-level assumptions
+Do not use a weak model as an unrestricted whole-note editor.
 
-If the task is to modify the template itself:
+## 10. Common Failure Modes
 
-1. preserve genericity
-2. avoid baking in topic-specific assumptions unless explicitly requested
-3. verify all schema-driven paths still agree
-4. treat deploy script broad staging as a documented risk
+1. Treating the template as if it already has a real vault
+2. Patching exported JSON instead of the vault
+3. Letting AI improvise note structure
+4. Hardcoding domain-specific logic into generic scripts
+5. Skipping revalidation after repair
 
-## 12. Common failure modes
+## 11. One-Line Summary
 
-1. Treating the template as if it were already a populated project.
-   - Wrong. It is scaffolding.
-2. Hardcoding topic-specific logic into the generic scripts without being asked.
-   - Wrong. That corrupts the template.
-3. Forgetting that frontend expects exported JSON, not raw vault files.
-   - Wrong. The architecture is export-first.
-4. Using `git add -A` deployment behavior casually in a future derived project.
-   - Wrong. That is often too broad.
-
-## 13. One-line summary
-
-This directory is a schema-driven starter kit for building JSON-exported, vault-backed knowledge bases; it is useful only if you preserve the source-of-truth boundary and keep the template generic.
+This directory is a reusable schema-first starter kit; keep it generic, keep the vault as source of truth, and keep every repair inside a validation loop.

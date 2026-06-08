@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="warm-archive">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>物理學知識圖譜</title>
+  <script>
+    // Theme initialisation — runs before paint to prevent flash
+    (function() {
+      var theme = localStorage.getItem('kb_theme');
+      if (theme === 'cool-physics' || theme === 'green-scholar' || theme === 'warm-archive') {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <script>
     window.MathJax = {

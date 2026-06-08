@@ -1,0 +1,58 @@
+{
+  "content_rules": {
+    "global": {
+      "banned_patterns": [
+        "not X but Y",
+        "important in many areas",
+        "helps us understand many things"
+      ],
+      "principles": [
+        "Define before evaluating importance.",
+        "Do not use contrast slogans as a substitute for explanation.",
+        "Every section must contain actual information, not placeholder filler."
+      ]
+    },
+    "types": {
+      "concept": {
+        "meaning_section": "Meaning",
+        "history_section": "History",
+        "derivation_section": "Derivation",
+        "related_links_section": "Related Links",
+        "symbol_section": "Symbols and Units"
+      },
+      "principle": {
+        "meaning_section": "Meaning",
+        "history_section": "History",
+        "derivation_section": "Derivation",
+        "related_links_section": "Related Links",
+        "symbol_section": "Symbols and Units"
+      },
+      "entity": {
+        "meaning_section": "Meaning",
+        "history_section": "History",
+        "related_links_section": "Related Links",
+        "symbol_section": "Symbols and Units"
+      },
+      "procedure": {
+        "history_section": "History",
+        "derivation_section": "Derivation",
+        "related_links_section": "Related Links"
+      },
+      "case_study": {
+        "history_section": "History",
+        "related_links_section": "Related Links"
+      },
+      "map": {
+        "related_links_section": "Next Directions"
+      }
+    }
+  },
+  "audit_thresholds": {
+    "meaning_min_chars": 120,
+    "derivation_min_chars": 100,
+    "require_latex_in_derivation": false,
+    "require_people_or_year_in_history": true,
+    "require_symbol_section_if_formula_present": true,
+    "require_grouped_related_links": true
+  }
+}

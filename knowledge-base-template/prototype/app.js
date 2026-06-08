@@ -70,6 +70,7 @@ const els = {
   filterModeToggle: document.getElementById("filterModeToggle"),
   domainSectionTitle: document.getElementById("domainSectionTitle"),
   typeFilters: document.getElementById("typeFilters"),
+  typeLegend: document.getElementById("typeLegend"),
   domainOverview: document.getElementById("domainOverview"),
   graphFrame: document.getElementById("graphFrame"),
   graphCanvas: document.getElementById("graphCanvas"),
@@ -89,78 +90,65 @@ const els = {
 };
 
 const typeLabel = {
-  map: "導覽頁",
-  law: "定律",
-  concept: "概念",
-  quantity: "物理量",
-  mathematical_tool: "數學工具",
-  domain: "領域",
+  map: "Map",
+  concept: "Concept",
+  principle: "Principle",
+  entity: "Entity",
+  procedure: "Procedure",
+  case_study: "Case Study",
+  law: "Principle",
+  quantity: "Entity",
+  mathematical_tool: "Procedure",
+  experiment: "Case Study",
+  domain: "Domain",
 };
 
 const relationLabel = {
-  organized_by: "主題收納",
-  requires: "先備關係",
-  formalized_by: "數學支撐",
-  derives_to: "可推出",
-  uses: "直接使用",
-  verified_by: "實驗驗證",
-  explains: "進階視角",
-  measures: "量測對應",
-  related_to: "相關概念",
-  wikilink: "文內連結",
+  organized_by: "Organized By",
+  requires: "Prerequisite",
+  formalized_by: "Formalized By",
+  derives_to: "Derives To",
+  uses: "Uses",
+  verified_by: "Verified By",
+  explains: "Extends To",
+  measures: "Measures",
+  related_to: "Related To",
+  illustrated_by: "Illustrated By",
+  used_in: "Used In",
+  wikilink: "In-Body Link",
 };
 
 const domainDescriptions = {
-  力學: "從運動、力、能量與動量開始，是整張地圖的骨架。",
-  振動與波動: "把粒子運動延伸成週期振盪與波的傳播。",
-  熱學與熱力學: "聚焦巨觀系統中的熱、內能、熵與循環。",
-  電磁學: "從電荷與電場出發，擴展到磁、感應與電磁波。",
-  光學: "在幾何光學與波動光學之間切換視角。",
-  近代物理: "經典理論失效後，往相對論與量子入門展開。",
-  流體力學: "將力學延伸到液體與氣體的連續介質。",
-  數學工具: "不是完整數學百科，而是解釋數學在物理裡拿來做什麼。",
-  未分類: "尚未歸入正式領域的節點或過渡內容。",
+  core: "Foundational notes that define the central ideas and entities of the project.",
+  methods: "Procedures, representations, and analysis methods used across the project.",
+  applications: "Examples, case studies, and downstream applications.",
+  uncategorized: "Notes that have not yet been assigned to a stable domain.",
+  未分類: "Notes that have not yet been assigned to a stable domain.",
 };
 
 const taxonomyLabels = {
-  mechanics: "力學",
-  electromagnetism: "電磁學",
-  waves_optics: "波動與光學",
-  foundations: "基礎總論",
-  thermo_fluids: "熱學與流體",
-  modern_physics: "近代物理",
-  analytical_dynamics: "解析動力學",
+  core: "Core",
+  methods: "Methods",
+  applications: "Applications",
 };
 
 const taxonomyDescriptions = {
-  mechanics: "從運動、力、能量與動量開始，是整張地圖的骨架。",
-  electromagnetism: "從電荷與電場出發，擴展到磁、感應與電磁波。",
-  waves_optics: "週期振盪、波的傳播，以及幾何光學與波動光學。",
-  foundations: "物理的基礎概念、參考系、守恆律與場論觀點。",
-  thermo_fluids: "巨觀系統中的熱、內能、熵、循環，以及流體連續介質。",
-  modern_physics: "經典理論失效後，往相對論與量子入門展開。",
-  analytical_dynamics: "拉格朗日與哈密頓力學、相空間、混沌與非線性動力系統。",
+  core: "Foundational structures and concepts that define the subject area.",
+  methods: "Methods, procedures, and formal tools used to work inside the subject area.",
+  applications: "Applied, illustrative, or case-based parts of the knowledge base.",
 };
 
 const taxonomyColorPalette = {
-  mechanics: "#315f98",
-  electromagnetism: "#3c8b8f",
-  waves_optics: "#8c5ea9",
-  foundations: "#9b6b35",
-  thermo_fluids: "#b75e31",
-  modern_physics: "#6d7b93",
-  analytical_dynamics: "#4f8fa8",
+  core: "#315f98",
+  methods: "#648356",
+  applications: "#ae5a31",
 };
 
 const domainColorPalette = {
-  力學: "#315f98",
-  電磁學: "#3c8b8f",
-  熱學與熱力學: "#b75e31",
-  振動與波動: "#8c5ea9",
-  光學: "#77905a",
-  近代物理: "#6d7b93",
-  流體力學: "#4f8fa8",
-  數學工具: "#9b6b35",
+  core: "#315f98",
+  methods: "#648356",
+  applications: "#ae5a31",
+  uncategorized: "#a1a6b1",
   未分類: "#a1a6b1",
 };
 
@@ -168,8 +156,8 @@ init().catch((error) => {
   console.error(error);
   els.detailCard.classList.remove("empty");
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">載入錯誤</p>
-    <h2>無法載入知識地圖資料</h2>
+    <p class="detail-kicker">Load Error</p>
+    <h2>Could not load knowledge-base data</h2>
     <p class="detail-summary">${escapeHtml(String(error.message || error))}</p>
   `;
 });
@@ -196,6 +184,26 @@ function getDomainLabel(domain) {
   return domain;
 }
 
+function humanizeTypeId(type) {
+  return String(type || "")
+    .replaceAll("_", " ")
+    .replaceAll("-", " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function getTypeLabel(type) {
+  return typeLabel[type] || humanizeTypeId(type);
+}
+
+function buildTypeLegend(graph) {
+  if (!els.typeLegend) return;
+  els.typeLegend.innerHTML = graph.types
+    .map(
+      (type) => `<span><i class="swatch type-${escapeHtml(type)}"></i>${escapeHtml(getTypeLabel(type))}</span>`
+    )
+    .join("");
+}
+
 function switchFilterMode() {
   state.filterMode = state.filterMode === "taxonomy" ? "domain" : "taxonomy";
   localStorage.setItem("kb_filterMode", state.filterMode);
@@ -206,7 +214,7 @@ function switchFilterMode() {
   const newGraph = rebuildDomainLayer(g.noteNodes, g.edges, state.nodeMap, state.incomingMap);
   state.graph = newGraph;
   // Update UI
-  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "Domain";
   syncModeButtons();
   buildFilters(newGraph);
   buildDomainOverview();
@@ -241,8 +249,9 @@ async function init() {
   buildMentionIndex(graph);
   buildModeButtons();
   buildFilters(graph);
+  buildTypeLegend(graph);
   buildDomainOverview();
-  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "領域";
+  els.domainSectionTitle.textContent = state.filterMode === "taxonomy" ? "Taxonomy" : "Domain";
   bindEvents();
   resetViewport();
   layoutVisibleGraph(true);
@@ -319,7 +328,7 @@ function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
       type: "domain",
       kind: "domain",
       domain,
-      summary: descs[domain] || "尚未補上這個領域的導覽說明。",
+      summary: descs[domain] || "No overview description has been written for this group yet.",
       tags: ["domain-hub"],
       path: "",
       degree: edgeCount,
@@ -362,14 +371,15 @@ function rebuildDomainLayer(baseNodes, edges, nodeMap, incomingMap) {
   state.nodeMap = nodeMap;
   state.incomingMap = incomingMap;
   state.domainMeta = domainNodes.map((domainNode) => {
-    const maps = baseNodes.filter((node) => getActiveDomain(node) === domainNode.domain && node.type === "map").length;
-    const laws = baseNodes.filter((node) => getActiveDomain(node) === domainNode.domain && node.type === "law").length;
+    const typeCounts = countBy(
+      baseNodes.filter((node) => getActiveDomain(node) === domainNode.domain),
+      (node) => getTypeLabel(node.type)
+    );
     return {
       id: domainNode.id,
       domain: domainNode.domain,
       count: domainNode.memberCount,
-      maps,
-      laws,
+      typeCounts,
       description: domainNode.summary,
     };
   });
@@ -389,8 +399,8 @@ function buildStats(graph) {
   const stats = [
     { label: "節點", value: graph.noteNodes.length },
     { label: "關係", value: graph.edges.filter((edge) => primaryEdgeTypes.has(edge.type)).length },
-    { label: "領域", value: graph.domains.length },
-    { label: "頁型", value: graph.types.length },
+    { label: "Domains", value: graph.domains.length },
+    { label: "Types", value: graph.types.length },
   ];
 
   const domainBreakdown = graph.domains
@@ -413,7 +423,7 @@ function buildStats(graph) {
         .join("")}
     </div>
     <div class="stat-box">
-      <div class="stat-label">領域分佈</div>
+      <div class="stat-label">Domain Distribution</div>
       <div class="detail-summary">${escapeHtml(domainBreakdown)}</div>
     </div>
   `;
@@ -421,8 +431,8 @@ function buildStats(graph) {
 
 function buildModeButtons() {
   const modes = [
-    { value: "overview", label: "總覽" },
-    { value: "domain", label: "領域聚焦" },
+    { value: "overview", label: "Overview" },
+    { value: "domain", label: "Domain Focus" },
   ];
   els.viewModeButtons.innerHTML = "";
   for (const mode of modes) {
@@ -458,7 +468,7 @@ function buildFilters(graph) {
   }));
   const typeItems = graph.types.map((type) => ({
     value: type,
-    label: typeLabel[type] || type,
+    label: getTypeLabel(type),
     count: graph.noteNodes.filter((node) => node.type === type).length,
     color: filterSwatchColor("type", type),
   }));
@@ -502,17 +512,19 @@ function buildDomainOverview() {
     card.type = "button";
     card.className = `domain-card ${state.focusedDomain === meta.domain ? "active" : ""}`;
     const label = getDomainLabel(meta.domain);
-    const kicker = state.filterMode === "taxonomy" ? "taxonomy domain" : "領域群組";
+    const kicker = state.filterMode === "taxonomy" ? "taxonomy group" : "domain group";
+    const topTypes = Object.entries(meta.typeCounts || {})
+      .sort((a, b) => b[1] - a[1] || localeCompareZh(a[0], b[0]))
+      .slice(0, 2);
     card.innerHTML = `
       <div class="domain-card-kicker">${kicker}</div>
       <div class="domain-card-count">${meta.count}</div>
       <h3>${escapeHtml(label)}</h3>
       <p>${escapeHtml(meta.description)}</p>
       <div class="domain-card-meta">
-        <span class="domain-metric">${meta.maps} 導覽頁</span>
-        <span class="domain-metric">${meta.laws} 定律</span>
+        ${topTypes.map(([type, count]) => `<span class="domain-metric">${escapeHtml(type)} ${count}</span>`).join("")}
       </div>
-      <div class="domain-card-footer">點擊進入聚焦</div>
+      <div class="domain-card-footer">Click to focus</div>
     `;
     card.addEventListener("click", () => focusDomain(meta.domain));
     els.domainOverview.appendChild(card);
@@ -726,10 +738,15 @@ function filterSwatchColor(kind, value) {
   if (kind === "type") {
     const typePalette = {
       map: "var(--type-map)",
+      principle: "var(--type-principle)",
       law: "var(--type-law)",
       concept: "var(--type-concept)",
+      entity: "var(--type-entity)",
       quantity: "var(--type-quantity)",
+      procedure: "var(--type-procedure)",
       mathematical_tool: "var(--type-mathematical_tool)",
+      case_study: "var(--type-case_study)",
+      experiment: "var(--type-case_study)",
       domain: "var(--accent)",
     };
     return typePalette[value] || "var(--accent)";
@@ -1068,37 +1085,37 @@ function renderDetail(node) {
   if (!node) {
     els.detailCard.className = "detail-card empty";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">節點詳情</p>
-      <h2>選取一個節點</h2>
-      <p class="detail-summary">右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。</p>
-      <div class="detail-empty-note">先從總覽選一個領域，或直接點擊任一節點。</div>
+      <p class="detail-kicker">Node Detail</p>
+      <h2>Select a node</h2>
+      <p class="detail-summary">This panel shows the selected note summary, grouping, type, and relation context.</p>
+      <div class="detail-empty-note">Start from overview or click any node in the graph.</div>
     `;
     return;
   }
 
   if (node.kind === "domain") {
     const members = state.graph.noteNodes.filter((candidate) => getActiveDomain(candidate) === node.domain);
-    const byType = countBy(members, (item) => typeLabel[item.type] || item.type);
+    const byType = countBy(members, (item) => getTypeLabel(item.type));
     els.detailCard.className = "detail-card";
     els.detailCard.innerHTML = `
-      <p class="detail-kicker">領域樞紐</p>
+      <p class="detail-kicker">Domain Hub</p>
       <h2>${escapeHtml(node.title)}</h2>
       <p class="detail-summary">${escapeHtml(node.summary)}</p>
       <div class="detail-meta">
-        ${detailMetaBox("成員節點", String(node.memberCount))}
-        ${detailMetaBox("跨域連結", String(node.degree))}
-        ${detailMetaBox("包含頁型", escapeHtml(Object.keys(byType).join(" / ")))}
-        ${detailMetaBox("視角", "領域樞紐與導覽入口")}
+        ${detailMetaBox("Members", String(node.memberCount))}
+        ${detailMetaBox("Cross-Domain Links", String(node.degree))}
+        ${detailMetaBox("Types Included", escapeHtml(Object.keys(byType).join(" / ")))}
+        ${detailMetaBox("Role", "Domain hub and navigation entry")}
       </div>
       <div class="detail-grid">
         <section class="detail-section">
-          <h3>頁型分佈</h3>
+          <h3>Type Distribution</h3>
           <div class="detail-tags">${renderPills(Object.entries(byType).map(([label, count]) => `${label} ${count}`))}</div>
         </section>
         <section class="detail-section">
-          <h3>操作</h3>
+          <h3>Action</h3>
           <div class="focus-actions">
-            <button id="detailFocusButton" class="ghost-button" type="button">聚焦 ${escapeHtml(node.title)}</button>
+            <button id="detailFocusButton" class="ghost-button" type="button">Focus ${escapeHtml(node.title)}</button>
           </div>
         </section>
       </div>
@@ -1116,7 +1133,7 @@ function renderDetail(node) {
     node.summary ||
     noteDetail?.summary ||
     noteDetail?.body_preview ||
-    "這個節點還沒有整理好的摘要。可以先從相關連結或完整筆記內容查看。";
+    "This node does not have a polished summary yet. Inspect related links or the full note body.";
   const resolvedPath = node.path || noteDetail?.path || "";
 
   if (isReaderMode) {
@@ -1129,27 +1146,27 @@ function renderDetail(node) {
 
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+    <p class="detail-kicker">${escapeHtml(getTypeLabel(node.type))}</p>
     <h2>${escapeHtml(node.title)}</h2>
     <div class="detail-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
     <div class="detail-meta">
-      ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
-      ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-      ${detailMetaBox("連結數", String(node.degree))}
-      ${detailMetaBox("來源路徑", resolvedPath)}
+      ${detailMetaBox("Domain", getDomainLabel(getActiveDomain(node)))}
+      ${detailMetaBox("Type", getTypeLabel(node.type))}
+      ${detailMetaBox("Links", String(node.degree))}
+      ${detailMetaBox("Path", resolvedPath)}
     </div>
     <div class="detail-grid">
       ${renderNotePreview(node, noteDetail)}
       <section class="detail-section">
-        <h3>標籤</h3>
+        <h3>Tags</h3>
         <div class="detail-tags">${renderPills(node.tags)}</div>
       </section>
       <section class="detail-section">
-        <h3>指向其他節點</h3>
+        <h3>Outgoing Relations</h3>
         ${renderRelationGroups(outgoingGroups)}
       </section>
       <section class="detail-section">
-        <h3>哪些節點連到這裡</h3>
+        <h3>Incoming Relations</h3>
         ${renderRelationGroups(incomingGroups)}
       </section>
     </div>
@@ -1204,8 +1221,8 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
                 ? `
             <aside class="reader-outline-panel">
               <div class="reader-outline-header">
-                <p class="detail-kicker">文章目錄</p>
-                <p class="reader-outline-caption">從定義、數學表述到延伸概念，直接跳到對應段落。</p>
+                <p class="detail-kicker">Outline</p>
+                <p class="reader-outline-caption">Jump directly to the section you need.</p>
               </div>
               <div class="reader-outline-list">${outline}</div>
             </aside>
@@ -1215,14 +1232,14 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
 
             <div class="reader-main">
               <header class="reader-header">
-                <p class="detail-kicker">${escapeHtml(typeLabel[node.type] || node.type)}</p>
+                <p class="detail-kicker">${escapeHtml(getTypeLabel(node.type))}</p>
                 <h1>${escapeHtml(node.title)}</h1>
                 <div class="reader-summary rich-summary">${renderMarkdown(resolvedSummary, { compact: true })}</div>
                 <div class="reader-meta-grid">
-                  ${detailMetaBox("領域", getDomainLabel(getActiveDomain(node)))}
-                  ${detailMetaBox("頁型", typeLabel[node.type] || node.type)}
-                  ${detailMetaBox("連結數", String(node.degree))}
-                  ${detailMetaBox("來源路徑", resolvedPath)}
+                  ${detailMetaBox("Domain", getDomainLabel(getActiveDomain(node)))}
+                  ${detailMetaBox("Type", getTypeLabel(node.type))}
+                  ${detailMetaBox("Links", String(node.degree))}
+                  ${detailMetaBox("Path", resolvedPath)}
                 </div>
               </header>
 
@@ -1237,15 +1254,15 @@ function renderReaderMode(node, detail, resolvedSummary, resolvedPath, outgoingG
 
               <footer class="reader-footer-grid">
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">標籤</p>
+                  <p class="detail-kicker">Tags</p>
                   <div class="detail-tags">${renderPills(node.tags)}</div>
                 </section>
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">指向其他節點</p>
+                  <p class="detail-kicker">Outgoing Relations</p>
                   ${renderRelationGroups(outgoingGroups)}
                 </section>
                 <section class="reader-footer-panel">
-                  <p class="detail-kicker">哪些節點連到這裡</p>
+                  <p class="detail-kicker">Incoming Relations</p>
                   ${renderRelationGroups(incomingGroups)}
                 </section>
               </footer>
@@ -1404,9 +1421,9 @@ function renderNotesListView() {
     grouped[domain].push(note);
   }
 
-  let html = `<p class="detail-kicker">筆記瀏覽</p>
-    <h2>全部筆記（${notes.length}）</h2>
-    <p class="detail-summary">依領域分組，點選筆記可切換到圖譜檢視並聚焦該節點。</p>
+  let html = `<p class="detail-kicker">Notes</p>
+    <h2>All Notes (${notes.length})</h2>
+    <p class="detail-summary">Grouped by domain. Click any note to focus it in the graph.</p>
     <div class="detail-grid">`;
 
   for (const [domain, domainNotes] of Object.entries(grouped)) {
@@ -1431,25 +1448,25 @@ function renderSettingsView() {
 
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">設定</p>
-    <h2>物理學知識圖譜</h2>
-    <p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>
+    <p class="detail-kicker">About</p>
+    <h2>Knowledge Base Viewer</h2>
+    <p class="detail-summary">A generic graph-reading frontend for schema-first, vault-backed knowledge bases.</p>
     <div class="detail-meta">
-      ${detailMetaBox("筆記數", String(noteCount))}
-      ${detailMetaBox("關係數", String(edgeCount))}
-      ${detailMetaBox("領域數", String(domainCount))}
-      ${detailMetaBox("版本", "prototype")}
+      ${detailMetaBox("Notes", String(noteCount))}
+      ${detailMetaBox("Relations", String(edgeCount))}
+      ${detailMetaBox("Domains", String(domainCount))}
+      ${detailMetaBox("Version", "prototype")}
     </div>
     <div class="detail-grid">
       <section class="detail-section">
-        <h3>關於</h3>
+        <h3>About</h3>
         <div class="detail-summary rich-summary">
-          <p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>
-          <p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>
+          <p>This template frontend reads exported note and graph JSON generated from an external Markdown vault.</p>
+          <p>It is meant to be reused across domains, not tied to any single subject such as physics.</p>
         </div>
       </section>
       <section class="detail-section">
-        <h3>技術</h3>
+        <h3>Stack</h3>
         <div class="detail-tags">${renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"])}</div>
       </section>
     </div>
@@ -1459,11 +1476,11 @@ function renderSettingsView() {
 function renderSearchView() {
   els.detailCard.className = "detail-card";
   els.detailCard.innerHTML = `
-    <p class="detail-kicker">搜尋</p>
-    <h2>搜尋知識圖譜</h2>
-    <p class="detail-summary">輸入關鍵字搜尋概念、定律、物理量、實驗、數學工具。</p>
+    <p class="detail-kicker">Search</p>
+    <h2>Search the knowledge base</h2>
+    <p class="detail-summary">Search notes by title, summary, type, domain, or tags.</p>
     <label class="search search-view-input">
-      <input id="searchViewInput" type="search" placeholder="例如：牛頓、熵、波函數、折射率…" autofocus>
+      <input id="searchViewInput" type="search" placeholder="Example: causal graph, sampling, pricing model..." autofocus>
     </label>
     <div id="searchViewResults" class="detail-grid"></div>
   `;
@@ -1478,14 +1495,14 @@ function renderSearchView() {
   input.addEventListener("input", () => {
     const query = input.value.trim().toLowerCase();
     if (!query) {
-      results.innerHTML = `<p class="detail-summary">輸入關鍵字後會即時顯示搜尋結果。</p>`;
+      results.innerHTML = `<p class="detail-summary">Results appear as you type.</p>`;
       return;
     }
 
     const matches = state.graph.noteNodes.filter((n) => n.searchText.includes(query)).slice(0, 50);
 
     if (!matches.length) {
-      results.innerHTML = `<p class="detail-summary">找不到符合「${escapeHtml(input.value.trim())}」的筆記。</p>`;
+      results.innerHTML = `<p class="detail-summary">No notes matched "${escapeHtml(input.value.trim())}".</p>`;
       return;
     }
 
@@ -1497,7 +1514,7 @@ function renderSearchView() {
       grouped[domain].push(note);
     }
 
-    let html = `<p class="detail-summary">找到 ${matches.length} 筆結果${matches.length === 50 ? "（顯示前 50 筆）" : ""}</p>`;
+    let html = `<p class="detail-summary">Found ${matches.length} result${matches.length === 1 ? "" : "s"}${matches.length === 50 ? " (showing the first 50)" : ""}.</p>`;
     for (const [domain, notes] of Object.entries(grouped)) {
       html += `<section class="detail-section">
         <h3>${escapeHtml(domain)}（${notes.length}）</h3>
@@ -1662,18 +1679,14 @@ function startDragGesture(event, node) {
 
 function inferDomainFromTags(tags) {
   const domainTagMap = {
-    mechanics: "力學",
-    thermodynamics: "熱學與熱力學",
-    electromagnetism: "電磁學",
-    optics: "光學",
-    "fluid-mechanics": "流體力學",
-    waves: "振動與波動",
-    mathematics: "數學工具",
+    core: "core",
+    methods: "methods",
+    applications: "applications",
   };
   for (const tag of tags) {
     if (domainTagMap[tag]) return domainTagMap[tag];
   }
-  return "未分類";
+  return "uncategorized";
 }
 
 function detailMetaBox(label, value) {
@@ -2326,10 +2339,10 @@ function updateGraphHint() {
   );
   els.graphHint.textContent =
     state.viewMode === "overview"
-      ? "總覽只保留領域樞紐、導覽頁與少量高連結節點。先選領域，再深入局部子圖。"
+      ? "Overview keeps only domain hubs, map pages, and a small number of high-signal notes. Start broad, then zoom into a domain or a single note neighborhood."
       : isLocalFocus
-        ? `目前以「${state.focusedDomain}」中的「${selectedNode.title}」為中心，只顯示直接相關與必要支撐節點。`
-        : `目前聚焦在「${state.focusedDomain}」。先看核心節點骨架，再點任一節點切換成局部子圖。`;
+        ? `Current local view is centered on "${selectedNode.title}" inside "${state.focusedDomain}", showing direct relations plus necessary support nodes.`
+        : `Current focus is "${state.focusedDomain}". Inspect the core structure first, then click a note to switch to a local neighborhood view.`;
 }
 
 function updateFocusBanner() {
@@ -2352,22 +2365,22 @@ function updateFocusBanner() {
   els.focusBanner.hidden = false;
   els.focusBanner.innerHTML = `
     <div class="focus-banner-copy">
-      <p class="eyebrow">${isLocalFocus ? "局部子圖" : "領域聚焦"}</p>
+      <p class="eyebrow">${isLocalFocus ? "Local Neighborhood" : "Domain Focus"}</p>
       <p>
         <strong>${escapeHtml(state.focusedDomain)}</strong>
         ${
           isLocalFocus
-            ? ` 目前圍繞「${escapeHtml(selectedNode.title)}」顯示 ${primaryCount} 個核心節點與 ${supportCount} 個跨域支撐節點。`
-            : ` 目前只顯示 ${primaryCount} 個核心節點與 ${supportCount} 個支撐節點，避免整張圖一次攤平。`
+            ? ` currently shows ${primaryCount} core node(s) and ${supportCount} support node(s) around "${escapeHtml(selectedNode.title)}".`
+            : ` currently shows ${primaryCount} core node(s) and ${supportCount} support node(s) to keep the graph readable.`
         }
       </p>
     </div>
     <div class="focus-banner-metrics">
-      <span class="focus-banner-metric">${primaryCount} 核心節點</span>
-      <span class="focus-banner-metric">${supportCount} 支撐節點</span>
+      <span class="focus-banner-metric">${primaryCount} core</span>
+      <span class="focus-banner-metric">${supportCount} support</span>
     </div>
     <div class="focus-actions focus-banner-actions">
-      <button id="backToOverviewButton" class="ghost-button" type="button">回到總覽</button>
+      <button id="backToOverviewButton" class="ghost-button" type="button">Back to overview</button>
     </div>
   `;
   els.focusBanner.querySelector("#backToOverviewButton").addEventListener("click", () => {

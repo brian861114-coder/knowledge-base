@@ -1,23 +1,108 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;700&display=swap");
 
-:root {
-  --bg: #f7f4ee;
-  --panel: rgba(255, 252, 247, 0.92);
-  --panel-strong: rgba(255, 255, 252, 0.98);
-  --panel-soft: rgba(250, 247, 241, 0.84);
-  --ink: #181b22;
-  --muted: #6a7280;
-  --line: rgba(24, 27, 34, 0.12);
-  --line-soft: rgba(24, 27, 34, 0.08);
-  --accent: #2f64a3;
-  --accent-soft: rgba(47, 100, 163, 0.1);
-  --warm: #b75e31;
-  --shadow: 0 18px 42px rgba(31, 25, 19, 0.08);
-  --type-map: #ae5a31;
-  --type-law: #315f98;
-  --type-concept: #648356;
-  --type-quantity: #83589a;
-  --type-mathematical_tool: #9b6b35;
+/* ===================================================
+   Theme System — CSS Variables
+   =================================================== */
+
+/* --- Warm Archive (default) --- */
+:root,
+html[data-theme="warm-archive"] {
+  --bg: #F7F4EE;
+  --surface: #FFFCF6;
+  --surface-muted: #EFEAE2;
+  --text: #1F2933;
+  --text-muted: #667085;
+  --border: #DED8CE;
+  --primary: #2F5F8F;
+  --primary-soft: #E7EEF5;
+  --guide: #A85F45;
+  --law: #3F6F9F;
+  --concept: #5F7F55;
+  --quantity: #7B6FA3;
+  --math: #9A7138;
+  /* derived / backward-compat */
+  --ink: var(--text);
+  --muted: var(--text-muted);
+  --panel: color-mix(in srgb, var(--surface), transparent 8%);
+  --panel-strong: color-mix(in srgb, var(--surface), transparent 2%);
+  --panel-soft: color-mix(in srgb, var(--surface-muted), transparent 16%);
+  --line: color-mix(in srgb, var(--text), transparent 88%);
+  --line-soft: color-mix(in srgb, var(--text), transparent 92%);
+  --accent: var(--primary);
+  --accent-soft: color-mix(in srgb, var(--primary), transparent 90%);
+  --warm: var(--guide);
+  --type-map: var(--guide);
+  --type-law: var(--law);
+  --type-concept: var(--concept);
+  --type-quantity: var(--quantity);
+  --type-mathematical_tool: var(--math);
+  --shadow: 0 18px 42px color-mix(in srgb, var(--text), transparent 92%);
+}
+
+/* --- Cool Physics --- */
+html[data-theme="cool-physics"] {
+  --bg: #F5F8FB;
+  --surface: #FFFFFF;
+  --surface-muted: #EAF0F6;
+  --text: #182B3A;
+  --text-muted: #64748B;
+  --border: #D8E1EA;
+  --primary: #2A5C8A;
+  --primary-soft: #E3EEF8;
+  --guide: #B05A4A;
+  --law: #2A5C8A;
+  --concept: #5E7D68;
+  --quantity: #6C63A0;
+  --math: #A07835;
+  --ink: var(--text);
+  --muted: var(--text-muted);
+  --panel: color-mix(in srgb, var(--surface), transparent 8%);
+  --panel-strong: color-mix(in srgb, var(--surface), transparent 2%);
+  --panel-soft: color-mix(in srgb, var(--surface-muted), transparent 16%);
+  --line: color-mix(in srgb, var(--text), transparent 88%);
+  --line-soft: color-mix(in srgb, var(--text), transparent 92%);
+  --accent: var(--primary);
+  --accent-soft: color-mix(in srgb, var(--primary), transparent 90%);
+  --warm: var(--guide);
+  --type-map: var(--guide);
+  --type-law: var(--law);
+  --type-concept: var(--concept);
+  --type-quantity: var(--quantity);
+  --type-mathematical_tool: var(--math);
+  --shadow: 0 18px 42px color-mix(in srgb, var(--text), transparent 92%);
+}
+
+/* --- Green Scholar --- */
+html[data-theme="green-scholar"] {
+  --bg: #F6F5EF;
+  --surface: #FFFDF7;
+  --surface-muted: #E9EDE5;
+  --text: #1F2D29;
+  --text-muted: #69746F;
+  --border: #D8D6CB;
+  --primary: #355E4B;
+  --primary-soft: #E4EEE8;
+  --guide: #9C4F36;
+  --law: #3D6478;
+  --concept: #567A58;
+  --quantity: #746493;
+  --math: #9B7635;
+  --ink: var(--text);
+  --muted: var(--text-muted);
+  --panel: color-mix(in srgb, var(--surface), transparent 8%);
+  --panel-strong: color-mix(in srgb, var(--surface), transparent 2%);
+  --panel-soft: color-mix(in srgb, var(--surface-muted), transparent 16%);
+  --line: color-mix(in srgb, var(--text), transparent 88%);
+  --line-soft: color-mix(in srgb, var(--text), transparent 92%);
+  --accent: var(--primary);
+  --accent-soft: color-mix(in srgb, var(--primary), transparent 90%);
+  --warm: var(--guide);
+  --type-map: var(--guide);
+  --type-law: var(--law);
+  --type-concept: var(--concept);
+  --type-quantity: var(--quantity);
+  --type-mathematical_tool: var(--math);
+  --shadow: 0 18px 42px color-mix(in srgb, var(--text), transparent 92%);
 }
 
 * {
@@ -29,9 +114,9 @@ body {
   margin: 0;
   min-height: 100%;
   background:
-    linear-gradient(90deg, rgba(24, 27, 34, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(24, 27, 34, 0.03) 1px, transparent 1px),
-    linear-gradient(180deg, #fbf8f2 0%, #f2ece1 100%);
+    linear-gradient(90deg, color-mix(in srgb, var(--text), transparent 96.5%) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--text), transparent 97%) 1px, transparent 1px),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg), #fff 50%) 0%, color-mix(in srgb, var(--bg), #000 5%) 100%);
   background-size: 88px 88px, 88px 88px, auto;
   color: var(--ink);
   font-family: "IBM Plex Sans", "Segoe UI Variable Text", "Microsoft JhengHei UI", sans-serif;
@@ -110,7 +195,7 @@ input {
 .topnav-item,
 .topbar-orbit {
   border: 1px solid var(--line);
-  background: rgba(255, 253, 249, 0.76);
+  background: var(--panel);
   color: var(--ink);
 }
 
@@ -121,8 +206,8 @@ input {
 }
 
 .topnav-item.is-active {
-  border-color: rgba(47, 100, 163, 0.24);
-  background: rgba(47, 100, 163, 0.08);
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
   color: var(--accent);
 }
 
@@ -142,7 +227,7 @@ input {
   min-height: calc(100vh - 110px);
   border: 1px solid var(--line);
   border-top: 0;
-  background: rgba(255, 252, 247, 0.55);
+  background: color-mix(in srgb, var(--surface), transparent 45%);
 }
 
 .workspace-shell.reader-mode {
@@ -186,7 +271,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .control-sidebar {
   padding: 18px 16px 18px 14px;
   border-right: 1px solid var(--line);
-  background: rgba(255, 253, 249, 0.72);
+  background: color-mix(in srgb, var(--surface), transparent 28%);
 }
 
 .sidebar-section + .sidebar-section {
@@ -268,8 +353,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .search input:focus {
   outline: none;
-  border-color: rgba(47, 100, 163, 0.28);
-  box-shadow: 0 0 0 4px rgba(47, 100, 163, 0.08);
+  border-color: color-mix(in srgb, var(--primary), transparent 72%);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary), transparent 92%);
 }
 
 .chips,
@@ -301,12 +386,12 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .chip:hover {
   transform: translateX(1px);
   border-color: var(--line-soft);
-  background: rgba(24, 27, 34, 0.03);
+  background: color-mix(in srgb, var(--text), transparent 97%);
 }
 
 .chip.active {
   border-color: transparent;
-  background: rgba(47, 100, 163, 0.08);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
   color: var(--accent);
 }
 
@@ -347,7 +432,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   height: 10px;
   border-radius: 50%;
   background: var(--filter-dot, var(--accent));
-  box-shadow: 0 0 0 3px rgba(24, 27, 34, 0.04);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text), transparent 96%);
   flex: 0 0 auto;
 }
 
@@ -358,15 +443,15 @@ body:has(.workspace-shell.reader-mode) .brand p {
   gap: 14px;
   border-right: 1px solid var(--line);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.48) 0%, rgba(247, 242, 234, 0.24) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--surface), transparent 52%) 0%, color-mix(in srgb, var(--surface-muted), transparent 76%) 100%);
 }
 
 .graph-toolbar,
 .focus-banner,
 .legend,
 .domain-overview {
-  border: 1px solid rgba(24, 27, 34, 0.09);
-  background: rgba(255, 253, 249, 0.78);
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--surface), transparent 22%);
 }
 
 .graph-toolbar {
@@ -405,9 +490,9 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .ghost-button {
   padding: 10px 13px;
-  border: 1px solid rgba(24, 27, 34, 0.12);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 252, 0.98), rgba(249, 246, 240, 0.98));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface), transparent 2%) 0%, color-mix(in srgb, var(--surface-muted), transparent 2%) 100%);
   color: var(--ink);
   cursor: pointer;
   transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
@@ -416,8 +501,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .ghost-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(47, 100, 163, 0.24);
-  box-shadow: 0 8px 18px rgba(31, 27, 22, 0.06);
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  box-shadow: 0 8px 18px var(--shadow);
 }
 
 .filter-mode-toggle {
@@ -427,15 +512,15 @@ body:has(.workspace-shell.reader-mode) .brand p {
   border-radius: 8px;
   white-space: nowrap;
   flex-shrink: 0;
-  background: rgba(47, 100, 163, 0.06);
-  border-color: rgba(47, 100, 163, 0.18);
+  background: color-mix(in srgb, var(--primary), transparent 94%);
+  border-color: color-mix(in srgb, var(--primary), transparent 82%);
   color: var(--accent);
   font-weight: 600;
 }
 
 .filter-mode-toggle:hover {
-  background: rgba(47, 100, 163, 0.12);
-  border-color: rgba(47, 100, 163, 0.3);
+  background: color-mix(in srgb, var(--primary), transparent 88%);
+  border-color: color-mix(in srgb, var(--primary), transparent 70%);
 }
 
 .focus-banner {
@@ -481,8 +566,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .focus-banner-metric {
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(47, 100, 163, 0.14);
-  background: rgba(47, 100, 163, 0.08);
+  border: 1px solid color-mix(in srgb, var(--primary), transparent 86%);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
   font-size: 0.79rem;
   color: var(--accent);
 }
@@ -503,9 +588,9 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .domain-card {
   position: relative;
   padding: 14px 14px 15px 16px;
-  border: 1px solid rgba(24, 27, 34, 0.08);
+  border: 1px solid var(--line-soft);
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255, 255, 252, 0.98), rgba(249, 246, 240, 0.94));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface), transparent 2%) 0%, color-mix(in srgb, var(--surface-muted), transparent 6%) 100%);
   text-align: left;
   cursor: pointer;
   overflow: hidden;
@@ -517,17 +602,17 @@ body:has(.workspace-shell.reader-mode) .brand p {
   position: absolute;
   inset: 0 auto 0 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--accent), rgba(47, 100, 163, 0.12));
+  background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary), transparent 88%));
 }
 
 .domain-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(32, 28, 22, 0.08);
+  box-shadow: 0 14px 28px var(--shadow);
 }
 
 .domain-card.active {
-  border-color: rgba(47, 100, 163, 0.24);
-  background: linear-gradient(180deg, rgba(243, 248, 255, 0.98), rgba(249, 246, 240, 0.94));
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary-soft), transparent 2%) 0%, color-mix(in srgb, var(--surface-muted), transparent 6%) 100%);
 }
 
 .domain-card-kicker {
@@ -571,7 +656,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 5px 8px;
   border-radius: 999px;
   border: 1px solid var(--line-soft);
-  background: rgba(255, 252, 247, 0.8);
+  background: color-mix(in srgb, var(--surface), transparent 20%);
   font-size: 0.74rem;
 }
 
@@ -589,10 +674,10 @@ body:has(.workspace-shell.reader-mode) .brand p {
   position: relative;
   min-height: 0;
   padding: 14px;
-  border: 1px solid rgba(24, 27, 34, 0.09);
+  border: 1px solid var(--line-soft);
   border-radius: 18px;
-  background: rgba(255, 253, 249, 0.82);
-  box-shadow: 0 12px 28px rgba(33, 28, 23, 0.05);
+  background: color-mix(in srgb, var(--surface), transparent 18%);
+  box-shadow: var(--shadow);
 }
 
 .graph-panel.reader-hidden {
@@ -606,9 +691,9 @@ body:has(.workspace-shell.reader-mode) .brand p {
   border-radius: 18px;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(24, 27, 34, 0.022) 1px, transparent 1px),
-    linear-gradient(rgba(24, 27, 34, 0.022) 1px, transparent 1px),
-    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.9), rgba(248, 243, 235, 0.98));
+    linear-gradient(90deg, color-mix(in srgb, var(--text), transparent 97.8%) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--text), transparent 97.8%) 1px, transparent 1px),
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--surface), transparent 10%) 0%, color-mix(in srgb, var(--surface-muted), transparent 2%) 100%);
   background-size: 24px 24px, 24px 24px, auto;
   cursor: grab;
   touch-action: none;
@@ -622,9 +707,9 @@ body:has(.workspace-shell.reader-mode) .brand p {
   left: 16px;
   z-index: 3;
   padding: 5px 10px;
-  border: 1px solid rgba(24, 27, 34, 0.08);
+  border: 1px solid var(--line-soft);
   border-radius: 999px;
-  background: rgba(255, 253, 249, 0.76);
+  background: color-mix(in srgb, var(--surface), transparent 24%);
   color: var(--muted);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -651,9 +736,9 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .graph-legend-panel {
   padding: 12px 14px;
-  border: 1px solid rgba(24, 27, 34, 0.08);
+  border: 1px solid var(--line-soft);
   border-radius: 14px;
-  background: rgba(255, 253, 249, 0.9);
+  background: color-mix(in srgb, var(--surface), transparent 10%);
   min-width: 320px;
   backdrop-filter: blur(10px);
 }
@@ -787,8 +872,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .node.selected .node-core {
   box-shadow:
-    0 16px 28px rgba(32, 28, 22, 0.14),
-    0 0 0 6px rgba(47, 100, 163, 0.08),
+    0 16px 28px color-mix(in srgb, var(--text), transparent 86%),
+    0 0 0 6px color-mix(in srgb, var(--primary), transparent 92%),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -806,7 +891,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   word-break: keep-all;
   overflow-wrap: break-word;
   max-width: 8ch;
-  color: rgba(24, 27, 34, 0.94);
+  color: color-mix(in srgb, var(--text), transparent 6%);
   text-align: center;
   hyphens: none;
 }
@@ -817,7 +902,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   font-weight: 600;
   letter-spacing: -0.02em;
   max-width: 9ch;
-  color: rgba(24, 27, 34, 0.94);
+  color: color-mix(in srgb, var(--text), transparent 6%);
   word-break: keep-all;
   overflow-wrap: break-word;
   text-align: center;
@@ -832,33 +917,33 @@ body:has(.workspace-shell.reader-mode) .brand p {
 }
 
 .node[data-type="map"] {
-  --node-accent: var(--type-map);
-  --node-soft: rgba(244, 233, 224, 0.92);
+  --node-accent: var(--guide);
+  --node-soft: color-mix(in srgb, var(--guide), #fff 88%);
 }
 
 .node[data-type="law"] {
-  --node-accent: var(--type-law);
-  --node-soft: rgba(232, 242, 255, 0.92);
+  --node-accent: var(--law);
+  --node-soft: color-mix(in srgb, var(--law), #fff 88%);
 }
 
 .node[data-type="concept"] {
-  --node-accent: var(--type-concept);
-  --node-soft: rgba(236, 245, 232, 0.92);
+  --node-accent: var(--concept);
+  --node-soft: color-mix(in srgb, var(--concept), #fff 88%);
 }
 
 .node[data-type="quantity"] {
-  --node-accent: var(--type-quantity);
-  --node-soft: rgba(243, 236, 249, 0.92);
+  --node-accent: var(--quantity);
+  --node-soft: color-mix(in srgb, var(--quantity), #fff 88%);
 }
 
 .node[data-type="mathematical_tool"] {
-  --node-accent: var(--type-mathematical_tool);
-  --node-soft: rgba(248, 239, 228, 0.92);
+  --node-accent: var(--math);
+  --node-soft: color-mix(in srgb, var(--math), #fff 88%);
 }
 
 .node.domain-node {
-  --node-accent: var(--accent);
-  --node-soft: rgba(234, 241, 253, 0.92);
+  --node-accent: var(--primary);
+  --node-soft: color-mix(in srgb, var(--primary), #fff 88%);
 }
 
 .node.support .node-core {
@@ -876,7 +961,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   position: sticky;
   top: 0;
   max-height: calc(100vh - 110px);
-  background: rgba(255, 253, 249, 0.82);
+  background: color-mix(in srgb, var(--surface), transparent 18%);
 }
 
 .detail-panel.reader-panel {
@@ -892,7 +977,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   height: 100%;
   overflow-y: auto;
   padding: 18px 22px 24px;
-  background: linear-gradient(180deg, rgba(255, 255, 252, 0.98) 0%, rgba(249, 246, 240, 0.96) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface), transparent 2%) 0%, color-mix(in srgb, var(--surface-muted), transparent 4%) 100%);
 }
 
 .detail-card.reader {
@@ -932,7 +1017,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 12px 14px;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: rgba(250, 247, 241, 0.86);
+  background: color-mix(in srgb, var(--surface-muted), transparent 14%);
   color: var(--muted);
   font-size: 0.92rem;
 }
@@ -948,7 +1033,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 11px 12px 12px;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.9);
+  background: color-mix(in srgb, var(--surface), transparent 10%);
 }
 
 .detail-meta-label {
@@ -1004,7 +1089,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 3px;
   border: 1px solid var(--line-soft);
   border-radius: 999px;
-  background: rgba(24, 27, 34, 0.04);
+  background: color-mix(in srgb, var(--text), transparent 96%);
 }
 
 .detail-view-button {
@@ -1019,7 +1104,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .detail-view-button.active {
   background: var(--panel-strong);
   color: var(--ink);
-  box-shadow: 0 1px 2px rgba(24, 27, 34, 0.08);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text), transparent 92%);
 }
 
 .detail-tags,
@@ -1059,8 +1144,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 }
 
 .note-pill:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
 }
 
 .search-view-input {
@@ -1081,8 +1166,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
 }
 
 .search-view-input input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary), transparent 90%);
 }
 
 .detail-outline,
@@ -1105,14 +1190,14 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .section-jump-button:hover,
 .reader-outline-button:hover {
-  border-color: rgba(47, 100, 163, 0.24);
-  background: rgba(47, 100, 163, 0.05);
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  background: color-mix(in srgb, var(--primary), transparent 95%);
   transform: translateY(-1px);
 }
 
 .reader-outline-button.is-active {
-  border-color: var(--accent);
-  background: rgba(47, 100, 163, 0.08);
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
   font-weight: 600;
 }
 
@@ -1122,7 +1207,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   justify-content: center;
   width: 30px;
   height: 30px;
-  border: 1px solid rgba(47, 100, 163, 0.16);
+  border: 1px solid color-mix(in srgb, var(--primary), transparent 84%);
   border-radius: 50%;
   color: var(--accent);
   font-size: 0.78rem;
@@ -1151,7 +1236,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 12px 14px;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.9);
+  background: color-mix(in srgb, var(--surface), transparent 10%);
 }
 
 .reader-article {
@@ -1190,8 +1275,8 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 18px 18px 20px;
   border: 1px solid var(--line-soft);
   border-radius: 18px;
-  background: rgba(255, 253, 249, 0.84);
-  box-shadow: 0 18px 38px rgba(33, 28, 23, 0.06);
+  background: color-mix(in srgb, var(--surface), transparent 16%);
+  box-shadow: var(--shadow);
 }
 
 .reader-outline-header {
@@ -1229,7 +1314,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
 
 .reader-prose,
 .rich-summary {
-  color: rgba(24, 27, 34, 0.88);
+  color: color-mix(in srgb, var(--text), transparent 12%);
   line-height: 1.9;
 }
 
@@ -1261,7 +1346,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
 .rich-summary code {
   padding: 0.08rem 0.34rem;
   border-radius: 6px;
-  background: rgba(24, 27, 34, 0.06);
+  background: color-mix(in srgb, var(--text), transparent 94%);
 }
 
 .content-figure {
@@ -1276,7 +1361,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   margin: 0 auto;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.88);
+  background: color-mix(in srgb, var(--surface), transparent 12%);
 }
 
 .content-figure-caption {
@@ -1306,7 +1391,7 @@ body:has(.workspace-shell.reader-mode) .brand p {
   color: var(--accent);
   font: inherit;
   text-decoration: underline;
-  text-decoration-color: rgba(47, 100, 163, 0.26);
+  text-decoration-color: color-mix(in srgb, var(--primary), transparent 74%);
   text-underline-offset: 0.14em;
   cursor: pointer;
 }
@@ -1343,14 +1428,14 @@ body:has(.workspace-shell.reader-mode) .brand p {
   padding: 14px;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.88);
+  background: color-mix(in srgb, var(--surface), transparent 12%);
 }
 
 .preview-outline-panel {
   padding: 16px;
   border: 1px solid var(--line-soft);
   border-radius: 16px;
-  background: rgba(255, 253, 249, 0.72);
+  background: color-mix(in srgb, var(--surface), transparent 28%);
 }
 
 .preview-sections-grid {
@@ -1462,4 +1547,57 @@ body:has(.workspace-shell.reader-mode) .brand p {
   .graph-frame {
     min-height: 560px;
   }
+}
+
+/* ===================================================
+   Theme Picker (Settings)
+   =================================================== */
+.theme-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface), transparent 4%);
+  cursor: pointer;
+  transition: border-color 140ms ease, background-color 140ms ease;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.theme-option:hover {
+  border-color: color-mix(in srgb, var(--primary), transparent 76%);
+  background: color-mix(in srgb, var(--primary), transparent 95%);
+}
+
+.theme-option.is-active {
+  border-color: color-mix(in srgb, var(--primary), transparent 60%);
+  background: color-mix(in srgb, var(--primary), transparent 92%);
+}
+
+.theme-option-name {
+  font-weight: 600;
+}
+
+.theme-option-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+  align-items: center;
+  flex: 1;
+}
+
+.theme-option-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }

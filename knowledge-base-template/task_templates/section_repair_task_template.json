@@ -1,0 +1,26 @@
+{
+  "task_id": "replace-me",
+  "note_path": "01_concepts/Example Topic.md",
+  "note_type": "concept",
+  "issue_category": "meaning_too_short",
+  "target_section": "Meaning",
+  "instructions": [
+    "Repair only the target section.",
+    "Do not change frontmatter.",
+    "Do not change section order.",
+    "Do not invent new wikilinks unless the task explicitly allows it."
+  ],
+  "requirements": [
+    "Add concrete information, not filler.",
+    "Keep the terminology consistent with the current note.",
+    "Return JSON only."
+  ],
+  "source_context": {
+    "title": "Example Topic",
+    "summary": "Replace this with the real note summary.",
+    "existing_sections": {
+      "Definition": "Existing note content goes here.",
+      "Meaning": "Current target section content goes here."
+    }
+  }
+}

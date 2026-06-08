@@ -1,126 +1,128 @@
-# Section 結構定義
-# 定義每種 note_type 的標準 section 結構
-# 這是知識庫可擴充性的核心：新增 type 只需在此加入定義
-
-# anchor_keywords: 用於定位插入位置的關鍵字
-# 當需要插入新 section 時，會在第一個匹配的 anchor keyword 之前插入
-
-# 注意：以下 section 名稱對應到前端閱讀模式的 .reader-section-block 渲染，
-# 且部分 section 在 enrich 腳本中有特殊處理邏輯（如 推導、歷史背景）。
-
-section_schemas:
-  concept:
-    required:
-      - heading: "物理直覺"
-        description: "用直覺語言解釋為什麼需要這個概念，不依賴公式"
-        anchor: true
-      - heading: "定義"
-        description: "正式定義與數學表述"
-      - heading: "歷史背景"
-        description: "概念的發展脈絡與關鍵人物"
-        anchor: true
-    optional:
-      - heading: "常見誤解"
-        description: "學生常犯的錯誤觀念"
-      - heading: "相關概念"
-        description: "與其他概念的關係"
-      - heading: "延伸閱讀"
-        description: "進階資源"
-
-  law:
-    required:
-      - heading: "物理直覺"
-        description: "用直覺語言解釋這個定律在說什麼"
-        anchor: true
-      - heading: "數學表述"
-        description: "正式的數學公式與符號定義"
-      - heading: "推導"
-        description: "從基本原理推導此定律（該領域知識庫品質的重要指標）"
-      - heading: "歷史背景"
-        description: "定律的發現過程"
-        anchor: true
-    optional:
-      - heading: "適用條件"
-        description: "在什麼情況下成立"
-      - heading: "常見誤解"
-      - heading: "相關定律"
-      - heading: "實驗驗證"
-
-  quantity:
-    required:
-      - heading: "物理直覺"
-        description: "這個量在量測什麼"
-        anchor: true
-      - heading: "定義"
-        description: "正式定義、單位、量綱"
-      - heading: "歷史背景"
-        anchor: true
-    optional:
-      - heading: "量測方法"
-      - heading: "常見誤解"
-      - heading: "相關量"
-
-  experiment:
-    required:
-      - heading: "問題背景"
-        description: "這個實驗要回答什麼問題"
-      - heading: "裝置與方法"
-        description: "實驗設備、步驟、控制變數"
-      - heading: "核心分析"
-        description: "數據處理、結果、誤差分析"
-      - heading: "物理直覺"
-        anchor: true
-      - heading: "歷史背景"
-        anchor: true
-    optional:
-      - heading: "常見誤解"
-      - heading: "相關概念"
-      - heading: "延伸價值"
-
-  mathematical_tool:
-    required:
-      - heading: "物理直覺"
-        description: "這個數學工具在物理中拿來做什麼"
-        anchor: true
-      - heading: "定義"
-        description: "數學定義與符號"
-      - heading: "在物理中的應用"
-        description: "具體的應用場景"
-    optional:
-      - heading: "常見誤用"
-      - heading: "相關工具"
-
-  map:
-    required:
-      - heading: "物理直覺"
-        anchor: true
-        description: "這張地圖的導覽邏輯"
-      - heading: "歷史背景"
-        anchor: true
-        description: "這個領域的發展脈絡"
-    optional:
-      - heading: "學習路徑"
-      - heading: "核心概念"
-      - heading: "延伸方向"
-
-# Bridge / Method 頁面的 section 結構
-# 這些頁面連接不同主題，減少孤立節點
-bridge_schemas:
-  cross_topic_bridge:
-    required:
-      - heading: "物理直覺"
-        anchor: true
-      - heading: "與上下游概念的連接"
-    optional:
-      - heading: "常見誤解"
-      - heading: "相關概念"
-
-  method_page:
-    required:
-      - heading: "物理直覺"
-        anchor: true
-      - heading: "方法描述"
-      - heading: "應用場景"
-    optional:
-      - heading: "限制條件"
-      - heading: "相關方法"
+{
+  "section_schemas": {
+    "concept": {
+      "required_order": [
+        "Summary",
+        "Definition",
+        "Prerequisites",
+        "Meaning",
+        "Applications",
+        "Common Misunderstandings",
+        "History",
+        "Modern Perspective",
+        "Related Links"
+      ],
+      "optional": [
+        "Core Formula",
+        "Symbols and Units",
+        "Derivation"
+      ],
+      "conditional_requirements": [
+        {
+          "if_section_present": "Core Formula",
+          "require_sections": ["Symbols and Units"]
+        },
+        {
+          "if_formula_present": true,
+          "require_sections": ["Symbols and Units", "Derivation"]
+        }
+      ]
+    },
+    "principle": {
+      "required_order": [
+        "Summary",
+        "Formal Statement",
+        "Symbols and Units",
+        "Meaning",
+        "Derivation",
+        "Applicability",
+        "Applications",
+        "Common Misunderstandings",
+        "History",
+        "Modern Perspective",
+        "Related Links"
+      ]
+    },
+    "entity": {
+      "required_order": [
+        "Definition",
+        "Formal Representation",
+        "Symbols and Units",
+        "Dimensions or Attributes",
+        "Meaning",
+        "Observation or Measurement",
+        "Used In",
+        "History",
+        "Modern Perspective",
+        "Related Links"
+      ]
+    },
+    "procedure": {
+      "required_order": [
+        "Summary",
+        "Goal",
+        "Inputs",
+        "Derivation",
+        "Steps",
+        "Interpretation",
+        "Failure Modes",
+        "Applications",
+        "History",
+        "Modern Perspective",
+        "Related Links"
+      ],
+      "optional": [
+        "Formal Representation",
+        "Examples"
+      ]
+    },
+    "case_study": {
+      "required_order": [
+        "Summary",
+        "Background",
+        "Setup and Method",
+        "Observations",
+        "Results",
+        "Limitations",
+        "History",
+        "Impact",
+        "Modern Perspective",
+        "Related Links",
+        "Extensions"
+      ]
+    },
+    "map": {
+      "required_order": [
+        "Summary",
+        "Main Themes",
+        "Key Concepts",
+        "Key Principles",
+        "Typical Questions",
+        "Recommended Learning Order",
+        "Prerequisites",
+        "Bridges to Other Areas",
+        "Next Directions"
+      ],
+      "optional": [
+        "Key Case Studies"
+      ],
+      "ordering_rules": [
+        {
+          "optional_sections_must_not_break_required_order": true
+        },
+        {
+          "optional_section_positions": {
+            "Key Case Studies": {
+              "allowed": [
+                {
+                  "after": "Key Principles"
+                }
+              ],
+              "fixed_position": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "rename_rules": {
+    "concept": [
+      {
+        "from": ["Overview", "Core Idea"],
+        "to": "Summary"
+      },
+      {
+        "from": ["Intuition", "Interpretation", "Physical Meaning"],
+        "to": "Meaning",
+        "action": "merge"
+      },
+      {
+        "from": ["Connections", "Related Notes", "See Also"],
+        "to": "Related Links"
+      },
+      {
+        "from": ["Symbol Notes", "Symbol Reference"],
+        "to": "Symbols and Units"
+      }
+    ],
+    "principle": [
+      {
+        "from": ["Overview", "Statement"],
+        "to": "Summary"
+      },
+      {
+        "from": ["Equation", "Mathematical Form"],
+        "to": "Formal Statement"
+      },
+      {
+        "from": ["Intuition", "Interpretation", "Physical Meaning"],
+        "to": "Meaning",
+        "action": "merge"
+      },
+      {
+        "from": ["Scope", "Assumptions", "Conditions"],
+        "to": "Applicability"
+      },
+      {
+        "from": ["Connections", "Related Notes", "See Also"],
+        "to": "Related Links"
+      }
+    ],
+    "entity": [
+      {
+        "from": ["Overview", "What It Is"],
+        "to": "Definition"
+      },
+      {
+        "from": ["Expression", "Mathematical Form"],
+        "to": "Formal Representation"
+      },
+      {
+        "from": ["Dimensions", "Units and Scale"],
+        "to": "Dimensions or Attributes"
+      },
+      {
+        "from": ["Interpretation", "Physical Meaning"],
+        "to": "Meaning",
+        "action": "merge"
+      },
+      {
+        "from": ["Connections", "Related Notes", "See Also"],
+        "to": "Related Links"
+      }
+    ],
+    "procedure": [
+      {
+        "from": ["Overview", "Purpose"],
+        "to": "Summary"
+      },
+      {
+        "from": ["Method", "Workflow"],
+        "to": "Steps"
+      },
+      {
+        "from": ["Pitfalls", "Common Errors"],
+        "to": "Failure Modes"
+      },
+      {
+        "from": ["Connections", "Related Notes", "See Also"],
+        "to": "Related Links"
+      }
+    ],
+    "case_study": [
+      {
+        "from": ["Overview", "Case Summary"],
+        "to": "Summary"
+      },
+      {
+        "from": ["Method", "Procedure"],
+        "to": "Setup and Method"
+      },
+      {
+        "from": ["Findings", "Outcome"],
+        "to": "Results"
+      },
+      {
+        "from": ["Connections", "Related Notes", "See Also"],
+        "to": "Related Links"
+      }
+    ],
+    "map": [
+      {
+        "from": ["Overview", "Map Summary"],
+        "to": "Summary"
+      },
+      {
+        "from": ["Related Concepts"],
+        "to": "Key Concepts"
+      },
+      {
+        "from": ["Related Principles"],
+        "to": "Key Principles"
+      },
+      {
+        "from": ["Related Cases"],
+        "to": "Key Case Studies"
+      }
+    ]
+  }
+}

@@ -1418,35 +1418,76 @@ function renderNotesListView() {
 }
 
 function renderSettingsView() {
-  const noteCount = state.graph?.noteNodes.length || 0;
-  const edgeCount = state.graph?.edges.length || 0;
-  const domainCount = state.graph?.domains.length || 0;
+  var noteCount = state.graph?.noteNodes.length || 0;
+  var edgeCount = state.graph?.edges.length || 0;
+  var domainCount = state.graph?.domains.length || 0;
+  var currentTheme = localStorage.getItem('kb_theme') || 'warm-archive';
+
+  var themes = [
+    { id: 'warm-archive', name: '暖紙感學術風', desc: '暖白背景、墨黑灰文字，適合長時間閱讀' },
+    { id: 'cool-physics', name: '冷靜科技學術風', desc: '冷白淺藍灰背景，適合圖譜探索' },
+    { id: 'green-scholar', name: '墨綠沉穩學術風', desc: '暖白綠灰背景、墨綠灰文字，自然科學感' },
+  ];
+
+  function themeLabelHtml(t) {
+    return '<span class="theme-option-label">'
+      + '<span class="theme-option-name">' + t.name + '</span>'
+      + '<span class="theme-option-desc">' + t.desc + '</span>'
+      + '</span>';
+  }
 
   els.detailCard.className = "detail-card";
-  els.detailCard.innerHTML = `
-    <p class="detail-kicker">設定</p>
-    <h2>物理學知識圖譜</h2>
-    <p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>
-    <div class="detail-meta">
-      ${detailMetaBox("筆記數", String(noteCount))}
-      ${detailMetaBox("關係數", String(edgeCount))}
-      ${detailMetaBox("領域數", String(domainCount))}
-      ${detailMetaBox("版本", "prototype")}
-    </div>
-    <div class="detail-grid">
-      <section class="detail-section">
-        <h3>關於</h3>
-        <div class="detail-summary rich-summary">
-          <p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>
-          <p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>
-        </div>
-      </section>
-      <section class="detail-section">
-        <h3>技術</h3>
-        <div class="detail-tags">${renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"])}</div>
-      </section>
-    </div>
-  `;
+  els.detailCard.innerHTML = ''
+    + '<p class="detail-kicker">設定</p>'
+    + '<h2>物理學知識圖譜</h2>'
+    + '<p class="detail-summary">大學物理互動知識庫，由 Obsidian Vault 匯出驅動。</p>'
+    + '<div class="detail-meta">'
+      + detailMetaBox("筆記數", String(noteCount))
+      + detailMetaBox("關係數", String(edgeCount))
+      + detailMetaBox("領域數", String(domainCount))
+      + detailMetaBox("版本", "prototype")
+    + '</div>'
+    + '<div class="detail-grid">'
+      + '<section class="detail-section">'
+        + '<h3>界面主題</h3>'
+        + '<div class="theme-picker">'
+          + themes.map(function(t) {
+            var active = t.id === currentTheme ? ' is-active' : '';
+            return '<button class="theme-option' + active + '" type="button" data-theme-id="' + t.id + '">'
+              + themeLabelHtml(t)
+              + '</button>';
+          }).join('')
+        + '</div>'
+      + '</section>'
+      + '<section class="detail-section">'
+        + '<h3>關於</h3>'
+        + '<div class="detail-summary rich-summary">'
+          + '<p>本專案是一個大學物理知識圖譜原型，將 Obsidian Vault 中的結構化筆記匯出為 JSON，透過前端進行互動式圖譜探索與全文閱讀。</p>'
+          + '<p>涵蓋力學、電磁學、光學、熱力學、近代物理、流體力學、振動與波動、數學工具等領域。</p>'
+        + '</div>'
+      + '</section>'
+      + '<section class="detail-section">'
+        + '<h3>技術</h3>'
+        + '<div class="detail-tags">' + renderPills(["Obsidian", "Python", "Vanilla JS", "Canvas", "MathJax"]) + '</div>'
+      + '</section>'
+    + '</div>';
+
+  // Wire up theme buttons
+  var themeButtons = els.detailCard.querySelectorAll('.theme-option');
+  for (var i = 0; i < themeButtons.length; i++) {
+    themeButtons[i].addEventListener('click', function() {
+      var themeId = this.getAttribute('data-theme-id');
+      if (!themeId) return;
+      // Button state
+      for (var j = 0; j < themeButtons.length; j++) {
+        themeButtons[j].classList.remove('is-active');
+      }
+      this.classList.add('is-active');
+      // Apply theme
+      document.documentElement.setAttribute('data-theme', themeId);
+      localStorage.setItem('kb_theme', themeId);
+    });
+  }
 }
 
 function renderSearchView() {
@@ -1578,21 +1619,46 @@ function groupRelations(edges, relatedKey) {
   }));
 }
 
+/* ---------- Theme helpers ---------- */
+function getCSSVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue('--' + name).trim();
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? (parseInt(result[1], 16) + ', ' + parseInt(result[2], 16) + ', ' + parseInt(result[3], 16)) : null;
+}
+
 function edgeStroke(type, isHighlighted) {
-  if (isHighlighted) return "rgba(159, 71, 47, 0.68)";
-  const palette = {
-    organized_by: "rgba(164, 77, 48, 0.34)",
-    requires: "rgba(49, 90, 142, 0.26)",
-    formalized_by: "rgba(147, 100, 51, 0.26)",
-    derives_to: "rgba(95, 124, 66, 0.24)",
-    uses: "rgba(93, 66, 140, 0.22)",
-    verified_by: "rgba(115, 86, 52, 0.24)",
-    explains: "rgba(98, 83, 72, 0.22)",
-    measures: "rgba(83, 112, 85, 0.22)",
-    related_to: "rgba(90, 100, 115, 0.18)",
-    wikilink: "rgba(90, 100, 115, 0.1)",
+  var guideHex = getCSSVar('guide') || '#a85f45';
+  var lawHex = getCSSVar('law') || '#3f6f9f';
+  var mathHex = getCSSVar('math') || '#9a7138';
+  var conceptHex = getCSSVar('concept') || '#5f7f55';
+  var quantityHex = getCSSVar('quantity') || '#7b6fa3';
+  var mutedHex = getCSSVar('text-muted') || '#667085';
+
+  var guide = hexToRgb(guideHex);
+  var law = hexToRgb(lawHex);
+  var math = hexToRgb(mathHex);
+  var concept = hexToRgb(conceptHex);
+  var quantity = hexToRgb(quantityHex);
+  var muted = hexToRgb(mutedHex);
+
+  if (isHighlighted) return 'rgba(' + guide + ', 0.68)';
+
+  var palette = {
+    organized_by: 'rgba(' + guide + ', 0.34)',
+    requires: 'rgba(' + law + ', 0.26)',
+    formalized_by: 'rgba(' + math + ', 0.26)',
+    derives_to: 'rgba(' + concept + ', 0.24)',
+    uses: 'rgba(' + quantity + ', 0.22)',
+    verified_by: 'rgba(' + guide + ', 0.24)',
+    explains: 'rgba(' + muted + ', 0.24)',
+    measures: 'rgba(' + concept + ', 0.22)',
+    related_to: 'rgba(' + muted + ', 0.18)',
+    wikilink: 'rgba(' + muted + ', 0.10)',
   };
-  return palette[type] || "rgba(90, 100, 115, 0.16)";
+  return palette[type] || 'rgba(' + muted + ', 0.16)';
 }
 
 function connectedNodeIds(nodeId) {

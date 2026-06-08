@@ -1,102 +1,46 @@
-# 前端客製化指南
+# Frontend Customization
 
-## 基本客製化
+The frontend in `prototype/` is intentionally lightweight.
 
-### 修改標題與品牌
+Its job is to read exported JSON and render:
 
-`prototype/index.html`：
+- graph exploration
+- note detail panel
+- reader mode
 
-```html
-<title>你的知識庫名稱</title>
-<h1>你的知識庫名稱</h1>
-<p>你的標語</p>
-```
+## Files
 
-### 修改色彩主題
+- `prototype/index.html`
+- `prototype/app.js`
+- `prototype/styles.css`
 
-`prototype/styles.css` 頂部的 `:root` 變數：
+## What To Change First
 
-```css
-:root {
-  --bg: #f7f4ee;              /* 背景色 */
-  --ink: #181b22;             /* 文字色 */
-  --accent: #2f64a3;          /* 主色調 */
-  --warm: #b75e31;            /* 強調色 */
-  --type-map: #ae5a31;        /* 導覽頁色彩 */
-  --type-law: #315f98;        /* 定律色彩 */
-  --type-concept: #648356;    /* 概念色彩 */
-  --type-quantity: #83589a;   /* 物理量色彩 */
-  --type-mathematical_tool: #9b6b35;  /* 數學工具色彩 */
-}
-```
+If you adapt the template to a new domain, the usual frontend changes are:
 
-### 修改領域描述
+1. note-type labels
+2. note-type color palette
+3. domain descriptions
+4. taxonomy descriptions
+5. landing-copy text
 
-`prototype/app.js` 中的 `domainDescriptions` 物件：
+Do not start frontend work before the exported data contract is stable.
 
-```javascript
-const domainDescriptions = {
-  力學: "你的領域描述",
-  電磁學: "你的領域描述",
-  // ...
-};
-```
+If note types, relation fields, or section shapes are still moving, frontend polish is premature.
 
-### 修改 type 標籤
+## Data Contract
 
-`prototype/app.js` 中的 `typeLabel` 物件：
+The frontend expects:
 
-```javascript
-const typeLabel = {
-  map: "導覽頁",
-  law: "定律",
-  concept: "概念",
-  // 新增你的 type：
-  reaction: "反應",
-  compound: "化合物",
-};
-```
+- `graph.json`
+- `note_details.json`
 
-### 修改字體
+It does not read raw Markdown files directly.
 
-`prototype/styles.css` 頂部的 `@import`：
+So if the UI looks wrong, first ask:
 
-```css
-@import url("https://fonts.googleapis.com/css2?family=Your+Font&display=swap");
-```
+1. is the source vault correct?
+2. are the exports current?
+3. is the schema aligned with the data?
 
-然後在 `body` 的 `font-family` 中指定。
-
-## 進階客製化
-
-### 修改圖譜節點大小
-
-`prototype/styles.css` 中的 `.node-core` 相關規則。
-
-### 修改閱讀模式佈局
-
-`prototype/styles.css` 中的 `.reader-layout.has-outline` 的 `grid-template-columns`。
-
-### 修改搜尋結果數量上限
-
-`prototype/app.js` 中搜尋相關的 `.slice(0, 50)` 數字。
-
-## 資料來源切換
-
-如果要支援多個知識庫，修改 `prototype/app.js` 頂部：
-
-```javascript
-const graphUrl = "./graph.json";
-const noteDetailsUrl = "./note_details.json";
-```
-
-改為從 URL 參數讀取：
-
-```javascript
-const params = new URLSearchParams(window.location.search);
-const db = params.get("db") || "default";
-const graphUrl = `../${db}_graph.json`;
-const noteDetailsUrl = `../${db}_note_details.json`;
-```
-
-然後用 `?db=physics` 或 `?db=chemistry` 切換。
+Only after that should you debug `prototype/app.js`.

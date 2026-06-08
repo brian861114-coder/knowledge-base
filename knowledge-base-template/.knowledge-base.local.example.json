@@ -1,9 +1,6 @@
 {
-  "_comment1": "本機端知識庫設定檔。複製為 .knowledge-base.local.json 後使用。",
-  "_comment2": "vault_path: 指向你的 Obsidian Vault 路徑（必要）",
-  "_comment3": "python_path: 若非系統預設 Python，可指定路徑（選用）",
-  "_comment4": "out_dir: 輸出目錄（預設為 repo 根目錄，選用）",
-  "vault_path": "/path/to/your/obsidian/vault",
-  "python_path": "",
-  "out_dir": ""
+  "_comment": "Copy this file to .knowledge-base.local.json and fill the local paths for your machine.",
+  "vaultPath": "C:/path/to/your/obsidian/vault",
+  "pythonPath": "",
+  "outDir": "C:/path/to/your/output"
 }

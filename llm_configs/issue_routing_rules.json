@@ -1,0 +1,70 @@
+{
+  "routing_version": 1,
+  "default_route": "human_or_stronger_model",
+  "weak_model_first": [
+    {
+      "issue_category": "meaning_too_short",
+      "route": "deepseek_v4pro",
+      "target_section": "物理意義",
+      "risk": "low",
+      "requirements": [
+        "repair a single section only",
+        "do not add new equations unless already provided in input",
+        "must explain what the concept/law/quantity describes and why it matters",
+        "must avoid filler"
+      ]
+    },
+    {
+      "issue_category": "ungrouped_related_links",
+      "route": "deepseek_v4pro",
+      "target_section": "相關連結",
+      "risk": "low",
+      "requirements": [
+        "only reorganize provided links into grouped subsections",
+        "do not invent new links",
+        "each group needs one short explanatory sentence"
+      ]
+    },
+    {
+      "issue_category": "banned_pattern",
+      "route": "deepseek_v4pro",
+      "target_section": "same_as_flagged_section",
+      "risk": "low",
+      "requirements": [
+        "rewrite only the flagged sentences",
+        "keep original meaning",
+        "remove template-like contrast phrasing"
+      ]
+    }
+  ],
+  "weak_model_conditional": [
+    {
+      "issue_category": "history_not_concrete",
+      "route": "deepseek_v4pro_if_evidence_provided",
+      "target_section": "歷史背景",
+      "risk": "medium",
+      "requirements": [
+        "must be given at least one person, year, experiment, or source snippet in task input",
+        "must not fabricate names, dates, or attributions",
+        "if evidence is insufficient, return blocked"
+      ]
+    }
+  ],
+  "avoid_weak_model": [
+    {
+      "issue_category": "derivation_missing_formula",
+      "route": "stronger_model_or_human",
+      "reason": "Often requires nontrivial mathematical judgment."
+    },
+    {
+      "issue_category": "derivation_too_short",
+      "route": "stronger_model_or_human",
+      "reason": "Weak models tend to expand derivations with filler instead of valid steps."
+    },
+    {
+      "issue_category": "missing_symbol_section",
+      "route": "stronger_model_or_rule_based_tool",
+      "reason": "Usually tied to formula interpretation and exact notation."
+    }
+  ]
+}

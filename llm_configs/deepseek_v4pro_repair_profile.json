@@ -1,0 +1,46 @@
+{
+  "profile_name": "deepseek_v4pro_section_repair",
+  "description": "Restricted section-level repair profile for weaker models. The model must only generate replacement content for one target section at a time.",
+  "model_class": "weaker_general_model",
+  "source_of_truth": "external_vault",
+  "write_mode": "section_payload_only",
+  "forbidden_actions": [
+    "rewrite_entire_note",
+    "change_frontmatter",
+    "change_note_type",
+    "change_section_order",
+    "change_file_path",
+    "invent_wikilink_targets",
+    "touch_unrequested_sections"
+  ],
+  "required_output_contract": {
+    "format": "json",
+    "top_level_keys": [
+      "status",
+      "note_path",
+      "target_section",
+      "issue_category",
+      "content",
+      "rationale",
+      "self_check"
+    ],
+    "status_values": [
+      "ok",
+      "blocked"
+    ]
+  },
+  "blocked_when": [
+    "missing_context_for_requested_section",
+    "requested_fix_requires_new_equation_or_nontrivial_derivation",
+    "requested_fix_requires_new_historical_fact_not_present_in_inputs",
+    "target_section_is_ambiguous",
+    "repair_would_require_cross_note_link_decisions"
+  ],
+  "quality_constraints": {
+    "ban_direct_negation_pattern": true,
+    "preserve_existing_links_when_possible": true,
+    "preserve_existing_formulae_when_possible": true,
+    "no_filler_sentences": true,
+    "prefer_concrete_statements": true
+  }
+}

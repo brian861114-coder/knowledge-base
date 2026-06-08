@@ -1,0 +1,56 @@
+{
+  "task_version": 1,
+  "note_path": "03_quantities/example.md",
+  "note_type": "quantity",
+  "issue_category": "meaning_too_short",
+  "target_section": "物理意義",
+  "target_constraints": {
+    "min_chars": 100,
+    "max_chars": 220,
+    "must_include": [
+      "this quantity describes what physical state or effect",
+      "why it matters"
+    ],
+    "must_not": [
+      "不是A而是B",
+      "empty filler"
+    ]
+  },
+  "allowed_edits": [
+    "replace_target_section_only"
+  ],
+  "forbidden_edits": [
+    "modify_frontmatter",
+    "modify_other_sections",
+    "invent_new_wikilinks",
+    "change_existing_formulae"
+  ],
+  "source_context": {
+    "title": "Example",
+    "summary": "",
+    "sections": {
+      "定義": "",
+      "數學表達": "",
+      "物理意義": "",
+      "現代理論視角": ""
+    },
+    "known_links": [],
+    "provided_evidence": []
+  },
+  "expected_output": {
+    "status": "ok",
+    "note_path": "03_quantities/example.md",
+    "target_section": "物理意義",
+    "issue_category": "meaning_too_short",
+    "content": "Only the replacement body for the target section. Do not include the heading.",
+    "rationale": [
+      "short bullet or sentence 1",
+      "short bullet or sentence 2"
+    ],
+    "self_check": {
+      "used_only_allowed_inputs": true,
+      "touched_only_target_section": true,
+      "avoided_banned_pattern": true
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "section_schemas": {
+    "concept": {
+      "required_order": [
+        "概念摘要",
+        "嚴格定義",
+        "先備知識",
+        "物理意義",
+        "典型應用",
+        "常見誤解",
+        "歷史背景",
+        "現代理論視角",
+        "相關連結"
+      ],
+      "optional": ["核心公式", "符號與單位", "推導"],
+      "conditional_requirements": [
+        {
+          "if_section_present": "核心公式",
+          "require_sections": ["符號與單位"]
+        },
+        {
+          "if_formula_present": true,
+          "require_sections": ["符號與單位"]
+        },
+        {
+          "if_formula_present": true,
+          "require_sections": ["推導"]
+        }
+      ],
+      "related_links_scope": ["相關概念", "物理量", "實驗", "衍生結果"]
+    },
+    "law": {
+      "required_order": [
+        "定律摘要",
+        "數學表述",
+        "符號與單位",
+        "物理意義",
+        "推導",
+        "適用條件",
+        "典型應用",
+        "常見誤解",
+        "歷史背景",
+        "現代理論視角",
+        "相關連結"
+      ],
+      "related_links_scope": ["相關概念", "物理量", "實驗", "衍生結果"]
+    },
+    "quantity": {
+      "required_order": [
+        "定義",
+        "數學表達",
+        "符號與單位",
+        "維度與量綱",
+        "物理意義",
+        "量測方式",
+        "出現於哪些定律",
+        "歷史背景",
+        "現代理論視角",
+        "相關連結"
+      ],
+      "related_links_scope": ["相關概念", "物理量", "實驗"]
+    },
+    "mathematical_tool": {
+      "required_order": [
+        "工具摘要",
+        "數學定義",
+        "推導",
+        "幾何意義",
+        "為什麼物理需要它",
+        "在哪些主題中出現",
+        "典型操作",
+        "解題框架",
+        "歷史背景",
+        "常見誤解",
+        "現代理論視角",
+        "相關工具"
+      ]
+    },
+    "experiment": {
+      "required_order": [
+        "實驗摘要",
+        "問題背景",
+        "裝置與方法",
+        "可觀測量",
+        "實驗結果",
+        "誤差與限制",
+        "歷史背景",
+        "歷史影響",
+        "現代理論視角",
+        "相關連結",
+        "延伸價值"
+      ],
+      "related_links_scope": ["相關概念", "物理量", "實驗", "定律", "數學工具"]
+    },
+    "map": {
+      "required_order": [
+        "地圖摘要",
+        "主要主題",
+        "關鍵概念",
+        "關鍵定律",
+        "典型問題類型",
+        "建議學習順序",
+        "先備知識",
+        "與其他領域的橋接",
+        "延伸方向"
+      ],
+      "optional": ["關鍵實驗"],
+      "ordering_rules": [
+        {
+          "optional_sections_must_not_break_required_order": true
+        },
+        {
+          "optional_section_positions": {
+            "關鍵實驗": {
+              "allowed": [
+                {
+                  "after": "關鍵定律"
+                }
+              ],
+              "fixed_position": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "task_version": 1,
+  "note_path": "03_quantities/velocity.md",
+  "note_type": "quantity",
+  "issue_category": "meaning_too_short",
+  "target_section": "meaning_section",
+  "target_constraints": {
+    "min_chars": 100,
+    "max_chars": 180,
+    "must_include": [
+      "what physical state or effect this quantity describes",
+      "why it matters in analysis"
+    ],
+    "must_not": [
+      "direct contrast filler",
+      "empty filler"
+    ]
+  },
+  "allowed_edits": [
+    "replace_target_section_only"
+  ],
+  "forbidden_edits": [
+    "modify_frontmatter",
+    "modify_other_sections",
+    "invent_new_wikilinks",
+    "change_existing_formulae"
+  ],
+  "source_context": {
+    "title": "Velocity",
+    "summary": "A physical quantity describing rate and direction of position change over time.",
+    "sections": {
+      "definition_section": "Velocity is the rate of change of position with respect to time.",
+      "math_section": "$v = \\\\frac{dx}{dt}$",
+      "meaning_section": "Velocity is important for describing motion.",
+      "modern_section": "In relativity, velocity remains fundamental but transforms under Lorentz transformation."
+    },
+    "known_links": [
+      "[[Position]]",
+      "[[Time]]",
+      "[[Acceleration]]"
+    ],
+    "provided_evidence": []
+  }
+}

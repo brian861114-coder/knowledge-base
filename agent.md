@@ -1,25 +1,23 @@
 # knowledge_map Agent Guide
 
 This file is for future agents picking up work in `C:\Users\brian\Downloads\vibe_coding\knowledge_map`.
-It is intentionally practical. The goal is to reduce time wasted on false assumptions about where the real data lives, what the entrypoints are, and which parts of the repo are currently drifting from reality.
+It is intentionally practical.
 
 ## 1. What this project actually is
 
-This is not just a frontend app and not just a Markdown repo.
-It is a four-layer system:
+This repo is a four-layer system:
 
 1. An external Obsidian vault
-   - This is the real source of truth.
-   - The actual knowledge content lives there as Markdown notes with frontmatter, wikilinks, and math.
+   - This is the source of truth.
+   - Real content lives there as Markdown notes with frontmatter, wikilinks, and math.
 2. A Python export and validation toolchain in this repo
    - Exports the vault into JSON artifacts.
-   - Validates frontmatter, links, relations, math delimiters, and export consistency.
+   - Validates links, relations, math delimiters, structure, and export consistency.
 3. A local prototype frontend in this repo
    - Reads exported JSON.
-   - Renders the graph, side-panel preview, and reader mode.
+   - Renders graph, preview panel, and reader mode.
 4. A deployment layer under `docs/`
    - GitHub Pages serves from here.
-   - `docs/` must be kept in sync with exported JSON and `prototype/`.
 
 Rule that matters most:
 
@@ -40,46 +38,41 @@ If the UI is wrong, inspect `prototype/`.
 - `docs/`
   - GitHub Pages deployment output.
 - `tools/`
-  - Main project scripts: export, validation, taxonomy, map-page expansion, batch content work.
+  - Export, validation, schema migration, taxonomy, and content-maintenance scripts.
+- `schema/`
+  - Active structure rules for note types, section order, rename rules, and content rules.
 - `obsidian-knowledge-map-demo/scripts/`
   - Contains `export_graph.py`, the graph exporter.
-- `scripts/`
-  - Contains deployment helpers such as `deploy.sh`.
 - `assets/`
   - Frontend-served static images and diagrams.
 - `knowledge-base-template/`
-  - Extracted reusable template version of this architecture.
+  - Reusable template version of this architecture.
 - `materials-science-engineering-kb/`
-  - A second knowledge-base project using the same architecture.
-  - This is not noise. Deployment flow explicitly references it.
+  - Separate knowledge-base project sharing the same architecture.
+  - Deployment flow explicitly references it.
 
 ### Core documentation
 
 - `README.md`
-  - Project overview, but some status details are stale.
-- `AI_HANDOFF.md`
-  - Prior agent handoff document, also drift-prone.
-- `PROJECT_ARCHITECTURE.md`
-  - High-level architecture notes.
+  - Repo overview and current verified status.
 - `MAINTENANCE.md`
-  - Operator manual.
+  - Operator-oriented maintenance notes.
 - `agent.md`
-  - This file. Use it as the fast operational map, not as marketing copy.
+  - This file. Use it as the fast operational map.
 
 ## 3. Real entrypoints
 
 ### Start the local prototype
 
 - `start_prototype.cmd`
-  - Thin wrapper that calls PowerShell.
+  - Wrapper that calls PowerShell.
 - `start_prototype.ps1`
   - Real startup entrypoint.
   - Reads `.knowledge-base.local.json`.
-  - Supports environment overrides:
+  - Supports:
     - `KB_PYTHON_PATH`
     - `KB_PROTOTYPE_HOST`
     - `KB_PROTOTYPE_PORT`
-  - If no server is listening on the configured host and port, it starts a Python `http.server`.
 
 ### Export and validate
 
@@ -89,42 +82,129 @@ If the UI is wrong, inspect `prototype/`.
     1. `tools/export_note_details.py`
     2. `obsidian-knowledge-map-demo/scripts/export_graph.py`
     3. `tools/validate_knowledge_base.py`
+- `tools/validate_knowledge_base.py`
+  - Validates:
+    - required frontmatter
+    - broken `[[wikilink]]` targets
+    - broken frontmatter relation targets
+    - duplicate titles and paths
+    - unmatched `$` and `$$`
+    - consistency between vault note count and exported JSON files
+- `tools/validate_structure.py`
+  - Validates:
+    - required sections
+    - required section order
+    - conditional section rules
+    - `map` optional section placement
+
+### Path resolution
+
 - `tools/kb_paths.py`
   - Central vault-path resolution logic.
   - Resolution order:
     1. CLI `--vault`
     2. `KB_VAULT_PATH`
     3. `.knowledge-base.local.json` -> `vaultPath`
+
+## 4. Current Verified Status (as of 2026-06-08)
+
+The active source vault, exports, and both validators agree on the current state:
+
+- vault notes: `417`
+- exported note details: `417`
+- graph nodes: `417`
+- graph edges: `7170`
+- broken wikilinks: `0`
+- broken frontmatter relations: `0`
+- math issues: `0`
+- duplicate titles: `0`
+- duplicate paths: `0`
+- structure validation issues: `0`
+
+This was verified in this repo by:
+
+- `tools/validate_structure.py`
+- `tools/run_exports.py`
 - `tools/validate_knowledge_base.py`
-  - Validates:
-    - required frontmatter
-    - broken `[[wikilink]]` targets
-    - broken frontmatter relation targets
-    - duplicate titles
-    - unmatched `$` and `$$`
-    - consistency between vault note count and exported JSON files
 
-### Deploy
+## 5. Current Schema Baseline
 
-- `scripts/deploy.sh`
-  - Runs `python tools/run_exports.py`
-  - Copies main project export and frontend artifacts into `docs/`
-  - Copies `materials-science-engineering-kb` deployment artifacts into `docs/materials-science-engineering/`
-  - Stages selected files, commits, and pushes
+The active schema lives under `schema/`:
 
-## 4. Data flow
+- `schema/note_types.yaml`
+- `schema/sections.yaml`
+- `schema/renaming_rules.yaml`
+- `schema/content_rules.yaml`
 
-### Main content flow
+Important implementation note:
+
+- these files currently use JSON syntax even though the extension is `.yaml`
+- current consumers use `json.loads`
+- do not silently convert them to real YAML unless you update every loader
+
+### Active section rules
+
+- `concept`
+  - required: `概念摘要`, `嚴格定義`, `先備知識`, `物理意義`, `典型應用`, `常見誤解`, `歷史背景`, `現代理論視角`, `相關連結`
+  - optional: `核心公式`, `符號與單位`, `推導`
+  - conditional:
+    - if formula exists, require `符號與單位`
+    - if formula exists, require `推導`
+- `law`
+  - `定律摘要`, `數學表述`, `符號與單位`, `物理意義`, `推導`, `適用條件`, `典型應用`, `常見誤解`, `歷史背景`, `現代理論視角`, `相關連結`
+- `quantity`
+  - `定義`, `數學表達`, `符號與單位`, `維度與量綱`, `物理意義`, `量測方式`, `出現於哪些定律`, `歷史背景`, `現代理論視角`, `相關連結`
+- `mathematical_tool`
+  - `工具摘要`, `數學定義`, `推導`, `幾何意義`, `為什麼物理需要它`, `在哪些主題中出現`, `典型操作`, `解題框架`, `歷史背景`, `常見誤解`, `現代理論視角`, `相關工具`
+- `experiment`
+  - `實驗摘要`, `問題背景`, `裝置與方法`, `可觀測量`, `實驗結果`, `誤差與限制`, `歷史背景`, `歷史影響`, `現代理論視角`, `相關連結`, `延伸價值`
+- `map`
+  - `地圖摘要`, `主要主題`, `關鍵概念`, `關鍵定律`, `典型問題類型`, `建議學習順序`, `先備知識`, `與其他領域的橋接`, `延伸方向`
+  - optional: `關鍵實驗`
+  - placement rule: `關鍵實驗` must appear immediately after `關鍵定律`
+
+### Active rename baseline
+
+Representative normalizations:
+
+- `物理直覺` -> `物理意義`
+- `物理解讀` -> `物理意義`
+- `符號說明與單位` -> `符號與單位`
+- `進一步視角` -> `現代理論視角`
+- `相關概念` -> `相關連結` for experiment notes
+
+Use `schema/renaming_rules.yaml` for the full mapping, not memory.
+
+## 6. Current structure tooling
+
+These scripts are now part of the real operator path:
+
+- `tools/validate_structure.py`
+  - structure contract validator
+- `tools/normalize_sections.py`
+  - heading normalization, merge, dedupe, reorder
+- `tools/fill_quantity_modern_perspectives.py`
+  - fills missing `現代理論視角` for quantity notes
+- `tools/fill_experiment_modern_perspectives.py`
+  - fills missing `現代理論視角` for experiment notes
+- `tools/fill_mathematical_tool_derivations.py`
+  - fills missing `推導` for mathematical tool notes
+- `tools/fill_final_structure_gaps.py`
+  - final small-batch patcher for map/law edge cases
+
+These were used to migrate the live vault into structure compliance.
+
+## 7. Data flow
 
 External vault Markdown
 -> `tools/export_note_details.py`
 -> `physics_note_details.json`
--> consumed by `prototype/app.js` for side panel and reader mode
+-> consumed by `prototype/app.js`
 
 External vault Markdown
 -> `obsidian-knowledge-map-demo/scripts/export_graph.py`
 -> `physics_graph.json`
--> consumed by `prototype/app.js` for graph rendering
+-> consumed by `prototype/app.js`
 
 ### Relation model
 
@@ -146,240 +226,51 @@ External vault Markdown
 - `recommended_order` -> `requires`
 - body `[[wikilink]]` -> `wikilink`
 
-If note schema or field naming drifts, graph semantics drift immediately.
+If field naming drifts, graph semantics drift immediately.
 
-## 5. Frontend structure
+## 8. Frontend structure
 
 This is a large plain HTML/CSS/JS prototype, not a formal app framework.
 
-### File responsibilities
-
 - `prototype/index.html`
-  - Page shell.
-  - Loads MathJax.
-  - Declares the containers for sidebar, graph area, and detail panel.
+  - page shell
+  - loads MathJax
 - `prototype/app.js`
-  - Almost all frontend logic lives here.
-  - Data loading, graph rendering, interactions, filters, reader mode, markdown rendering, and internal-link behavior.
+  - almost all frontend logic
+  - data loading, rendering, interactions, markdown rendering
 - `prototype/styles.css`
-  - All styles.
+  - all styles
 
-### Known frontend characteristics
+The frontend does not read raw vault Markdown directly.
+It depends on exported JSON artifacts.
 
-- The frontend does not read raw vault Markdown directly.
-- It depends on exported JSON artifacts.
-- It supports graph view, notes view, search view, and settings view.
-- It supports taxonomy/domain filter mode.
-- It supports Markdown image rendering.
-- It uses MathJax for equations.
-
-### Known frontend issue
-
-- `prototype/index.html` currently shows visible mojibake in terminal output and likely contains encoding damage in displayed copy.
-
-Do not assume visible UI text is healthy just because the app loads.
-
-## 6. Local config and environment assumptions
-
-### Local config file
+## 9. Local config and path discipline
 
 - `.knowledge-base.local.json`
-  - Machine-local settings.
-  - Includes:
+  - machine-local settings
+  - includes:
     - `pythonPath`
     - `prototypeHost`
     - `prototypePort`
     - `vaultPath`
 
-### Critical path drift
-
-Repo docs mention a vault path under something like `Obsidian Vault...`.
-Actual validation in this session resolved the live vault path as:
-
-- `C:\Users\brian\Downloads\Obsidian Vault備份\obsidian\Project\knowledge database`
-
-That matters because it proves at least one thing:
-
-- documented vault path and active vault path have drifted
-
 Never trust README path examples without checking `.knowledge-base.local.json` or `KB_VAULT_PATH`.
 
-## 7. Current Project Status (as of 2026-06-07)
+## 10. Recommended agent strategy
 
-### Validation Snapshot
+### If the task is structure or schema work
 
-vault: 355 notes (excluding _bak_ backup directory), 7423 graph edges
-0 broken wikilinks, 0 broken relations, 0 math issues, 0 duplicate titles
+1. Inspect `schema/`
+2. Run `tools/validate_structure.py`
+3. If the issue is mechanical, use `tools/normalize_sections.py`
+4. If the issue is real missing content, patch the source vault and rerun structure validation
+5. After structure changes, rerun `tools/run_exports.py`
 
-### Content Quality Audit (10 Rules)
+### If the task is content repair or expansion
 
-10-rule content quality audit performed on 2026-06-07. Rules: (1) No "不是A而是B", (2) Definition-first summary, (3) Concrete history, (4) Multi-aspect intuition, (5) Complete symbols, (6) Derivation with formulas, (7) Modern theory, (8) All sections substantive, (9) Wikilinks exist, (10) Related links grouped.
-
-**Pass rate: 234/355 (65%)** — up from 56/355 (15%) at start of session.
-
-| Score | Count | Description |
-|-------|-------|-------------|
-| 0 (pass) | 234 | All 10 rules satisfied |
-| 1 | 0 | Single failure — cleared |
-| 2 | 0 | Double failure — cleared |
-| 3 | 77 | Triple failure (mostly 直覺+推導+符號) |
-| 4 | 32 | Quadruple failure |
-| 5 | 12 | Five failures |
-
-Remaining 121 notes fail on:
-- 直覺 (物理直覺 < 100 chars): 92 notes
-- 推導 (no LaTeX or < 80 chars): 75 notes
-- 符號 (no table or no $): 36 notes
-- 現代理論 (generic template): 12 notes
-- 歷史 (no names/dates): 1 note
-
-### Content Rewrite Progress (2026-06-07 session)
-
-| Batch | Notes | Scope | Status |
-|-------|-------|-------|--------|
-| Score-6 rewrite | 8 notes | Full rewrite (波粒二象性, 離散能階, 偏振, 共振, 散射, 繞射, 解析度, 密度) | ✅ Done |
-| 不是A而是B cleanup | 208 instances across 95 files | All instances removed | ✅ Done |
-| 現代理論 (domain-specific) | 206 notes | Replaced template text with specific content | ✅ Done |
-| 歷史背景 (domain-specific) | 204 notes | Added specific names/dates by domain | ✅ Done |
-| 符號表 (auto-extract) | 145 notes | Extracted symbols from formulas | ✅ Done |
-| 推導 (manual) | 76 notes | Wrote specific derivations with LaTeX | ✅ Done |
-| 物理直覺 (manual) | 15 notes | Wrote mechanism+analogy+blind spots | ✅ Done |
-| Remaining | 121 notes | Mostly 直覺+推導 | In progress |
-
-### Key Lesson
-
-Automated scripts can fix structural issues (template removal, section stubs, symbol extraction) but CANNOT generate actual physics content (formulas, historical figures, multi-aspect intuition). Content quality requires per-note domain knowledge writing.
-
-### Standard Section Structure by Note Type
-
-All new pages MUST follow these section standards. Existing pages will be migrated in phases.
-
-| Type | Standard Section Order |
-|------|-----------------------|
-| **concept** | 概念摘要 → 嚴格定義 → **先備知識** → 核心公式 → 符號說明與單位 → 物理直覺 → 物理意義 → 推導 → 典型應用 → 常見誤解 → 歷史背景 → 現代理論視角 → 相關連結(含相關概念/物理量/實驗/衍生結果) |
-| **law** | 定律摘要 → 數學表述 → 符號說明與單位 → 物理直覺 → 物理意義 → 推導 → 適用條件 → 典型應用 → 常見誤解 → 歷史背景 → 現代理論視角 → 相關連結(含相關概念/物理量/實驗/衍生結果) |
-| **quantity** | 定義 → 數學表達 → 符號與單位 → 維度與量綱 → 物理直覺 → 物理意義 → 量測方式 → 出現於哪些定律 → 歷史背景 → 相關連結(含相關概念/物理量/實驗) |
-| **mathematical_tool** | 工具摘要 → 數學定義 → 幾何意義 → 為什麼物理需要它 → 在哪些主題中出現 → 典型操作 → 解題框架 → 物理直覺 → 歷史背景 → 常見誤解 → 相關工具 → 進一步視角 |
-| **experiment** | 實驗摘要 → 問題背景 → 裝置與方法 → 可觀測量 → 實驗結果 → 誤差與限制 → 物理直覺 → 歷史背景 → 歷史影響 → 相關概念 → 延伸價值 |
-| **map** | 地圖摘要 → 主要主題 → 關鍵概念 → 關鍵定律 → 典型問題類型 → 建議學習順序 → 先備知識 → 與其他領域的橋接 → 延伸方向 |
-
-### Renaming Rules (for migration)
-
-| Type | Old Name(s) | Standard Name |
-|------|-------------|---------------|
-| concept | 核心想法 | → 概念摘要 |
-| concept/law/quantity | 物理解讀 | → merge into 物理直覺 |
-| concept | 它在衡量什麼 / 這個概念在衡量什麼 | → 物理意義 |
-| concept | 先備與延伸連結 / 先備知識與延伸 | → 先備知識 |
-| concept/law | 與延伸定理的連接 / 與上下游概念的連接 | → 相關連結 |
-| law | 敘述 | → 定律摘要 |
-| law | 推導思路 / 逐步數學推導 | → 推導 |
-| quantity | 物理量摘要 / 為什麼需要這個物理量 / 這個物理量在衡量什麼 | → 定義 |
-| quantity | 數學表述 | → 數學表達 |
-| concept/law | 進一步視角 | → 現代理論視角 |
-| quantity | 出現於哪些定律 / 與下游定律的連接 | → 出現於哪些定律 |
-| all | 和既有節點的關係 / 同域參考 / 與某某的連接 | → 相關連結 |
-
-### Content Quality Rules
-
-1. **No "不是A而是B" pattern** — Direct definition first, not negation then assertion.
-2. **物理解讀 merged into 物理直覺** — Single rich intuition section instead of two thin ones.
-3. **Definition-first summaries** — State what it is, then where it's used.
-4. **Historical background must be concrete** — Include specific people, dates, experiments.
-5. **Physics intuition must be multi-aspect** — Mechanism, analogy, and common blind spots.
-6. **符號說明與單位 required** for any note containing formulas — Every variable must have name and SI unit.
-7. **推導 required** — Even a brief derivation chain. Not just a statement of the formula.
-8. **現代理論視角** for concept and law — How this concept is extended or reinterpreted in modern physics.
-
-### Known Content Issues
-
-1. **Section structure inconsistency** — Different note types (law, concept, quantity, mathematical_tool) use different section names. Many concept notes have 核心想法/概念摘要/物理解讀 overlapping sections. Laws lack standardized structure.
-2. **Formula completeness** — Many formulas presented without derivation steps, symbol explanations, or SI units. Mathematical_tool type needs: 定義→公式→推導→物理意義.
-3. **Missing 符號說明 in many notes** — Variables used in formulas are not listed with their meanings and units.
-4. **Review HTML accessibility snapshot** may show incomplete content due to `<div class="diff-*">` wrappers. Actual content is present — verify with `innerText` in console.
-
-## 8. How to think about `tools/`
-
-`tools/` is not just export plumbing. It is the repo's content-engineering toolbox.
-
-### Core operator scripts
-
-- `run_exports.py`
-- `export_note_details.py`
-- `validate_knowledge_base.py`
-- `kb_paths.py`
-
-### Batch generation and expansion scripts
-
-- `generate_physics_seed_notes.py`
-- `generate_physics_second_batch.py`
-- `generate_physics_third_batch.py`
-- `expand_*`
-- `add_requested_*`
-- `thicken_remaining_topics_batch.py`
-
-### Structure, taxonomy, and repair scripts
-
-- `apply_concept_taxonomy.py`
-- `add_secondary_map_pages.py`
-- `move_concepts_to_taxonomy_subfolders.py`
-- `expand_map_pages_with_descriptions.py`
-- `integrate_bridge_links.py`
-- `fill_missing_*`
-- `normalize_circuit_titles.py`
-- `update_law_symbol_units.py`
-
-This repo is part viewer, part content-maintenance system, part export pipeline.
-
-## 9. Role of `materials-science-engineering-kb/`
-
-Do not ignore this directory.
-
-It is a second knowledge-base project using the same architecture, and deployment explicitly depends on it.
-
-### Why it matters
-
-- It has its own `prototype/`
-- It has its own `docs/`
-- It has its own `tools/`
-- It has its own `vault/`
-- `scripts/deploy.sh` syncs its artifacts into `docs/materials-science-engineering/`
-
-### Practical consequence
-
-- Changes to deployment flow must consider both the main physics project and this subproject.
-- A large share of the current dirty working tree is inside this subproject.
-- If your task is only about main-project docs, do not accidentally stage or modify these unrelated files.
-
-## 10. Working tree status at the time this file was created
-
-The repo is not clean.
-Uncommitted changes were present mainly under:
-
-- `docs/materials-science-engineering/*`
-- `materials-science-engineering-kb/prototype/*`
-- `materials-science-engineering-kb/vault/*`
-
-Operational rule:
-
-- Never use broad staging like `git add .` unless the user explicitly wants that risk.
-
-If you only touch main-project files, stage explicitly.
-
-## 11. Recommended agent strategy
-
-### If the task is content repair or content expansion
-
-- Edit the external vault Markdown, not `physics_note_details.json`.
-- Then run `tools/run_exports.py`.
-- Then inspect validator output.
-
-### If the task is to continue the Wikipedia-assisted cleanup flow
-
-- Use `tmp/review_sessions/wiki-pilot-20260607-120602/review.html` as the primary review artifact.
-- Do not assume the local review server is stable.
-- The current blocker is not candidate generation.
-- The current blocker is the final reviewed-change import/apply step.
+- Edit the external vault Markdown, not exported JSON.
+- Re-export afterward.
+- Run both validators if structure or links changed.
 
 ### If the task is graph behavior or relation correctness
 
@@ -389,41 +280,59 @@ If you only touch main-project files, stage explicitly.
 ### If the task is frontend work
 
 - Most logic is in `prototype/app.js`.
-- `prototype/index.html` likely needs encoding scrutiny before copy edits.
 - Deployment requires syncing `docs/`.
 
 ### If the task is documentation
 
-- Do not just copy `README.md`.
-- Check `.knowledge-base.local.json`.
 - Re-run validation before writing counts or status claims.
+- Do not copy stale numbers from older docs.
 
-## 12. Common failure modes
+## 11. Current limitations
 
-1. Treating repo JSON as source of truth.
-   - Wrong. The external vault is the source of truth.
-2. Treating README counts as current.
-   - Wrong. Status docs have drift.
-3. Fixing content by editing exported JSON directly.
-   - Usually wrong unless you are debugging the exporter itself.
-4. Ignoring `materials-science-engineering-kb/`.
-   - Wrong. Deployment flow depends on it.
-5. Broad staging in a dirty tree.
-   - Wrong. Easy way to mix unrelated changes into one commit.
-6. Assuming the documented vault path is the active one.
-   - Wrong. This session already proved path drift.
+Structure compliance is green.
+Content quality auditing is not.
 
-## 13. Minimum handoff checklist for any future agent
+What still does not exist yet:
 
-Before doing real work, do these six things:
+- a semantic/content-quality validator that can reliably detect vague filler
+- an automatic score for weak historical sections, shallow derivations, or low-information modern-theory sections
+
+Do not confuse “schema valid” with “content excellent.”
+
+## 12. Role of `materials-science-engineering-kb/`
+
+Do not ignore this directory.
+
+It is a separate knowledge-base project using the same architecture, and deployment explicitly depends on it.
+
+Practical consequence:
+
+- changes to deployment flow must consider both the main physics project and this subproject
+- a large share of the dirty working tree may live there
+- if your task is only about the main project, do not accidentally stage unrelated material-science files
+
+## 13. Working tree discipline
+
+The repo may be dirty.
+
+Operational rules:
+
+- do not use broad staging like `git add .` unless the user explicitly wants that risk
+- if you only touch main-project files, stage explicitly
+- never treat exported JSON as canonical content
+
+## 14. Minimum handoff checklist
+
+Before doing real work, do these:
 
 1. Read `.knowledge-base.local.json`
 2. Confirm `vaultPath` and Python path
 3. Run `git status --short`
-4. Run `python .\tools\validate_knowledge_base.py`
-5. Decide whether the task belongs to the main physics system or `materials-science-engineering-kb`
-6. If deployment is involved, verify whether `prototype/` and `docs/` are in sync
+4. Run `tools/validate_structure.py`
+5. Run `tools/validate_knowledge_base.py`
+6. Decide whether the task belongs to the main physics system or `materials-science-engineering-kb`
+7. If deployment is involved, verify whether `prototype/` and `docs/` are in sync
 
-## 14. One-line summary
+## 15. One-line summary
 
-This project is an external Obsidian knowledge base plus a strict export/validation pipeline plus a JSON-driven viewer. If you get the source-of-truth boundary wrong, you will break the project.
+This project is an external Obsidian knowledge base plus a strict schema, export, and validation pipeline. If you get the source-of-truth boundary wrong, you will break the project.

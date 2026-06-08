@@ -1,0 +1,88 @@
+{
+  "types": [
+    {
+      "id": "map",
+      "label": "地圖",
+      "label_en": "map",
+      "folder": "00_maps",
+      "description": "用來組織主題、學習順序、跨領域橋接與導航的頁面"
+    },
+    {
+      "id": "law",
+      "label": "定律",
+      "label_en": "law",
+      "folder": "01_laws",
+      "description": "描述物理規律、數學表述、適用條件與推導的頁面"
+    },
+    {
+      "id": "concept",
+      "label": "概念",
+      "label_en": "concept",
+      "folder": "02_concepts",
+      "description": "描述物理概念、其定義、意義、應用與理論位置的頁面"
+    },
+    {
+      "id": "quantity",
+      "label": "物理量",
+      "label_en": "quantity",
+      "folder": "03_quantities",
+      "description": "描述物理量的定義、數學表達、單位、量綱與量測方式的頁面"
+    },
+    {
+      "id": "experiment",
+      "label": "實驗",
+      "label_en": "experiment",
+      "folder": "04_experiments",
+      "description": "描述實驗背景、裝置、可觀測量、結果、限制與歷史影響的頁面"
+    },
+    {
+      "id": "mathematical_tool",
+      "label": "數學工具",
+      "label_en": "mathematical_tool",
+      "folder": "05_mathematical_tools",
+      "description": "描述物理中使用的數學工具、定義、推導、操作與解題框架的頁面"
+    }
+  ],
+  "required_frontmatter": {
+    "base": ["type", "title", "summary"],
+    "require_domain_for": ["law", "concept", "quantity", "experiment"]
+  },
+  "optional_frontmatter": {
+    "common": [
+      "tags",
+      "taxonomy_domain",
+      "cluster",
+      "level",
+      "prerequisites",
+      "related_concepts",
+      "related_quantities",
+      "related_laws",
+      "experiments",
+      "math_tools",
+      "derived_results",
+      "modern_connections",
+      "tested_laws",
+      "measured_quantities",
+      "measurement_methods",
+      "used_in",
+      "includes",
+      "recommended_order"
+    ]
+  },
+  "relation_fields": [
+    "prerequisites",
+    "related_concepts",
+    "related_quantities",
+    "related_laws",
+    "experiments",
+    "math_tools",
+    "derived_results",
+    "modern_connections",
+    "tested_laws",
+    "measured_quantities",
+    "measurement_methods",
+    "used_in",
+    "includes",
+    "recommended_order"
+  ]
+}

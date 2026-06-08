@@ -1,0 +1,43 @@
+{
+  "profile_name": "stronger_model_derivation_repair",
+  "description": "Section-level derivation repair profile for a stronger model. The model may repair derivations but must still touch only one target section at a time.",
+  "model_class": "stronger_reasoning_model",
+  "source_of_truth": "external_vault",
+  "write_mode": "section_payload_only",
+  "forbidden_actions": [
+    "rewrite_entire_note",
+    "change_frontmatter",
+    "change_note_type",
+    "change_section_order",
+    "change_file_path",
+    "touch_unrequested_sections"
+  ],
+  "required_output_contract": {
+    "format": "json",
+    "top_level_keys": [
+      "status",
+      "note_path",
+      "target_section",
+      "issue_category",
+      "content",
+      "rationale",
+      "self_check"
+    ],
+    "status_values": [
+      "ok",
+      "blocked"
+    ]
+  },
+  "quality_constraints": {
+    "must_include_explicit_latex": true,
+    "must_preserve_existing_symbols_when_possible": true,
+    "must_explain_step_transitions": true,
+    "no_equation_dump_without_reasoning": true,
+    "no_filler_sentences": true
+  },
+  "blocked_when": [
+    "required_equations_are_missing_from_context_and cannot be safely inferred",
+    "the surrounding symbols are too inconsistent to derive reliably",
+    "the derivation would require introducing a new framework not present in the note"
+  ]
+}

@@ -113,19 +113,28 @@ The active source vault, exports, and both validators agree on the current state
 - vault notes: `417`
 - exported note details: `417`
 - graph nodes: `417`
-- graph edges: `7170`
+- graph edges: `7200`
 - broken wikilinks: `0`
 - broken frontmatter relations: `0`
 - math issues: `0`
 - duplicate titles: `0`
 - duplicate paths: `0`
 - structure validation issues: `0`
+- content quality audit issues: `0`
 
 This was verified in this repo by:
 
 - `tools/validate_structure.py`
+- `tools/audit_content_quality.py`
 - `tools/run_exports.py`
 - `tools/validate_knowledge_base.py`
+
+This means the current source vault is green across:
+
+- structure schema
+- content audit rules
+- export consistency
+- graph/link validation
 
 ## 5. Current Schema Baseline
 
@@ -191,6 +200,16 @@ These scripts are now part of the real operator path:
   - fills missing `推導` for mathematical tool notes
 - `tools/fill_final_structure_gaps.py`
   - final small-batch patcher for map/law edge cases
+- `tools/fill_blocked_derivations.py`
+  - fills the previously blocked derivation batch with curated math text
+- `tools/fill_history_concreteness.py`
+  - fills `歷史背景` sections with concrete names/years
+- `tools/fill_experiment_related_links.py`
+  - replaces filler `相關連結` blocks in experiment notes with grouped wikilinks
+- `tools/clean_banned_pattern_sections.py`
+  - rule-based cleanup for banned contrast phrasing
+- `tools/generate_note_skeleton.py`
+  - schema-first note skeleton generator for future new pages
 
 These were used to migrate the live vault into structure compliance.
 
@@ -257,6 +276,37 @@ It depends on exported JSON artifacts.
 Never trust README path examples without checking `.knowledge-base.local.json` or `KB_VAULT_PATH`.
 
 ## 10. Recommended agent strategy
+
+1. Confirm the active vault path
+2. Treat the external vault as the only source of truth
+3. If creating a new note, generate the skeleton from schema first
+4. Fill content into that schema instead of improvising headings
+5. Run structure validation
+6. Run content-quality audit
+7. Run exports and full validation
+
+Do not let a model invent its own section order or heading names.
+
+## 11. Required workflow for new pages
+
+Future note expansion must be schema-first.
+
+Required rule:
+
+- Every new page must conform to `schema/sections.yaml` and `schema/note_types.yaml`
+
+Recommended creation flow:
+
+1. Generate a skeleton:
+   - `python .\tools\generate_note_skeleton.py --type concept --title "新頁面標題" --summary "一句摘要" --domain "mechanics" --write`
+2. Fill content inside the generated sections only
+3. Run:
+   - `python .\tools\validate_structure.py`
+   - `python .\tools\audit_content_quality.py`
+   - `python .\tools\run_exports.py`
+4. Only then treat the note as integrated
+
+If a new page bypasses schema, the content-audit baseline will drift immediately.
 
 ### If the task is structure or schema work
 

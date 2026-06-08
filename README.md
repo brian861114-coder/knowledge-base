@@ -28,17 +28,19 @@ Latest verified snapshot from `2026-06-08` against the active vault configured f
 - `417` vault notes
 - `417` exported note details
 - `417` graph nodes
-- `7170` graph edges
+- `7200` graph edges
 - `0` broken wikilinks
 - `0` broken frontmatter relations
 - `0` math issues
 - `0` duplicate titles
 - `0` duplicate paths
 - `0` structure validation issues
+- `0` content quality audit issues
 
 This means:
 
 - the live source vault is aligned with the current schema
+- the live source vault currently passes the content-quality audit as well
 - exports are in sync with the source vault again
 - both structure validation and full export validation pass
 
@@ -51,6 +53,7 @@ The repo now has a real schema-first maintenance workflow:
 3. The external vault was normalized and migrated to the current section standard
 4. Missing required sections were filled across quantities, experiments, mathematical tools, maps, and laws
 5. Exports were rerun and full vault validation passed
+6. Content-quality issues were reduced to zero through schema-guided cleanup
 
 This is not just a documentation update. The source vault was actually rewritten to comply with the current schema.
 
@@ -114,6 +117,18 @@ Checks:
 - duplicate titles and paths
 - basic math delimiter health
 - consistency between vault notes and exported JSON
+
+### 3. Content-quality audit
+
+`tools/audit_content_quality.py`
+
+Checks:
+
+- banned contrast phrasing
+- minimum section richness for key sections
+- derivation formula presence
+- historical concreteness
+- grouped related-link structure
 
 ## Repo Layout
 
@@ -182,10 +197,24 @@ Expected local URL:
 Recommended operator loop:
 
 1. Edit notes in the external vault
-2. If structure changed, run `python .\tools\validate_structure.py`
-3. Run `python .\tools\run_exports.py`
-4. Refresh the prototype
-5. Copy updated deploy artifacts to `docs/` if publishing
+2. If creating a new note, generate its skeleton from schema first
+3. Run `python .\tools\validate_structure.py`
+4. Run `python .\tools\audit_content_quality.py`
+5. Run `python .\tools\run_exports.py`
+6. Refresh the prototype
+7. Copy updated deploy artifacts to `docs/` if publishing
+
+### Schema-first note creation
+
+Do not start new notes from an unstructured blank file.
+
+Use:
+
+```powershell
+python .\tools\generate_note_skeleton.py --type concept --title "新頁面標題" --summary "一句摘要" --domain "mechanics" --write
+```
+
+This enforces the current schema before any AI or manual content expansion happens.
 
 ## GitHub Pages Deploy
 
@@ -212,6 +241,11 @@ Structure / migration:
 - `tools/fill_experiment_modern_perspectives.py`
 - `tools/fill_mathematical_tool_derivations.py`
 - `tools/fill_final_structure_gaps.py`
+- `tools/fill_blocked_derivations.py`
+- `tools/fill_history_concreteness.py`
+- `tools/fill_experiment_related_links.py`
+- `tools/clean_banned_pattern_sections.py`
+- `tools/generate_note_skeleton.py`
 
 Export / validation:
 
@@ -230,12 +264,12 @@ Wikipedia-assisted review:
 
 ## Current Limitation
 
-Structure compliance is now green.
-Content quality auditing is not yet formalized.
+The current schema, structure checks, content audit, exports, and full validation are green.
 
-That means:
+The main remaining operational risk is future drift:
 
-- the vault now obeys the current section schema
-- this does not guarantee every section is equally rich or non-generic
+- new notes created without the schema-first skeleton
+- AI-generated sections that bypass validation
+- manual edits that add filler related-links or generic history text
 
-The next layer of work, if needed, is semantic/content-quality auditing rather than more structure cleanup.
+So the next priority is not more cleanup. It is keeping future additions inside the same schema-first loop.

@@ -132,6 +132,9 @@ const state = {
   selectedNodeId: null,
   browseHistory: [],
   browseIndex: -1,
+  noteViewMode: "preview",
+  domainSelection: null,
+  typeSelection: null,
   overviewNodes: [],
   overviewEdges: [],
   focusNodes: [],
@@ -203,6 +206,8 @@ async function init() {
   state.details = rawDetails;
   state.graph = normalizeGraph(rawGraph);
   buildOverviewScene();
+  buildDomainOverview();
+  buildFilters();
   bindEvents();
   setZoom(1);
   render();
@@ -277,6 +282,96 @@ function inferTier(node, degree) {
   if (node.type === "law" || degree >= 24) return 1;
   if (node.type === "quantity" || node.type === "mathematical_tool" || node.type === "experiment") return 2;
   return degree >= 10 ? 1 : 2;
+}
+
+function buildDomainOverview() {
+  const container = document.getElementById("domainOverview");
+  if (!container) return;
+  container.innerHTML = "";
+  const domainMeta = [];
+  for (const taxonomy of TAXONOMY_ORDER) {
+    const label = TAXONOMY_LABELS[taxonomy] || taxonomy;
+    const nodes = state.graph.nodes.filter((n) => n.taxonomy === taxonomy && n.type !== "domain");
+    if (!nodes.length) continue;
+    const typeCounts = {};
+    for (const n of nodes) {
+      const t = TYPE_LABELS[n.type] || n.type;
+      typeCounts[t] = (typeCounts[t] || 0) + 1;
+    }
+    domainMeta.push({
+      taxonomy,
+      label,
+      count: nodes.length,
+      description: Object.entries(typeCounts).map(([t, c]) => `${t} ${c}`).join("、"),
+    });
+  }
+  for (const meta of domainMeta) {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "domain-card";
+    card.innerHTML = `
+      <div class="domain-card-count">${meta.count}</div>
+      <h3>${escapeHtml(meta.label)}</h3>
+      <p>${escapeHtml(meta.description)}</p>
+    `;
+    card.addEventListener("click", () => goToOverviewAndCenterTaxonomy(meta.taxonomy));
+    container.appendChild(card);
+  }
+}
+
+function buildFilters() {
+  const domainContainer = document.getElementById("domainFilters");
+  const typeContainer = document.getElementById("typeFilters");
+  if (!domainContainer || !typeContainer) return;
+
+  // Domain filters
+  state.domainSelection = new Set(TAXONOMY_ORDER);
+  domainContainer.innerHTML = "";
+  for (const taxonomy of TAXONOMY_ORDER) {
+    const label = TAXONOMY_LABELS[taxonomy] || taxonomy;
+    const count = state.graph.nodes.filter((n) => n.taxonomy === taxonomy && n.type !== "domain").length;
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "filter-chip active";
+    chip.textContent = `${label} ${count}`;
+    chip.dataset.value = taxonomy;
+    chip.addEventListener("click", () => {
+      if (state.domainSelection.has(taxonomy) && state.domainSelection.size > 1) {
+        state.domainSelection.delete(taxonomy);
+        chip.classList.remove("active");
+      } else if (!state.domainSelection.has(taxonomy)) {
+        state.domainSelection.add(taxonomy);
+        chip.classList.add("active");
+      }
+      render();
+    });
+    domainContainer.appendChild(chip);
+  }
+
+  // Type filters
+  const types = ["map", "law", "concept", "quantity", "mathematical_tool", "experiment"];
+  state.typeSelection = new Set(types);
+  typeContainer.innerHTML = "";
+  for (const type of types) {
+    const label = TYPE_LABELS[type] || type;
+    const count = state.graph.nodes.filter((n) => n.type === type).length;
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "filter-chip active";
+    chip.textContent = `${label} ${count}`;
+    chip.dataset.value = type;
+    chip.addEventListener("click", () => {
+      if (state.typeSelection.has(type) && state.typeSelection.size > 1) {
+        state.typeSelection.delete(type);
+        chip.classList.remove("active");
+      } else if (!state.typeSelection.has(type)) {
+        state.typeSelection.add(type);
+        chip.classList.add("active");
+      }
+      render();
+    });
+    typeContainer.appendChild(chip);
+  }
 }
 
 function buildOverviewScene() {
@@ -517,6 +612,7 @@ function buildFocusScene(nodeId) {
   }
 
   // Regular node: existing focus logic
+  const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
   const edges = [];
   const inner = [];
   const outer = [];
@@ -605,6 +701,31 @@ function bindEvents() {
   els.backButton.addEventListener("click", goToOverview);
   els.browseBack.addEventListener("click", goBack);
   els.browseForward.addEventListener("click", goForward);
+
+  // Note view toggle (top buttons)
+  document.getElementById("noteViewToggle")?.addEventListener("click", (event) => {
+    const btn = event.target.closest(".note-view-btn");
+    if (!btn) return;
+    const mode = btn.dataset.noteMode;
+    if (mode && mode !== state.noteViewMode) {
+      state.noteViewMode = mode;
+      render();
+    }
+  });
+
+  // Global click handler for wikilinks and relation pills
+  document.addEventListener("click", (event) => {
+    const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
+    if (inlineLink) {
+      handleNodeSelect(inlineLink.dataset.nodeId);
+      return;
+    }
+    const sectionJump = event.target.closest(".section-jump-button");
+    if (sectionJump) {
+      const target = document.getElementById(sectionJump.dataset.sectionTarget || "");
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
   els.overviewModeButton.addEventListener("click", goToOverview);
 
   els.focusModeButton.addEventListener("click", () => {
@@ -636,9 +757,11 @@ function goToOverview() {
   state.selectedNodeId = null;
   state.browseHistory = [];
   state.browseIndex = -1;
+  state.noteViewMode = "preview";
   state.panX = 0;
   state.panY = 0;
   setZoom(1);
+  document.querySelector(".app-shell")?.classList.remove("reader-mode");
   render();
 }
 
@@ -760,7 +883,9 @@ function render() {
   renderEdges(scene.edges, scene.nodes);
   renderNodes(scene.nodes);
   renderMiniMap(scene.nodes);
-  renderDetail();
+  try { renderDetail(); } catch (e) { console.error("renderDetail error:", e); }
+  try { renderSearchResults(); } catch (e) { console.error("renderSearchResults error:", e); }
+  syncNoteViewToggle();
   updateModeUI(scene.nodes);
 }
 
@@ -771,7 +896,10 @@ function ensureFocusScene() {
 
 function filterOverviewNodes(nodes) {
   return nodes.filter((node) => {
-    if (state.query && !node.searchText?.includes(state.query) && node.type !== "domain" && node.type !== "root") return false;
+    if (node.type === "root") return true;
+    if (state.query && !node.searchText?.includes(state.query)) return false;
+    if (state.domainSelection && !state.domainSelection.has(node.taxonomy)) return false;
+    if (state.typeSelection && !state.typeSelection.has(node.type)) return false;
     return true;
   });
 }
@@ -810,20 +938,10 @@ function renderRings(nodes) {
         );
       }
     }
-    const regionCount = state.domainRegions.size;
     els.ringLayer.innerHTML = regionPaths.join("");
     if (els.labelLayer) {
       els.labelLayer.innerHTML = regionLabels.join("");
-      // debug: 檢查標籤位置
-      const firstText = els.labelLayer.querySelector('text:not(.debug-label)');
-      if (firstText) {
-        console.log('[label-debug] first label:', firstText.textContent, 'x=', firstText.getAttribute('x'), 'y=', firstText.getAttribute('y'), 'opacity=', firstText.getAttribute('opacity'), 'fill=', window.getComputedStyle(firstText).fill);
-      } else {
-        console.log('[label-debug] no text elements found in labelLayer, innerHTML length:', els.labelLayer.innerHTML.length);
-        console.log('[label-debug] innerHTML preview:', els.labelLayer.innerHTML.substring(0, 200));
-      }
     }
-    console.log(`[renderRings] ${regionCount} regions, zoom=${state.zoom.toFixed(2)}, t=${((state.zoom - 0.55) / 0.9).toFixed(2)}, labelOp=${labelOpacity.toFixed(2)}, paths=${regionPaths.length}, labels=${regionLabels.length}`);
     for (const el of els.ringLayer.querySelectorAll(".domain-region")) {
       el.addEventListener("click", () => goToOverviewAndCenterTaxonomy(el.dataset.taxonomy));
     }
@@ -1020,6 +1138,8 @@ function updateModeUI(sceneNodes) {
   els.browseNav.hidden = state.mode !== "focus";
   els.browseBack.disabled = state.browseIndex <= 0;
   els.browseForward.disabled = state.browseIndex >= state.browseHistory.length - 1;
+  const domainOverview = document.getElementById("domainOverview");
+  if (domainOverview) domainOverview.classList.toggle("collapsed", state.mode === "focus");
   els.overviewModeButton.classList.toggle("is-active", state.mode === "overview");
   els.focusModeButton.classList.toggle("is-active", state.mode === "focus");
 
@@ -1069,7 +1189,7 @@ function renderDetail() {
   if (!node) {
     els.detailType.textContent = "概覽";
     els.detailTitle.textContent = "請選取一個節點";
-    els.detailSummary.textContent = "這個版本不動舊原型。總覽只保留每個領域的樞紐、導覽頁和高中心性節點，先把圖譜變得可讀，再進入焦點透鏡。";
+    els.detailSummary.innerHTML = "右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。<br><br>先從左側選一個領域，或直接點擊中央圖譜中的節點。";
     els.detailTaxonomyBadge.textContent = "overview";
     els.detailMeta.innerHTML = createMetaItems([
       ["視圖模式", "Semantic Zoom"],
@@ -1088,20 +1208,24 @@ function renderDetail() {
     fillRelationSection("related", []);
     els.detailPath.textContent = "尚未選取節點";
     els.detailPath.removeAttribute("href");
+    const noteSection = document.getElementById("noteSection");
+    if (noteSection) noteSection.innerHTML = "";
     return;
   }
 
   const detail = state.details[node.id] || {};
   const relations = collectRelations(node.id);
+  const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
+
   els.detailType.textContent = TYPE_LABELS[node.type] || node.type;
   els.detailTitle.textContent = node.title;
-  els.detailSummary.textContent = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
+  els.detailSummary.innerHTML = renderMarkdown(resolvedSummary, { compact: true });
   els.detailTaxonomyBadge.textContent = TAXONOMY_LABELS[node.taxonomy] || node.taxonomy;
   els.detailMeta.innerHTML = createMetaItems([
     ["領域", TAXONOMY_LABELS[node.taxonomy] || node.taxonomy],
     ["類型", TYPE_LABELS[node.type] || node.type],
-    ["語意連結", String(node.degree)],
-    ["顯示層級", `Tier ${node.tier}`],
+    ["連結數", String(node.degree)],
+    ["來源路徑", detail.path || node.path || "—"],
   ]);
   els.statsStrip.innerHTML = createStatCards([
     ["先備", String(relations.requires.length)],
@@ -1121,6 +1245,112 @@ function renderDetail() {
   } else {
     els.detailPath.textContent = "沒有來源路徑";
     els.detailPath.removeAttribute("href");
+  }
+
+  // Note preview / full text
+  renderNoteSection(node, detail);
+  scheduleMathTypeset(els.detailSummary);
+  syncNoteViewToggle();
+}
+
+function renderNoteSection(node, detail) {
+  let noteSection = document.getElementById("noteSection");
+  if (!noteSection) {
+    noteSection = document.createElement("div");
+    noteSection.id = "noteSection";
+    noteSection.className = "detail-section";
+    const detailCard = document.querySelector(".detail-card");
+    if (detailCard) detailCard.appendChild(noteSection);
+  }
+
+  if (!detail || (!detail.sections?.length && !detail.body_preview && !detail.body_full)) {
+    noteSection.innerHTML = `
+      <div class="section-head"><h3>筆記內容</h3></div>
+      <p style="color:var(--muted);font-size:0.88rem;">這個節點目前沒有對應的筆記內容。</p>
+    `;
+    return;
+  }
+
+  const isFullMode = state.noteViewMode === "full";
+  const sections = detail.sections || [];
+  const displaySections = isFullMode ? sections : sections.slice(0, 6);
+
+  // Toggle buttons
+  let html = `
+    <div class="section-head">
+      <h3>${isFullMode ? "筆記全文" : "筆記預覽"}</h3>
+    </div>
+  `;
+
+  // Body content
+  const bodyContent = isFullMode
+    ? (detail.body_full || detail.body_preview || detail.summary || "")
+    : (detail.body_preview || detail.summary || "");
+  if (bodyContent) {
+    html += `<div class="note-body rich-summary">${renderMarkdown(bodyContent, { stripLeadingTitle: true, compact: !isFullMode, title: node.title })}</div>`;
+  }
+
+  // Section outline + cards
+  if (displaySections.length) {
+    html += `<div class="section-head" style="margin-top:18px"><h3>${isFullMode ? "章節全文" : "章節預覽"}</h3></div>`;
+    html += `<div class="note-sections-grid">`;
+    for (let i = 0; i < displaySections.length; i++) {
+      const sec = displaySections[i];
+      html += `
+        <article class="section-card">
+          <h4>${escapeHtml(sec.title)}</h4>
+          <div class="section-card-content">${renderMarkdown(isFullMode ? sec.content || sec.preview || "" : sec.preview || "", { compact: !isFullMode })}</div>
+        </article>
+      `;
+    }
+    html += `</div>`;
+  }
+
+  noteSection.innerHTML = html;
+  scheduleMathTypeset(noteSection);
+}
+
+function syncNoteViewToggle() {
+  const toggle = document.getElementById("noteViewToggle");
+  if (!toggle) return;
+  const hasNode = Boolean(state.selectedNodeId);
+  toggle.style.display = hasNode ? "flex" : "none";
+  const isFull = state.noteViewMode === "full";
+  for (const btn of toggle.querySelectorAll(".note-view-btn")) {
+    btn.classList.toggle("active", btn.dataset.noteMode === (isFull ? "full" : "preview"));
+  }
+  document.querySelector(".app-shell")?.classList.toggle("reader-mode", isFull && hasNode);
+}
+
+function renderSearchResults() {
+  let searchSection = document.getElementById("searchSection");
+  if (!searchSection) {
+    searchSection = document.createElement("div");
+    searchSection.id = "searchSection";
+    searchSection.className = "detail-section";
+    const detailCard = document.querySelector(".detail-card");
+    if (detailCard) detailCard.insertBefore(searchSection, detailCard.firstChild?.nextSibling);
+  }
+  if (!state.query) {
+    searchSection.innerHTML = "";
+    return;
+  }
+  const matches = state.graph.nodes
+    .filter((n) => n.searchText?.includes(state.query))
+    .filter((n) => n.type !== "domain" && n.type !== "root")
+    .slice(0, 50);
+  if (!matches.length) {
+    searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">找不到符合「${escapeHtml(state.query)}」的節點。</p>`;
+    return;
+  }
+  let html = `<div class="section-head"><h3>搜尋結果（${matches.length}）</h3></div><div class="pill-list">`;
+  for (const n of matches) {
+    html += `<button class="pill" type="button" data-node-id="${escapeHtml(n.id)}" data-family="related">${escapeHtml(n.title)}</button>`;
+  }
+  html += `</div>`;
+  searchSection.innerHTML = html;
+  for (const pill of searchSection.querySelectorAll(".pill[data-node-id]")) {
+    pill.addEventListener("click", () => handleNodeSelect(pill.dataset.nodeId));
   }
 }
 
@@ -1304,4 +1534,187 @@ function escapeHtml(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
+function scheduleMathTypeset(container) {
+  if (!container) return;
+  if (window.MathJax?.typesetPromise) {
+    if (typeof window.MathJax.typesetClear === "function") {
+      window.MathJax.typesetClear([container]);
+    }
+    window.MathJax.typesetPromise([container]).catch((error) => {
+      console.error("Math typeset failed", error);
+    });
+    return;
+  }
+  window.setTimeout(() => scheduleMathTypeset(container), 120);
+}
+
+function protectMathSegments(text) {
+  const tokens = new Map();
+  let counter = 0;
+  let protectedText = text.replace(/\$\$[\s\S]+?\$\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: true });
+    return token;
+  });
+  protectedText = protectedText.replace(/\$(?!\$)([^$\n]|\\\$)+?\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: false });
+    return token;
+  });
+  return { text: protectedText, tokens };
+}
+
+function isMathTokenLine(line, tokens) {
+  return tokens.has(line) && Boolean(tokens.get(line)?.display);
+}
+
+function restoreTokens(text, tokens) {
+  let restored = text;
+  for (const [token, meta] of tokens.entries()) {
+    restored = restored.replaceAll(token, meta.raw);
+  }
+  return restored;
+}
+
+function renderInlineMarkup(text, tokens) {
+  const parts = String(text || "").split(/(@@MATH\d+@@|\[\[[^\]]+\]\]|`[^`]+`)/g);
+  return parts
+    .filter((part) => part !== "")
+    .map((part) => {
+      if (tokens.has(part)) return tokens.get(part).raw;
+      if (part.startsWith("[[")) return renderWikiLink(part);
+      const codeMatch = part.match(/^`([^`]+)`$/);
+      if (codeMatch) return `<code>${escapeHtml(codeMatch[1])}</code>`;
+      return escapeHtml(part);
+    })
+    .join("");
+}
+
+function renderWikiLink(rawLink) {
+  const match = rawLink.match(/^\[\[([^|\]#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]$/);
+  if (!match) return escapeHtml(rawLink);
+  const targetTitle = String(match[1] || "").trim();
+  const label = String(match[2] || match[1] || "").trim();
+  const targetNode = findNodeByTitle(targetTitle);
+  if (!targetNode) {
+    return `<span class="inline-note-link unresolved">${escapeHtml(label)}</span>`;
+  }
+  return `<button class="inline-note-link" type="button" data-node-id="${escapeHtml(targetNode.id)}">${escapeHtml(label)}</button>`;
+}
+
+function findNodeByTitle(title) {
+  for (const [, node] of state.nodeMap) {
+    if (node.title === title) return node;
+  }
+  return null;
+}
+
+function escapeRegex(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function renderMarkdown(value, options = {}) {
+  const { compact = false, stripLeadingTitle = false, title = "" } = options;
+  const normalized = String(value || "").replaceAll("\r\n", "\n").trim();
+  if (!normalized) return "";
+
+  let prepared = normalized;
+  if (stripLeadingTitle) {
+    const lines = prepared.split("\n");
+    let idx = 0;
+    while (idx < lines.length && !lines[idx].trim()) idx++;
+    if (idx < lines.length && lines[idx].trim().startsWith("#")) {
+      const headingTitle = lines[idx].trim().replace(/^#+\s*/, "").trim();
+      if (!title || headingTitle === title.trim()) {
+        lines.splice(idx, 1);
+        while (idx < lines.length && !lines[idx].trim()) lines.splice(idx, 1);
+        prepared = lines.join("\n");
+      }
+    }
+  }
+
+  const protectedText = protectMathSegments(prepared);
+  const lines = protectedText.text.split("\n");
+  const blocks = [];
+
+  for (let index = 0; index < lines.length; ) {
+    const line = lines[index].trim();
+    if (!line) { index += 1; continue; }
+
+    if (isMathTokenLine(line, protectedText.tokens)) {
+      blocks.push(`<div class="math-block">${restoreTokens(line, protectedText.tokens)}</div>`);
+      index += 1;
+      continue;
+    }
+
+    const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
+    if (headingMatch) {
+      const level = Math.min(6, headingMatch[1].length + 1);
+      blocks.push(`<h${level}>${renderInlineMarkup(headingMatch[2], protectedText.tokens)}</h${level}>`);
+      index += 1;
+      continue;
+    }
+
+    if (/^- /.test(line)) {
+      const items = [];
+      while (index < lines.length && /^- /.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().slice(2), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ul>${items.join("")}</ul>`);
+      continue;
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\d+\.\s/.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().replace(/^\d+\.\s/, ""), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ol>${items.join("")}</ol>`);
+      continue;
+    }
+
+    const paragraphLines = [];
+    while (index < lines.length) {
+      const candidate = lines[index].trim();
+      if (!candidate) break;
+      if (isMathTokenLine(candidate, protectedText.tokens)) break;
+      if (/^(#{1,6})\s+/.test(candidate) || /^- /.test(candidate) || /^\d+\.\s/.test(candidate)) break;
+      paragraphLines.push(lines[index]);
+      index += 1;
+    }
+    const paragraphHtml = renderInlineMarkup(paragraphLines.join(compact ? " " : "\n"), protectedText.tokens).replaceAll("\n", "<br>");
+    blocks.push(`<p>${paragraphHtml}</p>`);
+  }
+
+  return blocks.join("");
+}
+
+function groupRelations(nodeId) {
+  const outgoing = {};
+  const incoming = {};
+  for (const edge of state.graph.edges) {
+    if (edge.source === nodeId) {
+      const target = state.nodeMap.get(edge.target);
+      if (target && target.type !== "domain") {
+        if (!outgoing[edge.type]) outgoing[edge.type] = [];
+        outgoing[edge.type].push(target);
+      }
+    }
+    if (edge.target === nodeId) {
+      const source = state.nodeMap.get(edge.source);
+      if (source && source.type !== "domain") {
+        if (!incoming[edge.type]) incoming[edge.type] = [];
+        incoming[edge.type].push(source);
+      }
+    }
+  }
+  return { outgoing, incoming };
 }

@@ -138,6 +138,65 @@ body {
   min-height: 0;
 }
 
+.domain-overview {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+
+.domain-overview.collapsed {
+  display: none;
+}
+
+.domain-card {
+  flex: 0 0 180px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s;
+}
+
+.domain-card:hover {
+  border-color: rgba(0, 122, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.domain-card.active {
+  border-color: #007AFF;
+  background: rgba(0, 122, 255, 0.04);
+}
+
+.domain-card-count {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #007AFF;
+}
+
+.domain-card h3 {
+  margin: 4px 0;
+  font-size: 0.92rem;
+}
+
+.domain-card p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.domain-card-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
 .graph-stage,
 .detail-card {
   background: var(--surface);
@@ -155,7 +214,41 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  padding: 6px 6px 16px;
+  padding: 6px 6px 8px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 6px 12px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.filter-chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-chip.active {
+  background: rgba(0, 122, 255, 0.08);
+  color: #007AFF;
+  border-color: rgba(0, 122, 255, 0.2);
+}
+
+.filter-chip:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .breadcrumb {
@@ -561,6 +654,139 @@ body {
   color: #007AFF;
   text-decoration: none;
   word-break: break-all;
+}
+
+.note-view-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.detail-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+/* Reader mode: hide graph, expand detail panel */
+.app-shell.reader-mode {
+  grid-template-columns: 84px 1fr;
+}
+
+.app-shell.reader-mode .graph-stage {
+  display: none;
+}
+
+.app-shell.reader-mode .detail-panel {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.app-shell.reader-mode .detail-card {
+  border-radius: 28px;
+  max-height: none;
+}
+
+.app-shell.reader-mode .domain-overview {
+  display: none;
+}
+
+.note-view-btn {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.note-view-btn.active {
+  background: rgba(0, 122, 255, 0.08);
+  color: #007AFF;
+  border-color: rgba(0, 122, 255, 0.2);
+}
+
+.note-view-btn:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.note-body {
+  margin-top: 12px;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.note-body h2, .note-body h3, .note-body h4 {
+  margin: 18px 0 8px;
+  font-size: 1rem;
+}
+
+.note-body p {
+  margin: 8px 0;
+}
+
+.note-body ul, .note-body ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.note-body code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.math-block {
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+.note-sections-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.section-card {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.section-card h4 {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+}
+
+.section-card-content {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.section-card-content p {
+  margin: 4px 0;
+}
+
+.inline-note-link {
+  color: #007AFF;
+  background: rgba(0, 122, 255, 0.06);
+  border: none;
+  border-radius: 4px;
+  padding: 1px 4px;
+  cursor: pointer;
+  font: inherit;
+  font-size: inherit;
+}
+
+.inline-note-link.unresolved {
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.04);
+  cursor: default;
 }
 
 .ring-label {

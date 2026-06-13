@@ -65,6 +65,17 @@ const SEMANTIC_EDGE_TYPES = new Set([
 const FOCUS_INNER_TYPES = new Set(["requires", "formalized_by"]);
 const FOCUS_OUTER_TYPES = new Set(["derives_to", "verified_by", "measures", "uses", "explains"]);
 const FOCUS_RELATED_TYPES = new Set(["related_to", "organized_by"]);
+const DOMAIN_REGION_STYLES = {
+  mechanics: { fill: "rgba(200, 243, 207, 0.95)", stroke: "rgba(85, 168, 104, 0.95)" },
+  electromagnetism: { fill: "rgba(216, 239, 255, 0.95)", stroke: "rgba(103, 169, 212, 0.95)" },
+  waves_optics: { fill: "rgba(184, 222, 255, 0.95)", stroke: "rgba(80, 149, 206, 0.95)" },
+  foundations: { fill: "rgba(240, 240, 240, 0.95)", stroke: "rgba(140, 148, 160, 0.95)" },
+  thermo_fluids: { fill: "rgba(245, 234, 210, 0.95)", stroke: "rgba(190, 162, 80, 0.95)" },
+  modern_physics: { fill: "rgba(225, 210, 255, 0.95)", stroke: "rgba(150, 120, 210, 0.95)" },
+  analytical_dynamics: { fill: "rgba(255, 226, 168, 0.95)", stroke: "rgba(212, 154, 50, 0.95)" },
+  uncategorized: { fill: "rgba(237, 240, 244, 0.95)", stroke: "rgba(126, 135, 148, 0.95)" },
+};
+
 const OVERVIEW_QUOTAS = {
   map: 2,
   law: 3,
@@ -88,6 +99,7 @@ const state = {
   overviewEdges: [],
   focusNodes: [],
   focusEdges: [],
+  domainRegions: new Map(),
   miniMapBounds: null,
   dragging: {
     active: false,
@@ -106,6 +118,7 @@ const els = {
   ringLayer: document.getElementById("ringLayer"),
   edgeLayer: document.getElementById("edgeLayer"),
   nodeLayer: document.getElementById("nodeLayer"),
+  labelLayer: document.getElementById("labelLayer"),
   searchInput: document.getElementById("searchInput"),
   zoomSlider: document.getElementById("zoomSlider"),
   zoomLabel: document.getElementById("zoomLabel"),
@@ -243,20 +256,12 @@ function buildOverviewScene() {
 
   state.graph.domainHubs.forEach((hub, index) => {
     const angle = (-Math.PI / 2) + (index / state.graph.domainHubs.length) * Math.PI * 2;
-    const placed = {
+    hubByTaxonomy.set(hub.taxonomy, {
       ...hub,
       x: CENTER_X + Math.cos(angle) * 350,
       y: CENTER_Y + Math.sin(angle) * 276,
       r: 56,
       sectorAngle: angle,
-    };
-    hubByTaxonomy.set(hub.taxonomy, placed);
-    sceneNodes.push(placed);
-    sceneEdges.push({
-      source: overviewRoot.id,
-      target: hub.id,
-      type: "organized_by",
-      family: "organized_by",
     });
   });
 
@@ -280,12 +285,6 @@ function buildOverviewScene() {
       };
       chosenIds.add(node.id);
       sceneNodes.push(placed);
-      sceneEdges.push({
-        source: hub.id,
-        target: node.id,
-        type: "organized_by",
-        family: "organized_by",
-      });
     });
   }
 
@@ -297,10 +296,94 @@ function buildOverviewScene() {
     sceneEdges.push({ ...edge, family: edge.type });
   }
 
-  relaxLayout(sceneNodes, { iterations: 220, padding: 18, lockDomains: false, lockFocal: true, enforceBounds: true });
-  clampNodesToViewport(sceneNodes, { padding: 72, preserveFocus: false });
+  relaxLayout(sceneNodes, { iterations: 220, padding: 6, lockDomains: false, lockFocal: true, enforceBounds: true });
+  clampNodesToViewport(sceneNodes, { padding: 48, preserveFocus: false });
   state.overviewNodes = sceneNodes;
   state.overviewEdges = dedupeEdges(sceneEdges);
+
+  const domainRegions = new Map();
+  for (const taxonomy of TAXONOMY_ORDER) {
+    const children = sceneNodes.filter((node) => node.taxonomy === taxonomy && node.type !== "domain" && node.type !== "root");
+    if (!children.length) continue;
+    const points = children.map((n) => ({ x: n.x, y: n.y }));
+    const hull = convexHull(points);
+    const expanded = offsetPolygon(hull, 60);
+    const d = smoothClosedPath(expanded);
+    const cx = points.reduce((s, p) => s + p.x, 0) / points.length;
+    const cy = points.reduce((s, p) => s + p.y, 0) / points.length;
+    const minX = Math.min(...expanded.map((p) => p.x));
+    const minY = Math.min(...expanded.map((p) => p.y));
+    domainRegions.set(taxonomy, { d, cx, cy, minX, minY, taxonomy });
+  }
+  state.domainRegions = domainRegions;
+}
+
+function convexHull(points) {
+  const pts = points.slice().sort((a, b) => a.x - b.x || a.y - b.y);
+  if (pts.length <= 2) return pts;
+  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+  const lower = [];
+  for (const p of pts) {
+    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop();
+    lower.push(p);
+  }
+  const upper = [];
+  for (let i = pts.length - 1; i >= 0; i--) {
+    const p = pts[i];
+    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop();
+    upper.push(p);
+  }
+  lower.pop();
+  upper.pop();
+  return lower.concat(upper);
+}
+
+function offsetPolygon(polygon, distance) {
+  const n = polygon.length;
+  if (n < 3) return polygon;
+  const normals = [];
+  for (let i = 0; i < n; i++) {
+    const a = polygon[i];
+    const b = polygon[(i + 1) % n];
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const len = Math.hypot(dx, dy) || 1;
+    normals.push({ nx: dy / len, ny: -dx / len });
+  }
+  const expanded = [];
+  for (let i = 0; i < n; i++) {
+    const prev = normals[(i - 1 + n) % n];
+    const curr = normals[i];
+    const bx = prev.nx + curr.nx;
+    const by = prev.ny + curr.ny;
+    const dot = bx * curr.nx + by * curr.ny;
+    const scale = dot > 0.01 ? distance / dot : distance;
+    expanded.push({
+      x: polygon[i].x + bx * scale,
+      y: polygon[i].y + by * scale,
+    });
+  }
+  return expanded;
+}
+
+function smoothClosedPath(polygon) {
+  const n = polygon.length;
+  if (n < 3) return "";
+  const tension = 0.36;
+  let d = `M ${polygon[0].x} ${polygon[0].y}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = polygon[(i - 1 + n) % n];
+    const p1 = polygon[i];
+    const p2 = polygon[(i + 1) % n];
+    const p3 = polygon[(i + 2) % n];
+    const cp1x = p1.x + (p2.x - p0.x) * tension;
+    const cp1y = p1.y + (p2.y - p0.y) * tension;
+    const cp2x = p2.x - (p3.x - p1.x) * tension;
+    const cp2y = p2.y - (p3.y - p1.y) * tension;
+    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+  }
+  d += " Z";
+  return d;
 }
 
 function selectOverviewNodesForTaxonomy(pool) {
@@ -538,7 +621,7 @@ function render() {
 
   relaxLayout(scene.nodes, {
     iterations: 240,
-    padding: state.mode === "focus" ? 14 : 18,
+    padding: state.mode === "focus" ? 14 : 6,
     lockFocal: true,
     enforceBounds: state.mode === "focus",
   });
@@ -576,18 +659,53 @@ function semanticTierFromZoom(zoom) {
 
 function renderRings(nodes) {
   if (state.mode === "overview") {
-    els.ringLayer.innerHTML = `
-      <circle class="overview-halo" cx="${CENTER_X}" cy="${CENTER_Y}" r="118"></circle>
-      <text class="overview-caption" x="${CENTER_X}" y="${CENTER_Y + 112}" text-anchor="middle">選擇領域或概念以進入焦點視圖</text>
-    `;
+    const visibleTaxonomies = new Set(nodes.filter((n) => n.type !== "domain" && n.type !== "root").map((n) => n.taxonomy));
+    const t = clamp((state.zoom - 0.55) / 0.9, 0, 1);
+    const fillOpacity = 0.8 - t * 0.78;
+    const strokeOpacity = 1.0 - t * 0.95;
+    const labelOpacity = state.zoom > 1.1 ? 0 : state.zoom > 0.9 ? 1 - (state.zoom - 0.9) / 0.2 : 1;
+    const regionPaths = [];
+    const regionLabels = [];
+    for (const [taxonomy, region] of state.domainRegions) {
+      if (!visibleTaxonomies.has(taxonomy)) continue;
+      const style = DOMAIN_REGION_STYLES[taxonomy] || DOMAIN_REGION_STYLES.uncategorized;
+      const label = TAXONOMY_LABELS[taxonomy] || taxonomy;
+      regionPaths.push(
+        `<path class="domain-region" data-taxonomy="${taxonomy}" d="${region.d}" fill="${style.fill}" stroke="${style.stroke}" fill-opacity="${fillOpacity}" stroke-opacity="${strokeOpacity}"></path>`
+      );
+      if (labelOpacity > 0) {
+        regionLabels.push(
+          `<text class="domain-region-label" x="${region.cx}" y="${region.cy + 6}" text-anchor="middle" opacity="${labelOpacity}">${label}</text>`
+        );
+      }
+    }
+    const regionCount = state.domainRegions.size;
+    els.ringLayer.innerHTML = regionPaths.join("");
+    if (els.labelLayer) {
+      els.labelLayer.innerHTML = regionLabels.join("");
+      // debug: 檢查標籤位置
+      const firstText = els.labelLayer.querySelector('text:not(.debug-label)');
+      if (firstText) {
+        console.log('[label-debug] first label:', firstText.textContent, 'x=', firstText.getAttribute('x'), 'y=', firstText.getAttribute('y'), 'opacity=', firstText.getAttribute('opacity'), 'fill=', window.getComputedStyle(firstText).fill);
+      } else {
+        console.log('[label-debug] no text elements found in labelLayer, innerHTML length:', els.labelLayer.innerHTML.length);
+        console.log('[label-debug] innerHTML preview:', els.labelLayer.innerHTML.substring(0, 200));
+      }
+    }
+    console.log(`[renderRings] ${regionCount} regions, zoom=${state.zoom.toFixed(2)}, t=${((state.zoom - 0.55) / 0.9).toFixed(2)}, labelOp=${labelOpacity.toFixed(2)}, paths=${regionPaths.length}, labels=${regionLabels.length}`);
+    for (const el of els.ringLayer.querySelectorAll(".domain-region")) {
+      el.addEventListener("click", () => goToOverviewAndCenterTaxonomy(el.dataset.taxonomy));
+    }
     return;
   }
 
   const focal = nodes[0];
   if (!focal) {
     els.ringLayer.innerHTML = "";
+    if (els.labelLayer) els.labelLayer.innerHTML = "";
     return;
   }
+  if (els.labelLayer) els.labelLayer.innerHTML = "";
   els.ringLayer.innerHTML = [
     `<circle class="ring-circle inner" cx="${focal.x}" cy="${focal.y}" r="250"></circle>`,
     `<circle class="ring-circle outer" cx="${focal.x}" cy="${focal.y}" r="430"></circle>`,
@@ -683,8 +801,9 @@ function updateMiniMapViewport(bounds = state.miniMapBounds) {
 }
 
 function resolveVisibleTitle(node, tier, selected) {
-  if (node.type === "domain" || node.type === "root") return node.title;
+  if (node.type === "root") return node.title;
   if (state.mode === "focus") return tier >= 1 ? node.title : node.shortTitle;
+  if (state.zoom < 0.8) return "";
   if (tier === 0) return node.type === "map" || selected ? node.shortTitle : "";
   if (tier === 1) return node.shortTitle;
   return node.title;
@@ -785,7 +904,7 @@ function updateModeUI(sceneNodes) {
       { label: "taxonomy domains" },
     ]);
     els.graphHint.textContent = "拖曳平移、滾輪縮放；中央根節點連接各領域，放大後會依序顯示更細的節點名稱與關係。";
-    els.overviewBadgeText.textContent = `目前總覽顯示 ${sceneNodes.filter((node) => node.type !== "domain").length} 個節點骨架，弱關聯與 wikilink 不進主視圖。`;
+    els.overviewBadgeText.textContent = `目前總覽顯示 ${sceneNodes.length - 1} 個節點，每個色塊代表一個知識領域，點擊可聚焦該區域。`;
   }
 }
 
@@ -805,10 +924,10 @@ function renderBreadcrumb(items) {
 
 function goToOverviewAndCenterTaxonomy(taxonomy) {
   goToOverview();
-  const hub = state.overviewNodes.find((node) => node.id === `domain::${taxonomy}`);
-  if (!hub) return;
-  state.panX = CANVAS_WIDTH / 2 - hub.x * state.zoom;
-  state.panY = CANVAS_HEIGHT / 2 - hub.y * state.zoom;
+  const region = state.domainRegions.get(taxonomy);
+  if (!region) return;
+  state.panX = CANVAS_WIDTH / 2 - region.cx * state.zoom;
+  state.panY = CANVAS_HEIGHT / 2 - region.cy * state.zoom;
   updateViewportTransform();
   updateMiniMapViewport();
 }
@@ -827,7 +946,7 @@ function renderDetail() {
       ["節點標籤", "依縮放顯示"],
     ]);
     els.statsStrip.innerHTML = createStatCards([
-      ["顯示節點", String(filterOverviewNodes(state.overviewNodes).length - state.graph.domainHubs.length)],
+      ["顯示節點", String(filterOverviewNodes(state.overviewNodes).length)],
       ["顯示關係", String(filterOverviewEdges(state.overviewEdges).length)],
       ["已隱藏", "wikilink"],
       ["總層級", "3"],
@@ -993,7 +1112,7 @@ function relaxLayout(nodes, options = {}) {
 
     if (enforceBounds) {
       clampNodesToViewport(nodes, {
-        padding: state.mode === "focus" ? 84 : 72,
+        padding: state.mode === "focus" ? 84 : 48,
         preserveFocus: lockFocal,
         useCollisionRadius: true,
       });

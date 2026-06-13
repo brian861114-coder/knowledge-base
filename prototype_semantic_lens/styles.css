@@ -569,18 +569,30 @@ body {
   stroke: rgba(66, 111, 79, 0.34);
 }
 
-.overview-halo {
-  fill: rgba(16, 61, 121, 0.025);
-  stroke: rgba(16, 61, 121, 0.14);
-  stroke-width: 2;
-  stroke-dasharray: 7 10;
+
+.domain-region {
+  stroke-width: 1.8;
+  stroke-dasharray: 8 6;
+  cursor: pointer;
+  transition: stroke-width 0.22s;
 }
 
-.overview-caption {
-  fill: var(--muted);
-  font-size: 15px;
-  letter-spacing: 0.03em;
+.domain-region:hover {
+  stroke-opacity: 1;
+  stroke-width: 2.6;
+}
+
+.domain-region-label {
+  fill: var(--text);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   pointer-events: none;
+  user-select: none;
+  paint-order: stroke fill;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }
 
 .edge {

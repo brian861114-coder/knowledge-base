@@ -192,6 +192,35 @@ body {
   align-items: start;
 }
 
+.browse-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.browse-button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-strong);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.browse-button:hover:not(:disabled) {
+  background: rgba(0, 122, 255, 0.08);
+  color: #007AFF;
+}
+
+.browse-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 .ghost-button,
 .zoom-button,
 .focus-action-button {

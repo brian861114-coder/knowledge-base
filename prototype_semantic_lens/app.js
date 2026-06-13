@@ -130,6 +130,8 @@ const state = {
   mode: "overview",
   query: "",
   selectedNodeId: null,
+  browseHistory: [],
+  browseIndex: -1,
   overviewNodes: [],
   overviewEdges: [],
   focusNodes: [],
@@ -160,6 +162,9 @@ const els = {
   zoomInButton: document.getElementById("zoomInButton"),
   zoomOutButton: document.getElementById("zoomOutButton"),
   fitButton: document.getElementById("fitButton"),
+  browseNav: document.getElementById("browseNav"),
+  browseBack: document.getElementById("browseBack"),
+  browseForward: document.getElementById("browseForward"),
   backButton: document.getElementById("backButton"),
   overviewModeButton: document.getElementById("overviewModeButton"),
   focusModeButton: document.getElementById("focusModeButton"),
@@ -571,6 +576,8 @@ function bindEvents() {
   });
 
   els.backButton.addEventListener("click", goToOverview);
+  els.browseBack.addEventListener("click", goBack);
+  els.browseForward.addEventListener("click", goForward);
   els.overviewModeButton.addEventListener("click", goToOverview);
 
   els.focusModeButton.addEventListener("click", () => {
@@ -600,9 +607,37 @@ function bindEvents() {
 function goToOverview() {
   state.mode = "overview";
   state.selectedNodeId = null;
+  state.browseHistory = [];
+  state.browseIndex = -1;
   state.panX = 0;
   state.panY = 0;
   setZoom(1);
+  render();
+}
+
+function goBack() {
+  if (state.browseIndex <= 0) return;
+  state.browseIndex--;
+  const nodeId = state.browseHistory[state.browseIndex];
+  state.selectedNodeId = nodeId;
+  state.mode = "focus";
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+  buildFocusScene(nodeId);
+  render();
+}
+
+function goForward() {
+  if (state.browseIndex >= state.browseHistory.length - 1) return;
+  state.browseIndex++;
+  const nodeId = state.browseHistory[state.browseIndex];
+  state.selectedNodeId = nodeId;
+  state.mode = "focus";
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+  buildFocusScene(nodeId);
   render();
 }
 
@@ -890,6 +925,10 @@ function handleNodeSelect(nodeId) {
     return;
   }
   state.selectedNodeId = nodeId;
+  // Push to browse history
+  state.browseHistory = state.browseHistory.slice(0, state.browseIndex + 1);
+  state.browseHistory.push(nodeId);
+  state.browseIndex = state.browseHistory.length - 1;
   state.mode = "focus";
   state.panX = 0;
   state.panY = 0;
@@ -955,6 +994,9 @@ function clampNodesToViewport(nodes, options = {}) {
 function updateModeUI(sceneNodes) {
   els.backButton.hidden = state.mode !== "focus";
   els.focusActionButton.hidden = !state.selectedNodeId;
+  els.browseNav.hidden = state.mode !== "focus";
+  els.browseBack.disabled = state.browseIndex <= 0;
+  els.browseForward.disabled = state.browseIndex >= state.browseHistory.length - 1;
   els.overviewModeButton.classList.toggle("is-active", state.mode === "overview");
   els.focusModeButton.classList.toggle("is-active", state.mode === "focus");
 

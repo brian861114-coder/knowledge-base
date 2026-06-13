@@ -66,24 +66,59 @@ const FOCUS_INNER_TYPES = new Set(["requires", "formalized_by"]);
 const FOCUS_OUTER_TYPES = new Set(["derives_to", "verified_by", "measures", "uses", "explains"]);
 const FOCUS_RELATED_TYPES = new Set(["related_to", "organized_by"]);
 const DOMAIN_REGION_STYLES = {
-  mechanics: { fill: "rgba(200, 243, 207, 0.95)", stroke: "rgba(85, 168, 104, 0.95)" },
-  electromagnetism: { fill: "rgba(216, 239, 255, 0.95)", stroke: "rgba(103, 169, 212, 0.95)" },
-  waves_optics: { fill: "rgba(184, 222, 255, 0.95)", stroke: "rgba(80, 149, 206, 0.95)" },
-  foundations: { fill: "rgba(240, 240, 240, 0.95)", stroke: "rgba(140, 148, 160, 0.95)" },
-  thermo_fluids: { fill: "rgba(245, 234, 210, 0.95)", stroke: "rgba(190, 162, 80, 0.95)" },
-  modern_physics: { fill: "rgba(225, 210, 255, 0.95)", stroke: "rgba(150, 120, 210, 0.95)" },
-  analytical_dynamics: { fill: "rgba(255, 226, 168, 0.95)", stroke: "rgba(212, 154, 50, 0.95)" },
-  uncategorized: { fill: "rgba(237, 240, 244, 0.95)", stroke: "rgba(126, 135, 148, 0.95)" },
+  mechanics: { fill: "rgba(232, 240, 254, 0.95)", stroke: "rgba(168, 199, 250, 0.95)" },
+  electromagnetism: { fill: "rgba(255, 243, 224, 0.95)", stroke: "rgba(255, 204, 128, 0.95)" },
+  waves_optics: { fill: "rgba(224, 247, 250, 0.95)", stroke: "rgba(128, 222, 234, 0.95)" },
+  foundations: { fill: "rgba(242, 242, 247, 0.95)", stroke: "rgba(199, 199, 204, 0.95)" },
+  thermo_fluids: { fill: "rgba(232, 245, 233, 0.95)", stroke: "rgba(165, 214, 167, 0.95)" },
+  modern_physics: { fill: "rgba(237, 231, 246, 0.95)", stroke: "rgba(179, 157, 219, 0.95)" },
+  analytical_dynamics: { fill: "rgba(227, 242, 253, 0.95)", stroke: "rgba(144, 202, 249, 0.95)" },
+  uncategorized: { fill: "rgba(229, 229, 234, 0.95)", stroke: "rgba(199, 199, 204, 0.95)" },
 };
 
-const OVERVIEW_QUOTAS = {
-  map: 2,
-  law: 3,
-  concept: 4,
-  quantity: 2,
-  mathematical_tool: 2,
-  experiment: 1,
-};
+function computeOverviewQuotas(taxonomy, poolSize) {
+  return { law: 999, concept: 999, map: 6, quantity: 3, mathematical_tool: 3, experiment: 1 };
+}
+
+function selectOverviewNodesForTaxonomy(pool) {
+  const selected = [];
+  const quotas = computeOverviewQuotas(pool[0]?.taxonomy, pool.length);
+
+  // Laws: all
+  const laws = pool.filter((n) => n.type === "law").sort((a, b) => b.degree - a.degree);
+  selected.push(...laws);
+
+  // Concepts: bridge (degree>=30) OR standalone (degree>=50)
+  const lawIds = new Set(pool.filter((n) => n.type === "law").map((n) => n.id));
+  const bridgeSet = new Set();
+  for (const edge of state.graph.edges) {
+    if (edge.type !== "requires" && edge.type !== "derives_to" && edge.type !== "formalized_by") continue;
+    if (lawIds.has(edge.source) && !lawIds.has(edge.target)) bridgeSet.add(edge.target);
+    if (lawIds.has(edge.target) && !lawIds.has(edge.source)) bridgeSet.add(edge.source);
+  }
+  const concepts = pool
+    .filter((n) => n.type === "concept")
+    .filter((n) => bridgeSet.has(n.id) ? n.degree >= 30 : n.degree >= 50)
+    .sort((a, b) => b.degree - a.degree);
+  selected.push(...concepts);
+
+  // Quantities: degree >= 25
+  const quantities = pool
+    .filter((n) => n.type === "quantity" && n.degree >= 25)
+    .sort((a, b) => b.degree - a.degree);
+  selected.push(...quantities);
+
+  // Maps: use quotas
+  for (const type of ["map"]) {
+    const quota = quotas[type] || 0;
+    const matches = pool
+      .filter((node) => node.type === type)
+      .sort((a, b) => b.degree - a.degree)
+      .slice(0, quota);
+    selected.push(...matches);
+  }
+  return dedupeNodes(selected);
+}
 
 const state = {
   graph: null,
@@ -130,7 +165,6 @@ const els = {
   focusModeButton: document.getElementById("focusModeButton"),
   breadcrumb: document.getElementById("breadcrumb"),
   graphHint: document.getElementById("graphHint"),
-  overviewBadgeText: document.getElementById("overviewBadgeText"),
   minimapLayer: document.getElementById("minimapLayer"),
   minimapViewport: document.getElementById("minimapViewport"),
   minimapModeLabel: document.getElementById("minimapModeLabel"),
@@ -275,29 +309,45 @@ function buildOverviewScene() {
     selected.forEach((node, index) => {
       const ratio = selected.length <= 1 ? 0.5 : index / (selected.length - 1);
       const angle = hub.sectorAngle - bandWidth / 2 + ratio * bandWidth;
-      const localRadiusX = node.tier === 0 ? 68 : node.tier === 1 ? 126 : 182;
-      const localRadiusY = node.tier === 0 ? 52 : node.tier === 1 ? 94 : 140;
+      const localRadiusX = node.tier === 0 ? 50 : node.tier === 1 ? 90 : 130;
+      const localRadiusY = node.tier === 0 ? 38 : node.tier === 1 ? 68 : 100;
       const placed = {
         ...node,
         x: hub.x + Math.cos(angle) * localRadiusX,
         y: hub.y + Math.sin(angle) * localRadiusY,
-        r: node.type === "map" ? 38 : node.tier === 1 ? 28 : 22,
+        r: node.type === "map" ? 36 : node.tier === 0 ? 28 : node.tier === 1 ? 20 : 14,
       };
       chosenIds.add(node.id);
       sceneNodes.push(placed);
     });
   }
 
+  const candidateEdges = [];
   for (const edge of state.graph.edges) {
     if (!chosenIds.has(edge.source) || !chosenIds.has(edge.target)) continue;
     if (edge.type === "organized_by") continue;
     if (edge.type === "related_to" && weakLink(edge)) continue;
     if ((edge.type === "uses" || edge.type === "explains") && weakUse(edge)) continue;
-    sceneEdges.push({ ...edge, family: edge.type });
+    const src = state.nodeMap.get(edge.source);
+    const tgt = state.nodeMap.get(edge.target);
+    const score = (src?.degree || 0) + (tgt?.degree || 0);
+    candidateEdges.push({ ...edge, family: edge.type, score });
   }
 
-  relaxLayout(sceneNodes, { iterations: 220, padding: 6, lockDomains: false, lockFocal: true, enforceBounds: true });
-  clampNodesToViewport(sceneNodes, { padding: 48, preserveFocus: false });
+  const OVERVIEW_MAX_EDGES_PER_NODE = 3;
+  const edgeCountPerNode = new Map();
+  candidateEdges.sort((a, b) => b.score - a.score);
+  for (const edge of candidateEdges) {
+    const srcCount = edgeCountPerNode.get(edge.source) || 0;
+    const tgtCount = edgeCountPerNode.get(edge.target) || 0;
+    if (srcCount >= OVERVIEW_MAX_EDGES_PER_NODE && tgtCount >= OVERVIEW_MAX_EDGES_PER_NODE) continue;
+    sceneEdges.push(edge);
+    edgeCountPerNode.set(edge.source, srcCount + 1);
+    edgeCountPerNode.set(edge.target, tgtCount + 1);
+  }
+
+  relaxLayout(sceneNodes, { iterations: 220, padding: 2, lockDomains: false, lockFocal: true, enforceBounds: true });
+  clampNodesToViewport(sceneNodes, { padding: 36, preserveFocus: false });
   state.overviewNodes = sceneNodes;
   state.overviewEdges = dedupeEdges(sceneEdges);
 
@@ -306,13 +356,45 @@ function buildOverviewScene() {
     const children = sceneNodes.filter((node) => node.taxonomy === taxonomy && node.type !== "domain" && node.type !== "root");
     if (!children.length) continue;
     const points = children.map((n) => ({ x: n.x, y: n.y }));
-    const hull = convexHull(points);
-    const expanded = offsetPolygon(hull, 60);
-    const d = smoothClosedPath(expanded);
     const cx = points.reduce((s, p) => s + p.x, 0) / points.length;
     const cy = points.reduce((s, p) => s + p.y, 0) / points.length;
-    const minX = Math.min(...expanded.map((p) => p.x));
-    const minY = Math.min(...expanded.map((p) => p.y));
+
+    // Radial density sampling: trace the actual boundary of the node distribution
+    const bins = 72;
+    const radii = [];
+    for (let i = 0; i < bins; i++) {
+      const angle = (i / bins) * Math.PI * 2;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      let maxR = 0;
+      for (const p of points) {
+        const proj = (p.x - cx) * cos + (p.y - cy) * sin;
+        const perp = Math.abs(-(p.x - cx) * sin + (p.y - cy) * cos);
+        const r = proj + Math.max(0, 50 - perp * 0.5);
+        if (r > maxR) maxR = r;
+      }
+      radii.push(maxR + 50);
+    }
+
+    // Smooth the radii to remove jaggedness
+    const smoothed = radii.slice();
+    for (let pass = 0; pass < 3; pass++) {
+      const tmp = smoothed.slice();
+      for (let i = 0; i < bins; i++) {
+        const prev = tmp[(i - 1 + bins) % bins];
+        const curr = tmp[i];
+        const next = tmp[(i + 1) % bins];
+        smoothed[i] = curr * 0.5 + prev * 0.25 + next * 0.25;
+      }
+    }
+
+    const contourPoints = smoothed.map((r, i) => {
+      const angle = (i / bins) * Math.PI * 2;
+      return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+    });
+    const d = smoothClosedPath(contourPoints);
+    const minX = Math.min(...contourPoints.map((p) => p.x));
+    const minY = Math.min(...contourPoints.map((p) => p.y));
     domainRegions.set(taxonomy, { d, cx, cy, minX, minY, taxonomy });
   }
   state.domainRegions = domainRegions;
@@ -369,7 +451,7 @@ function offsetPolygon(polygon, distance) {
 function smoothClosedPath(polygon) {
   const n = polygon.length;
   if (n < 3) return "";
-  const tension = 0.36;
+  const tension = 0.22;
   let d = `M ${polygon[0].x} ${polygon[0].y}`;
   for (let i = 0; i < n; i++) {
     const p0 = polygon[(i - 1 + n) % n];
@@ -384,19 +466,6 @@ function smoothClosedPath(polygon) {
   }
   d += " Z";
   return d;
-}
-
-function selectOverviewNodesForTaxonomy(pool) {
-  const selected = [];
-  for (const type of ["map", "law", "concept", "quantity", "mathematical_tool", "experiment"]) {
-    const quota = OVERVIEW_QUOTAS[type] || 0;
-    const matches = pool
-      .filter((node) => node.type === type)
-      .sort((a, b) => b.degree - a.degree)
-      .slice(0, quota);
-    selected.push(...matches);
-  }
-  return dedupeNodes(selected);
 }
 
 function weakLink(edge) {
@@ -621,7 +690,7 @@ function render() {
 
   relaxLayout(scene.nodes, {
     iterations: 240,
-    padding: state.mode === "focus" ? 14 : 6,
+    padding: state.mode === "focus" ? 14 : 2,
     lockFocal: true,
     enforceBounds: state.mode === "focus",
   });
@@ -897,14 +966,12 @@ function updateModeUI(sceneNodes) {
       { label: node.title },
     ]);
     els.graphHint.textContent = "中心節點固定；內圈只留先備與數學支撐，外圈只留推導、驗證、量測與應用，灰色膠囊則放弱關聯。";
-    els.overviewBadgeText.textContent = "焦點模式把雜訊拿掉，只保留能解釋這個節點如何進入、如何延伸的關係。";
   } else {
     renderBreadcrumb([
       { label: "總覽", action: () => goToOverview() },
       { label: "taxonomy domains" },
     ]);
     els.graphHint.textContent = "拖曳平移、滾輪縮放；中央根節點連接各領域，放大後會依序顯示更細的節點名稱與關係。";
-    els.overviewBadgeText.textContent = `目前總覽顯示 ${sceneNodes.length - 1} 個節點，每個色塊代表一個知識領域，點擊可聚焦該區域。`;
   }
 }
 
@@ -1112,7 +1179,7 @@ function relaxLayout(nodes, options = {}) {
 
     if (enforceBounds) {
       clampNodesToViewport(nodes, {
-        padding: state.mode === "focus" ? 84 : 48,
+        padding: state.mode === "focus" ? 84 : 36,
         preserveFocus: lockFocal,
         useCollisionRadius: true,
       });

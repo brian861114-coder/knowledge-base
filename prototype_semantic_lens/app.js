@@ -489,7 +489,34 @@ function buildFocusScene(nodeId) {
   const focalSource = state.nodeMap.get(nodeId);
   if (!focalSource) return;
 
-  const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
+  // Root node: show domain hubs as connected nodes
+  if (focalSource.type === "root") {
+    const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
+    const domainNodes = [];
+    const edges = [];
+    for (const hub of state.graph.domainHubs) {
+      const overviewNode = state.overviewNodes.find((n) => n.taxonomy === hub.taxonomy && n.type !== "domain" && n.type !== "root");
+      const hubCopy = {
+        ...hub,
+        x: 0,
+        y: 0,
+        r: 44,
+        shortTitle: TAXONOMY_LABELS[hub.taxonomy] || hub.taxonomy,
+        searchText: hub.title,
+      };
+      domainNodes.push(hubCopy);
+      edges.push({ source: focal.id, target: hub.id, type: "organized_by", family: "organized_by" });
+    }
+    positionRing(domainNodes, focal, 340, 280, 44, 0);
+    const sceneNodes = [focal, ...dedupeNodes(domainNodes)];
+    relaxLayout(sceneNodes, { iterations: 100, padding: 16, lockDomains: false, lockFocal: true, enforceBounds: true });
+    clampNodesToViewport(sceneNodes, { padding: 84, preserveFocus: true });
+    state.focusNodes = sceneNodes;
+    state.focusEdges = dedupeEdges(edges);
+    return;
+  }
+
+  // Regular node: existing focus logic
   const edges = [];
   const inner = [];
   const outer = [];
@@ -916,10 +943,6 @@ function resolveVisibleTitle(node, tier, selected) {
 function handleNodeSelect(nodeId) {
   const node = state.nodeMap.get(nodeId);
   if (!node) return;
-  if (node.type === "root") {
-    goToOverview();
-    return;
-  }
   if (node.type === "domain") {
     goToOverviewAndCenterTaxonomy(node.taxonomy);
     return;

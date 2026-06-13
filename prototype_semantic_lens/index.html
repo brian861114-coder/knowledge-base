@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知識圖譜焦點透鏡原型</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="left-rail">
+      <div class="brand-mark">KM</div>
+      <button class="rail-button is-active" id="overviewModeButton" type="button" title="總覽">◎</button>
+      <button class="rail-button" id="focusModeButton" type="button" title="焦點">◉</button>
+    </aside>
+
+    <main class="main-shell">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">Prototype</p>
+          <h1>知識圖譜焦點透鏡</h1>
+        </div>
+        <label class="searchbox">
+          <span>搜尋概念、定律、物理量</span>
+          <input id="searchInput" type="search" placeholder="例如：解析動力學、電場、拉格朗日力學">
+        </label>
+      </header>
+
+      <section class="content-shell">
+        <section class="graph-stage">
+          <div class="graph-toolbar">
+            <div>
+              <div class="breadcrumb" id="breadcrumb"></div>
+              <p class="graph-hint" id="graphHint">拖曳平移、滾輪縮放；中央根節點連接各領域，放大後會依序顯示更細的節點名稱與關係。</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="backButton" class="ghost-button" type="button" hidden>回到總覽</button>
+              <button id="fitButton" class="ghost-button" type="button">置中</button>
+            </div>
+          </div>
+
+          <div class="graph-frame" id="graphFrame">
+            <svg class="graph-svg" id="graphSvg" viewBox="0 0 1440 960" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="rgba(196, 87, 63, 0.78)"></path>
+                </marker>
+                <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="rgba(16, 61, 121, 0.78)"></path>
+                </marker>
+                <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="rgba(66, 111, 79, 0.74)"></path>
+                </marker>
+                <marker id="arrow-gold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="rgba(159, 122, 47, 0.78)"></path>
+                </marker>
+              </defs>
+              <g id="viewport">
+                <g id="ringLayer"></g>
+                <g id="edgeLayer"></g>
+                <g id="nodeLayer"></g>
+              </g>
+            </svg>
+
+            <div class="overview-badge">
+              <div class="overview-badge-title">總覽策略</div>
+              <p id="overviewBadgeText">每個領域只保留樞紐、導覽頁與高中心性節點，避免整張圖被弱連結淹沒。</p>
+            </div>
+
+            <div class="legend-card">
+              <div class="legend-title">關係圖例</div>
+              <div class="legend-list">
+                <span><i class="legend-line prereq"></i>先備知識</span>
+                <span><i class="legend-line derive"></i>可推導出</span>
+                <span><i class="legend-line formal"></i>數學支撐</span>
+                <span><i class="legend-line related"></i>相關概念</span>
+                <span><i class="legend-line verify"></i>驗證 / 量測 / 應用</span>
+              </div>
+            </div>
+
+            <div class="zoom-card">
+              <button id="zoomOutButton" class="zoom-button" type="button">−</button>
+              <input id="zoomSlider" type="range" min="55" max="260" value="100">
+              <button id="zoomInButton" class="zoom-button" type="button">+</button>
+              <div id="zoomLabel" class="zoom-label">100%</div>
+            </div>
+
+            <div class="minimap-card">
+              <div class="minimap-head">
+                <span>Mini Map</span>
+                <span id="minimapModeLabel">overview</span>
+              </div>
+              <svg id="minimapSvg" class="minimap-svg" viewBox="0 0 220 140" preserveAspectRatio="xMidYMid meet">
+                <rect x="0" y="0" width="220" height="140" rx="18" class="minimap-bg"></rect>
+                <g id="minimapLayer"></g>
+                <rect id="minimapViewport" x="0" y="0" width="220" height="140" rx="14" class="minimap-viewport"></rect>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <aside class="detail-panel">
+          <div class="detail-card">
+            <div class="detail-head">
+              <p class="eyebrow" id="detailType">概覽</p>
+              <div class="detail-title-row">
+                <h2 id="detailTitle">請選取一個節點</h2>
+                <button id="focusActionButton" class="focus-action-button" type="button" hidden>重新聚焦</button>
+              </div>
+              <p class="detail-summary" id="detailSummary">這個版本不會碰舊原型。它先把總覽整理成可讀骨架，再用焦點透鏡呈現節點的學習前置與延伸脈絡。</p>
+            </div>
+
+            <div class="stats-strip" id="statsStrip"></div>
+
+            <div class="detail-section">
+              <div class="section-head">
+                <h3>基礎資訊</h3>
+                <span id="detailTaxonomyBadge" class="taxonomy-badge">overview</span>
+              </div>
+              <div class="meta-grid" id="detailMeta"></div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-head">
+                <h3>先備關係</h3>
+                <span class="section-count" id="prereqCount">0</span>
+              </div>
+              <div class="pill-list" id="prereqList"></div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-head">
+                <h3>延伸概念</h3>
+                <span class="section-count" id="extensionCount">0</span>
+              </div>
+              <div class="pill-list" id="extensionList"></div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-head">
+                <h3>相關連結</h3>
+                <span class="section-count" id="relatedCount">0</span>
+              </div>
+              <div class="pill-list" id="relatedList"></div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-head">
+                <h3>閱讀入口</h3>
+                <span class="section-count">source</span>
+              </div>
+              <a id="detailPath" class="reader-link" href="#" target="_blank" rel="noreferrer">尚未選取節點</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

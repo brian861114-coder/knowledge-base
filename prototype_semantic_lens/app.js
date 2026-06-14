@@ -7,8 +7,22 @@ import {
   validateGraphPayload,
 } from "./logic.mjs";
 import { createDetailStore } from "./detail-store.mjs";
+import {
+  buildEmptyDetailView,
+  buildNodeDetailView,
+  buildNoteSectionHtml,
+} from "./detail-renderer.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
+import {
+  clamp,
+  clampNodesToViewport,
+  clientToSvgPoint,
+  getNavigationBounds,
+  projectMiniMapClick,
+  updateMiniMapViewport,
+  updateViewportTransform,
+} from "./viewport.mjs";
 
 const GRAPH_URL = "../physics_graph.json";
 const DETAIL_INDEX_URL = "./data/detail-index.json";
@@ -840,13 +854,13 @@ function onPointerDown(event) {
 
 function onPointerMove(event) {
   if (!state.dragging.active || event.pointerId !== state.dragging.pointerId) return;
-  const point = clientToSvgPoint(event.clientX, event.clientY);
+  const point = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
   const deltaX = point.x - state.dragging.startX;
   const deltaY = point.y - state.dragging.startY;
   state.panX = state.dragging.basePanX + deltaX;
   state.panY = state.dragging.basePanY + deltaY;
-  updateViewportTransform();
-  updateMiniMapViewport();
+  syncViewportTransform();
+  syncMiniMapViewport();
 }
 
 function onPointerUp(event) {
@@ -861,7 +875,7 @@ function onWheel(event) {
   if (typeof event.target.closest === "function" && event.target.closest(".zoom-card, .minimap-card")) return;
   event.preventDefault();
 
-  const pointer = clientToSvgPoint(event.clientX, event.clientY);
+  const pointer = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
   const worldX = (pointer.x - state.panX) / state.zoom;
   const worldY = (pointer.y - state.panY) / state.zoom;
   const factor = Math.exp(-event.deltaY * 0.0015);
@@ -877,20 +891,7 @@ function setZoom(value) {
   state.zoom = clamp(value, 0.55, 2.6);
   els.zoomSlider.value = String(Math.round(state.zoom * 100));
   els.zoomLabel.textContent = `${Math.round(state.zoom * 100)}%`;
-  updateViewportTransform();
-}
-
-function updateViewportTransform() {
-  els.viewport.setAttribute("transform", `translate(${state.panX} ${state.panY}) scale(${state.zoom})`);
-}
-
-function clientToSvgPoint(clientX, clientY) {
-  const svg = els.graphFrame.querySelector(".graph-svg");
-  const point = svg.createSVGPoint();
-  point.x = clientX;
-  point.y = clientY;
-  const matrix = svg.getScreenCTM();
-  return matrix ? point.matrixTransform(matrix.inverse()) : { x: clientX, y: clientY };
+  syncViewportTransform();
 }
 
 function render() {
@@ -905,7 +906,7 @@ function render() {
 }
 
 function getCurrentScene() {
-  updateViewportTransform();
+  syncViewportTransform();
   return state.mode === "focus" && state.selectedNodeId
     ? ensureFocusScene()
     : {
@@ -1090,7 +1091,7 @@ function renderMiniMap(nodes) {
   const width = 220;
   const height = 140;
   const padding = 10;
-  const bounds = getNavigationBounds(nodes);
+  const bounds = getNavigationBounds(nodes, CANVAS_WIDTH, CANVAS_HEIGHT);
   state.miniMapBounds = bounds;
   const scaleX = (width - padding * 2) / Math.max(bounds.maxX - bounds.minX, 1);
   const scaleY = (height - padding * 2) / Math.max(bounds.maxY - bounds.minY, 1);
@@ -1101,31 +1102,8 @@ function renderMiniMap(nodes) {
     return `<circle class="minimap-node ${node.id === state.selectedNodeId ? "focus" : ""}" cx="${x}" cy="${y}" r="${r}"></circle>`;
   }).join("");
   els.minimapLayer.innerHTML = sceneMarkup;
-  updateMiniMapViewport(bounds);
+  syncMiniMapViewport(bounds);
   els.minimapModeLabel.textContent = state.mode;
-}
-
-function updateMiniMapViewport(bounds = state.miniMapBounds) {
-  if (!bounds) return;
-  const width = 220;
-  const height = 140;
-  const padding = 10;
-  const availableWidth = width - padding * 2;
-  const availableHeight = height - padding * 2;
-  const sceneWidth = Math.max(bounds.maxX - bounds.minX, 1);
-  const sceneHeight = Math.max(bounds.maxY - bounds.minY, 1);
-  const viewWorldWidth = CANVAS_WIDTH / state.zoom;
-  const viewWorldHeight = CANVAS_HEIGHT / state.zoom;
-  const viewWidth = clamp((viewWorldWidth / sceneWidth) * availableWidth, 32, availableWidth);
-  const viewHeight = clamp((viewWorldHeight / sceneHeight) * availableHeight, 24, availableHeight);
-  const visibleLeft = (-state.panX) / state.zoom;
-  const visibleTop = (-state.panY) / state.zoom;
-  const x = clamp(padding + ((visibleLeft - bounds.minX) / sceneWidth) * availableWidth, padding, width - padding - viewWidth);
-  const y = clamp(padding + ((visibleTop - bounds.minY) / sceneHeight) * availableHeight, padding, height - padding - viewHeight);
-  els.minimapViewport.setAttribute("x", String(x));
-  els.minimapViewport.setAttribute("y", String(y));
-  els.minimapViewport.setAttribute("width", String(viewWidth));
-  els.minimapViewport.setAttribute("height", String(viewHeight));
 }
 
 function resolveVisibleTitle(node, tier, selected) {
@@ -1159,56 +1137,20 @@ function handleNodeSelect(nodeId) {
 
 function onMiniMapClick(event) {
   const rect = els.minimapSvg.getBoundingClientRect();
-  const localX = ((event.clientX - rect.left) / rect.width) * 220;
-  const localY = ((event.clientY - rect.top) / rect.height) * 140;
-  const padding = 10;
   const bounds = state.miniMapBounds || { minX: 0, minY: 0, maxX: CANVAS_WIDTH, maxY: CANVAS_HEIGHT };
-  const worldX = bounds.minX + ((localX - padding) / (220 - padding * 2)) * (bounds.maxX - bounds.minX);
-  const worldY = bounds.minY + ((localY - padding) / (140 - padding * 2)) * (bounds.maxY - bounds.minY);
+  const { worldX, worldY } = projectMiniMapClick({
+    clientX: event.clientX,
+    clientY: event.clientY,
+    rect,
+    bounds,
+    width: 220,
+    height: 140,
+    padding: 10,
+  });
   state.panX = CANVAS_WIDTH / 2 - worldX * state.zoom;
   state.panY = CANVAS_HEIGHT / 2 - worldY * state.zoom;
-  updateViewportTransform();
-  updateMiniMapViewport();
-}
-
-function getSceneBounds(nodes) {
-  if (!nodes.length) return { minX: 0, minY: 0, maxX: CANVAS_WIDTH, maxY: CANVAS_HEIGHT };
-  const xs = nodes.map((node) => [node.x - node.r, node.x + node.r]).flat();
-  const ys = nodes.map((node) => [node.y - node.r, node.y + node.r]).flat();
-  return {
-    minX: Math.min(...xs) - 24,
-    maxX: Math.max(...xs) + 24,
-    minY: Math.min(...ys) - 24,
-    maxY: Math.max(...ys) + 24,
-  };
-}
-
-function getNavigationBounds(nodes) {
-  const scene = getSceneBounds(nodes);
-  const horizontalMargin = CANVAS_WIDTH * 0.25;
-  const verticalMargin = CANVAS_HEIGHT * 0.25;
-  return {
-    minX: Math.min(scene.minX, -horizontalMargin),
-    maxX: Math.max(scene.maxX, CANVAS_WIDTH + horizontalMargin),
-    minY: Math.min(scene.minY, -verticalMargin),
-    maxY: Math.max(scene.maxY, CANVAS_HEIGHT + verticalMargin),
-  };
-}
-
-function clampNodesToViewport(nodes, options = {}) {
-  const padding = options.padding || 64;
-  const preserveFocus = Boolean(options.preserveFocus);
-  const useCollisionRadius = Boolean(options.useCollisionRadius);
-  for (const node of nodes) {
-    if (preserveFocus && node.focal) continue;
-    const radius = useCollisionRadius ? collisionRadius(node) : node.r;
-    const minX = padding + radius;
-    const maxX = CANVAS_WIDTH - padding - radius;
-    const minY = padding + node.r;
-    const maxY = CANVAS_HEIGHT - padding - node.r;
-    node.x = clamp(node.x, minX, maxX);
-    node.y = clamp(node.y, minY, maxY);
-  }
+  syncViewportTransform();
+  syncMiniMapViewport();
 }
 
 function updateModeUI(sceneNodes) {
@@ -1259,29 +1201,26 @@ function goToOverviewAndCenterTaxonomy(taxonomy) {
   if (!region) return;
   state.panX = CANVAS_WIDTH / 2 - region.cx * state.zoom;
   state.panY = CANVAS_HEIGHT / 2 - region.cy * state.zoom;
-  updateViewportTransform();
-  updateMiniMapViewport();
+  syncViewportTransform();
+  syncMiniMapViewport();
 }
 
 function renderDetail() {
   const node = state.selectedNodeId ? state.nodeMap.get(state.selectedNodeId) : null;
   if (!node) {
-    els.detailType.textContent = "概覽";
-    els.detailTitle.textContent = "請選取一個節點";
-    els.detailSummary.innerHTML = "右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。<br><br>先從左側選一個領域，或直接點擊中央圖譜中的節點。";
-    els.detailTaxonomyBadge.textContent = "overview";
-    els.detailMeta.innerHTML = createMetaItems([
-      ["視圖模式", "Semantic Zoom"],
-      ["焦點狀態", "未選取"],
-      ["關係策略", "語意邊優先"],
-      ["節點標籤", "依縮放顯示"],
-    ]);
-    els.statsStrip.innerHTML = createStatCards([
+    const emptyView = buildEmptyDetailView();
+    emptyView.statsEntries = [
       ["顯示節點", String(filterOverviewNodes(state.overviewNodes).length)],
       ["顯示關係", String(filterOverviewEdges(state.overviewEdges).length)],
       ["已隱藏", "wikilink"],
       ["總層級", "3"],
-    ]);
+    ];
+    els.detailType.textContent = emptyView.typeText;
+    els.detailTitle.textContent = emptyView.titleText;
+    els.detailSummary.innerHTML = emptyView.summaryHtml;
+    els.detailTaxonomyBadge.textContent = emptyView.taxonomyBadge;
+    els.detailMeta.innerHTML = createMetaItems(emptyView.metaEntries);
+    els.statsStrip.innerHTML = createStatCards(emptyView.statsEntries);
     fillRelationSection("prereq", []);
     fillRelationSection("extension", []);
     fillRelationSection("related", []);
@@ -1296,25 +1235,19 @@ function renderDetail() {
   const detailIndex = state.detailStore.getIndex(node.id);
   const detail = cachedDetail || detailIndex;
   const relations = collectRelations(node.id);
-  const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
-  const sectionCount = cachedDetail?.sections?.length || detailIndex.section_count || 0;
+  const detailView = buildNodeDetailView(node, detail, relations, {
+    taxonomyLabels: TAXONOMY_LABELS,
+    typeLabels: TYPE_LABELS,
+    renderMarkdown,
+    findNodeByTitle,
+  });
 
-  els.detailType.textContent = TYPE_LABELS[node.type] || node.type;
-  els.detailTitle.textContent = node.title;
-  els.detailSummary.innerHTML = renderMarkdown(resolvedSummary, { compact: true }, { findNodeByTitle });
-  els.detailTaxonomyBadge.textContent = TAXONOMY_LABELS[node.taxonomy] || node.taxonomy;
-  els.detailMeta.innerHTML = createMetaItems([
-    ["領域", TAXONOMY_LABELS[node.taxonomy] || node.taxonomy],
-    ["類型", TYPE_LABELS[node.type] || node.type],
-    ["連結數", String(node.degree)],
-    ["來源路徑", detail.path || node.path || "—"],
-  ]);
-  els.statsStrip.innerHTML = createStatCards([
-    ["先備", String(relations.requires.length)],
-    ["延伸", String(relations.extension.length)],
-    ["相關", String(relations.related.length)],
-    ["章節", String(sectionCount)],
-  ]);
+  els.detailType.textContent = detailView.typeText;
+  els.detailTitle.textContent = detailView.titleText;
+  els.detailSummary.innerHTML = detailView.summaryHtml;
+  els.detailTaxonomyBadge.textContent = detailView.taxonomyBadge;
+  els.detailMeta.innerHTML = createMetaItems(detailView.metaEntries);
+  els.statsStrip.innerHTML = createStatCards(detailView.statsEntries);
 
   fillRelationSection("prereq", relations.requires);
   fillRelationSection("extension", relations.extension);
@@ -1348,68 +1281,14 @@ function renderNoteSection(node, detail) {
     if (detailCard) detailCard.appendChild(noteSection);
   }
 
-  const loadError = state.detailStore.getError(node.id);
-  if (loadError) {
-    noteSection.innerHTML = `
-      <div class="section-head"><h3>筆記內容</h3></div>
-      <p style="color:var(--red);font-size:0.88rem;">筆記載入失敗：${escapeHtml(loadError)}</p>
-      <button class="ghost-button" type="button" data-retry-detail="${escapeHtml(node.id)}">重試載入</button>
-    `;
-    return;
-  }
-
-  if (!state.detailStore.hasCached(node.id)) {
-    noteSection.innerHTML = `
-      <div class="section-head"><h3>筆記內容</h3></div>
-      <p style="color:var(--muted);font-size:0.88rem;">正在載入筆記內容…</p>
-    `;
-    return;
-  }
-
-  if (!detail || (!detail.sections?.length && !detail.body_preview && !detail.body_full)) {
-    noteSection.innerHTML = `
-      <div class="section-head"><h3>筆記內容</h3></div>
-      <p style="color:var(--muted);font-size:0.88rem;">這個節點目前沒有對應的筆記內容。</p>
-    `;
-    return;
-  }
-
-  const isFullMode = state.noteViewMode === "full";
-  const sections = detail.sections || [];
-  const displaySections = isFullMode ? sections : sections.slice(0, 6);
-
-  // Toggle buttons
-  let html = `
-    <div class="section-head">
-      <h3>${isFullMode ? "筆記全文" : "筆記預覽"}</h3>
-    </div>
-  `;
-
-  // Body content
-  const bodyContent = isFullMode
-    ? (detail.body_full || detail.body_preview || detail.summary || "")
-    : (detail.body_preview || detail.summary || "");
-  if (bodyContent) {
-    html += `<div class="note-body rich-summary">${renderMarkdown(bodyContent, { stripLeadingTitle: true, compact: !isFullMode, title: node.title }, { findNodeByTitle })}</div>`;
-  }
-
-  // Section outline + cards
-  if (displaySections.length) {
-    html += `<div class="section-head" style="margin-top:18px"><h3>${isFullMode ? "章節全文" : "章節預覽"}</h3></div>`;
-    html += `<div class="note-sections-grid">`;
-    for (let i = 0; i < displaySections.length; i++) {
-      const sec = displaySections[i];
-      html += `
-        <article class="section-card">
-          <h4>${escapeHtml(sec.title)}</h4>
-          <div class="section-card-content">${renderMarkdown(isFullMode ? sec.content || sec.preview || "" : sec.preview || "", { compact: !isFullMode }, { findNodeByTitle })}</div>
-        </article>
-      `;
-    }
-    html += `</div>`;
-  }
-
-  noteSection.innerHTML = html;
+  noteSection.innerHTML = buildNoteSectionHtml(node, detail, {
+    escapeHtml,
+    renderMarkdown,
+    findNodeByTitle,
+    loadError: state.detailStore.getError(node.id),
+    isLoaded: state.detailStore.hasCached(node.id),
+    noteViewMode: state.noteViewMode,
+  });
   scheduleMathTypeset(noteSection);
 }
 
@@ -1588,6 +1467,9 @@ function relaxLayout(nodes, options = {}) {
         padding: state.mode === "focus" ? 84 : 36,
         preserveFocus: lockFocal,
         useCollisionRadius: true,
+        collisionRadius,
+        canvasWidth: CANVAS_WIDTH,
+        canvasHeight: CANVAS_HEIGHT,
       });
     }
   }
@@ -1635,8 +1517,21 @@ function dedupeEdges(edges) {
   });
 }
 
-function clamp(value, min, max) {
-  return Math.max(min, Math.min(max, value));
+function syncViewportTransform() {
+  updateViewportTransform(els.viewport, state.panX, state.panY, state.zoom);
+}
+
+function syncMiniMapViewport(bounds = state.miniMapBounds) {
+  updateMiniMapViewport(els.minimapViewport, bounds, {
+    width: 220,
+    height: 140,
+    padding: 10,
+    panX: state.panX,
+    panY: state.panY,
+    zoom: state.zoom,
+    canvasWidth: CANVAS_WIDTH,
+    canvasHeight: CANVAS_HEIGHT,
+  });
 }
 
 function findNodeByTitle(title) {

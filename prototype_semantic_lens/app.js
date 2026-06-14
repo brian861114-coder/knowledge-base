@@ -24,6 +24,7 @@ import {
   stepBrowseHistory,
 } from "./navigation-state.mjs";
 import { buildFocusSceneData, buildOverviewSceneData } from "./scene-builder.mjs";
+import { buildBreadcrumbHtml, createModeUiState } from "./ui-state.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
 import {
@@ -941,18 +942,25 @@ function onMiniMapClick(event) {
 }
 
 function updateModeUI(sceneNodes) {
-  els.backButton.hidden = state.mode !== "focus";
-  els.focusActionButton.hidden = !state.selectedNodeId;
-  els.browseNav.hidden = state.mode !== "focus";
+  const node = state.mode === "focus" && state.selectedNodeId
+    ? state.nodeMap.get(state.selectedNodeId)
+    : null;
+  const uiState = createModeUiState(
+    state,
+    node,
+    node ? (TAXONOMY_LABELS[node.taxonomy] || node.taxonomy) : ""
+  );
+  els.backButton.hidden = !uiState.showBackButton;
+  els.focusActionButton.hidden = !uiState.showFocusAction;
+  els.browseNav.hidden = !uiState.showBrowseNav;
   els.browseBack.disabled = state.browseIndex <= 0;
   els.browseForward.disabled = state.browseIndex >= state.browseHistory.length - 1;
   const domainOverview = document.getElementById("domainOverview");
-  if (domainOverview) domainOverview.classList.toggle("collapsed", state.mode === "focus");
-  els.overviewModeButton.classList.toggle("is-active", state.mode === "overview");
-  els.focusModeButton.classList.toggle("is-active", state.mode === "focus");
+  if (domainOverview) domainOverview.classList.toggle("collapsed", uiState.collapseDomainOverview);
+  els.overviewModeButton.classList.toggle("is-active", !uiState.isFocus);
+  els.focusModeButton.classList.toggle("is-active", uiState.isFocus);
 
-  if (state.mode === "focus" && state.selectedNodeId) {
-    const node = state.nodeMap.get(state.selectedNodeId);
+  if (uiState.isFocus && node) {
     renderBreadcrumb([
       { label: "總覽", action: () => goToOverview() },
       { label: TAXONOMY_LABELS[node.taxonomy] || node.taxonomy, action: () => goToOverviewAndCenterTaxonomy(node.taxonomy) },

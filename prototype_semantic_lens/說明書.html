@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype Semantic Lens — 前端互動說明書（詳細版）</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap");
+
+:root {
+  --bg: #f4efe6; --surface: rgba(255,252,247,0.84); --surface-strong: rgba(255,255,255,0.94);
+  --border: rgba(44,54,68,0.10); --text: #172334; --muted: #66758a;
+  --navy: #007AFF; --navy-soft: #E3F2FD; --green: #426f4f; --green-soft: #deefe0;
+  --red: #c4573f; --red-soft: #f8e1db; --gold: #9f7a2f; --gold-soft: #f3ead1;
+  --gray: #7e8794; --gray-soft: #edf0f4; --shadow: 0 24px 60px rgba(25,37,54,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "IBM Plex Sans", "Microsoft JhengHei UI", sans-serif; color: var(--text); background: radial-gradient(circle at top left, rgba(255,255,255,0.78), transparent 34%), radial-gradient(circle at bottom right, rgba(239,244,251,0.82), transparent 28%), linear-gradient(180deg, #f7f3ec 0%, #f1ece3 100%); min-height: 100vh; line-height: 1.75; overflow: hidden; }
+.app-shell { display: grid; grid-template-columns: 80px minmax(0, 1fr); height: 100vh; }
+.left-rail { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 14px 0; border-right: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(18px); z-index: 10; overflow-y: auto; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: #1D1D1F; color: white; font-weight: 700; font-size: 0.78rem; margin-bottom: 4px; cursor: pointer; }
+.nav-btn { width: 42px; height: 42px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--muted); cursor: pointer; font-size: 0.95rem; display: grid; place-items: center; transition: all 0.2s; position: relative; flex-shrink: 0; }
+.nav-btn:hover { background: rgba(0,122,255,0.06); color: var(--navy); }
+.nav-btn.active { border-color: rgba(0,122,255,0.16); background: rgba(255,255,255,0.7); color: var(--navy); }
+.nav-btn .tooltip { position: absolute; left: 50px; background: #1D1D1F; color: white; padding: 3px 8px; border-radius: 5px; font-size: 0.62rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 20; }
+.nav-btn:hover .tooltip { opacity: 1; }
+.nav-divider { width: 26px; height: 1px; background: var(--border); margin: 3px 0; flex-shrink: 0; }
+.nav-section-label { font-size: 0.52rem; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; flex-shrink: 0; }
+
+.main-shell { overflow-y: auto; overflow-x: hidden; }
+.page { display: none; padding: 34px 50px 80px; max-width: 980px; animation: fadeIn 0.3s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.eyebrow { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; }
+h1 { font-family: "Noto Serif TC", serif; font-size: 1.85rem; font-weight: 700; margin-bottom: 4px; }
+h2 { font-family: "Noto Serif TC", serif; font-size: 1.25rem; font-weight: 700; margin: 30px 0 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+h3 { font-size: 1rem; font-weight: 600; margin: 22px 0 6px; }
+h4 { font-size: 0.9rem; font-weight: 600; margin: 16px 0 4px; color: var(--navy); }
+p { margin-bottom: 10px; color: #2d3a4f; }
+.lede { font-size: 1rem; color: var(--muted); margin-bottom: 20px; }
+
+.card { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin: 12px 0 20px; box-shadow: var(--shadow); backdrop-filter: blur(12px); }
+.card-sm { padding: 12px 16px; margin: 8px 0 12px; }
+.card-link { cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; }
+.card-link:hover { border-left-color: var(--navy); transform: translateX(3px); }
+.callout { border-left: 4px solid var(--navy); background: var(--navy-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0 18px; font-size: 0.88rem; }
+.callout-tip { border-left-color: var(--green); background: var(--green-soft); }
+.callout-warn { border-left-color: var(--gold); background: var(--gold-soft); }
+
+.tbl-wrap { overflow-x: auto; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.84rem; background: var(--surface-strong); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+th { background: #1D1D1F; color: white; font-weight: 600; padding: 8px 11px; text-align: left; font-size: 0.73rem; letter-spacing: 0.03em; }
+td { padding: 8px 11px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; } tr:hover td { background: rgba(0,122,255,0.03); }
+td:first-child, th:first-child { font-weight: 600; white-space: nowrap; }
+
+pre { background: #1e2230; color: #c9d1d9; padding: 13px 17px; border-radius: 12px; font-family: "JetBrains Mono","Consolas",monospace; font-size: 0.74rem; line-height: 1.6; overflow-x: auto; margin: 8px 0 16px; }
+code { font-family: "JetBrains Mono","Consolas",monospace; font-size: 0.85em; }
+:not(pre)>code { background: rgba(0,122,255,0.08); color: var(--navy); padding: 1px 5px; border-radius: 4px; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 11px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.04em; }
+.badge-html { background: #f8e1db; color: var(--red); } .badge-css { background: #E3F2FD; color: var(--navy); } .badge-js { background: #f3ead1; color: var(--gold); } .badge-new { background: #deefe0; color: var(--green); }
+
+.pill-list { display: flex; flex-wrap: wrap; gap: 5px; margin: 5px 0 12px; }
+.pill { display: inline-block; padding: 3px 11px; border-radius: 18px; font-size: 0.76rem; font-weight: 500; }
+.pill-blue { background: var(--navy-soft); color: var(--navy); } .pill-green { background: var(--green-soft); color: var(--green); } .pill-red { background: var(--red-soft); color: var(--red); } .pill-gold { background: var(--gold-soft); color: var(--gold); }
+
+.demo-box { border: 2px dashed var(--border); border-radius: 14px; padding: 20px; margin: 12px 0 20px; background: rgba(255,255,255,0.5); }
+.demo-box h4 { margin-top: 0; }
+.demo-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+.demo-btn { padding: 7px 16px; border: none; border-radius: 9px; font-size: 0.84rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.demo-btn-blue { background: var(--navy); color: white; } .demo-btn-blue:hover { opacity: 0.85; transform: translateY(-1px); }
+.demo-btn-outline { background: transparent; border: 2px solid var(--navy); color: var(--navy); } .demo-btn-outline:hover { background: var(--navy-soft); }
+.demo-btn-red { background: var(--red); color: white; } .demo-btn-red:hover { opacity: 0.85; }
+.demo-btn-green { background: var(--green); color: white; } .demo-btn-green:hover { opacity: 0.85; }
+.demo-output { padding: 10px 15px; border-radius: 10px; background: #1e2230; color: #7ee787; font-family: "JetBrains Mono",monospace; font-size: 0.78rem; min-height: 32px; margin: 5px 0; }
+.demo-label { font-size: 0.8rem; color: var(--muted); }
+
+.swatch-row { display: flex; gap: 9px; flex-wrap: wrap; margin: 8px 0; }
+.swatch { width: 46px; height: 46px; border-radius: 11px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; display: grid; place-items: center; font-size: 0.6rem; font-weight: 600; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+.swatch:hover { transform: scale(1.08); } .swatch.selected { border-color: #1D1D1F; transform: scale(1.1); }
+.svg-demo-canvas { background: #fafaf8; border-radius: 14px; border: 1px solid var(--border); width: 100%; }
+@keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.25)} 100%{transform:scale(1)} } .pop { animation: pop 0.3s ease; }
+.toggle-track { width: 42px; height: 22px; border-radius: 11px; background: #ccc; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; }
+.toggle-track.on { background: var(--navy); }
+.toggle-thumb { width: 18px; height: 18px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; transition: left 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.toggle-track.on .toggle-thumb { left: 22px; }
+.search-box { width: 100%; padding: 8px 13px; border: 1px solid var(--border); border-radius: 10px; font-size: 0.86rem; font-family: inherit; background: white; outline: none; transition: border 0.2s; }
+.search-box:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(0,122,255,0.1); }
+
+.tag-demo-container { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+.tag-chip { padding: 5px 11px; border-radius: 7px; font-size: 0.78rem; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+.tag-chip:hover { transform: scale(1.04); } .tag-chip.active { border-color: #1D1D1F; }
+.tag-chip.div-tag { background: #E3F2FD; color: #0D47A1; } .tag-chip.btn-tag { background: #E8F5E9; color: #1B5E20; }
+.tag-chip.input-tag { background: #FFF3E0; color: #E65100; } .tag-chip.svg-tag { background: #F3E5F5; color: #6A1B9A; }
+.tag-chip.struct-tag { background: #FCE4EC; color: #880E4F; }
+.tag-info { padding: 10px 13px; border-radius: 10px; background: var(--surface-strong); border: 1px solid var(--border); margin-top: 8px; font-size: 0.82rem; min-height: 50px; transition: all 0.3s; }
+
+.hero-icon { font-size: 3rem; margin-bottom: 4px; }
+.hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+.hero-card { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+.hero-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--navy); }
+.hero-card .icon { font-size: 1.7rem; margin-bottom: 4px; } .hero-card h3 { margin: 2px 0; font-size: 0.9rem; } .hero-card p { font-size: 0.76rem; color: var(--muted); margin: 0; }
+
+.depth-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; padding: 7px 15px; background: var(--navy-soft); color: var(--navy); border-radius: 9px; text-decoration: none; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; font-family: inherit; }
+.depth-link:hover { background: var(--navy); color: white; }
+
+.flow-steps { display: flex; gap: 0; align-items: center; flex-wrap: wrap; margin: 16px 0; }
+.flow-step { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 11px; padding: 10px 14px; text-align: center; font-size: 0.8rem; min-width: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.flow-arrow { font-size: 1.2rem; color: var(--navy); margin: 0 5px; }
+
+.kw { color: #ff7b72; } .str { color: #a5d6ff; } .cm { color: #8b949e; } .fn { color: #d2a8ff; } .num { color: #79c0ff; }
+
+.box-model-demo { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+.box-model-visual { position: relative; min-width: 240px; min-height: 240px; }
+.box-layer { position: absolute; display: grid; place-items: center; font-size: 0.65rem; font-weight: 600; }
+.box-margin { background: rgba(249,204,157,0.4); border: 1px dashed #e6a23c; }
+.box-border { background: rgba(253,221,155,0.5); border: 1px solid #e6a23c; }
+.box-padding { background: rgba(193,222,179,0.5); border: 1px dashed #67c23a; }
+.box-content { background: rgba(153,191,230,0.6); border: 1px solid #409eff; }
+
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; color: white; font-size: 0.65rem; font-weight: 700; margin-right: 6px; flex-shrink: 0; }
+.step-1 { background: var(--navy); } .step-2 { background: var(--green); } .step-3 { background: var(--gold); } .step-4 { background: var(--red); }
+
+.grid-demo-controls { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+.grid-preview { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: white; transition: all 0.3s; }
+.grid-cell { display: grid; place-items: center; padding: 10px; font-size: 0.75rem; font-weight: 600; color: white; min-height: 40px; }
+
+@media (max-width: 768px) {
+  .app-shell { grid-template-columns: 1fr; } .left-rail { display: none; } .page { padding: 16px 12px 50px; } h1 { font-size: 1.35rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+<aside class="left-rail">
+  <div class="brand-mark" onclick="navigateTo('home')">📖</div>
+  <button class="nav-btn active" data-page="home" onclick="navigateTo('home')">🏠<span class="tooltip">首頁</span></button>
+  <button class="nav-btn" data-page="html" onclick="navigateTo('html')">📄<span class="tooltip">HTML</span></button>
+  <button class="nav-btn" data-page="css" onclick="navigateTo('css')">🎨<span class="tooltip">CSS</span></button>
+  <button class="nav-btn" data-page="js" onclick="navigateTo('js')">⚡<span class="tooltip">JS</span></button>
+  <button class="nav-btn" data-page="flow" onclick="navigateTo('flow')">🔗<span class="tooltip">協作流程</span></button>
+  <button class="nav-btn" data-page="playground" onclick="navigateTo('playground')">🧪<span class="tooltip">動手玩</span></button>
+  <button class="nav-btn" data-page="glossary" onclick="navigateTo('glossary')">📋<span class="tooltip">名詞表</span></button>
+  <div class="nav-divider"></div>
+  <span class="nav-section-label">進階</span>
+  <button class="nav-btn" data-page="svg-deep" onclick="navigateTo('svg-deep')">🖼<span class="tooltip">SVG</span></button>
+  <button class="nav-btn" data-page="data-flow" onclick="navigateTo('data-flow')">📊<span class="tooltip">資料流</span></button>
+  <button class="nav-btn" data-page="css-layout" onclick="navigateTo('css-layout')">📐<span class="tooltip">排版</span></button>
+  <button class="nav-btn" data-page="markdown-render" onclick="navigateTo('markdown-render')">📝<span class="tooltip">Markdown</span></button>
+</aside>
+
+<main class="main-shell" id="mainShell">
+
+<!-- ═══════════ HOME ═══════════ -->
+<section class="page active" id="page-home">
+  <div style="text-align:center; padding: 32px 0 12px;">
+    <div class="hero-icon">🔬</div>
+    <div class="eyebrow">Interactive Deep-Dive Documentation</div>
+    <h1>知識圖譜焦點透鏡</h1>
+    <p class="lede">Prototype Semantic Lens — 專為前端初學者設計的互動式程式碼說明書（詳細版）</p>
+  </div>
+  <p style="text-align:center;color:var(--muted);margin-bottom:24px;">
+    每個章節都包含 <strong>逐步解說、實際範例、互動演示</strong>，適合從零開始學習。<br>
+    基礎篇章（上排）建立觀念，進階篇章（下排）深入關鍵技術。
+  </p>
+  <div class="hero-grid">
+    <div class="hero-card" onclick="navigateTo('html')"><div class="icon">📄</div><h3>HTML 結構層</h3><p>標籤、屬性、巢狀結構、DOM 樹</p><span class="badge badge-html">HTML</span></div>
+    <div class="hero-card" onclick="navigateTo('css')"><div class="icon">🎨</div><h3>CSS 樣式層</h3><p>變數、Box Model、排版、動畫</p><span class="badge badge-css">CSS</span></div>
+    <div class="hero-card" onclick="navigateTo('js')"><div class="icon">⚡</div><h3>JavaScript 行為層</h3><p>State、事件、非同步、DOM 操作</p><span class="badge badge-js">JavaScript</span></div>
+    <div class="hero-card" onclick="navigateTo('flow')"><div class="icon">🔗</div><h3>三者如何協作</h3><p>完整互動流程 + 多場景追蹤</p><span class="badge badge-html">H</span><span class="badge badge-css">C</span><span class="badge badge-js">J</span></div>
+    <div class="hero-card" onclick="navigateTo('playground')"><div class="icon">🧪</div><h3>動手玩玩看</h3><p>6 個互動實驗區</p><span style="font-size:0.72rem;color:var(--green);">Interactive</span></div>
+    <div class="hero-card" onclick="navigateTo('glossary')"><div class="icon">📋</div><h3>技術名詞表</h3><p>21 個術語，支援搜尋</p><span style="font-size:0.72rem;color:var(--muted);">Reference</span></div>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-card" onclick="navigateTo('svg-deep')" style="border-left:3px solid var(--green);"><div class="icon">🖼</div><h3>SVG 繪圖詳解</h3><p>座標系、形狀、變形、箭頭</p><span class="badge badge-new">進階</span></div>
+    <div class="hero-card" onclick="navigateTo('data-flow')" style="border-left:3px solid var(--green);"><div class="icon">📊</div><h3>資料流與 JSON</h3><p>fetch → nodeMap → edgeIndex → render</p><span class="badge badge-new">進階</span></div>
+    <div class="hero-card" onclick="navigateTo('css-layout')" style="border-left:3px solid var(--green);"><div class="icon">📐</div><h3>CSS 排版深入</h3><p>Grid/Flex 混用實戰 + 互動編輯器</p><span class="badge badge-new">進階</span></div>
+    <div class="hero-card" onclick="navigateTo('markdown-render')" style="border-left:3px solid var(--green);"><div class="icon">📝</div><h3>Markdown 轉換</h3><p>逐行演算法 + Token 保護機制</p><span class="badge badge-new">進階</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ HTML PAGE (DEEPENED) ═══════════ -->
+<section class="page" id="page-html">
+  <div class="eyebrow">Chapter 1 · 基礎</div>
+  <h1>HTML 結構層 <span class="badge badge-html">HTML</span></h1>
+  <p class="lede">186 行 · 定義頁面「有什麼元素」—— 如同房屋的鋼筋水泥骨架。本章會從零開始，用實際例子帶你認識每一個關鍵標籤。</p>
+
+  <h2>1.1 什麼是 HTML？用一個比喻開始</h2>
+  <p>想像你要蓋一間房子。在還沒貼磁磚、刷油漆、拉電線之前，你必須先決定：<strong>這裡有一面牆、那裡有一扇窗、轉角要放一扇門</strong>。HTML 就是這個「決定結構」的步驟。</p>
+  <div class="callout"><strong>🏗 一句話總結：</strong>HTML 用標籤（Tag）描述頁面上的元素，只定義<strong>「有什麼」</strong>，不處理<strong>「長怎樣」</strong>（那是 CSS）或<strong>「怎麼動」</strong>（那是 JS）。</div>
+
+  <h2>1.2 HTML 檔案的基本骨架</h2>
+  <p>每一個 HTML 檔案都從這個基本架構開始。你可以把它想像成一份文件的「標準表頭」：</p>
+  <pre>&lt;!DOCTYPE html&gt;                          <span class="cm">&lt;!-- 告訴瀏覽器：這是 HTML5 文件 --&gt;</span>
+&lt;html lang="zh-Hant"&gt;                    <span class="cm">&lt;!-- 整份文件的根，lang 指定語言 --&gt;</span>
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;                 <span class="cm">&lt;!-- 編碼：讓中文正常顯示 --&gt;</span>
+  &lt;meta name="viewport" content="..."&gt;   <span class="cm">&lt;!-- 手機版縮放設定 --&gt;</span>
+  &lt;title&gt;頁面標題&lt;/title&gt;                <span class="cm">&lt;!-- 瀏覽器分頁上的文字 --&gt;</span>
+  &lt;link rel="stylesheet" href="..."&gt;     <span class="cm">&lt;!-- 載入 CSS 樣式檔 --&gt;</span>
+&lt;/head&gt;
+&lt;body&gt;
+  <span class="cm">&lt;!-- 這裡放所有「使用者看得到」的內容 --&gt;</span>
+  &lt;script src="..."&gt;&lt;/script&gt;           <span class="cm">&lt;!-- 載入 JavaScript --&gt;</span>
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  <div class="callout callout-tip"><strong>💡 關鍵觀念：</strong><code>&lt;head&gt;</code> 放的是「給瀏覽器的設定」（不可見），<code>&lt;body&gt;</code> 放的才是「使用者看到的內容」。<code>&lt;script&gt;</code> 放在 <code>&lt;body&gt;</code> 最後面，是為了確保 HTML 都載入完了才執行 JS。</div>
+
+  <h2>1.3 認識標籤：點擊下方按鈕查看說明</h2>
+  <p>HTML 的每一個 <code>&lt;標籤名&gt;</code> 都代表一種元素類型。本專案中最常用的標籤如下：</p>
+  <div class="tag-demo-container" id="tagChips">
+    <span class="tag-chip div-tag active" data-tag="div">&lt;div&gt;</span>
+    <span class="tag-chip btn-tag" data-tag="button">&lt;button&gt;</span>
+    <span class="tag-chip input-tag" data-tag="input">&lt;input&gt;</span>
+    <span class="tag-chip svg-tag" data-tag="svg">&lt;svg&gt;</span>
+    <span class="tag-chip div-tag" data-tag="aside">&lt;aside&gt;</span>
+    <span class="tag-chip div-tag" data-tag="header">&lt;header&gt;</span>
+    <span class="tag-chip div-tag" data-tag="main">&lt;main&gt;</span>
+    <span class="tag-chip struct-tag" data-tag="section">&lt;section&gt;</span>
+    <span class="tag-chip struct-tag" data-tag="head">&lt;head&gt;</span>
+    <span class="tag-chip struct-tag" data-tag="script">&lt;script&gt;</span>
+  </div>
+  <div class="tag-info" id="tagInfo"><strong>&lt;div&gt;</strong> — 萬用容器（division 的縮寫）<br><span style="color:var(--muted);">最常用的標籤，本身沒有任何視覺效果，純粹用來「把一群元素裝在一起」。本專案中 app-shell、left-rail、content-shell 都是 div。</span></div>
+
+  <h2>1.4 標籤的兩種形式</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>形式</th><th>語法</th><th>例子</th></tr>
+    <tr><td>成對標籤（container tag）</td><td><code>&lt;tag&gt;內容&lt;/tag&gt;</code></td><td><code>&lt;h1&gt;標題文字&lt;/h1&gt;</code>、<code>&lt;div&gt;...&lt;/div&gt;</code></td></tr>
+    <tr><td>自閉合標籤（self-closing tag）</td><td><code>&lt;tag&gt;</code> 或 <code>&lt;tag /&gt;</code></td><td><code>&lt;img src="..."&gt;</code>、<code>&lt;input type="text"&gt;</code>、<code>&lt;br&gt;</code></td></tr>
+  </table></div>
+  <p><strong>判斷方式：</strong>如果標籤中間需要「包住內容」，就用成對標籤。如果只是「插入一個東西」，就用自閉合標籤。</p>
+
+  <h2>1.5 id 與 class：給元素取名和分類</h2>
+  <p>這兩個 <strong>屬性（attribute）</strong> 是前端開發中最重要的概念之一。</p>
+  <div class="demo-box">
+    <h4>📌 id — 獨一無二的身份證字號</h4>
+    <p>一個頁面中，<strong>同一個 id 只能出現一次</strong>。CSS 用 <code>#id名</code> 選取，JS 用 <code>getElementById("id名")</code> 找到它。</p>
+    <div class="demo-row" style="margin-top:8px;">
+      <input type="text" id="idFinderInput" placeholder="輸入 id，例如：searchInput" class="search-box" style="width:200px;" oninput="findElementDemo()">
+      <span class="demo-btn demo-btn-blue" onclick="findElementDemo()">尋找元素</span>
+    </div>
+    <div class="demo-output" id="idFinderOutput">等待輸入…</div>
+    <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;">本專案中存在的 id：<code>searchInput</code> <code>graphSvg</code> <code>detailTitle</code> <code>zoomSlider</code> <code>breadcrumb</code> <code>minimapSvg</code></p>
+  </div>
+  <div class="card card-sm">
+    <h4 style="margin-top:0;">🏷 class — 可重複使用的分類標籤</h4>
+    <p>同一個 class 可以貼在<strong>任意多個</strong>元素上，一個元素也可以有<strong>多個</strong> class（用空白分隔）。CSS 用 <code>.class名</code> 批次選取。</p>
+    <pre>&lt;button class="<mark>rail-button is-active</mark>"&gt;◎&lt;/button&gt;
+&lt;button class="<mark>rail-button</mark>"&gt;◉&lt;/button&gt;
+
+&lt;!-- rail-button: 這兩個按鈕都是導航按鈕 --&gt;
+&lt;!-- is-active: 只有第一個是「目前啟用中」的狀態 --&gt;</pre>
+  </div>
+
+  <h2>1.6 本專案的頁面結構（完整樹狀圖）</h2>
+  <p>以下是 <code>index.html</code> 從最外層到最內層的完整巢狀結構。每一層縮排代表「包在裡面」：</p>
+  <pre>index.html
+├── &lt;head&gt;
+│   ├── &lt;meta charset="UTF-8"&gt;        <span class="cm">→ 支援中文</span>
+│   ├── &lt;meta name="viewport" ...&gt;    <span class="cm">→ 手機自適應</span>
+│   ├── &lt;title&gt;知識圖譜焦點透鏡原型&lt;/title&gt;
+│   ├── MathJax 設定 &lt;script&gt;          <span class="cm">→ 數學公式引擎</span>
+│   ├── MathJax CDN &lt;script&gt;           <span class="cm">→ 從網路載入</span>
+│   └── &lt;link href="styles.css"&gt;      <span class="cm">→ 載入樣式</span>
+│
+└── &lt;body&gt;
+    ├── div.app-shell                   <span class="cm">→ Grid 兩欄佈局容器</span>
+    │   ├── aside.left-rail             <span class="cm">→ 左側導航（84px 寬）</span>
+    │   │   ├── div.brand-mark "KM"
+    │   │   ├── button#overviewModeButton ◎
+    │   │   └── button#focusModeButton ◉
+    │   │
+    │   └── main.main-shell             <span class="cm">→ 右側主區域</span>
+    │       ├── header.topbar
+    │       │   ├── h1 "知識圖譜焦點透鏡"
+    │       │   └── input#searchInput
+    │       │
+    │       └── section.content-shell
+    │           ├── div#domainOverview   <span class="cm">→ 領域總覽卡片區</span>
+    │           ├── section.graph-stage
+    │           │   ├── div.graph-toolbar  <span class="cm">→ 麵包屑+按鈕</span>
+    │           │   ├── div.filter-bar     <span class="cm">→ 領域/類型篩選</span>
+    │           │   ├── div.graph-frame
+    │           │   │   ├── svg#graphSvg   <span class="cm">→ 主圖譜</span>
+    │           │   │   │   ├── &lt;defs&gt; → 箭頭標記 x4
+    │           │   │   │   └── &lt;g id="viewport"&gt;
+    │           │   │   │       ├── ringLayer
+    │           │   │   │       ├── edgeLayer
+    │           │   │   │       ├── nodeLayer
+    │           │   │   │       └── labelLayer
+    │           │   │   ├── div.legend-card  <span class="cm">→ 圖例</span>
+    │           │   │   ├── div.zoom-card    <span class="cm">→ 縮放</span>
+    │           │   │   └── div.minimap-card <span class="cm">→ 小地圖</span>
+    │           └── aside.detail-panel   <span class="cm">→ 右側資訊面板</span>
+    │               ├── 節點標題 + 預覽/全文切換
+    │               ├── 基礎資訊（類型、領域...）
+    │               ├── 先備關係 pill-list
+    │               ├── 延伸概念 pill-list
+    │               ├── 相關連結 pill-list
+    │               └── 閱讀入口連結
+    │
+    └── &lt;script type="module" src="app.js"&gt;</pre>
+
+  <h2>1.7 常見錯誤與注意事項</h2>
+  <div class="callout callout-warn"><strong>⚠ 初學者最常犯的錯：</strong>
+  <br>1. 忘記關閉標籤 — <code>&lt;div&gt;...&lt;/div&gt;</code> 缺了結尾的 <code>&lt;/div&gt;</code>
+  <br>2. id 重複使用 — 同一個 id 在頁面中出現兩次，JS 只會找到第一個
+  <br>3. 巢狀錯誤 — <code>&lt;p&gt;&lt;div&gt;...&lt;/div&gt;&lt;/p&gt;</code> 是不合法的（p 裡面不能放 div）
+  <br>4. <code>&lt;script&gt;</code> 放錯位置 — 放在 <code>&lt;head&gt;</code> 裡又沒加 <code>defer</code>，會導致 JS 在 HTML 載完前執行而出錯</div>
+
+  <button class="depth-link" onclick="navigateTo('svg-deep')">📖 深入閱讀：SVG 繪圖詳解 → 了解 &lt;svg&gt; 的完整運作</button>
+</section>
+
+<!-- ═══════════ CSS PAGE (DEEPENED) ═══════════ -->
+<section class="page" id="page-css">
+  <div class="eyebrow">Chapter 2 · 基礎</div>
+  <h1>CSS 樣式層 <span class="badge badge-css">CSS</span></h1>
+  <p class="lede">999 行 · 控制元素「長什麼樣子」—— 如同室內設計的裝潢、配色與家具擺設</p>
+
+  <h2>2.1 CSS 解決什麼問題？</h2>
+  <p>在 CSS 出現之前，網頁的樣式是直接寫在 HTML 標籤裡的（例如 <code>&lt;font color="red"&gt;</code>）。當網站有 100 個頁面、每個頁面有 50 個紅色標題時，想改成藍色就得改 5,000 個地方 😱</p>
+  <p><strong>CSS 的核心價值：</strong>把「樣式規則」集中管理在一個檔案裡，改一個地方，全站一起變。</p>
+
+  <h2>2.2 CSS 變數（設計 Token）— 本專案最聰明的設計</h2>
+  <p>傳統寫法：每個地方直接寫顏色代碼 <code>color: #007AFF;</code>。如果之後要換顏色，得搜尋整個檔案一個一個改。</p>
+  <p>本專案的寫法：先把所有顏色定義成變數，之後全部用 <code>var(--變數名)</code> 引用。</p>
+  <div class="demo-box">
+    <h4>🎨 點擊色塊，查看每個變數的用途</h4>
+    <div class="demo-row" style="align-items:flex-start; gap:16px;">
+      <div class="swatch-row" id="swatchRow">
+        <div class="swatch selected" style="background:var(--navy)" data-var="--navy">藍</div>
+        <div class="swatch" style="background:var(--green)" data-var="--green">綠</div>
+        <div class="swatch" style="background:var(--red)" data-var="--red">紅</div>
+        <div class="swatch" style="background:var(--gold)" data-var="--gold">金</div>
+        <div class="swatch" style="background:var(--text)" data-var="--text">黑</div>
+        <div class="swatch" style="background:var(--muted)" data-var="--muted">灰</div>
+      </div>
+      <div class="card card-sm" style="flex:1; min-width:160px;" id="swatchInfo"><strong>已選取：</strong><code>--navy</code><br><span style="color:var(--muted);">用途：藍色強調色<br>用於：模式按鈕、連結、焦點邊框</span></div>
+    </div>
+    <pre style="margin-top:10px;">:root {
+  <mark>--navy: #007AFF;</mark>          <span class="cm">/* 藍色強調 ← 目前選取 */</span>
+  --green: #426f4f;         <span class="cm">/* 綠色（關係線：可推導出） */</span>
+  --red: #c4573f;           <span class="cm">/* 紅色（關係線：先備關係） */</span>
+  --gold: #9f7a2f;          <span class="cm">/* 金色（關係線：相關概念） */</span>
+  --muted: #66758a;         <span class="cm">/* 次要文字灰 */</span>
+  --shadow: 0 24px 60px rgba(25,37,54,0.08);  <span class="cm">/* 通用陰影 */</span>
+}
+<span class="cm">/* 使用方式 */</span>
+.rail-button { color: <mark>var(--navy)</mark>; }</pre>
+  </div>
+
+  <h2>2.3 Box Model（盒子模型）— CSS 最基礎的空間概念</h2>
+  <p>在 CSS 眼中，<strong>每一個 HTML 元素都是一個矩形盒子</strong>，由四層組成：</p>
+  <div class="demo-box">
+    <div class="box-model-demo">
+      <div style="flex:1; min-width:200px;">
+        <div style="position:relative; width:220px; height:220px; margin:0 auto;">
+          <div class="box-layer box-margin" id="bmMargin" style="top:0;left:0;right:0;bottom:0;">margin</div>
+          <div class="box-layer box-border" id="bmBorder" style="top:20px;left:20px;right:20px;bottom:20px;">border</div>
+          <div class="box-layer box-padding" id="bmPadding" style="top:36px;left:36px;right:36px;bottom:36px;">padding</div>
+          <div class="box-layer box-content" id="bmContent" style="top:54px;left:54px;right:54px;bottom:54px;">content</div>
+        </div>
+      </div>
+      <div style="flex:1; min-width:180px;">
+        <div class="demo-row"><span style="font-size:0.78rem;min-width:70px;">margin</span><input type="range" id="bmMarginR" min="0" max="40" value="20" oninput="updateBoxModel()"><span id="bmMarginV" style="font-size:0.75rem;">20px</span></div>
+        <div class="demo-row"><span style="font-size:0.78rem;min-width:70px;">border</span><input type="range" id="bmBorderR" min="0" max="20" value="6" oninput="updateBoxModel()"><span id="bmBorderV" style="font-size:0.75rem;">6px</span></div>
+        <div class="demo-row"><span style="font-size:0.78rem;min-width:70px;">padding</span><input type="range" id="bmPaddingR" min="0" max="40" value="18" oninput="updateBoxModel()"><span id="bmPaddingV" style="font-size:0.75rem;">18px</span></div>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:6px;">拖曳滑桿調整各層厚度</p>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;margin-top:10px;"><strong>口訣：</strong>由外而內 → Margin（外邊距）→ Border（邊框）→ Padding（內邊距）→ Content（內容本身）</p>
+  </div>
+
+  <h2>2.4 即時預覽：常用 CSS 屬性</h2>
+  <div class="demo-box">
+    <div class="demo-row"><span style="font-size:0.78rem;min-width:60px;">圓角</span><input type="range" id="radiusSlider" min="0" max="30" value="14" oninput="updateRadiusDemo()"><span id="radiusValue" style="font-size:0.78rem;">14px</span></div>
+    <div class="demo-row"><span style="font-size:0.78rem;min-width:60px;">透明度</span><input type="range" id="opacitySlider" min="20" max="100" value="100" oninput="updateOpacityDemo()"><span id="opacityValue" style="font-size:0.78rem;">1.0</span></div>
+    <div style="display:flex; gap:12px; margin-top:10px; flex-wrap:wrap;">
+      <div id="radiusDemo" style="width:65px;height:65px;background:var(--navy);border-radius:14px;transition:all 0.2s;"></div>
+      <div id="radiusDemo2" style="width:105px;height:38px;background:var(--green);border-radius:14px;display:grid;place-items:center;color:white;font-weight:600;transition:all 0.2s;">按鈕</div>
+      <div id="radiusDemo3" style="width:85px;height:50px;background:var(--surface-strong);border:2px solid var(--border);border-radius:14px;display:grid;place-items:center;font-size:0.76rem;transition:all 0.2s;">卡片</div>
+    </div>
+  </div>
+
+  <h2>2.5 毛玻璃效果（backdrop-filter）</h2>
+  <p>這是 Apple 設計語言的招牌效果。關鍵 CSS：<code>backdrop-filter: blur(18px)</code> — 把元素<strong>後面</strong>的內容模糊掉，但元素本身保持清晰。</p>
+  <div class="demo-box" style="position:relative; overflow:hidden;">
+    <div style="position:absolute; top:6px; left:16px; font-size:2.2rem; opacity:0.15;">🔬📐⚛️📊🔭🧲</div>
+    <div style="position:absolute; bottom:6px; right:20px; font-size:1.8rem; opacity:0.12;">📏📈📉🔍</div>
+    <div style="background:rgba(255,255,255,0.45); backdrop-filter:blur(18px); border:1px solid var(--border); border-radius:14px; padding:16px; position:relative; z-index:1;">
+      <strong>backdrop-filter: blur(18px)</strong>
+      <p style="margin:2px 0 0; font-size:0.8rem;">本專案的 <code>.left-rail</code>（左側導航欄）就是用這個效果。<br>注意跟一般 <code>filter: blur()</code> 的差別：filter 會連元素自己一起模糊，backdrop-filter 只模糊背景。</p>
+    </div>
+  </div>
+
+  <h2>2.6 本專案的主要樣式區塊一覽</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>區塊</th><th>CSS 選擇器</th><th>關鍵屬性</th><th>視覺效果</th></tr>
+    <tr><td>整體佈局</td><td><code>.app-shell</code></td><td><code>display: grid; grid-template-columns: 84px 1fr</code></td><td>左窄右寬兩欄</td></tr>
+    <tr><td>左側導航</td><td><code>.left-rail</code></td><td><code>backdrop-filter: blur(18px); flex-direction: column</code></td><td>毛玻璃垂直排列</td></tr>
+    <tr><td>品牌標記</td><td><code>.brand-mark</code></td><td><code>border-radius: 14px; background: #1D1D1F</code></td><td>黑底白字圓角</td></tr>
+    <tr><td>圖譜框</td><td><code>.graph-frame</code></td><td><code>position: relative; overflow: hidden</code></td><td>SVG 容器</td></tr>
+    <tr><td>詳情面板</td><td><code>.detail-panel</code></td><td><code>overflow-y: auto; padding: 20px</code></td><td>可滾動資訊卡</td></tr>
+    <tr><td>縮放控制</td><td><code>.zoom-card</code></td><td><code>position: absolute; bottom: 16px; right: 16px</code></td><td>固定右下角</td></tr>
+    <tr><td>節點</td><td><code>.graph-node</code></td><td><code>cursor: pointer; transition: r 0.2s</code></td><td>圓形可點擊</td></tr>
+  </table></div>
+
+  <h2>2.7 CSS 的優先權（Specificity）— 為什麼有些樣式會覆蓋不掉？</h2>
+  <p>當多個 CSS 規則同時指向同一個元素時，瀏覽器會按照「權重」決定誰贏：</p>
+  <div class="card card-sm">
+    <p><code>#id</code>（權重 100） &gt; <code>.class</code>（權重 10） &gt; <code>tag</code>（權重 1）</p>
+    <p style="font-size:0.82rem;color:var(--muted);">例如：<code>#graphSvg .graph-node</code> 的權重是 100+10=110，會覆蓋掉單純的 <code>.graph-node</code>（權重 10）</p>
+  </div>
+
+  <button class="depth-link" onclick="navigateTo('css-layout')">📖 深入閱讀：CSS 排版深入 → Grid vs Flexbox 完整對比 + 互動編輯器</button>
+</section>
+
+<!-- ═══════════ JS PAGE (DEEPENED) ═══════════ -->
+<section class="page" id="page-js">
+  <div class="eyebrow">Chapter 3 · 基礎</div>
+  <h1>JavaScript 行為層 <span class="badge badge-js">JavaScript</span></h1>
+  <p class="lede">1,720 行 · 讓頁面「活起來」—— 如同水電管線與開關系統。這是三個語言中唯一能「做決定」和「記住狀態」的。</p>
+
+  <h2>3.1 為什麼需要 JavaScript？HTML+CSS 的極限在哪？</h2>
+  <p>HTML 定義結構，CSS 定義外觀——但兩者都是<strong>靜態的</strong>。一旦頁面載入完成，它們就「定型」了。</p>
+  <div class="callout"><strong>🧠 JavaScript 能做而 HTML+CSS 做不到的事：</strong>
+  <br>1. 回應使用者操作（點擊、拖曳、鍵盤輸入、滾輪）
+  <br>2. 記住狀態（目前是哪個模式？縮放到多少？選了哪個節點？）
+  <br>3. 動態改變畫面（新增/刪除/修改 HTML 元素、改變 CSS 樣式）
+  <br>4. 載入外部資料（從 JSON 檔讀取圖譜資料）
+  <br>5. 執行數學計算（力導向佈局演算法、座標轉換）</div>
+
+  <h2>3.2 核心模式：State → Render（狀態 → 渲染）</h2>
+  <p>這是現代前端開發中<strong>最重要的設計模式</strong>。它的邏輯非常簡單：</p>
+  <div class="card">
+    <p style="text-align:center; font-weight:600;">📦 把所有「會變的東西」集中在 state 物件裡 → 🔄 任何改變都透過 render() 重繪整個畫面</p>
+  </div>
+  <p>這樣做的好處：<strong>你永遠不用擔心「這個東西改了但那個東西忘了更新」</strong>——每次 render() 都會從 state 重新計算整個畫面。</p>
+
+  <div class="demo-box">
+    <h4>👇 親自體驗：點擊按鈕改變 state，觀察輸出變化</h4>
+    <div class="demo-row">
+      <span class="demo-btn demo-btn-blue" onclick="demoSetMode('overview')">總覽模式</span>
+      <span class="demo-btn demo-btn-outline" onclick="demoSetMode('focus')">焦點模式</span>
+      <span class="demo-btn demo-btn-outline" onclick="demoZoomIn()">🔍 +0.2</span>
+      <span class="demo-btn demo-btn-outline" onclick="demoZoomOut()">🔎 -0.2</span>
+      <span class="demo-btn demo-btn-outline" onclick="demoSelectNode('newton_2')">選取節點</span>
+    </div>
+    <div class="demo-output" id="stateOutput" style="white-space:pre;">{
+  "mode": "overview",
+  "zoom": 1.0,
+  "selectedNode": null
+}</div>
+    <p style="font-size:0.73rem;color:var(--muted);margin-top:4px;">每次點擊 → state 物件即時更新 → 在真正的 app.js 中會接著呼叫 render() 重繪整個 SVG 圖譜</p>
+  </div>
+
+  <h2>3.3 app.js 八大區塊逐步詳解</h2>
+
+  <h4>① 常數定義（第 1-81 行）— 專案的「字典」</h4>
+  <p>這些是不會改變的靜態資料，統一放在檔案最前面：</p>
+  <pre><span class="kw">const</span> TAXONOMY_LABELS = {          <span class="cm">// 領域名稱的中英對照</span>
+  mechanics: <span class="str">"力學"</span>,
+  electromagnetism: <span class="str">"電磁學"</span>,
+  waves_optics: <span class="str">"波動與光學"</span>,
+  <span class="cm">// ... 共 8 個領域</span>
+};
+
+<span class="kw">const</span> TYPE_LABELS = {               <span class="cm">// 節點類型的中文名稱</span>
+  law: <span class="str">"定律"</span>,        <span class="cm">// 例如：牛頓第二定律</span>
+  concept: <span class="str">"概念"</span>,    <span class="cm">// 例如：動量</span>
+  quantity: <span class="str">"物理量"</span>,  <span class="cm">// 例如：力、加速度</span>
+  experiment: <span class="str">"實驗"</span>,  <span class="cm">// 例如：雙狹縫實驗</span>
+  <span class="cm">// ... 共 8 種類型</span>
+};
+
+<span class="kw">const</span> RELATION_LABELS = {           <span class="cm">// 關係類型的中文名稱</span>
+  requires: <span class="str">"先備關係"</span>,     <span class="cm">// A 是學 B 之前需要先懂的</span>
+  derives_to: <span class="str">"可推導出"</span>,   <span class="cm">// 從 A 可以推導出 B</span>
+  formalized_by: <span class="str">"數學支撐"</span>, <span class="cm">// A 的數學基礎是 B</span>
+  related_to: <span class="str">"相關概念"</span>,   <span class="cm">// A 和 B 有概念上的關聯</span>
+  <span class="cm">// ... 共 9 種關係</span>
+};</pre>
+
+  <h4>② 狀態管理 — 用一個大物件記住所有會變的東西</h4>
+  <pre><span class="kw">let</span> state = {
+  mode: <span class="str">"overview"</span>,        <span class="cm">// 'overview' | 'focus'</span>
+  zoom: <span class="num">1.0</span>,               <span class="cm">// 縮放比例，範圍 0.55 ~ 2.6</span>
+  panX: <span class="num">0</span>, panY: <span class="num">0</span>,       <span class="cm">// 平移的偏移量（px）</span>
+  selectedNodeId: <span class="kw">null</span>,    <span class="cm">// 目前選中的節點 ID</span>
+  graph: { nodes: [], edges: [] }, <span class="cm">// 完整圖譜資料</span>
+  overviewNodes: [],    <span class="cm">// 總覽模式要顯示的節點</span>
+  focusNodes: [],       <span class="cm">// 焦點模式要顯示的節點</span>
+  searchQuery: <span class="str">""</span>,        <span class="cm">// 搜尋框目前的文字</span>
+  dragging: { active: <span class="kw">false</span>, pointerId: <span class="kw">null</span>, ... }
+};</pre>
+  <div class="callout callout-tip"><strong>💡 初學者心法：</strong>養成習慣，在寫任何新功能之前先問自己——「這個資訊需要被『記住』嗎？如果是，它該放在 state 的哪個欄位？」</div>
+
+  <h4>③ 資料載入 — fetch() 與 async/await</h4>
+  <p>這是最關鍵的非同步操作。JavaScript 不會「卡住等資料回來」，而是用 <code>await</code> 告訴它「等這個做完再繼續」：</p>
+  <pre><span class="kw">async function</span> <span class="fn">loadData</span>() {
+  <span class="cm">// fetch() 回傳一個 Promise（承諾之後會給你結果）</span>
+  <span class="kw">const</span> graphResp = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"../physics_graph.json"</span>);
+  <span class="kw">const</span> graphData = <span class="kw">await</span> graphResp.<span class="fn">json</span>();
+
+  <span class="kw">const</span> detailResp = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"../physics_note_details.json"</span>);
+  <span class="kw">const</span> detailData = <span class="kw">await</span> detailResp.<span class="fn">json</span>();
+
+  <span class="cm">// 建立快速查表：節點 ID → 節點資料（含 x, y 座標）</span>
+  <span class="kw">for</span> (<span class="kw">const</span> node <span class="kw">of</span> graphData.nodes) {
+    state.nodeMap.<span class="fn">set</span>(node.id, node);
+  }
+  <span class="fn">render</span>();  <span class="cm">// 資料準備好了，開始畫！</span>
+}</pre>
+  <div class="callout"><strong>⏳ async/await 白話解釋：</strong>想像你去咖啡店點餐。「async function」就是你走進店裡，「await fetch()」就是你跟店員點餐然後在旁邊等，「await response.json()」就是店員把咖啡做好遞給你。你沒有卡在櫃台不動，只是「等咖啡的期間可以先滑手機」（JS 可以處理其他事）。</div>
+
+  <h4>④ 圖譜渲染（~400-700 行）</h4>
+  <div class="pill-list">
+    <span class="pill pill-blue">render() 總指揮</span><span class="pill pill-green">renderNodes() 畫圓</span><span class="pill pill-blue">renderEdges() 畫線</span><span class="pill pill-green">renderRings() 領域圈</span><span class="pill pill-blue">renderMiniMap() 小地圖</span><span class="pill pill-green">relaxLayout() 排版</span>
+  </div>
+  <p>render() 每次被呼叫時，會按照順序執行以上所有子函數。你可以把它理解成「動畫的每一幀」——只要 state 有變化，就重新畫一幀。</p>
+
+  <h4>⑤ 互動處理（~800-860 行）</h4>
+  <pre><span class="cm">// 拖曳平移的核心邏輯</span>
+<span class="kw">function</span> <span class="fn">onPointerDown</span>(event) {
+  state.dragging.active = <span class="kw">true</span>;           <span class="cm">// 開始拖曳</span>
+  state.dragging.startX = pointer.x;      <span class="cm">// 記錄起始位置</span>
+  state.dragging.basePanX = state.panX;   <span class="cm">// 記錄起始平移量</span>
+}
+<span class="kw">function</span> <span class="fn">onPointerMove</span>(event) {
+  <span class="kw">if</span> (!state.dragging.active) <span class="kw">return</span>;   <span class="cm">// 沒在拖曳就跳過</span>
+  <span class="kw">const</span> deltaX = pointer.x - state.dragging.startX;
+  state.panX = state.dragging.basePanX + deltaX;  <span class="cm">// 平移 = 基準 + 偏移</span>
+  <span class="fn">updateViewportTransform</span>();             <span class="cm">// 立即更新畫面</span>
+}</pre>
+
+  <h4>⑥ 搜尋功能 — 即時過濾</h4>
+  <p>每當使用者在搜尋框輸入一個字，JS 就掃過所有節點名稱，找出包含該關鍵字的結果。這用到 <code>addEventListener("input", ...)</code>（不是 "click"！）。</p>
+
+  <h4>⑦ Markdown 渲染（~1600-1700 行）</h4>
+  <p>把筆記的 Markdown 文字轉成 HTML。詳細原理見進階篇章「Markdown 轉換」。</p>
+
+  <h4>⑧ 模式切換：總覽 ↔ 焦點</h4>
+  <p>總覽模式顯示全部節點，焦點模式只顯示跟選中節點相關的子圖。切換時會呼叫 <code>buildFocusScene()</code> 重新建構要顯示的節點列表。</p>
+
+  <h2>3.4 互動示範：addEventListener</h2>
+  <div class="demo-box">
+    <p style="margin-bottom:4px;">這是 JS 最基礎的互動模式——「當某件事發生時，執行這段程式碼」：</p>
+    <div class="demo-row">
+      <span class="demo-btn demo-btn-blue" id="clickDemoBtn">👆 點擊我！</span>
+      <span class="demo-btn demo-btn-red" id="resetDemoBtn">🔄 歸零</span>
+      <span style="font-size:0.82rem;">計數：<strong id="clickCount">0</strong></span>
+    </div>
+    <pre style="margin-top:8px;"><span class="kw">const</span> btn = <span class="fn">document.getElementById</span>(<span class="str">'clickDemoBtn'</span>);
+<span class="kw">let</span> count = <span class="num">0</span>;
+
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
+  count++;                             <span class="cm">// 數字 +1</span>
+  <span class="fn">document.getElementById</span>(<span class="str">'clickCount'</span>).textContent = count;
+});                                    <span class="cm">// 更新畫面</span></pre>
+  </div>
+
+  <h2>3.5 JS 語法速查表</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>語法</th><th>用途</th><th>本專案範例</th></tr>
+    <tr><td><code>const</code></td><td>宣告常數（不可重新賦值）</td><td><code>const GRAPH_URL = "..."</code></td></tr>
+    <tr><td><code>let</code></td><td>宣告變數（可重新賦值）</td><td><code>let state = {...}</code></td></tr>
+    <tr><td><code>function xxx(){}</code></td><td>定義可重複使用的函數</td><td><code>function render(){...}</code></td></tr>
+    <tr><td><code>()=&gt;{}</code></td><td>箭頭函數（function 簡寫）</td><td><code>(node) => node.type==="law"</code></td></tr>
+    <tr><td><code>getElementById()</code></td><td>用 id 找到 HTML 元素</td><td><code>getElementById("searchInput")</code></td></tr>
+    <tr><td><code>querySelector()</code></td><td>用 CSS 選擇器找元素</td><td><code>querySelector(".rail-button")</code></td></tr>
+    <tr><td><code>addEventListener()</code></td><td>綁定事件監聽</td><td><code>el.addEventListener("click",fn)</code></td></tr>
+    <tr><td><code>fetch()</code></td><td>載入遠端/本地資料</td><td><code>fetch("../data.json")</code></td></tr>
+    <tr><td><code>async/await</code></td><td>等待非同步操作完成</td><td><code>await fetch(...)</code></td></tr>
+    <tr><td><code>...</code></td><td>展開運算子</td><td><code>{...state, zoom: 1.5}</code></td></tr>
+    <tr><td><code>.map()/.filter()</code></td><td>陣列轉換/過濾</td><td><code>nodes.filter(n=>n.type==="law")</code></td></tr>
+    <tr><td><code>new Map()</code></td><td>鍵值對查表（比物件快）</td><td><code>nodeMap.set(id, node)</code></td></tr>
+  </table></div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <button class="depth-link" onclick="navigateTo('data-flow')">📖 深入：資料流與 JSON</button>
+    <button class="depth-link" onclick="navigateTo('markdown-render')">📖 深入：Markdown 轉換原理</button>
+  </div>
+</section>
+
+<!-- ═══════════ FLOW PAGE (DEEPENED) ═══════════ -->
+<section class="page" id="page-flow">
+  <div class="eyebrow">Chapter 4 · 基礎</div>
+  <h1>三者如何協作？</h1>
+  <p class="lede">追蹤兩個完整場景，看看 HTML、CSS、JS 如何分工合作</p>
+
+  <h2>場景一：使用者點擊圖譜節點</h2>
+  <div class="card">
+    <p><span class="step-num step-1">1</span><strong>HTML 提供元素：</strong><code>&lt;circle class="graph-node" data-node-id="newton_2"&gt;</code> 已經在 SVG 中</p>
+    <p><span class="step-num step-2">2</span><strong>CSS 提供樣式：</strong><code>.graph-node { cursor: pointer; }</code> 讓滑鼠移到節點上變成手指</p>
+    <p><span class="step-num step-3">3</span><strong>JS 處理點擊：</strong><code>addEventListener("click")</code> → 更新 <code>state.selectedNodeId</code> → 呼叫 <code>render()</code></p>
+    <p><span class="step-num step-4">4</span><strong>JS 更新畫面：</strong>render() → 被選中節點加上 <code>.is-selected</code> class → CSS <code>.graph-node.is-selected { stroke: var(--navy); stroke-width: 3px; }</code> 生效 → 節點出現藍色外框</p>
+  </div>
+
+  <h2>場景二：使用者滾輪縮放圖譜</h2>
+  <div class="card">
+    <p><span class="step-num step-1">1</span><strong>JS 監聽滾輪：</strong><code>addEventListener("wheel", onWheel)</code></p>
+    <p><span class="step-num step-2">2</span><strong>JS 計算新縮放值：</strong>根據滾輪方向和速度計算新的 <code>state.zoom</code></p>
+    <p><span class="step-num step-3">3</span><strong>JS 更新 SVG transform：</strong><code>viewport.setAttribute("transform", "translate(...) scale(1.5)")</code></p>
+    <p><span class="step-num step-4">4</span><strong>CSS 無動作：</strong>這個場景中 CSS 不需要做任何事——SVG 的 transform 是直接寫在元素屬性上的</p>
+  </div>
+
+  <h2>場景三：使用者在搜尋框打字</h2>
+  <div class="card">
+    <p><span class="step-num step-1">1</span><strong>HTML 提供搜尋框：</strong><code>&lt;input id="searchInput" type="search"&gt;</code></p>
+    <p><span class="step-num step-2">2</span><strong>CSS 提供樣式：</strong><code>.searchbox input { border-radius: 12px; ... }</code></p>
+    <p><span class="step-num step-3">3</span><strong>JS 監聽輸入：</strong><code>addEventListener("input", ...)</code> → 過濾節點 → <code>renderSearchResults()</code></p>
+    <p><span class="step-num step-4">4</span><strong>JS 動態產生 HTML：</strong>用 <code>document.createElement()</code> 建立搜尋結果下拉列表，插入到 DOM 中</p>
+  </div>
+
+  <div class="callout callout-tip"><strong>💡 核心心法：</strong>HTML 定義「初始狀態有什麼」→ CSS 定義「任何狀態下長怎樣」→ JS 定義「狀態如何改變」以及「改變後如何更新 HTML/CSS」。三者各司其職，透過 DOM 串聯。</div>
+
+  <h2>簡化流程圖</h2>
+  <pre>index.html  ──定義元素──▶  DOM 樹（瀏覽器內部的頁面結構）
+styles.css  ──套用樣式──▶  顏色、位置、大小、動畫
+app.js      ──載入 JSON ──▶  圖譜資料（fetch → nodeMap → state.graph）
+            ──操作 DOM ──▶  用 createElement / setAttribute 動態改變畫面
+            ──監聽事件──▶  回應 click, wheel, input, pointermove</pre>
+</section>
+
+<!-- ═══════════ PLAYGROUND (EXPANDED) ═══════════ -->
+<section class="page" id="page-playground">
+  <div class="eyebrow">Interactive Lab</div>
+  <h1>🧪 動手玩玩看</h1>
+  <p class="lede">6 個互動實驗，涵蓋 CSS、DOM 操作、事件、狀態管理</p>
+
+  <h3>實驗一：CSS 屬性即時調整</h3>
+  <div class="demo-box">
+    <div class="demo-row"><span style="font-size:0.78rem;min-width:45px;">尺寸</span><input type="range" id="pgSizeSlider" min="40" max="200" value="100" oninput="playgroundUpdate()"><span id="pgSizeVal" style="font-size:0.78rem;">100px</span></div>
+    <div class="demo-row"><span style="font-size:0.78rem;min-width:45px;">圓角</span><input type="range" id="pgRadiusSlider" min="0" max="60" value="10" oninput="playgroundUpdate()"><span id="pgRadiusVal" style="font-size:0.78rem;">10px</span></div>
+    <div class="demo-row"><span style="font-size:0.78rem;min-width:45px;">旋轉</span><input type="range" id="pgRotateSlider" min="0" max="360" value="0" oninput="playgroundUpdate()"><span id="pgRotateVal" style="font-size:0.78rem;">0°</span></div>
+    <div style="display:flex; justify-content:center; margin-top:14px;"><div id="playgroundBox" style="width:100px;height:100px;background:linear-gradient(135deg,var(--navy),var(--green));border-radius:10px;transition:all 0.15s;"></div></div>
+    <pre style="margin-top:12px;" id="playgroundCode">element.style.width = "100px";</pre>
+  </div>
+
+  <h3>實驗二：動態新增 HTML 元素</h3>
+  <div class="demo-box">
+    <p style="margin-bottom:8px;">體驗 <code>createElement</code> + <code>appendChild</code>——這就是 app.js 畫出 SVG 節點的原理：</p>
+    <div class="demo-row"><span class="demo-btn demo-btn-blue" onclick="playgroundAddBox()">➕ 新增方塊</span><span class="demo-btn demo-btn-green" onclick="playgroundAddCircle()">🟢 新增圓形</span><span class="demo-btn demo-btn-outline" onclick="playgroundClearBoxes()">🗑 清除</span></div>
+    <div id="playgroundContainer" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;min-height:44px;align-items:center;"></div>
+    <pre style="margin-top:8px;"><span class="cm">// createElement → 設定屬性 → appendChild</span>
+<span class="kw">const</span> el = <span class="fn">document.createElement</span>(<span class="str">'div'</span>);
+el.style.cssText = <span class="str">'width:50px;height:50px;...'</span>;
+container.<span class="fn">appendChild</span>(el);</pre>
+  </div>
+
+  <h3>實驗三：classList.toggle 開關</h3>
+  <div class="demo-box">
+    <div class="demo-row"><div class="toggle-track on" id="playgroundToggle" onclick="playgroundToggle()"><div class="toggle-thumb"></div></div><span id="playgroundToggleLabel" style="font-size:0.82rem;">模式：已啟用</span></div>
+    <div style="margin-top:8px;padding:10px;border-radius:10px;background:var(--navy-soft);border:2px solid var(--navy);" id="playgroundToggleTarget"><strong>區塊樣式跟著開關變化</strong></div>
+  </div>
+
+  <h3>實驗四：鍵盤事件監聽</h3>
+  <div class="demo-box">
+    <p style="margin-bottom:6px;">按下任意鍵，觀察 <code>keydown</code> 事件捕捉到的資訊：</p>
+    <p style="font-size:0.78rem;color:var(--muted);">點擊下方區域後按鍵（讓它獲得焦點）</p>
+    <div id="keyDemoArea" tabindex="0" style="border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;background:white;cursor:text;outline:none;" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--border)'">點我，然後按任意鍵 ⌨</div>
+    <div class="demo-output" id="keyDemoOutput" style="margin-top:8px;">等待按鍵…</div>
+  </div>
+
+  <h3>實驗五：計時器 setTimeout</h3>
+  <div class="demo-box">
+    <p style="margin-bottom:6px;"><code>setTimeout(fn, delay)</code> — 延遲指定毫秒後執行函數：</p>
+    <div class="demo-row">
+      <span class="demo-btn demo-btn-blue" onclick="playgroundTimeout()">⏱ 3 秒後變色</span>
+      <span class="demo-btn demo-btn-outline" onclick="playgroundResetTimeout()">🔄 恢復</span>
+    </div>
+    <div id="timeoutDemoBox" style="width:80px;height:80px;background:var(--green);border-radius:12px;margin-top:10px;transition:background 0.5s;"></div>
+  </div>
+
+  <h3>實驗六：fetch 模擬（展示非同步概念）</h3>
+  <div class="demo-box">
+    <p style="margin-bottom:6px;">模擬 <code>fetch()</code> 的非同步行為——注意「開始載入」和「載入完成」之間的時間差：</p>
+    <div class="demo-row">
+      <span class="demo-btn demo-btn-blue" onclick="playgroundFetchDemo()">📥 模擬 fetch</span>
+    </div>
+    <div class="demo-output" id="fetchDemoOutput" style="margin-top:8px;">尚未載入</div>
+  </div>
+</section>
+
+<!-- ═══════════ GLOSSARY ═══════════ -->
+<section class="page" id="page-glossary">
+  <div class="eyebrow">Reference</div>
+  <h1>📋 技術名詞表</h1>
+  <p class="lede">21 個關鍵術語，支援即時搜尋</p>
+  <input type="text" class="search-box" id="glossarySearch" placeholder="搜尋名詞…例如：DOM、SVG、async" oninput="filterGlossary()">
+  <div class="tbl-wrap" style="margin-top:12px;"><table id="glossaryTable">
+    <thead><tr><th>名詞</th><th>全稱</th><th>解釋</th></tr></thead>
+    <tbody>
+      <tr><td>HTML</td><td>HyperText Markup Language</td><td>定義網頁結構的標記語言，用標籤描述元素</td></tr>
+      <tr><td>CSS</td><td>Cascading Style Sheets</td><td>控制網頁外觀的樣式語言</td></tr>
+      <tr><td>JS</td><td>JavaScript</td><td>讓網頁有互動行為的程式語言</td></tr>
+      <tr><td>DOM</td><td>Document Object Model</td><td>瀏覽器內部的頁面樹狀結構，JS 透過它操作 HTML</td></tr>
+      <tr><td>SVG</td><td>Scalable Vector Graphics</td><td>可縮放向量圖形，用 XML 標籤描述</td></tr>
+      <tr><td>SPA</td><td>Single Page Application</td><td>單頁應用，不換頁就動態更新內容</td></tr>
+      <tr><td>CDN</td><td>Content Delivery Network</td><td>內容傳遞網路，加速載入外部資源</td></tr>
+      <tr><td>JSON</td><td>JavaScript Object Notation</td><td>輕量資料交換格式，長得像 JS 物件</td></tr>
+      <tr><td>fetch</td><td>—</td><td>JS 內建函數，用來載入遠端或本地資料（非同步）</td></tr>
+      <tr><td>async/await</td><td>—</td><td>處理非同步操作的語法，讓程式碼「等」資料回來</td></tr>
+      <tr><td>Promise</td><td>—</td><td>代表「未來會完成的結果」的物件</td></tr>
+      <tr><td>event</td><td>—</td><td>事件（click, wheel, input, keydown…）</td></tr>
+      <tr><td>state</td><td>—</td><td>狀態物件，集中管理所有會變動的資料</td></tr>
+      <tr><td>render</td><td>—</td><td>渲染，根據 state 重新繪製/更新畫面</td></tr>
+      <tr><td>Grid</td><td>CSS Grid Layout</td><td>二維網格排版系統，同時控制行和列</td></tr>
+      <tr><td>Flexbox</td><td>CSS Flexible Box</td><td>一維彈性排版，控制單一方向排列</td></tr>
+      <tr><td>var()</td><td>CSS Custom Properties</td><td>CSS 變數函數，引用 :root 中的變數</td></tr>
+      <tr><td>Box Model</td><td>—</td><td>CSS 盒子模型：margin → border → padding → content</td></tr>
+      <tr><td>MathJax</td><td>—</td><td>數學公式渲染引擎，支援 LaTeX 語法</td></tr>
+      <tr><td>module</td><td>ES Module</td><td>JS 模組系統，type="module" 啟用 import/export</td></tr>
+      <tr><td>Specificity</td><td>—</td><td>CSS 優先權規則：id(100) > class(10) > tag(1)</td></tr>
+    </tbody>
+  </table></div>
+  <p id="glossaryEmpty" style="text-align:center;color:var(--muted);display:none;">沒有符合的結果</p>
+</section>
+
+<!-- ═══════════ SVG DEEP (EXPANDED) ═══════════ -->
+<section class="page" id="page-svg-deep">
+  <div class="eyebrow">Deep Dive</div>
+  <h1>🖼 SVG 繪圖詳解 <span class="badge badge-new">進階</span></h1>
+  <p class="lede">整個知識圖譜的視覺化都是 SVG。了解 SVG 就等於了解這個專案一半的畫面。</p>
+
+  <h2>SVG 的座標系統</h2>
+  <p>SVG 有自己的座標系，由 <code>viewBox</code> 定義。viewBox="0 0 1440 960" 表示：x 從 0 到 1440，y 從 0 到 960。<strong>原點 (0,0) 在左上角</strong>，x 往右增加，y 往下增加。</p>
+  <div class="demo-box">
+    <p>調整 viewBox 寬度，觀察圖形如何變化（viewBox 越小 → 內容看起來越大）：</p>
+    <div class="demo-row"><span style="font-size:0.78rem;">viewBox 寬:</span><input type="range" id="svgViewBoxW" min="200" max="800" value="400" oninput="updateSvgDemo()"><span id="svgViewBoxWVal" style="font-size:0.78rem;">400</span></div>
+    <svg id="svgDemo1" viewBox="0 0 400 220" class="svg-demo-canvas" style="height:220px;">
+      <rect x="10" y="10" width="380" height="200" fill="none" stroke="#ddd" stroke-dasharray="6" rx="8"/>
+      <circle cx="320" cy="50" r="18" fill="var(--navy)" opacity="0.7"/>
+      <circle cx="100" cy="150" r="26" fill="var(--green)" opacity="0.7"/>
+      <circle cx="260" cy="140" r="15" fill="var(--red)" opacity="0.7"/>
+      <line x1="320" y1="65" x2="270" y2="130" stroke="#999" stroke-width="2"/>
+      <line x1="120" y1="138" x2="250" y2="130" stroke="#999" stroke-width="2"/>
+      <text x="200" y="22" text-anchor="middle" font-size="8" fill="#999">viewBox 邊界（虛線框）</text>
+    </svg>
+  </div>
+
+  <h2>SVG 基本形狀完整對照</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>標籤</th><th>關鍵屬性</th><th>本專案用途</th><th>實際程式碼</th></tr>
+    <tr><td><code>&lt;circle&gt;</code></td><td>cx, cy, r</td><td>知識節點</td><td><code>&lt;circle cx="520" cy="340" r="18"&gt;</code></td></tr>
+    <tr><td><code>&lt;line&gt;</code></td><td>x1, y1, x2, y2</td><td>關係連線</td><td><code>&lt;line x1="100" y1="200" x2="300" y2="150"&gt;</code></td></tr>
+    <tr><td><code>&lt;path&gt;</code></td><td>d（路徑指令）</td><td>箭頭、曲線</td><td><code>&lt;path d="M0,0 L8,4 L0,8 Z"&gt;</code></td></tr>
+    <tr><td><code>&lt;rect&gt;</code></td><td>x, y, width, height, rx</td><td>Mini Map 背景</td><td><code>&lt;rect x="0" y="0" width="220" height="140" rx="18"&gt;</code></td></tr>
+    <tr><td><code>&lt;text&gt;</code></td><td>x, y, text-anchor</td><td>節點標籤</td><td><code>&lt;text x="520" y="344" text-anchor="middle"&gt;</code></td></tr>
+    <tr><td><code>&lt;g&gt;</code></td><td>transform, id</td><td>圖層分組</td><td><code>&lt;g id="nodeLayer"&gt;...&lt;/g&gt;</code></td></tr>
+    <tr><td><code>&lt;defs&gt;</code></td><td>—</td><td>定義可重複使用的元件</td><td>箭頭標記的定義區</td></tr>
+    <tr><td><code>&lt;marker&gt;</code></td><td>id, markerWidth, orient</td><td>箭頭端點</td><td><code>&lt;marker id="arrow-red" orient="auto"&gt;</code></td></tr>
+  </table></div>
+
+  <h2>互動演示：拖曳節點位置</h2>
+  <div class="demo-box">
+    <p>拖曳下方滑桿移動節點，觀察連線和程式碼如何即時更新：</p>
+    <div class="demo-row"><span style="font-size:0.76rem;">節點 A x:</span><input type="range" id="svgNodeAX" min="40" max="360" value="120" oninput="updateSvgGraph()"><span id="svgNodeAXVal" style="font-size:0.76rem;">120</span></div>
+    <div class="demo-row"><span style="font-size:0.76rem;">節點 B x:</span><input type="range" id="svgNodeBX" min="40" max="360" value="280" oninput="updateSvgGraph()"><span id="svgNodeBXVal" style="font-size:0.76rem;">280</span></div>
+    <svg id="svgGraphDemo" viewBox="0 0 400 160" class="svg-demo-canvas" style="height:160px;">
+      <defs><marker id="arrDemo" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--red)"/></marker></defs>
+      <line id="svgGraphEdge" x1="120" y1="70" x2="280" y2="70" stroke="var(--navy)" stroke-width="2.5" marker-end="url(#arrDemo)"/>
+      <circle id="svgGraphNodeA" cx="120" cy="70" r="20" fill="var(--navy)" opacity="0.85"/>
+      <text x="120" y="74" text-anchor="middle" font-size="8" fill="white" font-weight="600">A</text>
+      <circle id="svgGraphNodeB" cx="280" cy="70" r="20" fill="var(--green)" opacity="0.85"/>
+      <text x="280" y="74" text-anchor="middle" font-size="8" fill="white" font-weight="600">B</text>
+      <text x="200" y="125" text-anchor="middle" font-size="8" fill="var(--muted)">← 拖曳上方滑桿移動節點 →</text>
+    </svg>
+    <pre style="margin-top:6px;" id="svgGraphCode">&lt;circle cx="120" cy="70" r="20" fill="var(--navy)" /&gt;
+&lt;line x1="120" y1="70" x2="280" y2="70" stroke="..." marker-end="url(#arrDemo)" /&gt;
+&lt;circle cx="280" cy="70" r="20" fill="var(--green)" /&gt;</pre>
+  </div>
+
+  <h2>transform：一次移動整群元素</h2>
+  <p>這是整個圖譜平移縮放的關鍵技術。在 <code>&lt;g&gt;</code>（群組）上設定 transform，裡面的所有元素就會一起移動：</p>
+  <pre><span class="cm">&lt;!-- app.js line ~855 --&gt;</span>
+<span class="kw">function</span> <span class="fn">updateViewportTransform</span>() {
+  viewport.<span class="fn">setAttribute</span>(<span class="str">"transform"</span>,
+    <span class="str">`translate(${state.panX} ${state.panY}) scale(${state.zoom})`</span>
+  );
+}
+<span class="cm">// 效果等同於在 HTML 中寫：</span>
+<span class="cm">// &lt;g transform="translate(150 80) scale(1.5)"&gt;</span></pre>
+
+  <h2>箭頭的四種顏色與意義</h2>
+  <div class="pill-list">
+    <span class="pill pill-red">🔴 arrow-red — requires（先備關係）</span>
+    <span class="pill pill-blue">🔵 arrow-blue — derives_to（可推導出）</span>
+    <span class="pill pill-green">🟢 arrow-green — formalized_by（數學支撐）</span>
+    <span class="pill pill-gold">🟡 arrow-gold — related_to（相關概念）</span>
+  </div>
+
+  <button class="depth-link" onclick="navigateTo('html')">← 回到 HTML 基礎篇章</button>
+</section>
+
+<!-- ═══════════ DATA FLOW (EXPANDED) ═══════════ -->
+<section class="page" id="page-data-flow">
+  <div class="eyebrow">Deep Dive</div>
+  <h1>📊 資料流與 JSON <span class="badge badge-new">進階</span></h1>
+  <p class="lede">完整追蹤資料如何從硬碟上的 JSON 檔案，一路變成螢幕上的 SVG 圖形</p>
+
+  <h2>完整資料流</h2>
+  <div class="flow-steps" style="flex-wrap:wrap; justify-content:center;">
+    <div class="flow-step">📁 JSON 檔案</div><span class="flow-arrow">→</span>
+    <div class="flow-step">fetch()</div><span class="flow-arrow">→</span>
+    <div class="flow-step">response.json()</div><span class="flow-arrow">→</span>
+    <div class="flow-step">nodeMap + edgeIndex</div><span class="flow-arrow">→</span>
+    <div class="flow-step">過濾（filterNodes）</div><span class="flow-arrow">→</span>
+    <div class="flow-step">relaxLayout()</div><span class="flow-arrow">→</span>
+    <div class="flow-step">render() → SVG</div>
+  </div>
+
+  <h2>兩個 JSON 檔的結構</h2>
+  <div class="demo-box">
+    <div class="demo-row" style="margin-bottom:10px;">
+      <span class="demo-btn demo-btn-blue" onclick="showJsonDemo('nodes')">📦 節點結構</span>
+      <span class="demo-btn demo-btn-outline" onclick="showJsonDemo('edges')">🔗 邊的結構</span>
+      <span class="demo-btn demo-btn-outline" onclick="showJsonDemo('details')">📝 詳情結構</span>
+    </div>
+    <pre id="jsonDemoOutput">{
+  "nodes": [
+    { "id": "newton_2", "type": "law", "label": "牛頓第二定律",
+      "taxonomy": "mechanics", "x": 520, "y": 340 },
+    // ... 數百個節點
+  ]
+}</pre>
+  </div>
+
+  <h2>nodeMap：用空間換時間</h2>
+  <p>一條邊記錄的是 <code>{source: "A", target: "B"}</code>——只存了<strong>ID</strong>，沒有座標。但畫線需要座標。如果每次都要從 500 個節點中搜尋「ID 是 A 的節點在哪」，每次 render 都要搜幾百次，會很慢。</p>
+  <p><strong>解法：</strong>在載入資料時，把所有節點放進一個 <code>Map</code>，用 ID 當 key，節點資料當 value。之後 <code>nodeMap.get("A")</code> 瞬間就能拿到 {x, y}。</p>
+  <pre><span class="cm">// 建立 nodeMap：O(1) 查詢，而非 O(n) 搜尋</span>
+<span class="kw">const</span> nodeMap = <span class="kw">new</span> <span class="fn">Map</span>();
+<span class="kw">for</span> (<span class="kw">const</span> node <span class="kw">of</span> data.nodes) {
+  nodeMap.<span class="fn">set</span>(node.id, node);
+}
+<span class="cm">// 之後任何地方需要節點座標：</span>
+<span class="kw">const</span> nodeA = nodeMap.<span class="fn">get</span>(edge.source);  <span class="cm">// 瞬間！</span></pre>
+
+  <h2>edgeIndex：加速關係查詢</h2>
+  <p>類似 nodeMap 的概念，但用於邊。當使用者選中一個節點進入焦點模式時，需要找出所有跟這個節點相關的邊。用 edgeIndex 可以快速查到，而不需要遍歷所有邊。</p>
+
+  <h2>資料流完整生命週期（五階段）</h2>
+  <div class="card">
+    <p><strong>1. 載入（Load）</strong> — <code>fetch()</code> 讀取硬碟上的 JSON 文字 → <code>response.json()</code> 轉成 JS 物件</p>
+    <p><strong>2. 索引（Index）</strong> — 建立 <code>nodeMap</code>（ID→節點）和 <code>edgeIndex</code>（分類邊）</p>
+    <p><strong>3. 過濾（Filter）</strong> — 根據目前模式（總覽 all / 焦點 subset）篩選要顯示的節點和邊</p>
+    <p><strong>4. 佈局（Layout）</strong> — <code>relaxLayout()</code> 用力導向演算法微調節點位置，避免重疊</p>
+    <p><strong>5. 渲染（Render）</strong> — 把 JS 物件轉成 SVG <code>&lt;circle&gt;</code> 和 <code>&lt;line&gt;</code>，寫入 DOM</p>
+  </div>
+
+  <button class="depth-link" onclick="navigateTo('js')">← 回到 JavaScript 基礎篇章</button>
+</section>
+
+<!-- ═══════════ CSS LAYOUT (EXPANDED) ═══════════ -->
+<section class="page" id="page-css-layout">
+  <div class="eyebrow">Deep Dive</div>
+  <h1>📐 CSS 排版深入 <span class="badge badge-new">進階</span></h1>
+  <p class="lede">Grid 與 Flexbox 的完整對比，加上互動式排版編輯器</p>
+
+  <h2>Grid：二維排版</h2>
+  <p>Grid 適合<strong>同時控制行和列</strong>的場景。本專案 <code>.app-shell</code> 的 <code>grid-template-columns: 84px 1fr</code> 就是一個兩欄 Grid。</p>
+  <div class="demo-box">
+    <h4>互動 Grid 編輯器：調整欄數和間距</h4>
+    <div class="grid-demo-controls">
+      <div><span class="demo-label">欄數</span><br><input type="range" id="gridCols" min="1" max="4" value="3" oninput="updateGridDemo()"></div>
+      <div><span class="demo-label">間距</span><br><input type="range" id="gridGap" min="4" max="24" value="10" oninput="updateGridDemo()"></div>
+    </div>
+    <div class="grid-preview" id="gridPreview" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <div class="grid-cell" style="background:var(--navy);">A</div>
+      <div class="grid-cell" style="background:var(--green);">B</div>
+      <div class="grid-cell" style="background:var(--gold);">C</div>
+      <div class="grid-cell" style="background:var(--red);">D</div>
+      <div class="grid-cell" style="background:var(--navy);opacity:0.7;">E</div>
+      <div class="grid-cell" style="background:var(--green);opacity:0.7;">F</div>
+    </div>
+    <p style="font-size:0.73rem;color:var(--muted);margin-top:6px;">CSS: <code id="gridDemoCode">grid-template-columns: 1fr 1fr 1fr; gap: 10px;</code></p>
+  </div>
+
+  <h2>Flexbox：一維排版</h2>
+  <p>Flexbox 適合<strong>只控制一個方向</strong>（水平或垂直）的場景。本專案的按鈕列、標籤列表、導航欄都是 Flexbox。</p>
+  <div class="demo-box">
+    <h4>Flex 容器寬度調整</h4>
+    <div class="demo-row"><span class="demo-label">容器寬度</span><input type="range" id="flexWidthSlider" min="160" max="500" value="400" oninput="updateFlexDemo()"><span id="flexWidthVal" style="font-size:0.78rem;">400px</span></div>
+    <div id="flexDemoContainer" style="display:flex;gap:6px;background:white;border-radius:10px;padding:8px;width:400px;transition:width 0.2s;">
+      <div style="background:var(--navy-soft);border-radius:8px;padding:8px;text-align:center;font-size:0.72rem;flex:1;">A flex:1</div>
+      <div style="background:var(--green-soft);border-radius:8px;padding:8px;text-align:center;font-size:0.72rem;flex:1;">B flex:1</div>
+      <div style="background:var(--gold-soft);border-radius:8px;padding:8px;text-align:center;font-size:0.72rem;flex:1;">C flex:1</div>
+    </div>
+  </div>
+
+  <h2>本專案的排版決策地圖</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>位置</th><th>用什麼</th><th>為什麼</th></tr>
+    <tr><td>整體左右分欄</td><td>Grid</td><td>需要同時控制兩欄的寬度（一行兩列）</td></tr>
+    <tr><td>左側導航按鈕</td><td>Flexbox column</td><td>只需要垂直排列，不需要管水平</td></tr>
+    <tr><td>頂部列</td><td>Flexbox row</td><td>只需要水平排列（標題 + 搜尋框）</td></tr>
+    <tr><td>篩選按鈕列</td><td>Flexbox row wrap</td><td>水平排列，太多時自動換行</td></tr>
+    <tr><td>詳情面板 meta-grid</td><td>Grid</td><td>標籤-值成對排列，需要對齊行列</td></tr>
+  </table></div>
+
+  <h2>決策口訣</h2>
+  <div class="callout callout-tip"><strong>🟦 用 Grid：</strong>當你發現自己在想「這個區塊有 N 欄 M 列」→ Grid<br><strong>🟩 用 Flexbox：</strong>當你發現自己在想「這些東西排成一排就好」→ Flexbox<br><strong>兩者可以混用：</strong>Grid 的某一格裡面可以放 Flexbox，反之亦然。</div>
+
+  <button class="depth-link" onclick="navigateTo('css')">← 回到 CSS 基礎篇章</button>
+</section>
+
+<!-- ═══════════ MARKDOWN (EXPANDED) ═══════════ -->
+<section class="page" id="page-markdown-render">
+  <div class="eyebrow">Deep Dive</div>
+  <h1>📝 Markdown 轉換原理 <span class="badge badge-new">進階</span></h1>
+  <p class="lede">app.js ~1600-1700 行：把純文字的 Markdown 筆記，轉換成瀏覽器能顯示的 HTML</p>
+
+  <h2>為什麼需要轉換？</h2>
+  <div class="card card-sm">
+    <p>每個物理知識節點都有一篇 Markdown 筆記存在 <code>physics_note_details.json</code>。但瀏覽器只認得 HTML——你需要一個<strong>翻譯官</strong>把 Markdown 語法變成 HTML 標籤。</p>
+  </div>
+
+  <h2>轉換規則對照表</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>Markdown 輸入</th><th>HTML 輸出</th><th>偵測方式</th></tr>
+    <tr><td><code>## 牛頓第二定律</code></td><td><code>&lt;h3&gt;牛頓第二定律&lt;/h3&gt;</code></td><td>Regex <code>/^(#{1,6})\s+(.+)$/</code></td></tr>
+    <tr><td><code>- 慣性定律</code></td><td><code>&lt;ul&gt;&lt;li&gt;慣性定律&lt;/li&gt;&lt;/ul&gt;</code></td><td>Regex <code>/^- /</code>（連續行合併）</td></tr>
+    <tr><td><code>1. 第一定律</code></td><td><code>&lt;ol&gt;&lt;li&gt;第一定律&lt;/li&gt;&lt;/ol&gt;</code></td><td>Regex <code>/^\d+\.\s/</code></td></tr>
+    <tr><td>一般段落文字</td><td><code>&lt;p&gt;...&lt;/p&gt;</code></td><td>以上都不符合時</td></tr>
+    <tr><td><code>**粗體**</code></td><td><code>&lt;strong&gt;粗體&lt;/strong&gt;</code></td><td>Inline 取代</td></tr>
+    <tr><td><code>$F=ma$</code></td><td>保護 → 最後交給 MathJax</td><td>Token 保護機制</td></tr>
+  </table></div>
+
+  <h2>即時預覽：左邊打字，右邊看結果</h2>
+  <div class="demo-box">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div><p style="font-size:0.73rem;color:var(--muted);margin-bottom:3px;">📝 Markdown</p>
+        <textarea id="mdInput" oninput="renderMdPreview()" style="width:100%;height:200px;border:1px solid var(--border);border-radius:10px;padding:10px;font-family:monospace;font-size:0.78rem;resize:vertical;background:white;">## 牛頓第二定律
+
+運動的變化與施加的**外力**成正比，
+發生在施力的直線方向上。
+
+- $F = ma$
+- 力是**向量**，有大小和方向
+
+1. 慣性定律（第一定律）
+2. $F=ma$（第二定律）
+3. 作用力與反作用力（第三定律）</textarea>
+      </div>
+      <div><p style="font-size:0.73rem;color:var(--muted);margin-bottom:3px;">🖼 HTML 輸出</p>
+        <div id="mdPreview" style="border:1px solid var(--border);border-radius:10px;padding:12px;background:white;min-height:200px;font-size:0.83rem;overflow-y:auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>核心演算法（逐行解說）</h2>
+  <pre><span class="kw">function</span> <span class="fn">renderMarkdown</span>(text) {
+  <span class="kw">const</span> lines = text.<span class="fn">split</span>(<span class="str">'\n'</span>);        <span class="cm">// ① 把文字切成一行一行</span>
+  <span class="kw">const</span> blocks = [];                    <span class="cm">// ② 準備一個空陣列放結果</span>
+  <span class="kw">let</span> i = <span class="num">0</span>;                           <span class="cm">// ③ 從第 0 行開始處理</span>
+
+  <span class="kw">while</span> (i &lt; lines.length) {           <span class="cm">// ④ 一行一行處理，直到最後一行</span>
+    <span class="kw">const</span> line = lines[i];
+
+    <span class="cm">// 檢查是否為標題（## 開頭）</span>
+    <span class="kw">const</span> h = line.<span class="fn">match</span>(<span class="str">/^(#{1,6})\s+(.+)$/</span>);
+    <span class="kw">if</span> (h) {
+      <span class="kw">const</span> lv = h[<span class="num">1</span>].length + <span class="num">1</span>;       <span class="cm">// ## → h3, ### → h4</span>
+      blocks.<span class="fn">push</span>(<span class="str">`&lt;h${lv}&gt;${h[2]}&lt;/h${lv}&gt;`</span>);
+      i++; <span class="kw">continue</span>;
+    }
+
+    <span class="cm">// 檢查是否為無序列表（- 開頭）</span>
+    <span class="kw">if</span> (<span class="str">/^- /</span>.<span class="fn">test</span>(line)) {
+      <span class="kw">const</span> items = [];
+      <span class="kw">while</span> (i &lt; lines.length && <span class="str">/^- /</span>.<span class="fn">test</span>(lines[i])) {
+        items.<span class="fn">push</span>(<span class="str">`&lt;li&gt;${lines[i].slice(2)}&lt;/li&gt;`</span>);
+        i++;                           <span class="cm">// 連續的 - 行合併成一個 &lt;ul&gt;</span>
+      }
+      blocks.<span class="fn">push</span>(<span class="str">`&lt;ul&gt;${items.join('')}&lt;/ul&gt;`</span>);
+      <span class="kw">continue</span>;
+    }
+
+    <span class="cm">// 以上都不符合 → 當作段落處理</span>
+    <span class="kw">if</span> (line.<span class="fn">trim</span>()) {
+      blocks.<span class="fn">push</span>(<span class="str">`&lt;p&gt;${line}&lt;/p&gt;`</span>);
+    }
+    i++;
+  }
+  <span class="kw">return</span> blocks.<span class="fn">join</span>(<span class="str">''</span>);              <span class="cm">// ⑤ 把所有區塊串成一個字串回傳</span>
+}</pre>
+
+  <h2>MathJax 的 Token 保護機制</h2>
+  <p>數學公式（<code>$...$</code>）包含特殊字元，如果在 Markdown 轉換過程中被當成一般文字處理，會被破壞。解法是「先藏起來，轉換完再放回去」：</p>
+  <div class="card">
+    <p><strong>① 掃描</strong> → 找出所有 <code>$...$</code>，替換成 <code>__TOKEN_0__</code>、<code>__TOKEN_1__</code>…</p>
+    <p><strong>② 轉換</strong> → 對剩餘文字執行 Markdown → HTML 轉換（token 不會被誤判為標題或列表）</p>
+    <p><strong>③ 還原</strong> → 把 <code>__TOKEN_0__</code> 換回原始的 <code>$F=ma$</code></p>
+    <p><strong>④ 渲染</strong> → MathJax 自動掃描頁面，把 <code>$...$</code> 渲染成真正的數學符號</p>
+  </div>
+
+  <button class="depth-link" onclick="navigateTo('js')">← 回到 JavaScript 基礎篇章</button>
+</section>
+
+</main>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+function navigateTo(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('page-' + name);
+  const btn = document.querySelector(`[data-page="${name}"]`);
+  if (page) page.classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('mainShell').scrollTop = 0;
+}
+
+// ── Tag chips ──
+const tagInfoData = {
+  div:'<strong>&lt;div&gt;</strong> — 萬用容器（division）<br><span style="color:var(--muted);">最常見的標籤。本身無視覺效果，純用來分組。本專案中 app-shell、left-rail、content-shell 等都是 div。<br>📌 關鍵：div 是 block 元素，會佔滿整行寬度。</span>',
+  button:'<strong>&lt;button&gt;</strong> — 按鈕<br><span style="color:var(--muted);">可點擊的按鈕。type 屬性決定行為：type="button"（普通按鈕）、type="submit"（表單送出）。本專案用於模式切換和縮放控制。<br>📌 JS 通常用 addEventListener("click", ...) 來監聽按鈕。</span>',
+  input:'<strong>&lt;input&gt;</strong> — 輸入欄位<br><span style="color:var(--muted);">type 屬性決定輸入類型：type="text"（文字）、type="search"（搜尋框，本專案使用）、type="range"（滑桿）。是自閉合標籤，不需要 &lt;/input&gt;。</span>',
+  svg:'<strong>&lt;svg&gt;</strong> — 向量圖形容器<br><span style="color:var(--muted);">整個知識圖譜都在 svg 標籤內！內部可用 &lt;circle&gt;（圓形節點）、&lt;line&gt;（關係線）、&lt;g&gt;（圖層分組）、&lt;defs&gt;（定義箭頭）。viewBox 定義座標系。</span>',
+  aside:'<strong>&lt;aside&gt;</strong> — 側邊欄<br><span style="color:var(--muted);">語義標籤，表示「輔助內容」。本專案用於左側導航欄和右側詳情面板。對瀏覽器和螢幕閱讀器有意義。</span>',
+  header:'<strong>&lt;header&gt;</strong> — 頁首區塊<br><span style="color:var(--muted);">語義標籤，表示頁面或區塊的頭部。本專案中 topbar 用 header 包住 h1 標題和搜尋框。</span>',
+  main:'<strong>&lt;main&gt;</strong> — 主要內容<br><span style="color:var(--muted);">語義標籤，表示頁面的核心內容。一個頁面只能有一個 main。本專案中包住整個圖譜舞台和詳情面板。</span>',
+  section:'<strong>&lt;section&gt;</strong> — 語義區塊<br><span style="color:var(--muted);">表示一個獨立的主題區塊。本專案中 content-shell 和 graph-stage 都用 section。<br>📌 跟 div 的差別：section 有語義（告訴搜尋引擎「這是一個主題區塊」），div 純排版。</span>',
+  head:'<strong>&lt;head&gt;</strong> — 文件頭部<br><span style="color:var(--muted);">放網頁的「設定資訊」：編碼、標題、CSS 連結、字型載入。head 裡的內容不會顯示在頁面上。<br>📌 &lt;script&gt; 放 head 裡要加 defer，否則會阻塞 HTML 解析。</span>',
+  script:'<strong>&lt;script&gt;</strong> — 載入/嵌入 JavaScript<br><span style="color:var(--muted);">可用 src 屬性載入外部 .js 檔，或直接在標籤內寫 JS 程式碼。本專案中 app.js 用 type="module" 載入。<br>📌 放在 body 最底部可以確保 HTML 都載入完才執行。</span>'
+};
+document.getElementById('tagChips').addEventListener('click', function(e){
+  const chip = e.target.closest('.tag-chip'); if(!chip)return;
+  document.querySelectorAll('.tag-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  document.getElementById('tagInfo').innerHTML = tagInfoData[chip.dataset.tag]||'';
+});
+
+// ── ID Finder ──
+function findElementDemo(){
+  const id=document.getElementById('idFinderInput').value.trim();
+  const out=document.getElementById('idFinderOutput');
+  if(!id){out.textContent='請輸入 id 名稱';return;}
+  const el=document.getElementById(id);
+  if(el){out.innerHTML=`✅ 找到！&emsp;標籤：<span style="color:#d2a8ff;">&lt;${el.tagName.toLowerCase()}&gt;</span>&emsp;class：<span style="color:#a5d6ff;">"${el.className||'(無)'}"</span>`;}
+  else{out.innerHTML=`❌ 此頁面中找不到 id="${id}"<br><span style="color:#8b949e;font-size:0.72rem;">（同理，app.js 用 getElementById 可以找到 index.html 中的任何元素）</span>`;}
+}
+
+// ── Swatches ──
+const swDetail={ '--navy':['藍色強調色','模式按鈕、連結、焦點邊框'], '--green':['綠色','可推導出、正向關係'], '--red':['紅色','先備關係、數學支撐'], '--gold':['金色','相關概念、延伸視角'], '--text':['深藍黑文字','所有主要內文'], '--muted':['次要文字灰','輔助說明'] };
+document.getElementById('swatchRow').addEventListener('click',function(e){
+  const s=e.target.closest('.swatch'); if(!s)return;
+  document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));
+  s.classList.add('selected');
+  const d=swDetail[s.dataset.var]||['',''];
+  document.getElementById('swatchInfo').innerHTML=`<strong>已選取：</strong><code>${s.dataset.var}</code><br><span style="color:var(--muted);">用途：${d[0]}<br>用於：${d[1]}</span>`;
+});
+
+// ── Box Model ──
+function updateBoxModel(){
+  const m=document.getElementById('bmMarginR').value,b=document.getElementById('bmBorderR').value,p=document.getElementById('bmPaddingR').value;
+  document.getElementById('bmMarginV').textContent=m+'px'; document.getElementById('bmBorderV').textContent=b+'px'; document.getElementById('bmPaddingV').textContent=p+'px';
+  const M=parseInt(m),B=parseInt(b),P=parseInt(p);
+  document.getElementById('bmMargin').style.cssText=`top:0;left:0;right:0;bottom:0;`;
+  document.getElementById('bmBorder').style.cssText=`top:${M}px;left:${M}px;right:${M}px;bottom:${M}px;`;
+  document.getElementById('bmPadding').style.cssText=`top:${M+B}px;left:${M+B}px;right:${M+B}px;bottom:${M+B}px;`;
+  document.getElementById('bmContent').style.cssText=`top:${M+B+P}px;left:${M+B+P}px;right:${M+B+P}px;bottom:${M+B+P}px;`;
+}
+
+// ── Radius/Opacity ──
+function updateRadiusDemo(){
+  const v=document.getElementById('radiusSlider').value;
+  document.getElementById('radiusValue').textContent=v+'px';
+  ['radiusDemo','radiusDemo2','radiusDemo3'].forEach(id=>document.getElementById(id).style.borderRadius=v+'px');
+}
+function updateOpacityDemo(){
+  const v=document.getElementById('opacitySlider').value;
+  document.getElementById('opacityValue').textContent=(v/100).toFixed(1);
+  document.getElementById('radiusDemo').style.opacity=v/100;
+}
+
+// ── State Demo ──
+let ds={mode:'overview',zoom:1.0,selectedNode:null};
+function usd(){document.getElementById('stateOutput').textContent=JSON.stringify(ds,null,2);}
+function demoSetMode(m){ds.mode=m;usd();}
+function demoZoomIn(){ds.zoom=Math.min(2.6,+(ds.zoom+0.2).toFixed(1));usd();}
+function demoZoomOut(){ds.zoom=Math.max(0.55,+(ds.zoom-0.2).toFixed(1));usd();}
+function demoSelectNode(id){ds.selectedNode=ds.selectedNode===id?null:id;usd();}
+
+// ── Click Counter ──
+let cc=0;
+document.getElementById('clickDemoBtn').addEventListener('click',()=>{cc++;const el=document.getElementById('clickCount');el.textContent=cc;el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');});
+document.getElementById('resetDemoBtn').addEventListener('click',()=>{cc=0;document.getElementById('clickCount').textContent='0';});
+
+// ── Playground ──
+function playgroundUpdate(){
+  const s=document.getElementById('pgSizeSlider').value,r=document.getElementById('pgRadiusSlider').value,rot=document.getElementById('pgRotateSlider').value;
+  document.getElementById('pgSizeVal').textContent=s+'px';document.getElementById('pgRadiusVal').textContent=r+'px';document.getElementById('pgRotateVal').textContent=rot+'\u00b0';
+  const b=document.getElementById('playgroundBox');b.style.width=s+'px';b.style.height=s+'px';b.style.borderRadius=r+'px';b.style.transform=`rotate(${rot}deg)`;
+  document.getElementById('playgroundCode').innerHTML=`element.style.width = <span class="str">"${s}px"</span>;\nelement.style.borderRadius = <span class="str">"${r}px"</span>;\nelement.style.transform = <span class="str">"rotate(${rot}deg)"</span>;`;
+}
+function playgroundAddBox(){const c=document.getElementById('playgroundContainer');const b=document.createElement('div');const h=Math.floor(Math.random()*360);const s=35+Math.floor(Math.random()*45);b.style.cssText=`width:${s}px;height:${s}px;background:hsl(${h},60%,60%);border-radius:8px;cursor:pointer;transition:all 0.2s;`;b.title='\u9ede\u64ca\u79fb\u9664';b.addEventListener('click',function(){this.remove();});c.appendChild(b);}
+function playgroundAddCircle(){const c=document.getElementById('playgroundContainer');const b=document.createElement('div');const h=Math.floor(Math.random()*360);const s=35+Math.floor(Math.random()*45);b.style.cssText=`width:${s}px;height:${s}px;background:hsl(${h},60%,60%);border-radius:50%;cursor:pointer;transition:all 0.2s;`;b.title='\u9ede\u64ca\u79fb\u9664';b.addEventListener('click',function(){this.remove();});c.appendChild(b);}
+function playgroundClearBoxes(){document.getElementById('playgroundContainer').innerHTML='';}
+function playgroundToggle(){const t=document.getElementById('playgroundToggle');const on=t.classList.toggle('on');document.getElementById('playgroundToggleLabel').textContent='\u6a21\u5f0f\uff1a'+(on?'\u5df2\u555f\u7528':'\u5df2\u95dc\u9589');const tg=document.getElementById('playgroundToggleTarget');tg.style.background=on?'var(--navy-soft)':'var(--gray-soft)';tg.style.border=on?'2px solid var(--navy)':'2px solid transparent';}
+function playgroundTimeout(){const b=document.getElementById('timeoutDemoBox');b.style.background='var(--red)';setTimeout(()=>{b.style.background='var(--navy)';},3000);}
+function playgroundResetTimeout(){document.getElementById('timeoutDemoBox').style.background='var(--green)';}
+function playgroundFetchDemo(){const out=document.getElementById('fetchDemoOutput');out.innerHTML='\u23f3 \u6b63\u5728\u8f09\u5165\u8cc7\u6599...';setTimeout(()=>{out.innerHTML='\u2705 \u8f09\u5165\u5b8c\u6210\uff01\u6a21\u64ec\u6578\u64da\uff1a{ nodes: 234, edges: 512 }<br><span style="color:#8b949e;font-size:0.72rem;">\uff08\u771f\u6b63\u7684 fetch() \u6703\u5f9e\u6a94\u6848\u8b80\u53d6\uff0c\u9019\u88e1\u53ea\u662f\u6a21\u64ec\u5ef6\u9072\u6548\u679c\uff09</span>';},1500);}
+
+// ── Key Demo ──
+document.getElementById('keyDemoArea').addEventListener('keydown',function(e){document.getElementById('keyDemoOutput').innerHTML=`\u6309\u9375\uff1a<span style="color:#d2a8ff;">"${e.key}"</span>&emsp;\u4ee3\u78bc\uff1a<span style="color:#79c0ff;">${e.code}</span>&emsp;keyCode\uff1a<span style="color:#ff7b72;">${e.keyCode}</span><br><span style="color:#8b949e;font-size:0.72rem;">\u6ce8\u610f\uff1akey \u662f\u300c\u5b57\u5143\u300d\uff08\u5982 "a"\uff09\uff0ccode \u662f\u300c\u7269\u7406\u6309\u9375\u300d\uff08\u5982 "KeyA"\uff09</span>`;});
+
+// ── Glossary ──
+function filterGlossary(){const q=document.getElementById('glossarySearch').value.toLowerCase();const rows=document.querySelectorAll('#glossaryTable tbody tr');let f=false;rows.forEach(r=>{const t=r.textContent.toLowerCase();if(!q||t.includes(q)){r.style.display='';f=true;}else{r.style.display='none';}});document.getElementById('glossaryEmpty').style.display=f?'none':'block';}
+
+// ── SVG Demos ──
+function updateSvgDemo(){const w=document.getElementById('svgViewBoxW').value;document.getElementById('svgViewBoxWVal').textContent=w;document.getElementById('svgDemo1').setAttribute('viewBox',`0 0 ${w} 220`);}
+function updateSvgGraph(){const ax=document.getElementById('svgNodeAX').value,bx=document.getElementById('svgNodeBX').value;document.getElementById('svgNodeAXVal').textContent=ax;document.getElementById('svgNodeBXVal').textContent=bx;document.getElementById('svgGraphNodeA').setAttribute('cx',ax);document.getElementById('svgGraphNodeB').setAttribute('cx',bx);document.getElementById('svgGraphEdge').setAttribute('x1',ax);document.getElementById('svgGraphEdge').setAttribute('x2',bx);document.querySelector('#svgGraphNodeA + text').setAttribute('x',ax);document.querySelector('#svgGraphNodeB + text').setAttribute('x',bx);document.getElementById('svgGraphCode').innerHTML=`&lt;circle cx="<span class="str">${ax}</span>" cy="70" r="20" fill="var(--navy)" /&gt;\n&lt;line x1="<span class="str">${ax}</span>" y1="70" x2="<span class="str">${bx}</span>" y2="70" stroke="..." marker-end="url(#arrDemo)" /&gt;\n&lt;circle cx="<span class="str">${bx}</span>" cy="70" r="20" fill="var(--green)" /&gt;`;}
+
+// ── JSON Demo ──
+function showJsonDemo(type){
+  const out=document.getElementById('jsonDemoOutput');
+  if(type==='nodes'){out.innerHTML=`{\n  <span class="str">"nodes"</span>: [\n    {\n      <span class="str">"id"</span>: <span class="str">"newton_2"</span>,\n      <span class="str">"type"</span>: <span class="str">"law"</span>,          <span class="cm">// 節點類型：定律</span>\n      <span class="str">"label"</span>: <span class="str">"牛頓第二定律"</span>,\n      <span class="str">"taxonomy"</span>: <span class="str">"mechanics"</span>, <span class="cm">// 所屬領域：力學</span>\n      <span class="str">"x"</span>: <span class="num">520</span>, <span class="str">"y"</span>: <span class="num">340</span>      <span class="cm">// SVG 座標</span>\n    }\n    <span class="cm">// ... 共數百個節點</span>\n  ]\n}`;}
+  else if(type==='edges'){out.innerHTML=`{\n  <span class="str">"edges"</span>: [\n    {\n      <span class="str">"source"</span>: <span class="str">"newton_1"</span>,\n      <span class="str">"target"</span>: <span class="str">"newton_2"</span>,\n      <span class="str">"type"</span>: <span class="str">"requires"</span>    <span class="cm">// 第一定律 → 第二定律（先備）</span>\n    },\n    <span class="cm">// ... 共數百條邊</span>\n  ]\n}`;}
+  else{out.innerHTML=`{\n  <span class="str">"newton_2"</span>: {\n    <span class="str">"summary"</span>: <span class="str">"運動的變化與施加的外力成正比..."</span>,\n    <span class="str">"content"</span>: <span class="str">"## 牛頓第二定律\\n\\n- $F=ma$\\n- ..."</span>,\n    <span class="str">"type"</span>: <span class="str">"law"</span>,\n    <span class="str">"taxonomy"</span>: <span class="str">"mechanics"</span>\n  }\n  <span class="cm">// key = 節點 ID, value = 詳情物件</span>\n}`;}
+}
+
+// ── Grid Demo ──
+function updateGridDemo(){const cols=document.getElementById('gridCols').value;const gap=document.getElementById('gridGap').value;const preview=document.getElementById('gridPreview');preview.style.gridTemplateColumns=`repeat(${cols}, 1fr)`;preview.style.gap=gap+'px';document.getElementById('gridDemoCode').textContent=`grid-template-columns: repeat(${cols}, 1fr); gap: ${gap}px;`;}
+
+// ── Flex Demo ──
+function updateFlexDemo(){const w=document.getElementById('flexWidthSlider').value;document.getElementById('flexWidthVal').textContent=w+'px';document.getElementById('flexDemoContainer').style.width=w+'px';}
+
+// ── Markdown Preview ──
+function renderMdPreview(){
+  const text=document.getElementById('mdInput').value;
+  const lines=text.split('\n');const blocks=[];let i=0;
+  while(i<lines.length){
+    const line=lines[i];
+    const hm=line.match(/^(#{1,6})\s+(.+)$/);
+    if(hm){const lv=Math.min(6,hm[1].length+1);blocks.push(`<h${lv} style="margin:6px 0 3px;">${hm[2]}</h${lv}>`);i++;continue;}
+    if(/^- /.test(line)){const items=[];while(i<lines.length&&/^- /.test(lines[i])){items.push(`<li>${lines[i].slice(2).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</li>`);i++;}blocks.push(`<ul style="margin:3px 0 6px 16px;">${items.join('')}</ul>`);continue;}
+    if(/^\d+\.\s/.test(line)){const items=[];while(i<lines.length&&/^\d+\.\s/.test(lines[i])){items.push(`<li>${lines[i].replace(/^\d+\.\s/,'').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</li>`);i++;}blocks.push(`<ol style="margin:3px 0 6px 16px;">${items.join('')}</ol>`);continue;}
+    if(!line.trim()){i++;continue;}
+    let html=line.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    blocks.push(`<p style="margin:3px 0;">${html}</p>`);i++;
+  }
+  document.getElementById('mdPreview').innerHTML=blocks.join('')||'<span style="color:var(--muted);">（輸入 Markdown 後即時預覽）</span>';
+}
+renderMdPreview();
+</script>
+</body>
+</html>

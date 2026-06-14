@@ -12,6 +12,12 @@ import {
   buildNodeDetailView,
   buildNoteSectionHtml,
 } from "./detail-renderer.mjs";
+import {
+  buildMetaItemsHtml,
+  buildPillListHtml,
+  buildSearchResultsHtml,
+  buildStatCardsHtml,
+} from "./detail-panel.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
 import {
@@ -751,6 +757,11 @@ function bindEvents() {
 
   // Global click handler for wikilinks and relation pills
   document.addEventListener("click", (event) => {
+    const nodePill = event.target.closest("[data-node-id]");
+    if (nodePill) {
+      handleNodeSelect(nodePill.dataset.nodeId);
+      return;
+    }
     const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
     if (inlineLink) {
       handleNodeSelect(inlineLink.dataset.nodeId);
@@ -1219,8 +1230,8 @@ function renderDetail() {
     els.detailTitle.textContent = emptyView.titleText;
     els.detailSummary.innerHTML = emptyView.summaryHtml;
     els.detailTaxonomyBadge.textContent = emptyView.taxonomyBadge;
-    els.detailMeta.innerHTML = createMetaItems(emptyView.metaEntries);
-    els.statsStrip.innerHTML = createStatCards(emptyView.statsEntries);
+      els.detailMeta.innerHTML = buildMetaItemsHtml(emptyView.metaEntries, { escapeHtml });
+      els.statsStrip.innerHTML = buildStatCardsHtml(emptyView.statsEntries, { escapeHtml });
     fillRelationSection("prereq", []);
     fillRelationSection("extension", []);
     fillRelationSection("related", []);
@@ -1246,8 +1257,8 @@ function renderDetail() {
   els.detailTitle.textContent = detailView.titleText;
   els.detailSummary.innerHTML = detailView.summaryHtml;
   els.detailTaxonomyBadge.textContent = detailView.taxonomyBadge;
-  els.detailMeta.innerHTML = createMetaItems(detailView.metaEntries);
-  els.statsStrip.innerHTML = createStatCards(detailView.statsEntries);
+  els.detailMeta.innerHTML = buildMetaItemsHtml(detailView.metaEntries, { escapeHtml });
+  els.statsStrip.innerHTML = buildStatCardsHtml(detailView.statsEntries, { escapeHtml });
 
   fillRelationSection("prereq", relations.requires);
   fillRelationSection("extension", relations.extension);
@@ -1335,6 +1346,16 @@ function renderSearchResults() {
     .filter((n) => n.searchText?.includes(state.query))
     .filter((n) => n.type !== "domain" && n.type !== "root")
     .slice(0, 50);
+  searchSection.innerHTML = buildSearchResultsHtml(state.query, matches, {
+    escapeHtml,
+    messages: {
+      emptyPrefix: "?曆??啁泵??",
+      emptySuffix: "??蝭暺?",
+      resultCountPrefix: "??蝯?嚗?",
+      resultCountSuffix: "嚗?",
+    },
+  });
+  return;
   if (!matches.length) {
     searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">找不到符合「${escapeHtml(state.query)}」的節點。</p>`;
     return;
@@ -1354,6 +1375,12 @@ function fillRelationSection(prefix, items) {
   const countEl = els[`${prefix}Count`];
   const listEl = els[`${prefix}List`];
   countEl.textContent = String(items.length);
+  listEl.innerHTML = buildPillListHtml(
+    items,
+    prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related",
+    { escapeHtml }
+  );
+  return;
   listEl.innerHTML = renderPills(items, prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related");
   for (const button of listEl.querySelectorAll(".pill[data-node-id]")) {
     button.addEventListener("click", () => handleNodeSelect(button.dataset.nodeId));

@@ -18,6 +18,7 @@ import {
   buildSearchResultsHtml,
   buildStatCardsHtml,
 } from "./detail-panel.mjs";
+import { buildFocusSceneData, buildOverviewSceneData } from "./scene-builder.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
 import {
@@ -426,129 +427,27 @@ function buildFilters() {
 }
 
 function buildOverviewScene() {
-  const sceneNodes = [];
-  const sceneEdges = [];
-  const chosenIds = new Set();
-  const hubByTaxonomy = new Map();
-  const overviewRoot = {
-    ...state.graph.overviewRoot,
-    x: CENTER_X,
-    y: CENTER_Y,
-    r: 76,
-    focal: true,
-  };
-  sceneNodes.push(overviewRoot);
-
-  state.graph.domainHubs.forEach((hub, index) => {
-    const angle = (-Math.PI / 2) + (index / state.graph.domainHubs.length) * Math.PI * 2;
-    hubByTaxonomy.set(hub.taxonomy, {
-      ...hub,
-      x: CENTER_X + Math.cos(angle) * 350,
-      y: CENTER_Y + Math.sin(angle) * 276,
-      r: 56,
-      sectorAngle: angle,
-    });
-  });
-
-  for (const taxonomy of TAXONOMY_ORDER) {
-    const hub = hubByTaxonomy.get(taxonomy);
-    if (!hub) continue;
-    const pool = state.graph.nodes.filter((node) => node.taxonomy === taxonomy);
-    const selected = selectOverviewNodesForTaxonomy(pool);
-    const bandWidth = 0.84;
-
-    selected.forEach((node, index) => {
-      const ratio = selected.length <= 1 ? 0.5 : index / (selected.length - 1);
-      const angle = hub.sectorAngle - bandWidth / 2 + ratio * bandWidth;
-      const localRadiusX = node.tier === 0 ? 50 : node.tier === 1 ? 90 : 130;
-      const localRadiusY = node.tier === 0 ? 38 : node.tier === 1 ? 68 : 100;
-      const placed = {
-        ...node,
-        x: hub.x + Math.cos(angle) * localRadiusX,
-        y: hub.y + Math.sin(angle) * localRadiusY,
-        r: node.type === "map" ? 36 : node.tier === 0 ? 28 : node.tier === 1 ? 20 : 14,
-      };
-      chosenIds.add(node.id);
-      sceneNodes.push(placed);
-    });
-  }
-
-  const candidateEdges = [];
-  for (const edge of state.graph.edges) {
-    if (!chosenIds.has(edge.source) || !chosenIds.has(edge.target)) continue;
-    if (edge.type === "organized_by") continue;
-    if (edge.type === "related_to" && weakLink(edge)) continue;
-    if ((edge.type === "uses" || edge.type === "explains") && weakUse(edge)) continue;
-    const src = state.nodeMap.get(edge.source);
-    const tgt = state.nodeMap.get(edge.target);
-    const score = (src?.degree || 0) + (tgt?.degree || 0);
-    candidateEdges.push({ ...edge, family: edge.type, score });
-  }
-
-  const OVERVIEW_MAX_EDGES_PER_NODE = 3;
-  const edgeCountPerNode = new Map();
-  candidateEdges.sort((a, b) => b.score - a.score);
-  for (const edge of candidateEdges) {
-    const srcCount = edgeCountPerNode.get(edge.source) || 0;
-    const tgtCount = edgeCountPerNode.get(edge.target) || 0;
-    if (srcCount >= OVERVIEW_MAX_EDGES_PER_NODE && tgtCount >= OVERVIEW_MAX_EDGES_PER_NODE) continue;
-    sceneEdges.push(edge);
-    edgeCountPerNode.set(edge.source, srcCount + 1);
-    edgeCountPerNode.set(edge.target, tgtCount + 1);
-  }
-
-  relaxLayout(sceneNodes, { iterations: 220, padding: 2, lockDomains: false, lockFocal: true, enforceBounds: true });
-  clampNodesToViewport(sceneNodes, { padding: 36, preserveFocus: false });
-  state.overviewNodes = sceneNodes;
-  state.overviewEdges = dedupeEdges(sceneEdges);
-
-  const domainRegions = new Map();
-  for (const taxonomy of TAXONOMY_ORDER) {
-    const children = sceneNodes.filter((node) => node.taxonomy === taxonomy && node.type !== "domain" && node.type !== "root");
-    if (!children.length) continue;
-    const points = children.map((n) => ({ x: n.x, y: n.y }));
-    const cx = points.reduce((s, p) => s + p.x, 0) / points.length;
-    const cy = points.reduce((s, p) => s + p.y, 0) / points.length;
-
-    // Radial density sampling: trace the actual boundary of the node distribution
-    const bins = 72;
-    const radii = [];
-    for (let i = 0; i < bins; i++) {
-      const angle = (i / bins) * Math.PI * 2;
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
-      let maxR = 0;
-      for (const p of points) {
-        const proj = (p.x - cx) * cos + (p.y - cy) * sin;
-        const perp = Math.abs(-(p.x - cx) * sin + (p.y - cy) * cos);
-        const r = proj + Math.max(0, 50 - perp * 0.5);
-        if (r > maxR) maxR = r;
-      }
-      radii.push(maxR + 50);
+  const scene = buildOverviewSceneData(
+    {
+      graph: state.graph,
+      nodeMap: state.nodeMap,
+      taxonomyOrder: TAXONOMY_ORDER,
+      centerX: CENTER_X,
+      centerY: CENTER_Y,
+    },
+    {
+      selectOverviewNodesForTaxonomy,
+      weakLink,
+      weakUse,
+      relaxLayout,
+      clampNodesToViewport,
+      dedupeEdges,
+      smoothClosedPath,
     }
-
-    // Smooth the radii to remove jaggedness
-    const smoothed = radii.slice();
-    for (let pass = 0; pass < 3; pass++) {
-      const tmp = smoothed.slice();
-      for (let i = 0; i < bins; i++) {
-        const prev = tmp[(i - 1 + bins) % bins];
-        const curr = tmp[i];
-        const next = tmp[(i + 1) % bins];
-        smoothed[i] = curr * 0.5 + prev * 0.25 + next * 0.25;
-      }
-    }
-
-    const contourPoints = smoothed.map((r, i) => {
-      const angle = (i / bins) * Math.PI * 2;
-      return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
-    });
-    const d = smoothClosedPath(contourPoints);
-    const minX = Math.min(...contourPoints.map((p) => p.x));
-    const minY = Math.min(...contourPoints.map((p) => p.y));
-    domainRegions.set(taxonomy, { d, cx, cy, minX, minY, taxonomy });
-  }
-  state.domainRegions = domainRegions;
+  );
+  state.overviewNodes = scene.overviewNodes;
+  state.overviewEdges = scene.overviewEdges;
+  state.domainRegions = scene.domainRegions;
 }
 
 function weakLink(edge) {
@@ -564,71 +463,29 @@ function weakUse(edge) {
 }
 
 function buildFocusScene(nodeId) {
-  const focalSource = state.nodeMap.get(nodeId);
-  if (!focalSource) return;
-  state.focusSceneNodeId = nodeId;
-
-  // Root node: show domain hubs as connected nodes
-  if (focalSource.type === "root") {
-    const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
-    const domainNodes = [];
-    const edges = [];
-    for (const hub of state.graph.domainHubs) {
-      const overviewNode = state.overviewNodes.find((n) => n.taxonomy === hub.taxonomy && n.type !== "domain" && n.type !== "root");
-      const hubCopy = {
-        ...hub,
-        x: 0,
-        y: 0,
-        r: 44,
-        shortTitle: TAXONOMY_LABELS[hub.taxonomy] || hub.taxonomy,
-        searchText: hub.title,
-      };
-      domainNodes.push(hubCopy);
-      edges.push({ source: focal.id, target: hub.id, type: "organized_by", family: "organized_by" });
+  const scene = buildFocusSceneData(
+    {
+      nodeId,
+      graph: state.graph,
+      nodeMap: state.nodeMap,
+      graphIndex: state.graphIndex,
+      overviewNodes: state.overviewNodes,
+      taxonomyLabels: TAXONOMY_LABELS,
+    },
+    {
+      collectDirectionalRelations,
+      rankFocusNodes: (nodes) => rankFocusNodes(nodes, { dedupeNodes }),
+      dedupeNodes,
+      dedupeEdges,
+      positionRing,
+      relaxLayout,
+      clampNodesToViewport,
     }
-    positionRing(domainNodes, focal, 340, 280, 44, 0);
-    const sceneNodes = [focal, ...dedupeNodes(domainNodes)];
-    relaxLayout(sceneNodes, { iterations: 100, padding: 16, lockDomains: false, lockFocal: true, enforceBounds: true });
-    clampNodesToViewport(sceneNodes, { padding: 84, preserveFocus: true });
-    state.focusNodes = sceneNodes;
-    state.focusEdges = dedupeEdges(edges);
-    return;
-  }
-
-  // Regular node: existing focus logic
-  const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
-  const edges = [];
-  const inner = [];
-  const outer = [];
-  const related = [];
-
-  const relationEntries = collectDirectionalRelations(nodeId, state.graphIndex, state.nodeMap, {
-    includeNode: (node) => Boolean(node) && node.type !== "domain",
-  });
-  for (const entry of relationEntries) {
-    const copy = { ...entry.node };
-    if (entry.bucket === "requires") inner.push(copy);
-    else if (entry.bucket === "extension") outer.push(copy);
-    else related.push(copy);
-    edges.push({ ...entry.edge, family: entry.edge.type });
-  }
-
-  const innerNodes = rankFocusNodes(inner, { dedupeNodes }).slice(0, 6);
-  const outerNodes = rankFocusNodes(outer, { dedupeNodes }).slice(0, 8);
-  const relatedNodes = rankFocusNodes(related, { dedupeNodes }).slice(0, 6);
-  const sceneNodes = [focal];
-
-  positionRing(innerNodes, focal, 254, 194, 34, 0);
-  positionRing(outerNodes, focal, 430, 336, 30, 0);
-  positionRing(relatedNodes, focal, 334, 262, 24, Math.PI / 7);
-
-  sceneNodes.push(...dedupeNodes([...innerNodes, ...outerNodes, ...relatedNodes]));
-  relaxLayout(sceneNodes, { iterations: 100, padding: 16, lockDomains: false, lockFocal: true, enforceBounds: true });
-  clampNodesToViewport(sceneNodes, { padding: 84, preserveFocus: true });
-  state.focusNodes = sceneNodes;
-  state.focusEdges = dedupeEdges(
-    edges.filter((edge) => sceneNodes.some((node) => node.id === edge.source) && sceneNodes.some((node) => node.id === edge.target))
   );
+  if (!scene) return;
+  state.focusSceneNodeId = scene.focusSceneNodeId;
+  state.focusNodes = scene.focusNodes;
+  state.focusEdges = scene.focusEdges;
 }
 
 function bindEvents() {
@@ -1305,11 +1162,6 @@ function fillRelationSection(prefix, items) {
     prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related",
     { escapeHtml }
   );
-  return;
-  listEl.innerHTML = renderPills(items, prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related");
-  for (const button of listEl.querySelectorAll(".pill[data-node-id]")) {
-    button.addEventListener("click", () => handleNodeSelect(button.dataset.nodeId));
-  }
 }
 
 function collectRelations(nodeId) {
@@ -1324,37 +1176,6 @@ function collectRelations(nodeId) {
     extension: rankFocusNodes(extension, { dedupeNodes }).slice(0, 8),
     related: rankFocusNodes(related, { dedupeNodes }).slice(0, 8),
   };
-}
-
-function createMetaItems(entries) {
-  return entries
-    .map(
-      ([label, value]) => `
-        <div class="meta-item">
-          <span class="meta-label">${escapeHtml(label)}</span>
-          <span class="meta-value">${escapeHtml(value)}</span>
-        </div>`
-    )
-    .join("");
-}
-
-function createStatCards(entries) {
-  return entries
-    .map(
-      ([label, value]) => `
-        <div class="stat-card">
-          <span>${escapeHtml(label)}</span>
-          <strong>${escapeHtml(value)}</strong>
-        </div>`
-    )
-    .join("");
-}
-
-function renderPills(items, family) {
-  if (!items.length) return "";
-  return items
-    .map((item) => `<button class="pill" type="button" data-family="${family}" data-node-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`)
-    .join("");
 }
 
 function isConnectedToSelected(nodeId) {
@@ -1453,26 +1274,4 @@ function findNodeByTitle(title) {
 
 function escapeRegex(value) {
   return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function groupRelations(nodeId) {
-  const outgoing = {};
-  const incoming = {};
-  for (const edge of state.graph.edges) {
-    if (edge.source === nodeId) {
-      const target = state.nodeMap.get(edge.target);
-      if (target && target.type !== "domain") {
-        if (!outgoing[edge.type]) outgoing[edge.type] = [];
-        outgoing[edge.type].push(target);
-      }
-    }
-    if (edge.target === nodeId) {
-      const source = state.nodeMap.get(edge.source);
-      if (source && source.type !== "domain") {
-        if (!incoming[edge.type]) incoming[edge.type] = [];
-        incoming[edge.type].push(source);
-      }
-    }
-  }
-  return { outgoing, incoming };
 }

@@ -605,7 +605,7 @@ function activateFocusNode(nodeId, options = {}) {
   render();
 }
 
-function goToOverview() {
+function resetOverviewState() {
   state.mode = "overview";
   state.selectedNodeId = null;
   state.browseHistory = [];
@@ -616,6 +616,10 @@ function goToOverview() {
   state.panY = 0;
   setZoom(1);
   document.querySelector(".app-shell")?.classList.remove("reader-mode");
+}
+
+function goToOverview() {
+  resetOverviewState();
   render();
 }
 
@@ -983,7 +987,8 @@ function renderBreadcrumb(items) {
 }
 
 function goToOverviewAndCenterTaxonomy(taxonomy) {
-  goToOverview();
+  resetOverviewState();
+  render();
   const region = state.domainRegions.get(taxonomy);
   if (!region) return;
   state.panX = CANVAS_WIDTH / 2 - region.cx * state.zoom;

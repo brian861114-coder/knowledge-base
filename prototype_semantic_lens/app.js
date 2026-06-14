@@ -1,3 +1,11 @@
+import {
+  SEMANTIC_EDGE_TYPES,
+  buildGraphIndex,
+  collectDirectionalRelations,
+  validateDetailPayload,
+  validateGraphPayload,
+} from "./logic.mjs";
+
 const GRAPH_URL = "../physics_graph.json";
 const DETAILS_URL = "../physics_note_details.json";
 const CANVAS_WIDTH = 1440;
@@ -50,21 +58,6 @@ const RELATION_LABELS = {
   explains: "延伸視角",
 };
 
-const SEMANTIC_EDGE_TYPES = new Set([
-  "requires",
-  "derives_to",
-  "formalized_by",
-  "related_to",
-  "organized_by",
-  "verified_by",
-  "measures",
-  "uses",
-  "explains",
-]);
-
-const FOCUS_INNER_TYPES = new Set(["requires", "formalized_by"]);
-const FOCUS_OUTER_TYPES = new Set(["derives_to", "verified_by", "measures", "uses", "explains"]);
-const FOCUS_RELATED_TYPES = new Set(["related_to", "organized_by"]);
 const DOMAIN_REGION_STYLES = {
   mechanics: { fill: "rgba(232, 240, 254, 0.95)", stroke: "rgba(168, 199, 250, 0.95)" },
   electromagnetism: { fill: "rgba(255, 243, 224, 0.95)", stroke: "rgba(255, 204, 128, 0.95)" },
@@ -124,6 +117,7 @@ const state = {
   graph: null,
   details: {},
   nodeMap: new Map(),
+  graphIndex: null,
   zoom: 1,
   panX: 0,
   panY: 0,
@@ -139,8 +133,11 @@ const state = {
   overviewEdges: [],
   focusNodes: [],
   focusEdges: [],
+  focusSceneNodeId: null,
   domainRegions: new Map(),
   miniMapBounds: null,
+  lastSemanticTier: 0,
+  searchDebounceId: null,
   dragging: {
     active: false,
     pointerId: null,
@@ -199,18 +196,26 @@ init().catch((error) => {
 });
 
 async function init() {
-  const [graphResponse, detailResponse] = await Promise.all([fetch(GRAPH_URL), fetch(DETAILS_URL)]);
-  const rawGraph = await graphResponse.json();
-  const rawDetails = await detailResponse.json();
+  const [rawGraph, rawDetails] = await Promise.all([fetchJson(GRAPH_URL), fetchJson(DETAILS_URL)]);
+  validateGraphPayload(rawGraph);
 
-  state.details = rawDetails;
   state.graph = normalizeGraph(rawGraph);
+  validateDetailPayload(rawDetails, state.graph.nodes.map((node) => node.id));
+  state.details = rawDetails;
   buildOverviewScene();
   buildDomainOverview();
   buildFilters();
   bindEvents();
   setZoom(1);
   render();
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`${url} 載入失敗：HTTP ${response.status}`);
+  }
+  return response.json();
 }
 
 function normalizeGraph(rawGraph) {
@@ -240,6 +245,7 @@ function normalizeGraph(rawGraph) {
 
   const nodeMap = new Map(nodes.map((node) => [node.id, node]));
   state.nodeMap = nodeMap;
+  state.graphIndex = buildGraphIndex(nodes, semanticEdges);
 
   const domainHubs = TAXONOMY_ORDER.map((taxonomy) => ({
     id: `domain::${taxonomy}`,
@@ -583,6 +589,7 @@ function weakUse(edge) {
 function buildFocusScene(nodeId) {
   const focalSource = state.nodeMap.get(nodeId);
   if (!focalSource) return;
+  state.focusSceneNodeId = nodeId;
 
   // Root node: show domain hubs as connected nodes
   if (focalSource.type === "root") {
@@ -618,16 +625,15 @@ function buildFocusScene(nodeId) {
   const outer = [];
   const related = [];
 
-  for (const edge of state.graph.edges) {
-    if (edge.source !== nodeId && edge.target !== nodeId) continue;
-    const otherId = edge.source === nodeId ? edge.target : edge.source;
-    const other = state.nodeMap.get(otherId);
-    if (!other || other.type === "domain") continue;
-    const copy = { ...other };
-    if (FOCUS_INNER_TYPES.has(edge.type)) inner.push(copy);
-    else if (FOCUS_OUTER_TYPES.has(edge.type)) outer.push(copy);
-    else if (FOCUS_RELATED_TYPES.has(edge.type)) related.push(copy);
-    edges.push({ ...edge, family: edge.type });
+  const relationEntries = collectDirectionalRelations(nodeId, state.graphIndex, state.nodeMap, {
+    includeNode: (node) => Boolean(node) && node.type !== "domain",
+  });
+  for (const entry of relationEntries) {
+    const copy = { ...entry.node };
+    if (entry.bucket === "requires") inner.push(copy);
+    else if (entry.bucket === "extension") outer.push(copy);
+    else related.push(copy);
+    edges.push({ ...entry.edge, family: entry.edge.type });
   }
 
   const innerNodes = rankFocusNodes(inner).slice(0, 6);
@@ -672,30 +678,36 @@ function focusTypeOrder(type) {
 
 function bindEvents() {
   els.searchInput.addEventListener("input", () => {
-    state.query = els.searchInput.value.trim().toLowerCase();
-    render();
+    if (state.searchDebounceId) {
+      window.clearTimeout(state.searchDebounceId);
+    }
+    state.searchDebounceId = window.setTimeout(() => {
+      state.query = els.searchInput.value.trim().toLowerCase();
+      state.searchDebounceId = null;
+      render();
+    }, 150);
   });
 
   els.zoomSlider.addEventListener("input", () => {
     setZoom(Number(els.zoomSlider.value) / 100);
-    render();
+    renderForZoomChange();
   });
 
   els.zoomInButton.addEventListener("click", () => {
     setZoom(state.zoom * 1.15);
-    render();
+    renderForZoomChange();
   });
 
   els.zoomOutButton.addEventListener("click", () => {
     setZoom(state.zoom / 1.15);
-    render();
+    renderForZoomChange();
   });
 
   els.fitButton.addEventListener("click", () => {
     state.panX = 0;
     state.panY = 0;
     setZoom(state.mode === "overview" ? 1 : 0.98);
-    render();
+    renderForZoomChange({ forceLayout: true, refreshDetail: false, refreshSearch: false });
   });
 
   els.backButton.addEventListener("click", goToOverview);
@@ -758,6 +770,7 @@ function goToOverview() {
   state.browseHistory = [];
   state.browseIndex = -1;
   state.noteViewMode = "preview";
+  state.focusSceneNodeId = null;
   state.panX = 0;
   state.panY = 0;
   setZoom(1);
@@ -841,7 +854,7 @@ function onWheel(event) {
   state.panX = pointer.x - worldX * nextZoom;
   state.panY = pointer.y - worldY * nextZoom;
   setZoom(nextZoom);
-  render();
+  renderForZoomChange();
 }
 
 function setZoom(value) {
@@ -865,32 +878,82 @@ function clientToSvgPoint(clientX, clientY) {
 }
 
 function render() {
+  const scene = getCurrentScene();
+  renderScene(scene, {
+    forceLayout: false,
+    refreshGraph: true,
+    refreshDetail: true,
+    refreshSearch: true,
+    refreshModeUI: true,
+  });
+}
+
+function getCurrentScene() {
   updateViewportTransform();
-  const scene = state.mode === "focus" && state.selectedNodeId
+  return state.mode === "focus" && state.selectedNodeId
     ? ensureFocusScene()
     : {
         nodes: filterOverviewNodes(state.overviewNodes),
         edges: filterOverviewEdges(state.overviewEdges),
       };
+}
 
-  relaxLayout(scene.nodes, {
-    iterations: 240,
-    padding: state.mode === "focus" ? 14 : 2,
-    lockFocal: true,
-    enforceBounds: state.mode === "focus",
-  });
+function renderScene(scene, options = {}) {
+  const {
+    forceLayout = false,
+    refreshGraph = false,
+    refreshDetail = true,
+    refreshSearch = true,
+    refreshModeUI = true,
+  } = options;
+  updateViewportTransform();
+  const tier = semanticTierFromZoom(state.zoom);
+  const shouldLayout = forceLayout || state.lastSemanticTier !== tier;
+  if (shouldLayout) {
+    relaxLayout(scene.nodes, {
+      iterations: state.mode === "focus" ? 100 : 120,
+      padding: state.mode === "focus" ? 14 : 2,
+      lockFocal: true,
+      enforceBounds: state.mode === "focus",
+    });
+    state.lastSemanticTier = tier;
+  }
+
   renderRings(scene.nodes);
-  renderEdges(scene.edges, scene.nodes);
+  if (shouldLayout || refreshGraph) {
+    renderEdges(scene.edges, scene.nodes);
+    renderMiniMap(scene.nodes);
+  } else {
+    updateMiniMapViewport();
+  }
   renderNodes(scene.nodes);
-  renderMiniMap(scene.nodes);
-  try { renderDetail(); } catch (e) { console.error("renderDetail error:", e); }
-  try { renderSearchResults(); } catch (e) { console.error("renderSearchResults error:", e); }
+  if (refreshDetail) {
+    try { renderDetail(); } catch (e) { console.error("renderDetail error:", e); }
+  }
+  if (refreshSearch) {
+    try { renderSearchResults(); } catch (e) { console.error("renderSearchResults error:", e); }
+  }
   syncNoteViewToggle();
-  updateModeUI(scene.nodes);
+  if (refreshModeUI) {
+    updateModeUI(scene.nodes);
+  }
+}
+
+function renderForZoomChange(options = {}) {
+  const scene = getCurrentScene();
+  renderScene(scene, {
+    forceLayout: Boolean(options.forceLayout),
+    refreshGraph: false,
+    refreshDetail: Boolean(options.refreshDetail),
+    refreshSearch: Boolean(options.refreshSearch),
+    refreshModeUI: true,
+  });
 }
 
 function ensureFocusScene() {
-  buildFocusScene(state.selectedNodeId);
+  if (!state.focusNodes.length || state.focusSceneNodeId !== state.selectedNodeId) {
+    buildFocusScene(state.selectedNodeId);
+  }
   return { nodes: state.focusNodes, edges: state.focusEdges };
 }
 
@@ -1365,18 +1428,12 @@ function fillRelationSection(prefix, items) {
 }
 
 function collectRelations(nodeId) {
-  const requires = [];
-  const extension = [];
-  const related = [];
-  for (const edge of state.graph.edges) {
-    if (edge.source !== nodeId && edge.target !== nodeId) continue;
-    const otherId = edge.source === nodeId ? edge.target : edge.source;
-    const other = state.nodeMap.get(otherId);
-    if (!other || other.type === "domain") continue;
-    if (FOCUS_INNER_TYPES.has(edge.type)) requires.push(other);
-    else if (FOCUS_OUTER_TYPES.has(edge.type)) extension.push(other);
-    else related.push(other);
-  }
+  const entries = collectDirectionalRelations(nodeId, state.graphIndex, state.nodeMap, {
+    includeNode: (node) => Boolean(node) && node.type !== "domain",
+  });
+  const requires = entries.filter((entry) => entry.bucket === "requires").map((entry) => entry.node);
+  const extension = entries.filter((entry) => entry.bucket === "extension").map((entry) => entry.node);
+  const related = entries.filter((entry) => entry.bucket === "related").map((entry) => entry.node);
   return {
     requires: rankFocusNodes(requires).slice(0, 8),
     extension: rankFocusNodes(extension).slice(0, 8),
@@ -1542,16 +1599,40 @@ function escapeAttribute(value) {
 
 function scheduleMathTypeset(container) {
   if (!container) return;
-  if (window.MathJax?.typesetPromise) {
-    if (typeof window.MathJax.typesetClear === "function") {
-      window.MathJax.typesetClear([container]);
+  getMathJaxReady().then((mathJax) => {
+    if (!mathJax?.typesetPromise) return;
+    if (typeof mathJax.typesetClear === "function") {
+      mathJax.typesetClear([container]);
     }
-    window.MathJax.typesetPromise([container]).catch((error) => {
+    mathJax.typesetPromise([container]).catch((error) => {
       console.error("Math typeset failed", error);
     });
-    return;
-  }
-  window.setTimeout(() => scheduleMathTypeset(container), 120);
+  }).catch((error) => {
+    console.error("MathJax readiness failed", error);
+  });
+}
+
+let mathJaxReadyPromise = null;
+
+function getMathJaxReady(timeoutMs = 4000) {
+  if (mathJaxReadyPromise) return mathJaxReadyPromise;
+  mathJaxReadyPromise = new Promise((resolve) => {
+    const startedAt = Date.now();
+    const poll = () => {
+      if (window.MathJax?.typesetPromise) {
+        resolve(window.MathJax);
+        return;
+      }
+      if (Date.now() - startedAt >= timeoutMs) {
+        console.warn("MathJax not ready within timeout; skip typesetting.");
+        resolve(null);
+        return;
+      }
+      window.setTimeout(poll, 120);
+    };
+    poll();
+  });
+  return mathJaxReadyPromise;
 }
 
 function protectMathSegments(text) {

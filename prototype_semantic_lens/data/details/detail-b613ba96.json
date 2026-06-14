@@ -1,0 +1,100 @@
+{
+  "id": "位移電流修正",
+  "path": "02_concepts/electromagnetism/位移電流修正.md",
+  "title": "位移電流修正",
+  "summary": "位移電流修正是馬克士威為安培定律加入的補項，用來維持連續性與自洽性。",
+  "body_preview": "## 概念摘要\n位移電流修正是馬克士威在安培定律中加入的 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 項，使得變動電場也能產生磁場。這項修正消除了電容器充電時安培定律的不自洽性，並使電磁波的存在成為理論必然。\n\n## 嚴格定義\n原始安培定律（靜磁學）：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J}$$\n\n馬克士威加入位移電流密度 $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$，修正為：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n這就是安培-馬克士威定律。位移電流變動電場的等效磁效應。\n\n## 先備知識\n安培定律的原始形式\n電流密度 $\\vec{J}$ 的概念\n電容器充電時的電場變化\n電荷守恆（連續性方程）\n法拉第定律（變動磁場產生電場）\n\n## 物理意義\n核心機制： 充電中的電容器兩板之間沒有傳導電流，但有增強中的電場。馬克士威的洞見是：變動的電場在磁學上等效於一股電流。這是電場隨時間變化的效果。\n\n類比： 想像水流過水管（傳導電流）進入一個橡皮膜（電容器）。水管中沒有水直接穿過橡皮膜，但橡皮膜的膨脹（電場增強）在「流量」的意義上等效於水繼續流動。\n\n關鍵測試： 在電容器極板間取一個安培迴路面，沒有傳導電流穿過，但有 $\\partial \\vec{E}/\\partial t$。位移電流修正使安培定律對任何面都給出一致的 $\\vec{B}$。\n\n位移電流修正回答的問題是「變動電場能不能產生磁場」。答案是能，而且這是電磁波存在的理論基礎。沒有這項修正，馬克士威方程組無法預言電磁波，也就無法解釋光的本質。\n\n## 典型應用\n電磁波理論： 位移電流使馬克士威方程組允許橫波解，預言電磁波以 $c = 1/\\sqrt{\\mu_0\\epsilon_0}$ 傳播\n天線設計： 變動電流在",
+  "body_full": "## 概念摘要\n位移電流修正是馬克士威在安培定律中加入的 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 項，使得變動電場也能產生磁場。這項修正消除了電容器充電時安培定律的不自洽性，並使電磁波的存在成為理論必然。\n\n## 嚴格定義\n原始安培定律（靜磁學）：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J}$$\n\n馬克士威加入位移電流密度 $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$，修正為：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n這就是安培-馬克士威定律。位移電流變動電場的等效磁效應。\n\n## 先備知識\n安培定律的原始形式\n電流密度 $\\vec{J}$ 的概念\n電容器充電時的電場變化\n電荷守恆（連續性方程）\n法拉第定律（變動磁場產生電場）\n\n## 物理意義\n核心機制： 充電中的電容器兩板之間沒有傳導電流，但有增強中的電場。馬克士威的洞見是：變動的電場在磁學上等效於一股電流。這是電場隨時間變化的效果。\n\n類比： 想像水流過水管（傳導電流）進入一個橡皮膜（電容器）。水管中沒有水直接穿過橡皮膜，但橡皮膜的膨脹（電場增強）在「流量」的意義上等效於水繼續流動。\n\n關鍵測試： 在電容器極板間取一個安培迴路面，沒有傳導電流穿過，但有 $\\partial \\vec{E}/\\partial t$。位移電流修正使安培定律對任何面都給出一致的 $\\vec{B}$。\n\n位移電流修正回答的問題是「變動電場能不能產生磁場」。答案是能，而且這是電磁波存在的理論基礎。沒有這項修正，馬克士威方程組無法預言電磁波，也就無法解釋光的本質。\n\n## 典型應用\n電磁波理論： 位移電流使馬克士威方程組允許橫波解，預言電磁波以 $c = 1/\\sqrt{\\mu_0\\epsilon_0}$ 傳播\n天線設計： 變動電流在天線周圍產生位移電流，形成輻射場\n電容器高頻行為： 高頻下位移電流使電容器兩板間的「電流」得以連續\n微波工程： 波導中的場分布由包含位移電流的馬克士威方程決定\n\n## 常見誤解\n1. 「位移電流是假電流」 — 它不是電荷的運動，但它的磁效應是真實的。沒有它，電磁波不存在。\n2. 「位移電流只在電容器中存在」 — 任何有變動電場的地方都有位移電流，包括自由空間中的電磁波。\n3. 「位移電流會產生焦耳熱」 — 不會。位移電流不涉及電荷運動，沒有電阻損耗。\n\n## 歷史背景\n詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1861–1862 年的論文《論物理力線》中首次引入位移電流概念，最初是基於分子渦旋的力學模型。在 1865 年的《電磁場的動力學理論》中，他將其提升為純場論的形式。馬克士威的修正使電磁學的四個方程自洽，並預言了電磁波。海因里希·赫茲（Heinrich Hertz, 1857–1894）在 1887–1888 年用實驗證實了電磁波的存在，驗證了馬克士威的理論。\n\n## 現代理論視角\n在馬克士威方程組的現代形式中，位移電流項 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 與法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 形成優美的對偶結構：變動磁場產生電場，變動電場產生磁場。這種對偶性是電磁波存在的根本原因。在介質中，位移電流密度推廣為 $\\partial \\vec{D}/\\partial t$，包含極化電流的貢獻。在量子電動力學（QED）中，位移電流被理解為真空極化的經典極限。\n\n## 相關連結\n### 相關概念\n位移電流\n安培-馬克士威方程\n電磁波\n\n### 相關物理量\n電場\n磁場\n電流密度\n\n### 相關實驗\n赫茲電磁波實驗\n\n### 衍生結果\n電磁波傳播\n馬克士威方程組\n\n## 核心公式\n| 兩端物 | 名稱 |\n|------|------|\n| $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 安培-馬克士威定律 |\n| $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 位移電流密度 |\n| $I_d = \\epsilon_0 \\dfrac{d\\Phi_E}{dt}$ | 位移電流（通過面積分） |\n| $\\nabla \\cdot \\vec{J} + \\dfrac{\\partial \\rho}{\\partial t} = 0$ | 連續性方程 |\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{J}$ | 傳導電流密度 | A/m² |\n| $\\vec{J}_d$ | 位移電流密度 | A/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\Phi_E$ | 電通量 | V·m |\n| $\\rho$ | 電荷密度 | C/m³ |\n\n## 推導\n自洽性要求：\n\n對安培定律取散度：$\\nabla \\cdot (\\nabla \\times \\vec{B}) = 0$（恆等式）\n\n但 $\\nabla \\cdot (\\mu_0 \\vec{J}) = \\mu_0 \\nabla \\cdot \\vec{J}$\n\n由連續性方程：$\\nabla \\cdot \\vec{J} = -\\partial \\rho / \\partial t$\n\n由高斯定律：$\\rho = \\epsilon_0 \\nabla \\cdot \\vec{E}$\n\n因此 $\\nabla \\cdot \\vec{J} = -\\epsilon_0 \\partial(\\nabla \\cdot \\vec{E})/\\partial t \\neq 0$（一般情況下）\n\n矛盾！原始安培定律不自洽。\n\n修正： 加入 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 後：\n\n$$\\nabla \\cdot (\\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\partial \\vec{E}/\\partial t) = \\mu_0(\\nabla \\cdot \\vec{J} + \\epsilon_0 \\partial \\nabla \\cdot \\vec{E}/\\partial t) = \\mu_0(-\\partial \\rho/\\partial t + \\partial \\rho/\\partial t) = 0 \\checkmark$$",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "位移電流修正是馬克士威在安培定律中加入的 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 項，使得變動電場也能產生磁場。這項修正消除了電容器充電時安培定律的不自洽性，並使電磁波的存在成為理論必然。",
+      "content": "位移電流修正是馬克士威在安培定律中加入的 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 項，使得變動電場也能產生磁場。這項修正消除了電容器充電時安培定律的不自洽性，並使電磁波的存在成為理論必然。"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "原始安培定律（靜磁學）：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J}$$\n\n馬克士威加入位移電流密度 $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$，修正為：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n這就是安培-馬克士威定律。位移電流變動電場的等效磁效應。",
+      "content": "原始安培定律（靜磁學）：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J}$$\n\n馬克士威加入位移電流密度 $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$，修正為：\n\n$$\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n這就是安培-馬克士威定律。位移電流變動電場的等效磁效應。"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "安培定律的原始形式\n電流密度 $\\vec{J}$ 的概念\n電容器充電時的電場變化\n電荷守恆（連續性方程）\n法拉第定律（變動磁場產生電場）",
+      "content": "安培定律的原始形式\n電流密度 $\\vec{J}$ 的概念\n電容器充電時的電場變化\n電荷守恆（連續性方程）\n法拉第定律（變動磁場產生電場）"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 充電中的電容器兩板之間沒有傳導電流，但有增強中的電場。馬克士威的洞見是：變動的電場在磁學上等效於一股電流。這是電場隨時間變化的效果。\n\n類比： 想像水流過水管（傳導電流）進入一個橡皮膜（電容器）。水管中沒有水直接穿過橡皮膜，但橡皮膜的膨脹（電場增強）在「流量」的意義上等效於水繼續流動。\n\n關鍵測試： 在電容器極板間取一個安培迴路面，沒有傳導電流穿過，但有 $\\partial \\vec{E}/\\partial t$。位移電流修正使安培定律對任何面都給出一致的 $\\vec{B}$。\n\n位移電流修正回答的問題是「變動電場能不能產生磁場」。答案是能，而且這是電磁波存在的理論基礎。沒有這項修正，馬克士威方程組無法預言電磁波，也就無法解釋光的本質。",
+      "content": "核心機制： 充電中的電容器兩板之間沒有傳導電流，但有增強中的電場。馬克士威的洞見是：變動的電場在磁學上等效於一股電流。這是電場隨時間變化的效果。\n\n類比： 想像水流過水管（傳導電流）進入一個橡皮膜（電容器）。水管中沒有水直接穿過橡皮膜，但橡皮膜的膨脹（電場增強）在「流量」的意義上等效於水繼續流動。\n\n關鍵測試： 在電容器極板間取一個安培迴路面，沒有傳導電流穿過，但有 $\\partial \\vec{E}/\\partial t$。位移電流修正使安培定律對任何面都給出一致的 $\\vec{B}$。\n\n位移電流修正回答的問題是「變動電場能不能產生磁場」。答案是能，而且這是電磁波存在的理論基礎。沒有這項修正，馬克士威方程組無法預言電磁波，也就無法解釋光的本質。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "電磁波理論： 位移電流使馬克士威方程組允許橫波解，預言電磁波以 $c = 1/\\sqrt{\\mu_0\\epsilon_0}$ 傳播\n天線設計： 變動電流在天線周圍產生位移電流，形成輻射場\n電容器高頻行為： 高頻下位移電流使電容器兩板間的「電流」得以連續\n微波工程： 波導中的場分布由包含位移電流的馬克士威方程決定",
+      "content": "電磁波理論： 位移電流使馬克士威方程組允許橫波解，預言電磁波以 $c = 1/\\sqrt{\\mu_0\\epsilon_0}$ 傳播\n天線設計： 變動電流在天線周圍產生位移電流，形成輻射場\n電容器高頻行為： 高頻下位移電流使電容器兩板間的「電流」得以連續\n微波工程： 波導中的場分布由包含位移電流的馬克士威方程決定"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「位移電流是假電流」 — 它不是電荷的運動，但它的磁效應是真實的。沒有它，電磁波不存在。\n2. 「位移電流只在電容器中存在」 — 任何有變動電場的地方都有位移電流，包括自由空間中的電磁波。\n3. 「位移電流會產生焦耳熱」 — 不會。位移電流不涉及電荷運動，沒有電阻損耗。",
+      "content": "1. 「位移電流是假電流」 — 它不是電荷的運動，但它的磁效應是真實的。沒有它，電磁波不存在。\n2. 「位移電流只在電容器中存在」 — 任何有變動電場的地方都有位移電流，包括自由空間中的電磁波。\n3. 「位移電流會產生焦耳熱」 — 不會。位移電流不涉及電荷運動，沒有電阻損耗。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1861–1862 年的論文《論物理力線》中首次引入位移電流概念，最初是基於分子渦旋的力學模型。在 1865 年的《電磁場的動力學理論》中，他將其提升為純場論的形式。馬克士威的修正使電磁學的四個方程自洽，並預言了電磁波。海因里希·赫茲（Heinrich Hertz, 1857–1894）在 1887–1888 年用實驗證實了電磁波的存在，驗證了馬克士威的理論。",
+      "content": "詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1861–1862 年的論文《論物理力線》中首次引入位移電流概念，最初是基於分子渦旋的力學模型。在 1865 年的《電磁場的動力學理論》中，他將其提升為純場論的形式。馬克士威的修正使電磁學的四個方程自洽，並預言了電磁波。海因里希·赫茲（Heinrich Hertz, 1857–1894）在 1887–1888 年用實驗證實了電磁波的存在，驗證了馬克士威的理論。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在馬克士威方程組的現代形式中，位移電流項 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 與法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 形成優美的對偶結構：變動磁場產生電場，變動電場產生磁場。這種對偶性是電磁波存在的根本原因。在介質中，位移電流密度推廣為 $\\partial \\vec{D}/\\partial t$，包含極化電流的貢獻。在量子電動力學（QED）中，位移電流被理解為真空極化的經典極限。",
+      "content": "在馬克士威方程組的現代形式中，位移電流項 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 與法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 形成優美的對偶結構：變動磁場產生電場，變動電場產生磁場。這種對偶性是電磁波存在的根本原因。在介質中，位移電流密度推廣為 $\\partial \\vec{D}/\\partial t$，包含極化電流的貢獻。在量子電動力學（QED）中，位移電流被理解為真空極化的經典極限。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "位移電流\n安培-馬克士威方程\n電磁波",
+      "content": "位移電流\n安培-馬克士威方程\n電磁波"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "電場\n磁場\n電流密度",
+      "content": "電場\n磁場\n電流密度"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "赫茲電磁波實驗",
+      "content": "赫茲電磁波實驗"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "電磁波傳播\n馬克士威方程組",
+      "content": "電磁波傳播\n馬克士威方程組"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "| 兩端物 | 名稱 |\n|------|------|\n| $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 安培-馬克士威定律 |\n| $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 位移電流密度 |\n| $I_d = \\epsilon_0 \\dfrac{d\\Phi_E}{dt}$ | 位移電流（通過面積分） |\n| $\\nabla \\cdot \\vec{J} + \\dfrac{\\partial \\rho}{\\partial t} = 0$ | 連續性方程 |",
+      "content": "| 兩端物 | 名稱 |\n|------|------|\n| $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 安培-馬克士威定律 |\n| $\\vec{J}_d = \\epsilon_0 \\dfrac{\\partial \\vec{E}}{\\partial t}$ | 位移電流密度 |\n| $I_d = \\epsilon_0 \\dfrac{d\\Phi_E}{dt}$ | 位移電流（通過面積分） |\n| $\\nabla \\cdot \\vec{J} + \\dfrac{\\partial \\rho}{\\partial t} = 0$ | 連續性方程 |"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{J}$ | 傳導電流密度 | A/m² |\n| $\\vec{J}_d$ | 位移電流密度 | A/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\Phi_E$ | 電通量 | V·m |\n| $\\rho$ | 電荷密度 | C/m³ |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{J}$ | 傳導電流密度 | A/m² |\n| $\\vec{J}_d$ | 位移電流密度 | A/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\Phi_E$ | 電通量 | V·m |\n| $\\rho$ | 電荷密度 | C/m³ |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "自洽性要求：\n\n對安培定律取散度：$\\nabla \\cdot (\\nabla \\times \\vec{B}) = 0$（恆等式）\n\n但 $\\nabla \\cdot (\\mu_0 \\vec{J}) = \\mu_0 \\nabla \\cdot \\vec{J}$\n\n由連續性方程：$\\nabla \\cdot \\vec{J} = -\\partial \\rho / \\partial t$\n\n由高斯定律：$\\rho = \\epsilon_0 \\nabla \\cdot \\vec{E}$\n\n因此 $\\nabla \\cdot \\vec{J} = -\\epsilon_0 \\partial(\\nabla \\cdot \\vec{E})/\\partial t \\neq 0$（一般情況下）\n\n矛盾！原始安培定律不自洽。\n\n修正： 加入 $\\epsilon_0 \\partial \\v",
+      "content": "自洽性要求：\n\n對安培定律取散度：$\\nabla \\cdot (\\nabla \\times \\vec{B}) = 0$（恆等式）\n\n但 $\\nabla \\cdot (\\mu_0 \\vec{J}) = \\mu_0 \\nabla \\cdot \\vec{J}$\n\n由連續性方程：$\\nabla \\cdot \\vec{J} = -\\partial \\rho / \\partial t$\n\n由高斯定律：$\\rho = \\epsilon_0 \\nabla \\cdot \\vec{E}$\n\n因此 $\\nabla \\cdot \\vec{J} = -\\epsilon_0 \\partial(\\nabla \\cdot \\vec{E})/\\partial t \\neq 0$（一般情況下）\n\n矛盾！原始安培定律不自洽。\n\n修正： 加入 $\\epsilon_0 \\partial \\vec{E}/\\partial t$ 後：\n\n$$\\nabla \\cdot (\\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\partial \\vec{E}/\\partial t) = \\mu_0(\\nabla \\cdot \\vec{J} + \\epsilon_0 \\partial \\nabla \\cdot \\vec{E}/\\partial t) = \\mu_0(-\\partial \\rho/\\partial t + \\partial \\rho/\\partial t) = 0 \\checkmark$$"
+    }
+  ]
+}

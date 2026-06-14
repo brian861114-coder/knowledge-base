@@ -1,0 +1,82 @@
+{
+  "id": "哈密頓-雅可比方程",
+  "path": "02_concepts/analytical_dynamics/哈密頓-雅可比方程.md",
+  "title": "哈密頓-雅可比方程",
+  "summary": "哈密頓-雅可比方程是用生成函數求解力學問題的偏微分方程。",
+  "body_preview": "## 概念摘要\n哈密頓-雅可比方程的概念摘要。\n\n## 嚴格定義\n$\\frac{\\partial S}{\\partial t} + H(q, \\frac{\\partial S}{\\partial q}, t) = 0$，其中 $S$ 為作用量函數。\n\n## 先備知識\n哈密頓方程\n作用量\n偏微分方程\n\n## 物理意義\n核心機制： 哈密頓-雅可比方程的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習哈密頓-雅可比方程時容易忽略的關鍵細節包括適用條件和極限情況。\n\n哈密頓-雅可比方程的物理意義。\n\n## 典型應用\n可分離系統的求解\n作用量-角度變量\n幾何光學的類比\n\n## 常見誤解\n哈密頓-雅可比方程不是「更好的拉格朗日方程」——它是不同角度的表述。\n\n## 歷史背景\n威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。卡爾·雅可比（Carl Gustav Jacob Jacobi, 1804–1851）在 1837 年發展了哈密頓-雅可比理論。約瑟夫·劉維爾（Joseph Liouville, 1809–1882）在 1838 年證明了劉維爾定理。\n\n## 現代理論視角\n分析力學是現代物理的語言基礎。拉格朗日力學自然推廣到場論（經典場論和量子場論），哈密頓力學是量子力學的經典基礎。路徑積分表述（費曼, 1948）把哈密頓力學推廣為所有可能路徑的振幅疊加。\n\n## 相關連結\n### 相關概念\n哈密頓方程\n作用量\n正則變換\n\n## 核心公式\n$\\frac{\\partial S}{\\partial t} + H = 0$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|--------|\n| $S$ | 作用量函數 | J·s |\n| $H$ | 哈密頓量 | J |\n\n## 推導\n哈密頓-雅可比方程的推導從作用量 $S$ 出發。定義 $S(q, t) = \\int_{t_0}^{",
+  "body_full": "## 概念摘要\n哈密頓-雅可比方程的概念摘要。\n\n## 嚴格定義\n$\\frac{\\partial S}{\\partial t} + H(q, \\frac{\\partial S}{\\partial q}, t) = 0$，其中 $S$ 為作用量函數。\n\n## 先備知識\n哈密頓方程\n作用量\n偏微分方程\n\n## 物理意義\n核心機制： 哈密頓-雅可比方程的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習哈密頓-雅可比方程時容易忽略的關鍵細節包括適用條件和極限情況。\n\n哈密頓-雅可比方程的物理意義。\n\n## 典型應用\n可分離系統的求解\n作用量-角度變量\n幾何光學的類比\n\n## 常見誤解\n哈密頓-雅可比方程不是「更好的拉格朗日方程」——它是不同角度的表述。\n\n## 歷史背景\n威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。卡爾·雅可比（Carl Gustav Jacob Jacobi, 1804–1851）在 1837 年發展了哈密頓-雅可比理論。約瑟夫·劉維爾（Joseph Liouville, 1809–1882）在 1838 年證明了劉維爾定理。\n\n## 現代理論視角\n分析力學是現代物理的語言基礎。拉格朗日力學自然推廣到場論（經典場論和量子場論），哈密頓力學是量子力學的經典基礎。路徑積分表述（費曼, 1948）把哈密頓力學推廣為所有可能路徑的振幅疊加。\n\n## 相關連結\n### 相關概念\n哈密頓方程\n作用量\n正則變換\n\n## 核心公式\n$\\frac{\\partial S}{\\partial t} + H = 0$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|--------|\n| $S$ | 作用量函數 | J·s |\n| $H$ | 哈密頓量 | J |\n\n## 推導\n哈密頓-雅可比方程的推導從作用量 $S$ 出發。定義 $S(q, t) = \\int_{t_0}^{t} L\\,dt$ 為作用量函數。對 $S$ 求全微分：$dS = \\sum_i \\frac{\\partial S}{\\partial q_i}dq_i + \\frac{\\partial S}{\\partial t}dt$。另一方面，$dS = L\\,dt = \\sum_i p_i\\dot{q}_i\\,dt - H\\,dt$。比較兩式得 $p_i = \\partial S/\\partial q_i$ 和 $\\frac{\\partial S}{\\partial t} = -H$。代入哈密頓量得哈密頓-雅可比方程：$\\frac{\\partial S}{\\partial t} + H\\left(q_1,\\ldots,q_n,\\frac{\\partial S}{\\partial q_1},\\ldots,\\frac{\\partial S}{\\partial q_n},t\\right) = 0$。",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "哈密頓-雅可比方程的概念摘要。",
+      "content": "哈密頓-雅可比方程的概念摘要。"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "$\\frac{\\partial S}{\\partial t} + H(q, \\frac{\\partial S}{\\partial q}, t) = 0$，其中 $S$ 為作用量函數。",
+      "content": "$\\frac{\\partial S}{\\partial t} + H(q, \\frac{\\partial S}{\\partial q}, t) = 0$，其中 $S$ 為作用量函數。"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "哈密頓方程\n作用量\n偏微分方程",
+      "content": "哈密頓方程\n作用量\n偏微分方程"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 哈密頓-雅可比方程的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習哈密頓-雅可比方程時容易忽略的關鍵細節包括適用條件和極限情況。\n\n哈密頓-雅可比方程的物理意義。",
+      "content": "核心機制： 哈密頓-雅可比方程的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習哈密頓-雅可比方程時容易忽略的關鍵細節包括適用條件和極限情況。\n\n哈密頓-雅可比方程的物理意義。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "可分離系統的求解\n作用量-角度變量\n幾何光學的類比",
+      "content": "可分離系統的求解\n作用量-角度變量\n幾何光學的類比"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "哈密頓-雅可比方程不是「更好的拉格朗日方程」——它是不同角度的表述。",
+      "content": "哈密頓-雅可比方程不是「更好的拉格朗日方程」——它是不同角度的表述。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。卡爾·雅可比（Carl Gustav Jacob Jacobi, 1804–1851）在 1837 年發展了哈密頓-雅可比理論。約瑟夫·劉維爾（Joseph Liouville, 1809–1882）在 1838 年證明了劉維爾定理。",
+      "content": "威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。卡爾·雅可比（Carl Gustav Jacob Jacobi, 1804–1851）在 1837 年發展了哈密頓-雅可比理論。約瑟夫·劉維爾（Joseph Liouville, 1809–1882）在 1838 年證明了劉維爾定理。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "分析力學是現代物理的語言基礎。拉格朗日力學自然推廣到場論（經典場論和量子場論），哈密頓力學是量子力學的經典基礎。路徑積分表述（費曼, 1948）把哈密頓力學推廣為所有可能路徑的振幅疊加。",
+      "content": "分析力學是現代物理的語言基礎。拉格朗日力學自然推廣到場論（經典場論和量子場論），哈密頓力學是量子力學的經典基礎。路徑積分表述（費曼, 1948）把哈密頓力學推廣為所有可能路徑的振幅疊加。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "哈密頓方程\n作用量\n正則變換",
+      "content": "哈密頓方程\n作用量\n正則變換"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "$\\frac{\\partial S}{\\partial t} + H = 0$",
+      "content": "$\\frac{\\partial S}{\\partial t} + H = 0$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|--------|\n| $S$ | 作用量函數 | J·s |\n| $H$ | 哈密頓量 | J |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|--------|\n| $S$ | 作用量函數 | J·s |\n| $H$ | 哈密頓量 | J |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "哈密頓-雅可比方程的推導從作用量 $S$ 出發。定義 $S(q, t) = \\int_{t_0}^{t} L\\,dt$ 為作用量函數。對 $S$ 求全微分：$dS = \\sum_i \\frac{\\partial S}{\\partial q_i}dq_i + \\frac{\\partial S}{\\partial t}dt$。另一方面，$dS = L\\,dt = \\sum_i p_i\\dot{q}_i\\,dt - H\\,dt$。比較兩式得 $p_i = \\partial S/\\partial q_i$ 和 $\\frac{\\partial S}{\\partial t} = -H$。代入哈密頓量得哈密頓-雅可比方程：$\\frac{\\partial S}{\\partial t} + H\\left(q_1,\\ldots,q_n,\\frac{\\partial S}",
+      "content": "哈密頓-雅可比方程的推導從作用量 $S$ 出發。定義 $S(q, t) = \\int_{t_0}^{t} L\\,dt$ 為作用量函數。對 $S$ 求全微分：$dS = \\sum_i \\frac{\\partial S}{\\partial q_i}dq_i + \\frac{\\partial S}{\\partial t}dt$。另一方面，$dS = L\\,dt = \\sum_i p_i\\dot{q}_i\\,dt - H\\,dt$。比較兩式得 $p_i = \\partial S/\\partial q_i$ 和 $\\frac{\\partial S}{\\partial t} = -H$。代入哈密頓量得哈密頓-雅可比方程：$\\frac{\\partial S}{\\partial t} + H\\left(q_1,\\ldots,q_n,\\frac{\\partial S}{\\partial q_1},\\ldots,\\frac{\\partial S}{\\partial q_n},t\\right) = 0$。"
+    }
+  ]
+}

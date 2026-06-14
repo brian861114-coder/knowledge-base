@@ -1,0 +1,94 @@
+{
+  "id": "歐拉－拉格朗日方程",
+  "path": "01_laws/歐拉－拉格朗日方程.md",
+  "title": "歐拉－拉格朗日方程",
+  "summary": "歐拉-拉格朗日方程是從最小作用量原理推導出的運動方程，以廣義座標描述系統動力學，自動處理約束力。",
+  "body_preview": "## 定律摘要\n歐拉-拉格朗日方程：對每個廣義座標 $q_i$，運動方程為 $\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0$，其中 $L = T - V$ 為拉格朗日量。這是牛頓力學的等價但更強大的表述。\n\n## 數學表述\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0 \\quad (i = 1, \\ldots, n)$$\n\n其中 $L(q_1, \\ldots, q_n, \\dot{q}_1, \\ldots, \\dot{q}_n, t) = T - V$。\n\n含耗散力時（瑞利耗散函數 $\\mathcal{F}$）：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} + \\frac{\\partial \\mathcal{F}}{\\partial \\dot{q}_i} = 0$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 拉格朗日量 | J |\n| $T$ | 動能 | J |\n| $V$ | 位能 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $\\dot{q}_i$ | 廣義速度 | 依問題而定 |\n| $n$ | 自由度 | 無量綱 |\n| $\\mathcal{F}$ | 瑞利耗散函數 | W |\n\n## 物理意義\n核心機制： 歐拉-拉格朗日方程是牛頓第二定律的「座標無關」版本。不需要處理約束力——只要選好廣義座標，約束自動滿足。廣義力 $Q_i = \\partial L/\\partial q_i$ 包含了所有物理效應。\n\n類比： 牛頓方法像在每個方向分別計算力的分量；拉格朗日方法像直接用",
+  "body_full": "## 定律摘要\n歐拉-拉格朗日方程：對每個廣義座標 $q_i$，運動方程為 $\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0$，其中 $L = T - V$ 為拉格朗日量。這是牛頓力學的等價但更強大的表述。\n\n## 數學表述\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0 \\quad (i = 1, \\ldots, n)$$\n\n其中 $L(q_1, \\ldots, q_n, \\dot{q}_1, \\ldots, \\dot{q}_n, t) = T - V$。\n\n含耗散力時（瑞利耗散函數 $\\mathcal{F}$）：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} + \\frac{\\partial \\mathcal{F}}{\\partial \\dot{q}_i} = 0$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 拉格朗日量 | J |\n| $T$ | 動能 | J |\n| $V$ | 位能 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $\\dot{q}_i$ | 廣義速度 | 依問題而定 |\n| $n$ | 自由度 | 無量綱 |\n| $\\mathcal{F}$ | 瑞利耗散函數 | W |\n\n## 物理意義\n核心機制： 歐拉-拉格朗日方程是牛頓第二定律的「座標無關」版本。不需要處理約束力——只要選好廣義座標，約束自動滿足。廣義力 $Q_i = \\partial L/\\partial q_i$ 包含了所有物理效應。\n\n類比： 牛頓方法像在每個方向分別計算力的分量；拉格朗日方法像直接用能量的語言——能量是標量，比力向量更容易處理。\n\n常見盲點： $\\partial L/\\partial q_i$ 不是「力」的直覺對應——它是廣義力，可能是力矩、壓力或其他量，取決於 $q_i$ 的選擇。\n\n歐拉-拉格朗日方程回答的問題是「給定系統的能量，如何得到運動方程」。它的威力在於：(1) 自動處理約束力，(2) 座標選擇自由，(3) 對稱性直接給出守恆律。\n\n## 推導\n從最小作用量原理 $\\delta S = 0$ 出發，對 $L$ 做變分：\n\n$$\\delta S = \\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i}\\delta q_i + \\frac{\\partial L}{\\partial \\dot{q}_i}\\delta\\dot{q}_i\\right)dt = 0$$\n\n對第二項分部積分（端點條件 $\\delta q_i = 0$）：\n\n$$\\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i} - \\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i}\\right)\\delta q_i\\,dt = 0$$\n\n$\\delta q_i$ 任意，被積函數為零：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} = \\frac{\\partial L}{\\partial q_i}$$\n\n## 適用條件\n1. 完整約束系統\n2. $L = T - V$（保守力場）\n3. 廣義座標獨立\n4. 非保守力需額外處理（廣義力或耗散函數）\n\n## 典型應用\n單擺： $L = \\frac{1}{2}ml^2\\dot{\\theta}^2 + mgl\\cos\\theta$，得 $\\ddot{\\theta} = -(g/l)\\sin\\theta$\n行星運動： 極座標中 $L = \\frac{1}{2}m(\\dot{r}^2 + r^2\\dot{\\theta}^2) + GMm/r$\n耦合振子： 多自由度系統的正態模式分析\n\n## 常見誤解\n1. 「和牛頓力學不同」 — 等價，但更強大。\n2. 「只能用於保守力」 — 可推廣到非保守力（廣義力 $Q_i$）。\n\n## 歷史背景\n萊昂哈德·歐拉（Euler, 1707–1783）在 1750 年代推導了特殊情況。約瑟夫-路易·拉格朗日（Lagrange, 1736–1813）在 1788 年的《分析力學》中給出一般形式，完全消除了向量力的概念。\n\n## 現代理論視角\n在場論中，歐拉-拉格朗日方程被推廣為場方程：$\\partial_\\mu(\\partial\\mathcal{L}/\\partial(\\partial_\\mu\\phi)) - \\partial\\mathcal{L}/\\partial\\phi = 0$。標準模型的所有場方程都由此形式產生。\n\n## 相關連結\n### 相關概念\n最小作用量原理\n拉格朗日力學\n諾特定理\n\n### 相關物理量\n拉格朗日量\n廣義座標\n\n### 相關實驗\n單擺運動實驗\n\n### 衍生結果\n諾特定理\n哈密頓方程",
+  "sections": [
+    {
+      "title": "定律摘要",
+      "level": 2,
+      "preview": "歐拉-拉格朗日方程：對每個廣義座標 $q_i$，運動方程為 $\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0$，其中 $L = T - V$ 為拉格朗日量。這是牛頓力學的等價但更強大的表述。",
+      "content": "歐拉-拉格朗日方程：對每個廣義座標 $q_i$，運動方程為 $\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0$，其中 $L = T - V$ 為拉格朗日量。這是牛頓力學的等價但更強大的表述。"
+    },
+    {
+      "title": "數學表述",
+      "level": 2,
+      "preview": "$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0 \\quad (i = 1, \\ldots, n)$$\n\n其中 $L(q_1, \\ldots, q_n, \\dot{q}_1, \\ldots, \\dot{q}_n, t) = T - V$。\n\n含耗散力時（瑞利耗散函數 $\\mathcal{F}$）：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} + \\frac{\\partial \\mathcal{F}}{\\partial \\dot{q}_i} = 0$$",
+      "content": "$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = 0 \\quad (i = 1, \\ldots, n)$$\n\n其中 $L(q_1, \\ldots, q_n, \\dot{q}_1, \\ldots, \\dot{q}_n, t) = T - V$。\n\n含耗散力時（瑞利耗散函數 $\\mathcal{F}$）：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} + \\frac{\\partial \\mathcal{F}}{\\partial \\dot{q}_i} = 0$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 拉格朗日量 | J |\n| $T$ | 動能 | J |\n| $V$ | 位能 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $\\dot{q}_i$ | 廣義速度 | 依問題而定 |\n| $n$ | 自由度 | 無量綱 |\n| $\\mathcal{F}$ | 瑞利耗散函數 | W |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 拉格朗日量 | J |\n| $T$ | 動能 | J |\n| $V$ | 位能 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $\\dot{q}_i$ | 廣義速度 | 依問題而定 |\n| $n$ | 自由度 | 無量綱 |\n| $\\mathcal{F}$ | 瑞利耗散函數 | W |"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 歐拉-拉格朗日方程是牛頓第二定律的「座標無關」版本。不需要處理約束力——只要選好廣義座標，約束自動滿足。廣義力 $Q_i = \\partial L/\\partial q_i$ 包含了所有物理效應。\n\n類比： 牛頓方法像在每個方向分別計算力的分量；拉格朗日方法像直接用能量的語言——能量是標量，比力向量更容易處理。\n\n常見盲點： $\\partial L/\\partial q_i$ 不是「力」的直覺對應——它是廣義力，可能是力矩、壓力或其他量，取決於 $q_i$ 的選擇。\n\n歐拉-拉格朗日方程回答的問題是「給定系統的能量，如何得到運動方程」。它的威力在於：(1) 自動處理約束力，(2) 座標選擇自由，(3) 對稱性直接給出守恆律。",
+      "content": "核心機制： 歐拉-拉格朗日方程是牛頓第二定律的「座標無關」版本。不需要處理約束力——只要選好廣義座標，約束自動滿足。廣義力 $Q_i = \\partial L/\\partial q_i$ 包含了所有物理效應。\n\n類比： 牛頓方法像在每個方向分別計算力的分量；拉格朗日方法像直接用能量的語言——能量是標量，比力向量更容易處理。\n\n常見盲點： $\\partial L/\\partial q_i$ 不是「力」的直覺對應——它是廣義力，可能是力矩、壓力或其他量，取決於 $q_i$ 的選擇。\n\n歐拉-拉格朗日方程回答的問題是「給定系統的能量，如何得到運動方程」。它的威力在於：(1) 自動處理約束力，(2) 座標選擇自由，(3) 對稱性直接給出守恆律。"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "從最小作用量原理 $\\delta S = 0$ 出發，對 $L$ 做變分：\n\n$$\\delta S = \\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i}\\delta q_i + \\frac{\\partial L}{\\partial \\dot{q}_i}\\delta\\dot{q}_i\\right)dt = 0$$\n\n對第二項分部積分（端點條件 $\\delta q_i = 0$）：\n\n$$\\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i} - \\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i}\\right)\\delta q_i\\,dt = 0$$\n\n$\\delta q_i$ 任意，被積函數為零：",
+      "content": "從最小作用量原理 $\\delta S = 0$ 出發，對 $L$ 做變分：\n\n$$\\delta S = \\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i}\\delta q_i + \\frac{\\partial L}{\\partial \\dot{q}_i}\\delta\\dot{q}_i\\right)dt = 0$$\n\n對第二項分部積分（端點條件 $\\delta q_i = 0$）：\n\n$$\\int_{t_1}^{t_2}\\left(\\frac{\\partial L}{\\partial q_i} - \\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i}\\right)\\delta q_i\\,dt = 0$$\n\n$\\delta q_i$ 任意，被積函數為零：\n\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} = \\frac{\\partial L}{\\partial q_i}$$"
+    },
+    {
+      "title": "適用條件",
+      "level": 2,
+      "preview": "1. 完整約束系統\n2. $L = T - V$（保守力場）\n3. 廣義座標獨立\n4. 非保守力需額外處理（廣義力或耗散函數）",
+      "content": "1. 完整約束系統\n2. $L = T - V$（保守力場）\n3. 廣義座標獨立\n4. 非保守力需額外處理（廣義力或耗散函數）"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "單擺： $L = \\frac{1}{2}ml^2\\dot{\\theta}^2 + mgl\\cos\\theta$，得 $\\ddot{\\theta} = -(g/l)\\sin\\theta$\n行星運動： 極座標中 $L = \\frac{1}{2}m(\\dot{r}^2 + r^2\\dot{\\theta}^2) + GMm/r$\n耦合振子： 多自由度系統的正態模式分析",
+      "content": "單擺： $L = \\frac{1}{2}ml^2\\dot{\\theta}^2 + mgl\\cos\\theta$，得 $\\ddot{\\theta} = -(g/l)\\sin\\theta$\n行星運動： 極座標中 $L = \\frac{1}{2}m(\\dot{r}^2 + r^2\\dot{\\theta}^2) + GMm/r$\n耦合振子： 多自由度系統的正態模式分析"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「和牛頓力學不同」 — 等價，但更強大。\n2. 「只能用於保守力」 — 可推廣到非保守力（廣義力 $Q_i$）。",
+      "content": "1. 「和牛頓力學不同」 — 等價，但更強大。\n2. 「只能用於保守力」 — 可推廣到非保守力（廣義力 $Q_i$）。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "萊昂哈德·歐拉（Euler, 1707–1783）在 1750 年代推導了特殊情況。約瑟夫-路易·拉格朗日（Lagrange, 1736–1813）在 1788 年的《分析力學》中給出一般形式，完全消除了向量力的概念。",
+      "content": "萊昂哈德·歐拉（Euler, 1707–1783）在 1750 年代推導了特殊情況。約瑟夫-路易·拉格朗日（Lagrange, 1736–1813）在 1788 年的《分析力學》中給出一般形式，完全消除了向量力的概念。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在場論中，歐拉-拉格朗日方程被推廣為場方程：$\\partial_\\mu(\\partial\\mathcal{L}/\\partial(\\partial_\\mu\\phi)) - \\partial\\mathcal{L}/\\partial\\phi = 0$。標準模型的所有場方程都由此形式產生。",
+      "content": "在場論中，歐拉-拉格朗日方程被推廣為場方程：$\\partial_\\mu(\\partial\\mathcal{L}/\\partial(\\partial_\\mu\\phi)) - \\partial\\mathcal{L}/\\partial\\phi = 0$。標準模型的所有場方程都由此形式產生。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "最小作用量原理\n拉格朗日力學\n諾特定理",
+      "content": "最小作用量原理\n拉格朗日力學\n諾特定理"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "拉格朗日量\n廣義座標",
+      "content": "拉格朗日量\n廣義座標"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "單擺運動實驗",
+      "content": "單擺運動實驗"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "諾特定理\n哈密頓方程",
+      "content": "諾特定理\n哈密頓方程"
+    }
+  ]
+}

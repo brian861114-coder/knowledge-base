@@ -1,0 +1,94 @@
+{
+  "id": "坡印廷向量",
+  "path": "03_quantities/坡印廷向量.md",
+  "title": "坡印廷向量",
+  "summary": "坡印廷向量 S = E×H 描述電磁場中能量流動的方向和大小，是電磁能量傳播的核心量。",
+  "body_preview": "## 定義\n坡印廷向量 $\\vec{S}$ 定義為電場和磁場的叉積：$\\vec{S} = \\vec{E} \\times \\vec{H}$，方向為能量流動方向，大小為單位面積的功率（W/m²）。\n\n## 數學表達\n$$\\vec{S} = \\vec{E} \\times \\vec{H} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n平均值（正弦波）：$\\langle S \\rangle = \\frac{1}{2}\\text{Re}(\\vec{E} \\times \\vec{H}^*)$\n\n輻射強度：$I = \\langle |\\vec{S}| \\rangle$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $I$ | 輻射強度 | W/m² |\n\n## 維度與量綱\n$[S] = \\text{MT}^{-3}$\nSI 單位：W/m²\n太陽常數：$\\approx 1361$ W/m²\n\n## 物理意義\n核心機制： 坡印廷向量是「電磁能量的流速」。哪裡有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在，哪裡就有能量流動。\n\n類比： 想像河流——水的流速和流量告訴你有多少水通過某個截面。坡印廷向量告訴你有多少電磁能量通過某個面。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路）。\n\n坡印廷向量回答的問題是「電磁能量在空間中如何流動」。這是天線輻射、光學強度、微波功率傳輸的基礎。\n\n## 量測方式\n1. 輻射計： 量測輻射強度\n2. 功率計： 量測微波功率密度\n3. 光電探測器： 量測光強度\n\n## 出現於哪些定律\n坡印廷定理：$\\partial u/\\partial t + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cd",
+  "body_full": "## 定義\n坡印廷向量 $\\vec{S}$ 定義為電場和磁場的叉積：$\\vec{S} = \\vec{E} \\times \\vec{H}$，方向為能量流動方向，大小為單位面積的功率（W/m²）。\n\n## 數學表達\n$$\\vec{S} = \\vec{E} \\times \\vec{H} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n平均值（正弦波）：$\\langle S \\rangle = \\frac{1}{2}\\text{Re}(\\vec{E} \\times \\vec{H}^*)$\n\n輻射強度：$I = \\langle |\\vec{S}| \\rangle$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $I$ | 輻射強度 | W/m² |\n\n## 維度與量綱\n$[S] = \\text{MT}^{-3}$\nSI 單位：W/m²\n太陽常數：$\\approx 1361$ W/m²\n\n## 物理意義\n核心機制： 坡印廷向量是「電磁能量的流速」。哪裡有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在，哪裡就有能量流動。\n\n類比： 想像河流——水的流速和流量告訴你有多少水通過某個截面。坡印廷向量告訴你有多少電磁能量通過某個面。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路）。\n\n坡印廷向量回答的問題是「電磁能量在空間中如何流動」。這是天線輻射、光學強度、微波功率傳輸的基礎。\n\n## 量測方式\n1. 輻射計： 量測輻射強度\n2. 功率計： 量測微波功率密度\n3. 光電探測器： 量測光強度\n\n## 出現於哪些定律\n坡印廷定理：$\\partial u/\\partial t + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$\n電磁波強度：$I = \\langle S \\rangle$\n輻射壓：$P = S/c$\n\n## 歷史背景\n約翰·亨利·坡印廷（John Henry Poynting, 1884）和 奧利弗·亥維賽（Oliver Heaviside）獨立推導了電磁能量流的表達式。\n\n## 現代理論視角\n在現代電磁學中，坡印廷向量被整合進馬克士威方程組的統一框架。\n\n## 相關連結\n### 相關概念\n電磁場能量流\n電磁波傳播\n\n### 相關物理量\n電場\n磁場\n\n### 相關實驗\n微波能流量測\n\n### 衍生結果\n輻射壓\n天線輻射功率\n\n## 推導\n從馬克士威方程組推導。對法拉第定律兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n利用向量恆等式 $\\nabla \\cdot (\\vec{E} \\times \\vec{B}) = \\vec{B} \\cdot (\\nabla \\times \\vec{E}) - \\vec{E} \\cdot (\\nabla \\times \\vec{B})$：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n其中 $\\vec{S} = \\vec{E} \\times \\vec{B}/\\mu_0$。",
+  "sections": [
+    {
+      "title": "定義",
+      "level": 2,
+      "preview": "坡印廷向量 $\\vec{S}$ 定義為電場和磁場的叉積：$\\vec{S} = \\vec{E} \\times \\vec{H}$，方向為能量流動方向，大小為單位面積的功率（W/m²）。",
+      "content": "坡印廷向量 $\\vec{S}$ 定義為電場和磁場的叉積：$\\vec{S} = \\vec{E} \\times \\vec{H}$，方向為能量流動方向，大小為單位面積的功率（W/m²）。"
+    },
+    {
+      "title": "數學表達",
+      "level": 2,
+      "preview": "$$\\vec{S} = \\vec{E} \\times \\vec{H} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n平均值（正弦波）：$\\langle S \\rangle = \\frac{1}{2}\\text{Re}(\\vec{E} \\times \\vec{H}^*)$\n\n輻射強度：$I = \\langle |\\vec{S}| \\rangle$",
+      "content": "$$\\vec{S} = \\vec{E} \\times \\vec{H} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n平均值（正弦波）：$\\langle S \\rangle = \\frac{1}{2}\\text{Re}(\\vec{E} \\times \\vec{H}^*)$\n\n輻射強度：$I = \\langle |\\vec{S}| \\rangle$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $I$ | 輻射強度 | W/m² |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $I$ | 輻射強度 | W/m² |"
+    },
+    {
+      "title": "維度與量綱",
+      "level": 2,
+      "preview": "$[S] = \\text{MT}^{-3}$\nSI 單位：W/m²\n太陽常數：$\\approx 1361$ W/m²",
+      "content": "$[S] = \\text{MT}^{-3}$\nSI 單位：W/m²\n太陽常數：$\\approx 1361$ W/m²"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 坡印廷向量是「電磁能量的流速」。哪裡有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在，哪裡就有能量流動。\n\n類比： 想像河流——水的流速和流量告訴你有多少水通過某個截面。坡印廷向量告訴你有多少電磁能量通過某個面。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路）。\n\n坡印廷向量回答的問題是「電磁能量在空間中如何流動」。這是天線輻射、光學強度、微波功率傳輸的基礎。",
+      "content": "核心機制： 坡印廷向量是「電磁能量的流速」。哪裡有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在，哪裡就有能量流動。\n\n類比： 想像河流——水的流速和流量告訴你有多少水通過某個截面。坡印廷向量告訴你有多少電磁能量通過某個面。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路）。\n\n坡印廷向量回答的問題是「電磁能量在空間中如何流動」。這是天線輻射、光學強度、微波功率傳輸的基礎。"
+    },
+    {
+      "title": "量測方式",
+      "level": 2,
+      "preview": "1. 輻射計： 量測輻射強度\n2. 功率計： 量測微波功率密度\n3. 光電探測器： 量測光強度",
+      "content": "1. 輻射計： 量測輻射強度\n2. 功率計： 量測微波功率密度\n3. 光電探測器： 量測光強度"
+    },
+    {
+      "title": "出現於哪些定律",
+      "level": 2,
+      "preview": "坡印廷定理：$\\partial u/\\partial t + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$\n電磁波強度：$I = \\langle S \\rangle$\n輻射壓：$P = S/c$",
+      "content": "坡印廷定理：$\\partial u/\\partial t + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$\n電磁波強度：$I = \\langle S \\rangle$\n輻射壓：$P = S/c$"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "約翰·亨利·坡印廷（John Henry Poynting, 1884）和 奧利弗·亥維賽（Oliver Heaviside）獨立推導了電磁能量流的表達式。",
+      "content": "約翰·亨利·坡印廷（John Henry Poynting, 1884）和 奧利弗·亥維賽（Oliver Heaviside）獨立推導了電磁能量流的表達式。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在現代電磁學中，坡印廷向量被整合進馬克士威方程組的統一框架。",
+      "content": "在現代電磁學中，坡印廷向量被整合進馬克士威方程組的統一框架。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "電磁場能量流\n電磁波傳播",
+      "content": "電磁場能量流\n電磁波傳播"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "電場\n磁場",
+      "content": "電場\n磁場"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "微波能流量測",
+      "content": "微波能流量測"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "輻射壓\n天線輻射功率",
+      "content": "輻射壓\n天線輻射功率"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "從馬克士威方程組推導。對法拉第定律兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n利用向量恆等式 $\\nabla \\cdot (\\vec{E} \\times \\vec{B}) = \\vec{B} \\cdot (\\nabla \\times \\vec{E}) - \\vec{E} \\cdot (\\nabla \\times \\vec{B})$：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cd",
+      "content": "從馬克士威方程組推導。對法拉第定律兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n利用向量恆等式 $\\nabla \\cdot (\\vec{E} \\times \\vec{B}) = \\vec{B} \\cdot (\\nabla \\times \\vec{E}) - \\vec{E} \\cdot (\\nabla \\times \\vec{B})$：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n其中 $\\vec{S} = \\vec{E} \\times \\vec{B}/\\mu_0$。"
+    }
+  ]
+}

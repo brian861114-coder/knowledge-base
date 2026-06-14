@@ -1,0 +1,100 @@
+{
+  "id": "介電常數",
+  "path": "02_concepts/electromagnetism/介電常數.md",
+  "title": "介電常數",
+  "summary": "介電常數描述材料對外加電場的回應強弱，是刻畫電介質效應的重要參數。",
+  "body_preview": "## 概念摘要\n介電常數（dielectric constant）或相對介電常數 $\\epsilon_r$ 是衡量電介質在外加電場中極化程度的無量綱參數。$\\epsilon_r$ 越大，材料的極化越強，對電容器的增容效果越明顯。\n\n## 嚴格定義\n相對介電常數定義為材料的電容率 $\\epsilon$ 與真空電容率 $\\epsilon_0$ 的比值：\n\n$$\\epsilon_r = \\frac{\\epsilon}{\\epsilon_0} = 1 + \\chi_e$$\n\n其中 $\\chi_e$ 為電極化率（electric susceptibility）。在線性、均勻、各向同性介質中，電位移：\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 \\epsilon_r \\vec{E}$$\n\n平行板電容器填充介電常數為 $\\epsilon_r$ 的介質後，電容增大為真空時的 $\\epsilon_r$ 倍：\n\n$$C = \\epsilon_r C_0 = \\epsilon_r \\frac{\\epsilon_0 A}{d}$$\n\n## 先備知識\n電介質的極化機制\n電容器的基本結構與電容定義\n電場與電位移的區別\n真空電容率 $\\epsilon_0 = 8.854 \\times 10^{-12}$ F/m\n\n## 物理意義\n核心機制： 外加電場使介質中的正負電荷中心稍微分離（極化），產生感應電場削弱外加場。$\\epsilon_r$ 量化了這種削弱程度。$\\epsilon_r$ 越大，極化越強，削弱越明顯。\n\n類比： 想像在兩塊金屬板之間塞入一塊海綿。海綿被壓縮時會抵抗，讓板看起來更「緊」。電介質在電場中極化，也讓電容器看起來「更容易存電荷」。\n\n常見盲點： $\\epsilon_r$ 是頻率依賴的。靜態 $\\epsilon_r$（如水的 ~80）和光頻 $\\epsilon_r$（水的 ~1.77，即折射率的平方）差異巨大，因為低頻時取向極化有貢獻，高頻時只有電子極化。\n\n介電常數回答的問題是「材料在電場中能儲存多少額外的電場能量」。這是電容器設計的核心參",
+  "body_full": "## 概念摘要\n介電常數（dielectric constant）或相對介電常數 $\\epsilon_r$ 是衡量電介質在外加電場中極化程度的無量綱參數。$\\epsilon_r$ 越大，材料的極化越強，對電容器的增容效果越明顯。\n\n## 嚴格定義\n相對介電常數定義為材料的電容率 $\\epsilon$ 與真空電容率 $\\epsilon_0$ 的比值：\n\n$$\\epsilon_r = \\frac{\\epsilon}{\\epsilon_0} = 1 + \\chi_e$$\n\n其中 $\\chi_e$ 為電極化率（electric susceptibility）。在線性、均勻、各向同性介質中，電位移：\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 \\epsilon_r \\vec{E}$$\n\n平行板電容器填充介電常數為 $\\epsilon_r$ 的介質後，電容增大為真空時的 $\\epsilon_r$ 倍：\n\n$$C = \\epsilon_r C_0 = \\epsilon_r \\frac{\\epsilon_0 A}{d}$$\n\n## 先備知識\n電介質的極化機制\n電容器的基本結構與電容定義\n電場與電位移的區別\n真空電容率 $\\epsilon_0 = 8.854 \\times 10^{-12}$ F/m\n\n## 物理意義\n核心機制： 外加電場使介質中的正負電荷中心稍微分離（極化），產生感應電場削弱外加場。$\\epsilon_r$ 量化了這種削弱程度。$\\epsilon_r$ 越大，極化越強，削弱越明顯。\n\n類比： 想像在兩塊金屬板之間塞入一塊海綿。海綿被壓縮時會抵抗，讓板看起來更「緊」。電介質在電場中極化，也讓電容器看起來「更容易存電荷」。\n\n常見盲點： $\\epsilon_r$ 是頻率依賴的。靜態 $\\epsilon_r$（如水的 ~80）和光頻 $\\epsilon_r$（水的 ~1.77，即折射率的平方）差異巨大，因為低頻時取向極化有貢獻，高頻時只有電子極化。\n\n介電常數回答的問題是「材料在電場中能儲存多少額外的電場能量」。這是電容器設計的核心參數——高 $\\epsilon_r$ 材料可在相同體積下實現更大電容。在絕緣設計中，$\\epsilon_r$ 決定了電場在不同介質界面的分配。在電磁波傳播中，$\\epsilon_r$ 影響波速和折射率。\n\n## 典型應用\n電容器設計： 選擇高 $\\epsilon_r$ 介質（如鈦酸鋇 $\\epsilon_r \\sim 1000$–$10000$）增大電容\n絕緣設計： 多層介質中的電場分配取決於各層的 $\\epsilon_r$\n微波工程： 介質基板的 $\\epsilon_r$ 決定微帶線的特性阻抗和波速\n遙感探測： 土壤含水量改變其 $\\epsilon_r$，可用微波感測器量測\n\n## 常見誤解\n1. 「$\\epsilon_r$ 是常數」 — 不是。$\\epsilon_r$ 取決於頻率、溫度和電場強度。水在靜態下 $\\epsilon_r \\approx 80$，在可見光頻率下只有 ~1.77。\n2. 「$\\epsilon_r$ 越大越好」 — 取決於應用。高 $\\epsilon_r$ 增大電容，但也可能增加介電損耗（$\\tan\\delta$），在高頻下造成發熱。\n3. 「真空的 $\\epsilon_r = 0$」 — 真空的 $\\epsilon_r = 1$（定義）。$\\epsilon_0$ 是真空的電容率，不是零。\n\n## 歷史背景\n麥可·法拉第（Michael Faraday, 1791–1867）在 1837 年首次系統研究了電介質效應，發現不同材料對電容的影響不同，引入了「特定感應容量」（specific inductive capacity）的概念，即今天的介電常數。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1860 年代將介電常數整合到電磁場理論中。彼得·德拜（Peter Debye, 1884–1966）在 1912 年建立了極性分子的介電常數理論（德拜方程），解釋了 $\\epsilon_r$ 的頻率和溫度依賴性。\n\n## 現代理論視角\n在固態物理中，介電常數用 克萊默斯-克勒尼希關係（Kramers-Kronig relations）與光學吸收光譜連結，實部和虛部不能獨立指定。頻率依賴介電函數 $\\epsilon(\\omega)$ 完整描述了介質對任意頻率電場的響應。在半導體物理中，高頻介電常數 $\\epsilon_\\infty$ 和靜態介電常數 $\\epsilon_s$ 的差異反映了晶格振動（聲子）對極化的貢獻。在超材料（metamaterials）中，人為設計的週期結構可實現負介電常數，用於超透鏡和隱形斗篷。\n\n## 相關連結\n### 相關概念\n電介質\n平行板電容器\n極化\n\n### 相關物理量\n電容率\n電極化率\n電位移\n\n### 相關實驗\n介電常數量測實驗\n\n### 衍生結果\n電容器儲能\n電磁波在介質中的傳播\n\n## 核心公式\n| 公式 | 名稱 |\n|------|------|\n| $\\epsilon_r = \\epsilon / \\epsilon_0$ | 相對介電常數定義 |\n| $\\epsilon_r = 1 + \\chi_e$ | 與電極化率的關係 |\n| $\\vec{D} = \\epsilon_0 \\epsilon_r \\vec{E}$ | 電位移場 |\n| $\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$ | 極化強度 |\n| $C = \\epsilon_r C_0$ | 填充介質後的電容 |\n| $\\kappa = \\epsilon_r$ | 常用符號（$\\kappa$ 或 $K$） |\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\epsilon_r$ | 相對介電常數 | 無量綱 |\n| $\\epsilon$ | 電容率（絕對介電常數） | F/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\chi_e$ | 電極化率 | 無量綱 |\n| $\\vec{D}$ | 電位移場 | C/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{P}$ | 極化強度 | C/m² |\n| $C$ | 電容 | F |\n| $A$ | 面積 | m² |\n| $d$ | 板距 | m |\n\n## 推導\n在真空中，電位移 $\\vec{D} = \\epsilon_0 \\vec{E}$。\n\n在線性介質中，外加電場 $\\vec{E}$ 使介質極化，產生極化強度 $\\vec{P}$：\n\n$$\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$$\n\n電位移的定義為：\n\n$$\\vec{D} = \\epsilon_0 \\vec{E} + \\vec{P} = \\epsilon_0(1 + \\chi_e)\\vec{E}$$\n\n因此：\n\n$$\\epsilon = \\epsilon_0(1 + \\chi_e) = \\epsilon_0 \\epsilon_r$$\n\n對平行板電容器，$C = \\epsilon A/d$，填充介質後：\n\n$$C = \\epsilon_r \\cdot \\frac{\\epsilon_0 A}{d} = \\epsilon_r C_0$$",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "介電常數（dielectric constant）或相對介電常數 $\\epsilon_r$ 是衡量電介質在外加電場中極化程度的無量綱參數。$\\epsilon_r$ 越大，材料的極化越強，對電容器的增容效果越明顯。",
+      "content": "介電常數（dielectric constant）或相對介電常數 $\\epsilon_r$ 是衡量電介質在外加電場中極化程度的無量綱參數。$\\epsilon_r$ 越大，材料的極化越強，對電容器的增容效果越明顯。"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "相對介電常數定義為材料的電容率 $\\epsilon$ 與真空電容率 $\\epsilon_0$ 的比值：\n\n$$\\epsilon_r = \\frac{\\epsilon}{\\epsilon_0} = 1 + \\chi_e$$\n\n其中 $\\chi_e$ 為電極化率（electric susceptibility）。在線性、均勻、各向同性介質中，電位移：\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 \\epsilon_r \\vec{E}$$\n\n平行板電容器填充介電常數為 $\\epsilon_r$ 的介質後，電容增大為真空時的 $\\epsilon_r$ 倍：\n\n$$C = \\epsilon_r C_0 = \\epsilon_r \\frac{\\epsilon_0 A}{d}$$",
+      "content": "相對介電常數定義為材料的電容率 $\\epsilon$ 與真空電容率 $\\epsilon_0$ 的比值：\n\n$$\\epsilon_r = \\frac{\\epsilon}{\\epsilon_0} = 1 + \\chi_e$$\n\n其中 $\\chi_e$ 為電極化率（electric susceptibility）。在線性、均勻、各向同性介質中，電位移：\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 \\epsilon_r \\vec{E}$$\n\n平行板電容器填充介電常數為 $\\epsilon_r$ 的介質後，電容增大為真空時的 $\\epsilon_r$ 倍：\n\n$$C = \\epsilon_r C_0 = \\epsilon_r \\frac{\\epsilon_0 A}{d}$$"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "電介質的極化機制\n電容器的基本結構與電容定義\n電場與電位移的區別\n真空電容率 $\\epsilon_0 = 8.854 \\times 10^{-12}$ F/m",
+      "content": "電介質的極化機制\n電容器的基本結構與電容定義\n電場與電位移的區別\n真空電容率 $\\epsilon_0 = 8.854 \\times 10^{-12}$ F/m"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 外加電場使介質中的正負電荷中心稍微分離（極化），產生感應電場削弱外加場。$\\epsilon_r$ 量化了這種削弱程度。$\\epsilon_r$ 越大，極化越強，削弱越明顯。\n\n類比： 想像在兩塊金屬板之間塞入一塊海綿。海綿被壓縮時會抵抗，讓板看起來更「緊」。電介質在電場中極化，也讓電容器看起來「更容易存電荷」。\n\n常見盲點： $\\epsilon_r$ 是頻率依賴的。靜態 $\\epsilon_r$（如水的 ~80）和光頻 $\\epsilon_r$（水的 ~1.77，即折射率的平方）差異巨大，因為低頻時取向極化有貢獻，高頻時只有電子極化。\n\n介電常數回答的問題是「材料在電場中能儲存多少額外的電場能量」。這是電容器設計的核心參數——高 $\\epsilon_r$ 材料可在相同體積下實現更大電容。在絕緣設計中，$\\epsilon_r$ 決定了電場在",
+      "content": "核心機制： 外加電場使介質中的正負電荷中心稍微分離（極化），產生感應電場削弱外加場。$\\epsilon_r$ 量化了這種削弱程度。$\\epsilon_r$ 越大，極化越強，削弱越明顯。\n\n類比： 想像在兩塊金屬板之間塞入一塊海綿。海綿被壓縮時會抵抗，讓板看起來更「緊」。電介質在電場中極化，也讓電容器看起來「更容易存電荷」。\n\n常見盲點： $\\epsilon_r$ 是頻率依賴的。靜態 $\\epsilon_r$（如水的 ~80）和光頻 $\\epsilon_r$（水的 ~1.77，即折射率的平方）差異巨大，因為低頻時取向極化有貢獻，高頻時只有電子極化。\n\n介電常數回答的問題是「材料在電場中能儲存多少額外的電場能量」。這是電容器設計的核心參數——高 $\\epsilon_r$ 材料可在相同體積下實現更大電容。在絕緣設計中，$\\epsilon_r$ 決定了電場在不同介質界面的分配。在電磁波傳播中，$\\epsilon_r$ 影響波速和折射率。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "電容器設計： 選擇高 $\\epsilon_r$ 介質（如鈦酸鋇 $\\epsilon_r \\sim 1000$–$10000$）增大電容\n絕緣設計： 多層介質中的電場分配取決於各層的 $\\epsilon_r$\n微波工程： 介質基板的 $\\epsilon_r$ 決定微帶線的特性阻抗和波速\n遙感探測： 土壤含水量改變其 $\\epsilon_r$，可用微波感測器量測",
+      "content": "電容器設計： 選擇高 $\\epsilon_r$ 介質（如鈦酸鋇 $\\epsilon_r \\sim 1000$–$10000$）增大電容\n絕緣設計： 多層介質中的電場分配取決於各層的 $\\epsilon_r$\n微波工程： 介質基板的 $\\epsilon_r$ 決定微帶線的特性阻抗和波速\n遙感探測： 土壤含水量改變其 $\\epsilon_r$，可用微波感測器量測"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「$\\epsilon_r$ 是常數」 — 不是。$\\epsilon_r$ 取決於頻率、溫度和電場強度。水在靜態下 $\\epsilon_r \\approx 80$，在可見光頻率下只有 ~1.77。\n2. 「$\\epsilon_r$ 越大越好」 — 取決於應用。高 $\\epsilon_r$ 增大電容，但也可能增加介電損耗（$\\tan\\delta$），在高頻下造成發熱。\n3. 「真空的 $\\epsilon_r = 0$」 — 真空的 $\\epsilon_r = 1$（定義）。$\\epsilon_0$ 是真空的電容率，不是零。",
+      "content": "1. 「$\\epsilon_r$ 是常數」 — 不是。$\\epsilon_r$ 取決於頻率、溫度和電場強度。水在靜態下 $\\epsilon_r \\approx 80$，在可見光頻率下只有 ~1.77。\n2. 「$\\epsilon_r$ 越大越好」 — 取決於應用。高 $\\epsilon_r$ 增大電容，但也可能增加介電損耗（$\\tan\\delta$），在高頻下造成發熱。\n3. 「真空的 $\\epsilon_r = 0$」 — 真空的 $\\epsilon_r = 1$（定義）。$\\epsilon_0$ 是真空的電容率，不是零。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "麥可·法拉第（Michael Faraday, 1791–1867）在 1837 年首次系統研究了電介質效應，發現不同材料對電容的影響不同，引入了「特定感應容量」（specific inductive capacity）的概念，即今天的介電常數。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1860 年代將介電常數整合到電磁場理論中。彼得·德拜（Peter Debye, 1884–1966）在 1912 年建立了極性分子的介電常數理論（德拜方程），解釋了 $\\epsilon_r$ 的頻率和溫度依賴性。",
+      "content": "麥可·法拉第（Michael Faraday, 1791–1867）在 1837 年首次系統研究了電介質效應，發現不同材料對電容的影響不同，引入了「特定感應容量」（specific inductive capacity）的概念，即今天的介電常數。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1860 年代將介電常數整合到電磁場理論中。彼得·德拜（Peter Debye, 1884–1966）在 1912 年建立了極性分子的介電常數理論（德拜方程），解釋了 $\\epsilon_r$ 的頻率和溫度依賴性。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在固態物理中，介電常數用 克萊默斯-克勒尼希關係（Kramers-Kronig relations）與光學吸收光譜連結，實部和虛部不能獨立指定。頻率依賴介電函數 $\\epsilon(\\omega)$ 完整描述了介質對任意頻率電場的響應。在半導體物理中，高頻介電常數 $\\epsilon_\\infty$ 和靜態介電常數 $\\epsilon_s$ 的差異反映了晶格振動（聲子）對極化的貢獻。在超材料（metamaterials）中，人為設計的週期結構可實現負介電常數，用於超透鏡和隱形斗篷。",
+      "content": "在固態物理中，介電常數用 克萊默斯-克勒尼希關係（Kramers-Kronig relations）與光學吸收光譜連結，實部和虛部不能獨立指定。頻率依賴介電函數 $\\epsilon(\\omega)$ 完整描述了介質對任意頻率電場的響應。在半導體物理中，高頻介電常數 $\\epsilon_\\infty$ 和靜態介電常數 $\\epsilon_s$ 的差異反映了晶格振動（聲子）對極化的貢獻。在超材料（metamaterials）中，人為設計的週期結構可實現負介電常數，用於超透鏡和隱形斗篷。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "電介質\n平行板電容器\n極化",
+      "content": "電介質\n平行板電容器\n極化"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "電容率\n電極化率\n電位移",
+      "content": "電容率\n電極化率\n電位移"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "介電常數量測實驗",
+      "content": "介電常數量測實驗"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "電容器儲能\n電磁波在介質中的傳播",
+      "content": "電容器儲能\n電磁波在介質中的傳播"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "| 公式 | 名稱 |\n|------|------|\n| $\\epsilon_r = \\epsilon / \\epsilon_0$ | 相對介電常數定義 |\n| $\\epsilon_r = 1 + \\chi_e$ | 與電極化率的關係 |\n| $\\vec{D} = \\epsilon_0 \\epsilon_r \\vec{E}$ | 電位移場 |\n| $\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$ | 極化強度 |\n| $C = \\epsilon_r C_0$ | 填充介質後的電容 |\n| $\\kappa = \\epsilon_r$ | 常用符號（$\\kappa$ 或 $K$） |",
+      "content": "| 公式 | 名稱 |\n|------|------|\n| $\\epsilon_r = \\epsilon / \\epsilon_0$ | 相對介電常數定義 |\n| $\\epsilon_r = 1 + \\chi_e$ | 與電極化率的關係 |\n| $\\vec{D} = \\epsilon_0 \\epsilon_r \\vec{E}$ | 電位移場 |\n| $\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$ | 極化強度 |\n| $C = \\epsilon_r C_0$ | 填充介質後的電容 |\n| $\\kappa = \\epsilon_r$ | 常用符號（$\\kappa$ 或 $K$） |"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\epsilon_r$ | 相對介電常數 | 無量綱 |\n| $\\epsilon$ | 電容率（絕對介電常數） | F/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\chi_e$ | 電極化率 | 無量綱 |\n| $\\vec{D}$ | 電位移場 | C/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{P}$ | 極化強度 | C/m² |\n| $C$ | 電容 | F |\n| $A$ | 面積 | m² |\n| $d$ | 板距 | m |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\epsilon_r$ | 相對介電常數 | 無量綱 |\n| $\\epsilon$ | 電容率（絕對介電常數） | F/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\chi_e$ | 電極化率 | 無量綱 |\n| $\\vec{D}$ | 電位移場 | C/m² |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{P}$ | 極化強度 | C/m² |\n| $C$ | 電容 | F |\n| $A$ | 面積 | m² |\n| $d$ | 板距 | m |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "在真空中，電位移 $\\vec{D} = \\epsilon_0 \\vec{E}$。\n\n在線性介質中，外加電場 $\\vec{E}$ 使介質極化，產生極化強度 $\\vec{P}$：\n\n$$\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$$\n\n電位移的定義為：\n\n$$\\vec{D} = \\epsilon_0 \\vec{E} + \\vec{P} = \\epsilon_0(1 + \\chi_e)\\vec{E}$$\n\n因此：\n\n$$\\epsilon = \\epsilon_0(1 + \\chi_e) = \\epsilon_0 \\epsilon_r$$\n\n對平行板電容器，$C = \\epsilon A/d$，填充介質後：\n\n$$C = \\epsilon_r \\cdot \\frac{\\epsilon_0 A}{d} = \\epsilon_r C_",
+      "content": "在真空中，電位移 $\\vec{D} = \\epsilon_0 \\vec{E}$。\n\n在線性介質中，外加電場 $\\vec{E}$ 使介質極化，產生極化強度 $\\vec{P}$：\n\n$$\\vec{P} = \\epsilon_0 \\chi_e \\vec{E}$$\n\n電位移的定義為：\n\n$$\\vec{D} = \\epsilon_0 \\vec{E} + \\vec{P} = \\epsilon_0(1 + \\chi_e)\\vec{E}$$\n\n因此：\n\n$$\\epsilon = \\epsilon_0(1 + \\chi_e) = \\epsilon_0 \\epsilon_r$$\n\n對平行板電容器，$C = \\epsilon A/d$，填充介質後：\n\n$$C = \\epsilon_r \\cdot \\frac{\\epsilon_0 A}{d} = \\epsilon_r C_0$$"
+    }
+  ]
+}

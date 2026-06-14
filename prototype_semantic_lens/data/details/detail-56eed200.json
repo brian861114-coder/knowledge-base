@@ -1,0 +1,94 @@
+{
+  "id": "哈密頓方程",
+  "path": "01_laws/哈密頓方程.md",
+  "title": "哈密頓方程",
+  "summary": "哈密頓方程以廣義座標和廣義動量為獨立變數，將力學運動描述為相空間中的一階微分方程組，是統計力學和量子力學的基礎。",
+  "body_preview": "## 定律摘要\n哈密頓方程（正則方程）：以廣義座標 $q_i$ 和廣義動量 $p_i$ 為獨立變數，運動方程為：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i}$$\n\n其中 $H(q_i, p_i, t)$ 為哈密頓量，通常等於系統總能量。\n\n## 數學表述\n對 $n$ 個自由度的系統，有 $2n$ 個一階方程：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i} \\quad (i = 1, \\ldots, n)$$\n\n哈密頓量由拉格朗日量的勒讓德變換得到：\n\n$$H = \\sum_i p_i \\dot{q}_i - L, \\quad p_i = \\frac{\\partial L}{\\partial \\dot{q}_i}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $H$ | 哈密頓量 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $p_i$ | 廣義動量 | 依問題而定 |\n| $L$ | 拉格朗日量 | J |\n| $n$ | 自由度 | 無量綱 |\n\n## 物理意義\n核心機制： 哈密頓方程把「位置如何變化」和「動量如何變化」分開描述。座標的變化率由 $H$ 對動量的偏導數決定，動量的變化率由 $H$ 對座標的偏導數決定。兩者形成對偶結構。\n\n類比： 相空間就像一張地圖，座標是東西方向，動量是南北方向。哈密頓方程描述系統在這張地圖上的「流」——每個點有唯一的方向和速度。\n\n常見盲點： 哈密頓量不總是等於能量。只有當座標變換不顯含時間時，$H = T + V$（總能量）。\n\n哈密頓方程回答的問題是「如何用座標和動量的語言描述運動」。這是統計力學（相空間分布）、量子力學（正則量子化）和",
+  "body_full": "## 定律摘要\n哈密頓方程（正則方程）：以廣義座標 $q_i$ 和廣義動量 $p_i$ 為獨立變數，運動方程為：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i}$$\n\n其中 $H(q_i, p_i, t)$ 為哈密頓量，通常等於系統總能量。\n\n## 數學表述\n對 $n$ 個自由度的系統，有 $2n$ 個一階方程：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i} \\quad (i = 1, \\ldots, n)$$\n\n哈密頓量由拉格朗日量的勒讓德變換得到：\n\n$$H = \\sum_i p_i \\dot{q}_i - L, \\quad p_i = \\frac{\\partial L}{\\partial \\dot{q}_i}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $H$ | 哈密頓量 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $p_i$ | 廣義動量 | 依問題而定 |\n| $L$ | 拉格朗日量 | J |\n| $n$ | 自由度 | 無量綱 |\n\n## 物理意義\n核心機制： 哈密頓方程把「位置如何變化」和「動量如何變化」分開描述。座標的變化率由 $H$ 對動量的偏導數決定，動量的變化率由 $H$ 對座標的偏導數決定。兩者形成對偶結構。\n\n類比： 相空間就像一張地圖，座標是東西方向，動量是南北方向。哈密頓方程描述系統在這張地圖上的「流」——每個點有唯一的方向和速度。\n\n常見盲點： 哈密頓量不總是等於能量。只有當座標變換不顯含時間時，$H = T + V$（總能量）。\n\n哈密頓方程回答的問題是「如何用座標和動量的語言描述運動」。這是統計力學（相空間分布）、量子力學（正則量子化）和哈密頓-雅可比理論的起點。\n\n## 推導\n從拉格朗日量 $L(q_i, \\dot{q}_i, t)$ 出發。定義廣義動量 $p_i = \\partial L/\\partial \\dot{q}_i$。\n\n勒讓德變換：$H = \\sum p_i \\dot{q}_i - L$\n\n微分：$dH = \\sum (p_i d\\dot{q}_i + \\dot{q}_i dp_i) - \\sum (\\frac{\\partial L}{\\partial q_i} dq_i + \\frac{\\partial L}{\\partial \\dot{q}_i} d\\dot{q}_i) - \\frac{\\partial L}{\\partial t} dt$\n\n利用 $p_i = \\partial L/\\partial \\dot{q}_i$，$d\\dot{q}_i$ 項相消：\n\n$$dH = \\sum (\\dot{q}_i dp_i - \\dot{p}_i dq_i) - \\frac{\\partial L}{\\partial t} dt$$\n\n因此：$\\dot{q}_i = \\partial H/\\partial p_i$，$\\dot{p}_i = -\\partial H/\\partial q_i$\n\n## 適用條件\n1. 完整約束系統\n2. 拉格朗日量已知且可進行勒讓德變換\n3. 廣義動量可逆地表達廣義速度\n\n## 典型應用\n統計力學： 相空間中的劉維爾定理和正則分布\n量子力學： 正則量子化（$q_i, p_i \\to \\hat{q}_i, \\hat{p}_i$）\n哈密頓-雅可比方程： 用生成函數求解運動\n\n## 常見誤解\n1. 「哈密頓力學和拉格朗日力學不同」 — 等價，只是變數不同（$q, \\dot{q}$ vs $q, p$）。\n2. 「$H$ 一定是能量」 — 只在特定條件下成立。\n\n## 歷史背景\n威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833–1835 年間發展了哈密頓力學。卡爾·雅可比（Carl Jacobi）發展了哈密頓-雅可比理論。亨利·龐加萊（Henri Poincaré）將相空間概念應用於混沌研究。\n\n## 現代理論視角\n哈密頓力學是量子力學的經典基礎——正則量子化直接將 $q_i, p_i$ 提升為算符。在量子場論中，哈密頓形式用於正則量子化場。在辛幾何中，哈密頓方程是辛流形上的自然方程。\n\n## 相關連結\n### 相關概念\n拉格朗日力學\n相空間\n正則變換\n\n### 相關物理量\n哈密頓量\n廣義動量\n\n### 相關實驗\n相空間軌跡模擬\n\n### 衍生結果\n劉維爾定理\n哈密頓-雅可比方程",
+  "sections": [
+    {
+      "title": "定律摘要",
+      "level": 2,
+      "preview": "哈密頓方程（正則方程）：以廣義座標 $q_i$ 和廣義動量 $p_i$ 為獨立變數，運動方程為：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i}$$\n\n其中 $H(q_i, p_i, t)$ 為哈密頓量，通常等於系統總能量。",
+      "content": "哈密頓方程（正則方程）：以廣義座標 $q_i$ 和廣義動量 $p_i$ 為獨立變數，運動方程為：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i}$$\n\n其中 $H(q_i, p_i, t)$ 為哈密頓量，通常等於系統總能量。"
+    },
+    {
+      "title": "數學表述",
+      "level": 2,
+      "preview": "對 $n$ 個自由度的系統，有 $2n$ 個一階方程：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i} \\quad (i = 1, \\ldots, n)$$\n\n哈密頓量由拉格朗日量的勒讓德變換得到：\n\n$$H = \\sum_i p_i \\dot{q}_i - L, \\quad p_i = \\frac{\\partial L}{\\partial \\dot{q}_i}$$",
+      "content": "對 $n$ 個自由度的系統，有 $2n$ 個一階方程：\n\n$$\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i} \\quad (i = 1, \\ldots, n)$$\n\n哈密頓量由拉格朗日量的勒讓德變換得到：\n\n$$H = \\sum_i p_i \\dot{q}_i - L, \\quad p_i = \\frac{\\partial L}{\\partial \\dot{q}_i}$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $H$ | 哈密頓量 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $p_i$ | 廣義動量 | 依問題而定 |\n| $L$ | 拉格朗日量 | J |\n| $n$ | 自由度 | 無量綱 |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $H$ | 哈密頓量 | J |\n| $q_i$ | 廣義座標 | 依問題而定 |\n| $p_i$ | 廣義動量 | 依問題而定 |\n| $L$ | 拉格朗日量 | J |\n| $n$ | 自由度 | 無量綱 |"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 哈密頓方程把「位置如何變化」和「動量如何變化」分開描述。座標的變化率由 $H$ 對動量的偏導數決定，動量的變化率由 $H$ 對座標的偏導數決定。兩者形成對偶結構。\n\n類比： 相空間就像一張地圖，座標是東西方向，動量是南北方向。哈密頓方程描述系統在這張地圖上的「流」——每個點有唯一的方向和速度。\n\n常見盲點： 哈密頓量不總是等於能量。只有當座標變換不顯含時間時，$H = T + V$（總能量）。\n\n哈密頓方程回答的問題是「如何用座標和動量的語言描述運動」。這是統計力學（相空間分布）、量子力學（正則量子化）和哈密頓-雅可比理論的起點。",
+      "content": "核心機制： 哈密頓方程把「位置如何變化」和「動量如何變化」分開描述。座標的變化率由 $H$ 對動量的偏導數決定，動量的變化率由 $H$ 對座標的偏導數決定。兩者形成對偶結構。\n\n類比： 相空間就像一張地圖，座標是東西方向，動量是南北方向。哈密頓方程描述系統在這張地圖上的「流」——每個點有唯一的方向和速度。\n\n常見盲點： 哈密頓量不總是等於能量。只有當座標變換不顯含時間時，$H = T + V$（總能量）。\n\n哈密頓方程回答的問題是「如何用座標和動量的語言描述運動」。這是統計力學（相空間分布）、量子力學（正則量子化）和哈密頓-雅可比理論的起點。"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "從拉格朗日量 $L(q_i, \\dot{q}_i, t)$ 出發。定義廣義動量 $p_i = \\partial L/\\partial \\dot{q}_i$。\n\n勒讓德變換：$H = \\sum p_i \\dot{q}_i - L$\n\n微分：$dH = \\sum (p_i d\\dot{q}_i + \\dot{q}_i dp_i) - \\sum (\\frac{\\partial L}{\\partial q_i} dq_i + \\frac{\\partial L}{\\partial \\dot{q}_i} d\\dot{q}_i) - \\frac{\\partial L}{\\partial t} dt$\n\n利用 $p_i = \\partial L/\\partial \\dot{q}_i$，$d\\dot{q}_i$ 項相消：\n\n$$dH = \\sum (\\dot{q}_i",
+      "content": "從拉格朗日量 $L(q_i, \\dot{q}_i, t)$ 出發。定義廣義動量 $p_i = \\partial L/\\partial \\dot{q}_i$。\n\n勒讓德變換：$H = \\sum p_i \\dot{q}_i - L$\n\n微分：$dH = \\sum (p_i d\\dot{q}_i + \\dot{q}_i dp_i) - \\sum (\\frac{\\partial L}{\\partial q_i} dq_i + \\frac{\\partial L}{\\partial \\dot{q}_i} d\\dot{q}_i) - \\frac{\\partial L}{\\partial t} dt$\n\n利用 $p_i = \\partial L/\\partial \\dot{q}_i$，$d\\dot{q}_i$ 項相消：\n\n$$dH = \\sum (\\dot{q}_i dp_i - \\dot{p}_i dq_i) - \\frac{\\partial L}{\\partial t} dt$$\n\n因此：$\\dot{q}_i = \\partial H/\\partial p_i$，$\\dot{p}_i = -\\partial H/\\partial q_i$"
+    },
+    {
+      "title": "適用條件",
+      "level": 2,
+      "preview": "1. 完整約束系統\n2. 拉格朗日量已知且可進行勒讓德變換\n3. 廣義動量可逆地表達廣義速度",
+      "content": "1. 完整約束系統\n2. 拉格朗日量已知且可進行勒讓德變換\n3. 廣義動量可逆地表達廣義速度"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "統計力學： 相空間中的劉維爾定理和正則分布\n量子力學： 正則量子化（$q_i, p_i \\to \\hat{q}_i, \\hat{p}_i$）\n哈密頓-雅可比方程： 用生成函數求解運動",
+      "content": "統計力學： 相空間中的劉維爾定理和正則分布\n量子力學： 正則量子化（$q_i, p_i \\to \\hat{q}_i, \\hat{p}_i$）\n哈密頓-雅可比方程： 用生成函數求解運動"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「哈密頓力學和拉格朗日力學不同」 — 等價，只是變數不同（$q, \\dot{q}$ vs $q, p$）。\n2. 「$H$ 一定是能量」 — 只在特定條件下成立。",
+      "content": "1. 「哈密頓力學和拉格朗日力學不同」 — 等價，只是變數不同（$q, \\dot{q}$ vs $q, p$）。\n2. 「$H$ 一定是能量」 — 只在特定條件下成立。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833–1835 年間發展了哈密頓力學。卡爾·雅可比（Carl Jacobi）發展了哈密頓-雅可比理論。亨利·龐加萊（Henri Poincaré）將相空間概念應用於混沌研究。",
+      "content": "威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833–1835 年間發展了哈密頓力學。卡爾·雅可比（Carl Jacobi）發展了哈密頓-雅可比理論。亨利·龐加萊（Henri Poincaré）將相空間概念應用於混沌研究。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "哈密頓力學是量子力學的經典基礎——正則量子化直接將 $q_i, p_i$ 提升為算符。在量子場論中，哈密頓形式用於正則量子化場。在辛幾何中，哈密頓方程是辛流形上的自然方程。",
+      "content": "哈密頓力學是量子力學的經典基礎——正則量子化直接將 $q_i, p_i$ 提升為算符。在量子場論中，哈密頓形式用於正則量子化場。在辛幾何中，哈密頓方程是辛流形上的自然方程。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "拉格朗日力學\n相空間\n正則變換",
+      "content": "拉格朗日力學\n相空間\n正則變換"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "哈密頓量\n廣義動量",
+      "content": "哈密頓量\n廣義動量"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "相空間軌跡模擬",
+      "content": "相空間軌跡模擬"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "劉維爾定理\n哈密頓-雅可比方程",
+      "content": "劉維爾定理\n哈密頓-雅可比方程"
+    }
+  ]
+}

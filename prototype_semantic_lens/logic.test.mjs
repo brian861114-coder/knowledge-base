@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {
   buildGraphIndex,
   collectDirectionalRelations,
+  detailFileNameForNodeId,
   relationBucketForEdge,
   validateDetailPayload,
   validateGraphPayload,
@@ -81,4 +82,10 @@ test("buildGraphIndex rejects semantic edges that point to missing nodes", () =>
       [{ source: "only", target: "missing", type: "requires" }]
     );
   }, /找不到 target 節點/);
+});
+
+test("detailFileNameForNodeId uses URL-safe encoding", () => {
+  assert.match(detailFileNameForNodeId("A/B test"), /^detail-[0-9a-f]{8}\.json$/);
+  assert.equal(detailFileNameForNodeId("A/B test"), detailFileNameForNodeId("A/B test"));
+  assert.notEqual(detailFileNameForNodeId("A/B test"), detailFileNameForNodeId("A/B test 2"));
 });

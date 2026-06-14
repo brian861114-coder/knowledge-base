@@ -1,0 +1,76 @@
+{
+  "id": "電磁波方程",
+  "path": "01_laws/電磁波方程.md",
+  "title": "電磁波方程",
+  "summary": "電磁波方程描述真空中的電場與磁場如何滿足波動方程，並以光速傳播。",
+  "body_preview": "## 定律摘要\n電磁波方程說明：在無自由電荷、無自由電流的區域，電場與磁場都滿足波動方程，因此電磁擾動可以自行傳播，而不是非得靠介質才走得動。\n\n## 數學表述\n由上式可推出\n$$\n\nabla^2vec E=\\mu_0earepsilon_0\\frac{\\partial^2vec E}{\\partial t^2},\n$$\n$$\n\nabla^2vec B=\\mu_0earepsilon_0\\frac{\\partial^2vec B}{\\partial t^2}.\n$$\n\n因此波速為\n$$\nv=\\frac{1}{\\sqrt{\\mu_0earepsilon_0}}=c.\n$$\n\n$$\nabla^2 \u000bec{E} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{E}}{\\partial t^2}$$\n$$\nabla^2 \u000bec{B} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{B}}{\\partial t^2}$$\n\n波速：$c = 1/\\sqrt{\\mu_0\\epsilon_0}$。\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $B$ | 磁場 | T |\n| $E$ | 能量 | J |\n| $F$ | 力 | N |\n| $\\c$ | 待確認 | — |\n| $\\e$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\m$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $\\q$ | 待確認 | — |\n| $\\s$ | 待確認 | — |\n\n## 物理意義\n核心機制： 電磁波方程的物理本質在於電場與磁場的相互作用。\n\n類比： 可以用水流或彈簧系統來類比電磁現象的行為。\n\n常見盲點： 學習電磁波方程時容易忽略場的方向性和邊界條件的影響。\n\n電磁波方程把光從「現象」升級成「場的動力學結果」。這\n\n## 推導\n1. 從 麥克斯威方程組 取旋度形式出發。\n2. 對 $\nabla\\timesvec E$ 或 $\n",
+  "body_full": "## 定律摘要\n電磁波方程說明：在無自由電荷、無自由電流的區域，電場與磁場都滿足波動方程，因此電磁擾動可以自行傳播，而不是非得靠介質才走得動。\n\n## 數學表述\n由上式可推出\n$$\n\nabla^2vec E=\\mu_0earepsilon_0\\frac{\\partial^2vec E}{\\partial t^2},\n$$\n$$\n\nabla^2vec B=\\mu_0earepsilon_0\\frac{\\partial^2vec B}{\\partial t^2}.\n$$\n\n因此波速為\n$$\nv=\\frac{1}{\\sqrt{\\mu_0earepsilon_0}}=c.\n$$\n\n$$\nabla^2 \u000bec{E} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{E}}{\\partial t^2}$$\n$$\nabla^2 \u000bec{B} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{B}}{\\partial t^2}$$\n\n波速：$c = 1/\\sqrt{\\mu_0\\epsilon_0}$。\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $B$ | 磁場 | T |\n| $E$ | 能量 | J |\n| $F$ | 力 | N |\n| $\\c$ | 待確認 | — |\n| $\\e$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\m$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $\\q$ | 待確認 | — |\n| $\\s$ | 待確認 | — |\n\n## 物理意義\n核心機制： 電磁波方程的物理本質在於電場與磁場的相互作用。\n\n類比： 可以用水流或彈簧系統來類比電磁現象的行為。\n\n常見盲點： 學習電磁波方程時容易忽略場的方向性和邊界條件的影響。\n\n電磁波方程把光從「現象」升級成「場的動力學結果」。這\n\n## 推導\n1. 從 麥克斯威方程組 取旋度形式出發。\n2. 對 $\nabla\\timesvec E$ 或 $\nabla\\timesvec B$ 再取一次旋度。\n3. 使用向量恆等式\n$$\n\nabla\\times(\nabla\\timesvec F)=\nabla(\nabla\\cdotvec F)-\nabla^2vec F.\n$$\n4. 在真空中代入 $\nabla\\cdotvec E=0$、$\nabla\\cdotvec B=0$，就得到波動方程。\n\n## 適用條件\n最乾淨的形式出現在真空：\n$$\n\nabla\\cdotvec E=0,\\qquad \nabla\\cdotvec B=0,\n$$\n$$\n\nabla\\timesvec E=-\\frac{\\partial vec B}{\\partial t},\\qquad\n\nabla\\timesvec B=\\mu_0earepsilon_0\\frac{\\partial vec E}{\\partial t}.\n$$\n\n## 典型應用\n分析平面電磁波。\n從場方程推出 真空光速。\n連接 電磁場能量流 與 坡印廷向量。\n作為理解天線、波導與光傳播的起點。\n\n## 常見誤解\n學習電磁波方程時容易犯的錯誤和需要注意的細節。\n\n## 歷史背景\n查爾斯·奧古斯丁·庫侖（Charles-Augustin de Coulomb, 1736–1806）在 1785 年用扭秤實驗建立了靜電力定律。邁克爾·法拉第（Michael Faraday, 1791–1867）在 1831 年發現電磁感應。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1865 年將電磁學統一為四條方程組。\n\n## 現代理論視角\n在現代物理中，電磁學被量子電動力學（QED）涵蓋，精確預測了電子反常磁矩和蘭姆位移。在工程中，計算電磁學（FDTD、有限元素法）用於天設計、電磁相容性分析和光學模擬。\n\n## 相關連結\n### 相關概念\n麥克斯威方程組\n電磁波\n電磁波傳播\n真空光速",
+  "sections": [
+    {
+      "title": "定律摘要",
+      "level": 2,
+      "preview": "電磁波方程說明：在無自由電荷、無自由電流的區域，電場與磁場都滿足波動方程，因此電磁擾動可以自行傳播，而不是非得靠介質才走得動。",
+      "content": "電磁波方程說明：在無自由電荷、無自由電流的區域，電場與磁場都滿足波動方程，因此電磁擾動可以自行傳播，而不是非得靠介質才走得動。"
+    },
+    {
+      "title": "數學表述",
+      "level": 2,
+      "preview": "由上式可推出\n$$\n\nabla^2vec E=\\mu_0earepsilon_0\\frac{\\partial^2vec E}{\\partial t^2},\n$$\n$$\n\nabla^2vec B=\\mu_0earepsilon_0\\frac{\\partial^2vec B}{\\partial t^2}.\n$$\n\n因此波速為\n$$\nv=\\frac{1}{\\sqrt{\\mu_0earepsilon_0}}=c.\n$$\n\n$$\nabla^2 \u000bec{E} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{E}}{\\partial t^2}$$\n$$\nabla^2 \u000bec{B} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{B}}{\\partial t^2}$$\n\n波速：$c = 1/\\sqrt{\\mu_",
+      "content": "由上式可推出\n$$\n\nabla^2vec E=\\mu_0earepsilon_0\\frac{\\partial^2vec E}{\\partial t^2},\n$$\n$$\n\nabla^2vec B=\\mu_0earepsilon_0\\frac{\\partial^2vec B}{\\partial t^2}.\n$$\n\n因此波速為\n$$\nv=\\frac{1}{\\sqrt{\\mu_0earepsilon_0}}=c.\n$$\n\n$$\nabla^2 \u000bec{E} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{E}}{\\partial t^2}$$\n$$\nabla^2 \u000bec{B} = \\mu_0\\epsilon_0 \frac{\\partial^2 \u000bec{B}}{\\partial t^2}$$\n\n波速：$c = 1/\\sqrt{\\mu_0\\epsilon_0}$。"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $B$ | 磁場 | T |\n| $E$ | 能量 | J |\n| $F$ | 力 | N |\n| $\\c$ | 待確認 | — |\n| $\\e$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\m$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $\\q$ | 待確認 | — |\n| $\\s$ | 待確認 | — |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $B$ | 磁場 | T |\n| $E$ | 能量 | J |\n| $F$ | 力 | N |\n| $\\c$ | 待確認 | — |\n| $\\e$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\m$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $\\q$ | 待確認 | — |\n| $\\s$ | 待確認 | — |"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 電磁波方程的物理本質在於電場與磁場的相互作用。\n\n類比： 可以用水流或彈簧系統來類比電磁現象的行為。\n\n常見盲點： 學習電磁波方程時容易忽略場的方向性和邊界條件的影響。\n\n電磁波方程把光從「現象」升級成「場的動力學結果」。這",
+      "content": "核心機制： 電磁波方程的物理本質在於電場與磁場的相互作用。\n\n類比： 可以用水流或彈簧系統來類比電磁現象的行為。\n\n常見盲點： 學習電磁波方程時容易忽略場的方向性和邊界條件的影響。\n\n電磁波方程把光從「現象」升級成「場的動力學結果」。這"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "1. 從 麥克斯威方程組 取旋度形式出發。\n2. 對 $\nabla\\timesvec E$ 或 $\nabla\\timesvec B$ 再取一次旋度。\n3. 使用向量恆等式\n$$\n\nabla\\times(\nabla\\timesvec F)=\nabla(\nabla\\cdotvec F)-\nabla^2vec F.\n$$\n4. 在真空中代入 $\nabla\\cdotvec E=0$、$\nabla\\cdotvec B=0$，就得到波動方程。",
+      "content": "1. 從 麥克斯威方程組 取旋度形式出發。\n2. 對 $\nabla\\timesvec E$ 或 $\nabla\\timesvec B$ 再取一次旋度。\n3. 使用向量恆等式\n$$\n\nabla\\times(\nabla\\timesvec F)=\nabla(\nabla\\cdotvec F)-\nabla^2vec F.\n$$\n4. 在真空中代入 $\nabla\\cdotvec E=0$、$\nabla\\cdotvec B=0$，就得到波動方程。"
+    },
+    {
+      "title": "適用條件",
+      "level": 2,
+      "preview": "最乾淨的形式出現在真空：\n$$\n\nabla\\cdotvec E=0,\\qquad \nabla\\cdotvec B=0,\n$$\n$$\n\nabla\\timesvec E=-\\frac{\\partial vec B}{\\partial t},\\qquad\n\nabla\\timesvec B=\\mu_0earepsilon_0\\frac{\\partial vec E}{\\partial t}.\n$$",
+      "content": "最乾淨的形式出現在真空：\n$$\n\nabla\\cdotvec E=0,\\qquad \nabla\\cdotvec B=0,\n$$\n$$\n\nabla\\timesvec E=-\\frac{\\partial vec B}{\\partial t},\\qquad\n\nabla\\timesvec B=\\mu_0earepsilon_0\\frac{\\partial vec E}{\\partial t}.\n$$"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "分析平面電磁波。\n從場方程推出 真空光速。\n連接 電磁場能量流 與 坡印廷向量。\n作為理解天線、波導與光傳播的起點。",
+      "content": "分析平面電磁波。\n從場方程推出 真空光速。\n連接 電磁場能量流 與 坡印廷向量。\n作為理解天線、波導與光傳播的起點。"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "學習電磁波方程時容易犯的錯誤和需要注意的細節。",
+      "content": "學習電磁波方程時容易犯的錯誤和需要注意的細節。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "查爾斯·奧古斯丁·庫侖（Charles-Augustin de Coulomb, 1736–1806）在 1785 年用扭秤實驗建立了靜電力定律。邁克爾·法拉第（Michael Faraday, 1791–1867）在 1831 年發現電磁感應。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1865 年將電磁學統一為四條方程組。",
+      "content": "查爾斯·奧古斯丁·庫侖（Charles-Augustin de Coulomb, 1736–1806）在 1785 年用扭秤實驗建立了靜電力定律。邁克爾·法拉第（Michael Faraday, 1791–1867）在 1831 年發現電磁感應。詹姆斯·克拉克·馬克士威（James Clerk Maxwell, 1831–1879）在 1865 年將電磁學統一為四條方程組。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在現代物理中，電磁學被量子電動力學（QED）涵蓋，精確預測了電子反常磁矩和蘭姆位移。在工程中，計算電磁學（FDTD、有限元素法）用於天設計、電磁相容性分析和光學模擬。",
+      "content": "在現代物理中，電磁學被量子電動力學（QED）涵蓋，精確預測了電子反常磁矩和蘭姆位移。在工程中，計算電磁學（FDTD、有限元素法）用於天設計、電磁相容性分析和光學模擬。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "麥克斯威方程組\n電磁波\n電磁波傳播\n真空光速",
+      "content": "麥克斯威方程組\n電磁波\n電磁波傳播\n真空光速"
+    }
+  ]
+}

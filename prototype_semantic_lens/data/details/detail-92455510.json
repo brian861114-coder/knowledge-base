@@ -1,0 +1,88 @@
+{
+  "id": "泊松括號",
+  "path": "02_concepts/analytical_dynamics/泊松括號.md",
+  "title": "泊松括號",
+  "summary": "泊松括號描述相空間中兩個函數之間的基本代數關係，並可用來表達哈密頓系統的時間演化。",
+  "body_preview": "## 概念摘要\n對兩個相空間函數 $f(q,p,t)$ 與 $g(q,p,t)$，泊松括號定義為\n$$\n\\{f,g\\}=\n\\sum_i\\left(\n\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i}\n-\\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\n\\right).\n$$\n\n## 嚴格定義\n泊松括號的嚴格定義。\n\n## 先備知識\n哈密頓方程\n相空間\n正則變換\n\n## 物理意義\n泊松括號是哈密頓力學的代數心臟。它把兩個相空間函數 f 和 g 結合成一個新的函數 {f,g}，而這個運算直接給出物理量隨時間的變化率：df/dt = {f,H}。換句話說，只要你知道某個物理量與哈密頓量 H 的泊松括號，就知道它是否守恆——{f,H}=0 意味著 f 是運動常數。這個結構之所以深遠，是因為它把對稱性與守恆律的關係（諾特定理）直接寫進了相空間的代數裡，也是古典力學通往量子力學的關鍵橋樑：把泊松括號換成對易子除以 iħ，哈密頓力學就變成海森堡繪景。\n\n## 典型應用\n泊松括號在物理學和工程中的典型應用場景。\n\n## 常見誤解\n學習泊松括號時容易犯的錯誤和需要注意的細節。\n\n## 歷史背景\n泊松括號由泊松在 1809 年引入，作為分析力學中表達時間演化的工具。狄拉克在 1925 年意識到泊松括號的代數結構可以直接對應到量子力學的對易子，這成為正則量子化的數學基礎。\n\n## 現代理論視角\n混沌理論在現代科學中有廣泛應用：氣候模擬、心律不齊分析、生態系統動態和金融市場模型。奇異吸引子和分岔理論是理解複雜系統行為的核心工具。\n\n## 相關連結\n### 相關概念\n哈密頓方程\n相空間\n正則變換\n\n## 核心公式\n泊松括號的數學推導過程。\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $f$ | 頻率 | Hz |\n| $g$ | 重力加速度 | m/s² |\n| $p$ | 動",
+  "body_full": "## 概念摘要\n對兩個相空間函數 $f(q,p,t)$ 與 $g(q,p,t)$，泊松括號定義為\n$$\n\\{f,g\\}=\n\\sum_i\\left(\n\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i}\n-\\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\n\\right).\n$$\n\n## 嚴格定義\n泊松括號的嚴格定義。\n\n## 先備知識\n哈密頓方程\n相空間\n正則變換\n\n## 物理意義\n泊松括號是哈密頓力學的代數心臟。它把兩個相空間函數 f 和 g 結合成一個新的函數 {f,g}，而這個運算直接給出物理量隨時間的變化率：df/dt = {f,H}。換句話說，只要你知道某個物理量與哈密頓量 H 的泊松括號，就知道它是否守恆——{f,H}=0 意味著 f 是運動常數。這個結構之所以深遠，是因為它把對稱性與守恆律的關係（諾特定理）直接寫進了相空間的代數裡，也是古典力學通往量子力學的關鍵橋樑：把泊松括號換成對易子除以 iħ，哈密頓力學就變成海森堡繪景。\n\n## 典型應用\n泊松括號在物理學和工程中的典型應用場景。\n\n## 常見誤解\n學習泊松括號時容易犯的錯誤和需要注意的細節。\n\n## 歷史背景\n泊松括號由泊松在 1809 年引入，作為分析力學中表達時間演化的工具。狄拉克在 1925 年意識到泊松括號的代數結構可以直接對應到量子力學的對易子，這成為正則量子化的數學基礎。\n\n## 現代理論視角\n混沌理論在現代科學中有廣泛應用：氣候模擬、心律不齊分析、生態系統動態和金融市場模型。奇異吸引子和分岔理論是理解複雜系統行為的核心工具。\n\n## 相關連結\n### 相關概念\n哈密頓方程\n相空間\n正則變換\n\n## 核心公式\n泊松括號的數學推導過程。\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $f$ | 頻率 | Hz |\n| $g$ | 重力加速度 | m/s² |\n| $p$ | 動量 | kg·m/s |\n| $\\partial$ | 偏微分 | — |\n| $t$ | 時間 | s |\n\n## 推導\n泊松括號的定義可以直接從哈密頓方程的演化結構導出。\n\n任意相空間函數 $f(q,p,t)$ 的時間演化為：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\dot{q}_i + \\frac{\\partial f}{\\partial p_i}\\dot{p}_i\\right) + \\frac{\\partial f}{\\partial t}\n$$\n\n代入哈密頓方程 $\\dot{q}_i=\\partial H/\\partial p_i$，$\\dot{p}_i=-\\partial H/\\partial q_i$：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial H}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial H}{\\partial q_i}\\right) + \\frac{\\partial f}{\\partial t}\n$$\n\n括號中的求和項定義為 $f$ 與 $H$ 的泊松括號：\n$$\n\\{f, H\\} \\equiv \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial H}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial H}{\\partial q_i}\\right)\n$$\n\n因此 $df/dt = \\{f,H\\} + \\partial f/\\partial t$。當 $f$ 不顯含時間且 $\\{f,H\\}=0$ 時，$f$ 是守恆量。這正是諾特定理的哈密頓形式。\n\n## 為什麼重要\n它",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "對兩個相空間函數 $f(q,p,t)$ 與 $g(q,p,t)$，泊松括號定義為\n$$\n\\{f,g\\}=\n\\sum_i\\left(\n\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i}\n-\\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\n\\right).\n$$",
+      "content": "對兩個相空間函數 $f(q,p,t)$ 與 $g(q,p,t)$，泊松括號定義為\n$$\n\\{f,g\\}=\n\\sum_i\\left(\n\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i}\n-\\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\n\\right).\n$$"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "泊松括號的嚴格定義。",
+      "content": "泊松括號的嚴格定義。"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "哈密頓方程\n相空間\n正則變換",
+      "content": "哈密頓方程\n相空間\n正則變換"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "泊松括號是哈密頓力學的代數心臟。它把兩個相空間函數 f 和 g 結合成一個新的函數 {f,g}，而這個運算直接給出物理量隨時間的變化率：df/dt = {f,H}。換句話說，只要你知道某個物理量與哈密頓量 H 的泊松括號，就知道它是否守恆——{f,H}=0 意味著 f 是運動常數。這個結構之所以深遠，是因為它把對稱性與守恆律的關係（諾特定理）直接寫進了相空間的代數裡，也是古典力學通往量子力學的關鍵橋樑：把泊松括號換成對易子除以 iħ，哈密頓力學就變成海森堡繪景。",
+      "content": "泊松括號是哈密頓力學的代數心臟。它把兩個相空間函數 f 和 g 結合成一個新的函數 {f,g}，而這個運算直接給出物理量隨時間的變化率：df/dt = {f,H}。換句話說，只要你知道某個物理量與哈密頓量 H 的泊松括號，就知道它是否守恆——{f,H}=0 意味著 f 是運動常數。這個結構之所以深遠，是因為它把對稱性與守恆律的關係（諾特定理）直接寫進了相空間的代數裡，也是古典力學通往量子力學的關鍵橋樑：把泊松括號換成對易子除以 iħ，哈密頓力學就變成海森堡繪景。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "泊松括號在物理學和工程中的典型應用場景。",
+      "content": "泊松括號在物理學和工程中的典型應用場景。"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "學習泊松括號時容易犯的錯誤和需要注意的細節。",
+      "content": "學習泊松括號時容易犯的錯誤和需要注意的細節。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "泊松括號由泊松在 1809 年引入，作為分析力學中表達時間演化的工具。狄拉克在 1925 年意識到泊松括號的代數結構可以直接對應到量子力學的對易子，這成為正則量子化的數學基礎。",
+      "content": "泊松括號由泊松在 1809 年引入，作為分析力學中表達時間演化的工具。狄拉克在 1925 年意識到泊松括號的代數結構可以直接對應到量子力學的對易子，這成為正則量子化的數學基礎。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "混沌理論在現代科學中有廣泛應用：氣候模擬、心律不齊分析、生態系統動態和金融市場模型。奇異吸引子和分岔理論是理解複雜系統行為的核心工具。",
+      "content": "混沌理論在現代科學中有廣泛應用：氣候模擬、心律不齊分析、生態系統動態和金融市場模型。奇異吸引子和分岔理論是理解複雜系統行為的核心工具。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "哈密頓方程\n相空間\n正則變換",
+      "content": "哈密頓方程\n相空間\n正則變換"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "泊松括號的數學推導過程。",
+      "content": "泊松括號的數學推導過程。"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $f$ | 頻率 | Hz |\n| $g$ | 重力加速度 | m/s² |\n| $p$ | 動量 | kg·m/s |\n| $\\partial$ | 偏微分 | — |\n| $t$ | 時間 | s |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $f$ | 頻率 | Hz |\n| $g$ | 重力加速度 | m/s² |\n| $p$ | 動量 | kg·m/s |\n| $\\partial$ | 偏微分 | — |\n| $t$ | 時間 | s |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "泊松括號的定義可以直接從哈密頓方程的演化結構導出。\n\n任意相空間函數 $f(q,p,t)$ 的時間演化為：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\dot{q}_i + \\frac{\\partial f}{\\partial p_i}\\dot{p}_i\\right) + \\frac{\\partial f}{\\partial t}\n$$\n\n代入哈密頓方程 $\\dot{q}_i=\\partial H/\\partial p_i$，$\\dot{p}_i=-\\partial H/\\partial q_i$：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial H}{\\par",
+      "content": "泊松括號的定義可以直接從哈密頓方程的演化結構導出。\n\n任意相空間函數 $f(q,p,t)$ 的時間演化為：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\dot{q}_i + \\frac{\\partial f}{\\partial p_i}\\dot{p}_i\\right) + \\frac{\\partial f}{\\partial t}\n$$\n\n代入哈密頓方程 $\\dot{q}_i=\\partial H/\\partial p_i$，$\\dot{p}_i=-\\partial H/\\partial q_i$：\n$$\n\\frac{df}{dt} = \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial H}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial H}{\\partial q_i}\\right) + \\frac{\\partial f}{\\partial t}\n$$\n\n括號中的求和項定義為 $f$ 與 $H$ 的泊松括號：\n$$\n\\{f, H\\} \\equiv \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial H}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial H}{\\partial q_i}\\right)\n$$\n\n因此 $df/dt = \\{f,H\\} + \\partial f/\\partial t$。當 $f$ 不顯含時間且 $\\{f,H\\}=0$ 時，$f$ 是守恆量。這正是諾特定理的哈密頓形式。"
+    },
+    {
+      "title": "為什麼重要",
+      "level": 2,
+      "preview": "它",
+      "content": "它"
+    }
+  ]
+}

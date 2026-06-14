@@ -95,6 +95,16 @@ export function relationBucketForEdge(edgeType, role) {
   return rules[role] || "related";
 }
 
+export function detailFileNameForNodeId(nodeId) {
+  const text = String(nodeId);
+  let hash = 2166136261;
+  for (const char of text) {
+    hash ^= char.codePointAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return `detail-${(hash >>> 0).toString(16).padStart(8, "0")}.json`;
+}
+
 export function collectDirectionalRelations(nodeId, graphIndex, nodeMap, options = {}) {
   const includeNode = options.includeNode || ((node) => Boolean(node));
   const entries = [];

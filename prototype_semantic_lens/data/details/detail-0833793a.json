@@ -1,0 +1,94 @@
+{
+  "id": "拉普拉斯方程",
+  "path": "01_laws/拉普拉斯方程.md",
+  "title": "拉普拉斯方程",
+  "summary": "拉普拉斯方程描述無源區域中的電位必須滿足的條件，是靜電邊界值問題、鏡像法與唯一性定理的核心方程。",
+  "body_preview": "## 定律摘要\n拉普拉斯方程：在無自由電荷（$\\rho = 0$）的區域中，電位 $V$ 必須滿足 $\\nabla^2 V = 0$。這是 泊松方程 在 $\\rho = 0$ 時的特例，也是 鏡像法 和分離變數法的基礎方程。\n\n## 數學表述\n$$\\nabla^2 V = \\frac{\\partial^2 V}{\\partial x^2} + \\frac{\\partial^2 V}{\\partial y^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n在球座標中：\n\n$$\\nabla^2 V = \\frac{1}{r^2}\\frac{\\partial}{\\partial r}\\left(r^2 \\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2\\sin\\theta}\\frac{\\partial}{\\partial \\theta}\\left(\\sin\\theta \\frac{\\partial V}{\\partial \\theta}\\right) + \\frac{1}{r^2\\sin^2\\theta}\\frac{\\partial^2 V}{\\partial \\phi^2} = 0$$\n\n在柱座標中：\n\n$$\\nabla^2 V = \\frac{1}{r}\\frac{\\partial}{\\partial r}\\left(r\\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2}\\frac{\\partial^2 V}{\\partial \\phi^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $V$ | 電位 | V |\n| $\\nabla^2$ | 拉普拉斯算子 | 1/m² |\n| $\\rho$ | 電荷密度 | C/m³ |\n| $\\epsilon_0$ | 真空電容率 | ",
+  "body_full": "## 定律摘要\n拉普拉斯方程：在無自由電荷（$\\rho = 0$）的區域中，電位 $V$ 必須滿足 $\\nabla^2 V = 0$。這是 泊松方程 在 $\\rho = 0$ 時的特例，也是 鏡像法 和分離變數法的基礎方程。\n\n## 數學表述\n$$\\nabla^2 V = \\frac{\\partial^2 V}{\\partial x^2} + \\frac{\\partial^2 V}{\\partial y^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n在球座標中：\n\n$$\\nabla^2 V = \\frac{1}{r^2}\\frac{\\partial}{\\partial r}\\left(r^2 \\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2\\sin\\theta}\\frac{\\partial}{\\partial \\theta}\\left(\\sin\\theta \\frac{\\partial V}{\\partial \\theta}\\right) + \\frac{1}{r^2\\sin^2\\theta}\\frac{\\partial^2 V}{\\partial \\phi^2} = 0$$\n\n在柱座標中：\n\n$$\\nabla^2 V = \\frac{1}{r}\\frac{\\partial}{\\partial r}\\left(r\\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2}\\frac{\\partial^2 V}{\\partial \\phi^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $V$ | 電位 | V |\n| $\\nabla^2$ | 拉普拉斯算子 | 1/m² |\n| $\\rho$ | 電荷密度 | C/m³ |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $r, \\theta, \\phi$ | 球座標 | m, rad, rad |\n\n## 物理意義\n核心機制： 拉普拉斯方程的解具有平均值性質：任意一點的電位等於以該點為球心的任意球面上電位的平均值。這意味著電位不能在區域內部無故出現極大值或極小值——所有起伏都由邊界驅動。\n\n類比： 想像一張繃緊的橡皮膜，邊界被固定成特定形狀，膜上沒有任何外力。膜的形狀完全由邊界決定，內部總是平滑的。\n\n常見盲點： 「無源」不等於「無場」。沒有電荷不代表電場為零——電場由邊界條件決定。\n\n拉普拉斯方程回答的問題是「在沒有電荷的空間中，電位如何分布」。這是靜電學中最常見的問題類型——大部分空間都沒有自由電荷，電位分布完全由導體邊界和電位邊界條件決定。\n\n## 推導\n從 泊松方程 出發：\n\n$$\\nabla^2 V = -\\frac{\\rho}{\\epsilon_0}$$\n\n當區域內 $\\rho = 0$ 時：\n\n$$\\nabla^2 V = 0$$\n\n這就是拉普拉斯方程。它\n\n## 適用條件\n1. 區域內無自由電荷（$\\rho = 0$）\n2. 區域有界，邊界條件已知\n3. 介質均勻、線性、各向同性\n4. 靜電場（不隨時間變化）\n\n## 典型應用\n導體外部電場： 導體外部無電荷，電位滿足拉普拉斯方程\n平行板電容器邊緣場： 板間和板外無電荷區域\n同軸電纜： 內外導體之間的電位分布\n球形電容器： 兩同心球殼之間的電位\n\n## 常見誤解\n1. 「無源 = 無場」 — 錯。邊界條件可以在無源區域中產生非零電場。\n2. 「拉普拉斯方程是獨立的定律」 — 不是，它是泊松方程的特例。\n3. 「解一定是常數」 — 錯。只有在所有邊界電位相同時才是常數。一般情況下解是空間的非平凡函數。\n\n## 歷史背景\n皮埃爾-西蒙·拉普拉斯（Pierre-Simon Laplace, 1749–1827）在 1780 年代研究引力勢時引入了這個方程。阿德里安-馬里·勒讓德（Adrien-Marie Legendre）發展了球諧函數作為拉普拉斯方程在球座標中的解。卡爾·弗里德里希·高斯（Gauss）將其應用於電磁學。\n\n## 現代理論視角\n在現代數學中，拉普拉斯方程是橢圓型偏微分方程的標準範例。其解（調和函數）具有豐富的性質：無限可微、平均值定理、最大值原理。在量子力學中，氫原子的波函數徑向部分滿足的方程與拉普拉斯方程密切相關。在流體力學中，不可壓縮無旋流的速度勢也滿足拉普拉斯方程。\n\n## 相關連結\n### 相關概念\n鏡像法\n導體\n唯一性定理\n\n### 相關物理量\n電位\n電場\n\n### 相關實驗\n靜電場模擬實驗\n\n### 衍生結果\n球諧函數 $Y_l^m$\n分離變數法",
+  "sections": [
+    {
+      "title": "定律摘要",
+      "level": 2,
+      "preview": "拉普拉斯方程：在無自由電荷（$\\rho = 0$）的區域中，電位 $V$ 必須滿足 $\\nabla^2 V = 0$。這是 泊松方程 在 $\\rho = 0$ 時的特例，也是 鏡像法 和分離變數法的基礎方程。",
+      "content": "拉普拉斯方程：在無自由電荷（$\\rho = 0$）的區域中，電位 $V$ 必須滿足 $\\nabla^2 V = 0$。這是 泊松方程 在 $\\rho = 0$ 時的特例，也是 鏡像法 和分離變數法的基礎方程。"
+    },
+    {
+      "title": "數學表述",
+      "level": 2,
+      "preview": "$$\\nabla^2 V = \\frac{\\partial^2 V}{\\partial x^2} + \\frac{\\partial^2 V}{\\partial y^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n在球座標中：\n\n$$\\nabla^2 V = \\frac{1}{r^2}\\frac{\\partial}{\\partial r}\\left(r^2 \\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2\\sin\\theta}\\frac{\\partial}{\\partial \\theta}\\left(\\sin\\theta \\frac{\\partial V}{\\partial \\theta}\\right) + \\frac{1}{r^2\\sin^2\\theta",
+      "content": "$$\\nabla^2 V = \\frac{\\partial^2 V}{\\partial x^2} + \\frac{\\partial^2 V}{\\partial y^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$\n\n在球座標中：\n\n$$\\nabla^2 V = \\frac{1}{r^2}\\frac{\\partial}{\\partial r}\\left(r^2 \\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2\\sin\\theta}\\frac{\\partial}{\\partial \\theta}\\left(\\sin\\theta \\frac{\\partial V}{\\partial \\theta}\\right) + \\frac{1}{r^2\\sin^2\\theta}\\frac{\\partial^2 V}{\\partial \\phi^2} = 0$$\n\n在柱座標中：\n\n$$\\nabla^2 V = \\frac{1}{r}\\frac{\\partial}{\\partial r}\\left(r\\frac{\\partial V}{\\partial r}\\right) + \\frac{1}{r^2}\\frac{\\partial^2 V}{\\partial \\phi^2} + \\frac{\\partial^2 V}{\\partial z^2} = 0$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $V$ | 電位 | V |\n| $\\nabla^2$ | 拉普拉斯算子 | 1/m² |\n| $\\rho$ | 電荷密度 | C/m³ |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $r, \\theta, \\phi$ | 球座標 | m, rad, rad |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $V$ | 電位 | V |\n| $\\nabla^2$ | 拉普拉斯算子 | 1/m² |\n| $\\rho$ | 電荷密度 | C/m³ |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $r, \\theta, \\phi$ | 球座標 | m, rad, rad |"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 拉普拉斯方程的解具有平均值性質：任意一點的電位等於以該點為球心的任意球面上電位的平均值。這意味著電位不能在區域內部無故出現極大值或極小值——所有起伏都由邊界驅動。\n\n類比： 想像一張繃緊的橡皮膜，邊界被固定成特定形狀，膜上沒有任何外力。膜的形狀完全由邊界決定，內部總是平滑的。\n\n常見盲點： 「無源」不等於「無場」。沒有電荷不代表電場為零——電場由邊界條件決定。\n\n拉普拉斯方程回答的問題是「在沒有電荷的空間中，電位如何分布」。這是靜電學中最常見的問題類型——大部分空間都沒有自由電荷，電位分布完全由導體邊界和電位邊界條件決定。",
+      "content": "核心機制： 拉普拉斯方程的解具有平均值性質：任意一點的電位等於以該點為球心的任意球面上電位的平均值。這意味著電位不能在區域內部無故出現極大值或極小值——所有起伏都由邊界驅動。\n\n類比： 想像一張繃緊的橡皮膜，邊界被固定成特定形狀，膜上沒有任何外力。膜的形狀完全由邊界決定，內部總是平滑的。\n\n常見盲點： 「無源」不等於「無場」。沒有電荷不代表電場為零——電場由邊界條件決定。\n\n拉普拉斯方程回答的問題是「在沒有電荷的空間中，電位如何分布」。這是靜電學中最常見的問題類型——大部分空間都沒有自由電荷，電位分布完全由導體邊界和電位邊界條件決定。"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "從 泊松方程 出發：\n\n$$\\nabla^2 V = -\\frac{\\rho}{\\epsilon_0}$$\n\n當區域內 $\\rho = 0$ 時：\n\n$$\\nabla^2 V = 0$$\n\n這就是拉普拉斯方程。它",
+      "content": "從 泊松方程 出發：\n\n$$\\nabla^2 V = -\\frac{\\rho}{\\epsilon_0}$$\n\n當區域內 $\\rho = 0$ 時：\n\n$$\\nabla^2 V = 0$$\n\n這就是拉普拉斯方程。它"
+    },
+    {
+      "title": "適用條件",
+      "level": 2,
+      "preview": "1. 區域內無自由電荷（$\\rho = 0$）\n2. 區域有界，邊界條件已知\n3. 介質均勻、線性、各向同性\n4. 靜電場（不隨時間變化）",
+      "content": "1. 區域內無自由電荷（$\\rho = 0$）\n2. 區域有界，邊界條件已知\n3. 介質均勻、線性、各向同性\n4. 靜電場（不隨時間變化）"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "導體外部電場： 導體外部無電荷，電位滿足拉普拉斯方程\n平行板電容器邊緣場： 板間和板外無電荷區域\n同軸電纜： 內外導體之間的電位分布\n球形電容器： 兩同心球殼之間的電位",
+      "content": "導體外部電場： 導體外部無電荷，電位滿足拉普拉斯方程\n平行板電容器邊緣場： 板間和板外無電荷區域\n同軸電纜： 內外導體之間的電位分布\n球形電容器： 兩同心球殼之間的電位"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「無源 = 無場」 — 錯。邊界條件可以在無源區域中產生非零電場。\n2. 「拉普拉斯方程是獨立的定律」 — 不是，它是泊松方程的特例。\n3. 「解一定是常數」 — 錯。只有在所有邊界電位相同時才是常數。一般情況下解是空間的非平凡函數。",
+      "content": "1. 「無源 = 無場」 — 錯。邊界條件可以在無源區域中產生非零電場。\n2. 「拉普拉斯方程是獨立的定律」 — 不是，它是泊松方程的特例。\n3. 「解一定是常數」 — 錯。只有在所有邊界電位相同時才是常數。一般情況下解是空間的非平凡函數。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "皮埃爾-西蒙·拉普拉斯（Pierre-Simon Laplace, 1749–1827）在 1780 年代研究引力勢時引入了這個方程。阿德里安-馬里·勒讓德（Adrien-Marie Legendre）發展了球諧函數作為拉普拉斯方程在球座標中的解。卡爾·弗里德里希·高斯（Gauss）將其應用於電磁學。",
+      "content": "皮埃爾-西蒙·拉普拉斯（Pierre-Simon Laplace, 1749–1827）在 1780 年代研究引力勢時引入了這個方程。阿德里安-馬里·勒讓德（Adrien-Marie Legendre）發展了球諧函數作為拉普拉斯方程在球座標中的解。卡爾·弗里德里希·高斯（Gauss）將其應用於電磁學。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在現代數學中，拉普拉斯方程是橢圓型偏微分方程的標準範例。其解（調和函數）具有豐富的性質：無限可微、平均值定理、最大值原理。在量子力學中，氫原子的波函數徑向部分滿足的方程與拉普拉斯方程密切相關。在流體力學中，不可壓縮無旋流的速度勢也滿足拉普拉斯方程。",
+      "content": "在現代數學中，拉普拉斯方程是橢圓型偏微分方程的標準範例。其解（調和函數）具有豐富的性質：無限可微、平均值定理、最大值原理。在量子力學中，氫原子的波函數徑向部分滿足的方程與拉普拉斯方程密切相關。在流體力學中，不可壓縮無旋流的速度勢也滿足拉普拉斯方程。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "鏡像法\n導體\n唯一性定理",
+      "content": "鏡像法\n導體\n唯一性定理"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "電位\n電場",
+      "content": "電位\n電場"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "靜電場模擬實驗",
+      "content": "靜電場模擬實驗"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "球諧函數 $Y_l^m$\n分離變數法",
+      "content": "球諧函數 $Y_l^m$\n分離變數法"
+    }
+  ]
+}

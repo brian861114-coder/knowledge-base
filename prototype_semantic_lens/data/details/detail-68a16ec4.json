@@ -1,0 +1,88 @@
+{
+  "id": "旋度",
+  "path": "05_mathematical_tools/旋度.md",
+  "title": "旋度",
+  "summary": "旋度衡量向量場在局部是否具有繞圈傾向與環流結構，是理解感應電場、磁場環流與場的局部旋轉性的核心工具。",
+  "body_preview": "# 旋度\n\n## 工具摘要\n旋度關心的場在局部是否傾向繞圈。換句話說，散度看的是「冒出來還是吸進去」，旋度看的是「會不會繞著轉」。\n\n這兩件事完全不同。初學者最容易犯的錯，就是把任何看起來方向在變的場都說成有旋度。真正的判準小閉合路徑上的局部環流是否非零。\n\n## 數學定義\n對向量場 $\\vec F$，旋度寫成\n$$\n\\nabla\\times\\vec F.\n$$\n\n若\n$$\n\\vec F=(F_x,F_y,F_z),\n$$\n則\n$$\n\\nabla\\times\\vec F=\n\\begin{vmatrix}\n\\hat i & \\hat j & \\hat k\\\\\n\\partial/\\partial x & \\partial/\\partial y & \\partial/\\partial z\\\\\nF_x & F_y & F_z\n\\end{vmatrix}.\n$$\n\n展開後得到\n$$\n\\nabla\\times\\vec F=\n\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat i\n+\\left(\\frac{\\partial F_x}{\\partial z}-\\frac{\\partial F_z}{\\partial x}\\right)\\hat j\n+\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\hat k.\n$$\n\n對大一新生來說，不用一開始就死背全部分量式，但至少要知道：旋度輸出的是向量，方向代表局部旋轉軸，大小代表局部環流強度。\n\n## 推導\n旋度的定義可從斯托克斯定理推導。\n\n斯托克斯定理：\n$$\n\\oint_C \\vec{F}\\cdot d\\vec{l}=\\iint_S(\\nabla\\times\\vec{F})\\cdot d\\vec{A}\n$$\n\n取 $S$ 為 $xy$ 平面上的微小矩形（面積 $\\Delta x\\Delta y$），計算四邊的線積分。\n\n下邊（",
+  "body_full": "# 旋度\n\n## 工具摘要\n旋度關心的場在局部是否傾向繞圈。換句話說，散度看的是「冒出來還是吸進去」，旋度看的是「會不會繞著轉」。\n\n這兩件事完全不同。初學者最容易犯的錯，就是把任何看起來方向在變的場都說成有旋度。真正的判準小閉合路徑上的局部環流是否非零。\n\n## 數學定義\n對向量場 $\\vec F$，旋度寫成\n$$\n\\nabla\\times\\vec F.\n$$\n\n若\n$$\n\\vec F=(F_x,F_y,F_z),\n$$\n則\n$$\n\\nabla\\times\\vec F=\n\\begin{vmatrix}\n\\hat i & \\hat j & \\hat k\\\\\n\\partial/\\partial x & \\partial/\\partial y & \\partial/\\partial z\\\\\nF_x & F_y & F_z\n\\end{vmatrix}.\n$$\n\n展開後得到\n$$\n\\nabla\\times\\vec F=\n\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat i\n+\\left(\\frac{\\partial F_x}{\\partial z}-\\frac{\\partial F_z}{\\partial x}\\right)\\hat j\n+\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\hat k.\n$$\n\n對大一新生來說，不用一開始就死背全部分量式，但至少要知道：旋度輸出的是向量，方向代表局部旋轉軸，大小代表局部環流強度。\n\n## 推導\n旋度的定義可從斯托克斯定理推導。\n\n斯托克斯定理：\n$$\n\\oint_C \\vec{F}\\cdot d\\vec{l}=\\iint_S(\\nabla\\times\\vec{F})\\cdot d\\vec{A}\n$$\n\n取 $S$ 為 $xy$ 平面上的微小矩形（面積 $\\Delta x\\Delta y$），計算四邊的線積分。\n\n下邊（$x$ 方向，$y$）：$F_x(x,y)\\Delta x$\n上邊（$x$ 方向，$y+\\Delta y$）：$-F_x(x,y+\\Delta y)\\Delta x$\n右邊（$y$ 方向，$x+\\Delta x$）：$F_y(x+\\Delta x,y)\\Delta y$\n左邊（$y$ 方向，$x$）：$-F_y(x,y)\\Delta y$\n\n淨環流：\n$$\n\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\Delta x\\Delta y\n$$\n\n這是 $(\\nabla\\times\\vec{F})_z$ 分量。類似地可得：\n$$\n\\nabla\\times\\vec{F}=\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat{x}+\\left(\\frac{\\partial F_x}{\\partial z}-\\frac{\\partial F_z}{\\partial x}\\right)\\hat{y}+\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\hat{z}\n$$\n\n## 幾何意義\n旋度的幾何意義是局部環流密度。你可以想像在場中放一個極小葉輪：\n若葉輪傾向被帶著轉，該處旋度通常非零。\n若葉輪不傾向旋轉，旋度可能為零。\n\n旋度方向由右手定則決定，指向局部旋轉軸；旋度大小則反映繞圈趨勢有多強。\n\n一個很基本的二維例子是\n$$\n\\vec F=(-y,x,0).\n$$\n計算其 $z$ 分量旋度：\n$$\n(\\nabla\\times\\vec F)_z=\n\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\n=\\frac{\\partial x}{\\partial x}-\\frac{\\partial(-y)}{\\partial y}\n=1-(-1)=2.\n$$\n這表示這個場具有明顯的局部繞圈結構。\n\n## 為什麼物理需要它\n很多物理定律不只在說源匯，還在說場如何繞閉合路徑形成環流。這正是旋度的地盤。\n\n最著名的例子是 法拉第定律。變動磁場會產生環繞式的感應電場，這種電場沿空間形成迴圈。若你不用旋度語言，就只能停留在線積分層級，無法看懂它的局部結構。\n\n在 麥克斯威方程組 裡，旋度是描述環流型耦合的主要語言：變動磁場會驅動電場環流，變動電場與電流又會驅動磁場環流。\n\n## 在哪些主題中出現\n法拉第定律\n麥克斯威方程組\n流體環流與渦旋觀念\n\n只要題目出現閉合路徑、環流、感應、局部旋轉，旋度通常就在背後。\n\n## 典型操作\n判斷向量場是否具有局部環流傾向。\n從線積分形式轉到微分形式。\n利用右手定則判定局部旋轉軸方向。\n分析感應電場或磁場的環繞結構。\n\n很多初學者會問：「只要場線彎曲就有旋度嗎？」不一定。彎曲不等於局部環流，真正要看的是極小閉合路徑上的淨循環。\n\n## 解題框架\n1. 先問題目談的是源匯，還是環流。\n2. 若是環流、閉合迴路、感應效應，優先想到旋度。\n3. 對向量場做旋度計算，或從對稱性與物理圖像先判斷方向。\n4. 算完不要停在符號，要翻成物理語言：哪個軸附近有局部繞圈傾向。\n5. 若和電磁學連動，再對照 法拉第定律 或 麥克斯威方程組 的物理意義。\n\n下面給一個局部環流的推導直覺。考慮一個極小矩形迴路，其邊長分別為 $\\Delta x,\\Delta y$。沿迴路計算向量場的線積分，四條邊的貢獻相加後，一階主導項會留下\n$$\n\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\Delta x\\Delta y.\n$$\n再除以面積 $\\Delta x\\Delta y$，就得到單位面積的局部循環率，也就是二維情況下的旋度分量。\n\n這件事很關鍵：旋度把「小迴路上的環流」縮成局部極限後自然得到的量。\n\n## 歷史背景\n旋度作為局部旋轉強度的工具，與 George Stokes、William Thomson 以及 James Clerk Maxwell 的數學物理傳統密切相關。它把原本只能憑流線圖描述的環流現象，壓縮成每一點都可定義的局部量，對流體與電磁學都極關鍵。\n\n## 常見誤解\n把旋度當成「整個場在大尺度上看起來像轉動」。\n把旋度與角速度本身直接畫上等號。\n和 散度 混淆，以為兩者都只是場的某種變化量。\n只會背 determinant 形式，不知道它其實來自小迴路環流。\n\n## 現代理論視角\n旋度真正揭露的是場的「繞圈性」與局部環流結構。這讓你開始看懂，很多場靠空間中的閉合迴圈彼此耦合。\n\n這個視角一旦建立，電磁學就不再只是背方程，而會變成一套可以看見局部幾何與動態結構的語言。\n\n## 相關工具\n偏導數\n向量\n法拉第定律\n磁場\n\n如果你想把旋度真正弄懂，最好同時把 散度 放在旁邊比較。兩者一起看，場的局部結構才會完整。\n\n## 物理直覺\n旋度的直覺想像一個很小的槳輪放進場裡會不會被扭著轉。\n\n如果一個場只是從某點往外射，可能散度大，但不一定有旋度；如果一個場沿圓周方向打轉，可能旋度大，但散度不一定大。兩者抓的是完全不同的局部結構。\n\n這也是為什麼在電磁學裡，靜電場和感應電場的差異巨大。靜電場常可視為由電位梯度導出，局部環流傾向為零；感應電場則本質上就是繞圈的。",
+  "sections": [
+    {
+      "title": "工具摘要",
+      "level": 2,
+      "preview": "旋度關心的場在局部是否傾向繞圈。換句話說，散度看的是「冒出來還是吸進去」，旋度看的是「會不會繞著轉」。\n\n這兩件事完全不同。初學者最容易犯的錯，就是把任何看起來方向在變的場都說成有旋度。真正的判準小閉合路徑上的局部環流是否非零。",
+      "content": "旋度關心的場在局部是否傾向繞圈。換句話說，散度看的是「冒出來還是吸進去」，旋度看的是「會不會繞著轉」。\n\n這兩件事完全不同。初學者最容易犯的錯，就是把任何看起來方向在變的場都說成有旋度。真正的判準小閉合路徑上的局部環流是否非零。"
+    },
+    {
+      "title": "數學定義",
+      "level": 2,
+      "preview": "對向量場 $\\vec F$，旋度寫成\n$$\n\\nabla\\times\\vec F.\n$$\n\n若\n$$\n\\vec F=(F_x,F_y,F_z),\n$$\n則\n$$\n\\nabla\\times\\vec F=\n\\begin{vmatrix}\n\\hat i & \\hat j & \\hat k\\\\\n\\partial/\\partial x & \\partial/\\partial y & \\partial/\\partial z\\\\\nF_x & F_y & F_z\n\\end{vmatrix}.\n$$\n\n展開後得到\n$$\n\\nabla\\times\\vec F=\n\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat i\n+\\left(\\frac{\\partial F",
+      "content": "對向量場 $\\vec F$，旋度寫成\n$$\n\\nabla\\times\\vec F.\n$$\n\n若\n$$\n\\vec F=(F_x,F_y,F_z),\n$$\n則\n$$\n\\nabla\\times\\vec F=\n\\begin{vmatrix}\n\\hat i & \\hat j & \\hat k\\\\\n\\partial/\\partial x & \\partial/\\partial y & \\partial/\\partial z\\\\\nF_x & F_y & F_z\n\\end{vmatrix}.\n$$\n\n展開後得到\n$$\n\\nabla\\times\\vec F=\n\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat i\n+\\left(\\frac{\\partial F_x}{\\partial z}-\\frac{\\partial F_z}{\\partial x}\\right)\\hat j\n+\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\hat k.\n$$\n\n對大一新生來說，不用一開始就死背全部分量式，但至少要知道：旋度輸出的是向量，方向代表局部旋轉軸，大小代表局部環流強度。"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "旋度的定義可從斯托克斯定理推導。\n\n斯托克斯定理：\n$$\n\\oint_C \\vec{F}\\cdot d\\vec{l}=\\iint_S(\\nabla\\times\\vec{F})\\cdot d\\vec{A}\n$$\n\n取 $S$ 為 $xy$ 平面上的微小矩形（面積 $\\Delta x\\Delta y$），計算四邊的線積分。\n\n下邊（$x$ 方向，$y$）：$F_x(x,y)\\Delta x$\n上邊（$x$ 方向，$y+\\Delta y$）：$-F_x(x,y+\\Delta y)\\Delta x$\n右邊（$y$ 方向，$x+\\Delta x$）：$F_y(x+\\Delta x,y)\\Delta y$\n左邊（$y$ 方向，$x$）：$-F_y(x,y)\\Delta y$\n\n淨環流：\n$$\n\\left(\\frac{\\partial F_y}{\\partial ",
+      "content": "旋度的定義可從斯托克斯定理推導。\n\n斯托克斯定理：\n$$\n\\oint_C \\vec{F}\\cdot d\\vec{l}=\\iint_S(\\nabla\\times\\vec{F})\\cdot d\\vec{A}\n$$\n\n取 $S$ 為 $xy$ 平面上的微小矩形（面積 $\\Delta x\\Delta y$），計算四邊的線積分。\n\n下邊（$x$ 方向，$y$）：$F_x(x,y)\\Delta x$\n上邊（$x$ 方向，$y+\\Delta y$）：$-F_x(x,y+\\Delta y)\\Delta x$\n右邊（$y$ 方向，$x+\\Delta x$）：$F_y(x+\\Delta x,y)\\Delta y$\n左邊（$y$ 方向，$x$）：$-F_y(x,y)\\Delta y$\n\n淨環流：\n$$\n\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\Delta x\\Delta y\n$$\n\n這是 $(\\nabla\\times\\vec{F})_z$ 分量。類似地可得：\n$$\n\\nabla\\times\\vec{F}=\\left(\\frac{\\partial F_z}{\\partial y}-\\frac{\\partial F_y}{\\partial z}\\right)\\hat{x}+\\left(\\frac{\\partial F_x}{\\partial z}-\\frac{\\partial F_z}{\\partial x}\\right)\\hat{y}+\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\hat{z}\n$$"
+    },
+    {
+      "title": "幾何意義",
+      "level": 2,
+      "preview": "旋度的幾何意義是局部環流密度。你可以想像在場中放一個極小葉輪：\n若葉輪傾向被帶著轉，該處旋度通常非零。\n若葉輪不傾向旋轉，旋度可能為零。\n\n旋度方向由右手定則決定，指向局部旋轉軸；旋度大小則反映繞圈趨勢有多強。\n\n一個很基本的二維例子是\n$$\n\\vec F=(-y,x,0).\n$$\n計算其 $z$ 分量旋度：\n$$\n(\\nabla\\times\\vec F)_z=\n\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\n=\\frac{\\partial x}{\\partial x}-\\frac{\\partial(-y)}{\\partial y}\n=1-(-1)=2.\n$$\n這表示這個場具有明顯的局部繞圈結構。",
+      "content": "旋度的幾何意義是局部環流密度。你可以想像在場中放一個極小葉輪：\n若葉輪傾向被帶著轉，該處旋度通常非零。\n若葉輪不傾向旋轉，旋度可能為零。\n\n旋度方向由右手定則決定，指向局部旋轉軸；旋度大小則反映繞圈趨勢有多強。\n\n一個很基本的二維例子是\n$$\n\\vec F=(-y,x,0).\n$$\n計算其 $z$ 分量旋度：\n$$\n(\\nabla\\times\\vec F)_z=\n\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\n=\\frac{\\partial x}{\\partial x}-\\frac{\\partial(-y)}{\\partial y}\n=1-(-1)=2.\n$$\n這表示這個場具有明顯的局部繞圈結構。"
+    },
+    {
+      "title": "為什麼物理需要它",
+      "level": 2,
+      "preview": "很多物理定律不只在說源匯，還在說場如何繞閉合路徑形成環流。這正是旋度的地盤。\n\n最著名的例子是 法拉第定律。變動磁場會產生環繞式的感應電場，這種電場沿空間形成迴圈。若你不用旋度語言，就只能停留在線積分層級，無法看懂它的局部結構。\n\n在 麥克斯威方程組 裡，旋度是描述環流型耦合的主要語言：變動磁場會驅動電場環流，變動電場與電流又會驅動磁場環流。",
+      "content": "很多物理定律不只在說源匯，還在說場如何繞閉合路徑形成環流。這正是旋度的地盤。\n\n最著名的例子是 法拉第定律。變動磁場會產生環繞式的感應電場，這種電場沿空間形成迴圈。若你不用旋度語言，就只能停留在線積分層級，無法看懂它的局部結構。\n\n在 麥克斯威方程組 裡，旋度是描述環流型耦合的主要語言：變動磁場會驅動電場環流，變動電場與電流又會驅動磁場環流。"
+    },
+    {
+      "title": "在哪些主題中出現",
+      "level": 2,
+      "preview": "法拉第定律\n麥克斯威方程組\n流體環流與渦旋觀念\n\n只要題目出現閉合路徑、環流、感應、局部旋轉，旋度通常就在背後。",
+      "content": "法拉第定律\n麥克斯威方程組\n流體環流與渦旋觀念\n\n只要題目出現閉合路徑、環流、感應、局部旋轉，旋度通常就在背後。"
+    },
+    {
+      "title": "典型操作",
+      "level": 2,
+      "preview": "判斷向量場是否具有局部環流傾向。\n從線積分形式轉到微分形式。\n利用右手定則判定局部旋轉軸方向。\n分析感應電場或磁場的環繞結構。\n\n很多初學者會問：「只要場線彎曲就有旋度嗎？」不一定。彎曲不等於局部環流，真正要看的是極小閉合路徑上的淨循環。",
+      "content": "判斷向量場是否具有局部環流傾向。\n從線積分形式轉到微分形式。\n利用右手定則判定局部旋轉軸方向。\n分析感應電場或磁場的環繞結構。\n\n很多初學者會問：「只要場線彎曲就有旋度嗎？」不一定。彎曲不等於局部環流，真正要看的是極小閉合路徑上的淨循環。"
+    },
+    {
+      "title": "解題框架",
+      "level": 2,
+      "preview": "1. 先問題目談的是源匯，還是環流。\n2. 若是環流、閉合迴路、感應效應，優先想到旋度。\n3. 對向量場做旋度計算，或從對稱性與物理圖像先判斷方向。\n4. 算完不要停在符號，要翻成物理語言：哪個軸附近有局部繞圈傾向。\n5. 若和電磁學連動，再對照 法拉第定律 或 麥克斯威方程組 的物理意義。\n\n下面給一個局部環流的推導直覺。考慮一個極小矩形迴路，其邊長分別為 $\\Delta x,\\Delta y$。沿迴路計算向量場的線積分，四條邊的貢獻相加後，一階主導項會留下\n$$\n\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\Delta x\\Delta y.\n$$\n再除以面積 $\\Delta x\\Delta y$，就得到單位面積的局部循環率，也就是二維情況下",
+      "content": "1. 先問題目談的是源匯，還是環流。\n2. 若是環流、閉合迴路、感應效應，優先想到旋度。\n3. 對向量場做旋度計算，或從對稱性與物理圖像先判斷方向。\n4. 算完不要停在符號，要翻成物理語言：哪個軸附近有局部繞圈傾向。\n5. 若和電磁學連動，再對照 法拉第定律 或 麥克斯威方程組 的物理意義。\n\n下面給一個局部環流的推導直覺。考慮一個極小矩形迴路，其邊長分別為 $\\Delta x,\\Delta y$。沿迴路計算向量場的線積分，四條邊的貢獻相加後，一階主導項會留下\n$$\n\\left(\\frac{\\partial F_y}{\\partial x}-\\frac{\\partial F_x}{\\partial y}\\right)\\Delta x\\Delta y.\n$$\n再除以面積 $\\Delta x\\Delta y$，就得到單位面積的局部循環率，也就是二維情況下的旋度分量。\n\n這件事很關鍵：旋度把「小迴路上的環流」縮成局部極限後自然得到的量。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "旋度作為局部旋轉強度的工具，與 George Stokes、William Thomson 以及 James Clerk Maxwell 的數學物理傳統密切相關。它把原本只能憑流線圖描述的環流現象，壓縮成每一點都可定義的局部量，對流體與電磁學都極關鍵。",
+      "content": "旋度作為局部旋轉強度的工具，與 George Stokes、William Thomson 以及 James Clerk Maxwell 的數學物理傳統密切相關。它把原本只能憑流線圖描述的環流現象，壓縮成每一點都可定義的局部量，對流體與電磁學都極關鍵。"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "把旋度當成「整個場在大尺度上看起來像轉動」。\n把旋度與角速度本身直接畫上等號。\n和 散度 混淆，以為兩者都只是場的某種變化量。\n只會背 determinant 形式，不知道它其實來自小迴路環流。",
+      "content": "把旋度當成「整個場在大尺度上看起來像轉動」。\n把旋度與角速度本身直接畫上等號。\n和 散度 混淆，以為兩者都只是場的某種變化量。\n只會背 determinant 形式，不知道它其實來自小迴路環流。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "旋度真正揭露的是場的「繞圈性」與局部環流結構。這讓你開始看懂，很多場靠空間中的閉合迴圈彼此耦合。\n\n這個視角一旦建立，電磁學就不再只是背方程，而會變成一套可以看見局部幾何與動態結構的語言。",
+      "content": "旋度真正揭露的是場的「繞圈性」與局部環流結構。這讓你開始看懂，很多場靠空間中的閉合迴圈彼此耦合。\n\n這個視角一旦建立，電磁學就不再只是背方程，而會變成一套可以看見局部幾何與動態結構的語言。"
+    },
+    {
+      "title": "相關工具",
+      "level": 2,
+      "preview": "偏導數\n向量\n法拉第定律\n磁場\n\n如果你想把旋度真正弄懂，最好同時把 散度 放在旁邊比較。兩者一起看，場的局部結構才會完整。",
+      "content": "偏導數\n向量\n法拉第定律\n磁場\n\n如果你想把旋度真正弄懂，最好同時把 散度 放在旁邊比較。兩者一起看，場的局部結構才會完整。"
+    },
+    {
+      "title": "物理直覺",
+      "level": 2,
+      "preview": "旋度的直覺想像一個很小的槳輪放進場裡會不會被扭著轉。\n\n如果一個場只是從某點往外射，可能散度大，但不一定有旋度；如果一個場沿圓周方向打轉，可能旋度大，但散度不一定大。兩者抓的是完全不同的局部結構。\n\n這也是為什麼在電磁學裡，靜電場和感應電場的差異巨大。靜電場常可視為由電位梯度導出，局部環流傾向為零；感應電場則本質上就是繞圈的。",
+      "content": "旋度的直覺想像一個很小的槳輪放進場裡會不會被扭著轉。\n\n如果一個場只是從某點往外射，可能散度大，但不一定有旋度；如果一個場沿圓周方向打轉，可能旋度大，但散度不一定大。兩者抓的是完全不同的局部結構。\n\n這也是為什麼在電磁學裡，靜電場和感應電場的差異巨大。靜電場常可視為由電位梯度導出，局部環流傾向為零；感應電場則本質上就是繞圈的。"
+    }
+  ]
+}

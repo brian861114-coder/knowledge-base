@@ -1,0 +1,88 @@
+{
+  "id": "應力",
+  "path": "03_quantities/應力.md",
+  "title": "應力",
+  "summary": "應力是材料內部單位面積上的內力，描述材料受力狀態，是材料力學和結構分析的基本物理量。",
+  "body_preview": "## 定義\n應力（stress）是材料內部單位面積上的內力。正應力 $\\sigma$ 垂直於截面，剪應力 $\\tau$ 平行於截面：\n\n$$\\sigma = \\frac{F_\\perp}{A}, \\quad \\tau = \\frac{F_\\parallel}{A}$$\n\n更一般地，應力是一個二階張量 $\\sigma_{ij}$，完整描述材料內部任意截面上的力分布。\n\n## 數學表達\n正應力（normal stress）：\n\n$$\\sigma = \\frac{F}{A}$$\n\n拉伸為正（$\\sigma > 0$），壓縮為負（$\\sigma < 0$）。\n\n剪應力（shear stress）：\n\n$$\\tau = \\frac{F_\\parallel}{A}$$\n\n應力張量（柯西應力張量）：\n\n$$\\sigma_{ij} = \\begin{pmatrix} \\sigma_{xx} & \\tau_{xy} & \\tau_{xz} \\\\ \\tau_{yx} & \\sigma_{yy} & \\tau_{yz} \\\\ \\tau_{zx} & \\tau_{zy} & \\sigma_{zz} \\end{pmatrix}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\sigma$ | 正應力 | Pa |\n| $\\tau$ | 剪應力 | Pa |\n| $F$ | 力 | N |\n| $A$ | 面積 | m² |\n| $\\sigma_{ij}$ | 應力張量分量 | Pa |\n\n## 維度與量綱\n$[\\sigma] = \\text{ML}^{-1}\\text{T}^{-2}$\nSI 單位：Pa (N/m²)\n常用單位：MPa ($10^6$ Pa), GPa ($10^9$ Pa)\n典型值：鋼的降伏強度 ~250 MPa，抗拉強度 ~400 MPa\n\n## 物理意義\n核心機制： 應力是材料內部的「傳力方式」。外力作用在物體上時，物體內部的原子通過鍵結力傳遞和分配這些力。應力就是這種微觀力在宏觀上的表現。\n\n類比",
+  "body_full": "## 定義\n應力（stress）是材料內部單位面積上的內力。正應力 $\\sigma$ 垂直於截面，剪應力 $\\tau$ 平行於截面：\n\n$$\\sigma = \\frac{F_\\perp}{A}, \\quad \\tau = \\frac{F_\\parallel}{A}$$\n\n更一般地，應力是一個二階張量 $\\sigma_{ij}$，完整描述材料內部任意截面上的力分布。\n\n## 數學表達\n正應力（normal stress）：\n\n$$\\sigma = \\frac{F}{A}$$\n\n拉伸為正（$\\sigma > 0$），壓縮為負（$\\sigma < 0$）。\n\n剪應力（shear stress）：\n\n$$\\tau = \\frac{F_\\parallel}{A}$$\n\n應力張量（柯西應力張量）：\n\n$$\\sigma_{ij} = \\begin{pmatrix} \\sigma_{xx} & \\tau_{xy} & \\tau_{xz} \\\\ \\tau_{yx} & \\sigma_{yy} & \\tau_{yz} \\\\ \\tau_{zx} & \\tau_{zy} & \\sigma_{zz} \\end{pmatrix}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\sigma$ | 正應力 | Pa |\n| $\\tau$ | 剪應力 | Pa |\n| $F$ | 力 | N |\n| $A$ | 面積 | m² |\n| $\\sigma_{ij}$ | 應力張量分量 | Pa |\n\n## 維度與量綱\n$[\\sigma] = \\text{ML}^{-1}\\text{T}^{-2}$\nSI 單位：Pa (N/m²)\n常用單位：MPa ($10^6$ Pa), GPa ($10^9$ Pa)\n典型值：鋼的降伏強度 ~250 MPa，抗拉強度 ~400 MPa\n\n## 物理意義\n核心機制： 應力是材料內部的「傳力方式」。外力作用在物體上時，物體內部的原子通過鍵結力傳遞和分配這些力。應力就是這種微觀力在宏觀上的表現。\n\n類比： 想像一列人手牽手（原子鏈）。如果你拉最前面的人，拉力通過每個人的手傳遞到最後。每個人手上的拉力除以手的截面積就是「應力」。\n\n常見盲點： 應力不等於外力。同樣的外力作用在不同截面積上，應力不同。這就是為什麼細的繩子比粗的更容易斷——同樣的力，細繩的應力更大。\n\n應力回答的問題是「材料內部承受了多大的力」。這是結構安全分析的核心——比較應力與材料的強度（降伏強度、抗拉強度），判斷材料是否會失效。\n\n## 量測方式\n1. 應變規（strain gauge）： 量測應變，由 $\\sigma = E\\epsilon$ 推算應力\n2. 光彈性法： 利用偏光觀察透明材料中的應力分布\n3. X 射線繞射： 量測晶格間距變化推算殘餘應力\n4. 有限元素分析（FEA）： 數值模擬計算複雜結構的應力場\n\n## 出現於哪些定律\n虎克定律：$\\sigma = E\\epsilon$（線性彈性範圍）\n剪切虎克定律：$\\tau = G\\gamma$\n強度理論：最大正應力理論、最大剪應力理論（Tresca）、von Mises 應力\n斷裂力學：應力強度因子 $K_I$\n\n## 歷史背景\n奧古斯丁-路易·柯西（Augustin-Louis Cauchy, 1789–1857）在 1822 年建立了應力張量的數學理論，將牛頓力學推廣到連續介質。柯西應力張量 $\\sigma_{ij}$ 是現代連續介質力學的基石。克里斯蒂安·哥德堡（Christian Otto Mohr）發展了應力圓（莫爾圓）的圖形方法。\n\n## 現代理論視角\n在現代力學中，應力被整合進拉格朗日力學和哈密頓力學框架。\n\n## 相關連結\n### 相關概念\n彈性\n應變\n材料強度\n\n### 相關物理量\n應變\n楊氏模量\n剪切模數\n\n### 相關實驗\n拉伸試驗\n應變規量測\n\n### 衍生結果\n應變\n材料失效",
+  "sections": [
+    {
+      "title": "定義",
+      "level": 2,
+      "preview": "應力（stress）是材料內部單位面積上的內力。正應力 $\\sigma$ 垂直於截面，剪應力 $\\tau$ 平行於截面：\n\n$$\\sigma = \\frac{F_\\perp}{A}, \\quad \\tau = \\frac{F_\\parallel}{A}$$\n\n更一般地，應力是一個二階張量 $\\sigma_{ij}$，完整描述材料內部任意截面上的力分布。",
+      "content": "應力（stress）是材料內部單位面積上的內力。正應力 $\\sigma$ 垂直於截面，剪應力 $\\tau$ 平行於截面：\n\n$$\\sigma = \\frac{F_\\perp}{A}, \\quad \\tau = \\frac{F_\\parallel}{A}$$\n\n更一般地，應力是一個二階張量 $\\sigma_{ij}$，完整描述材料內部任意截面上的力分布。"
+    },
+    {
+      "title": "數學表達",
+      "level": 2,
+      "preview": "正應力（normal stress）：\n\n$$\\sigma = \\frac{F}{A}$$\n\n拉伸為正（$\\sigma > 0$），壓縮為負（$\\sigma < 0$）。\n\n剪應力（shear stress）：\n\n$$\\tau = \\frac{F_\\parallel}{A}$$\n\n應力張量（柯西應力張量）：\n\n$$\\sigma_{ij} = \\begin{pmatrix} \\sigma_{xx} & \\tau_{xy} & \\tau_{xz} \\\\ \\tau_{yx} & \\sigma_{yy} & \\tau_{yz} \\\\ \\tau_{zx} & \\tau_{zy} & \\sigma_{zz} \\end{pmatrix}$$",
+      "content": "正應力（normal stress）：\n\n$$\\sigma = \\frac{F}{A}$$\n\n拉伸為正（$\\sigma > 0$），壓縮為負（$\\sigma < 0$）。\n\n剪應力（shear stress）：\n\n$$\\tau = \\frac{F_\\parallel}{A}$$\n\n應力張量（柯西應力張量）：\n\n$$\\sigma_{ij} = \\begin{pmatrix} \\sigma_{xx} & \\tau_{xy} & \\tau_{xz} \\\\ \\tau_{yx} & \\sigma_{yy} & \\tau_{yz} \\\\ \\tau_{zx} & \\tau_{zy} & \\sigma_{zz} \\end{pmatrix}$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\sigma$ | 正應力 | Pa |\n| $\\tau$ | 剪應力 | Pa |\n| $F$ | 力 | N |\n| $A$ | 面積 | m² |\n| $\\sigma_{ij}$ | 應力張量分量 | Pa |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\sigma$ | 正應力 | Pa |\n| $\\tau$ | 剪應力 | Pa |\n| $F$ | 力 | N |\n| $A$ | 面積 | m² |\n| $\\sigma_{ij}$ | 應力張量分量 | Pa |"
+    },
+    {
+      "title": "維度與量綱",
+      "level": 2,
+      "preview": "$[\\sigma] = \\text{ML}^{-1}\\text{T}^{-2}$\nSI 單位：Pa (N/m²)\n常用單位：MPa ($10^6$ Pa), GPa ($10^9$ Pa)\n典型值：鋼的降伏強度 ~250 MPa，抗拉強度 ~400 MPa",
+      "content": "$[\\sigma] = \\text{ML}^{-1}\\text{T}^{-2}$\nSI 單位：Pa (N/m²)\n常用單位：MPa ($10^6$ Pa), GPa ($10^9$ Pa)\n典型值：鋼的降伏強度 ~250 MPa，抗拉強度 ~400 MPa"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 應力是材料內部的「傳力方式」。外力作用在物體上時，物體內部的原子通過鍵結力傳遞和分配這些力。應力就是這種微觀力在宏觀上的表現。\n\n類比： 想像一列人手牽手（原子鏈）。如果你拉最前面的人，拉力通過每個人的手傳遞到最後。每個人手上的拉力除以手的截面積就是「應力」。\n\n常見盲點： 應力不等於外力。同樣的外力作用在不同截面積上，應力不同。這就是為什麼細的繩子比粗的更容易斷——同樣的力，細繩的應力更大。\n\n應力回答的問題是「材料內部承受了多大的力」。這是結構安全分析的核心——比較應力與材料的強度（降伏強度、抗拉強度），判斷材料是否會失效。",
+      "content": "核心機制： 應力是材料內部的「傳力方式」。外力作用在物體上時，物體內部的原子通過鍵結力傳遞和分配這些力。應力就是這種微觀力在宏觀上的表現。\n\n類比： 想像一列人手牽手（原子鏈）。如果你拉最前面的人，拉力通過每個人的手傳遞到最後。每個人手上的拉力除以手的截面積就是「應力」。\n\n常見盲點： 應力不等於外力。同樣的外力作用在不同截面積上，應力不同。這就是為什麼細的繩子比粗的更容易斷——同樣的力，細繩的應力更大。\n\n應力回答的問題是「材料內部承受了多大的力」。這是結構安全分析的核心——比較應力與材料的強度（降伏強度、抗拉強度），判斷材料是否會失效。"
+    },
+    {
+      "title": "量測方式",
+      "level": 2,
+      "preview": "1. 應變規（strain gauge）： 量測應變，由 $\\sigma = E\\epsilon$ 推算應力\n2. 光彈性法： 利用偏光觀察透明材料中的應力分布\n3. X 射線繞射： 量測晶格間距變化推算殘餘應力\n4. 有限元素分析（FEA）： 數值模擬計算複雜結構的應力場",
+      "content": "1. 應變規（strain gauge）： 量測應變，由 $\\sigma = E\\epsilon$ 推算應力\n2. 光彈性法： 利用偏光觀察透明材料中的應力分布\n3. X 射線繞射： 量測晶格間距變化推算殘餘應力\n4. 有限元素分析（FEA）： 數值模擬計算複雜結構的應力場"
+    },
+    {
+      "title": "出現於哪些定律",
+      "level": 2,
+      "preview": "虎克定律：$\\sigma = E\\epsilon$（線性彈性範圍）\n剪切虎克定律：$\\tau = G\\gamma$\n強度理論：最大正應力理論、最大剪應力理論（Tresca）、von Mises 應力\n斷裂力學：應力強度因子 $K_I$",
+      "content": "虎克定律：$\\sigma = E\\epsilon$（線性彈性範圍）\n剪切虎克定律：$\\tau = G\\gamma$\n強度理論：最大正應力理論、最大剪應力理論（Tresca）、von Mises 應力\n斷裂力學：應力強度因子 $K_I$"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "奧古斯丁-路易·柯西（Augustin-Louis Cauchy, 1789–1857）在 1822 年建立了應力張量的數學理論，將牛頓力學推廣到連續介質。柯西應力張量 $\\sigma_{ij}$ 是現代連續介質力學的基石。克里斯蒂安·哥德堡（Christian Otto Mohr）發展了應力圓（莫爾圓）的圖形方法。",
+      "content": "奧古斯丁-路易·柯西（Augustin-Louis Cauchy, 1789–1857）在 1822 年建立了應力張量的數學理論，將牛頓力學推廣到連續介質。柯西應力張量 $\\sigma_{ij}$ 是現代連續介質力學的基石。克里斯蒂安·哥德堡（Christian Otto Mohr）發展了應力圓（莫爾圓）的圖形方法。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在現代力學中，應力被整合進拉格朗日力學和哈密頓力學框架。",
+      "content": "在現代力學中，應力被整合進拉格朗日力學和哈密頓力學框架。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "彈性\n應變\n材料強度",
+      "content": "彈性\n應變\n材料強度"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "應變\n楊氏模量\n剪切模數",
+      "content": "應變\n楊氏模量\n剪切模數"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "拉伸試驗\n應變規量測",
+      "content": "拉伸試驗\n應變規量測"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "應變\n材料失效",
+      "content": "應變\n材料失效"
+    }
+  ]
+}

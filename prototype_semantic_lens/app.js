@@ -2,12 +2,14 @@ import {
   SEMANTIC_EDGE_TYPES,
   buildGraphIndex,
   collectDirectionalRelations,
+  detailFileNameForNodeId,
   validateDetailPayload,
   validateGraphPayload,
 } from "./logic.mjs";
 
 const GRAPH_URL = "../physics_graph.json";
-const DETAILS_URL = "../physics_note_details.json";
+const DETAIL_INDEX_URL = "./data/detail-index.json";
+const DETAIL_BASE_URL = "./data/details";
 const CANVAS_WIDTH = 1440;
 const CANVAS_HEIGHT = 960;
 const CENTER_X = 720;
@@ -115,7 +117,10 @@ function selectOverviewNodesForTaxonomy(pool) {
 
 const state = {
   graph: null,
+  detailIndex: {},
   details: {},
+  detailErrors: new Map(),
+  detailRequests: new Map(),
   nodeMap: new Map(),
   graphIndex: null,
   zoom: 1,
@@ -196,12 +201,15 @@ init().catch((error) => {
 });
 
 async function init() {
-  const [rawGraph, rawDetails] = await Promise.all([fetchJson(GRAPH_URL), fetchJson(DETAILS_URL)]);
+  const [rawGraph, rawDetailIndex] = await Promise.all([fetchJson(GRAPH_URL), fetchJson(DETAIL_INDEX_URL)]);
   validateGraphPayload(rawGraph);
 
   state.graph = normalizeGraph(rawGraph);
-  validateDetailPayload(rawDetails, state.graph.nodes.map((node) => node.id));
-  state.details = rawDetails;
+  validateDetailPayload(rawDetailIndex, state.graph.nodes.map((node) => node.id));
+  state.detailIndex = rawDetailIndex;
+  state.details = {};
+  state.detailErrors = new Map();
+  state.detailRequests = new Map();
   buildOverviewScene();
   buildDomainOverview();
   buildFilters();
@@ -736,6 +744,12 @@ function bindEvents() {
     if (sectionJump) {
       const target = document.getElementById(sectionJump.dataset.sectionTarget || "");
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    const retryDetail = event.target.closest("[data-retry-detail]");
+    if (retryDetail) {
+      state.detailErrors.delete(retryDetail.dataset.retryDetail);
+      void loadDetail(retryDetail.dataset.retryDetail);
     }
   });
   els.overviewModeButton.addEventListener("click", goToOverview);
@@ -1276,9 +1290,12 @@ function renderDetail() {
     return;
   }
 
-  const detail = state.details[node.id] || {};
+  const cachedDetail = state.details[node.id] || null;
+  const detailIndex = state.detailIndex[node.id] || {};
+  const detail = cachedDetail || detailIndex;
   const relations = collectRelations(node.id);
   const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
+  const sectionCount = cachedDetail?.sections?.length || detailIndex.section_count || 0;
 
   els.detailType.textContent = TYPE_LABELS[node.type] || node.type;
   els.detailTitle.textContent = node.title;
@@ -1294,7 +1311,7 @@ function renderDetail() {
     ["先備", String(relations.requires.length)],
     ["延伸", String(relations.extension.length)],
     ["相關", String(relations.related.length)],
-    ["章節", String(detail.sections?.length || 0)],
+    ["章節", String(sectionCount)],
   ]);
 
   fillRelationSection("prereq", relations.requires);
@@ -1311,6 +1328,9 @@ function renderDetail() {
   }
 
   // Note preview / full text
+  if (!cachedDetail) {
+    void loadDetail(node.id);
+  }
   renderNoteSection(node, detail);
   scheduleMathTypeset(els.detailSummary);
   syncNoteViewToggle();
@@ -1324,6 +1344,24 @@ function renderNoteSection(node, detail) {
     noteSection.className = "detail-section";
     const detailCard = document.querySelector(".detail-card");
     if (detailCard) detailCard.appendChild(noteSection);
+  }
+
+  const loadError = state.detailErrors.get(node.id);
+  if (loadError) {
+    noteSection.innerHTML = `
+      <div class="section-head"><h3>筆記內容</h3></div>
+      <p style="color:var(--red);font-size:0.88rem;">筆記載入失敗：${escapeHtml(loadError)}</p>
+      <button class="ghost-button" type="button" data-retry-detail="${escapeHtml(node.id)}">重試載入</button>
+    `;
+    return;
+  }
+
+  if (!state.details[node.id]) {
+    noteSection.innerHTML = `
+      <div class="section-head"><h3>筆記內容</h3></div>
+      <p style="color:var(--muted);font-size:0.88rem;">正在載入筆記內容…</p>
+    `;
+    return;
   }
 
   if (!detail || (!detail.sections?.length && !detail.body_preview && !detail.body_full)) {
@@ -1383,6 +1421,35 @@ function syncNoteViewToggle() {
     btn.classList.toggle("active", btn.dataset.noteMode === (isFull ? "full" : "preview"));
   }
   document.querySelector(".app-shell")?.classList.toggle("reader-mode", isFull && hasNode);
+}
+
+async function loadDetail(nodeId) {
+  if (state.details[nodeId]) return state.details[nodeId];
+  if (state.detailRequests.has(nodeId)) return state.detailRequests.get(nodeId);
+
+  const request = fetchJson(`${DETAIL_BASE_URL}/${detailFileNameForNodeId(nodeId)}`)
+    .then((detail) => {
+      state.details[nodeId] = detail;
+      state.detailErrors.delete(nodeId);
+      return detail;
+    })
+    .catch((error) => {
+      state.detailErrors.set(nodeId, String(error.message || error));
+      throw error;
+    })
+    .finally(() => {
+      state.detailRequests.delete(nodeId);
+      if (state.selectedNodeId === nodeId) {
+        try {
+          renderDetail();
+        } catch (renderError) {
+          console.error("renderDetail error:", renderError);
+        }
+      }
+    });
+
+  state.detailRequests.set(nodeId, request);
+  return request;
 }
 
 function renderSearchResults() {

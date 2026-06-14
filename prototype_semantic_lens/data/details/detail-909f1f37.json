@@ -1,0 +1,94 @@
+{
+  "id": "阻抗",
+  "path": "03_quantities/阻抗.md",
+  "title": "阻抗",
+  "summary": "阻抗是交流電路中電阻和電抗的綜合量，Z = R + jX，描述元件對電流的完整阻礙作用。",
+  "body_preview": "## 定義\n阻抗 $Z$ 是交流電路中電壓與電流的複數比值：$Z = V/I = R + jX$，其中 $R$ 為電阻（實部），$X$ 為電抗（虛部）。\n\n## 數學表達\n$$Z = R + jX = |Z|e^{j\\phi}$$\n$$|Z| = \\sqrt{R^2 + X^2}, \\quad \\phi = \\arctan(X/R)$$\n$$X = X_L - X_C = \\omega L - \\frac{1}{\\omega C}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $Z$ | 阻抗 | Ω |\n| $R$ | 電阻 | Ω |\n| $X$ | 電抗 | Ω |\n| $\\phi$ | 相位角 | rad |\n\n## 維度與量綱\n$[Z] = \\text{ML}^2\\text{T}^{-3}\\text{I}^{-2}$\nSI 單位：Ω\n\n## 物理意義\n核心機制： 阻抗是「交流版的電阻」。實部 $R$ 消耗能量，虛部 $X$ 儲存能量但不消耗。\n\n類比： 想像推一個有彈簧阻力的門——阻力（實部）讓你做功消耗能量，彈簧（虛部）儲存能量然後還給你。\n\n常見盲點： 阻抗是複數——有大小也有相位。兩個阻抗不能簡單地用標量加法。\n\n阻抗回答的問題是「元件在交流電路中如何阻礙電流」。這是交流電路分析的核心概念。\n\n## 量測方式\n1. 阻抗分析儀： 頻率掃描量測 $Z(f)$\n2. 交流電橋： 平衡條件給出 $Z$\n3. 網路分析儀： 高頻阻抗量測\n\n## 出現於哪些定律\n歐姆定律交流形式：$V = IZ$\nRLC電路：$Z = R + j(\\omega L - 1/\\omega C)$\n共振時 $X = 0$，$Z = R$\n\n## 歷史背景\n奧利弗·亥維賽（Oliver Heaviside, 1850–1925）在 1880 年代發展了阻抗概念，用複數統一電阻和電抗。查爾斯·施泰因梅茨（Charles Steinmetz, 1865–1923）引入了相量表示法。\n\n## 現代理論視角\n在微波工程中",
+  "body_full": "## 定義\n阻抗 $Z$ 是交流電路中電壓與電流的複數比值：$Z = V/I = R + jX$，其中 $R$ 為電阻（實部），$X$ 為電抗（虛部）。\n\n## 數學表達\n$$Z = R + jX = |Z|e^{j\\phi}$$\n$$|Z| = \\sqrt{R^2 + X^2}, \\quad \\phi = \\arctan(X/R)$$\n$$X = X_L - X_C = \\omega L - \\frac{1}{\\omega C}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $Z$ | 阻抗 | Ω |\n| $R$ | 電阻 | Ω |\n| $X$ | 電抗 | Ω |\n| $\\phi$ | 相位角 | rad |\n\n## 維度與量綱\n$[Z] = \\text{ML}^2\\text{T}^{-3}\\text{I}^{-2}$\nSI 單位：Ω\n\n## 物理意義\n核心機制： 阻抗是「交流版的電阻」。實部 $R$ 消耗能量，虛部 $X$ 儲存能量但不消耗。\n\n類比： 想像推一個有彈簧阻力的門——阻力（實部）讓你做功消耗能量，彈簧（虛部）儲存能量然後還給你。\n\n常見盲點： 阻抗是複數——有大小也有相位。兩個阻抗不能簡單地用標量加法。\n\n阻抗回答的問題是「元件在交流電路中如何阻礙電流」。這是交流電路分析的核心概念。\n\n## 量測方式\n1. 阻抗分析儀： 頻率掃描量測 $Z(f)$\n2. 交流電橋： 平衡條件給出 $Z$\n3. 網路分析儀： 高頻阻抗量測\n\n## 出現於哪些定律\n歐姆定律交流形式：$V = IZ$\nRLC電路：$Z = R + j(\\omega L - 1/\\omega C)$\n共振時 $X = 0$，$Z = R$\n\n## 歷史背景\n奧利弗·亥維賽（Oliver Heaviside, 1850–1925）在 1880 年代發展了阻抗概念，用複數統一電阻和電抗。查爾斯·施泰因梅茨（Charles Steinmetz, 1865–1923）引入了相量表示法。\n\n## 現代理論視角\n在微波工程中，阻抗用 S 參數描述。在天線設計中，阻抗匹配（$Z_{\\text{antenna}} = Z_{\\text{feed}}$） maximizes power transfer。\n\n## 相關連結\n### 相關概念\n電阻\n電容抗\n感抗\n\n### 相關物理量\n阻抗\n導納\n\n### 相關實驗\n阻抗量測實驗\n\n### 衍生結果\n交流電路分析\n阻抗匹配\n\n## 推導\n對 RLC 串聯電路：\n$$Z = R + j(\\omega L - \\frac{1}{\\omega C})$$\n\n大小：$|Z| = \\sqrt{R^2 + (\\omega L - 1/\\omega C)^2}$\n\n相位：$\\phi = \\arctan\\left(\\frac{\\omega L - 1/\\omega C}{R}\\right)$",
+  "sections": [
+    {
+      "title": "定義",
+      "level": 2,
+      "preview": "阻抗 $Z$ 是交流電路中電壓與電流的複數比值：$Z = V/I = R + jX$，其中 $R$ 為電阻（實部），$X$ 為電抗（虛部）。",
+      "content": "阻抗 $Z$ 是交流電路中電壓與電流的複數比值：$Z = V/I = R + jX$，其中 $R$ 為電阻（實部），$X$ 為電抗（虛部）。"
+    },
+    {
+      "title": "數學表達",
+      "level": 2,
+      "preview": "$$Z = R + jX = |Z|e^{j\\phi}$$\n$$|Z| = \\sqrt{R^2 + X^2}, \\quad \\phi = \\arctan(X/R)$$\n$$X = X_L - X_C = \\omega L - \\frac{1}{\\omega C}$$",
+      "content": "$$Z = R + jX = |Z|e^{j\\phi}$$\n$$|Z| = \\sqrt{R^2 + X^2}, \\quad \\phi = \\arctan(X/R)$$\n$$X = X_L - X_C = \\omega L - \\frac{1}{\\omega C}$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $Z$ | 阻抗 | Ω |\n| $R$ | 電阻 | Ω |\n| $X$ | 電抗 | Ω |\n| $\\phi$ | 相位角 | rad |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $Z$ | 阻抗 | Ω |\n| $R$ | 電阻 | Ω |\n| $X$ | 電抗 | Ω |\n| $\\phi$ | 相位角 | rad |"
+    },
+    {
+      "title": "維度與量綱",
+      "level": 2,
+      "preview": "$[Z] = \\text{ML}^2\\text{T}^{-3}\\text{I}^{-2}$\nSI 單位：Ω",
+      "content": "$[Z] = \\text{ML}^2\\text{T}^{-3}\\text{I}^{-2}$\nSI 單位：Ω"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 阻抗是「交流版的電阻」。實部 $R$ 消耗能量，虛部 $X$ 儲存能量但不消耗。\n\n類比： 想像推一個有彈簧阻力的門——阻力（實部）讓你做功消耗能量，彈簧（虛部）儲存能量然後還給你。\n\n常見盲點： 阻抗是複數——有大小也有相位。兩個阻抗不能簡單地用標量加法。\n\n阻抗回答的問題是「元件在交流電路中如何阻礙電流」。這是交流電路分析的核心概念。",
+      "content": "核心機制： 阻抗是「交流版的電阻」。實部 $R$ 消耗能量，虛部 $X$ 儲存能量但不消耗。\n\n類比： 想像推一個有彈簧阻力的門——阻力（實部）讓你做功消耗能量，彈簧（虛部）儲存能量然後還給你。\n\n常見盲點： 阻抗是複數——有大小也有相位。兩個阻抗不能簡單地用標量加法。\n\n阻抗回答的問題是「元件在交流電路中如何阻礙電流」。這是交流電路分析的核心概念。"
+    },
+    {
+      "title": "量測方式",
+      "level": 2,
+      "preview": "1. 阻抗分析儀： 頻率掃描量測 $Z(f)$\n2. 交流電橋： 平衡條件給出 $Z$\n3. 網路分析儀： 高頻阻抗量測",
+      "content": "1. 阻抗分析儀： 頻率掃描量測 $Z(f)$\n2. 交流電橋： 平衡條件給出 $Z$\n3. 網路分析儀： 高頻阻抗量測"
+    },
+    {
+      "title": "出現於哪些定律",
+      "level": 2,
+      "preview": "歐姆定律交流形式：$V = IZ$\nRLC電路：$Z = R + j(\\omega L - 1/\\omega C)$\n共振時 $X = 0$，$Z = R$",
+      "content": "歐姆定律交流形式：$V = IZ$\nRLC電路：$Z = R + j(\\omega L - 1/\\omega C)$\n共振時 $X = 0$，$Z = R$"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "奧利弗·亥維賽（Oliver Heaviside, 1850–1925）在 1880 年代發展了阻抗概念，用複數統一電阻和電抗。查爾斯·施泰因梅茨（Charles Steinmetz, 1865–1923）引入了相量表示法。",
+      "content": "奧利弗·亥維賽（Oliver Heaviside, 1850–1925）在 1880 年代發展了阻抗概念，用複數統一電阻和電抗。查爾斯·施泰因梅茨（Charles Steinmetz, 1865–1923）引入了相量表示法。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在微波工程中，阻抗用 S 參數描述。在天線設計中，阻抗匹配（$Z_{\\text{antenna}} = Z_{\\text{feed}}$） maximizes power transfer。",
+      "content": "在微波工程中，阻抗用 S 參數描述。在天線設計中，阻抗匹配（$Z_{\\text{antenna}} = Z_{\\text{feed}}$） maximizes power transfer。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "電阻\n電容抗\n感抗",
+      "content": "電阻\n電容抗\n感抗"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "阻抗\n導納",
+      "content": "阻抗\n導納"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "阻抗量測實驗",
+      "content": "阻抗量測實驗"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "交流電路分析\n阻抗匹配",
+      "content": "交流電路分析\n阻抗匹配"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "對 RLC 串聯電路：\n$$Z = R + j(\\omega L - \\frac{1}{\\omega C})$$\n\n大小：$|Z| = \\sqrt{R^2 + (\\omega L - 1/\\omega C)^2}$\n\n相位：$\\phi = \\arctan\\left(\\frac{\\omega L - 1/\\omega C}{R}\\right)$",
+      "content": "對 RLC 串聯電路：\n$$Z = R + j(\\omega L - \\frac{1}{\\omega C})$$\n\n大小：$|Z| = \\sqrt{R^2 + (\\omega L - 1/\\omega C)^2}$\n\n相位：$\\phi = \\arctan\\left(\\frac{\\omega L - 1/\\omega C}{R}\\right)$"
+    }
+  ]
+}

@@ -1,0 +1,2504 @@
+{
+  "光學總覽": {
+    "summary": "光學分為幾何光學與波動光學，前者重在光線模型，後者重在干涉、繞射與偏振。",
+    "path": "00_maps/光學總覽.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "分析力學與非線性動力系統圖": {
+    "summary": "把拉格朗日、哈密頓、相空間與非線性混沌主線接成一張進階導覽頁。",
+    "path": "00_maps/分析力學與非線性動力系統圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "力學核心概念圖": {
+    "summary": "整理力學中的運動、受力、守恆、轉動與平衡骨架，避免頁面變多後只剩零散術語。",
+    "path": "00_maps/力學核心概念圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "力學總覽": {
+    "summary": "力學涵蓋運動學、牛頓力學、能量、動量、轉動與萬有引力，是普通物理的主幹。",
+    "path": "00_maps/力學總覽.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "振動波動與光學概念圖": {
+    "summary": "把振動、波、干涉、繞射、偏振與幾何光學主線整理成單一導覽頁。",
+    "path": "00_maps/振動波動與光學概念圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "振動與波動總覽": {
+    "summary": "振動與波動研究週期運動、波的傳播，以及干涉、駐波、共振與聲學現象。",
+    "path": "00_maps/振動與波動總覽.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "數學工具總覽": {
+    "summary": "這一區整理哪些數學工具在普通物理裡最常用、各自拿來處理什麼問題。",
+    "path": "00_maps/數學工具總覽.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "流體力學總覽": {
+    "summary": "流體力學把力學延伸到液體與氣體的連續介質，核心主題是壓力、流量、連續性、浮力與能量流。",
+    "path": "00_maps/流體力學總覽.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "熱學與流體概念圖": {
+    "summary": "把溫度、熱、熵、可逆性、流動型態與理想流體近似整理成一張導覽頁。",
+    "path": "00_maps/熱學與流體概念圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "熱學與熱力學總覽": {
+    "summary": "熱學與熱力學研究熱、內能、狀態方程、能量守恆、熵與循環，是從巨觀角度描述多粒子系統的主幹。",
+    "path": "00_maps/熱學與熱力學總覽.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "物理基礎概念總覽": {
+    "summary": "物理的基礎概念所有領域共享的語言：參考系、力、能量、場、守恆與平衡。",
+    "path": "00_maps/物理基礎概念總覽.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "近代物理概念圖": {
+    "summary": "整理相對論、量子與微觀現象主線，避免近代物理頁面變成只剩名詞堆疊。",
+    "path": "00_maps/近代物理概念圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "近代物理總覽": {
+    "summary": "近代物理處理經典理論失效後的兩條主線：相對論與量子現象。",
+    "path": "00_maps/近代物理總覽.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電磁學核心概念圖": {
+    "summary": "用場、通量、環流、電路與電磁波五條主線整理電磁學，不讓頁面多到失去骨架。",
+    "path": "00_maps/電磁學核心概念圖.md",
+    "section_count": 9,
+    "has_content": true
+  },
+  "電磁學總覽": {
+    "summary": "電磁學涵蓋靜電、電路、磁學、感應與電磁波，是普通物理中結構最豐富的領域之一。",
+    "path": "00_maps/電磁學總覽.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "伯努力方程": {
+    "summary": "伯努力方程描述理想流體沿流線的壓力、速度和高度之間的守恆關係，是流體力學的基本能量守恆方程。",
+    "path": "01_laws/伯努力方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "功能定理": {
+    "summary": "功能定理（功-能定理）指出，合外力對物體所做的淨功等於其動能的變化：$W_{\\text{net}} = \\Delta K = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$。它把力在空間上的累積效應與運動狀態直接連結，是 能量方法 分析的起點。",
+    "path": "01_laws/功能定理.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "動量守恆": {
+    "summary": "動量守恆指出封閉系統的總動量不隨時間變化，是空間平移對稱性的直接結果（諾特定理），也是碰撞分析的基本工具。",
+    "path": "01_laws/動量守恆.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "動量定理": {
+    "summary": "動量定理指出物體動量的變化等於作用在物體上的合力的衝量，$\\Delta \\vec{p} = \\int \\vec{F}\\,dt$，是牛頓第二定律的積分形式。",
+    "path": "01_laws/動量定理.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "反射定律": {
+    "summary": "反射定律指出入射角等於反射角，且入射線、反射線與法線共平面。",
+    "path": "01_laws/反射定律.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "哈密頓方程": {
+    "summary": "哈密頓方程以廣義座標和廣義動量為獨立變數，將力學運動描述為相空間中的一階微分方程組，是統計力學和量子力學的基礎。",
+    "path": "01_laws/哈密頓方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "唯一性定理": {
+    "summary": "唯一性定理指出在給定適當邊界條件後，滿足泊松方程或拉普拉斯方程的解只有一個，因此候選解一旦滿足條件，就不只是可能解，而是真解。",
+    "path": "01_laws/唯一性定理.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "基爾霍夫電壓定律": {
+    "summary": "基爾霍夫電壓定律（KVL）指出沿電路中任一閉合迴路的電壓代數和為零，是能量守恆在電路中的直接體現。",
+    "path": "01_laws/基爾霍夫電壓定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "基爾霍夫電流定律": {
+    "summary": "基爾霍夫電流定律（KCL）指出流入電路中任一節點的電流代數和為零，是電荷守恆在電路中的直接體現。",
+    "path": "01_laws/基爾霍夫電流定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "安培-馬克士威方程": {
+    "summary": "安培-馬克士威方程是馬克士威對安培定律加入位移電流修正後的完整形式，統一了傳導電流和變動電場作為磁場的源。",
+    "path": "01_laws/安培-馬克士威方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "安培定律": {
+    "summary": "安培定律描述穩恆電流產生的磁場分布，指出磁場沿閉合迴路的線積分等於穿過迴路的電流乘以真空磁導率。",
+    "path": "01_laws/安培定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "局部歐姆定律": {
+    "summary": "局部歐姆定律將歐姆定律從電路推廣到場的形式，描述導體內部每一點的電流密度與電場和電導率的關係。",
+    "path": "01_laws/局部歐姆定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "平行軸定理": {
+    "summary": "平行軸定理指出剛體繞任意軸的轉動慣量等於繞質心平行軸的轉動慣量加上質量乘以軸距平方，是計算非質心軸轉動慣量的關鍵工具。",
+    "path": "01_laws/平行軸定理.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "庫侖定律": {
+    "summary": "庫侖定律描述兩個點電荷之間的靜電力：$F = k_e \\frac{q_1 q_2}{r^2}$，方向沿連線，同性相斥、異性相吸。由庫侖在 1785 年透過扭秤實驗驗證，是靜電學的基石，也是 [[電場]] 概念的起點。",
+    "path": "01_laws/庫侖定律.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "折射定律": {
+    "summary": "光在兩介質交界面傳播時，入射角與折射角滿足折射率決定的正弦關係。",
+    "path": "01_laws/折射定律.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "拉普拉斯方程": {
+    "summary": "拉普拉斯方程描述無源區域中的電位必須滿足的條件，是靜電邊界值問題、鏡像法與唯一性定理的核心方程。",
+    "path": "01_laws/拉普拉斯方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "斯涅爾定律": {
+    "summary": "斯涅爾定律（折射定律）描述光在兩種介質界面折射時入射角與折射角的關係，$n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2$，是幾何光學的基本定律。",
+    "path": "01_laws/斯涅爾定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "最小作用量原理": {
+    "summary": "最小作用量原理指出物理系統的真實運動軌跡使作用量泛函取極值，是所有經典力學和場論的統一原理。",
+    "path": "01_laws/最小作用量原理.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "楞次定律": {
+    "summary": "楞次定律指出感應電流的方向總是阻礙引起它的磁通量變化，是法拉第定律中負號的物理意義。",
+    "path": "01_laws/楞次定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "機械能守恆": {
+    "summary": "當系統只受保守力作用時，動能與位能的總和保持不變。",
+    "path": "01_laws/機械能守恆.md",
+    "section_count": 19,
+    "has_content": true
+  },
+  "歐姆定律": {
+    "summary": "歐姆定律描述線性歐姆材料中電壓、電流與電阻之間的比例關係，本質上是一條材料響應定律。",
+    "path": "01_laws/歐姆定律.md",
+    "section_count": 21,
+    "has_content": true
+  },
+  "歐拉－拉格朗日方程": {
+    "summary": "歐拉-拉格朗日方程是從最小作用量原理推導出的運動方程，以廣義座標描述系統動力學，自動處理約束力。",
+    "path": "01_laws/歐拉－拉格朗日方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "泊松方程": {
+    "summary": "泊松方程把電位與電荷密度直接連結起來，是由高斯定律與 E = -∇V 推得的核心場方程。",
+    "path": "01_laws/泊松方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "法拉第定律": {
+    "summary": "法拉第定律指出磁通量隨時間改變會感生電動勢。",
+    "path": "01_laws/法拉第定律.md",
+    "section_count": 19,
+    "has_content": true
+  },
+  "火箭方程": {
+    "summary": "火箭方程（齊奧爾科夫斯基方程）描述變質量系統藉由噴出質量獲得速度變化的關係，$\\Delta v = v_e \\ln(m_i/m_f)$。",
+    "path": "01_laws/火箭方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "焦耳定律": {
+    "summary": "焦耳定律描述電流通過電阻時產生的熱功率與電流平方和電阻成正比，是電路熱效應和能量損耗的基礎定律。",
+    "path": "01_laws/焦耳定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "熱力學第一定律": {
+    "summary": "系統內能的改變等於傳入系統的熱減去系統對外做的功。",
+    "path": "01_laws/熱力學第一定律.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "熱力學第二定律": {
+    "summary": "熱力學第二定律指出自然過程存在方向性，孤立系統的熵不會自發減少。",
+    "path": "01_laws/熱力學第二定律.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "熱力學第零定律": {
+    "summary": "若兩個系統各自都與第三個系統熱平衡，則彼此也熱平衡；這使溫度成為可一致定義的狀態量。",
+    "path": "01_laws/熱力學第零定律.md",
+    "section_count": 21,
+    "has_content": true
+  },
+  "牛頓第一定律": {
+    "summary": "若物體所受合力為零，則會保持靜止或等速度直線運動；它說明了慣性的存在。",
+    "path": "01_laws/牛頓第一定律.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "牛頓第三定律": {
+    "summary": "兩物體相互作用時，彼此施加的力大小相等、方向相反，且作用在不同物體上。",
+    "path": "01_laws/牛頓第三定律.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "牛頓第二定律": {
+    "summary": "物體所受合力等於其動量對時間的變化率，在質量不變時可寫為 F = ma。",
+    "path": "01_laws/牛頓第二定律.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "牛頓萬有引力定律": {
+    "summary": "牛頓萬有引力定律以反平方形式描述質量間的吸引力，是天體力學與近地重力現象的經典骨架。",
+    "path": "01_laws/牛頓萬有引力定律.md",
+    "section_count": 21,
+    "has_content": true
+  },
+  "狀態方程": {
+    "summary": "狀態方程是描述物質熱力學狀態變數（壓力、體積、溫度）之間關係的數學方程，理想氣體狀態方程是最簡單的範例。",
+    "path": "01_laws/狀態方程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "理想氣體方程式": {
+    "summary": "理想氣體方程式把壓力、體積、溫度與粒子數連結起來，是熱學建模的經典起點。",
+    "path": "01_laws/理想氣體方程式.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "畢奧-沙伐定律": {
+    "summary": "畢奧-沙伐定律描述電流元在空間中任意點產生的磁場，是計算載流導線磁場的基本定律。",
+    "path": "01_laws/畢奧-沙伐定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "疊加原理": {
+    "summary": "疊加原理指出若控制方程是線性的，來自多個源的總效果就是各個單獨效果的向量和，這是處理 [[電場]]、[[電位]] 與 [[電偶極矩]] 問題的基本原則。",
+    "path": "01_laws/疊加原理.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "萬有引力定律": {
+    "summary": "萬有引力定律描述任意兩個質量之間彼此吸引，且力的大小與距離平方成反比。",
+    "path": "01_laws/萬有引力定律.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "薄透鏡公式": {
+    "summary": "薄透鏡公式把物距、像距與焦距關聯起來，是幾何光學成像分析的核心骨架。",
+    "path": "01_laws/薄透鏡公式.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "虎克定律": {
+    "summary": "虎克定律指出彈性位移小時，回復力與位移大小成正比且方向相反。",
+    "path": "01_laws/虎克定律.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "角動量守恆": {
+    "summary": "在系統所受外轉矩為零時，總角動量保持不變，是轉動問題的關鍵守恆律。",
+    "path": "01_laws/角動量守恆.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "角動量定理": {
+    "summary": "角動量定理指出外力矩的合量等於角動量對時間的變化率，是轉動問題對應於動量定理的核心關係。",
+    "path": "01_laws/角動量定理.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "諾特定理": {
+    "summary": "諾特定理指出連續對稱性對應守恆量，將作用量的對稱結構與守恆律直接連接起來。",
+    "path": "01_laws/諾特定理.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "質能等價": {
+    "summary": "質能等價指出質量與能量可以互換，並由 E = mc^2 連結。",
+    "path": "01_laws/質能等價.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "轉動版牛頓第二定律": {
+    "summary": "轉動版牛頓第二定律把合轉矩與角加速度連起來，是剛體動力學的核心方程。",
+    "path": "01_laws/轉動版牛頓第二定律.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "轉動運動學方程": {
+    "summary": "在角加速度為常數時，轉動運動學方程給出角位移、角速度與時間之間的標準關係。",
+    "path": "01_laws/轉動運動學方程.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "連續方程": {
+    "summary": "連續方程是守恆律的局部表達模板，無論在流體中的質量守恆，或在電磁學中的電荷守恆，本質上都在說某區域內的存量變化必須由流入流出來解釋。",
+    "path": "01_laws/連續方程.md",
+    "section_count": 21,
+    "has_content": true
+  },
+  "阿基米德原理": {
+    "summary": "阿基米德原理指出浸入流體中的物體會受到大小等於所排開流體重量的浮力，這其實是壓力分布的合力結果。",
+    "path": "01_laws/阿基米德原理.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "電磁波方程": {
+    "summary": "電磁波方程描述真空中的電場與磁場如何滿足波動方程，並以光速傳播。",
+    "path": "01_laws/電磁波方程.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "電荷守恆": {
+    "summary": "電荷守恆指出孤立系統中的總電荷不會憑空產生或消失，只能在空間中重新分布，這個原理在局部形式上會寫成 [[連續方程]]。",
+    "path": "01_laws/電荷守恆.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "高斯定律": {
+    "summary": "封閉曲面的總電通量只由曲面內包住的總電荷決定。",
+    "path": "01_laws/高斯定律.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "麥克斯威方程組": {
+    "summary": "麥克斯威方程組統一了電荷、電流、電場與磁場；本知識庫中的「馬克士威方程」「馬克士威方程組」與常見異譯都統一收斂到這一頁。",
+    "path": "01_laws/麥克斯威方程組.md",
+    "section_count": 25,
+    "has_content": true
+  },
+  "作用量": {
+    "summary": "作用量是拉格朗日量對時間的積分，其極值條件（最小作用量原理）統一了所有力學定律。",
+    "path": "02_concepts/analytical_dynamics/作用量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "分岔": {
+    "summary": "分岔是系統控制參數跨過某個臨界值後，長時間行為的質性結構發生改變，例如固定點失穩、週期出現或混沌誕生。",
+    "path": "02_concepts/analytical_dynamics/分岔.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "初始條件敏感性": {
+    "summary": "初始條件敏感性是指兩個極度接近的初始狀態，隨時間可能迅速分離，這是混沌系統的關鍵特徵之一。",
+    "path": "02_concepts/analytical_dynamics/初始條件敏感性.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "劉維爾定理": {
+    "summary": "劉維爾定理指出保守系統的相空間體積在時間演化中保持不變。",
+    "path": "02_concepts/analytical_dynamics/劉維爾定理.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "吸引子": {
+    "summary": "吸引子是相空間中會吸引鄰近軌道長時間靠近的集合，可以是固定點、極限環或更複雜的奇異吸引子。",
+    "path": "02_concepts/analytical_dynamics/吸引子.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "哈密頓-雅可比方程": {
+    "summary": "哈密頓-雅可比方程是用生成函數求解力學問題的偏微分方程。",
+    "path": "02_concepts/analytical_dynamics/哈密頓-雅可比方程.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "哈密頓量": {
+    "summary": "哈密頓量是把系統寫成廣義座標與廣義動量函數後得到的核心生成量，在很多情況下與總能量密切相關。",
+    "path": "02_concepts/analytical_dynamics/哈密頓量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "廣義動量": {
+    "summary": "廣義動量是拉格朗日量對廣義速度的偏導數，$p_i = \\partial L/\\partial \\dot{q}_i$。",
+    "path": "02_concepts/analytical_dynamics/廣義動量.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "廣義座標": {
+    "summary": "廣義座標是足以完全描述系統位形的最少獨立參數，其選擇自由是拉格朗日力學的核心優勢。",
+    "path": "02_concepts/analytical_dynamics/廣義座標.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "拉格朗日力學": {
+    "summary": "拉格朗日力學用能量與變分觀點重寫經典力學，特別適合多自由度、有約束與高對稱系統。",
+    "path": "02_concepts/analytical_dynamics/拉格朗日力學.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "拉格朗日量": {
+    "summary": "拉格朗日量 $L = T - V$ 是分析力學的核心量。",
+    "path": "02_concepts/analytical_dynamics/拉格朗日量.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "正則變換": {
+    "summary": "正則變換是 哈密頓力學 中保持辛結構的座標變換，將舊的正則座標 $(q, p)$ 映射到新的 $(Q, P)$，同時維持哈密頓方程的形式不變。它是簡化可積系統、導出作用量-角度變數與 微擾理論 的核心數學工具。",
+    "path": "02_concepts/analytical_dynamics/正則變換.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "泊松括號": {
+    "summary": "泊松括號描述相空間中兩個函數之間的基本代數關係，並可用來表達哈密頓系統的時間演化。",
+    "path": "02_concepts/analytical_dynamics/泊松括號.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "混沌": {
+    "summary": "混沌是由確定性方程產生的高度複雜動力行為，典型特徵包括初始條件敏感性、長期不可預測性與奇異吸引子。",
+    "path": "02_concepts/analytical_dynamics/混沌.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "相圖": {
+    "summary": "相圖是把系統在相空間中的軌道視覺化，用來觀察固定點、吸引子、極限環與整體流向結構。",
+    "path": "02_concepts/analytical_dynamics/相圖.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "相空間": {
+    "summary": "相空間是以座標與動量共同作為座標軸的狀態空間，用來完整表示系統即時狀態與其演化軌道。",
+    "path": "02_concepts/analytical_dynamics/相空間.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "約束": {
+    "summary": "約束是限制系統運動自由的條件，分為完整約束和非完整約束，是分析力學處理問題的起點。",
+    "path": "02_concepts/analytical_dynamics/約束.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "自由度": {
+    "summary": "自由度是完全描述系統位形所需的最少獨立座標數，等於總座標數減去獨立約束數。",
+    "path": "02_concepts/analytical_dynamics/自由度.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "非線性系統": {
+    "summary": "非線性系統的演化方程對狀態變數不是線性的，因此疊加原理通常失效，並可能產生分岔、混沌與複雜吸引子。",
+    "path": "02_concepts/analytical_dynamics/非線性系統.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "龐加萊截面": {
+    "summary": "龐加萊截面以低維切面觀察高維連續動力系統的返回點結構，是分析週期、準週期與混沌的重要工具。",
+    "path": "02_concepts/analytical_dynamics/龐加萊截面.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "LC振盪電路": {
+    "summary": "LC振盪電路是無阻尼的電磁振盪系統。",
+    "path": "02_concepts/electromagnetism/LC振盪電路.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "LC電路": {
+    "summary": "LC電路由電感和電容組成，可產生無阻尼電磁振盪。",
+    "path": "02_concepts/electromagnetism/LC電路.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "RC電路": {
+    "summary": "RC電路由電阻 $R$ 和電容 $C$ 串聯而成，充放電過程遵循 $V(t) = V_0 e^{-t/RC}$ 的指數衰減，時間常數 $\\tau = RC$ 決定響應速度。它是理解 濾波器、計時電路與暫態響應的起點。",
+    "path": "02_concepts/electromagnetism/RC電路.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "RLC-共振實驗": {
+    "summary": "量測RLC電路的共振頻率和品質因子。",
+    "path": "02_concepts/electromagnetism/RLC 共振實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "RLC電路": {
+    "summary": "RLC電路由電阻、電感和電容組成，其行為由二階微分方程描述，可展現阻尼振盪或共振現象。",
+    "path": "02_concepts/electromagnetism/RLC電路.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "RL暫態響應實驗": {
+    "summary": "觀察RL電路中電流的指數建立和衰減過程。",
+    "path": "02_concepts/electromagnetism/RL暫態響應實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "RL電路": {
+    "summary": "RL電路由電阻與電感組成，其暫態行為由自感效應主導，是理解電流建立與衰減的重要模型。",
+    "path": "02_concepts/electromagnetism/RL電路.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "並聯電路": {
+    "summary": "並聯電路中各支路共享相同端電壓，但總電流會在支路間分配。",
+    "path": "02_concepts/electromagnetism/並聯電路.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "串並聯電路實驗": {
+    "summary": "驗證串聯和並聯電路的電壓、電流分配規律。",
+    "path": "02_concepts/electromagnetism/串並聯電路實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "串聯電路": {
+    "summary": "串聯電路中所有元件依序連接，流過每個元件的電流相同，總電阻為各電阻之和：$R_{\\text{total}} = R_1 + R_2 + \\cdots$。電壓依電阻比例分配，是 電路分析 中最基本的連接方式之一。",
+    "path": "02_concepts/electromagnetism/串聯電路.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "互感": {
+    "summary": "互感描述一個線圈中的電流變化在另一個線圈中感應出電動勢的現象，是變壓器和耦合電路的物理基礎。",
+    "path": "02_concepts/electromagnetism/互感.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "互感係數": {
+    "summary": "互感係數 $M$ 衡量兩個線圈之間的磁耦合強度。",
+    "path": "02_concepts/electromagnetism/互感係數.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "交流電": {
+    "summary": "交流電是電流與電壓隨時間週期變化的電路描述。",
+    "path": "02_concepts/electromagnetism/交流電.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "介電常數": {
+    "summary": "介電常數描述材料對外加電場的回應強弱，是刻畫電介質效應的重要參數。",
+    "path": "02_concepts/electromagnetism/介電常數.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "位移電流": {
+    "summary": "位移電流是馬克士威引入的物理量，定義為電位移場隨時間的變化率，在磁效應上等效於傳導電流。",
+    "path": "02_concepts/electromagnetism/位移電流.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "位移電流修正": {
+    "summary": "位移電流修正是馬克士威為安培定律加入的補項，用來維持連續性與自洽性。",
+    "path": "02_concepts/electromagnetism/位移電流修正.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "內電阻": {
+    "summary": "內電阻描述實際電源自身對電流的阻礙，解釋了端電壓為何會隨負載而改變。",
+    "path": "02_concepts/electromagnetism/內電阻.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "共振頻率": {
+    "summary": "共振頻率是RLC電路中阻抗最小（串聯）或最大（並聯）的頻率。",
+    "path": "02_concepts/electromagnetism/共振頻率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "分壓器": {
+    "summary": "分壓器是用串聯電阻將高電壓分為較低電壓的電路。",
+    "path": "02_concepts/electromagnetism/分壓器.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "分離變數法": {
+    "summary": "分離變數法是求解偏微分方程的技術，將多變量問題分解為多個單變量問題。",
+    "path": "02_concepts/electromagnetism/分離變數法.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "均勻帶電球殼電場": {
+    "summary": "均勻帶電球殼的內外電場分布，是高斯定律與球對稱最經典也最有教育價值的例子之一。",
+    "path": "02_concepts/electromagnetism/均勻帶電球殼電場.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "導體": {
+    "summary": "導體是內部有大量自由電荷（通常是自由電子）的材料，能在電場作用下產生電流，是電路和電磁學的基本元件。",
+    "path": "02_concepts/electromagnetism/導體.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "屏蔽效應": {
+    "summary": "屏蔽效應是導體在外電場中重新分布電荷以抵消內部電場的現象，是法拉第籠和電磁兼容設計的物理基礎。",
+    "path": "02_concepts/electromagnetism/屏蔽效應.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "平行板電容器": {
+    "summary": "平行板電容器是研究均勻電場、位差、電容量與場能最標準的理想模型之一。",
+    "path": "02_concepts/electromagnetism/平行板電容器.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "庫侖常數": {
+    "summary": "庫侖常數 $k$ 是庫侖定律中的比例常數，$k = 1/(4\\pi\\epsilon_0)$。",
+    "path": "02_concepts/electromagnetism/庫侖常數.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "極化": {
+    "summary": "極化是介質中正負電荷中心在外電場作用下分離的現象。",
+    "path": "02_concepts/electromagnetism/極化.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "無限平面電場": {
+    "summary": "無限大均勻帶電平面產生的電場大小恆定、方向垂直於平面，是高斯定律應用的經典範例。",
+    "path": "02_concepts/electromagnetism/無限平面電場.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "環流": {
+    "summary": "環流是向量場沿閉合路徑的線積分，用來衡量場是否沿迴圈方向累積效應，常出現在安培定律與渦旋結構中。",
+    "path": "02_concepts/electromagnetism/環流.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "畢奧-沙伐實驗": {
+    "summary": "畢奧-沙伐實驗量測電流元產生的磁場，驗證畢奧-沙伐定律。",
+    "path": "02_concepts/electromagnetism/畢奧-沙伐實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "發電機原理": {
+    "summary": "發電機利用電磁感應將機械能轉換為電能。",
+    "path": "02_concepts/electromagnetism/發電機原理.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "直流電路": {
+    "summary": "直流電路研究在穩態條件下電流、電位差與電阻之間的關係，是電磁學中最基本的模型之一。",
+    "path": "02_concepts/electromagnetism/直流電路.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "真空電容率": {
+    "summary": "真空電容率 $\\epsilon_0 = 8.854 \\times 10^{-12}$ F/m 是庫侖定律中的基本常數。",
+    "path": "02_concepts/electromagnetism/真空電容率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "磁力": {
+    "summary": "磁力描述移動電荷或電流在磁場中受到的力，其最大特色是力方向同時垂直於速度與磁場。",
+    "path": "02_concepts/electromagnetism/磁力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "磁場": {
+    "summary": "磁場描述磁作用在空間中的分布，常與電流、移動電荷和感應現象一起出現。",
+    "path": "02_concepts/electromagnetism/磁場.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "等位面": {
+    "summary": "等位面由電位相同的點組成，沿著表面移動電荷不需額外做功。",
+    "path": "02_concepts/electromagnetism/等位面.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "節點分析": {
+    "summary": "節點分析是以節點電壓為未知數，利用基爾霍夫電流定律列方程求解電路的系統方法。",
+    "path": "02_concepts/electromagnetism/節點分析.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "節點分析法": {
+    "summary": "節點分析法是以節點電壓為未知數，用 KCL 列方程求解電路的系統方法。",
+    "path": "02_concepts/electromagnetism/節點分析法.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "自感": {
+    "summary": "自感是回路中電流變化時，由自身磁通量變化而產生感應電動勢的現象。",
+    "path": "02_concepts/electromagnetism/自感.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "螺線管": {
+    "summary": "螺線管是將導線密繞成螺旋形的線圈，通電時在內部產生近似均勻的磁場。",
+    "path": "02_concepts/electromagnetism/螺線管.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "螺線管磁場": {
+    "summary": "螺線管磁場是螺線管內部和周圍的磁場分布。",
+    "path": "02_concepts/electromagnetism/螺線管磁場.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "變壓器": {
+    "summary": "變壓器利用互感原理通過磁耦合改變交流電壓，是電力傳輸和電子電路的基本元件。",
+    "path": "02_concepts/electromagnetism/變壓器.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "趨膚效應": {
+    "summary": "趨膚效應是交流電在導體中集中在表面流動的現象。",
+    "path": "02_concepts/electromagnetism/趨膚效應.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "迴路分析": {
+    "summary": "迴路分析是以迴路電流為未知數，利用基爾霍夫電壓定律列方程求解電路的系統方法。",
+    "path": "02_concepts/electromagnetism/迴路分析.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "迴路分析法": {
+    "summary": "迴路分析法是以迴路電流為未知數，用 KVL 列方程求解電路的系統方法。",
+    "path": "02_concepts/electromagnetism/迴路分析法.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "通量": {
+    "summary": "通量把一個向量場穿過某個面時的總穿透效果壓成單一量，是理解高斯定律、磁通與感應現象的橋接概念。",
+    "path": "02_concepts/electromagnetism/通量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "鏡像法": {
+    "summary": "鏡像法是解靜電邊界值問題的構造技巧，利用虛擬電荷滿足邊界條件，再藉由 [[唯一性定理]] 保證在目標區域中得到正確解。",
+    "path": "02_concepts/electromagnetism/鏡像法.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "電介質": {
+    "summary": "電介質是在外電場下會極化但不形成自由導電電流的材料，能顯著影響電容器行為。",
+    "path": "02_concepts/electromagnetism/電介質.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電位": {
+    "summary": "電位描述單位電荷在某位置所對應的電位能，是把電場問題轉成標量場的一種方式。",
+    "path": "02_concepts/electromagnetism/電位.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "電位移": {
+    "summary": "電位移場 $\\vec{D} = \\epsilon_0\\vec{E} + \\vec{P}$ 描述介質中的電場響應。",
+    "path": "02_concepts/electromagnetism/電位移.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電位能": {
+    "summary": "電位能描述電荷在電場中因位置不同而具有的能量。",
+    "path": "02_concepts/electromagnetism/電位能.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電力線": {
+    "summary": "電力線是視覺化電場方向與強弱分布的圖像工具，幫助把場的幾何直覺和定量分析接起來。",
+    "path": "02_concepts/electromagnetism/電力線.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "電場": {
+    "summary": "電場是電荷在空間中建立的作用分布，讓其他電荷即使不接觸也能受力。",
+    "path": "02_concepts/electromagnetism/電場.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "電場強度": {
+    "summary": "電場強度是單位正電荷在電場中受到的力。",
+    "path": "02_concepts/electromagnetism/電場強度.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電場能": {
+    "summary": "電場能是儲存在電場中的能量，其能量密度正比於電場強度的平方，是電容器儲能和電磁波能量的基礎。",
+    "path": "02_concepts/electromagnetism/電場能.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電場能量": {
+    "summary": "電場能量把儲存在電場分布中的能量視為場本身的性質，是從靜電模型走向電磁場觀點的重要橋梁。",
+    "path": "02_concepts/electromagnetism/電場能量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電壓": {
+    "summary": "電壓是兩點之間的電位差，驅動電流流動。",
+    "path": "02_concepts/electromagnetism/電壓.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電容": {
+    "summary": "電容是導體系統儲存電荷能力的量度。",
+    "path": "02_concepts/electromagnetism/電容.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電容器": {
+    "summary": "電容器是用來儲存電荷與能量的裝置，其核心電荷、位差與場能之間的關係。",
+    "path": "02_concepts/electromagnetism/電容器.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電容率": {
+    "summary": "電容率 $\\epsilon$ 描述介質對電場的響應能力。",
+    "path": "02_concepts/electromagnetism/電容率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電導率": {
+    "summary": "電導率 $\\sigma$ 描述材料導電的能力，$\\vec{J} = \\sigma\\vec{E}$。",
+    "path": "02_concepts/electromagnetism/電導率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電極化率": {
+    "summary": "電極化率 $\\chi_e$ 描述介質的極化強度與外加電場的比值。",
+    "path": "02_concepts/electromagnetism/電極化率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電流分配律": {
+    "summary": "電流分配律描述並聯電路中各支路電流的分配比例。",
+    "path": "02_concepts/electromagnetism/電流分配律.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電磁場能量流": {
+    "summary": "電磁場能量流描述能量如何在空間中隨電場與磁場共同傳遞，是場觀點下的能量運輸概念。",
+    "path": "02_concepts/electromagnetism/電磁場能量流.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電磁感應": {
+    "summary": "電磁感應是變動磁場產生電動勢的現象。",
+    "path": "02_concepts/electromagnetism/電磁感應.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電磁波": {
+    "summary": "電磁波是電場與磁場自我耦合後形成的傳播波動，也是光的經典場論描述。",
+    "path": "02_concepts/electromagnetism/電磁波.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電磁波傳播": {
+    "summary": "電磁波傳播描述變動電場與磁場如何彼此驅動並在空間中自我維持地向前傳播。",
+    "path": "02_concepts/electromagnetism/電磁波傳播.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電磁鐵": {
+    "summary": "電磁鐵是利用電流產生磁場的裝置，可通過開關電流控制磁場。",
+    "path": "02_concepts/electromagnetism/電磁鐵.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電路": {
+    "summary": "電路由電源、導線和元件組成，是電流流通的閉合路徑。",
+    "path": "02_concepts/electromagnetism/電路.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電路歐姆定律": {
+    "summary": "電路歐姆定律指出通過電阻的電流與兩端電壓成正比，$V = IR$。",
+    "path": "02_concepts/electromagnetism/電路歐姆定律.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "電通量": {
+    "summary": "電通量衡量電場穿過一個面的程度，是把局部電場分布連到高斯定律的核心中介量。",
+    "path": "02_concepts/electromagnetism/電通量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "靜電平衡": {
+    "summary": "靜電平衡是導體中自由電荷不再宏觀移動的狀態，此時導體內部電場為零、電位處處相等、電荷只分布在表面。",
+    "path": "02_concepts/electromagnetism/靜電平衡.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "馬克士威方程組": {
+    "summary": "馬克士威方程組統一了電場和磁場的四個基本方程，是電磁學的理論基礎。",
+    "path": "02_concepts/electromagnetism/馬克士威方程組.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "不穩定平衡": {
+    "summary": "不穩定平衡是系統在平衡點附近只要受到微小擾動，就會偏離原位置而不是回復的平衡型態。",
+    "path": "02_concepts/foundations/不穩定平衡.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "伽利略變換": {
+    "summary": "伽利略變換描述古典力學中兩個相對等速運動慣性參考系之間的座標與速度關係。",
+    "path": "02_concepts/foundations/伽利略變換.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "位移": {
+    "summary": "位移描述物體位置的改變量，關心的是初末狀態之間的向量差，而不是走過的路長。",
+    "path": "02_concepts/foundations/位移.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "位能": {
+    "summary": "位能是由位置或構型決定的能量描述，讓保守力問題能用能量差來處理。",
+    "path": "02_concepts/foundations/位能.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "偏微分方程": {
+    "summary": "偏微分方程含有未知函數的偏導數，是物理場論的數學語言。",
+    "path": "02_concepts/foundations/偏微分方程.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "力": {
+    "summary": "力是改變物體動量或運動狀態的交互作用描述，不是物體前進所必須持續供應的神秘推手。",
+    "path": "02_concepts/foundations/力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "功": {
+    "summary": "功描述力沿位移方向轉移能量的效果，是把受力分析和能量觀點接起來的橋梁。",
+    "path": "02_concepts/foundations/功.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "動能": {
+    "summary": "動能衡量物體因運動而具有的能量，直接連到速度大小與受力做功。",
+    "path": "02_concepts/foundations/動能.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "參考系": {
+    "summary": "參考系是描述位置、速度與加速度所依附的觀測框架；不同參考系會改變運動量的表達形式，但不該被你誤認成物體真的換了命運。",
+    "path": "02_concepts/foundations/參考系.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "場": {
+    "summary": "場是定義在空間與時間上的物理量分佈，用來描述作用如何在每一點上被指定，而不是只靠粒子之間的遠距拉扯。",
+    "path": "02_concepts/foundations/場.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "場論觀點": {
+    "summary": "場論觀點把相互作用改寫成場在空間與時間中的分布與演化，而不再停留在遠距離瞬時作用的粒子圖像。",
+    "path": "02_concepts/foundations/場論觀點.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "守恆律": {
+    "summary": "守恆律描述某些物理量在系統演化中保持不變，背後通常連著對稱性與局部流量平衡。",
+    "path": "02_concepts/foundations/守恆律.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "守恆量": {
+    "summary": "守恆量是在物理過程中保持不變的物理量，如能量、動量、角動量，其存在由對稱性決定（諾特定理）。",
+    "path": "02_concepts/foundations/守恆量.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "對稱性": {
+    "summary": "對稱性幫助我們看出哪些量守恆、哪些方程形式自然成立，是現代理論的深層結構。",
+    "path": "02_concepts/foundations/對稱性.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "平衡": {
+    "summary": "平衡表示系統在淨力與淨力矩上都達到抵消，因此平移與轉動狀態不再改變。",
+    "path": "02_concepts/foundations/平衡.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "慣性": {
+    "summary": "慣性描述物體維持原本運動狀態的傾向，是理解牛頓第一定律的核心。",
+    "path": "02_concepts/foundations/慣性.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "慣性參考系": {
+    "summary": "慣性參考系是牛頓第一定律成立的參考系，其中不受力的物體保持靜止或等速直線運動。",
+    "path": "02_concepts/foundations/慣性參考系.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "時間": {
+    "summary": "時間是力學中描述事件順序和持續的基本維度，在牛頓力學中是絕對的，在相對論中是相對的。",
+    "path": "02_concepts/foundations/時間.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "暫態": {
+    "summary": "暫態是系統從初始條件走向穩態或其他長時間行為之前的過渡過程，特徵是量值明顯隨時間改變。",
+    "path": "02_concepts/foundations/暫態.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "洛侖茲轉換": {
+    "summary": "洛侖茲轉換是狹義相對論中的時空座標轉換規則，取代了牛頓式伽利略轉換。",
+    "path": "02_concepts/foundations/洛侖茲轉換.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "相互作用": {
+    "summary": "相互作用是兩個或多個物體之間彼此施加力的過程，是所有物理現象的根本驅動力。",
+    "path": "02_concepts/foundations/相互作用.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "穩定平衡": {
+    "summary": "穩定平衡是物體在微小偏離後能自動恢復原位的平衡狀態，對應位能的局部極小值。",
+    "path": "02_concepts/foundations/穩定平衡.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "穩態": {
+    "summary": "穩態是系統經過初始過渡後，巨觀描述不再隨時間改變或呈現固定週期規律的狀態。",
+    "path": "02_concepts/foundations/穩態.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "能量": {
+    "summary": "能量是統整不同物理過程的一般量，讓變化、轉換與守恆能放在同一框架下分析。",
+    "path": "02_concepts/foundations/能量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "邊界條件": {
+    "summary": "邊界條件規定系統在邊界上的可接受行為，是把一般方程收斂成特定物理解的關鍵限制。",
+    "path": "02_concepts/foundations/邊界條件.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "非慣性參考系": {
+    "summary": "非慣性參考系是本身帶有加速度或轉動的觀測框架；在其中使用牛頓定律時，必須引入慣性力來補償座標系本身的加速效果。",
+    "path": "02_concepts/foundations/非慣性參考系.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "中心力": {
+    "summary": "中心力是方向始終指向或背離固定力心的力，其大小只取決於到力心的距離，是行星運動和散射問題的基礎。",
+    "path": "02_concepts/mechanics/中心力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "保守力": {
+    "summary": "保守力的做功只與初末位置有關，因此可用位能函數來描述。",
+    "path": "02_concepts/mechanics/保守力.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "克卜勒問題": {
+    "summary": "克卜勒問題是在平方反比引力下求解軌道的經典力學問題。",
+    "path": "02_concepts/mechanics/克卜勒問題.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "克卜勒軌道": {
+    "summary": "克卜勒軌道是在平方反比力場中的圓錐曲線軌道。",
+    "path": "02_concepts/mechanics/克卜勒軌道.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "分子振動光譜": {
+    "summary": "分子振動光譜通過紅外吸收揭示分子的振動模式。",
+    "path": "02_concepts/mechanics/分子振動光譜.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "剛體": {
+    "summary": "剛體是理想化模型，假設物體各點間距在運動中保持不變，因此可把整體平動與轉動拆開處理。",
+    "path": "02_concepts/mechanics/剛體.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "功率": {
+    "summary": "功率是單位時間內做功或能量轉換的速率。",
+    "path": "02_concepts/mechanics/功率.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "勢能井": {
+    "summary": "勢能井用位能圖像描述粒子被局限在某區域內的狀態，是束縛運動與穩定平衡的重要語言。",
+    "path": "02_concepts/mechanics/勢能井.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "卡文迪許實驗": {
+    "summary": "卡文迪許實驗用扭秤量測萬有引力常數 $G$。",
+    "path": "02_concepts/mechanics/卡文迪許實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "單擺運動實驗": {
+    "summary": "用單擺量測重力加速度和驗證簡諧運動。",
+    "path": "02_concepts/mechanics/單擺運動實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "圓周運動": {
+    "summary": "圓周運動把速度方向持續改變的運動濃縮成徑向與切向分析。",
+    "path": "02_concepts/mechanics/圓周運動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "定軸轉動運動學": {
+    "summary": "定軸轉動運動學研究剛體繞固定轉軸時的角位移、角速度與角加速度關係。",
+    "path": "02_concepts/mechanics/定軸轉動運動學.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "廣義速度": {
+    "summary": "廣義速度是廣義座標對時間的導數。",
+    "path": "02_concepts/mechanics/廣義速度.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "引力位能": {
+    "summary": "引力位能是物體在引力場中因位置而具有的能量。",
+    "path": "02_concepts/mechanics/引力位能.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "張力": {
+    "summary": "張力是繩、線、纜索等受拉時對接觸物體施加的約束力，方向沿著繩線本身。",
+    "path": "02_concepts/mechanics/張力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "彈性": {
+    "summary": "彈性描述物體在受力變形後恢復原狀的傾向，是材料力學與固體形變分析的基礎。",
+    "path": "02_concepts/mechanics/彈性.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "拉格朗日乘數": {
+    "summary": "拉格朗日乘數是處理約束力的數學工具。",
+    "path": "02_concepts/mechanics/拉格朗日乘數.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "拉格朗日乘數法": {
+    "summary": "拉格朗日乘數法是處理帶約束的極值問題的數學方法。",
+    "path": "02_concepts/mechanics/拉格朗日乘數法.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "推進": {
+    "summary": "推進是物體通過向後噴射質量或施加外力來獲得向前動量的過程，是牛頓第三定律的直接應用。",
+    "path": "02_concepts/mechanics/推進.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "摩擦力": {
+    "summary": "摩擦力是接觸面阻礙相對滑動或相對滑動趨勢的力，方向總是反對相對運動或其趨勢。",
+    "path": "02_concepts/mechanics/摩擦力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "有效位能": {
+    "summary": "有效位能將中心力問題的徑向運動約化為一維問題，加入了離心勢壘項，是分析軌道穩定性的關鍵工具。",
+    "path": "02_concepts/mechanics/有效位能.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "機械平衡": {
+    "summary": "機械平衡指物體在平移與轉動上都沒有加速度，是靜力學與結構分析的核心條件。",
+    "path": "02_concepts/mechanics/機械平衡.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "正則座標": {
+    "summary": "正則座標是使拉格朗日量對角化的廣義座標。",
+    "path": "02_concepts/mechanics/正則座標.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "滾動": {
+    "summary": "滾動是物體平動與轉動耦合的運動型態；更完整的主頁可見滾動運動。",
+    "path": "02_concepts/mechanics/滾動.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "滾動運動": {
+    "summary": "滾動運動同時包含平移與轉動，是連接剛體運動學與能量分析的重要主題。",
+    "path": "02_concepts/mechanics/滾動運動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "滾動運動分析": {
+    "summary": "滾動運動分析處理物體同時平移和轉動的運動。",
+    "path": "02_concepts/mechanics/滾動運動分析.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "物理擺": {
+    "summary": "物理擺是繞非質心軸擺動的剛體，其週期取決於轉動慣量和質心位置。",
+    "path": "02_concepts/mechanics/物理擺.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "碰撞": {
+    "summary": "碰撞研究物體在短時間強作用下如何交換動量與能量，是動量守恆應用的核心主題。",
+    "path": "02_concepts/mechanics/碰撞.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "碰撞分析": {
+    "summary": "碰撞分析透過動量、能量與接觸時間尺度來理解多體瞬時交互作用。",
+    "path": "02_concepts/mechanics/碰撞分析.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "碰撞理論": {
+    "summary": "碰撞理論分析物體在短時間強力作用下的動量和能量交換。",
+    "path": "02_concepts/mechanics/碰撞理論.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "章動": {
+    "summary": "章動是轉動軸在進動之外額外出現的週期性擺動或起伏，常見於受力不完全對稱的陀螺與天體轉動問題。",
+    "path": "02_concepts/mechanics/章動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "耗散": {
+    "summary": "耗散描述系統中可用機械能逐步轉為較難回收的形式，例如熱，使得宏觀有序運動衰減。",
+    "path": "02_concepts/mechanics/耗散.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "能量守恆": {
+    "summary": "能量守恆指出封閉系統的總能量不隨時間變化。",
+    "path": "02_concepts/mechanics/能量守恆.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "自由體圖": {
+    "summary": "自由體圖是把單一物體從環境中抽離，只保留作用在它身上的外力的分析圖。",
+    "path": "02_concepts/mechanics/自由體圖.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "衝量": {
+    "summary": "衝量是力對時間的積分，等於物體動量的變化量，是短時間強力碰撞分析的核心工具。",
+    "path": "02_concepts/mechanics/衝量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "角動量": {
+    "summary": "角動量描述系統相對某一基準點的轉動狀態，是旋轉運動中的守恆量。",
+    "path": "02_concepts/mechanics/角動量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "角動量與碰撞": {
+    "summary": "角動量與碰撞研究粒子或剛體在碰撞過程中如何以角動量守恆約束碰後運動。",
+    "path": "02_concepts/mechanics/角動量與碰撞.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "角衝量": {
+    "summary": "角衝量是轉矩對時間的累積效果，對應角動量的改變量，地位相當於轉動問題中的衝量。",
+    "path": "02_concepts/mechanics/角衝量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "質心": {
+    "summary": "質心把多體系統的整體平移運動濃縮成一個等效位置，是多體力學、碰撞與爆炸分析的核心工具。",
+    "path": "02_concepts/mechanics/質心.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "軌道力學": {
+    "summary": "軌道力學是應用克卜勒問題和火箭方程計算太空飛行軌道的學科。",
+    "path": "02_concepts/mechanics/軌道力學.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "軌道角動量": {
+    "summary": "軌道角動量描述物體繞某參考點運動時的角動量，是中心力與軌道運動的核心量。",
+    "path": "02_concepts/mechanics/軌道角動量.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "轉矩": {
+    "summary": "轉矩衡量力使物體繞某點或某軸旋轉的能力。",
+    "path": "02_concepts/mechanics/轉矩.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "進動": {
+    "summary": "進動是高速旋轉物體在外轉矩作用下，角動量方向緩慢改變的現象。",
+    "path": "02_concepts/mechanics/進動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "重力": {
+    "summary": "重力是具有質量的物體彼此吸引所表現出的力，在地表附近常近似寫為 mg。",
+    "path": "02_concepts/mechanics/重力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "陀螺": {
+    "summary": "陀螺是具有顯著自旋角動量的系統，其穩定性與進動行為是角動量物理的經典展示。",
+    "path": "02_concepts/mechanics/陀螺.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "靜力平衡": {
+    "summary": "靜力平衡是機械平衡的特殊情況，物體保持靜止且合力與合轉矩皆為零。",
+    "path": "02_concepts/mechanics/靜力平衡.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "非保守力": {
+    "summary": "非保守力做功通常依賴路徑，並會讓機械能不再單純以動能和位能彼此交換。",
+    "path": "02_concepts/mechanics/非保守力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "非完整系統": {
+    "summary": "非完整系統含有不可積分的速度約束。",
+    "path": "02_concepts/mechanics/非完整系統.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "體積": {
+    "summary": "體積是物體佔據空間的三維量度。",
+    "path": "02_concepts/mechanics/體積.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "光電效應": {
+    "summary": "光電效應顯示光與物質交換能量時具有量子化結構，直接逼出光子的觀念。",
+    "path": "02_concepts/modern_physics/光電效應.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "可觀測量": {
+    "summary": "可觀測量是理論中可對應到實驗量測結果的物理量，在量子語言裡通常和算符、本徵值與本徵態相連。",
+    "path": "02_concepts/modern_physics/可觀測量.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "局域性": {
+    "summary": "局域性是物理學的基本原則，指出物體只能被其直接鄰近的環境影響，不存在瞬時的超距作用。",
+    "path": "02_concepts/modern_physics/局域性.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "德布羅意波": {
+    "summary": "德布羅意波把粒子的動量與波長連起來，將波粒二象性從光推廣到物質。",
+    "path": "02_concepts/modern_physics/德布羅意波.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "期望值": {
+    "summary": "期望值把量子狀態中的機率分布與可觀測量計算接起來，是從波函數走向可比較預測的標準橋梁。",
+    "path": "02_concepts/modern_physics/期望值.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "本徵態": {
+    "summary": "本徵態是量子系統在某個算符作用下只改變整體倍率而不改變型態的特殊狀態，是量測與量子化的核心語言。",
+    "path": "02_concepts/modern_physics/本徵態.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "機率振幅": {
+    "summary": "機率振幅是量子理論中用來描述狀態疊加與干涉的複數量，可觀測機率通常由其模平方給出。",
+    "path": "02_concepts/modern_physics/機率振幅.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "正規化": {
+    "summary": "正規化要求量子狀態的總機率為 1，是把波函數與可觀測機率分布連起來的基本一致性條件。",
+    "path": "02_concepts/modern_physics/正規化.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "波函數": {
+    "summary": "波函數是量子系統狀態的核心數學表示，提供機率振幅並由薛丁格方程控制其演化。",
+    "path": "02_concepts/modern_physics/波函數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "波粒二象性": {
+    "summary": "波粒二象性指出微觀對象在不同實驗安排下會呈現波動式或粒子式的可觀測特徵，這一性質由光電效應與干涉實驗共同逼出，是量子力學的基本出發點。",
+    "path": "02_concepts/modern_physics/波粒二象性.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "狹義相對論": {
+    "summary": "狹義相對論以慣性系等價與光速不變為核心，重寫時空、動量與能量的關係，並與電磁理論緊密相扣。",
+    "path": "02_concepts/modern_physics/狹義相對論.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "穿隧": {
+    "summary": "穿隧描述粒子在量子波動框架下以非零機率穿過經典上不可通過的位能障壁，是波函數、位能與機率解讀交會的核心橋接頁。",
+    "path": "02_concepts/modern_physics/穿隧.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "算符": {
+    "summary": "算符是作用在狀態上的數學操作規則，在量子力學中負責把波函數、本徵態與可觀測量連成可計算的測量語言。",
+    "path": "02_concepts/modern_physics/算符.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "薛丁格方程": {
+    "summary": "薛丁格方程是非相對論量子力學的核心動力方程，用來控制波函數如何演化。",
+    "path": "02_concepts/modern_physics/薛丁格方程.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "連續譜": {
+    "summary": "連續譜表示系統可允許一整段連續取值的結果，而不是只允許離散本徵值，常見於非束縛或散射情境。",
+    "path": "02_concepts/modern_physics/連續譜.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "量子化": {
+    "summary": "量子化表示某些物理量不能任意連續取值，而只能取離散允許值，這是近代物理從經典圖像分岔的核心特徵之一。",
+    "path": "02_concepts/modern_physics/量子化.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "離散能階": {
+    "summary": "離散能階是指束縛態量子系統的能量只能取一組特定的離散值，這是薛丁格方程在束縛邊界條件下求解本徵值問題的直接結果。",
+    "path": "02_concepts/modern_physics/離散能階.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "黑體輻射": {
+    "summary": "黑體輻射揭示經典理論在高頻端失效，逼出能量量子化的想法。",
+    "path": "02_concepts/modern_physics/黑體輻射.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "不可逆過程": {
+    "summary": "不可逆過程描述真實系統中帶有耗散、有限梯度與方向性的演化，是把熱力學第二定律從口號變成分析工具的核心橋接頁。",
+    "path": "02_concepts/thermo_fluids/不可逆過程.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "內能": {
+    "summary": "內能是系統微觀自由度所攜帶的總能量，是熱力學第一定律中的中心量。",
+    "path": "02_concepts/thermo_fluids/內能.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "分子運動論": {
+    "summary": "分子運動論用大量分子的隨機運動來解釋巨觀熱力學性質（壓力、溫度、內能），是統計力學的基礎。",
+    "path": "02_concepts/thermo_fluids/分子運動論.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "卡諾循環": {
+    "summary": "卡諾循環是理想可逆熱機模型，用來界定任何熱機效率都無法超越的上限。",
+    "path": "02_concepts/thermo_fluids/卡諾循環.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "可逆過程": {
+    "summary": "可逆過程是理想化的極限過程，系統與環境可被無限小改動完整倒轉，負責把熵、效率上限與平衡態序列接成同一套熱力學語言。",
+    "path": "02_concepts/thermo_fluids/可逆過程.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "層流": {
+    "summary": "層流是流體以平順分層方式流動的狀態，擾動不易被放大，黏滯效應在流況組織中占主導地位。",
+    "path": "02_concepts/thermo_fluids/層流.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "文氏管": {
+    "summary": "文氏管利用截面變化造成的流速與壓力差，把連續方程與伯努力方程變成可用的流量量測模型。",
+    "path": "02_concepts/thermo_fluids/文氏管.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "氣體定律驗證實驗": {
+    "summary": "驗證波義耳定律、查理定律和理想氣體狀態方程。",
+    "path": "02_concepts/thermo_fluids/氣體定律驗證實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "流線": {
+    "summary": "流線是流場中每一點都與速度向量相切的曲線。",
+    "path": "02_concepts/thermo_fluids/流線.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "流速": {
+    "summary": "流速是流體微元在空間中的速度向量。",
+    "path": "02_concepts/thermo_fluids/流速.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "流量測量": {
+    "summary": "流量測量是量測單位時間通過截面的流體體積或質量。",
+    "path": "02_concepts/thermo_fluids/流量測量.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "溫度": {
+    "summary": "溫度是描述系統熱狀態的狀態量，與微觀粒子的平均能量尺度密切相關。",
+    "path": "02_concepts/thermo_fluids/溫度.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "潛熱": {
+    "summary": "潛熱描述物質在相變過程中於溫度不變時吸收或放出的熱量。",
+    "path": "02_concepts/thermo_fluids/潛熱.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "熱": {
+    "summary": "熱是由溫差驅動的能量傳遞，而不是系統內部儲存的一種物質。",
+    "path": "02_concepts/thermo_fluids/熱.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "熱傳導": {
+    "summary": "熱傳導描述能量因溫度梯度而在物質內部流動，是熱學從狀態量走向場分布與過程分析的關鍵概念。",
+    "path": "02_concepts/thermo_fluids/熱傳導.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "熱力學": {
+    "summary": "熱力學研究熱、功和能量之間的關係。",
+    "path": "02_concepts/thermo_fluids/熱力學.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "熱平衡": {
+    "summary": "熱平衡描述系統之間不再有淨熱流，並可用共同溫度參數描述的穩定熱狀態。",
+    "path": "02_concepts/thermo_fluids/熱平衡.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "熱機": {
+    "summary": "熱機把高溫熱源提供的部分熱量轉換為機械功，是熱力學第一、第二定律的經典應用。",
+    "path": "02_concepts/thermo_fluids/熱機.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "熱膨脹": {
+    "summary": "熱膨脹描述材料因溫度上升而尺寸增加的現象，是熱學、材料性質與工程應用之間的橋接主題。",
+    "path": "02_concepts/thermo_fluids/熱膨脹.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "熱量": {
+    "summary": "熱量是因溫度差而傳遞的能量。",
+    "path": "02_concepts/thermo_fluids/熱量.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "熵": {
+    "summary": "熵衡量系統可達微觀狀態的豐富程度，也是描述不可逆性的核心量。",
+    "path": "02_concepts/thermo_fluids/熵.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "理想氣體": {
+    "summary": "理想氣體是分子間無相互作用力且分子本身無體積的理論模型，其狀態方程 PV = nRT 在低壓高溫下近似成立。",
+    "path": "02_concepts/thermo_fluids/理想氣體.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "理想氣體熱力學": {
+    "summary": "理想氣體熱力學描述理想氣體在各種過程中的熱力學行為。",
+    "path": "02_concepts/thermo_fluids/理想氣體熱力學.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "理想流體近似": {
+    "summary": "理想流體近似把流體視為無黏滯、常可配合不可壓縮與穩定流條件使用，是從完整流場走向伯努力方程與文氏管模型的核心橋接頁。",
+    "path": "02_concepts/thermo_fluids/理想流體近似.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "等溫過程": {
+    "summary": "等溫過程指系統在溫度保持不變下進行的熱力學變化。",
+    "path": "02_concepts/thermo_fluids/等溫過程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "紊流": {
+    "summary": "紊流是流體中擾動被放大並形成多尺度混合與渦動的流況，代表慣性效應壓過單純平滑分層的典型非理想流動。",
+    "path": "02_concepts/thermo_fluids/紊流.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "絕熱過程": {
+    "summary": "絕熱過程指系統與外界幾乎沒有熱交換時進行的變化。",
+    "path": "02_concepts/thermo_fluids/絕熱過程.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "統計力學": {
+    "summary": "統計力學用微觀粒子的統計行為解釋巨觀熱力學性質。",
+    "path": "02_concepts/thermo_fluids/統計力學.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "統計物理": {
+    "summary": "統計物理用大量微觀態的機率分布解釋巨觀熱量、溫度、壓力與熵的來源。",
+    "path": "02_concepts/thermo_fluids/統計物理.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "能量均分定理": {
+    "summary": "能量均分定理指出每個自由度貢獻 $\\frac{1}{2}k_BT$ 的平均能量。",
+    "path": "02_concepts/thermo_fluids/能量均分定理.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "范德瓦耳斯方程": {
+    "summary": "范德瓦耳斯方程是真實氣體的狀態方程，考慮了分子間力和分子體積。",
+    "path": "02_concepts/thermo_fluids/范德瓦耳斯方程.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "飛機升力": {
+    "summary": "飛機升力是機翼上下表面的壓力差產生的向上力。",
+    "path": "02_concepts/thermo_fluids/飛機升力.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "黏滯力": {
+    "summary": "黏滯力是流體內部因相鄰流層相對運動而產生的阻抗效應，負責把理想流體近似拉回真實耗散流動。",
+    "path": "02_concepts/thermo_fluids/黏滯力.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "偏振": {
+    "summary": "偏振描述橫波的電場向量在垂直於傳播方向的平面上隨時間變化的軌跡，分為線偏振、圓偏振和橢圓偏振三種基本類型，是光學和電磁學的核心概念。",
+    "path": "02_concepts/waves_optics/偏振.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "光的波動說": {
+    "summary": "光的波動說認為光是一種電磁波，能解釋干涉、繞射和偏振等現象。",
+    "path": "02_concepts/waves_optics/光的波動說.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "光線模型": {
+    "summary": "光線模型用幾何方式近似光的傳播，適合處理反射、折射與成像問題。",
+    "path": "02_concepts/waves_optics/光線模型.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "入射角": {
+    "summary": "入射角是入射光線與界面法線之間的夾角，是反射和折射定律的基本量。",
+    "path": "02_concepts/waves_optics/入射角.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "全反射": {
+    "summary": "當光由高折射率介質射向低折射率介質且入射角超過臨界角時，折射光消失而只剩完全反射。",
+    "path": "02_concepts/waves_optics/全反射.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "共振": {
+    "summary": "共振是當外部驅動頻率接近系統固有頻率時，系統穩態響應振幅或能量吸收出現峰值的現象，由受迫阻尼振動的頻率響應特性決定。",
+    "path": "02_concepts/waves_optics/共振.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "反射": {
+    "summary": "反射是波或光在界面上被重新導向的現象；在幾何光學中最核心的局部規則是反射定律。",
+    "path": "02_concepts/waves_optics/反射.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "反射角": {
+    "summary": "反射角是反射光線與界面法線之間的夾角，等於入射角。",
+    "path": "02_concepts/waves_optics/反射角.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "受迫振動": {
+    "summary": "受迫振動是系統在外部週期驅動下產生的振動，其振幅與相位取決於驅動頻率以及阻尼情況。",
+    "path": "02_concepts/waves_optics/受迫振動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "單縫繞射": {
+    "summary": "單縫繞射描述光通過有限寬度狹縫後形成的擴散與明暗分布，是波動光學的經典模型。",
+    "path": "02_concepts/waves_optics/單縫繞射.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "干涉": {
+    "summary": "干涉是多列波重疊時振幅依相位關係增強或減弱的現象。",
+    "path": "02_concepts/waves_optics/干涉.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "平面鏡成像": {
+    "summary": "平面鏡成像產生等大、正立、左右相反的虛像。",
+    "path": "02_concepts/waves_optics/平面鏡成像.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "惠更斯原理": {
+    "summary": "惠更斯原理把波前演化想成每個點都發出次級波，是理解反射、折射與繞射的重要圖像。",
+    "path": "02_concepts/waves_optics/惠更斯原理.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "折射": {
+    "summary": "折射是波或光跨越介面後因傳播速度改變而改變方向的現象，其核心定量規則是折射定律，也就是斯涅爾定律。",
+    "path": "02_concepts/waves_optics/折射.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "折射率量測實驗": {
+    "summary": "量測介質的折射率。",
+    "path": "02_concepts/waves_optics/折射率量測實驗.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "折射角": {
+    "summary": "折射角是折射光線與界面法線之間的夾角，由斯涅爾定律決定。",
+    "path": "02_concepts/waves_optics/折射角.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "散射": {
+    "summary": "散射是入射波或粒子遇到位能、介質或目標後，傳播方向、振幅或能量分布發生改變的過程，用散射截面和角分布描述可觀測結果。",
+    "path": "02_concepts/waves_optics/散射.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "模態": {
+    "summary": "模態是系統在特定邊界條件與本徵結構下允許的獨立振動或波動型態，是駐波、共振與頻譜分析的核心語言。",
+    "path": "02_concepts/waves_optics/模態.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "機械波": {
+    "summary": "機械波是依賴介質傳播的擾動，傳遞能量與訊息，但不大規模搬運介質本身。",
+    "path": "02_concepts/waves_optics/機械波.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "正常模態": {
+    "summary": "正常模態是多自由度或連續系統中彼此可獨立振動的基本模式；本庫既有更一般的模態節點。",
+    "path": "02_concepts/waves_optics/正常模態.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "球面鏡公式": {
+    "summary": "球面鏡公式關聯物距、像距和焦距：$\\frac{1}{s} + \\frac{1}{s'} = \\frac{1}{f}$。",
+    "path": "02_concepts/waves_optics/球面鏡公式.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "相位": {
+    "summary": "相位標記振動或波在週期演化中的相對位置，是從單一波形走向干涉、相干與量子振幅比較的關鍵橋接概念。",
+    "path": "02_concepts/waves_optics/相位.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "相干性": {
+    "summary": "相干性描述兩個波或同一波不同部分之間的相位關係是否穩定，是干涉現象能否穩定出現的關鍵條件。",
+    "path": "02_concepts/waves_optics/相干性.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "簡諧運動": {
+    "summary": "簡諧運動是回復力與位移成正比且方向相反時出現的理想週期運動。",
+    "path": "02_concepts/waves_optics/簡諧運動.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "繞射": {
+    "summary": "繞射是波通過孔徑或繞過障礙物時，因不同路徑的相位差而導致傳播方向展開和強度重新分布的現象，是波動光學的基本效應。",
+    "path": "02_concepts/waves_optics/繞射.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "聲波": {
+    "summary": "聲波是介質中的機械縱波，描述壓力與密度擾動如何在材料內部傳播。",
+    "path": "02_concepts/waves_optics/聲波.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "色散": {
+    "summary": "色散是光的折射率隨波長變化的現象，導致白光分解為光譜。",
+    "path": "02_concepts/waves_optics/色散.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "薄膜干涉": {
+    "summary": "薄膜干涉描述光在薄層介質上下表面反射後產生的相位差與干涉現象，是波動光學的重要模型。",
+    "path": "02_concepts/waves_optics/薄膜干涉.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "解析度": {
+    "summary": "解析度是成像系統區分兩個相鄰物點的能力，由繞射極限設定理論上限，用 Rayleigh 判準或 Sparrow 判準量化。",
+    "path": "02_concepts/waves_optics/解析度.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "費馬原理": {
+    "summary": "費馬原理指出光從A到B走的路徑是光程最短（或最長）的路徑。",
+    "path": "02_concepts/waves_optics/費馬原理.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "透鏡公式": {
+    "summary": "透鏡公式 $\\frac{1}{s} + \\frac{1}{s'} = \\frac{1}{f}$。",
+    "path": "02_concepts/waves_optics/透鏡公式.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "都卜勒效應": {
+    "summary": "都卜勒效應描述波源與觀察者相對運動時，所測得頻率與波長如何偏離原本值。",
+    "path": "02_concepts/waves_optics/都卜勒效應.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "阻尼振動": {
+    "summary": "阻尼振動是振動系統因耗散作用而振幅隨時間衰減的運動形式。",
+    "path": "02_concepts/waves_optics/阻尼振動.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "雙縫干涉": {
+    "summary": "雙縫干涉描述兩個相干波源疊加後形成規律明暗條紋，是波動性最經典的展示之一。",
+    "path": "02_concepts/waves_optics/雙縫干涉.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "顯微鏡": {
+    "summary": "顯微鏡利用多級成像與放大，將微小物體的細節轉成可觀察影像，是幾何光學與解析度限制交會的核心裝置。",
+    "path": "02_concepts/waves_optics/顯微鏡.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "駐波": {
+    "summary": "駐波是兩列相反方向同頻率波疊加後形成的節點與腹點固定圖樣。",
+    "path": "02_concepts/waves_optics/駐波.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "剪切模數": {
+    "summary": "剪切模數描述材料抵抗剪切形變的能力，定義為剪應力與剪應變的比值。",
+    "path": "03_quantities/剪切模數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "剪應力": {
+    "summary": "剪應力 $\\tau$ 是作用在材料截面上、平行於截面的應力分量，定義為 $\\tau = F/A$。它導致材料產生角變形而非體積變化，是理解 [[剪切模數]]、流體黏性阻力與梁彎曲剪力的基礎物理量。",
+    "path": "03_quantities/剪應力.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "加速度": {
+    "summary": "加速度描述速度隨時間如何改變，是把運動學與動力學接起來的核心量。",
+    "path": "03_quantities/加速度.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "動量": {
+    "summary": "動量是質量與速度的乘積，對多體系統、碰撞與守恆分析特別關鍵。",
+    "path": "03_quantities/動量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "坡印廷向量": {
+    "summary": "坡印廷向量 S = E×H 描述電磁場中能量流動的方向和大小，是電磁能量傳播的核心量。",
+    "path": "03_quantities/坡印廷向量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "基本電荷": {
+    "summary": "基本電荷 e 是電荷的最小單位，所有自由電荷都是 e 的整數倍，其值約為 1.602×10⁻¹⁹ C。",
+    "path": "03_quantities/基本電荷.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "壓力": {
+    "summary": "壓力描述單位面積上承受多少正向作用力，是流體靜力學與流體動力學的核心量。",
+    "path": "03_quantities/壓力.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "密度": {
+    "summary": "密度是單位體積內所含的質量，是描述物質緊密程度的基本物理量，廣泛用於流體力學、材料科學和熱力學。",
+    "path": "03_quantities/密度.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "感抗": {
+    "summary": "感抗是電感在交流電路中對電流的阻礙作用，定義為 X_L = ωL，頻率越高感抗越大。",
+    "path": "03_quantities/感抗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "應力": {
+    "summary": "應力是材料內部單位面積上的內力，描述材料受力狀態，是材料力學和結構分析的基本物理量。",
+    "path": "03_quantities/應力.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "應變": {
+    "summary": "應變量化材料形變的相對大小，是描述伸長、壓縮或剪切變形的基本量。",
+    "path": "03_quantities/應變.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "折射率": {
+    "summary": "折射率量化光在介質中的傳播速度相對於真空的減慢程度，是幾何光學的核心參數。",
+    "path": "03_quantities/折射率.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "效率": {
+    "summary": "效率量化系統把輸入能量轉成有用輸出的比例，是分析熱機與能量轉換裝置的核心量。",
+    "path": "03_quantities/效率.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "李雅普諾夫指數": {
+    "summary": "李雅普諾夫指數量化相鄰軌道分離或收斂的平均指數速率，是判定初始條件敏感性與混沌的重要量。",
+    "path": "03_quantities/李雅普諾夫指數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "楊氏模數": {
+    "summary": "楊氏模數量化材料在拉伸或壓縮時抵抗形變的能力，是描述縱向彈性的核心參數。",
+    "path": "03_quantities/楊氏模數.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "比熱": {
+    "summary": "比熱量化單位質量物質升高單位溫度所需的熱量，是熱學最基本的材料參數之一。",
+    "path": "03_quantities/比熱.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "泊松比": {
+    "summary": "泊松比描述材料在單軸拉伸或壓縮時，橫向應變與縱向應變之間的比例關係。",
+    "path": "03_quantities/泊松比.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "波印廷向量": {
+    "summary": "波印廷向量表示電磁能量流密度；更常見也更標準的譯名是坡印廷向量。",
+    "path": "03_quantities/波印廷向量.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "波速": {
+    "summary": "波速描述波形在介質或空間中傳播的速度，是波動分析最基本的量之一。",
+    "path": "03_quantities/波速.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "波長": {
+    "summary": "波長是波在空間中一個完整週期對應的長度，是波動結構最直觀的尺度。",
+    "path": "03_quantities/波長.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "流量": {
+    "summary": "流量描述單位時間內通過某截面的體積，是流體輸運問題的基本量。",
+    "path": "03_quantities/流量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "真空光速": {
+    "summary": "真空光速是電磁波在真空中的傳播速度，也是相對論中時空結構的基本常數。",
+    "path": "03_quantities/真空光速.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "磁通量": {
+    "summary": "磁通量是穿過一個面的磁場線總量，定義為磁場在該面上的面積分，是電磁感應的核心量。",
+    "path": "03_quantities/磁通量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "角位移": {
+    "summary": "角位移描述物體繞固定軸轉過的角度，是轉動運動學最基本的量。",
+    "path": "03_quantities/角位移.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "角加速度": {
+    "summary": "角加速度描述角速度隨時間的變化，是轉動版的加速度。",
+    "path": "03_quantities/角加速度.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "角速度": {
+    "summary": "角速度描述物體轉動快慢與方向，是轉動運動學的核心量。",
+    "path": "03_quantities/角速度.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "角頻率": {
+    "summary": "角頻率描述系統相位隨時間前進的快慢，與普通頻率相差一個 2π 因子。",
+    "path": "03_quantities/角頻率.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "質量": {
+    "summary": "質量衡量物體的慣性與引力參與程度，是力學中最基本的尺度量之一。",
+    "path": "03_quantities/質量.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "轉動動能": {
+    "summary": "轉動動能是物體因轉動而具有的能量，與轉動慣量和角速度有關。",
+    "path": "03_quantities/轉動動能.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "轉動慣量": {
+    "summary": "轉動慣量量化物體對角加速度的抗拒程度，是轉動版的慣性質量。",
+    "path": "03_quantities/轉動慣量.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "速度": {
+    "summary": "速度描述位置隨時間如何改變，並同時包含快慢與方向。",
+    "path": "03_quantities/速度.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "阻抗": {
+    "summary": "阻抗是交流電路中電阻和電抗的綜合量，Z = R + jX，描述元件對電流的完整阻礙作用。",
+    "path": "03_quantities/阻抗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "雷諾數": {
+    "summary": "雷諾數是比較流動中慣性效應與黏滯效應相對重要性的無因次量，是判讀層流與紊流趨勢的核心指標。",
+    "path": "03_quantities/雷諾數.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電位差": {
+    "summary": "電位差描述兩點之間每單位電荷的能量差，是電場做功、電路驅動與電容器分析的核心量。",
+    "path": "03_quantities/電位差.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電偶極矩": {
+    "summary": "電偶極矩衡量正負電荷分離的方向與強度，是描述偶極系統遠場效應與受力矩行為的核心量。",
+    "path": "03_quantities/電偶極矩.md",
+    "section_count": 19,
+    "has_content": true
+  },
+  "電功率": {
+    "summary": "電功率是電路中電能轉換為其他形式能量的速率，P = IV = I²R = V²/R。",
+    "path": "03_quantities/電功率.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電動勢": {
+    "summary": "電動勢是非靜電作用對單位電荷提供的能量，決定電源推動電荷繞行回路的能力。",
+    "path": "03_quantities/電動勢.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "電容抗": {
+    "summary": "電容抗是電容在交流電路中對電流的阻礙作用，定義為 X_C = 1/(ωC)，頻率越高電容抗越小。",
+    "path": "03_quantities/電容抗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電導率與電阻率": {
+    "summary": "電導率與電阻率描述材料對電流流動的容易程度與阻礙程度，兩者互為倒數，並且透過 [[局部歐姆定律]] 連結 [[電場]] 與 [[電流密度]]。",
+    "path": "03_quantities/電導率與電阻率.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "電感": {
+    "summary": "電感是衡量線圈儲存磁場能量能力的物理量，定義為磁通鏈數與電流的比值 L = Φ/I。",
+    "path": "03_quantities/電感.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電流": {
+    "summary": "電流是單位時間內穿過截面的電荷量，描述電荷流動的強弱與方向。",
+    "path": "03_quantities/電流.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "電流密度": {
+    "summary": "電流密度是描述電荷流動在空間中如何分布的向量量，定義為單位面積、單位時間穿過的電流，是 [[連續方程]] 與 [[局部歐姆定律]] 的核心量。",
+    "path": "03_quantities/電流密度.md",
+    "section_count": 19,
+    "has_content": true
+  },
+  "電荷": {
+    "summary": "電荷是電磁作用的源，決定物體如何產生與感受電場。",
+    "path": "03_quantities/電荷.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "電阻": {
+    "summary": "電阻量化材料或元件阻礙電流通過的程度，是電路分析中的核心參數。",
+    "path": "03_quantities/電阻.md",
+    "section_count": 11,
+    "has_content": true
+  },
+  "頻率": {
+    "summary": "頻率表示每秒完成多少次振動或週期，是連接時間尺度與波動尺度的核心量。",
+    "path": "03_quantities/頻率.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "體應變": {
+    "summary": "體應變量化材料體積相對改變的程度，是研究可壓縮性與體積彈性模數的基本量。",
+    "path": "03_quantities/體應變.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "體積彈性模數": {
+    "summary": "體積彈性模數量化材料抵抗體積改變的能力，常用來描述流體與固體的可壓縮性。",
+    "path": "03_quantities/體積彈性模數.md",
+    "section_count": 10,
+    "has_content": true
+  },
+  "體積模數": {
+    "summary": "體積模數是體積彈性模數的常用簡稱，用來描述材料抗體積壓縮的能力。",
+    "path": "03_quantities/體積模數.md",
+    "section_count": 12,
+    "has_content": true
+  },
+  "黏度": {
+    "summary": "黏度描述流體內部抵抗速度梯度與剪切流動的程度，是區分層流與紊流的重要參數。",
+    "path": "03_quantities/黏度.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "低摩擦滑車實驗": {
+    "summary": "低摩擦滑車實驗用來近似無摩擦條件，讓慣性與合力造成的加速度更清楚地被觀察。",
+    "path": "04_experiments/低摩擦滑車實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "兩滑車碰撞實驗": {
+    "summary": "兩滑車碰撞實驗用來比較碰撞前後的動量與能量，建立彈性與非彈性碰撞的定量直覺。",
+    "path": "04_experiments/兩滑車碰撞實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "功能定理驗證實驗": {
+    "summary": "通過氣墊軌道實驗驗證合力做功等於動能變化。",
+    "path": "04_experiments/功能定理驗證實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "反射定律驗證實驗": {
+    "summary": "通過光學實驗驗證入射角等於反射角的反射定律。",
+    "path": "04_experiments/反射定律驗證實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "天平": {
+    "summary": "天平是最基本的質量量測工具，也是從比較法建立質量概念與密度估算的起點。",
+    "path": "04_experiments/天平.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "安培力實驗": {
+    "summary": "量測載流導線在磁場中受到的力。",
+    "path": "04_experiments/安培力實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "密立根油滴實驗": {
+    "summary": "密立根油滴實驗透過懸浮帶電油滴量測基本電荷大小，並以數據顯示電荷呈離散整數倍分布。",
+    "path": "04_experiments/密立根油滴實驗.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "小車軌道實驗": {
+    "summary": "小車軌道實驗可同時觀察位置、速度、加速度與能量之間的關係，是力學教學中的基礎平台實驗。",
+    "path": "04_experiments/小車軌道實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "打點計時器": {
+    "summary": "打點計時器把連續運動轉成離散時間記錄，方便從點距估算速度與加速度。",
+    "path": "04_experiments/打點計時器.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "扭秤實驗": {
+    "summary": "扭秤實驗可量測極小作用力，是研究萬有引力與靜電力反平方關係的重要工具。",
+    "path": "04_experiments/扭秤實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "文丘里管實驗": {
+    "summary": "利用文丘里管量測流體流速，驗證伯努力方程。",
+    "path": "04_experiments/文丘里管實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "氣墊軌道碰撞實驗": {
+    "summary": "在氣墊軌道上進行滑塊碰撞，驗證動量守恆。",
+    "path": "04_experiments/氣墊軌道碰撞實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "法拉第冰桶實驗": {
+    "summary": "法拉第冰桶實驗用導體桶內外的感應現象展示電荷重新分布與靜電平衡，讓高斯觀點不再只是抽象圖像。",
+    "path": "04_experiments/法拉第冰桶實驗.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "滑軌能量轉換實驗": {
+    "summary": "滑軌能量轉換實驗用來觀察位能與動能之間的轉換，並估計摩擦等非保守效應。",
+    "path": "04_experiments/滑軌能量轉換實驗.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "相空間軌跡模擬": {
+    "summary": "用數值模擬繪製力學系統的相空間軌跡。",
+    "path": "04_experiments/相空間軌跡模擬.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "赫茲電磁波實驗": {
+    "summary": "赫茲首次產生和偵測電磁波。",
+    "path": "04_experiments/赫茲電磁波實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "轉動慣量量測實驗": {
+    "summary": "利用扭擺量測物體的轉動慣量。",
+    "path": "04_experiments/轉動慣量量測實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "運動感測器": {
+    "summary": "運動感測器可連續量測位置、速度與加速度，是現代教學實驗中重建運動資料的核心工具。",
+    "path": "04_experiments/運動感測器.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "雙狹縫實驗": {
+    "summary": "雙狹縫實驗以可見條紋直接展示波動疊加，後來更成為近代物理中理解微觀行為的標誌性實驗。",
+    "path": "04_experiments/雙狹縫實驗.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "電導率量測實驗": {
+    "summary": "量測材料的電導率。",
+    "path": "04_experiments/電導率量測實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "電路驗證實驗": {
+    "summary": "驗證基爾霍夫電壓定律和電流定律。",
+    "path": "04_experiments/電路驗證實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "靜電場模擬實驗": {
+    "summary": "用導電紙模擬靜電場分布。",
+    "path": "04_experiments/靜電場模擬實驗.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "δ函數": {
+    "summary": "δ函數一種「在單點集中全部貢獻」的分布，用來描述點電荷、點質量、瞬時脈衝、單位源——將離散系統用連續語言處理的橋樑。",
+    "path": "05_mathematical_tools/δ函數.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "三角函數": {
+    "summary": "三角函數把角度、比例、旋轉與週期運動連成同一套語言，是向量分解、波動描述、簡諧運動與幾何關係推導的基礎工具。",
+    "path": "05_mathematical_tools/三角函數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "偏導數": {
+    "summary": "偏導數描述多變數函數沿單一方向的局部變化率，是理解場、熱流、電位分布與多變數近似的基本工具。",
+    "path": "05_mathematical_tools/偏導數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "傅立葉分析": {
+    "summary": "傅立葉分析將任意函數分解為不同頻率的正弦／餘弦波疊加，是把訊號從時間域轉到頻率域的核心工具——光學繞射、聲學、量子力學、熱傳導、信號處理全都離不開它。",
+    "path": "05_mathematical_tools/傅立葉分析.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "內積": {
+    "summary": "內積衡量兩個向量在同一方向上的重疊程度，能用來求投影、夾角與功，是向量分析中最常用也最容易被誤解的工具之一。",
+    "path": "05_mathematical_tools/內積.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "向量": {
+    "summary": "向量是普通物理最基礎的數學語言，用來表示同時具有大小與方向的物理量，並支撐分量分析、投影、旋轉與場的描述。",
+    "path": "05_mathematical_tools/向量.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "向量微積分總論": {
+    "summary": "向量微積分將微積分從純量場推廣到向量場，提供描述場的變化、流動與旋轉的語言——其三大核心定理（梯度定理、散度定理、斯托克斯定理）是電磁學、流體力學與熱學的數學脊梁。",
+    "path": "05_mathematical_tools/向量微積分總論.md",
+    "section_count": 19,
+    "has_content": true
+  },
+  "外積": {
+    "summary": "外積用來描述兩個向量所張平面的方向與面積大小，能捕捉垂直效應、旋轉趨勢與力矩結構，是理解磁力與轉動問題的重要工具。",
+    "path": "05_mathematical_tools/外積.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "導數": {
+    "summary": "導數描述局部變化率，讓我們能把平均變化推到瞬時變化，是速度、加速度、斜率近似與動態方程的核心工具。",
+    "path": "05_mathematical_tools/導數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "張量": {
+    "summary": "張量是向量與矩陣的推廣，用來描述在不同座標系下以特定規則變換的物理量——應力、應變、轉動慣量、電磁場——這些需要多個方向分量才能完整描述的對象，都是張量。",
+    "path": "05_mathematical_tools/張量.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "微分方程": {
+    "summary": "微分方程描述函數與其導數之間的關係，是物理中最核心的數學語言——從牛頓運動定律到麥克斯威方程組，從薛丁格方程到熱傳導方程，所有基本物理定律都是用微分方程寫的。",
+    "path": "05_mathematical_tools/微分方程.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "指數函數": {
+    "summary": "指數函數 $e^x$ 是滿足 $\\frac{d}{dx}e^x = e^x$ 的函數，也是微分方程 $\\frac{dy}{dt}=ky$ 的標準解型。只要系統的變化率與當前量成正比，解就會呈現指數成長、衰減或複指數振盪，因此它貫穿 RC 電路、阻尼、放射性衰變與波動問題。",
+    "path": "05_mathematical_tools/指數函數.md",
+    "section_count": 17,
+    "has_content": true
+  },
+  "散度": {
+    "summary": "散度衡量向量場在局部到底像源頭往外冒，還是像匯點往內吸，是把通量觀念壓縮成局部結構的核心工具。",
+    "path": "05_mathematical_tools/散度.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "旋度": {
+    "summary": "旋度衡量向量場在局部是否具有繞圈傾向與環流結構，是理解感應電場、磁場環流與場的局部旋轉性的核心工具。",
+    "path": "05_mathematical_tools/旋度.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "梯度": {
+    "summary": "梯度把多個偏導數組合成一個向量，指出函數增長最快的方向與增長率大小，是理解電場、溫度場與空間變化結構的關鍵工具。",
+    "path": "05_mathematical_tools/梯度.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "機率與統計": {
+    "summary": "機率與統計提供描述分布、波動、平均、誤差與大量自由度系統的語言，是熱學、近代物理與實驗分析的核心工具。",
+    "path": "05_mathematical_tools/機率與統計.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "泰勒展開": {
+    "summary": "泰勒展開是在展開點 $a$ 附近，用函數各階導數構造多項式來近似函數的方法。物理上它的作用是把非線性問題局部線性化或低階化，讓小角度近似、平衡點振動、誤差估計與微擾計算變成可控的近似問題。",
+    "path": "05_mathematical_tools/泰勒展開.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "矩陣": {
+    "summary": "矩陣把多變數線性關係、基底變換與耦合系統壓成單一算子，是多自由度力學、近代物理與線性模型分析的核心語言。",
+    "path": "05_mathematical_tools/矩陣.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "積分": {
+    "summary": "積分把局部貢獻累積成整體結果，能從變化率回到總量、從分布回到總效應，是功、電位、連續介質與場論計算的核心工具。",
+    "path": "05_mathematical_tools/積分.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "線性代數總覽": {
+    "summary": "線性代數研究向量空間與線性變換，是處理多變量線性系統的標準語言——從電路網路到量子態，從簡正模到主成分分析，矩陣運算無所不在。",
+    "path": "05_mathematical_tools/線性代數總覽.md",
+    "section_count": 18,
+    "has_content": true
+  },
+  "群論基礎": {
+    "summary": "群論研究對稱性的數學結構——當一個系統在某一變換下保持不變，這些變換就構成一個群。晶體結構、粒子物理、量子力學中的守恆律（諾特定理）都源於對稱性，而群論是分析對稱性的標準語言。",
+    "path": "05_mathematical_tools/群論基礎.md",
+    "section_count": 15,
+    "has_content": true
+  },
+  "自然對數": {
+    "summary": "自然對數 $\\ln(x)$ 是以 $e$ 為底的對數函數，定義在 $x > 0$，並且是指數函數 $e^x$ 的反函數。它在物理上的價值是把乘法、倍數與指數衰減關係轉成可加且可線性擬合的形式，因此常出現在熵、Arrhenius 分析、RC 電路與放射性衰變。",
+    "path": "05_mathematical_tools/自然對數.md",
+    "section_count": 14,
+    "has_content": true
+  },
+  "複數": {
+    "summary": "複數把大小與相位寫成單一對象，是波動、交流、偏振與量子理論中管理振幅與相位結構的關鍵語言。",
+    "path": "05_mathematical_tools/複數.md",
+    "section_count": 13,
+    "has_content": true
+  },
+  "變分法": {
+    "summary": "變分法尋找使泛函取極值的函數，是分析力學的數學基礎——最小作用量原理、費馬原理、拉格朗日方程——這些「自然傾向於極值」的物理規律全用變分法表述。",
+    "path": "05_mathematical_tools/變分法.md",
+    "section_count": 16,
+    "has_content": true
+  },
+  "面積分": {
+    "summary": "面積分把向量場穿過曲面的局部法向貢獻累積成總通量，是高斯定律、磁通與通量觀念的核心數學工具。",
+    "path": "05_mathematical_tools/面積分.md",
+    "section_count": 13,
+    "has_content": true
+  }
+}

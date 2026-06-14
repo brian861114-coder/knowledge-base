@@ -1,0 +1,82 @@
+{
+  "id": "拉格朗日乘數",
+  "path": "02_concepts/mechanics/拉格朗日乘數.md",
+  "title": "拉格朗日乘數",
+  "summary": "拉格朗日乘數是處理約束力的數學工具。",
+  "body_preview": "## 概念摘要\n拉格朗日乘數的概念摘要。\n\n## 嚴格定義\n拉格朗日乘數的嚴格定義。\n\n## 先備知識\n學習拉格朗日乘數前需要掌握的基礎概念。\n\n## 物理意義\n核心機制： 拉格朗日乘數的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習拉格朗日乘數時容易忽略的關鍵細節包括適用條件和極限情況。\n\n拉格朗日乘數的物理意義。\n\n## 典型應用\n拉格朗日乘數在物理學和工程中的典型應用場景。\n\n## 常見誤解\n學習拉格朗日乘數時容易犯的錯誤和需要注意的細節。\n\n## 歷史背景\n艾薩克·牛頓（Isaac Newton, 1643–1727）在 1687 年出版《自然哲學的數學原理》，建立了經典力學的三大定律和萬有引力定律。約瑟夫-路易·拉格朗日（Joseph-Louis Lagrange, 1736–1813）在 1788 年的《分析力學》中用廣義座標重新表述力學。威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。\n\n## 現代理論視角\n在現代物理中，經典力學被拉格朗日力學和哈密頓力學重新表述，這些形式自然推廣到量子力學和場論。在計算力學中，有限元方法（FEM）和多體動力學模擬用於汽車碰撞測試、航太結構分析和機器人運動規劃。\n\n## 相關連結\n### 相關概念\n拉格朗日乘數相關概念\n\n## 核心公式\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = \\lambda\\frac{\\partial f}{\\partial q_i}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 電感 | H |\n| $\\d$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\l$ | 待確認 | — |\n| $\\p$ ",
+  "body_full": "## 概念摘要\n拉格朗日乘數的概念摘要。\n\n## 嚴格定義\n拉格朗日乘數的嚴格定義。\n\n## 先備知識\n學習拉格朗日乘數前需要掌握的基礎概念。\n\n## 物理意義\n核心機制： 拉格朗日乘數的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習拉格朗日乘數時容易忽略的關鍵細節包括適用條件和極限情況。\n\n拉格朗日乘數的物理意義。\n\n## 典型應用\n拉格朗日乘數在物理學和工程中的典型應用場景。\n\n## 常見誤解\n學習拉格朗日乘數時容易犯的錯誤和需要注意的細節。\n\n## 歷史背景\n艾薩克·牛頓（Isaac Newton, 1643–1727）在 1687 年出版《自然哲學的數學原理》，建立了經典力學的三大定律和萬有引力定律。約瑟夫-路易·拉格朗日（Joseph-Louis Lagrange, 1736–1813）在 1788 年的《分析力學》中用廣義座標重新表述力學。威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。\n\n## 現代理論視角\n在現代物理中，經典力學被拉格朗日力學和哈密頓力學重新表述，這些形式自然推廣到量子力學和場論。在計算力學中，有限元方法（FEM）和多體動力學模擬用於汽車碰撞測試、航太結構分析和機器人運動規劃。\n\n## 相關連結\n### 相關概念\n拉格朗日乘數相關概念\n\n## 核心公式\n$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = \\lambda\\frac{\\partial f}{\\partial q_i}$$\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 電感 | H |\n| $\\d$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\l$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $a$ | 加速度 | m/s² |\n| $b$ | 待確認 | — |\n| $c$ | 待確認 | — |\n| $d$ | 距離 | m |\n| $f$ | 頻率/函數 | Hz |\n\n## 推導\n拉格朗日乘數法可從約束優化問題導出。\n\n問題：求 $f(x,y)$ 在約束 $g(x,y)=0$ 下的極值。\n\n極值處 $\\nabla f$ 和 $\\nabla g$ 平行（否則沿約束曲面存在 $f$ 可繼續增大的方向）：\n$$\n\\nabla f = \\lambda \\nabla g\n$$\n\n引入拉格朗日函數：\n$$\n\\mathcal{L}(x,y,\\lambda) = f(x,y) - \\lambda g(x,y)\n$$\n\n對所有變數取偏導並令為零：\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial x} = \\frac{\\partial f}{\\partial x} - \\lambda\\frac{\\partial g}{\\partial x} = 0\n$$\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial y} = \\frac{\\partial f}{\\partial y} - \\lambda\\frac{\\partial g}{\\partial y} = 0\n$$\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial\\lambda} = -g(x,y) = 0\n$$\n\n三個方程解三個未知數 $x,y,\\lambda$。$\\lambda$ 的物理意義是：$\\lambda=\\partial f^*/\\partial c$，即約束放寬一個單位時極值的變化率（影子價格）。",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "拉格朗日乘數的概念摘要。",
+      "content": "拉格朗日乘數的概念摘要。"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "拉格朗日乘數的嚴格定義。",
+      "content": "拉格朗日乘數的嚴格定義。"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "學習拉格朗日乘數前需要掌握的基礎概念。",
+      "content": "學習拉格朗日乘數前需要掌握的基礎概念。"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 拉格朗日乘數的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習拉格朗日乘數時容易忽略的關鍵細節包括適用條件和極限情況。\n\n拉格朗日乘數的物理意義。",
+      "content": "核心機制： 拉格朗日乘數的物理本質在於力與運動的關係。\n\n類比： 可以用日常經驗類比來理解——想像一個類似的物理情境，觀察力和運動如何相互作用。\n\n常見盲點： 學習拉格朗日乘數時容易忽略的關鍵細節包括適用條件和極限情況。\n\n拉格朗日乘數的物理意義。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "拉格朗日乘數在物理學和工程中的典型應用場景。",
+      "content": "拉格朗日乘數在物理學和工程中的典型應用場景。"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "學習拉格朗日乘數時容易犯的錯誤和需要注意的細節。",
+      "content": "學習拉格朗日乘數時容易犯的錯誤和需要注意的細節。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "艾薩克·牛頓（Isaac Newton, 1643–1727）在 1687 年出版《自然哲學的數學原理》，建立了經典力學的三大定律和萬有引力定律。約瑟夫-路易·拉格朗日（Joseph-Louis Lagrange, 1736–1813）在 1788 年的《分析力學》中用廣義座標重新表述力學。威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。",
+      "content": "艾薩克·牛頓（Isaac Newton, 1643–1727）在 1687 年出版《自然哲學的數學原理》，建立了經典力學的三大定律和萬有引力定律。約瑟夫-路易·拉格朗日（Joseph-Louis Lagrange, 1736–1813）在 1788 年的《分析力學》中用廣義座標重新表述力學。威廉·羅恩·哈密頓（William Rowan Hamilton, 1805–1865）在 1833 年建立了哈密頓力學。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在現代物理中，經典力學被拉格朗日力學和哈密頓力學重新表述，這些形式自然推廣到量子力學和場論。在計算力學中，有限元方法（FEM）和多體動力學模擬用於汽車碰撞測試、航太結構分析和機器人運動規劃。",
+      "content": "在現代物理中，經典力學被拉格朗日力學和哈密頓力學重新表述，這些形式自然推廣到量子力學和場論。在計算力學中，有限元方法（FEM）和多體動力學模擬用於汽車碰撞測試、航太結構分析和機器人運動規劃。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "拉格朗日乘數相關概念",
+      "content": "拉格朗日乘數相關概念"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = \\lambda\\frac{\\partial f}{\\partial q_i}$$",
+      "content": "$$\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot{q}_i} - \\frac{\\partial L}{\\partial q_i} = \\lambda\\frac{\\partial f}{\\partial q_i}$$"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 電感 | H |\n| $\\d$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\l$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $a$ | 加速度 | m/s² |\n| $b$ | 待確認 | — |\n| $c$ | 待確認 | — |\n| $d$ | 距離 | m |\n| $f$ | 頻率/函數 | Hz |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $L$ | 電感 | H |\n| $\\d$ | 待確認 | — |\n| $\\f$ | 待確認 | — |\n| $\\l$ | 待確認 | — |\n| $\\p$ | 待確認 | — |\n| $a$ | 加速度 | m/s² |\n| $b$ | 待確認 | — |\n| $c$ | 待確認 | — |\n| $d$ | 距離 | m |\n| $f$ | 頻率/函數 | Hz |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "拉格朗日乘數法可從約束優化問題導出。\n\n問題：求 $f(x,y)$ 在約束 $g(x,y)=0$ 下的極值。\n\n極值處 $\\nabla f$ 和 $\\nabla g$ 平行（否則沿約束曲面存在 $f$ 可繼續增大的方向）：\n$$\n\\nabla f = \\lambda \\nabla g\n$$\n\n引入拉格朗日函數：\n$$\n\\mathcal{L}(x,y,\\lambda) = f(x,y) - \\lambda g(x,y)\n$$\n\n對所有變數取偏導並令為零：\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial x} = \\frac{\\partial f}{\\partial x} - \\lambda\\frac{\\partial g}{\\partial x} = 0\n$$\n$$\n\\frac{\\partial\\mathcal{L}}{\\",
+      "content": "拉格朗日乘數法可從約束優化問題導出。\n\n問題：求 $f(x,y)$ 在約束 $g(x,y)=0$ 下的極值。\n\n極值處 $\\nabla f$ 和 $\\nabla g$ 平行（否則沿約束曲面存在 $f$ 可繼續增大的方向）：\n$$\n\\nabla f = \\lambda \\nabla g\n$$\n\n引入拉格朗日函數：\n$$\n\\mathcal{L}(x,y,\\lambda) = f(x,y) - \\lambda g(x,y)\n$$\n\n對所有變數取偏導並令為零：\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial x} = \\frac{\\partial f}{\\partial x} - \\lambda\\frac{\\partial g}{\\partial x} = 0\n$$\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial y} = \\frac{\\partial f}{\\partial y} - \\lambda\\frac{\\partial g}{\\partial y} = 0\n$$\n$$\n\\frac{\\partial\\mathcal{L}}{\\partial\\lambda} = -g(x,y) = 0\n$$\n\n三個方程解三個未知數 $x,y,\\lambda$。$\\lambda$ 的物理意義是：$\\lambda=\\partial f^*/\\partial c$，即約束放寬一個單位時極值的變化率（影子價格）。"
+    }
+  ]
+}

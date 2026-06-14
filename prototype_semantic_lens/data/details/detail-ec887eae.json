@@ -1,0 +1,100 @@
+{
+  "id": "電磁場能量流",
+  "path": "02_concepts/electromagnetism/電磁場能量流.md",
+  "title": "電磁場能量流",
+  "summary": "電磁場能量流描述能量如何在空間中隨電場與磁場共同傳遞，是場觀點下的能量運輸概念。",
+  "body_preview": "## 概念摘要\n電磁能量不是只能沿著導線傳遞。在場觀點下，能量透過坡印廷向量 $\\vec{S} = \\vec{E} \\times \\vec{H}/\\mu_0$ 在空間中流動，電場和磁場共同承載能量的運輸。\n\n## 嚴格定義\n電磁場的能量密度：\n\n$$u = \\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2$$\n\n坡印廷向量（Poynting vector）定義為能量流密度：\n\n$$\\vec{S} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n或等效地 $\\vec{S} = \\vec{E} \\times \\vec{H}$。$\\vec{S}$ 的方向是能量傳播的方向，大小是單位面積的功率（W/m²）。\n\n坡印廷定理（能量守恆）：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n右側是場對電荷做功的功率密度。\n\n## 先備知識\n電場能量密度 $\\frac{1}{2}\\epsilon_0 E^2$\n磁場能量密度 $\\frac{1}{2\\mu_0}B^2$\n向量叉積的幾何意義\n麥克斯威方程組\n能量守恆與連續性方程\n\n## 物理意義\n核心機制： 電磁能量儲存在場中，而不是在導線裡。當你打開電燈，能量沿著電線周圍的空間，由 $\\vec{E}$ 和 $\\vec{B}$ 共同傳遞。導線只是引導場的結構，能量在導線外面流動。\n\n類比： 想像水管中的水流——水（能量）在管內流動，但管壁（導線）只是引導水流的方向。坡印廷向量就是「水流速度×截面積」的場論版本。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路），而不是沿導線方向。\n\n電磁場能量流回答的問題是「電磁能量在空間中如何從A點傳到B點」。這在天線設計（輻射功率）、微波工程（波導中的能量傳輸）和光學（光的強度）中都是核心概念。坡印廷向量的時間平均值就是波的強度——這就",
+  "body_full": "## 概念摘要\n電磁能量不是只能沿著導線傳遞。在場觀點下，能量透過坡印廷向量 $\\vec{S} = \\vec{E} \\times \\vec{H}/\\mu_0$ 在空間中流動，電場和磁場共同承載能量的運輸。\n\n## 嚴格定義\n電磁場的能量密度：\n\n$$u = \\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2$$\n\n坡印廷向量（Poynting vector）定義為能量流密度：\n\n$$\\vec{S} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n或等效地 $\\vec{S} = \\vec{E} \\times \\vec{H}$。$\\vec{S}$ 的方向是能量傳播的方向，大小是單位面積的功率（W/m²）。\n\n坡印廷定理（能量守恆）：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n右側是場對電荷做功的功率密度。\n\n## 先備知識\n電場能量密度 $\\frac{1}{2}\\epsilon_0 E^2$\n磁場能量密度 $\\frac{1}{2\\mu_0}B^2$\n向量叉積的幾何意義\n麥克斯威方程組\n能量守恆與連續性方程\n\n## 物理意義\n核心機制： 電磁能量儲存在場中，而不是在導線裡。當你打開電燈，能量沿著電線周圍的空間，由 $\\vec{E}$ 和 $\\vec{B}$ 共同傳遞。導線只是引導場的結構，能量在導線外面流動。\n\n類比： 想像水管中的水流——水（能量）在管內流動，但管壁（導線）只是引導水流的方向。坡印廷向量就是「水流速度×截面積」的場論版本。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路），而不是沿導線方向。\n\n電磁場能量流回答的問題是「電磁能量在空間中如何從A點傳到B點」。這在天線設計（輻射功率）、微波工程（波導中的能量傳輸）和光學（光的強度）中都是核心概念。坡印廷向量的時間平均值就是波的強度——這就是為什麼我們用 W/m² 衡量光和無線電信號的強度。\n\n## 典型應用\n天線輻射： 天線周圍的坡印廷向量積分給出總輻射功率\n光學強度： 光波的強度 $I = \\langle S \\rangle$，用於光學設計和光電探測\n微波波導： 波導中的能量傳輸由坡印廷向量的橫向分量描述\n太陽能： 太陽常數 ~1361 W/m² 就是地球軌道處的坡印廷向量平均值\n\n## 常見誤解\n1. 「能量在導線裡流動」 — 大部分能量在導線周圍的場中流動，導線只是引導場的結構。\n2. 「坡印廷向量只在電磁波中存在」 — 任何有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在的地方都有 $\\vec{S}$，包括靜態場（但靜態場的 $\\vec{S}$ 通常不形成淨能量流）。\n3. 「能量傳播方向就是電場方向」 — 能量傳播方向是 $\\vec{E} \\times \\vec{B}$ 的方向，垂直於 $\\vec{E}$ 和 $\\vec{B}$ 兩者。\n\n## 歷史背景\n約翰·亨利·坡印廷（John Henry Poynting, 1852–1914）在 1884 年推導了電磁能量流的表達式。奧利弗·亥維賽（Oliver Heaviside, 1850–1925）獨立得到了相同的結果。坡印廷定理是馬克士威方程組的直接推論，但它的物理意義——能量在場中而非在物質中流動——在當時是革命性的觀念。阿爾伯特·愛因斯坦和 約翰娜·布里淵（Brillouin）進一步研究了電磁能量流的動量密度 $\\vec{g} = \\vec{S}/c^2$。\n\n## 現代理論視角\n在相對論中，電磁場的能量-動量構成一個四維張量 $T^{\\mu\\nu}$，坡印廷向量是其時間-空間分量。能量密度 $u = T^{00}$，動量密度 $g^i = T^{0i}/c$。在量子電動力學中，電磁場被量子化為光子，坡印廷向量對應光子流密度。在光纖通信中，坡印廷向量在纖芯中的分布決定傳播模式。\n\n## 相關連結\n### 相關概念\n電磁波傳播\n麥克斯威方程組\n輻射\n\n### 相關物理量\n坡印廷向量\n電場\n磁場\n\n### 相關實驗\n微波能流密度量測\n\n### 衍生結果\n輻射壓\n電磁波動量\n\n## 核心公式\n| 公式 | 名稱 |\n|------|------|\n| $\\vec{S} = \\dfrac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$ | 坡印廷向量 |\n| $u = \\dfrac{1}{2}\\epsilon_0 E^2 + \\dfrac{1}{2\\mu_0}B^2$ | 能量密度 |\n| $\\dfrac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$ | 坡印廷定理 |\n| $\\langle S \\rangle = \\dfrac{E_0 B_0}{2\\mu_0}$ | 平面波平均能流密度 |\n| $I = \\langle |\\vec{S}| \\rangle$ | 輻射強度 |\n\n## 符號與單位\n| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $u$ | 能量密度 | J/m³ |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\vec{J}$ | 電流密度 | A/m² |\n| $I$ | 輻射強度 | W/m² |\n\n## 推導\n從馬克士威方程組出發。對法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律 $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\partial \\vec{E}/\\partial t$ 兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n$$\\frac{\\vec{B}}{\\mu_0} \\cdot (\\nabla \\times \\vec{E}) = -\\frac{\\vec{B}}{\\mu_0} \\cdot \\frac{\\partial \\vec{B}}{\\partial t}$$\n\n相減，利用向量恆等式 $\\nabla \\cdot (\\vec{E} \\times \\vec{B}) = \\vec{B} \\cdot (\\nabla \\times \\vec{E}) - \\vec{E} \\cdot (\\nabla \\times \\vec{B})$：\n\n$$-\\nabla \\cdot \\left(\\frac{\\vec{E} \\times \\vec{B}}{\\mu_0}\\right) = \\mu_0 \\vec{J} \\cdot \\vec{E} + \\frac{\\partial}{\\partial t}\\left(\\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2\\right)$$\n\n即：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$",
+  "sections": [
+    {
+      "title": "概念摘要",
+      "level": 2,
+      "preview": "電磁能量不是只能沿著導線傳遞。在場觀點下，能量透過坡印廷向量 $\\vec{S} = \\vec{E} \\times \\vec{H}/\\mu_0$ 在空間中流動，電場和磁場共同承載能量的運輸。",
+      "content": "電磁能量不是只能沿著導線傳遞。在場觀點下，能量透過坡印廷向量 $\\vec{S} = \\vec{E} \\times \\vec{H}/\\mu_0$ 在空間中流動，電場和磁場共同承載能量的運輸。"
+    },
+    {
+      "title": "嚴格定義",
+      "level": 2,
+      "preview": "電磁場的能量密度：\n\n$$u = \\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2$$\n\n坡印廷向量（Poynting vector）定義為能量流密度：\n\n$$\\vec{S} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n或等效地 $\\vec{S} = \\vec{E} \\times \\vec{H}$。$\\vec{S}$ 的方向是能量傳播的方向，大小是單位面積的功率（W/m²）。\n\n坡印廷定理（能量守恆）：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n右側是場對電荷做功的功率密度。",
+      "content": "電磁場的能量密度：\n\n$$u = \\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2$$\n\n坡印廷向量（Poynting vector）定義為能量流密度：\n\n$$\\vec{S} = \\frac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$$\n\n或等效地 $\\vec{S} = \\vec{E} \\times \\vec{H}$。$\\vec{S}$ 的方向是能量傳播的方向，大小是單位面積的功率（W/m²）。\n\n坡印廷定理（能量守恆）：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$\n\n右側是場對電荷做功的功率密度。"
+    },
+    {
+      "title": "先備知識",
+      "level": 2,
+      "preview": "電場能量密度 $\\frac{1}{2}\\epsilon_0 E^2$\n磁場能量密度 $\\frac{1}{2\\mu_0}B^2$\n向量叉積的幾何意義\n麥克斯威方程組\n能量守恆與連續性方程",
+      "content": "電場能量密度 $\\frac{1}{2}\\epsilon_0 E^2$\n磁場能量密度 $\\frac{1}{2\\mu_0}B^2$\n向量叉積的幾何意義\n麥克斯威方程組\n能量守恆與連續性方程"
+    },
+    {
+      "title": "物理意義",
+      "level": 2,
+      "preview": "核心機制： 電磁能量儲存在場中，而不是在導線裡。當你打開電燈，能量沿著電線周圍的空間，由 $\\vec{E}$ 和 $\\vec{B}$ 共同傳遞。導線只是引導場的結構，能量在導線外面流動。\n\n類比： 想像水管中的水流——水（能量）在管內流動，但管壁（導線）只是引導水流的方向。坡印廷向量就是「水流速度×截面積」的場論版本。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路），而不是沿導線方向。\n\n電磁場能量流回答的問題是「電磁能量在空間中如何從A點傳到B點」。這在天線設計（輻射功率）、微波工程（波導中的能量傳輸）和光學（光的強度）中都是核心概念。坡印廷向量的時間平均值就是波的強度——這就是為什麼我們用 W/m² 衡量光和無線電信號的強度。",
+      "content": "核心機制： 電磁能量儲存在場中，而不是在導線裡。當你打開電燈，能量沿著電線周圍的空間，由 $\\vec{E}$ 和 $\\vec{B}$ 共同傳遞。導線只是引導場的結構，能量在導線外面流動。\n\n類比： 想像水管中的水流——水（能量）在管內流動，但管壁（導線）只是引導水流的方向。坡印廷向量就是「水流速度×截面積」的場論版本。\n\n常見盲點： 坡印廷向量的方向不一定沿著導線。在電池供電的電路中，$\\vec{S}$ 從電池側面進入導線（從場到電路），而不是沿導線方向。\n\n電磁場能量流回答的問題是「電磁能量在空間中如何從A點傳到B點」。這在天線設計（輻射功率）、微波工程（波導中的能量傳輸）和光學（光的強度）中都是核心概念。坡印廷向量的時間平均值就是波的強度——這就是為什麼我們用 W/m² 衡量光和無線電信號的強度。"
+    },
+    {
+      "title": "典型應用",
+      "level": 2,
+      "preview": "天線輻射： 天線周圍的坡印廷向量積分給出總輻射功率\n光學強度： 光波的強度 $I = \\langle S \\rangle$，用於光學設計和光電探測\n微波波導： 波導中的能量傳輸由坡印廷向量的橫向分量描述\n太陽能： 太陽常數 ~1361 W/m² 就是地球軌道處的坡印廷向量平均值",
+      "content": "天線輻射： 天線周圍的坡印廷向量積分給出總輻射功率\n光學強度： 光波的強度 $I = \\langle S \\rangle$，用於光學設計和光電探測\n微波波導： 波導中的能量傳輸由坡印廷向量的橫向分量描述\n太陽能： 太陽常數 ~1361 W/m² 就是地球軌道處的坡印廷向量平均值"
+    },
+    {
+      "title": "常見誤解",
+      "level": 2,
+      "preview": "1. 「能量在導線裡流動」 — 大部分能量在導線周圍的場中流動，導線只是引導場的結構。\n2. 「坡印廷向量只在電磁波中存在」 — 任何有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在的地方都有 $\\vec{S}$，包括靜態場（但靜態場的 $\\vec{S}$ 通常不形成淨能量流）。\n3. 「能量傳播方向就是電場方向」 — 能量傳播方向是 $\\vec{E} \\times \\vec{B}$ 的方向，垂直於 $\\vec{E}$ 和 $\\vec{B}$ 兩者。",
+      "content": "1. 「能量在導線裡流動」 — 大部分能量在導線周圍的場中流動，導線只是引導場的結構。\n2. 「坡印廷向量只在電磁波中存在」 — 任何有 $\\vec{E}$ 和 $\\vec{B}$ 同時存在的地方都有 $\\vec{S}$，包括靜態場（但靜態場的 $\\vec{S}$ 通常不形成淨能量流）。\n3. 「能量傳播方向就是電場方向」 — 能量傳播方向是 $\\vec{E} \\times \\vec{B}$ 的方向，垂直於 $\\vec{E}$ 和 $\\vec{B}$ 兩者。"
+    },
+    {
+      "title": "歷史背景",
+      "level": 2,
+      "preview": "約翰·亨利·坡印廷（John Henry Poynting, 1852–1914）在 1884 年推導了電磁能量流的表達式。奧利弗·亥維賽（Oliver Heaviside, 1850–1925）獨立得到了相同的結果。坡印廷定理是馬克士威方程組的直接推論，但它的物理意義——能量在場中而非在物質中流動——在當時是革命性的觀念。阿爾伯特·愛因斯坦和 約翰娜·布里淵（Brillouin）進一步研究了電磁能量流的動量密度 $\\vec{g} = \\vec{S}/c^2$。",
+      "content": "約翰·亨利·坡印廷（John Henry Poynting, 1852–1914）在 1884 年推導了電磁能量流的表達式。奧利弗·亥維賽（Oliver Heaviside, 1850–1925）獨立得到了相同的結果。坡印廷定理是馬克士威方程組的直接推論，但它的物理意義——能量在場中而非在物質中流動——在當時是革命性的觀念。阿爾伯特·愛因斯坦和 約翰娜·布里淵（Brillouin）進一步研究了電磁能量流的動量密度 $\\vec{g} = \\vec{S}/c^2$。"
+    },
+    {
+      "title": "現代理論視角",
+      "level": 2,
+      "preview": "在相對論中，電磁場的能量-動量構成一個四維張量 $T^{\\mu\\nu}$，坡印廷向量是其時間-空間分量。能量密度 $u = T^{00}$，動量密度 $g^i = T^{0i}/c$。在量子電動力學中，電磁場被量子化為光子，坡印廷向量對應光子流密度。在光纖通信中，坡印廷向量在纖芯中的分布決定傳播模式。",
+      "content": "在相對論中，電磁場的能量-動量構成一個四維張量 $T^{\\mu\\nu}$，坡印廷向量是其時間-空間分量。能量密度 $u = T^{00}$，動量密度 $g^i = T^{0i}/c$。在量子電動力學中，電磁場被量子化為光子，坡印廷向量對應光子流密度。在光纖通信中，坡印廷向量在纖芯中的分布決定傳播模式。"
+    },
+    {
+      "title": "相關概念",
+      "level": 3,
+      "preview": "電磁波傳播\n麥克斯威方程組\n輻射",
+      "content": "電磁波傳播\n麥克斯威方程組\n輻射"
+    },
+    {
+      "title": "相關物理量",
+      "level": 3,
+      "preview": "坡印廷向量\n電場\n磁場",
+      "content": "坡印廷向量\n電場\n磁場"
+    },
+    {
+      "title": "相關實驗",
+      "level": 3,
+      "preview": "微波能流密度量測",
+      "content": "微波能流密度量測"
+    },
+    {
+      "title": "衍生結果",
+      "level": 3,
+      "preview": "輻射壓\n電磁波動量",
+      "content": "輻射壓\n電磁波動量"
+    },
+    {
+      "title": "核心公式",
+      "level": 2,
+      "preview": "| 公式 | 名稱 |\n|------|------|\n| $\\vec{S} = \\dfrac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$ | 坡印廷向量 |\n| $u = \\dfrac{1}{2}\\epsilon_0 E^2 + \\dfrac{1}{2\\mu_0}B^2$ | 能量密度 |\n| $\\dfrac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$ | 坡印廷定理 |\n| $\\langle S \\rangle = \\dfrac{E_0 B_0}{2\\mu_0}$ | 平面波平均能流密度 |\n| $I = \\langle |\\vec{S}| \\rangle$ | 輻射強度 |",
+      "content": "| 公式 | 名稱 |\n|------|------|\n| $\\vec{S} = \\dfrac{1}{\\mu_0}\\vec{E} \\times \\vec{B}$ | 坡印廷向量 |\n| $u = \\dfrac{1}{2}\\epsilon_0 E^2 + \\dfrac{1}{2\\mu_0}B^2$ | 能量密度 |\n| $\\dfrac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$ | 坡印廷定理 |\n| $\\langle S \\rangle = \\dfrac{E_0 B_0}{2\\mu_0}$ | 平面波平均能流密度 |\n| $I = \\langle |\\vec{S}| \\rangle$ | 輻射強度 |"
+    },
+    {
+      "title": "符號與單位",
+      "level": 2,
+      "preview": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $u$ | 能量密度 | J/m³ |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\vec{J}$ | 電流密度 | A/m² |\n| $I$ | 輻射強度 | W/m² |",
+      "content": "| 符號 | 名稱 | SI 單位 |\n|------|------|---------|\n| $\\vec{S}$ | 坡印廷向量 | W/m² |\n| $u$ | 能量密度 | J/m³ |\n| $\\vec{E}$ | 電場 | V/m |\n| $\\vec{B}$ | 磁場 | T |\n| $\\vec{H}$ | 磁場強度 | A/m |\n| $\\epsilon_0$ | 真空電容率 | F/m |\n| $\\mu_0$ | 真空磁導率 | H/m |\n| $\\vec{J}$ | 電流密度 | A/m² |\n| $I$ | 輻射強度 | W/m² |"
+    },
+    {
+      "title": "推導",
+      "level": 2,
+      "preview": "從馬克士威方程組出發。對法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律 $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\partial \\vec{E}/\\partial t$ 兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n$$\\frac{\\vec{B}}{\\mu_0} \\cdot (",
+      "content": "從馬克士威方程組出發。對法拉第定律 $\\nabla \\times \\vec{E} = -\\partial \\vec{B}/\\partial t$ 兩邊點乘 $\\vec{B}/\\mu_0$，對安培-馬克士威定律 $\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0\\epsilon_0 \\partial \\vec{E}/\\partial t$ 兩邊點乘 $\\vec{E}$：\n\n$$\\vec{E} \\cdot (\\nabla \\times \\vec{B}) = \\mu_0 \\vec{E} \\cdot \\vec{J} + \\mu_0\\epsilon_0 \\vec{E} \\cdot \\frac{\\partial \\vec{E}}{\\partial t}$$\n\n$$\\frac{\\vec{B}}{\\mu_0} \\cdot (\\nabla \\times \\vec{E}) = -\\frac{\\vec{B}}{\\mu_0} \\cdot \\frac{\\partial \\vec{B}}{\\partial t}$$\n\n相減，利用向量恆等式 $\\nabla \\cdot (\\vec{E} \\times \\vec{B}) = \\vec{B} \\cdot (\\nabla \\times \\vec{E}) - \\vec{E} \\cdot (\\nabla \\times \\vec{B})$：\n\n$$-\\nabla \\cdot \\left(\\frac{\\vec{E} \\times \\vec{B}}{\\mu_0}\\right) = \\mu_0 \\vec{J} \\cdot \\vec{E} + \\frac{\\partial}{\\partial t}\\left(\\frac{1}{2}\\epsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2\\right)$$\n\n即：\n\n$$\\frac{\\partial u}{\\partial t} + \\nabla \\cdot \\vec{S} = -\\vec{J} \\cdot \\vec{E}$$"
+    }
+  ]
+}

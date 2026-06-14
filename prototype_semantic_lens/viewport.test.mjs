@@ -1,7 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { clamp, getNavigationBounds, projectMiniMapClick } from "./viewport.mjs";
+import {
+  clamp,
+  clientToSvgPoint,
+  getNavigationBounds,
+  projectMiniMapClick,
+  updateViewportTransform,
+} from "./viewport.mjs";
 
 test("clamp constrains values into range", () => {
   assert.equal(clamp(5, 0, 3), 3);
@@ -27,4 +33,13 @@ test("projectMiniMapClick converts viewport position into world coordinates", ()
   });
   assert.ok(result.worldX > 0 && result.worldX < 1000);
   assert.ok(result.worldY > 0 && result.worldY < 500);
+});
+
+test("updateViewportTransform tolerates missing viewport element", () => {
+  assert.doesNotThrow(() => updateViewportTransform(null, 10, 20, 1.2));
+});
+
+test("clientToSvgPoint falls back when svg api is unavailable", () => {
+  assert.deepEqual(clientToSvgPoint(null, 12, 34), { x: 12, y: 34 });
+  assert.deepEqual(clientToSvgPoint({}, 56, 78), { x: 56, y: 78 });
 });

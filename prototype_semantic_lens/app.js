@@ -640,7 +640,7 @@ function onPointerDown(event) {
   ) return;
   state.dragging.active = true;
   state.dragging.pointerId = event.pointerId;
-  const point = clientToSvgPoint(event.clientX, event.clientY);
+  const point = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
   state.dragging.startX = point.x;
   state.dragging.startY = point.y;
   state.dragging.basePanX = state.panX;
@@ -721,7 +721,7 @@ function renderScene(scene, options = {}) {
     refreshSearch = true,
     refreshModeUI = true,
   } = options;
-  updateViewportTransform();
+  syncViewportTransform();
   const tier = semanticTierFromZoom(state.zoom);
   const shouldLayout = forceLayout || state.lastSemanticTier !== tier;
   if (shouldLayout) {
@@ -739,7 +739,7 @@ function renderScene(scene, options = {}) {
     renderEdges(scene.edges, scene.nodes);
     renderMiniMap(scene.nodes);
   } else {
-    updateMiniMapViewport();
+    syncMiniMapViewport();
   }
   renderNodes(scene.nodes);
   if (refreshDetail) {

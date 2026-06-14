@@ -3,10 +3,14 @@ export function clamp(value, min, max) {
 }
 
 export function updateViewportTransform(viewportEl, panX, panY, zoom) {
+  if (!viewportEl) return;
   viewportEl.setAttribute("transform", `translate(${panX} ${panY}) scale(${zoom})`);
 }
 
 export function clientToSvgPoint(svg, clientX, clientY) {
+  if (!svg || typeof svg.createSVGPoint !== "function") {
+    return { x: clientX, y: clientY };
+  }
   const point = svg.createSVGPoint();
   point.x = clientX;
   point.y = clientY;
@@ -39,7 +43,7 @@ export function getNavigationBounds(nodes, canvasWidth, canvasHeight) {
 }
 
 export function updateMiniMapViewport(minimapViewportEl, bounds, viewportState) {
-  if (!bounds) return;
+  if (!minimapViewportEl || !bounds) return;
   const { width, height, padding, panX, panY, zoom, canvasWidth, canvasHeight } = viewportState;
   const availableWidth = width - padding * 2;
   const availableHeight = height - padding * 2;

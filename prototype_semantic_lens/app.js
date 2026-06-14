@@ -563,21 +563,17 @@ function bindEvents() {
   });
   els.overviewModeButton.addEventListener("click", goToOverview);
 
-  els.focusModeButton.addEventListener("click", () => {
-    if (state.selectedNodeId) {
-      state.mode = "focus";
-      buildFocusScene(state.selectedNodeId);
-      render();
-    }
-  });
-
-  els.focusActionButton.addEventListener("click", () => {
-    if (state.selectedNodeId) {
-      state.mode = "focus";
-      buildFocusScene(state.selectedNodeId);
-      render();
-    }
-  });
+    els.focusModeButton.addEventListener("click", () => {
+      if (state.selectedNodeId) {
+        activateFocusNode(state.selectedNodeId, { pushHistory: false });
+      }
+    });
+  
+    els.focusActionButton.addEventListener("click", () => {
+      if (state.selectedNodeId) {
+        activateFocusNode(state.selectedNodeId, { pushHistory: false });
+      }
+    });
 
   els.graphFrame.addEventListener("pointerdown", onPointerDown);
   els.graphFrame.addEventListener("wheel", onWheel, { passive: false });
@@ -585,6 +581,28 @@ function bindEvents() {
   window.addEventListener("pointermove", onPointerMove);
   window.addEventListener("pointerup", onPointerUp);
   window.addEventListener("pointercancel", onPointerUp);
+}
+
+function resetFocusViewport() {
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+}
+
+function activateFocusNode(nodeId, options = {}) {
+  const { pushHistory = true } = options;
+  const node = state.nodeMap.get(nodeId);
+  if (!node) return;
+  state.selectedNodeId = nodeId;
+  if (pushHistory) {
+    state.browseHistory = state.browseHistory.slice(0, state.browseIndex + 1);
+    state.browseHistory.push(nodeId);
+    state.browseIndex = state.browseHistory.length - 1;
+  }
+  state.mode = "focus";
+  resetFocusViewport();
+  buildFocusScene(nodeId);
+  render();
 }
 
 function goToOverview() {
@@ -604,27 +622,13 @@ function goToOverview() {
 function goBack() {
   if (state.browseIndex <= 0) return;
   state.browseIndex--;
-  const nodeId = state.browseHistory[state.browseIndex];
-  state.selectedNodeId = nodeId;
-  state.mode = "focus";
-  state.panX = 0;
-  state.panY = 0;
-  setZoom(0.98);
-  buildFocusScene(nodeId);
-  render();
+  activateFocusNode(state.browseHistory[state.browseIndex], { pushHistory: false });
 }
 
 function goForward() {
   if (state.browseIndex >= state.browseHistory.length - 1) return;
   state.browseIndex++;
-  const nodeId = state.browseHistory[state.browseIndex];
-  state.selectedNodeId = nodeId;
-  state.mode = "focus";
-  state.panX = 0;
-  state.panY = 0;
-  setZoom(0.98);
-  buildFocusScene(nodeId);
-  render();
+  activateFocusNode(state.browseHistory[state.browseIndex], { pushHistory: false });
 }
 
 function onPointerDown(event) {
@@ -915,17 +919,7 @@ function handleNodeSelect(nodeId) {
     goToOverviewAndCenterTaxonomy(node.taxonomy);
     return;
   }
-  state.selectedNodeId = nodeId;
-  // Push to browse history
-  state.browseHistory = state.browseHistory.slice(0, state.browseIndex + 1);
-  state.browseHistory.push(nodeId);
-  state.browseIndex = state.browseHistory.length - 1;
-  state.mode = "focus";
-  state.panX = 0;
-  state.panY = 0;
-  setZoom(0.98);
-  buildFocusScene(nodeId);
-  render();
+  activateFocusNode(nodeId);
 }
 
 function onMiniMapClick(event) {

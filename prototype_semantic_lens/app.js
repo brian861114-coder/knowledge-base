@@ -30,6 +30,12 @@ import {
   updateViewportTransform,
 } from "./viewport.mjs";
 import {
+  collisionHalfHeight as baseCollisionHalfHeight,
+  collisionHalfWidth as baseCollisionHalfWidth,
+  collisionRadius as baseCollisionRadius,
+  relaxLayout as runRelaxLayout,
+} from "./layout-solver.mjs";
+import {
   buildEdgePath,
   convexHull,
   focusTypeOrder,
@@ -1360,72 +1366,42 @@ function isConnectedToSelected(nodeId) {
 }
 
 function relaxLayout(nodes, options = {}) {
-  const iterations = options.iterations || 40;
-  const padding = options.padding || 10;
-  const lockDomains = Boolean(options.lockDomains);
-  const lockFocal = Boolean(options.lockFocal);
-  const enforceBounds = Boolean(options.enforceBounds);
-
-  for (let step = 0; step < iterations; step += 1) {
-    for (let i = 0; i < nodes.length; i += 1) {
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const overlapX = collisionHalfWidth(a) + collisionHalfWidth(b) + padding - Math.abs(dx);
-        const overlapY = collisionHalfHeight(a) + collisionHalfHeight(b) + padding - Math.abs(dy);
-        if (overlapX <= 0 || overlapY <= 0) continue;
-
-        const aLocked = (lockDomains && a.type === "domain") || (lockFocal && a.focal);
-        const bLocked = (lockDomains && b.type === "domain") || (lockFocal && b.focal);
-        const movableCount = Number(!aLocked) + Number(!bLocked);
-        if (!movableCount) continue;
-
-        if (overlapX < overlapY) {
-          const direction = dx === 0 ? (i % 2 === 0 ? 1 : -1) : Math.sign(dx);
-          const push = overlapX / movableCount;
-          if (!aLocked) a.x -= direction * push;
-          if (!bLocked) b.x += direction * push;
-        } else {
-          const direction = dy === 0 ? (j % 2 === 0 ? 1 : -1) : Math.sign(dy);
-          const push = overlapY / movableCount;
-          if (!aLocked) a.y -= direction * push;
-          if (!bLocked) b.y += direction * push;
-        }
-      }
-    }
-
-    if (enforceBounds) {
-      clampNodesToViewport(nodes, {
+  runRelaxLayout(nodes, {
+    ...options,
+    getCollisionHalfWidth: collisionHalfWidth,
+    getCollisionHalfHeight: collisionHalfHeight,
+    clampNodes(sceneNodes, { preserveFocus }) {
+      clampNodesToViewport(sceneNodes, {
         padding: state.mode === "focus" ? 84 : 36,
-        preserveFocus: lockFocal,
+        preserveFocus,
         useCollisionRadius: true,
         collisionRadius,
         canvasWidth: CANVAS_WIDTH,
         canvasHeight: CANVAS_HEIGHT,
       });
-    }
-  }
+    },
+  });
 }
 
 function collisionRadius(node) {
-  return Math.max(collisionHalfWidth(node), collisionHalfHeight(node));
+  return baseCollisionRadius(node, {
+    getCollisionHalfWidth: collisionHalfWidth,
+    getCollisionHalfHeight: collisionHalfHeight,
+  });
 }
 
 function collisionHalfWidth(node) {
-  const label = resolveVisibleTitle(
-    node,
-    semanticTierFromZoom(state.zoom),
-    node.id === state.selectedNodeId
-  );
-  if (!label) return (node.r || 0) + 6;
-  const estimatedHalfWidth = Math.min(118, Math.max(0, Array.from(label).length * 9.5));
-  return Math.max((node.r || 0) + 6, estimatedHalfWidth + 14);
+  return baseCollisionHalfWidth(node, {
+    visibleTitle: resolveVisibleTitle(
+      node,
+      semanticTierFromZoom(state.zoom),
+      node.id === state.selectedNodeId
+    ),
+  });
 }
 
 function collisionHalfHeight(node) {
-  return (node.r || 0) + 12;
+  return baseCollisionHalfHeight(node);
 }
 
 function shorten(text, max) {

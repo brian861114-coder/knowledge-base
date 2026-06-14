@@ -18,6 +18,11 @@ import {
   buildSearchResultsHtml,
   buildStatCardsHtml,
 } from "./detail-panel.mjs";
+import {
+  createFocusState,
+  createOverviewState,
+  stepBrowseHistory,
+} from "./navigation-state.mjs";
 import { buildFocusSceneData, buildOverviewSceneData } from "./scene-builder.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
@@ -583,38 +588,27 @@ function bindEvents() {
   window.addEventListener("pointercancel", onPointerUp);
 }
 
-function resetFocusViewport() {
-  state.panX = 0;
-  state.panY = 0;
-  setZoom(0.98);
+function applyStatePatch(patch) {
+  for (const [key, value] of Object.entries(patch)) {
+    if (key === "zoom") {
+      setZoom(value);
+      continue;
+    }
+    state[key] = value;
+  }
 }
 
 function activateFocusNode(nodeId, options = {}) {
   const { pushHistory = true } = options;
   const node = state.nodeMap.get(nodeId);
   if (!node) return;
-  state.selectedNodeId = nodeId;
-  if (pushHistory) {
-    state.browseHistory = state.browseHistory.slice(0, state.browseIndex + 1);
-    state.browseHistory.push(nodeId);
-    state.browseIndex = state.browseHistory.length - 1;
-  }
-  state.mode = "focus";
-  resetFocusViewport();
+  applyStatePatch(createFocusState(state, nodeId, { pushHistory }));
   buildFocusScene(nodeId);
   render();
 }
 
 function resetOverviewState() {
-  state.mode = "overview";
-  state.selectedNodeId = null;
-  state.browseHistory = [];
-  state.browseIndex = -1;
-  state.noteViewMode = "preview";
-  state.focusSceneNodeId = null;
-  state.panX = 0;
-  state.panY = 0;
-  setZoom(1);
+  applyStatePatch(createOverviewState());
   document.querySelector(".app-shell")?.classList.remove("reader-mode");
 }
 
@@ -624,15 +618,17 @@ function goToOverview() {
 }
 
 function goBack() {
-  if (state.browseIndex <= 0) return;
-  state.browseIndex--;
-  activateFocusNode(state.browseHistory[state.browseIndex], { pushHistory: false });
+  const next = stepBrowseHistory(state, "back");
+  if (!next) return;
+  state.browseIndex = next.browseIndex;
+  activateFocusNode(next.nodeId, { pushHistory: false });
 }
 
 function goForward() {
-  if (state.browseIndex >= state.browseHistory.length - 1) return;
-  state.browseIndex++;
-  activateFocusNode(state.browseHistory[state.browseIndex], { pushHistory: false });
+  const next = stepBrowseHistory(state, "forward");
+  if (!next) return;
+  state.browseIndex = next.browseIndex;
+  activateFocusNode(next.nodeId, { pushHistory: false });
 }
 
 function onPointerDown(event) {

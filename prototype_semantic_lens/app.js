@@ -6,6 +6,7 @@ import {
   validateDetailPayload,
   validateGraphPayload,
 } from "./logic.mjs";
+import { createDetailStore } from "./detail-store.mjs";
 import { escapeHtml, renderMarkdown } from "./markdown.mjs";
 import { scheduleMathTypeset } from "./mathjax.mjs";
 
@@ -119,10 +120,7 @@ function selectOverviewNodesForTaxonomy(pool) {
 
 const state = {
   graph: null,
-  detailIndex: {},
-  details: {},
-  detailErrors: new Map(),
-  detailRequests: new Map(),
+  detailStore: null,
   nodeMap: new Map(),
   graphIndex: null,
   zoom: 1,
@@ -203,15 +201,17 @@ init().catch((error) => {
 });
 
 async function init() {
-  const [rawGraph, rawDetailIndex] = await Promise.all([fetchJson(GRAPH_URL), fetchJson(DETAIL_INDEX_URL)]);
+  const rawGraph = await fetchJson(GRAPH_URL);
   validateGraphPayload(rawGraph);
 
   state.graph = normalizeGraph(rawGraph);
-  validateDetailPayload(rawDetailIndex, state.graph.nodes.map((node) => node.id));
-  state.detailIndex = rawDetailIndex;
-  state.details = {};
-  state.detailErrors = new Map();
-  state.detailRequests = new Map();
+  state.detailStore = createDetailStore({
+    detailIndexUrl: DETAIL_INDEX_URL,
+    detailBaseUrl: DETAIL_BASE_URL,
+    detailFileNameForNodeId,
+    validateDetailPayload,
+  });
+  await state.detailStore.loadIndex(state.graph.nodes.map((node) => node.id));
   buildOverviewScene();
   buildDomainOverview();
   buildFilters();
@@ -750,7 +750,7 @@ function bindEvents() {
     }
     const retryDetail = event.target.closest("[data-retry-detail]");
     if (retryDetail) {
-      state.detailErrors.delete(retryDetail.dataset.retryDetail);
+      state.detailStore.clearError(retryDetail.dataset.retryDetail);
       void loadDetail(retryDetail.dataset.retryDetail);
     }
   });
@@ -1292,8 +1292,8 @@ function renderDetail() {
     return;
   }
 
-  const cachedDetail = state.details[node.id] || null;
-  const detailIndex = state.detailIndex[node.id] || {};
+  const cachedDetail = state.detailStore.getCached(node.id);
+  const detailIndex = state.detailStore.getIndex(node.id);
   const detail = cachedDetail || detailIndex;
   const relations = collectRelations(node.id);
   const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
@@ -1348,7 +1348,7 @@ function renderNoteSection(node, detail) {
     if (detailCard) detailCard.appendChild(noteSection);
   }
 
-  const loadError = state.detailErrors.get(node.id);
+  const loadError = state.detailStore.getError(node.id);
   if (loadError) {
     noteSection.innerHTML = `
       <div class="section-head"><h3>筆記內容</h3></div>
@@ -1358,7 +1358,7 @@ function renderNoteSection(node, detail) {
     return;
   }
 
-  if (!state.details[node.id]) {
+  if (!state.detailStore.hasCached(node.id)) {
     noteSection.innerHTML = `
       <div class="section-head"><h3>筆記內容</h3></div>
       <p style="color:var(--muted);font-size:0.88rem;">正在載入筆記內容…</p>
@@ -1426,32 +1426,17 @@ function syncNoteViewToggle() {
 }
 
 async function loadDetail(nodeId) {
-  if (state.details[nodeId]) return state.details[nodeId];
-  if (state.detailRequests.has(nodeId)) return state.detailRequests.get(nodeId);
-
-  const request = fetchJson(`${DETAIL_BASE_URL}/${detailFileNameForNodeId(nodeId)}`)
-    .then((detail) => {
-      state.details[nodeId] = detail;
-      state.detailErrors.delete(nodeId);
-      return detail;
-    })
-    .catch((error) => {
-      state.detailErrors.set(nodeId, String(error.message || error));
-      throw error;
-    })
-    .finally(() => {
-      state.detailRequests.delete(nodeId);
-      if (state.selectedNodeId === nodeId) {
+  return state.detailStore.loadDetail(nodeId, {
+    onSettled(settledNodeId) {
+      if (state.selectedNodeId === settledNodeId) {
         try {
           renderDetail();
         } catch (renderError) {
           console.error("renderDetail error:", renderError);
         }
       }
-    });
-
-  state.detailRequests.set(nodeId, request);
-  return request;
+    },
+  });
 }
 
 function renderSearchResults() {

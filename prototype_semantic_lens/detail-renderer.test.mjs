@@ -40,6 +40,7 @@ test("full note view prefers body_full without duplicating section cards", () =>
   assert.match(html, /Full body text/);
   assert.doesNotMatch(html, /Section A/);
   assert.doesNotMatch(html, /note-sections-grid/);
+  assert.doesNotMatch(html, /section-head/);
 });
 
 test("full note view falls back to sections when body_full is absent", () => {
@@ -58,4 +59,5 @@ test("full note view falls back to sections when body_full is absent", () => {
 
   assert.doesNotMatch(html, /Section A/);
   assert.doesNotMatch(html, /note-sections-grid/);
+  assert.doesNotMatch(html, /section-head/);
 });

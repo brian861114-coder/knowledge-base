@@ -90,6 +90,10 @@ export function buildNoteSectionHtml(node, detail, options) {
     </div>
   `;
 
+  if (isFullMode) {
+    html = "";
+  }
+
   const bodyContent = isFullMode
     ? (detail.body_full || detail.body_preview || detail.summary || "")
     : (detail.body_preview || detail.summary || "");

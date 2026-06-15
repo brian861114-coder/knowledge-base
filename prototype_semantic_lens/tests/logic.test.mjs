@@ -5,10 +5,12 @@ import {
   buildGraphIndex,
   collectDirectionalRelations,
   detailFileNameForNodeId,
+  findSearchMatches,
+  groupDirectionalRelations,
   relationBucketForEdge,
   validateDetailPayload,
   validateGraphPayload,
-} from "./logic.mjs";
+} from "../src/logic.mjs";
 
 test("validateGraphPayload accepts a minimal valid graph", () => {
   assert.doesNotThrow(() => {
@@ -73,6 +75,47 @@ test("collectDirectionalRelations separates prerequisite and extension correctly
     (grouped.extension || []).map((entry) => entry.node.id).sort(),
     ["derived", "map"]
   );
+});
+
+test("groupDirectionalRelations ranks and slices each bucket", () => {
+  const grouped = groupDirectionalRelations(
+    [
+      { bucket: "requires", node: { id: "r2", score: 2 } },
+      { bucket: "requires", node: { id: "r1", score: 1 } },
+      { bucket: "extension", node: { id: "e1", score: 1 } },
+      { bucket: "related", node: { id: "x2", score: 2 } },
+      { bucket: "related", node: { id: "x1", score: 1 } },
+    ],
+    {
+      rankNodes(nodes) {
+        return nodes.slice().sort((a, b) => b.score - a.score);
+      },
+      limit: 1,
+    }
+  );
+
+  assert.deepEqual(grouped, {
+    requires: [{ id: "r2", score: 2 }],
+    extension: [{ id: "e1", score: 1 }],
+    related: [{ id: "x2", score: 2 }],
+  });
+});
+
+test("findSearchMatches filters non-content nodes and respects limit", () => {
+  const matches = findSearchMatches(
+    [
+      { id: "root", type: "root", searchText: "energy" },
+      { id: "domain", type: "domain", searchText: "energy" },
+      { id: "law-1", type: "law", searchText: "energy conservation" },
+      { id: "concept-1", type: "concept", searchText: "energy transfer" },
+    ],
+    "energy",
+    { limit: 1 }
+  );
+
+  assert.deepEqual(matches, [
+    { id: "law-1", type: "law", searchText: "energy conservation" },
+  ]);
 });
 
 test("buildGraphIndex rejects semantic edges that point to missing nodes", () => {

@@ -5,7 +5,7 @@ import {
   createFocusState,
   createOverviewState,
   stepBrowseHistory,
-} from "./navigation-state.mjs";
+} from "../src/navigation-state.mjs";
 
 test("createOverviewState resets browse and focus state", () => {
   const state = createOverviewState();

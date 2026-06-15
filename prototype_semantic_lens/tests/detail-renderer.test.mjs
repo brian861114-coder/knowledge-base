@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildNoteSectionHtml } from "./detail-renderer.mjs";
+import { buildEmptyDetailView, buildNoteSectionHtml } from "../src/detail-renderer.mjs";
 
 const baseOptions = {
   escapeHtml(value) {
@@ -60,4 +60,18 @@ test("full note view falls back to sections when body_full is absent", () => {
   assert.doesNotMatch(html, /Section A/);
   assert.doesNotMatch(html, /note-sections-grid/);
   assert.doesNotMatch(html, /section-head/);
+});
+
+test("buildEmptyDetailView includes overview stats from options", () => {
+  const view = buildEmptyDetailView({
+    overviewNodeCount: 12,
+    overviewEdgeCount: 34,
+  });
+
+  assert.deepEqual(view.statsEntries, [
+    ["顯示節點", "12"],
+    ["顯示關係", "34"],
+    ["已隱藏", "wikilink"],
+    ["總層級", "3"],
+  ]);
 });

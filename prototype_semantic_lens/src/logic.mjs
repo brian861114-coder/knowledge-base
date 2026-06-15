@@ -135,3 +135,48 @@ export function collectDirectionalRelations(nodeId, graphIndex, nodeMap, options
 
   return entries;
 }
+
+export function groupDirectionalRelations(entries, helpers = {}) {
+  const {
+    rankNodes = (nodes) => nodes,
+    limit = 8,
+  } = helpers;
+
+  const buckets = {
+    requires: [],
+    extension: [],
+    related: [],
+  };
+
+  for (const entry of entries) {
+    if (entry.bucket === "requires") {
+      buckets.requires.push(entry.node);
+    } else if (entry.bucket === "extension") {
+      buckets.extension.push(entry.node);
+    } else {
+      buckets.related.push(entry.node);
+    }
+  }
+
+  return {
+    requires: rankNodes(buckets.requires).slice(0, limit),
+    extension: rankNodes(buckets.extension).slice(0, limit),
+    related: rankNodes(buckets.related).slice(0, limit),
+  };
+}
+
+export function findSearchMatches(nodes, query, options = {}) {
+  const {
+    limit = 50,
+    excludeTypes = new Set(["domain", "root"]),
+  } = options;
+
+  if (!query) {
+    return [];
+  }
+
+  return nodes
+    .filter((node) => node.searchText?.includes(query))
+    .filter((node) => !excludeTypes.has(node.type))
+    .slice(0, limit);
+}

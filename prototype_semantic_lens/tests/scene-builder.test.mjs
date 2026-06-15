@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildFocusSceneData, buildOverviewSceneData } from "./scene-builder.mjs";
+import { buildFocusSceneData, buildOverviewSceneData } from "../src/scene-builder.mjs";
 
 test("buildOverviewSceneData returns overview nodes, edges, and regions", () => {
   const graph = {

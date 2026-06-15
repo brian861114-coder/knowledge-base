@@ -6,7 +6,7 @@ import {
   collisionHalfWidth,
   collisionRadius,
   relaxLayout,
-} from "./layout-solver.mjs";
+} from "../src/layout-solver.mjs";
 
 test("collisionHalfWidth falls back to node radius", () => {
   assert.equal(collisionHalfWidth({ r: 10 }, { visibleTitle: "" }), 16);

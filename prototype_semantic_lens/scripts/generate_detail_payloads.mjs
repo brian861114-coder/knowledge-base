@@ -2,13 +2,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { detailFileNameForNodeId, validateDetailPayload } from "./logic.mjs";
+import { detailFileNameForNodeId, validateDetailPayload } from "../src/logic.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 const sourcePath = path.join(repoRoot, "physics_note_details.json");
-const outputRoot = path.join(__dirname, "data");
+const outputRoot = path.join(repoRoot, "data");
 const detailIndexPath = path.join(outputRoot, "detail-index.json");
 const detailDir = path.join(outputRoot, "details");
 

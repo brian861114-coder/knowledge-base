@@ -1,4 +1,8 @@
-export function buildEmptyDetailView() {
+export function buildEmptyDetailView(options = {}) {
+  const {
+    overviewNodeCount = 0,
+    overviewEdgeCount = 0,
+  } = options;
   return {
     typeText: "概覽",
     titleText: "請選取一個節點",
@@ -10,7 +14,12 @@ export function buildEmptyDetailView() {
       ["關係策略", "語意邊優先"],
       ["節點標籤", "依縮放顯示"],
     ],
-    statsEntries: [],
+    statsEntries: [
+      ["顯示節點", String(overviewNodeCount)],
+      ["顯示關係", String(overviewEdgeCount)],
+      ["已隱藏", "wikilink"],
+      ["總層級", "3"],
+    ],
   };
 }
 
@@ -24,14 +33,7 @@ export function buildNodeDetailView(node, detail, relations, helpers) {
     overviewEdgeCount,
   } = helpers;
   if (!node) {
-    const emptyView = buildEmptyDetailView();
-    emptyView.statsEntries = [
-      ["顯示節點", String(overviewNodeCount)],
-      ["顯示關係", String(overviewEdgeCount)],
-      ["已隱藏", "wikilink"],
-      ["總層級", "3"],
-    ];
-    return emptyView;
+    return buildEmptyDetailView({ overviewNodeCount, overviewEdgeCount });
   }
 
   const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";

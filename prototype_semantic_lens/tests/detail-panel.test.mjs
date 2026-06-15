@@ -6,7 +6,7 @@ import {
   buildPillListHtml,
   buildSearchResultsHtml,
   buildStatCardsHtml,
-} from "./detail-panel.mjs";
+} from "../src/detail-panel.mjs";
 
 const helpers = {
   escapeHtml(value) {

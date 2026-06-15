@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildBreadcrumbHtml, createModeUiState } from "./ui-state.mjs";
+import { buildBreadcrumbHtml, createModeUiState } from "../src/ui-state.mjs";
 
 test("buildBreadcrumbHtml escapes labels and adds separators", () => {
   const html = buildBreadcrumbHtml(

@@ -9,7 +9,7 @@ import {
   positionRing,
   rankFocusNodes,
   smoothClosedPath,
-} from "./scene-geometry.mjs";
+} from "../src/scene-geometry.mjs";
 
 test("convexHull removes interior points", () => {
   const hull = convexHull([

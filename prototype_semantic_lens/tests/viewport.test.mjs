@@ -7,7 +7,7 @@ import {
   getNavigationBounds,
   projectMiniMapClick,
   updateViewportTransform,
-} from "./viewport.mjs";
+} from "../src/viewport.mjs";
 
 test("clamp constrains values into range", () => {
   assert.equal(clamp(5, 0, 3), 3);

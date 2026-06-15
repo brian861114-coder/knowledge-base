@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { escapeHtml, renderMarkdown } from "./markdown.mjs";
+import { escapeHtml, renderMarkdown } from "../src/markdown.mjs";
 
 test("escapeHtml escapes unsafe markup", () => {
   assert.equal(escapeHtml('<tag attr="x">'), "&lt;tag attr=&quot;x&quot;&gt;");

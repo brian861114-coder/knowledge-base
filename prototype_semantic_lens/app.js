@@ -3,30 +3,32 @@ import {
   buildGraphIndex,
   collectDirectionalRelations,
   detailFileNameForNodeId,
+  findSearchMatches,
+  groupDirectionalRelations,
   validateDetailPayload,
   validateGraphPayload,
-} from "./logic.mjs";
-import { createDetailStore } from "./detail-store.mjs";
+} from "./src/logic.mjs";
+import { createDetailStore } from "./src/detail-store.mjs";
 import {
   buildEmptyDetailView,
   buildNodeDetailView,
   buildNoteSectionHtml,
-} from "./detail-renderer.mjs";
+} from "./src/detail-renderer.mjs";
 import {
   buildMetaItemsHtml,
   buildPillListHtml,
   buildSearchResultsHtml,
   buildStatCardsHtml,
-} from "./detail-panel.mjs";
+} from "./src/detail-panel.mjs";
 import {
   createFocusState,
   createOverviewState,
   stepBrowseHistory,
-} from "./navigation-state.mjs";
-import { buildFocusSceneData, buildOverviewSceneData } from "./scene-builder.mjs";
-import { buildBreadcrumbHtml, createModeUiState } from "./ui-state.mjs";
-import { escapeHtml, renderMarkdown } from "./markdown.mjs";
-import { scheduleMathTypeset } from "./mathjax.mjs";
+} from "./src/navigation-state.mjs";
+import { buildFocusSceneData, buildOverviewSceneData } from "./src/scene-builder.mjs";
+import { buildBreadcrumbHtml, createModeUiState } from "./src/ui-state.mjs";
+import { escapeHtml, renderMarkdown } from "./src/markdown.mjs";
+import { scheduleMathTypeset } from "./src/mathjax.mjs";
 import {
   clamp,
   clampNodesToViewport,
@@ -35,13 +37,13 @@ import {
   projectMiniMapClick,
   updateMiniMapViewport,
   updateViewportTransform,
-} from "./viewport.mjs";
+} from "./src/viewport.mjs";
 import {
   collisionHalfHeight as baseCollisionHalfHeight,
   collisionHalfWidth as baseCollisionHalfWidth,
   collisionRadius as baseCollisionRadius,
   relaxLayout as runRelaxLayout,
-} from "./layout-solver.mjs";
+} from "./src/layout-solver.mjs";
 import {
   buildEdgePath,
   convexHull,
@@ -50,7 +52,7 @@ import {
   positionRing,
   rankFocusNodes,
   smoothClosedPath,
-} from "./scene-geometry.mjs";
+} from "./src/scene-geometry.mjs";
 
 const GRAPH_URL = "../physics_graph.json";
 const DETAIL_INDEX_URL = "./data/detail-index.json";
@@ -61,14 +63,14 @@ const CENTER_X = 720;
 const CENTER_Y = 480;
 
 const TAXONOMY_LABELS = {
-  mechanics: "力學",
-  electromagnetism: "電磁學",
-  waves_optics: "波動與光學",
-  foundations: "基礎總論",
-  thermo_fluids: "熱學與流體",
-  modern_physics: "近代物理",
-  analytical_dynamics: "解析動力學",
-  uncategorized: "未分類",
+  mechanics: "?�學",
+  electromagnetism: "?��?�?,
+  waves_optics: "波�??��?�?,
+  foundations: "?��?總�?",
+  thermo_fluids: "?�學?��?�?,
+  modern_physics: "近代?��?",
+  analytical_dynamics: "�???��?�?,
+  uncategorized: "?��?�?,
 };
 
 const TAXONOMY_ORDER = [
@@ -83,26 +85,26 @@ const TAXONOMY_ORDER = [
 ];
 
 const TYPE_LABELS = {
-  root: "知識圖譜",
-  domain: "領域",
-  map: "導覽頁",
-  law: "定律",
+  root: "?��??��?",
+  domain: "?��?",
+  map: "導覽??,
+  law: "定�?",
   concept: "概念",
-  quantity: "物理量",
-  mathematical_tool: "數學工具",
-  experiment: "實驗",
+  quantity: "?��???,
+  mathematical_tool: "?�學工具",
+  experiment: "實�?",
 };
 
 const RELATION_LABELS = {
-  requires: "先備關係",
-  derives_to: "可推導出",
-  formalized_by: "數學支撐",
-  related_to: "相關概念",
-  organized_by: "主題收納",
-  verified_by: "驗證實驗",
-  measures: "量測對應",
-  uses: "直接使用",
-  explains: "延伸視角",
+  requires: "?��??��?",
+  derives_to: "?�推導出",
+  formalized_by: "?�學?��?",
+  related_to: "?��?概念",
+  organized_by: "主�??��?",
+  verified_by: "驗�?實�?",
+  measures: "?�測對�?",
+  uses: "?�接使用",
+  explains: "延伸視�?",
 };
 
 const DOMAIN_REGION_STYLES = {
@@ -114,6 +116,13 @@ const DOMAIN_REGION_STYLES = {
   modern_physics: { fill: "rgba(237, 231, 246, 0.95)", stroke: "rgba(179, 157, 219, 0.95)" },
   analytical_dynamics: { fill: "rgba(227, 242, 253, 0.95)", stroke: "rgba(144, 202, 249, 0.95)" },
   uncategorized: { fill: "rgba(229, 229, 234, 0.95)", stroke: "rgba(199, 199, 204, 0.95)" },
+};
+
+const SEARCH_RESULT_MESSAGES = {
+  emptyPrefix: "?????陬???�?",
+  emptySuffix: "?????�?綜�???",
+  resultCountPrefix: "?�???????",
+  resultCountSuffix: "??",
 };
 
 function computeOverviewQuotas(taxonomy, poolSize) {
@@ -238,7 +247,7 @@ const els = {
 
 init().catch((error) => {
   console.error(error);
-  els.detailTitle.textContent = "載入失敗";
+  els.detailTitle.textContent = "載入失�?";
   els.detailSummary.textContent = String(error.message || error);
 });
 
@@ -265,7 +274,7 @@ async function init() {
 async function fetchJson(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`${url} 載入失敗：HTTP ${response.status}`);
+    throw new Error(`${url} 載入失�?：HTTP ${response.status}`);
   }
   return response.json();
 }
@@ -303,7 +312,7 @@ function normalizeGraph(rawGraph) {
     id: `domain::${taxonomy}`,
     title: TAXONOMY_LABELS[taxonomy],
     shortTitle: TAXONOMY_LABELS[taxonomy],
-    summary: `${TAXONOMY_LABELS[taxonomy]} 的總覽樞紐。`,
+    summary: `${TAXONOMY_LABELS[taxonomy]} ?�總覽�?紐。`,
     type: "domain",
     taxonomy,
     tier: 0,
@@ -319,16 +328,16 @@ function normalizeGraph(rawGraph) {
 
   const overviewRoot = {
     id: "root::physics",
-    title: "物理知識圖譜",
-    shortTitle: "物理知識圖譜",
-    summary: "從領域總覽進入概念、定律與推導關係。",
+    title: "?��??��??��?",
+    shortTitle: "?��??��??��?",
+    summary: "從�??�總覽進入概念?��?律�??��??��???,
     type: "root",
     taxonomy: "all",
     tier: 0,
     degree: domainHubs.length,
     domain: "",
     tags: [],
-    searchText: "物理 知識圖譜 總覽 physics knowledge map",
+    searchText: "?��? ?��??��? 總覽 physics knowledge map",
   };
   nodeMap.set(overviewRoot.id, overviewRoot);
 
@@ -360,7 +369,7 @@ function buildDomainOverview() {
       taxonomy,
       label,
       count: nodes.length,
-      description: Object.entries(typeCounts).map(([t, c]) => `${t} ${c}`).join("、"),
+      description: Object.entries(typeCounts).map(([t, c]) => `${t} ${c}`).join("??),
     });
   }
   for (const meta of domainMeta) {
@@ -848,7 +857,7 @@ function renderRings(nodes) {
   els.ringLayer.innerHTML = [
     `<circle class="ring-circle inner" cx="${focal.x}" cy="${focal.y}" r="250"></circle>`,
     `<circle class="ring-circle outer" cx="${focal.x}" cy="${focal.y}" r="430"></circle>`,
-    `<text class="ring-label" x="${focal.x}" y="${focal.y - 258}" text-anchor="middle">先備</text>`,
+    `<text class="ring-label" x="${focal.x}" y="${focal.y - 258}" text-anchor="middle">?��?</text>`,
     `<text class="ring-label" x="${focal.x}" y="${focal.y + 440}" text-anchor="middle">延伸</text>`,
   ].join("");
 }
@@ -877,7 +886,7 @@ function renderNodes(nodes) {
       const dimmed = state.selectedNodeId && !selected && !isConnectedToSelected(node.id);
       const title = resolveVisibleTitle(node, labelTier, selected);
       return `
-        <g class="node ${node.type} ${selected ? "is-selected" : ""} ${node.focal ? "focal" : ""} ${dimmed ? "is-dimmed" : ""}" data-node-id="${escapeHtml(node.id)}" transform="translate(${node.x} ${node.y})" role="button" tabindex="0" aria-label="${escapeHtml(`開啟 ${node.title}`)}">
+        <g class="node ${node.type} ${selected ? "is-selected" : ""} ${node.focal ? "focal" : ""} ${dimmed ? "is-dimmed" : ""}" data-node-id="${escapeHtml(node.id)}" transform="translate(${node.x} ${node.y})" role="button" tabindex="0" aria-label="${escapeHtml(`?��? ${node.title}`)}">
           <circle class="node-hit" r="${Math.max(node.r + 14, 28)}"></circle>
           <circle class="node-circle" r="${node.r}"></circle>
           ${title ? `<text class="node-title" y="0">${escapeHtml(title)}</text>` : ""}
@@ -978,24 +987,18 @@ function updateModeUI(sceneNodes) {
       { label: TAXONOMY_LABELS[node.taxonomy] || node.taxonomy, action: () => goToOverviewAndCenterTaxonomy(node.taxonomy) },
       { label: node.title },
     ]);
-    els.graphHint.textContent = "中心節點固定；內圈只留先備與數學支撐，外圈只留推導、驗證、量測與應用，灰色膠囊則放弱關聯。";
+    els.graphHint.textContent = "中�?節點固定�??��??��??��??�數學支?��?外�??��??��??��?證、�?測�??�用，灰?��??��??�弱?�聯??;
   } else {
     renderBreadcrumb([
       { label: "總覽", action: () => goToOverview() },
       { label: "taxonomy domains" },
     ]);
-    els.graphHint.textContent = "拖曳平移、滾輪縮放；中央根節點連接各領域，放大後會依序顯示更細的節點名稱與關係。";
+    els.graphHint.textContent = "?�曳平移?�滾輪縮?��?中央?��?點�?��?��??��??�大後�?依�?顯示?�細?��?點�?稱�??��???;
   }
 }
 
 function renderBreadcrumb(items) {
-  els.breadcrumb.innerHTML = items.map((item, index) => {
-    const part = item.action
-      ? `<button class="breadcrumb-button" type="button" data-index="${index}">${escapeHtml(item.label)}</button>`
-      : `<span>${escapeHtml(item.label)}</span>`;
-    const separator = index < items.length - 1 ? `<span class="breadcrumb-separator">/</span>` : "";
-    return `${part}${separator}`;
-  }).join("");
+  els.breadcrumb.innerHTML = buildBreadcrumbHtml(items, { escapeHtml });
   for (const button of els.breadcrumb.querySelectorAll(".breadcrumb-button")) {
     const item = items[Number(button.dataset.index)];
     button.addEventListener("click", item.action);
@@ -1016,13 +1019,10 @@ function goToOverviewAndCenterTaxonomy(taxonomy) {
 function renderDetail() {
   const node = state.selectedNodeId ? state.nodeMap.get(state.selectedNodeId) : null;
   if (!node) {
-    const emptyView = buildEmptyDetailView();
-    emptyView.statsEntries = [
-      ["顯示節點", String(filterOverviewNodes(state.overviewNodes).length)],
-      ["顯示關係", String(filterOverviewEdges(state.overviewEdges).length)],
-      ["已隱藏", "wikilink"],
-      ["總層級", "3"],
-    ];
+    const emptyView = buildEmptyDetailView({
+      overviewNodeCount: filterOverviewNodes(state.overviewNodes).length,
+      overviewEdgeCount: filterOverviewEdges(state.overviewEdges).length,
+    });
     els.detailType.textContent = emptyView.typeText;
     els.detailTitle.textContent = emptyView.titleText;
     els.detailSummary.innerHTML = emptyView.summaryHtml;
@@ -1032,7 +1032,7 @@ function renderDetail() {
     fillRelationSection("prereq", []);
     fillRelationSection("extension", []);
     fillRelationSection("related", []);
-    els.detailPath.textContent = "尚未選取節點";
+    els.detailPath.textContent = "尚未?��?節�?;
     els.detailPath.removeAttribute("href");
     const noteSection = document.getElementById("noteSection");
     if (noteSection) noteSection.innerHTML = "";
@@ -1066,7 +1066,7 @@ function renderDetail() {
     els.detailPath.textContent = path;
     els.detailPath.href = `../${encodeURI(path)}`;
   } else {
-    els.detailPath.textContent = "沒有來源路徑";
+    els.detailPath.textContent = "沒�?來�?路�?";
     els.detailPath.removeAttribute("href");
   }
 
@@ -1079,15 +1079,26 @@ function renderDetail() {
   syncNoteViewToggle();
 }
 
-function renderNoteSection(node, detail) {
-  let noteSection = document.getElementById("noteSection");
-  if (!noteSection) {
-    noteSection = document.createElement("div");
-    noteSection.id = "noteSection";
-    noteSection.className = "detail-section";
-    const detailCard = document.querySelector(".detail-card");
-    if (detailCard) detailCard.appendChild(noteSection);
+function ensureDetailSection(sectionId, options = {}) {
+  let section = document.getElementById(sectionId);
+  if (section) return section;
+
+  section = document.createElement("div");
+  section.id = sectionId;
+  section.className = "detail-section";
+  const detailCard = document.querySelector(".detail-card");
+  if (!detailCard) return section;
+
+  if (options.insertAfterFirstChild) {
+    detailCard.insertBefore(section, detailCard.firstChild?.nextSibling);
+  } else {
+    detailCard.appendChild(section);
   }
+  return section;
+}
+
+function renderNoteSection(node, detail) {
+  const noteSection = ensureDetailSection("noteSection");
 
   noteSection.innerHTML = buildNoteSectionHtml(node, detail, {
     escapeHtml,
@@ -1127,37 +1138,27 @@ async function loadDetail(nodeId) {
 }
 
 function renderSearchResults() {
-  let searchSection = document.getElementById("searchSection");
-  if (!searchSection) {
-    searchSection = document.createElement("div");
-    searchSection.id = "searchSection";
-    searchSection.className = "detail-section";
-    const detailCard = document.querySelector(".detail-card");
-    if (detailCard) detailCard.insertBefore(searchSection, detailCard.firstChild?.nextSibling);
-  }
+  const searchSection = ensureDetailSection("searchSection", { insertAfterFirstChild: true });
   if (!state.query) {
     searchSection.innerHTML = "";
     return;
   }
-  const matches = state.graph.nodes
-    .filter((n) => n.searchText?.includes(state.query))
-    .filter((n) => n.type !== "domain" && n.type !== "root")
-    .slice(0, 50);
+  const matches = findSearchMatches(state.graph.nodes, state.query);
   searchSection.innerHTML = buildSearchResultsHtml(state.query, matches, {
     escapeHtml,
     messages: {
-      emptyPrefix: "?曆??啁泵??",
-      emptySuffix: "??蝭暺?",
-      resultCountPrefix: "??蝯?嚗?",
-      resultCountSuffix: "嚗?",
+      emptyPrefix: "?????�泵??�?",
+      emptySuffix: "????�?�??",
+      resultCountPrefix: "?�??��????",
+      resultCountSuffix: "??",
     },
   });
   return;
   if (!matches.length) {
-    searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">找不到符合「${escapeHtml(state.query)}」的節點。</p>`;
+    searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">?��??�符?��?{escapeHtml(state.query)}?��?節點�?/p>`;
     return;
   }
-  let html = `<div class="section-head"><h3>搜尋結果（${matches.length}）</h3></div><div class="pill-list">`;
+  let html = `<div class="section-head"><h3>?��?結�?�?{matches.length}�?/h3></div><div class="pill-list">`;
   for (const n of matches) {
     html += `<button class="pill" type="button" data-node-id="${escapeHtml(n.id)}" data-family="related">${escapeHtml(n.title)}</button>`;
   }
@@ -1183,14 +1184,12 @@ function collectRelations(nodeId) {
   const entries = collectDirectionalRelations(nodeId, state.graphIndex, state.nodeMap, {
     includeNode: (node) => Boolean(node) && node.type !== "domain",
   });
-  const requires = entries.filter((entry) => entry.bucket === "requires").map((entry) => entry.node);
-  const extension = entries.filter((entry) => entry.bucket === "extension").map((entry) => entry.node);
-  const related = entries.filter((entry) => entry.bucket === "related").map((entry) => entry.node);
-  return {
-    requires: rankFocusNodes(requires, { dedupeNodes }).slice(0, 8),
-    extension: rankFocusNodes(extension, { dedupeNodes }).slice(0, 8),
-    related: rankFocusNodes(related, { dedupeNodes }).slice(0, 8),
-  };
+  return groupDirectionalRelations(entries, {
+    rankNodes(nodes) {
+      return rankFocusNodes(nodes, { dedupeNodes });
+    },
+    limit: 8,
+  });
 }
 
 function isConnectedToSelected(nodeId) {
@@ -1241,7 +1240,7 @@ function collisionHalfHeight(node) {
 }
 
 function shorten(text, max) {
-  return text.length > max ? `${text.slice(0, max)}…` : text;
+  return text.length > max ? `${text.slice(0, max)}?�` : text;
 }
 
 function dedupeNodes(nodes) {

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype Semantic Lens 說明書</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --border: #d9deea;
+      --text: #172334;
+      --muted: #5e6b82;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #1f7a4d;
+      --warn: #a16207;
+      --shadow: 0 10px 28px rgba(23, 35, 52, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Microsoft JhengHei UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 72px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 36px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    h3 { font-size: 1rem; margin-top: 20px; }
+
+    p, li { color: #243247; }
+    .lede { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+    }
+    .callout {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 16px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    code, pre {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+    code {
+      background: #eef2ff;
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    pre {
+      margin: 12px 0 0;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #0f172a;
+      color: #dbe7ff;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #1f2937;
+      color: #fff;
+      font-size: 0.84rem;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .muted { color: var(--muted); }
+    .ok { color: var(--ok); font-weight: 600; }
+    .warn { color: var(--warn); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Prototype Semantic Lens 說明書</h1>
+    <p class="lede">
+      本文件描述 <code>prototype_semantic_lens</code> 在目前最新狀態下的前端結構、檔案分層、
+      資料流、測試方式與已知限制。這份說明以 2026-06-15 的工作樹為準。
+    </p>
+
+    <div class="callout">
+      目前這個原型已完成模組拆分與資料夾整理。入口仍是根目錄的 <code>app.js</code>，
+      但功能模組已集中到 <code>src/</code>，測試移到 <code>tests/</code>，腳本移到 <code>scripts/</code>，
+      文件移到 <code>docs/</code>。
+    </div>
+
+    <h2>1. 目前目錄結構</h2>
+    <div class="card">
+      <pre>prototype_semantic_lens/
+├─ app.js
+├─ index.html
+├─ styles.css
+├─ data/
+│  ├─ detail-index.json
+│  └─ details/
+├─ src/
+│  ├─ detail-panel.mjs
+│  ├─ detail-renderer.mjs
+│  ├─ detail-store.mjs
+│  ├─ layout-solver.mjs
+│  ├─ logic.mjs
+│  ├─ markdown.mjs
+│  ├─ mathjax.mjs
+│  ├─ navigation-state.mjs
+│  ├─ scene-builder.mjs
+│  ├─ scene-geometry.mjs
+│  ├─ ui-state.mjs
+│  └─ viewport.mjs
+├─ tests/
+│  └─ *.test.mjs
+├─ scripts/
+│  └─ generate_detail_payloads.mjs
+└─ docs/
+   ├─ 說明書.html
+   └─ Prototype_Semantic_Lens_說明書.docx</pre>
+    </div>
+
+    <h2>2. 檔案分工</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>入口層</h3>
+        <p><code>index.html</code> 提供 SVG 舞台、detail panel、toolbar 與 minimap 容器。</p>
+        <p><code>app.js</code> 負責初始化、狀態協調、事件綁定與整體 render orchestration。</p>
+      </div>
+      <div class="card">
+        <h3>資料與驗證</h3>
+        <p><code>src/logic.mjs</code> 負責 graph/detail payload 驗證、關係方向分類、搜尋匹配、detail 檔名計算。</p>
+        <p><code>src/detail-store.mjs</code> 負責 detail index 與 detail payload 的 lazy loading、快取與錯誤狀態。</p>
+      </div>
+      <div class="card">
+        <h3>場景與幾何</h3>
+        <p><code>src/scene-builder.mjs</code> 生成 overview/focus scene data。</p>
+        <p><code>src/scene-geometry.mjs</code> 與 <code>src/layout-solver.mjs</code> 處理邊路徑、環狀排布、碰撞放鬆。</p>
+      </div>
+      <div class="card">
+        <h3>介面與渲染</h3>
+        <p><code>src/detail-renderer.mjs</code> 負責 detail view 與全文/摘要區塊 HTML。</p>
+        <p><code>src/detail-panel.mjs</code> 負責 pills、meta、stat cards、search result HTML。</p>
+        <p><code>src/ui-state.mjs</code> 負責 breadcrumb 與 mode UI state。</p>
+      </div>
+      <div class="card">
+        <h3>互動支援</h3>
+        <p><code>src/navigation-state.mjs</code> 管理 overview/focus 狀態切換與瀏覽歷史。</p>
+        <p><code>src/viewport.mjs</code> 管理 pan/zoom/minimap 轉換與邊界限制。</p>
+      </div>
+      <div class="card">
+        <h3>文本處理</h3>
+        <p><code>src/markdown.mjs</code> 處理 markdown/wikilink 渲染。</p>
+        <p><code>src/mathjax.mjs</code> 管理數學公式 typeset 排程。</p>
+      </div>
+    </div>
+
+    <h2>3. 主要資料流</h2>
+    <div class="card">
+      <p>初始化流程：</p>
+      <pre>index.html
+  -> app.js init()
+  -> fetch ../physics_graph.json
+  -> validateGraphPayload()
+  -> normalizeGraph()
+  -> createDetailStore()
+  -> loadIndex(./data/detail-index.json)
+  -> buildOverviewScene()
+  -> bindEvents()
+  -> render()</pre>
+      <p>點擊節點後的 detail 流程：</p>
+      <pre>select node
+  -> createFocusState()
+  -> buildFocusSceneData()
+  -> renderScene()
+  -> renderDetail()
+  -> if detail not cached: loadDetail()
+  -> buildNoteSectionHtml()</pre>
+    </div>
+
+    <h2>4. 目前架構上的實際狀態</h2>
+    <table>
+      <tr>
+        <th>項目</th>
+        <th>狀態</th>
+        <th>說明</th>
+      </tr>
+      <tr>
+        <td>模組拆分</td>
+        <td class="ok">已完成主要拆分</td>
+        <td>資料驗證、scene builder、navigation、UI renderer、viewport helper 都已分離。</td>
+      </tr>
+      <tr>
+        <td>資料夾整理</td>
+        <td class="ok">已完成</td>
+        <td>根目錄不再塞滿所有模組與測試檔。</td>
+      </tr>
+      <tr>
+        <td>單元測試</td>
+        <td class="ok">可用</td>
+        <td>目前使用 Node 內建測試，模組級測試通過。</td>
+      </tr>
+      <tr>
+        <td>入口檔大小</td>
+        <td class="warn">仍偏大</td>
+        <td><code>app.js</code> 仍負責太多 orchestration，尚未完全瘦身。</td>
+      </tr>
+      <tr>
+        <td>瀏覽器級 QA</td>
+        <td class="warn">不足</td>
+        <td>目前以 <code>node --check</code> 和 <code>node --test</code> 為主，尚缺完整 browser smoke test。</td>
+      </tr>
+    </table>
+
+    <h2>5. 測試與驗證方式</h2>
+    <div class="card">
+      <p>目前可靠的本地驗證指令：</p>
+      <pre>node --check prototype_semantic_lens/app.js
+node --check prototype_semantic_lens/scripts/generate_detail_payloads.mjs
+node --test prototype_semantic_lens/tests/*.test.mjs</pre>
+      <p class="muted">
+        在目前這個靜態前端原型中，這些指令是最低成本且最穩定的驗證關卡。
+      </p>
+    </div>
+
+    <h2>6. detail payload 產生方式</h2>
+    <div class="card">
+      <p><code>scripts/generate_detail_payloads.mjs</code> 目前會：</p>
+      <ol>
+        <li>讀取 repo 根目錄的 <code>physics_note_details.json</code></li>
+        <li>驗證 payload key 與結構</li>
+        <li>輸出到根目錄的 <code>data/detail-index.json</code> 與 <code>data/details/*.json</code></li>
+      </ol>
+      <pre>node prototype_semantic_lens/scripts/generate_detail_payloads.mjs</pre>
+    </div>
+
+    <h2>7. 已知限制</h2>
+    <div class="card">
+      <ul>
+        <li><code>app.js</code> 仍然偏胖，尚未完全收斂成純 orchestration。</li>
+        <li>搜尋區塊附近仍有一段未清除的 dead code，現在不影響執行，但仍屬技術債。</li>
+        <li>這個原型先前曾出現 viewport regression、detail 404、SVG NaN 類問題；模組測試目前是綠的，但仍應用瀏覽器層 QA 驗證實際互動。</li>
+        <li>根目錄文字顯示有部分編碼觀察差異，文件與程式碼編輯時不應輕率做大面積文字替換。</li>
+      </ul>
+    </div>
+
+    <h2>8. 建議的後續維護原則</h2>
+    <div class="card">
+      <p>後續新增功能時，建議遵守這幾條：</p>
+      <p><span class="pill">入口薄化</span><span class="pill">資料邏輯放 src/logic.mjs</span><span class="pill">UI HTML 放 renderer</span><span class="pill">先加測試再擴功能</span></p>
+      <ul>
+        <li>搜尋、detail、breadcrumb 這類 UI 字串組裝不要再回流到 <code>app.js</code>。</li>
+        <li>scene 計算與 viewport 數學維持純函式，可測試、可重用。</li>
+        <li>每次抽模組或搬檔案後，都至少重新跑一次 <code>node --check</code> 與 <code>node --test</code>。</li>
+      </ul>
+    </div>
+
+    <h2>9. 文件更新時間</h2>
+    <div class="card">
+      <p>最後更新：2026-06-15</p>
+      <p>更新依據：目前工作樹中的最新目錄結構、<code>src/</code> 模組配置、<code>tests/</code> 測試位置與 <code>scripts/</code> 產生流程。</p>
+    </div>
+  </main>
+</body>
+</html>

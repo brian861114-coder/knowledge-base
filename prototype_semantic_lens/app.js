@@ -446,7 +446,13 @@ function buildOverviewScene() {
       weakLink,
       weakUse,
       relaxLayout,
-      clampNodesToViewport,
+      clampNodesToViewport(nodes, options = {}) {
+        return clampNodesToViewport(nodes, {
+          canvasWidth: CANVAS_WIDTH,
+          canvasHeight: CANVAS_HEIGHT,
+          ...options,
+        });
+      },
       dedupeEdges,
       smoothClosedPath,
     }
@@ -485,7 +491,13 @@ function buildFocusScene(nodeId) {
       dedupeEdges,
       positionRing,
       relaxLayout,
-      clampNodesToViewport,
+      clampNodesToViewport(nodes, options = {}) {
+        return clampNodesToViewport(nodes, {
+          canvasWidth: CANVAS_WIDTH,
+          canvasHeight: CANVAS_HEIGHT,
+          ...options,
+        });
+      },
     }
   );
   if (!scene) return;

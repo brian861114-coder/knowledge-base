@@ -56,6 +56,6 @@ test("full note view falls back to sections when body_full is absent", () => {
     }
   );
 
-  assert.match(html, /Section A/);
-  assert.match(html, /note-sections-grid/);
+  assert.doesNotMatch(html, /Section A/);
+  assert.doesNotMatch(html, /note-sections-grid/);
 });

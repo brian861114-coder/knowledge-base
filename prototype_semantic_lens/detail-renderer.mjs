@@ -82,10 +82,7 @@ export function buildNoteSectionHtml(node, detail, options) {
 
   const isFullMode = options.noteViewMode === "full";
   const sections = detail.sections || [];
-  const hasFullBody = Boolean(detail.body_full);
-  const displaySections = isFullMode
-    ? (hasFullBody ? [] : sections)
-    : sections.slice(0, 6);
+  const displaySections = isFullMode ? [] : sections.slice(0, 6);
 
   let html = `
     <div class="section-head">

@@ -1,275 +1,71 @@
 # knowledge-base
 
-Interactive university-level physics knowledge base backed by an external Obsidian vault, with a local graph-reading prototype and an export/validation toolchain.
-
-**Live Demo**: [knowledge-base](https://brian861114-coder.github.io/knowledge-base/)  
-**Materials Science Subpage**: [materials-science-engineering](https://brian861114-coder.github.io/knowledge-base/materials-science-engineering/)
-
-## What This Repo Is
-
-This project has two connected parts:
-
-1. This Git repo
-   - tooling
-   - schema and workflow docs
-   - frontend prototype
-   - exported JSON artifacts
-2. An external Obsidian vault
-   - the actual physics notes in Markdown
-   - the source of truth for the knowledge base
-
-The repo is the workspace and toolchain.  
-The Obsidian vault is the content database.
-
-## Current Verified Status
-
-Latest verified snapshot from `2026-06-08` against the active vault configured for this checkout:
-
-- `417` vault notes
-- `417` exported note details
-- `417` graph nodes
-- `7200` graph edges
-- `0` broken wikilinks
-- `0` broken frontmatter relations
-- `0` math issues
-- `0` duplicate titles
-- `0` duplicate paths
-- `0` structure validation issues
-- `0` content quality audit issues
-
-This means:
-
-- the live source vault is aligned with the current schema
-- the live source vault currently passes the content-quality audit as well
-- exports are in sync with the source vault again
-- both structure validation and full export validation pass
-
-## What Was Completed In This Migration
-
-The repo now has a real schema-first maintenance workflow:
-
-1. Active schema files were defined under `schema/`
-2. A structure validator was added
-3. The external vault was normalized and migrated to the current section standard
-4. Missing required sections were filled across quantities, experiments, mathematical tools, maps, and laws
-5. Exports were rerun and full vault validation passed
-6. Content-quality issues were reduced to zero through schema-guided cleanup
-
-This is not just a documentation update. The source vault was actually rewritten to comply with the current schema.
-
-## Active Schema
-
-The active schema lives under:
-
-- `schema/note_types.yaml`
-- `schema/sections.yaml`
-- `schema/renaming_rules.yaml`
-- `schema/content_rules.yaml`
-
-Important implementation note:
-
-- these files currently use JSON syntax even though the extension is `.yaml`
-- current scripts load them with `json.loads`
-
-### Active note structure
-
-- `concept`
-  - required: `概念摘要`, `嚴格定義`, `先備知識`, `物理意義`, `典型應用`, `常見誤解`, `歷史背景`, `現代理論視角`, `相關連結`
-  - optional: `核心公式`, `符號與單位`, `推導`
-- `law`
-  - `定律摘要`, `數學表述`, `符號與單位`, `物理意義`, `推導`, `適用條件`, `典型應用`, `常見誤解`, `歷史背景`, `現代理論視角`, `相關連結`
-- `quantity`
-  - `定義`, `數學表達`, `符號與單位`, `維度與量綱`, `物理意義`, `量測方式`, `出現於哪些定律`, `歷史背景`, `現代理論視角`, `相關連結`
-- `mathematical_tool`
-  - `工具摘要`, `數學定義`, `推導`, `幾何意義`, `為什麼物理需要它`, `在哪些主題中出現`, `典型操作`, `解題框架`, `歷史背景`, `常見誤解`, `現代理論視角`, `相關工具`
-- `experiment`
-  - `實驗摘要`, `問題背景`, `裝置與方法`, `可觀測量`, `實驗結果`, `誤差與限制`, `歷史背景`, `歷史影響`, `現代理論視角`, `相關連結`, `延伸價值`
-- `map`
-  - `地圖摘要`, `主要主題`, `關鍵概念`, `關鍵定律`, `典型問題類型`, `建議學習順序`, `先備知識`, `與其他領域的橋接`, `延伸方向`
-  - optional: `關鍵實驗`
-  - rule: `關鍵實驗` can exist, but only immediately after `關鍵定律`
-
-## Validator Layers
-
-There are now two separate validation layers:
-
-### 1. Structure validator
-
-`tools/validate_structure.py`
-
-Checks:
-
-- required sections
-- section order
-- conditional section rules
-- map optional-section placement
-- legacy heading normalization against rename rules
-
-### 2. Knowledge-base validator
-
-`tools/validate_knowledge_base.py`
-
-Checks:
-
-- required frontmatter
-- broken `[[wikilink]]` targets
-- broken frontmatter relation targets
-- duplicate titles and paths
-- basic math delimiter health
-- consistency between vault notes and exported JSON
-
-### 3. Content-quality audit
-
-`tools/audit_content_quality.py`
-
-Checks:
-
-- banned contrast phrasing
-- minimum section richness for key sections
-- derivation formula presence
-- historical concreteness
-- grouped related-link structure
-
-## Repo Layout
-
-```text
-knowledge-base/
-  assets/                         Frontend-served static diagrams and figures
-  docs/                           GitHub Pages deployment
-  prototype/                      Frontend prototype
-  schema/                         Active note schema, rename rules, content rules
-  tools/                          Export / validation / migration scripts
-  obsidian-knowledge-map-demo/    Graph export script source
-  knowledge-base-template/        Reusable template
-  materials-science-engineering-kb/
-  physics_graph.json              Exported graph for frontend
-  physics_note_details.json       Exported note details for frontend
-  MAINTENANCE.md
-  README.md
-  agent.md
-```
-
-## Important Paths
-
-Project workspace:
-
-`C:\Users\brian\Downloads\vibe_coding\knowledge_map`
-
-Do not hardcode the vault path from this README.
-Always confirm the active path from:
-
-- `.knowledge-base.local.json`, or
-- `KB_VAULT_PATH`, or
-- `tools/kb_paths.py` resolution through the validators
-
-## Quick Start
-
-### Local development
-
-```powershell
-.\start_prototype.cmd
-```
-
-### Export + full validation
-
-```powershell
-python .\tools\run_exports.py
-```
-
-### Structure validation only
-
-```powershell
-python .\tools\validate_structure.py
-```
-
-### Export validation only
-
-```powershell
-python .\tools\validate_knowledge_base.py
-```
-
-Expected local URL:
-
-- [http://127.0.0.1:4173/prototype/](http://127.0.0.1:4173/prototype/)
-
-## Content Update Workflow
-
-Recommended operator loop:
-
-1. Edit notes in the external vault
-2. If creating a new note, generate its skeleton from schema first
-3. Run `python .\tools\validate_structure.py`
-4. Run `python .\tools\audit_content_quality.py`
-5. Run `python .\tools\run_exports.py`
-6. Refresh the prototype
-7. Copy updated deploy artifacts to `docs/` if publishing
-
-### Schema-first note creation
-
-Do not start new notes from an unstructured blank file.
-
-Use:
-
-```powershell
-python .\tools\generate_note_skeleton.py --type concept --title "新頁面標題" --summary "一句摘要" --domain "mechanics" --write
-```
-
-This enforces the current schema before any AI or manual content expansion happens.
-
-## GitHub Pages Deploy
-
-After content changes:
-
-```powershell
-python .\tools\run_exports.py
-Copy-Item .\physics_graph.json .\docs\physics_graph.json -Force
-Copy-Item .\physics_note_details.json .\docs\physics_note_details.json -Force
-Copy-Item .\prototype\app.js .\docs\app.js -Force
-Copy-Item .\prototype\index.html .\docs\index.html -Force
-Copy-Item .\prototype\styles.css .\docs\styles.css -Force
-```
-
-If the materials-science project also changed, sync `docs/materials-science-engineering/` as well.
-
-## Main Scripts
-
-Structure / migration:
-
-- `tools/validate_structure.py`
-- `tools/normalize_sections.py`
-- `tools/fill_quantity_modern_perspectives.py`
-- `tools/fill_experiment_modern_perspectives.py`
-- `tools/fill_mathematical_tool_derivations.py`
-- `tools/fill_final_structure_gaps.py`
-- `tools/fill_blocked_derivations.py`
-- `tools/fill_history_concreteness.py`
-- `tools/fill_experiment_related_links.py`
-- `tools/clean_banned_pattern_sections.py`
-- `tools/generate_note_skeleton.py`
-
-Export / validation:
-
-- `tools/export_note_details.py`
-- `obsidian-knowledge-map-demo/scripts/export_graph.py`
-- `tools/run_exports.py`
-- `tools/validate_knowledge_base.py`
-
-Wikipedia-assisted review:
-
-- `tools/enrich_from_wikipedia.py`
-- `tools/build_review_session.py`
-- `tools/build_standalone_review_html.py`
-- `tools/review_server.py`
-- `tools/apply_review_decisions.py`
-
-## Current Limitation
-
-The current schema, structure checks, content audit, exports, and full validation are green.
-
-The main remaining operational risk is future drift:
-
-- new notes created without the schema-first skeleton
-- AI-generated sections that bypass validation
-- manual edits that add filler related-links or generic history text
-
-So the next priority is not more cleanup. It is keeping future additions inside the same schema-first loop.
+## 中文
+
+`knowledge-base` 是一個以外部 Obsidian Vault 為內容來源的互動式大學物理知識庫專案。這個 repo 同時承擔三件事：內容匯出工具鏈、結構 / 品質驗證、以及前端閱讀介面。
+
+### 專案由兩部分組成
+1. Git repo 本身
+- schema
+- 工具腳本
+- 前端 prototype
+- 匯出的 JSON 成果
+
+2. 外部 Obsidian Vault
+- 真正的 Markdown 筆記內容
+- 知識庫的 source of truth
+
+### 已知核心能力
+- Schema-first 筆記工作流
+- 結構驗證
+- 知識庫整體驗證
+- 內容品質稽核
+- 筆記骨架生成
+- JSON 匯出給前端讀取
+- GitHub Pages 形式的前端展示
+
+### 主要路徑
+- `schema/`: 筆記型別、章節規則與內容規則
+- `tools/`: 匯出、驗證、生成與遷移腳本
+- `prototype/`: 前端閱讀原型
+- `docs/`: 部署輸出
+- `knowledge-base-template/`: 可重用模板
+- `materials-science-engineering-kb/`: 材料科學子專案
+
+### 專案定位
+這不是單純展示頁，也不是單純筆記備份。它是一套完整的「外部 vault + schema + validator + export + frontend」知識庫工作流。
+
+## English
+
+`knowledge-base` is an interactive university-level physics knowledge base whose content source lives in an external Obsidian vault. This repository plays three roles at once: export toolchain, structure / quality validation, and frontend reading interface.
+
+### The project has two parts
+1. The Git repo itself
+- schema files
+- tooling scripts
+- frontend prototype
+- exported JSON artifacts
+
+2. The external Obsidian vault
+- the actual Markdown note content
+- the source of truth for the knowledge base
+
+### Known core capabilities
+- schema-first note workflow
+- structure validation
+- full knowledge-base validation
+- content-quality auditing
+- note skeleton generation
+- JSON export for frontend consumption
+- GitHub Pages-style frontend publishing
+
+### Main paths
+- `schema/`: note types, section rules, and content rules
+- `tools/`: export, validation, generation, and migration scripts
+- `prototype/`: reading frontend prototype
+- `docs/`: deploy output
+- `knowledge-base-template/`: reusable template
+- `materials-science-engineering-kb/`: materials-science subproject
+
+### Project positioning
+This is not just a showcase site and not just a note backup. It is a full knowledge-base workflow built around an external vault, schema, validators, export scripts, and a frontend reader.

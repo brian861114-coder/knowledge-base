@@ -4,6 +4,11 @@ __pycache__/
 
 .tmp_physics_seed/
 tmp_pdf_preview/
+batch_responses/
+batch_tasks/
+output/
+prototype_semantic_lens_backup_*/
+tmp/
 
 tmp_newton_second_law.md
 tmp_skill_graph.json

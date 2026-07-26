@@ -1,76 +1,19 @@
-import {
-  SEMANTIC_EDGE_TYPES,
-  buildGraphIndex,
-  collectDirectionalRelations,
-  detailFileNameForNodeId,
-  findSearchMatches,
-  groupDirectionalRelations,
-  validateDetailPayload,
-  validateGraphPayload,
-} from "./src/logic.mjs";
-import { createDetailStore } from "./src/detail-store.mjs";
-import {
-  buildEmptyDetailView,
-  buildNodeDetailView,
-  buildNoteSectionHtml,
-} from "./src/detail-renderer.mjs";
-import {
-  buildMetaItemsHtml,
-  buildPillListHtml,
-  buildSearchResultsHtml,
-  buildStatCardsHtml,
-} from "./src/detail-panel.mjs";
-import {
-  createFocusState,
-  createOverviewState,
-  stepBrowseHistory,
-} from "./src/navigation-state.mjs";
-import { buildFocusSceneData, buildOverviewSceneData } from "./src/scene-builder.mjs";
-import { buildBreadcrumbHtml, createModeUiState } from "./src/ui-state.mjs";
-import { escapeHtml, renderMarkdown } from "./src/markdown.mjs";
-import { scheduleMathTypeset } from "./src/mathjax.mjs";
-import {
-  clamp,
-  clampNodesToViewport,
-  clientToSvgPoint,
-  getNavigationBounds,
-  projectMiniMapClick,
-  updateMiniMapViewport,
-  updateViewportTransform,
-} from "./src/viewport.mjs";
-import {
-  collisionHalfHeight as baseCollisionHalfHeight,
-  collisionHalfWidth as baseCollisionHalfWidth,
-  collisionRadius as baseCollisionRadius,
-  relaxLayout as runRelaxLayout,
-} from "./src/layout-solver.mjs";
-import {
-  buildEdgePath,
-  convexHull,
-  focusTypeOrder,
-  offsetPolygon,
-  positionRing,
-  rankFocusNodes,
-  smoothClosedPath,
-} from "./src/scene-geometry.mjs";
-
 const GRAPH_URL = "../physics_graph.json";
-const DETAIL_INDEX_URL = "./data/detail-index.json";
-const DETAIL_BASE_URL = "./data/details";
+const DETAILS_URL = "../physics_note_details.json";
 const CANVAS_WIDTH = 1440;
 const CANVAS_HEIGHT = 960;
 const CENTER_X = 720;
 const CENTER_Y = 480;
 
 const TAXONOMY_LABELS = {
-  mechanics: "?�學",
-  electromagnetism: "?��?�?,
-  waves_optics: "波�??��?�?,
-  foundations: "?��?總�?",
-  thermo_fluids: "?�學?��?�?,
-  modern_physics: "近代?��?",
-  analytical_dynamics: "�???��?�?,
-  uncategorized: "?��?�?,
+  mechanics: "力學",
+  electromagnetism: "電磁學",
+  waves_optics: "波動與光學",
+  foundations: "基礎總論",
+  thermo_fluids: "熱學與流體",
+  modern_physics: "近代物理",
+  analytical_dynamics: "解析動力學",
+  uncategorized: "未分類",
 };
 
 const TAXONOMY_ORDER = [
@@ -85,28 +28,43 @@ const TAXONOMY_ORDER = [
 ];
 
 const TYPE_LABELS = {
-  root: "?��??��?",
-  domain: "?��?",
-  map: "導覽??,
-  law: "定�?",
+  root: "知識圖譜",
+  domain: "領域",
+  map: "導覽頁",
+  law: "定律",
   concept: "概念",
-  quantity: "?��???,
-  mathematical_tool: "?�學工具",
-  experiment: "實�?",
+  quantity: "物理量",
+  mathematical_tool: "數學工具",
+  experiment: "實驗",
 };
 
 const RELATION_LABELS = {
-  requires: "?��??��?",
-  derives_to: "?�推導出",
-  formalized_by: "?�學?��?",
-  related_to: "?��?概念",
-  organized_by: "主�??��?",
-  verified_by: "驗�?實�?",
-  measures: "?�測對�?",
-  uses: "?�接使用",
-  explains: "延伸視�?",
+  requires: "先備關係",
+  derives_to: "可推導出",
+  formalized_by: "數學支撐",
+  related_to: "相關概念",
+  organized_by: "主題收納",
+  verified_by: "驗證實驗",
+  measures: "量測對應",
+  uses: "直接使用",
+  explains: "延伸視角",
 };
 
+const SEMANTIC_EDGE_TYPES = new Set([
+  "requires",
+  "derives_to",
+  "formalized_by",
+  "related_to",
+  "organized_by",
+  "verified_by",
+  "measures",
+  "uses",
+  "explains",
+]);
+
+const FOCUS_INNER_TYPES = new Set(["requires", "formalized_by"]);
+const FOCUS_OUTER_TYPES = new Set(["derives_to", "verified_by", "measures", "uses", "explains"]);
+const FOCUS_RELATED_TYPES = new Set(["related_to", "organized_by"]);
 const DOMAIN_REGION_STYLES = {
   mechanics: { fill: "rgba(232, 240, 254, 0.95)", stroke: "rgba(168, 199, 250, 0.95)" },
   electromagnetism: { fill: "rgba(255, 243, 224, 0.95)", stroke: "rgba(255, 204, 128, 0.95)" },
@@ -116,13 +74,6 @@ const DOMAIN_REGION_STYLES = {
   modern_physics: { fill: "rgba(237, 231, 246, 0.95)", stroke: "rgba(179, 157, 219, 0.95)" },
   analytical_dynamics: { fill: "rgba(227, 242, 253, 0.95)", stroke: "rgba(144, 202, 249, 0.95)" },
   uncategorized: { fill: "rgba(229, 229, 234, 0.95)", stroke: "rgba(199, 199, 204, 0.95)" },
-};
-
-const SEARCH_RESULT_MESSAGES = {
-  emptyPrefix: "?????陬???�?",
-  emptySuffix: "?????�?綜�???",
-  resultCountPrefix: "?�???????",
-  resultCountSuffix: "??",
 };
 
 function computeOverviewQuotas(taxonomy, poolSize) {
@@ -171,9 +122,8 @@ function selectOverviewNodesForTaxonomy(pool) {
 
 const state = {
   graph: null,
-  detailStore: null,
+  details: {},
   nodeMap: new Map(),
-  graphIndex: null,
   zoom: 1,
   panX: 0,
   panY: 0,
@@ -189,11 +139,8 @@ const state = {
   overviewEdges: [],
   focusNodes: [],
   focusEdges: [],
-  focusSceneNodeId: null,
   domainRegions: new Map(),
   miniMapBounds: null,
-  lastSemanticTier: 0,
-  searchDebounceId: null,
   dragging: {
     active: false,
     pointerId: null,
@@ -247,36 +194,23 @@ const els = {
 
 init().catch((error) => {
   console.error(error);
-  els.detailTitle.textContent = "載入失�?";
+  els.detailTitle.textContent = "載入失敗";
   els.detailSummary.textContent = String(error.message || error);
 });
 
 async function init() {
-  const rawGraph = await fetchJson(GRAPH_URL);
-  validateGraphPayload(rawGraph);
+  const [graphResponse, detailResponse] = await Promise.all([fetch(GRAPH_URL), fetch(DETAILS_URL)]);
+  const rawGraph = await graphResponse.json();
+  const rawDetails = await detailResponse.json();
 
+  state.details = rawDetails;
   state.graph = normalizeGraph(rawGraph);
-  state.detailStore = createDetailStore({
-    detailIndexUrl: DETAIL_INDEX_URL,
-    detailBaseUrl: DETAIL_BASE_URL,
-    detailFileNameForNodeId,
-    validateDetailPayload,
-  });
-  await state.detailStore.loadIndex(state.graph.nodes.map((node) => node.id));
   buildOverviewScene();
   buildDomainOverview();
   buildFilters();
   bindEvents();
   setZoom(1);
   render();
-}
-
-async function fetchJson(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`${url} 載入失�?：HTTP ${response.status}`);
-  }
-  return response.json();
 }
 
 function normalizeGraph(rawGraph) {
@@ -306,13 +240,12 @@ function normalizeGraph(rawGraph) {
 
   const nodeMap = new Map(nodes.map((node) => [node.id, node]));
   state.nodeMap = nodeMap;
-  state.graphIndex = buildGraphIndex(nodes, semanticEdges);
 
   const domainHubs = TAXONOMY_ORDER.map((taxonomy) => ({
     id: `domain::${taxonomy}`,
     title: TAXONOMY_LABELS[taxonomy],
     shortTitle: TAXONOMY_LABELS[taxonomy],
-    summary: `${TAXONOMY_LABELS[taxonomy]} ?�總覽�?紐。`,
+    summary: `${TAXONOMY_LABELS[taxonomy]} 的總覽樞紐。`,
     type: "domain",
     taxonomy,
     tier: 0,
@@ -328,16 +261,16 @@ function normalizeGraph(rawGraph) {
 
   const overviewRoot = {
     id: "root::physics",
-    title: "?��??��??��?",
-    shortTitle: "?��??��??��?",
-    summary: "從�??�總覽進入概念?��?律�??��??��???,
+    title: "物理知識圖譜",
+    shortTitle: "物理知識圖譜",
+    summary: "從領域總覽進入概念、定律與推導關係。",
     type: "root",
     taxonomy: "all",
     tier: 0,
     degree: domainHubs.length,
     domain: "",
     tags: [],
-    searchText: "?��? ?��??��? 總覽 physics knowledge map",
+    searchText: "物理 知識圖譜 總覽 physics knowledge map",
   };
   nodeMap.set(overviewRoot.id, overviewRoot);
 
@@ -369,7 +302,7 @@ function buildDomainOverview() {
       taxonomy,
       label,
       count: nodes.length,
-      description: Object.entries(typeCounts).map(([t, c]) => `${t} ${c}`).join("??),
+      description: Object.entries(typeCounts).map(([t, c]) => `${t} ${c}`).join("、"),
     });
   }
   for (const meta of domainMeta) {
@@ -442,33 +375,197 @@ function buildFilters() {
 }
 
 function buildOverviewScene() {
-  const scene = buildOverviewSceneData(
-    {
-      graph: state.graph,
-      nodeMap: state.nodeMap,
-      taxonomyOrder: TAXONOMY_ORDER,
-      centerX: CENTER_X,
-      centerY: CENTER_Y,
-    },
-    {
-      selectOverviewNodesForTaxonomy,
-      weakLink,
-      weakUse,
-      relaxLayout,
-      clampNodesToViewport(nodes, options = {}) {
-        return clampNodesToViewport(nodes, {
-          canvasWidth: CANVAS_WIDTH,
-          canvasHeight: CANVAS_HEIGHT,
-          ...options,
-        });
-      },
-      dedupeEdges,
-      smoothClosedPath,
+  const sceneNodes = [];
+  const sceneEdges = [];
+  const chosenIds = new Set();
+  const hubByTaxonomy = new Map();
+  const overviewRoot = {
+    ...state.graph.overviewRoot,
+    x: CENTER_X,
+    y: CENTER_Y,
+    r: 76,
+    focal: true,
+  };
+  sceneNodes.push(overviewRoot);
+
+  state.graph.domainHubs.forEach((hub, index) => {
+    const angle = (-Math.PI / 2) + (index / state.graph.domainHubs.length) * Math.PI * 2;
+    hubByTaxonomy.set(hub.taxonomy, {
+      ...hub,
+      x: CENTER_X + Math.cos(angle) * 350,
+      y: CENTER_Y + Math.sin(angle) * 276,
+      r: 56,
+      sectorAngle: angle,
+    });
+  });
+
+  for (const taxonomy of TAXONOMY_ORDER) {
+    const hub = hubByTaxonomy.get(taxonomy);
+    if (!hub) continue;
+    const pool = state.graph.nodes.filter((node) => node.taxonomy === taxonomy);
+    const selected = selectOverviewNodesForTaxonomy(pool);
+    const bandWidth = 0.84;
+
+    selected.forEach((node, index) => {
+      const ratio = selected.length <= 1 ? 0.5 : index / (selected.length - 1);
+      const angle = hub.sectorAngle - bandWidth / 2 + ratio * bandWidth;
+      const localRadiusX = node.tier === 0 ? 50 : node.tier === 1 ? 90 : 130;
+      const localRadiusY = node.tier === 0 ? 38 : node.tier === 1 ? 68 : 100;
+      const placed = {
+        ...node,
+        x: hub.x + Math.cos(angle) * localRadiusX,
+        y: hub.y + Math.sin(angle) * localRadiusY,
+        r: node.type === "map" ? 36 : node.tier === 0 ? 28 : node.tier === 1 ? 20 : 14,
+      };
+      chosenIds.add(node.id);
+      sceneNodes.push(placed);
+    });
+  }
+
+  const candidateEdges = [];
+  for (const edge of state.graph.edges) {
+    if (!chosenIds.has(edge.source) || !chosenIds.has(edge.target)) continue;
+    if (edge.type === "organized_by") continue;
+    if (edge.type === "related_to" && weakLink(edge)) continue;
+    if ((edge.type === "uses" || edge.type === "explains") && weakUse(edge)) continue;
+    const src = state.nodeMap.get(edge.source);
+    const tgt = state.nodeMap.get(edge.target);
+    const score = (src?.degree || 0) + (tgt?.degree || 0);
+    candidateEdges.push({ ...edge, family: edge.type, score });
+  }
+
+  const OVERVIEW_MAX_EDGES_PER_NODE = 3;
+  const edgeCountPerNode = new Map();
+  candidateEdges.sort((a, b) => b.score - a.score);
+  for (const edge of candidateEdges) {
+    const srcCount = edgeCountPerNode.get(edge.source) || 0;
+    const tgtCount = edgeCountPerNode.get(edge.target) || 0;
+    if (srcCount >= OVERVIEW_MAX_EDGES_PER_NODE && tgtCount >= OVERVIEW_MAX_EDGES_PER_NODE) continue;
+    sceneEdges.push(edge);
+    edgeCountPerNode.set(edge.source, srcCount + 1);
+    edgeCountPerNode.set(edge.target, tgtCount + 1);
+  }
+
+  relaxLayout(sceneNodes, { iterations: 220, padding: 2, lockDomains: false, lockFocal: true, enforceBounds: true });
+  clampNodesToViewport(sceneNodes, { padding: 36, preserveFocus: false });
+  state.overviewNodes = sceneNodes;
+  state.overviewEdges = dedupeEdges(sceneEdges);
+
+  const domainRegions = new Map();
+  for (const taxonomy of TAXONOMY_ORDER) {
+    const children = sceneNodes.filter((node) => node.taxonomy === taxonomy && node.type !== "domain" && node.type !== "root");
+    if (!children.length) continue;
+    const points = children.map((n) => ({ x: n.x, y: n.y }));
+    const cx = points.reduce((s, p) => s + p.x, 0) / points.length;
+    const cy = points.reduce((s, p) => s + p.y, 0) / points.length;
+
+    // Radial density sampling: trace the actual boundary of the node distribution
+    const bins = 72;
+    const radii = [];
+    for (let i = 0; i < bins; i++) {
+      const angle = (i / bins) * Math.PI * 2;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      let maxR = 0;
+      for (const p of points) {
+        const proj = (p.x - cx) * cos + (p.y - cy) * sin;
+        const perp = Math.abs(-(p.x - cx) * sin + (p.y - cy) * cos);
+        const r = proj + Math.max(0, 50 - perp * 0.5);
+        if (r > maxR) maxR = r;
+      }
+      radii.push(maxR + 50);
     }
-  );
-  state.overviewNodes = scene.overviewNodes;
-  state.overviewEdges = scene.overviewEdges;
-  state.domainRegions = scene.domainRegions;
+
+    // Smooth the radii to remove jaggedness
+    const smoothed = radii.slice();
+    for (let pass = 0; pass < 3; pass++) {
+      const tmp = smoothed.slice();
+      for (let i = 0; i < bins; i++) {
+        const prev = tmp[(i - 1 + bins) % bins];
+        const curr = tmp[i];
+        const next = tmp[(i + 1) % bins];
+        smoothed[i] = curr * 0.5 + prev * 0.25 + next * 0.25;
+      }
+    }
+
+    const contourPoints = smoothed.map((r, i) => {
+      const angle = (i / bins) * Math.PI * 2;
+      return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+    });
+    const d = smoothClosedPath(contourPoints);
+    const minX = Math.min(...contourPoints.map((p) => p.x));
+    const minY = Math.min(...contourPoints.map((p) => p.y));
+    domainRegions.set(taxonomy, { d, cx, cy, minX, minY, taxonomy });
+  }
+  state.domainRegions = domainRegions;
+}
+
+function convexHull(points) {
+  const pts = points.slice().sort((a, b) => a.x - b.x || a.y - b.y);
+  if (pts.length <= 2) return pts;
+  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+  const lower = [];
+  for (const p of pts) {
+    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop();
+    lower.push(p);
+  }
+  const upper = [];
+  for (let i = pts.length - 1; i >= 0; i--) {
+    const p = pts[i];
+    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop();
+    upper.push(p);
+  }
+  lower.pop();
+  upper.pop();
+  return lower.concat(upper);
+}
+
+function offsetPolygon(polygon, distance) {
+  const n = polygon.length;
+  if (n < 3) return polygon;
+  const normals = [];
+  for (let i = 0; i < n; i++) {
+    const a = polygon[i];
+    const b = polygon[(i + 1) % n];
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const len = Math.hypot(dx, dy) || 1;
+    normals.push({ nx: dy / len, ny: -dx / len });
+  }
+  const expanded = [];
+  for (let i = 0; i < n; i++) {
+    const prev = normals[(i - 1 + n) % n];
+    const curr = normals[i];
+    const bx = prev.nx + curr.nx;
+    const by = prev.ny + curr.ny;
+    const dot = bx * curr.nx + by * curr.ny;
+    const scale = dot > 0.01 ? distance / dot : distance;
+    expanded.push({
+      x: polygon[i].x + bx * scale,
+      y: polygon[i].y + by * scale,
+    });
+  }
+  return expanded;
+}
+
+function smoothClosedPath(polygon) {
+  const n = polygon.length;
+  if (n < 3) return "";
+  const tension = 0.22;
+  let d = `M ${polygon[0].x} ${polygon[0].y}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = polygon[(i - 1 + n) % n];
+    const p1 = polygon[i];
+    const p2 = polygon[(i + 1) % n];
+    const p3 = polygon[(i + 2) % n];
+    const cp1x = p1.x + (p2.x - p0.x) * tension;
+    const cp1y = p1.y + (p2.y - p0.y) * tension;
+    const cp2x = p2.x - (p3.x - p1.x) * tension;
+    const cp2y = p2.y - (p3.y - p1.y) * tension;
+    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+  }
+  d += " Z";
+  return d;
 }
 
 function weakLink(edge) {
@@ -484,93 +581,128 @@ function weakUse(edge) {
 }
 
 function buildFocusScene(nodeId) {
-  const scene = buildFocusSceneData(
-    {
-      nodeId,
-      graph: state.graph,
-      nodeMap: state.nodeMap,
-      graphIndex: state.graphIndex,
-      overviewNodes: state.overviewNodes,
-      taxonomyLabels: TAXONOMY_LABELS,
-    },
-    {
-      collectDirectionalRelations,
-      rankFocusNodes: (nodes) => rankFocusNodes(nodes, { dedupeNodes }),
-      dedupeNodes,
-      dedupeEdges,
-      positionRing,
-      relaxLayout,
-      clampNodesToViewport(nodes, options = {}) {
-        return clampNodesToViewport(nodes, {
-          canvasWidth: CANVAS_WIDTH,
-          canvasHeight: CANVAS_HEIGHT,
-          ...options,
-        });
-      },
+  const focalSource = state.nodeMap.get(nodeId);
+  if (!focalSource) return;
+
+  // Root node: show domain hubs as connected nodes
+  if (focalSource.type === "root") {
+    const focal = { ...focalSource, x: 670, y: 470, r: 68, focal: true };
+    const domainNodes = [];
+    const edges = [];
+    for (const hub of state.graph.domainHubs) {
+      const overviewNode = state.overviewNodes.find((n) => n.taxonomy === hub.taxonomy && n.type !== "domain" && n.type !== "root");
+      const hubCopy = {
+        ...hub,
+        x: 0,
+        y: 0,
+        r: 44,
+        shortTitle: TAXONOMY_LABELS[hub.taxonomy] || hub.taxonomy,
+        searchText: hub.title,
+      };
+      domainNodes.push(hubCopy);
+      edges.push({ source: focal.id, target: hub.id, type: "organized_by", family: "organized_by" });
     }
+    positionRing(domainNodes, focal, 340, 280, 44, 0);
+    const sceneNodes = [focal, ...dedupeNodes(domainNodes)];
+    relaxLayout(sceneNodes, { iterations: 100, padding: 16, lockDomains: false, lockFocal: true, enforceBounds: true });
+    clampNodesToViewport(sceneNodes, { padding: 84, preserveFocus: true });
+    state.focusNodes = sceneNodes;
+    state.focusEdges = dedupeEdges(edges);
+    return;
+  }
+
+  // Regular node: existing focus logic
+  const edges = [];
+  const inner = [];
+  const outer = [];
+  const related = [];
+
+  for (const edge of state.graph.edges) {
+    if (edge.source !== nodeId && edge.target !== nodeId) continue;
+    const otherId = edge.source === nodeId ? edge.target : edge.source;
+    const other = state.nodeMap.get(otherId);
+    if (!other || other.type === "domain") continue;
+    const copy = { ...other };
+    if (FOCUS_INNER_TYPES.has(edge.type)) inner.push(copy);
+    else if (FOCUS_OUTER_TYPES.has(edge.type)) outer.push(copy);
+    else if (FOCUS_RELATED_TYPES.has(edge.type)) related.push(copy);
+    edges.push({ ...edge, family: edge.type });
+  }
+
+  const innerNodes = rankFocusNodes(inner).slice(0, 6);
+  const outerNodes = rankFocusNodes(outer).slice(0, 8);
+  const relatedNodes = rankFocusNodes(related).slice(0, 6);
+  const sceneNodes = [focal];
+
+  positionRing(innerNodes, focal, 254, 194, 34, 0);
+  positionRing(outerNodes, focal, 430, 336, 30, 0);
+  positionRing(relatedNodes, focal, 334, 262, 24, Math.PI / 7);
+
+  sceneNodes.push(...dedupeNodes([...innerNodes, ...outerNodes, ...relatedNodes]));
+  relaxLayout(sceneNodes, { iterations: 100, padding: 16, lockDomains: false, lockFocal: true, enforceBounds: true });
+  clampNodesToViewport(sceneNodes, { padding: 84, preserveFocus: true });
+  state.focusNodes = sceneNodes;
+  state.focusEdges = dedupeEdges(
+    edges.filter((edge) => sceneNodes.some((node) => node.id === edge.source) && sceneNodes.some((node) => node.id === edge.target))
   );
-  if (!scene) return;
-  state.focusSceneNodeId = scene.focusSceneNodeId;
-  state.focusNodes = scene.focusNodes;
-  state.focusEdges = scene.focusEdges;
+}
+
+function positionRing(items, focal, radiusX, radiusY, r, angleOffset = 0) {
+  items.forEach((node, index) => {
+    const angle = angleOffset - Math.PI / 2 + (index / Math.max(items.length, 1)) * Math.PI * 2;
+    node.x = focal.x + Math.cos(angle) * radiusX;
+    node.y = focal.y + Math.sin(angle) * radiusY;
+    node.r = r;
+  });
+}
+
+function rankFocusNodes(nodes) {
+  return dedupeNodes(nodes).sort((a, b) => {
+    const typeOrder = focusTypeOrder(a.type) - focusTypeOrder(b.type);
+    if (typeOrder !== 0) return typeOrder;
+    return b.degree - a.degree;
+  });
+}
+
+function focusTypeOrder(type) {
+  const order = { law: 0, concept: 1, quantity: 2, mathematical_tool: 3, experiment: 4, map: 5 };
+  return order[type] ?? 99;
 }
 
 function bindEvents() {
   els.searchInput.addEventListener("input", () => {
-    if (state.searchDebounceId) {
-      window.clearTimeout(state.searchDebounceId);
-    }
-    state.searchDebounceId = window.setTimeout(() => {
-      state.query = els.searchInput.value.trim().toLowerCase();
-      state.searchDebounceId = null;
-      render();
-    }, 150);
+    state.query = els.searchInput.value.trim().toLowerCase();
+    render();
   });
 
   els.zoomSlider.addEventListener("input", () => {
     setZoom(Number(els.zoomSlider.value) / 100);
-    renderForZoomChange();
+    render();
   });
 
   els.zoomInButton.addEventListener("click", () => {
     setZoom(state.zoom * 1.15);
-    renderForZoomChange();
+    render();
   });
 
   els.zoomOutButton.addEventListener("click", () => {
     setZoom(state.zoom / 1.15);
-    renderForZoomChange();
+    render();
   });
 
   els.fitButton.addEventListener("click", () => {
     state.panX = 0;
     state.panY = 0;
     setZoom(state.mode === "overview" ? 1 : 0.98);
-    renderForZoomChange({ forceLayout: true, refreshDetail: false, refreshSearch: false });
+    render();
   });
 
   els.backButton.addEventListener("click", goToOverview);
   els.browseBack.addEventListener("click", goBack);
   els.browseForward.addEventListener("click", goForward);
 
-  // Note view toggle (top buttons)
-  document.getElementById("noteViewToggle")?.addEventListener("click", (event) => {
-    const btn = event.target.closest(".note-view-btn");
-    if (!btn) return;
-    const mode = btn.dataset.noteMode;
-    if (mode && mode !== state.noteViewMode) {
-      state.noteViewMode = mode;
-      render();
-    }
-  });
-
   // Global click handler for wikilinks and relation pills
   document.addEventListener("click", (event) => {
-    const nodePill = event.target.closest("[data-node-id]");
-    if (nodePill) {
-      handleNodeSelect(nodePill.dataset.nodeId);
-      return;
-    }
     const inlineLink = event.target.closest(".inline-note-link[data-node-id]");
     if (inlineLink) {
       handleNodeSelect(inlineLink.dataset.nodeId);
@@ -580,27 +712,25 @@ function bindEvents() {
     if (sectionJump) {
       const target = document.getElementById(sectionJump.dataset.sectionTarget || "");
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-    const retryDetail = event.target.closest("[data-retry-detail]");
-    if (retryDetail) {
-      state.detailStore.clearError(retryDetail.dataset.retryDetail);
-      void loadDetail(retryDetail.dataset.retryDetail);
     }
   });
   els.overviewModeButton.addEventListener("click", goToOverview);
 
-    els.focusModeButton.addEventListener("click", () => {
-      if (state.selectedNodeId) {
-        activateFocusNode(state.selectedNodeId, { pushHistory: false });
-      }
-    });
-  
-    els.focusActionButton.addEventListener("click", () => {
-      if (state.selectedNodeId) {
-        activateFocusNode(state.selectedNodeId, { pushHistory: false });
-      }
-    });
+  els.focusModeButton.addEventListener("click", () => {
+    if (state.selectedNodeId) {
+      state.mode = "focus";
+      buildFocusScene(state.selectedNodeId);
+      render();
+    }
+  });
+
+  els.focusActionButton.addEventListener("click", () => {
+    if (state.selectedNodeId) {
+      state.mode = "focus";
+      buildFocusScene(state.selectedNodeId);
+      render();
+    }
+  });
 
   els.graphFrame.addEventListener("pointerdown", onPointerDown);
   els.graphFrame.addEventListener("wheel", onWheel, { passive: false });
@@ -610,47 +740,41 @@ function bindEvents() {
   window.addEventListener("pointercancel", onPointerUp);
 }
 
-function applyStatePatch(patch) {
-  for (const [key, value] of Object.entries(patch)) {
-    if (key === "zoom") {
-      setZoom(value);
-      continue;
-    }
-    state[key] = value;
-  }
-}
-
-function activateFocusNode(nodeId, options = {}) {
-  const { pushHistory = true } = options;
-  const node = state.nodeMap.get(nodeId);
-  if (!node) return;
-  applyStatePatch(createFocusState(state, nodeId, { pushHistory }));
-  buildFocusScene(nodeId);
-  render();
-}
-
-function resetOverviewState() {
-  applyStatePatch(createOverviewState());
-  document.querySelector(".app-shell")?.classList.remove("reader-mode");
-}
-
 function goToOverview() {
-  resetOverviewState();
+  state.mode = "overview";
+  state.selectedNodeId = null;
+  state.browseHistory = [];
+  state.browseIndex = -1;
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(1);
   render();
 }
 
 function goBack() {
-  const next = stepBrowseHistory(state, "back");
-  if (!next) return;
-  state.browseIndex = next.browseIndex;
-  activateFocusNode(next.nodeId, { pushHistory: false });
+  if (state.browseIndex <= 0) return;
+  state.browseIndex--;
+  const nodeId = state.browseHistory[state.browseIndex];
+  state.selectedNodeId = nodeId;
+  state.mode = "focus";
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+  buildFocusScene(nodeId);
+  render();
 }
 
 function goForward() {
-  const next = stepBrowseHistory(state, "forward");
-  if (!next) return;
-  state.browseIndex = next.browseIndex;
-  activateFocusNode(next.nodeId, { pushHistory: false });
+  if (state.browseIndex >= state.browseHistory.length - 1) return;
+  state.browseIndex++;
+  const nodeId = state.browseHistory[state.browseIndex];
+  state.selectedNodeId = nodeId;
+  state.mode = "focus";
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+  buildFocusScene(nodeId);
+  render();
 }
 
 function onPointerDown(event) {
@@ -661,7 +785,7 @@ function onPointerDown(event) {
   ) return;
   state.dragging.active = true;
   state.dragging.pointerId = event.pointerId;
-  const point = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
+  const point = clientToSvgPoint(event.clientX, event.clientY);
   state.dragging.startX = point.x;
   state.dragging.startY = point.y;
   state.dragging.basePanX = state.panX;
@@ -673,13 +797,13 @@ function onPointerDown(event) {
 
 function onPointerMove(event) {
   if (!state.dragging.active || event.pointerId !== state.dragging.pointerId) return;
-  const point = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
+  const point = clientToSvgPoint(event.clientX, event.clientY);
   const deltaX = point.x - state.dragging.startX;
   const deltaY = point.y - state.dragging.startY;
   state.panX = state.dragging.basePanX + deltaX;
   state.panY = state.dragging.basePanY + deltaY;
-  syncViewportTransform();
-  syncMiniMapViewport();
+  updateViewportTransform();
+  updateMiniMapViewport();
 }
 
 function onPointerUp(event) {
@@ -694,7 +818,7 @@ function onWheel(event) {
   if (typeof event.target.closest === "function" && event.target.closest(".zoom-card, .minimap-card")) return;
   event.preventDefault();
 
-  const pointer = clientToSvgPoint(els.graphFrame.querySelector(".graph-svg"), event.clientX, event.clientY);
+  const pointer = clientToSvgPoint(event.clientX, event.clientY);
   const worldX = (pointer.x - state.panX) / state.zoom;
   const worldY = (pointer.y - state.panY) / state.zoom;
   const factor = Math.exp(-event.deltaY * 0.0015);
@@ -703,93 +827,55 @@ function onWheel(event) {
   state.panX = pointer.x - worldX * nextZoom;
   state.panY = pointer.y - worldY * nextZoom;
   setZoom(nextZoom);
-  renderForZoomChange();
+  render();
 }
 
 function setZoom(value) {
   state.zoom = clamp(value, 0.55, 2.6);
   els.zoomSlider.value = String(Math.round(state.zoom * 100));
   els.zoomLabel.textContent = `${Math.round(state.zoom * 100)}%`;
-  syncViewportTransform();
+  updateViewportTransform();
+}
+
+function updateViewportTransform() {
+  els.viewport.setAttribute("transform", `translate(${state.panX} ${state.panY}) scale(${state.zoom})`);
+}
+
+function clientToSvgPoint(clientX, clientY) {
+  const svg = els.graphFrame.querySelector(".graph-svg");
+  const point = svg.createSVGPoint();
+  point.x = clientX;
+  point.y = clientY;
+  const matrix = svg.getScreenCTM();
+  return matrix ? point.matrixTransform(matrix.inverse()) : { x: clientX, y: clientY };
 }
 
 function render() {
-  const scene = getCurrentScene();
-  renderScene(scene, {
-    forceLayout: false,
-    refreshGraph: true,
-    refreshDetail: true,
-    refreshSearch: true,
-    refreshModeUI: true,
-  });
-}
-
-function getCurrentScene() {
-  syncViewportTransform();
-  return state.mode === "focus" && state.selectedNodeId
+  updateViewportTransform();
+  const scene = state.mode === "focus" && state.selectedNodeId
     ? ensureFocusScene()
     : {
         nodes: filterOverviewNodes(state.overviewNodes),
         edges: filterOverviewEdges(state.overviewEdges),
       };
-}
 
-function renderScene(scene, options = {}) {
-  const {
-    forceLayout = false,
-    refreshGraph = false,
-    refreshDetail = true,
-    refreshSearch = true,
-    refreshModeUI = true,
-  } = options;
-  syncViewportTransform();
-  const tier = semanticTierFromZoom(state.zoom);
-  const shouldLayout = forceLayout || state.lastSemanticTier !== tier;
-  if (shouldLayout) {
-    relaxLayout(scene.nodes, {
-      iterations: state.mode === "focus" ? 100 : 120,
-      padding: state.mode === "focus" ? 14 : 2,
-      lockFocal: true,
-      enforceBounds: state.mode === "focus",
-    });
-    state.lastSemanticTier = tier;
-  }
-
-  renderRings(scene.nodes);
-  if (shouldLayout || refreshGraph) {
-    renderEdges(scene.edges, scene.nodes);
-    renderMiniMap(scene.nodes);
-  } else {
-    syncMiniMapViewport();
-  }
-  renderNodes(scene.nodes);
-  if (refreshDetail) {
-    try { renderDetail(); } catch (e) { console.error("renderDetail error:", e); }
-  }
-  if (refreshSearch) {
-    try { renderSearchResults(); } catch (e) { console.error("renderSearchResults error:", e); }
-  }
-  syncNoteViewToggle();
-  if (refreshModeUI) {
-    updateModeUI(scene.nodes);
-  }
-}
-
-function renderForZoomChange(options = {}) {
-  const scene = getCurrentScene();
-  renderScene(scene, {
-    forceLayout: Boolean(options.forceLayout),
-    refreshGraph: false,
-    refreshDetail: Boolean(options.refreshDetail),
-    refreshSearch: Boolean(options.refreshSearch),
-    refreshModeUI: true,
+  relaxLayout(scene.nodes, {
+    iterations: 240,
+    padding: state.mode === "focus" ? 14 : 2,
+    lockFocal: true,
+    enforceBounds: state.mode === "focus",
   });
+  renderRings(scene.nodes);
+  renderEdges(scene.edges, scene.nodes);
+  renderNodes(scene.nodes);
+  renderMiniMap(scene.nodes);
+  renderDetail();
+  renderSearchResults();
+  updateModeUI(scene.nodes);
 }
 
 function ensureFocusScene() {
-  if (!state.focusNodes.length || state.focusSceneNodeId !== state.selectedNodeId) {
-    buildFocusScene(state.selectedNodeId);
-  }
+  buildFocusScene(state.selectedNodeId);
   return { nodes: state.focusNodes, edges: state.focusEdges };
 }
 
@@ -837,10 +923,20 @@ function renderRings(nodes) {
         );
       }
     }
+    const regionCount = state.domainRegions.size;
     els.ringLayer.innerHTML = regionPaths.join("");
     if (els.labelLayer) {
       els.labelLayer.innerHTML = regionLabels.join("");
+      // debug: 檢查標籤位置
+      const firstText = els.labelLayer.querySelector('text:not(.debug-label)');
+      if (firstText) {
+        console.log('[label-debug] first label:', firstText.textContent, 'x=', firstText.getAttribute('x'), 'y=', firstText.getAttribute('y'), 'opacity=', firstText.getAttribute('opacity'), 'fill=', window.getComputedStyle(firstText).fill);
+      } else {
+        console.log('[label-debug] no text elements found in labelLayer, innerHTML length:', els.labelLayer.innerHTML.length);
+        console.log('[label-debug] innerHTML preview:', els.labelLayer.innerHTML.substring(0, 200));
+      }
     }
+    console.log(`[renderRings] ${regionCount} regions, zoom=${state.zoom.toFixed(2)}, t=${((state.zoom - 0.55) / 0.9).toFixed(2)}, labelOp=${labelOpacity.toFixed(2)}, paths=${regionPaths.length}, labels=${regionLabels.length}`);
     for (const el of els.ringLayer.querySelectorAll(".domain-region")) {
       el.addEventListener("click", () => goToOverviewAndCenterTaxonomy(el.dataset.taxonomy));
     }
@@ -857,7 +953,7 @@ function renderRings(nodes) {
   els.ringLayer.innerHTML = [
     `<circle class="ring-circle inner" cx="${focal.x}" cy="${focal.y}" r="250"></circle>`,
     `<circle class="ring-circle outer" cx="${focal.x}" cy="${focal.y}" r="430"></circle>`,
-    `<text class="ring-label" x="${focal.x}" y="${focal.y - 258}" text-anchor="middle">?��?</text>`,
+    `<text class="ring-label" x="${focal.x}" y="${focal.y - 258}" text-anchor="middle">先備</text>`,
     `<text class="ring-label" x="${focal.x}" y="${focal.y + 440}" text-anchor="middle">延伸</text>`,
   ].join("");
 }
@@ -886,7 +982,7 @@ function renderNodes(nodes) {
       const dimmed = state.selectedNodeId && !selected && !isConnectedToSelected(node.id);
       const title = resolveVisibleTitle(node, labelTier, selected);
       return `
-        <g class="node ${node.type} ${selected ? "is-selected" : ""} ${node.focal ? "focal" : ""} ${dimmed ? "is-dimmed" : ""}" data-node-id="${escapeHtml(node.id)}" transform="translate(${node.x} ${node.y})" role="button" tabindex="0" aria-label="${escapeHtml(`?��? ${node.title}`)}">
+        <g class="node ${node.type} ${selected ? "is-selected" : ""} ${node.focal ? "focal" : ""} ${dimmed ? "is-dimmed" : ""}" data-node-id="${escapeHtml(node.id)}" transform="translate(${node.x} ${node.y})" role="button" tabindex="0" aria-label="${escapeHtml(`開啟 ${node.title}`)}">
           <circle class="node-hit" r="${Math.max(node.r + 14, 28)}"></circle>
           <circle class="node-circle" r="${node.r}"></circle>
           ${title ? `<text class="node-title" y="0">${escapeHtml(title)}</text>` : ""}
@@ -910,7 +1006,7 @@ function renderMiniMap(nodes) {
   const width = 220;
   const height = 140;
   const padding = 10;
-  const bounds = getNavigationBounds(nodes, CANVAS_WIDTH, CANVAS_HEIGHT);
+  const bounds = getNavigationBounds(nodes);
   state.miniMapBounds = bounds;
   const scaleX = (width - padding * 2) / Math.max(bounds.maxX - bounds.minX, 1);
   const scaleY = (height - padding * 2) / Math.max(bounds.maxY - bounds.minY, 1);
@@ -921,8 +1017,31 @@ function renderMiniMap(nodes) {
     return `<circle class="minimap-node ${node.id === state.selectedNodeId ? "focus" : ""}" cx="${x}" cy="${y}" r="${r}"></circle>`;
   }).join("");
   els.minimapLayer.innerHTML = sceneMarkup;
-  syncMiniMapViewport(bounds);
+  updateMiniMapViewport(bounds);
   els.minimapModeLabel.textContent = state.mode;
+}
+
+function updateMiniMapViewport(bounds = state.miniMapBounds) {
+  if (!bounds) return;
+  const width = 220;
+  const height = 140;
+  const padding = 10;
+  const availableWidth = width - padding * 2;
+  const availableHeight = height - padding * 2;
+  const sceneWidth = Math.max(bounds.maxX - bounds.minX, 1);
+  const sceneHeight = Math.max(bounds.maxY - bounds.minY, 1);
+  const viewWorldWidth = CANVAS_WIDTH / state.zoom;
+  const viewWorldHeight = CANVAS_HEIGHT / state.zoom;
+  const viewWidth = clamp((viewWorldWidth / sceneWidth) * availableWidth, 32, availableWidth);
+  const viewHeight = clamp((viewWorldHeight / sceneHeight) * availableHeight, 24, availableHeight);
+  const visibleLeft = (-state.panX) / state.zoom;
+  const visibleTop = (-state.panY) / state.zoom;
+  const x = clamp(padding + ((visibleLeft - bounds.minX) / sceneWidth) * availableWidth, padding, width - padding - viewWidth);
+  const y = clamp(padding + ((visibleTop - bounds.minY) / sceneHeight) * availableHeight, padding, height - padding - viewHeight);
+  els.minimapViewport.setAttribute("x", String(x));
+  els.minimapViewport.setAttribute("y", String(y));
+  els.minimapViewport.setAttribute("width", String(viewWidth));
+  els.minimapViewport.setAttribute("height", String(viewHeight));
 }
 
 function resolveVisibleTitle(node, tier, selected) {
@@ -941,64 +1060,109 @@ function handleNodeSelect(nodeId) {
     goToOverviewAndCenterTaxonomy(node.taxonomy);
     return;
   }
-  activateFocusNode(nodeId);
+  state.selectedNodeId = nodeId;
+  // Push to browse history
+  state.browseHistory = state.browseHistory.slice(0, state.browseIndex + 1);
+  state.browseHistory.push(nodeId);
+  state.browseIndex = state.browseHistory.length - 1;
+  state.mode = "focus";
+  state.panX = 0;
+  state.panY = 0;
+  setZoom(0.98);
+  buildFocusScene(nodeId);
+  render();
 }
 
 function onMiniMapClick(event) {
   const rect = els.minimapSvg.getBoundingClientRect();
+  const localX = ((event.clientX - rect.left) / rect.width) * 220;
+  const localY = ((event.clientY - rect.top) / rect.height) * 140;
+  const padding = 10;
   const bounds = state.miniMapBounds || { minX: 0, minY: 0, maxX: CANVAS_WIDTH, maxY: CANVAS_HEIGHT };
-  const { worldX, worldY } = projectMiniMapClick({
-    clientX: event.clientX,
-    clientY: event.clientY,
-    rect,
-    bounds,
-    width: 220,
-    height: 140,
-    padding: 10,
-  });
+  const worldX = bounds.minX + ((localX - padding) / (220 - padding * 2)) * (bounds.maxX - bounds.minX);
+  const worldY = bounds.minY + ((localY - padding) / (140 - padding * 2)) * (bounds.maxY - bounds.minY);
   state.panX = CANVAS_WIDTH / 2 - worldX * state.zoom;
   state.panY = CANVAS_HEIGHT / 2 - worldY * state.zoom;
-  syncViewportTransform();
-  syncMiniMapViewport();
+  updateViewportTransform();
+  updateMiniMapViewport();
+}
+
+function getSceneBounds(nodes) {
+  if (!nodes.length) return { minX: 0, minY: 0, maxX: CANVAS_WIDTH, maxY: CANVAS_HEIGHT };
+  const xs = nodes.map((node) => [node.x - node.r, node.x + node.r]).flat();
+  const ys = nodes.map((node) => [node.y - node.r, node.y + node.r]).flat();
+  return {
+    minX: Math.min(...xs) - 24,
+    maxX: Math.max(...xs) + 24,
+    minY: Math.min(...ys) - 24,
+    maxY: Math.max(...ys) + 24,
+  };
+}
+
+function getNavigationBounds(nodes) {
+  const scene = getSceneBounds(nodes);
+  const horizontalMargin = CANVAS_WIDTH * 0.25;
+  const verticalMargin = CANVAS_HEIGHT * 0.25;
+  return {
+    minX: Math.min(scene.minX, -horizontalMargin),
+    maxX: Math.max(scene.maxX, CANVAS_WIDTH + horizontalMargin),
+    minY: Math.min(scene.minY, -verticalMargin),
+    maxY: Math.max(scene.maxY, CANVAS_HEIGHT + verticalMargin),
+  };
+}
+
+function clampNodesToViewport(nodes, options = {}) {
+  const padding = options.padding || 64;
+  const preserveFocus = Boolean(options.preserveFocus);
+  const useCollisionRadius = Boolean(options.useCollisionRadius);
+  for (const node of nodes) {
+    if (preserveFocus && node.focal) continue;
+    const radius = useCollisionRadius ? collisionRadius(node) : node.r;
+    const minX = padding + radius;
+    const maxX = CANVAS_WIDTH - padding - radius;
+    const minY = padding + node.r;
+    const maxY = CANVAS_HEIGHT - padding - node.r;
+    node.x = clamp(node.x, minX, maxX);
+    node.y = clamp(node.y, minY, maxY);
+  }
 }
 
 function updateModeUI(sceneNodes) {
-  const node = state.mode === "focus" && state.selectedNodeId
-    ? state.nodeMap.get(state.selectedNodeId)
-    : null;
-  const uiState = createModeUiState(
-    state,
-    node,
-    node ? (TAXONOMY_LABELS[node.taxonomy] || node.taxonomy) : ""
-  );
-  els.backButton.hidden = !uiState.showBackButton;
-  els.focusActionButton.hidden = !uiState.showFocusAction;
-  els.browseNav.hidden = !uiState.showBrowseNav;
+  els.backButton.hidden = state.mode !== "focus";
+  els.focusActionButton.hidden = !state.selectedNodeId;
+  els.browseNav.hidden = state.mode !== "focus";
   els.browseBack.disabled = state.browseIndex <= 0;
   els.browseForward.disabled = state.browseIndex >= state.browseHistory.length - 1;
   const domainOverview = document.getElementById("domainOverview");
-  if (domainOverview) domainOverview.classList.toggle("collapsed", uiState.collapseDomainOverview);
-  els.overviewModeButton.classList.toggle("is-active", !uiState.isFocus);
-  els.focusModeButton.classList.toggle("is-active", uiState.isFocus);
+  if (domainOverview) domainOverview.classList.toggle("collapsed", state.mode === "focus");
+  els.overviewModeButton.classList.toggle("is-active", state.mode === "overview");
+  els.focusModeButton.classList.toggle("is-active", state.mode === "focus");
 
-  if (uiState.isFocus && node) {
+  if (state.mode === "focus" && state.selectedNodeId) {
+    const node = state.nodeMap.get(state.selectedNodeId);
     renderBreadcrumb([
       { label: "總覽", action: () => goToOverview() },
       { label: TAXONOMY_LABELS[node.taxonomy] || node.taxonomy, action: () => goToOverviewAndCenterTaxonomy(node.taxonomy) },
       { label: node.title },
     ]);
-    els.graphHint.textContent = "中�?節點固定�??��??��??��??�數學支?��?外�??��??��??��?證、�?測�??�用，灰?��??��??�弱?�聯??;
+    els.graphHint.textContent = "中心節點固定；內圈只留先備與數學支撐，外圈只留推導、驗證、量測與應用，灰色膠囊則放弱關聯。";
   } else {
     renderBreadcrumb([
       { label: "總覽", action: () => goToOverview() },
       { label: "taxonomy domains" },
     ]);
-    els.graphHint.textContent = "?�曳平移?�滾輪縮?��?中央?��?點�?��?��??��??�大後�?依�?顯示?�細?��?點�?稱�??��???;
+    els.graphHint.textContent = "拖曳平移、滾輪縮放；中央根節點連接各領域，放大後會依序顯示更細的節點名稱與關係。";
   }
 }
 
 function renderBreadcrumb(items) {
-  els.breadcrumb.innerHTML = buildBreadcrumbHtml(items, { escapeHtml });
+  els.breadcrumb.innerHTML = items.map((item, index) => {
+    const part = item.action
+      ? `<button class="breadcrumb-button" type="button" data-index="${index}">${escapeHtml(item.label)}</button>`
+      : `<span>${escapeHtml(item.label)}</span>`;
+    const separator = index < items.length - 1 ? `<span class="breadcrumb-separator">/</span>` : "";
+    return `${part}${separator}`;
+  }).join("");
   for (const button of els.breadcrumb.querySelectorAll(".breadcrumb-button")) {
     const item = items[Number(button.dataset.index)];
     button.addEventListener("click", item.action);
@@ -1006,56 +1170,64 @@ function renderBreadcrumb(items) {
 }
 
 function goToOverviewAndCenterTaxonomy(taxonomy) {
-  resetOverviewState();
-  render();
+  goToOverview();
   const region = state.domainRegions.get(taxonomy);
   if (!region) return;
   state.panX = CANVAS_WIDTH / 2 - region.cx * state.zoom;
   state.panY = CANVAS_HEIGHT / 2 - region.cy * state.zoom;
-  syncViewportTransform();
-  syncMiniMapViewport();
+  updateViewportTransform();
+  updateMiniMapViewport();
 }
 
 function renderDetail() {
   const node = state.selectedNodeId ? state.nodeMap.get(state.selectedNodeId) : null;
   if (!node) {
-    const emptyView = buildEmptyDetailView({
-      overviewNodeCount: filterOverviewNodes(state.overviewNodes).length,
-      overviewEdgeCount: filterOverviewEdges(state.overviewEdges).length,
-    });
-    els.detailType.textContent = emptyView.typeText;
-    els.detailTitle.textContent = emptyView.titleText;
-    els.detailSummary.innerHTML = emptyView.summaryHtml;
-    els.detailTaxonomyBadge.textContent = emptyView.taxonomyBadge;
-      els.detailMeta.innerHTML = buildMetaItemsHtml(emptyView.metaEntries, { escapeHtml });
-      els.statsStrip.innerHTML = buildStatCardsHtml(emptyView.statsEntries, { escapeHtml });
+    els.detailType.textContent = "概覽";
+    els.detailTitle.textContent = "請選取一個節點";
+    els.detailSummary.innerHTML = "右側會顯示該頁的摘要、領域、頁型，以及它在知識地圖中的前置關係與延伸方向。<br><br>先從左側選一個領域，或直接點擊中央圖譜中的節點。";
+    els.detailTaxonomyBadge.textContent = "overview";
+    els.detailMeta.innerHTML = createMetaItems([
+      ["視圖模式", "Semantic Zoom"],
+      ["焦點狀態", "未選取"],
+      ["關係策略", "語意邊優先"],
+      ["節點標籤", "依縮放顯示"],
+    ]);
+    els.statsStrip.innerHTML = createStatCards([
+      ["顯示節點", String(filterOverviewNodes(state.overviewNodes).length)],
+      ["顯示關係", String(filterOverviewEdges(state.overviewEdges).length)],
+      ["已隱藏", "wikilink"],
+      ["總層級", "3"],
+    ]);
     fillRelationSection("prereq", []);
     fillRelationSection("extension", []);
     fillRelationSection("related", []);
-    els.detailPath.textContent = "尚未?��?節�?;
+    els.detailPath.textContent = "尚未選取節點";
     els.detailPath.removeAttribute("href");
     const noteSection = document.getElementById("noteSection");
     if (noteSection) noteSection.innerHTML = "";
     return;
   }
 
-  const cachedDetail = state.detailStore.getCached(node.id);
-  const detailIndex = state.detailStore.getIndex(node.id);
-  const detail = cachedDetail || detailIndex;
+  const detail = state.details[node.id] || {};
   const relations = collectRelations(node.id);
-  const detailView = buildNodeDetailView(node, detail, relations, {
-    taxonomyLabels: TAXONOMY_LABELS,
-    typeLabels: TYPE_LABELS,
-    renderMarkdown,
-    findNodeByTitle,
-  });
+  const resolvedSummary = detail.summary || node.summary || "這個節點目前沒有整理好的摘要。";
 
-  els.detailType.textContent = detailView.typeText;
-  els.detailTitle.textContent = detailView.titleText;
-  els.detailSummary.innerHTML = detailView.summaryHtml;
-  els.detailTaxonomyBadge.textContent = detailView.taxonomyBadge;
-  els.detailMeta.innerHTML = buildMetaItemsHtml(detailView.metaEntries, { escapeHtml });
-  els.statsStrip.innerHTML = buildStatCardsHtml(detailView.statsEntries, { escapeHtml });
+  els.detailType.textContent = TYPE_LABELS[node.type] || node.type;
+  els.detailTitle.textContent = node.title;
+  els.detailSummary.innerHTML = renderMarkdown(resolvedSummary, { compact: true });
+  els.detailTaxonomyBadge.textContent = TAXONOMY_LABELS[node.taxonomy] || node.taxonomy;
+  els.detailMeta.innerHTML = createMetaItems([
+    ["領域", TAXONOMY_LABELS[node.taxonomy] || node.taxonomy],
+    ["類型", TYPE_LABELS[node.type] || node.type],
+    ["連結數", String(node.degree)],
+    ["來源路徑", detail.path || node.path || "—"],
+  ]);
+  els.statsStrip.innerHTML = createStatCards([
+    ["先備", String(relations.requires.length)],
+    ["延伸", String(relations.extension.length)],
+    ["相關", String(relations.related.length)],
+    ["章節", String(detail.sections?.length || 0)],
+  ]);
 
   fillRelationSection("prereq", relations.requires);
   fillRelationSection("extension", relations.extension);
@@ -1066,99 +1238,108 @@ function renderDetail() {
     els.detailPath.textContent = path;
     els.detailPath.href = `../${encodeURI(path)}`;
   } else {
-    els.detailPath.textContent = "沒�?來�?路�?";
+    els.detailPath.textContent = "沒有來源路徑";
     els.detailPath.removeAttribute("href");
   }
 
   // Note preview / full text
-  if (!cachedDetail) {
-    void loadDetail(node.id);
-  }
   renderNoteSection(node, detail);
   scheduleMathTypeset(els.detailSummary);
-  syncNoteViewToggle();
-}
-
-function ensureDetailSection(sectionId, options = {}) {
-  let section = document.getElementById(sectionId);
-  if (section) return section;
-
-  section = document.createElement("div");
-  section.id = sectionId;
-  section.className = "detail-section";
-  const detailCard = document.querySelector(".detail-card");
-  if (!detailCard) return section;
-
-  if (options.insertAfterFirstChild) {
-    detailCard.insertBefore(section, detailCard.firstChild?.nextSibling);
-  } else {
-    detailCard.appendChild(section);
-  }
-  return section;
 }
 
 function renderNoteSection(node, detail) {
-  const noteSection = ensureDetailSection("noteSection");
-
-  noteSection.innerHTML = buildNoteSectionHtml(node, detail, {
-    escapeHtml,
-    renderMarkdown,
-    findNodeByTitle,
-    loadError: state.detailStore.getError(node.id),
-    isLoaded: state.detailStore.hasCached(node.id),
-    noteViewMode: state.noteViewMode,
-  });
-  scheduleMathTypeset(noteSection);
-}
-
-function syncNoteViewToggle() {
-  const toggle = document.getElementById("noteViewToggle");
-  if (!toggle) return;
-  const hasNode = Boolean(state.selectedNodeId);
-  toggle.style.display = hasNode ? "flex" : "none";
-  const isFull = state.noteViewMode === "full";
-  for (const btn of toggle.querySelectorAll(".note-view-btn")) {
-    btn.classList.toggle("active", btn.dataset.noteMode === (isFull ? "full" : "preview"));
+  let noteSection = document.getElementById("noteSection");
+  if (!noteSection) {
+    noteSection = document.createElement("div");
+    noteSection.id = "noteSection";
+    noteSection.className = "detail-section";
+    els.detailPath.parentElement.insertAdjacentElement("afterend", noteSection);
   }
-  document.querySelector(".app-shell")?.classList.toggle("reader-mode", isFull && hasNode);
-}
 
-async function loadDetail(nodeId) {
-  return state.detailStore.loadDetail(nodeId, {
-    onSettled(settledNodeId) {
-      if (state.selectedNodeId === settledNodeId) {
-        try {
-          renderDetail();
-        } catch (renderError) {
-          console.error("renderDetail error:", renderError);
-        }
+  if (!detail || (!detail.sections?.length && !detail.body_preview && !detail.body_full)) {
+    noteSection.innerHTML = `
+      <div class="section-head"><h3>筆記內容</h3></div>
+      <p style="color:var(--muted);font-size:0.88rem;">這個節點目前沒有對應的筆記內容。</p>
+    `;
+    return;
+  }
+
+  const isFullMode = state.noteViewMode === "full";
+  const sections = detail.sections || [];
+  const displaySections = isFullMode ? sections : sections.slice(0, 6);
+
+  // Toggle buttons
+  let html = `
+    <div class="section-head">
+      <h3>${isFullMode ? "筆記全文" : "筆記預覽"}</h3>
+      <div class="note-view-toggle">
+        <button class="note-view-btn ${!isFullMode ? "active" : ""}" data-note-mode="preview">預覽</button>
+        <button class="note-view-btn ${isFullMode ? "active" : ""}" data-note-mode="full">全文</button>
+      </div>
+    </div>
+  `;
+
+  // Body content
+  const bodyContent = isFullMode
+    ? (detail.body_full || detail.body_preview || detail.summary || "")
+    : (detail.body_preview || detail.summary || "");
+  if (bodyContent) {
+    html += `<div class="note-body rich-summary">${renderMarkdown(bodyContent, { stripLeadingTitle: true, compact: !isFullMode, title: node.title })}</div>`;
+  }
+
+  // Section outline + cards
+  if (displaySections.length) {
+    html += `<div class="section-head" style="margin-top:18px"><h3>${isFullMode ? "章節全文" : "章節預覽"}</h3></div>`;
+    html += `<div class="note-sections-grid">`;
+    for (let i = 0; i < displaySections.length; i++) {
+      const sec = displaySections[i];
+      html += `
+        <article class="section-card">
+          <h4>${escapeHtml(sec.title)}</h4>
+          <div class="section-card-content">${renderMarkdown(isFullMode ? sec.content || sec.preview || "" : sec.preview || "", { compact: !isFullMode })}</div>
+        </article>
+      `;
+    }
+    html += `</div>`;
+  }
+
+  noteSection.innerHTML = html;
+  scheduleMathTypeset(noteSection);
+
+  // Wire up toggle buttons
+  for (const btn of noteSection.querySelectorAll(".note-view-btn")) {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.noteMode;
+      if (mode && mode !== state.noteViewMode) {
+        state.noteViewMode = mode;
+        renderDetail();
       }
-    },
-  });
+    });
+  }
 }
 
 function renderSearchResults() {
-  const searchSection = ensureDetailSection("searchSection", { insertAfterFirstChild: true });
+  let searchSection = document.getElementById("searchSection");
+  if (!searchSection) {
+    searchSection = document.createElement("div");
+    searchSection.id = "searchSection";
+    searchSection.className = "detail-section";
+    const detailCard = document.querySelector(".detail-card");
+    if (detailCard) detailCard.insertBefore(searchSection, detailCard.firstChild?.nextSibling);
+  }
   if (!state.query) {
     searchSection.innerHTML = "";
     return;
   }
-  const matches = findSearchMatches(state.graph.nodes, state.query);
-  searchSection.innerHTML = buildSearchResultsHtml(state.query, matches, {
-    escapeHtml,
-    messages: {
-      emptyPrefix: "?????�泵??�?",
-      emptySuffix: "????�?�??",
-      resultCountPrefix: "?�??��????",
-      resultCountSuffix: "??",
-    },
-  });
-  return;
+  const matches = state.graph.nodes
+    .filter((n) => n.searchText?.includes(state.query))
+    .filter((n) => n.type !== "domain" && n.type !== "root")
+    .slice(0, 50);
   if (!matches.length) {
-    searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">?��??�符?��?{escapeHtml(state.query)}?��?節點�?/p>`;
+    searchSection.innerHTML = `<p style="color:var(--muted);font-size:0.88rem;">找不到符合「${escapeHtml(state.query)}」的節點。</p>`;
     return;
   }
-  let html = `<div class="section-head"><h3>?��?結�?�?{matches.length}�?/h3></div><div class="pill-list">`;
+  let html = `<div class="section-head"><h3>搜尋結果（${matches.length}）</h3></div><div class="pill-list">`;
   for (const n of matches) {
     html += `<button class="pill" type="button" data-node-id="${escapeHtml(n.id)}" data-family="related">${escapeHtml(n.title)}</button>`;
   }
@@ -1173,23 +1354,61 @@ function fillRelationSection(prefix, items) {
   const countEl = els[`${prefix}Count`];
   const listEl = els[`${prefix}List`];
   countEl.textContent = String(items.length);
-  listEl.innerHTML = buildPillListHtml(
-    items,
-    prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related",
-    { escapeHtml }
-  );
+  listEl.innerHTML = renderPills(items, prefix === "prereq" ? "requires" : prefix === "extension" ? "extension" : "related");
+  for (const button of listEl.querySelectorAll(".pill[data-node-id]")) {
+    button.addEventListener("click", () => handleNodeSelect(button.dataset.nodeId));
+  }
 }
 
 function collectRelations(nodeId) {
-  const entries = collectDirectionalRelations(nodeId, state.graphIndex, state.nodeMap, {
-    includeNode: (node) => Boolean(node) && node.type !== "domain",
-  });
-  return groupDirectionalRelations(entries, {
-    rankNodes(nodes) {
-      return rankFocusNodes(nodes, { dedupeNodes });
-    },
-    limit: 8,
-  });
+  const requires = [];
+  const extension = [];
+  const related = [];
+  for (const edge of state.graph.edges) {
+    if (edge.source !== nodeId && edge.target !== nodeId) continue;
+    const otherId = edge.source === nodeId ? edge.target : edge.source;
+    const other = state.nodeMap.get(otherId);
+    if (!other || other.type === "domain") continue;
+    if (FOCUS_INNER_TYPES.has(edge.type)) requires.push(other);
+    else if (FOCUS_OUTER_TYPES.has(edge.type)) extension.push(other);
+    else related.push(other);
+  }
+  return {
+    requires: rankFocusNodes(requires).slice(0, 8),
+    extension: rankFocusNodes(extension).slice(0, 8),
+    related: rankFocusNodes(related).slice(0, 8),
+  };
+}
+
+function createMetaItems(entries) {
+  return entries
+    .map(
+      ([label, value]) => `
+        <div class="meta-item">
+          <span class="meta-label">${escapeHtml(label)}</span>
+          <span class="meta-value">${escapeHtml(value)}</span>
+        </div>`
+    )
+    .join("");
+}
+
+function createStatCards(entries) {
+  return entries
+    .map(
+      ([label, value]) => `
+        <div class="stat-card">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>`
+    )
+    .join("");
+}
+
+function renderPills(items, family) {
+  if (!items.length) return "";
+  return items
+    .map((item) => `<button class="pill" type="button" data-family="${family}" data-node-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`)
+    .join("");
 }
 
 function isConnectedToSelected(nodeId) {
@@ -1200,47 +1419,86 @@ function isConnectedToSelected(nodeId) {
   );
 }
 
+function buildEdgePath(source, target) {
+  const mx = (source.x + target.x) / 2;
+  const my = (source.y + target.y) / 2;
+  const dx = target.x - source.x;
+  const dy = target.y - source.y;
+  const distance = Math.max(Math.hypot(dx, dy), 1);
+  const curve = distance * 0.12;
+  const nx = -dy / distance;
+  const ny = dx / distance;
+  return `M ${source.x} ${source.y} Q ${mx + nx * curve} ${my + ny * curve} ${target.x} ${target.y}`;
+}
+
 function relaxLayout(nodes, options = {}) {
-  runRelaxLayout(nodes, {
-    ...options,
-    getCollisionHalfWidth: collisionHalfWidth,
-    getCollisionHalfHeight: collisionHalfHeight,
-    clampNodes(sceneNodes, { preserveFocus }) {
-      clampNodesToViewport(sceneNodes, {
+  const iterations = options.iterations || 40;
+  const padding = options.padding || 10;
+  const lockDomains = Boolean(options.lockDomains);
+  const lockFocal = Boolean(options.lockFocal);
+  const enforceBounds = Boolean(options.enforceBounds);
+
+  for (let step = 0; step < iterations; step += 1) {
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const overlapX = collisionHalfWidth(a) + collisionHalfWidth(b) + padding - Math.abs(dx);
+        const overlapY = collisionHalfHeight(a) + collisionHalfHeight(b) + padding - Math.abs(dy);
+        if (overlapX <= 0 || overlapY <= 0) continue;
+
+        const aLocked = (lockDomains && a.type === "domain") || (lockFocal && a.focal);
+        const bLocked = (lockDomains && b.type === "domain") || (lockFocal && b.focal);
+        const movableCount = Number(!aLocked) + Number(!bLocked);
+        if (!movableCount) continue;
+
+        if (overlapX < overlapY) {
+          const direction = dx === 0 ? (i % 2 === 0 ? 1 : -1) : Math.sign(dx);
+          const push = overlapX / movableCount;
+          if (!aLocked) a.x -= direction * push;
+          if (!bLocked) b.x += direction * push;
+        } else {
+          const direction = dy === 0 ? (j % 2 === 0 ? 1 : -1) : Math.sign(dy);
+          const push = overlapY / movableCount;
+          if (!aLocked) a.y -= direction * push;
+          if (!bLocked) b.y += direction * push;
+        }
+      }
+    }
+
+    if (enforceBounds) {
+      clampNodesToViewport(nodes, {
         padding: state.mode === "focus" ? 84 : 36,
-        preserveFocus,
+        preserveFocus: lockFocal,
         useCollisionRadius: true,
-        collisionRadius,
-        canvasWidth: CANVAS_WIDTH,
-        canvasHeight: CANVAS_HEIGHT,
       });
-    },
-  });
+    }
+  }
 }
 
 function collisionRadius(node) {
-  return baseCollisionRadius(node, {
-    getCollisionHalfWidth: collisionHalfWidth,
-    getCollisionHalfHeight: collisionHalfHeight,
-  });
+  return Math.max(collisionHalfWidth(node), collisionHalfHeight(node));
 }
 
 function collisionHalfWidth(node) {
-  return baseCollisionHalfWidth(node, {
-    visibleTitle: resolveVisibleTitle(
-      node,
-      semanticTierFromZoom(state.zoom),
-      node.id === state.selectedNodeId
-    ),
-  });
+  const label = resolveVisibleTitle(
+    node,
+    semanticTierFromZoom(state.zoom),
+    node.id === state.selectedNodeId
+  );
+  if (!label) return (node.r || 0) + 6;
+  const estimatedHalfWidth = Math.min(118, Math.max(0, Array.from(label).length * 9.5));
+  return Math.max((node.r || 0) + 6, estimatedHalfWidth + 14);
 }
 
 function collisionHalfHeight(node) {
-  return baseCollisionHalfHeight(node);
+  return (node.r || 0) + 12;
 }
 
 function shorten(text, max) {
-  return text.length > max ? `${text.slice(0, max)}?�` : text;
+  return text.length > max ? `${text.slice(0, max)}…` : text;
 }
 
 function dedupeNodes(nodes) {
@@ -1262,21 +1520,88 @@ function dedupeEdges(edges) {
   });
 }
 
-function syncViewportTransform() {
-  updateViewportTransform(els.viewport, state.panX, state.panY, state.zoom);
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
 }
 
-function syncMiniMapViewport(bounds = state.miniMapBounds) {
-  updateMiniMapViewport(els.minimapViewport, bounds, {
-    width: 220,
-    height: 140,
-    padding: 10,
-    panX: state.panX,
-    panY: state.panY,
-    zoom: state.zoom,
-    canvasWidth: CANVAS_WIDTH,
-    canvasHeight: CANVAS_HEIGHT,
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
+function scheduleMathTypeset(container) {
+  if (!container) return;
+  if (window.MathJax?.typesetPromise) {
+    if (typeof window.MathJax.typesetClear === "function") {
+      window.MathJax.typesetClear([container]);
+    }
+    window.MathJax.typesetPromise([container]).catch((error) => {
+      console.error("Math typeset failed", error);
+    });
+    return;
+  }
+  window.setTimeout(() => scheduleMathTypeset(container), 120);
+}
+
+function protectMathSegments(text) {
+  const tokens = new Map();
+  let counter = 0;
+  let protectedText = text.replace(/\$\$[\s\S]+?\$\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: true });
+    return token;
   });
+  protectedText = protectedText.replace(/\$(?!\$)([^$\n]|\\\$)+?\$/g, (match) => {
+    const token = `@@MATH${counter++}@@`;
+    tokens.set(token, { raw: match, display: false });
+    return token;
+  });
+  return { text: protectedText, tokens };
+}
+
+function isMathTokenLine(line, tokens) {
+  return tokens.has(line) && Boolean(tokens.get(line)?.display);
+}
+
+function restoreTokens(text, tokens) {
+  let restored = text;
+  for (const [token, meta] of tokens.entries()) {
+    restored = restored.replaceAll(token, meta.raw);
+  }
+  return restored;
+}
+
+function renderInlineMarkup(text, tokens) {
+  const parts = String(text || "").split(/(@@MATH\d+@@|\[\[[^\]]+\]\]|`[^`]+`)/g);
+  return parts
+    .filter((part) => part !== "")
+    .map((part) => {
+      if (tokens.has(part)) return tokens.get(part).raw;
+      if (part.startsWith("[[")) return renderWikiLink(part);
+      const codeMatch = part.match(/^`([^`]+)`$/);
+      if (codeMatch) return `<code>${escapeHtml(codeMatch[1])}</code>`;
+      return escapeHtml(part);
+    })
+    .join("");
+}
+
+function renderWikiLink(rawLink) {
+  const match = rawLink.match(/^\[\[([^|\]#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]$/);
+  if (!match) return escapeHtml(rawLink);
+  const targetTitle = String(match[1] || "").trim();
+  const label = String(match[2] || match[1] || "").trim();
+  const targetNode = findNodeByTitle(targetTitle);
+  if (!targetNode) {
+    return `<span class="inline-note-link unresolved">${escapeHtml(label)}</span>`;
+  }
+  return `<button class="inline-note-link" type="button" data-node-id="${escapeHtml(targetNode.id)}">${escapeHtml(label)}</button>`;
 }
 
 function findNodeByTitle(title) {
@@ -1288,4 +1613,104 @@ function findNodeByTitle(title) {
 
 function escapeRegex(value) {
   return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function renderMarkdown(value, options = {}) {
+  const { compact = false, stripLeadingTitle = false, title = "" } = options;
+  const normalized = String(value || "").replaceAll("\r\n", "\n").trim();
+  if (!normalized) return "";
+
+  let prepared = normalized;
+  if (stripLeadingTitle) {
+    const lines = prepared.split("\n");
+    let idx = 0;
+    while (idx < lines.length && !lines[idx].trim()) idx++;
+    if (idx < lines.length && lines[idx].trim().startsWith("#")) {
+      const headingTitle = lines[idx].trim().replace(/^#+\s*/, "").trim();
+      if (!title || headingTitle === title.trim()) {
+        lines.splice(idx, 1);
+        while (idx < lines.length && !lines[idx].trim()) lines.splice(idx, 1);
+        prepared = lines.join("\n");
+      }
+    }
+  }
+
+  const protectedText = protectMathSegments(prepared);
+  const lines = protectedText.text.split("\n");
+  const blocks = [];
+
+  for (let index = 0; index < lines.length; ) {
+    const line = lines[index].trim();
+    if (!line) { index += 1; continue; }
+
+    if (isMathTokenLine(line, protectedText.tokens)) {
+      blocks.push(`<div class="math-block">${restoreTokens(line, protectedText.tokens)}</div>`);
+      index += 1;
+      continue;
+    }
+
+    const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
+    if (headingMatch) {
+      const level = Math.min(6, headingMatch[1].length + 1);
+      blocks.push(`<h${level}>${renderInlineMarkup(headingMatch[2], protectedText.tokens)}</h${level}>`);
+      index += 1;
+      continue;
+    }
+
+    if (/^- /.test(line)) {
+      const items = [];
+      while (index < lines.length && /^- /.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().slice(2), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ul>${items.join("")}</ul>`);
+      continue;
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\d+\.\s/.test(lines[index].trim())) {
+        items.push(`<li>${renderInlineMarkup(lines[index].trim().replace(/^\d+\.\s/, ""), protectedText.tokens)}</li>`);
+        index += 1;
+      }
+      blocks.push(`<ol>${items.join("")}</ol>`);
+      continue;
+    }
+
+    const paragraphLines = [];
+    while (index < lines.length) {
+      const candidate = lines[index].trim();
+      if (!candidate) break;
+      if (isMathTokenLine(candidate, protectedText.tokens)) break;
+      if (/^(#{1,6})\s+/.test(candidate) || /^- /.test(candidate) || /^\d+\.\s/.test(candidate)) break;
+      paragraphLines.push(lines[index]);
+      index += 1;
+    }
+    const paragraphHtml = renderInlineMarkup(paragraphLines.join(compact ? " " : "\n"), protectedText.tokens).replaceAll("\n", "<br>");
+    blocks.push(`<p>${paragraphHtml}</p>`);
+  }
+
+  return blocks.join("");
+}
+
+function groupRelations(nodeId) {
+  const outgoing = {};
+  const incoming = {};
+  for (const edge of state.graph.edges) {
+    if (edge.source === nodeId) {
+      const target = state.nodeMap.get(edge.target);
+      if (target && target.type !== "domain") {
+        if (!outgoing[edge.type]) outgoing[edge.type] = [];
+        outgoing[edge.type].push(target);
+      }
+    }
+    if (edge.target === nodeId) {
+      const source = state.nodeMap.get(edge.source);
+      if (source && source.type !== "domain") {
+        if (!incoming[edge.type]) incoming[edge.type] = [];
+        incoming[edge.type].push(source);
+      }
+    }
+  }
+  return { outgoing, incoming };
 }

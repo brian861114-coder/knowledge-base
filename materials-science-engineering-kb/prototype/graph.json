@@ -1404,6 +1404,18 @@
       ]
     },
     {
+      "id": "Dynamic-Mechanical-Analysis",
+      "title": "動態機械分析",
+      "type": "mathematical_tool",
+      "summary": "動態機械分析以小振幅週期載入量測材料的儲能、損耗與黏彈性轉變，特別適合判讀聚合物和其他時間依賴材料的溫度與頻率響應。",
+      "path": "05_characterization/Dynamic Mechanical Analysis.md",
+      "domain": "Characterization",
+      "taxonomy_domain": "characterization",
+      "tags": [
+        "dma"
+      ]
+    },
+    {
       "id": "Electrochemical-Impedance-Spectroscopy",
       "title": "電化學阻抗譜",
       "type": "mathematical_tool",
@@ -2718,6 +2730,36 @@
       "type": "wikilink"
     },
     {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Band-Structure-and-Electronic-States",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Electrical-Properties",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Carrier-Mobility",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Dielectric-Response",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Magnetic-Response",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "target": "Optical-Properties",
+      "type": "wikilink"
+    },
+    {
       "source": "Energy-Electronic-and-Biomedical-Materials-Map",
       "target": "Battery-Materials",
       "type": "organized_by"
@@ -3220,6 +3262,51 @@
     {
       "source": "Materials-Properties-Overview",
       "target": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Mechanical-Properties-Map",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Thermal-and-Transport-Properties-Map",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Electronic-Magnetic-and-Optical-Properties-Map",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Mechanical-Properties",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Thermal-Properties",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Electrical-Properties",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Magnetic-Response",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Dielectric-Response",
+      "type": "wikilink"
+    },
+    {
+      "source": "Materials-Properties-Overview",
+      "target": "Optical-Properties",
       "type": "wikilink"
     },
     {
@@ -7228,6 +7315,16 @@
       "type": "measures"
     },
     {
+      "source": "Glass-Transition-and-Thermal-Transitions",
+      "target": "Differential-Scanning-Calorimetry",
+      "type": "wikilink"
+    },
+    {
+      "source": "Glass-Transition-and-Thermal-Transitions",
+      "target": "Dynamic-Mechanical-Analysis",
+      "type": "wikilink"
+    },
+    {
       "source": "Ionic-Conductivity",
       "target": "Electrical-Properties",
       "type": "requires"
@@ -7628,6 +7725,11 @@
       "type": "measures"
     },
     {
+      "source": "Viscoelastic-Response",
+      "target": "Glass-Transition-and-Thermal-Transitions",
+      "type": "wikilink"
+    },
+    {
       "source": "Wear-Resistance",
       "target": "Mechanical-Properties",
       "type": "requires"
@@ -7736,6 +7838,21 @@
       "source": "Annealing",
       "target": "Mechanical-Properties",
       "type": "related_to"
+    },
+    {
+      "source": "Annealing",
+      "target": "X-ray-Diffraction",
+      "type": "wikilink"
+    },
+    {
+      "source": "Annealing",
+      "target": "Scanning-Electron-Microscopy",
+      "type": "wikilink"
+    },
+    {
+      "source": "Annealing",
+      "target": "Electron-Backscatter-Diffraction",
+      "type": "wikilink"
     },
     {
       "source": "Casting-and-Solidification-Processing",
@@ -8298,6 +8415,66 @@
       "type": "wikilink"
     },
     {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Viscoelastic-Response",
+      "type": "related_to"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Glass-Transition-and-Thermal-Transitions",
+      "type": "related_to"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Polymers",
+      "type": "related_to"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Biomaterials",
+      "type": "related_to"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Mechanical-Testing",
+      "type": "related_to"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Viscoelastic-Response",
+      "type": "measures"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Glass-Transition-and-Thermal-Transitions",
+      "type": "measures"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Mechanical-Properties",
+      "type": "measures"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Differential-Scanning-Calorimetry",
+      "type": "wikilink"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Mechanical-Testing",
+      "type": "wikilink"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Differential-Scanning-Calorimetry",
+      "type": "wikilink"
+    },
+    {
+      "source": "Dynamic-Mechanical-Analysis",
+      "target": "Thermogravimetric-Analysis",
+      "type": "wikilink"
+    },
+    {
       "source": "Electrochemical-Impedance-Spectroscopy",
       "target": "Ionic-Conductivity",
       "type": "related_to"
@@ -8326,6 +8503,16 @@
       "source": "Electrochemical-Impedance-Spectroscopy",
       "target": "Corrosion-Resistance",
       "type": "measures"
+    },
+    {
+      "source": "Electrochemical-Impedance-Spectroscopy",
+      "target": "Ionic-Conductivity",
+      "type": "wikilink"
+    },
+    {
+      "source": "Electrochemical-Impedance-Spectroscopy",
+      "target": "Corrosion-Testing",
+      "type": "wikilink"
     },
     {
       "source": "Electron-Backscatter-Diffraction",
@@ -8761,6 +8948,11 @@
       "source": "Thermogravimetric-Analysis",
       "target": "Glass-Transition-and-Thermal-Transitions",
       "type": "measures"
+    },
+    {
+      "source": "Thermogravimetric-Analysis",
+      "target": "Powder-Processing-and-Compaction",
+      "type": "wikilink"
     },
     {
       "source": "Transmission-Electron-Microscopy",

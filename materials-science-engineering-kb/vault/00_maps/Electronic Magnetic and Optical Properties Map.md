@@ -17,3 +17,11 @@ recommended_order: [[[Electrical Properties|電性]], [[Carrier Mobility|載子�
 [[Electrical Properties|電性]] 是廣泛的入口點。 [[Carrier Mobility|載子遷移率]] 和 [[Dielectric Response|介電響應]] 劃分了電荷傳輸和極化的兩個主要子情況。 [[Magnetic Response|磁性響應]] 和 [[Optical Properties|光學性質]] 將相同的邏輯擴展到場和光子響應。
 
 包含 [[Band Structure and Electronic States|能帶結構和電子態]] 和 [[Doping and Carrier Control|摻雜和載子控制]] 是因為如果沒有底層電子結構邏輯，屬性頁就不是不言自明的。
+
+## 這張圖怎麼讀
+
+這條線的核心不是把電、磁、光拆成三個互不相干的箱子，而是理解它們都來自電子結構、散射機制和微結構限制。你如果只記材料「導電」或「有磁性」，那只是標籤；真正有用的是知道哪些載子、缺陷、界面或能階安排讓它變成現在這個樣子。
+
+## 典型閱讀順序
+
+建議先從 [[Band Structure and Electronic States|能帶結構和電子態]] 讀起，再接 [[Electrical Properties|電性]]、[[Carrier Mobility|載子遷移率]] 和 [[Dielectric Response|介電響應]]，這樣比較容易理解器件性能為什麼會受摻雜、缺陷和界面控制。之後再讀 [[Magnetic Response|磁性響應]] 和 [[Optical Properties|光學性質]]，就能看出不同性質其實共享同一批微觀限制，只是觀察方式不同。

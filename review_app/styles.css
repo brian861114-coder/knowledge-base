@@ -1,0 +1,254 @@
+:root {
+  --bg: #f3efe7;
+  --paper: #fffdf9;
+  --ink: #1c1a17;
+  --muted: #6f685d;
+  --line: #d4cabc;
+  --accent: #b6401c;
+  --accent-dark: #8f2e11;
+  --ok: #1e6b42;
+  --warn: #8d6412;
+  --bad: #8a2323;
+  --shadow: 0 18px 40px rgba(62, 44, 24, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(182, 64, 28, 0.08), transparent 28%),
+    linear-gradient(180deg, #efe8dc 0%, var(--bg) 100%);
+}
+
+.topbar,
+.toolbar,
+.source-panel,
+.compare-grid,
+.actions {
+  width: min(1400px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 12px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 6px 0 8px;
+  font-size: clamp(28px, 5vw, 42px);
+}
+
+.meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.session-stats {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.badge,
+.status {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.toolbar,
+.source-panel,
+.pane,
+.actions {
+  background: rgba(255, 253, 249, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(212, 202, 188, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.toolbar,
+.source-panel,
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  margin-bottom: 14px;
+}
+
+.toolbar-group,
+.decision-buttons,
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffdf8;
+  color: var(--ink);
+  padding: 10px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #b7a58e;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #fff8f2;
+  border-color: var(--accent);
+}
+
+button.primary:hover {
+  background: var(--accent-dark);
+}
+
+button.danger {
+  color: var(--bad);
+}
+
+.view-button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.status.pending {
+  color: var(--warn);
+}
+
+.status.approved {
+  color: var(--ok);
+}
+
+.status.rejected {
+  color: var(--bad);
+}
+
+.status.skipped {
+  color: var(--muted);
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding-bottom: 100px;
+}
+
+.diff-added {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.diff-removed {
+  background: rgba(107, 114, 128, 0.15);
+  color: #6b7280;
+  text-decoration: line-through;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.pane {
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.pane-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.pane-content {
+  height: min(70vh, 900px);
+  overflow: auto;
+  padding: 20px;
+  line-height: 1.7;
+}
+
+.pane-content.markdown {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  background: #fcfaf5;
+}
+
+.preview h1,
+.preview h2,
+.preview h3 {
+  margin-top: 1.4em;
+}
+
+.preview p {
+  margin: 0 0 1em;
+}
+
+.preview ul {
+  margin: 0 0 1em 1.2em;
+}
+
+.preview code {
+  background: #f1ece3;
+  padding: 0.1em 0.3em;
+  border-radius: 6px;
+}
+
+.hidden {
+  display: none;
+}
+
+.actions {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 960px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    position: static;
+    transform: none;
+    width: min(1400px, calc(100% - 32px));
+    margin: 0 auto 24px;
+  }
+
+  .topbar,
+  .toolbar,
+  .source-panel,
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

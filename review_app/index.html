@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Map Review</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: { "[+]": [["$", "$"]] },
+          displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+          processEscapes: true,
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Wikipedia Pilot Review</div>
+        <h1 id="note-title">Loading...</h1>
+        <p id="note-meta" class="meta"></p>
+      </div>
+      <div class="session-stats">
+        <div id="session-id" class="badge"></div>
+        <div id="progress" class="badge"></div>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="toolbar-group">
+        <button data-view="preview" class="view-button active">Preview</button>
+        <button data-view="markdown" class="view-button">Markdown</button>
+      </div>
+      <div id="status-pill" class="status pending">Pending</div>
+    </section>
+
+    <section class="source-panel">
+      <div>
+        <strong>Wikipedia</strong>
+        <a id="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
+      </div>
+      <div id="change-summary"></div>
+    </section>
+
+    <main class="compare-grid">
+      <section class="pane">
+        <div class="pane-header">Original</div>
+        <div id="original-preview" class="pane-content preview"></div>
+        <pre id="original-markdown" class="pane-content markdown hidden"></pre>
+      </section>
+      <section class="pane">
+        <div class="pane-header">Proposed</div>
+        <div id="proposed-preview" class="pane-content preview"></div>
+        <pre id="proposed-markdown" class="pane-content markdown hidden"></pre>
+      </section>
+    </main>
+
+    <footer class="actions">
+      <div class="nav-buttons">
+        <button id="prev-button">Previous</button>
+        <button id="next-button">Next</button>
+      </div>
+      <div class="decision-buttons">
+        <button data-decision="rejected" class="danger">Reject</button>
+        <button data-decision="skipped">Skip</button>
+        <button data-decision="approved" class="primary">Approve overwrite</button>
+        <button id="export-decisions-button">Export decisions</button>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

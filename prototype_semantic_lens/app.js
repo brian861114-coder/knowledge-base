@@ -199,9 +199,28 @@ init().catch((error) => {
 });
 
 async function init() {
-  const [graphResponse, detailResponse] = await Promise.all([fetch(GRAPH_URL), fetch(DETAILS_URL)]);
-  const rawGraph = await graphResponse.json();
-  const rawDetails = await detailResponse.json();
+  // 圖譜資料：優先使用內嵌變數（支援 file:// 雙擊開啟）
+  let rawGraph;
+  if (window.__GRAPH_RAW__) {
+    rawGraph = window.__GRAPH_RAW__;
+  } else {
+    const graphResponse = await fetch(GRAPH_URL);
+    rawGraph = await graphResponse.json();
+  }
+
+  // 詳情資料：優先使用內嵌變數，否則 fetch（HTTP 伺服器模式）
+  let rawDetails;
+  if (window.__DETAIL_RAW__) {
+    rawDetails = window.__DETAIL_RAW__;
+  } else {
+    try {
+      const detailResponse = await fetch(DETAILS_URL);
+      rawDetails = await detailResponse.json();
+    } catch (e) {
+      console.warn("無法載入詳情資料，請用 HTTP 伺服器開啟。");
+      rawDetails = {};
+    }
+  }
 
   state.details = rawDetails;
   state.graph = normalizeGraph(rawGraph);

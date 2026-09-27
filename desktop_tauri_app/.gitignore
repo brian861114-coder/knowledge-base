@@ -1,0 +1,4 @@
+node_modules/
+src-tauri/target/
+# 由 npm run sync-app 從 ../standalone_html_app 產生
+app/

@@ -11,7 +11,7 @@ status_source: AI_HANDOFF.md
 snapshot: summary
 related:
   - knowledge-base-template
-card_reviewed: 2026-09-24
+card_reviewed: 2026-09-27
 ---
 
 ## 用途
@@ -22,6 +22,7 @@ schema 驗證、JSON 匯出、`prototype/` 圖譜與閱讀、`docs/` GitHub Page
 
 ## 結構與入口
 `schema/`、`tools/run_exports.py`、`prototype/index.html`、`start_prototype.cmd`、衍生檔 `physics_graph.json`。模板複本：`knowledge-base-template/`。
+桌面版：`desktop_tauri_app/`（Tauri，2026-09-27 取代已刪除的 Electron 版 `desktop_exe_app/`）；`npm run build` 先從 `standalone_html_app/` 同步並內嵌 MathJax 3.2.2 再打包，NSIS 安裝檔約 2.5 MiB，公式可離線渲染。
 
 ## 外部依賴
 Python、Obsidian（外部 vault）、MathJax／GitHub Pages（文件）。遠端 `knowledge-base`。

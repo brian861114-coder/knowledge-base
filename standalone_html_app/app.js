@@ -157,6 +157,8 @@ const domainColorPalette = {
   未分類: "#a1a6b1",
 };
 
+let activeSectionObserver = null;
+
 init().catch((error) => {
   console.error(error);
   els.detailCard.classList.remove("empty");
@@ -1329,8 +1331,6 @@ function renderNotePreview(node, detail) {
 function buildSectionTargetId(nodeId, index) {
   return `section-${nodeId}-${index}`.replaceAll(" ", "-");
 }
-
-let activeSectionObserver = null;
 
 function setupSectionObserver(nodeId) {
   if (activeSectionObserver) {

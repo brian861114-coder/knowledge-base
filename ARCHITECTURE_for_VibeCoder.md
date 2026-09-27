@@ -22,7 +22,7 @@
 3. 執行 `start_prototype.cmd`，瀏覽器會自動開啟本機網頁 `http://127.0.0.1:4173/prototype/` 預覽。
 4. 想更新公開網頁時，執行 `scripts/deploy.sh`（會自動匯出 → 同步到 `docs/` → 提交 → 推上 GitHub）。
 
-另外有兩種特殊觀看方式：`standalone_html_app\` 的 `index.html` 可以「雙擊直接開啟」離線版；`desktop_exe_app\` 可打包成 Windows 桌面程式（Electron）。
+另外有兩種特殊觀看方式：`standalone_html_app\` 的 `index.html` 可以「雙擊直接開啟」離線版；`desktop_tauri_app\` 可打包成 Windows 桌面程式（Tauri，2026-09-27 取代舊 Electron 版）。
 
 ## 系統由哪些部分組成？
 這個專案**沒有傳統的雲端伺服器**，它分成四層：
@@ -31,7 +31,7 @@
 
 2. **工具層（本機後端）**：repo 裡的 `tools\` 資料夾是一批 **Python** 程式（匯出、驗證、生成、品質稽核等），在你自己電腦上執行，把 Vault 的筆記轉成 **JSON** 資料檔（`physics_graph.json` 圖譜資料、`physics_note_details.json` 閱讀資料），並檢查筆記結構與連結有沒有壞。開發時 `start_prototype.ps1` 會用 Python 內建的 `http.server` 在本機開一個小網站伺服器（只綁定 127.0.0.1，外面連不進來）。另外 `tools\review_server.py` 是一個本機審查伺服器，用來在「人工檢查 AI 補寫內容」的工作流中提供網頁介面。
 
-3. **前端層（畫面）**：`prototype\` 是主要閱讀介面，是純 HTML + JavaScript + CSS 寫成的**單頁應用**，沒有框架。它讀取匯出的 JSON 檔，畫出可拖曳縮放的知識圖譜、側邊摘要面板、全頁閱讀模式，並用 **MathJax** 渲染數學公式。其他前端還有 `prototype_semantic_lens\`（新版的焦點透鏡原型）、`standalone_html_app\`（資料內嵌的離線版）、`desktop_exe_app\`（**Electron** 包裝的 Windows 桌面版）、`review_app\`（審查用介面）。
+3. **前端層（畫面）**：`prototype\` 是主要閱讀介面，是純 HTML + JavaScript + CSS 寫成的**單頁應用**，沒有框架。它讀取匯出的 JSON 檔，畫出可拖曳縮放的知識圖譜、側邊摘要面板、全頁閱讀模式，並用 **MathJax** 渲染數學公式。其他前端還有 `prototype_semantic_lens\`（新版的焦點透鏡原型）、`standalone_html_app\`（資料內嵌的離線版）、`desktop_tauri_app\`（**Tauri** 包裝的 Windows 桌面版，MathJax 內嵌可離線）、`review_app\`（審查用介面）。
 
 4. **部署層**：`docs\` 資料夾是公開網頁的成品區，由 `scripts/deploy.sh` 把前端與 JSON 複製進去後推上 GitHub，**GitHub Pages** 就直接從 `main` 分支的 `docs\` 資料夾提供網頁（`docs\README.md` 記錄了這個設定）。
 
@@ -60,7 +60,7 @@
 5. 執行 `start_prototype.cmd` 開啟本機預覽（預設 `http://127.0.0.1:4173/prototype/`；可用環境變數 `KB_PROTOTYPE_PORT` 等覆蓋）。
 6. 第一次執行前先跑 `python tools\run_exports.py` 產生 JSON。
 
-**B. 桌面版（Electron）：** 在 `desktop_exe_app\` 執行 `npm install` 後 `npm run build`（用 electron-builder 打包成 Windows portable exe），或 `npm start` 直接跑。資料來自該資料夾內的 `graph-data.js` / `note-details-data.js`（注意：內容更新後需要重新產生這些檔案才會同步）。
+**B. 桌面版（Tauri）：** 需要 Rust 工具鏈與 Node.js。在 `desktop_tauri_app\` 執行 `npm install` 後 `npm run build`（先把 `standalone_html_app\` 同步到 `app\`、複製 MathJax 到 `app\vendor\mathjax\`，再打包成 NSIS 安裝檔，產物在 `src-tauri\target\release\bundle\nsis\`），或 `npm start` 以開發模式執行。資料來自 `standalone_html_app\` 的 `graph-data.js` / `note-details-data.js`（內容更新後需先重新產生這些檔案）。
 
 **C. 公開網頁部署：** 在 repo 根目錄執行 `scripts/deploy.sh`（bash），它會匯出 → 複製到 `docs\` → commit → push；GitHub Pages 設定為 main 分支的 `/docs`（無 CI 自動化，`.github` 資料夾不存在）。
 
@@ -76,9 +76,9 @@
 | 第三方服務 | 用途 | 免費／付費 | 金鑰或帳密放哪裡 | 如果服務倒了或改價會發生什麼 |
 |---|---|---|---|---|
 | GitHub（含 GitHub Pages） | 存放 repo、託管公開網頁 | 免費（公開 repo） | 無金鑰在 repo 內（Git 憑證由本機 Git 設定管理） | 網站與原始碼會打不開／無法更新；repo 內容可 clone 回本機繼續用 |
-| jsDelivr CDN（MathJax 3） | 網頁上渲染數學公式 | 免費 | 無 | 所有前端（含離線版與桌面版）的數學公式無法顯示；其餘內容正常 |
+| jsDelivr CDN（MathJax 3） | 網頁上渲染數學公式 | 免費 | 無 | 瀏覽器版與離線 HTML 版的數學公式無法顯示；桌面版已內嵌 MathJax 不受影響 |
 | Obsidian | 本機編輯 Markdown 筆記（Vault 格式來源） | 免費個人使用 | 無 | 筆記仍是純 Markdown 檔，可用其他編輯器；但既有工作流（frontmatter、wikilink 慣例）需人工維持 |
-| Electron / electron-builder | 打包 Windows 桌面版 | 免費開源 | 無 | 桌面版無法建置；瀏覽器版不受影響 |
+| Tauri 2（Rust + WebView2） | 打包 Windows 桌面版 | 免費開源 | 無 | 桌面版無法建置；瀏覽器版不受影響。執行時依賴 Windows 內建 WebView2 |
 | Python（標準函式庫） | 匯出／驗證／本機伺服器 | 免費開源 | 無 | 工具鏈與本機預覽無法運作 |
 | DeepSeek（模型） | AI 內容修復工作流（llm_configs 提及 deepseek_v4pro 等模型設定） | repo 內未標示費用；實際呼叫程式碼與金鑰**未發現**（在 repo 外） | 未發現（不在 repo 內） | AI 輔助補寫流程停擺；手動維護內容不受影響 |
 
@@ -130,7 +130,7 @@ flowchart LR
 | GitHub Pages | GitHub 提供的免費靜態網頁託管服務，repo 更新後網站跟著更新 |
 | repo（repository） | 程式專案倉庫，用 Git 管理每一版變更 |
 | Git | 記錄檔案每一版變更的版本控制系統，本專案用 GitHub 當遠端倉庫 |
-| Electron | 一種把網頁程式包裝成 Windows 桌面應用程式的框架 |
+| Tauri | 用系統內建 WebView 把網頁程式包成桌面應用程式的框架，體積遠小於 Electron |
 | MathJax | 把 `$...$` 數學語法排版成漂亮公式的程式庫 |
 | CDN | 把公開程式庫分散在世界各地的加速伺服器（本專案用它載入 MathJax） |
 | HTTP／http.server | 瀏覽器與程式溝通的協定／Python 內建的簡單本機網站伺服器 |
@@ -141,4 +141,4 @@ flowchart LR
 | prompt | 給 AI 模型的指令文字（本專案把各種限制寫成 prompt 檔） |
 | API | 程式之間互相呼叫的「服務窗口」 |
 | exe | Windows 可執行檔（本專案桌面版的最終成品） |
-| npm | Node.js 生態的套件管理工具，用來安裝桌面版的 Electron 等元件 |
+| npm | Node.js 生態的套件管理工具，用來安裝桌面版的 Tauri CLI 與 MathJax 等元件 |

@@ -1,0 +1,15 @@
+{
+  "name": "physics-knowledge-map-tauri",
+  "version": "1.0.0",
+  "description": "Tauri desktop wrapper for the Physics Knowledge Map standalone HTML app.",
+  "private": true,
+  "scripts": {
+    "sync-app": "node scripts/sync-app.mjs",
+    "start": "npm run sync-app && tauri dev",
+    "build": "npm run sync-app && tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "mathjax": "^3.2.2"
+  }
+}

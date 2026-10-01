@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>專案導覽</title>
+<style>
+:root {
+  --paper: #f7f5f0;
+  --surface: #ffffff;
+  --surface-2: #f0ede6;
+  --ink: #1d1f23;
+  --ink-2: #4a4f57;
+  --ink-3: #7b8089;
+  --line: #e2ddd3;
+  --accent: #0f6e66;
+  --accent-soft: #dcefec;
+  --warn: #9a5b00;
+  --warn-soft: #fbf0dc;
+  --danger: #a3372f;
+  --danger-soft: #f8e3e0;
+  --ok: #2f6d2f;
+  --ok-soft: #e2f0dd;
+  --code-bg: #1f2227;
+  --code-ink: #e8e6e1;
+  --shadow: 0 1px 2px rgba(30, 25, 15, .05), 0 4px 16px rgba(30, 25, 15, .05);
+  --radius: 12px;
+  --sans: "Microsoft JhengHei UI", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+  --mono: "Cascadia Code", "Cascadia Mono", Consolas, "SF Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141619; --surface: #1c1f23; --surface-2: #23272c;
+    --ink: #e9e7e2; --ink-2: #b7b9bd; --ink-3: #868a91; --line: #2f343a;
+    --accent: #5cc4b8; --accent-soft: #173a37;
+    --warn: #e8b35a; --warn-soft: #3a2d15;
+    --danger: #ef8a80; --danger-soft: #3d1f1c;
+    --ok: #8fcf8a; --ok-soft: #1f3320;
+    --code-bg: #0e1013; --code-ink: #e8e6e1;
+    --shadow: none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #141619; --surface: #1c1f23; --surface-2: #23272c;
+  --ink: #e9e7e2; --ink-2: #b7b9bd; --ink-3: #868a91; --line: #2f343a;
+  --accent: #5cc4b8; --accent-soft: #173a37;
+  --warn: #e8b35a; --warn-soft: #3a2d15;
+  --danger: #ef8a80; --danger-soft: #3d1f1c;
+  --ok: #8fcf8a; --ok-soft: #1f3320;
+  --code-bg: #0e1013; --code-ink: #e8e6e1;
+  --shadow: none; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.75 var(--sans); -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+code, .mono { font-family: var(--mono); font-size: .88em; }
+:not(pre) > code {
+  background: var(--surface-2); border: 1px solid var(--line);
+  padding: .05em .4em; border-radius: 6px; word-break: break-all;
+}
+
+/* Layout */
+.shell { display: grid; grid-template-columns: 232px minmax(0, 1fr); max-width: 1180px; margin: 0 auto; gap: 48px; padding: 0 32px; }
+nav.toc { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 40px 0 32px; }
+.toc-title { font-size: 12px; letter-spacing: .12em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 12px 12px; }
+.toc a {
+  display: flex; align-items: center; gap: 10px; padding: 6px 12px; border-radius: 8px;
+  color: var(--ink-2); text-decoration: none; font-size: 14.5px;
+}
+.toc a .n { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); width: 18px; }
+.toc a:hover { background: var(--surface-2); color: var(--ink); }
+.toc a.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.toc a.active .n { color: var(--accent); }
+.toc-foot { margin: 20px 12px 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.theme-btn {
+  font: inherit; font-size: 13px; color: var(--ink-2); background: none; border: 1px solid var(--line);
+  border-radius: 8px; padding: 4px 10px; cursor: pointer;
+}
+main { padding: 40px 0 96px; min-width: 0; }
+
+/* Hero */
+.hero { padding: 8px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-3); }
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge.active { color: var(--ok); background: var(--ok-soft); }
+.badge.maintained { color: var(--accent); background: var(--accent-soft); }
+.badge.paused { color: var(--warn); background: var(--warn-soft); }
+.badge.archived { color: var(--ink-3); background: var(--surface-2); }
+h1 { font-size: clamp(30px, 4.2vw, 42px); line-height: 1.2; margin: 14px 0 8px; letter-spacing: -.01em; }
+.tagline { font-size: 18px; color: var(--ink-2); margin: 0 0 18px; max-width: 46em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
+.chips li { font-size: 13px; padding: 3px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+.pathline { font-family: var(--mono); font-size: 13px; color: var(--ink-3); word-break: break-all; }
+
+/* Sections */
+section { padding-top: 44px; }
+h2 { display: flex; align-items: baseline; gap: 12px; font-size: 23px; margin: 0 0 6px; }
+h2 .n { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 600; }
+.lede { color: var(--ink-3); font-size: 14.5px; margin: 0 0 18px; }
+.steps, .tasks, .checks { grid-template-columns: minmax(0, 1fr); }
+.card { min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+/* TL;DR */
+.tldr { padding: 20px 24px; border-left: 4px solid var(--accent); }
+.tldr ol { margin: 0; padding-left: 1.3em; }
+.tldr li { margin: 4px 0; font-size: 16.5px; }
+.tldr li::marker { color: var(--accent); font-weight: 700; }
+
+/* Source tag */
+.src {
+  display: inline-block; font-family: var(--mono); font-size: 11.5px; color: var(--ink-3);
+  background: var(--surface-2); border-radius: 5px; padding: 0 6px; margin-top: 6px; word-break: break-all;
+}
+.src.unverified { color: var(--warn); background: var(--warn-soft); }
+
+/* Quickstart */
+.steps { counter-reset: step; display: grid; gap: 14px; }
+.step { padding: 16px 20px 16px 64px; position: relative; }
+.step::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 20px; top: 16px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: var(--surface); font-weight: 700; font-size: 14px;
+  display: grid; place-items: center;
+}
+.step h3 { margin: 0 0 4px; font-size: 16.5px; }
+.step p { margin: 4px 0 0; color: var(--ink-2); font-size: 14.5px; }
+.cmd { position: relative; margin: 10px 0 0; }
+.cmd pre {
+  margin: 0; background: var(--code-bg); color: var(--code-ink); border-radius: 9px;
+  padding: 12px 84px 12px 14px; overflow-x: auto; font: 13.5px/1.6 var(--mono);
+}
+.copy {
+  position: absolute; top: 7px; right: 7px; font: 12px var(--sans); color: var(--code-ink);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 6px;
+  padding: 3px 10px; cursor: pointer;
+}
+.copy:hover { background: rgba(255,255,255,.2); }
+
+/* Glance */
+.glance { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.fact { padding: 16px 18px; }
+.fact .k { font-size: 12.5px; letter-spacing: .06em; color: var(--ink-3); }
+.fact .v { font-size: 15.5px; font-weight: 600; margin-top: 2px; word-break: break-word; }
+
+/* Flow */
+.flow { display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0; overflow-x: auto; padding-bottom: 6px; }
+.node { flex: 1 0 190px; padding: 14px 16px; min-width: 0; }
+.node .src { word-break: normal; overflow-wrap: anywhere; }
+.node .t { font-weight: 700; font-size: 15px; }
+.node .d { font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+.arrow { flex: 0 0 34px; display: grid; place-items: center; color: var(--accent); font-size: 20px; }
+
+/* Tree */
+.tree { padding: 18px 20px; font-family: var(--mono); font-size: 13.5px; line-height: 1.9; overflow-x: auto; }
+.tree .row { display: grid; grid-template-columns: minmax(180px, max-content) 1fr; gap: 20px; white-space: nowrap; }
+.tree .p { color: var(--ink); }
+.tree .p.dir { color: var(--accent); font-weight: 600; }
+.tree .note { font-family: var(--sans); color: var(--ink-3); white-space: normal; font-size: 13.5px; }
+
+/* Table */
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font-size: 12.5px; color: var(--ink-3); font-weight: 600; letter-spacing: .05em; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.tbl td { padding: 12px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl td:first-child { font-family: var(--mono); font-size: 13px; word-break: break-all; width: 38%; }
+
+/* Tasks (details) */
+.tasks { display: grid; gap: 10px; }
+details.task { padding: 0; }
+details.task summary {
+  list-style: none; cursor: pointer; padding: 14px 20px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px;
+}
+details.task summary::-webkit-details-marker { display: none; }
+details.task summary::after { content: "＋"; color: var(--accent); font-weight: 400; }
+details.task[open] summary::after { content: "－"; }
+details.task .body { padding: 0 20px 16px; border-top: 1px dashed var(--line); }
+details.task ol { margin: 12px 0 0; padding-left: 1.3em; color: var(--ink-2); }
+
+/* Pitfalls */
+.pits { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.pit { padding: 18px 20px; border-top: 3px solid var(--danger); }
+.pit .sym { font-weight: 700; margin-bottom: 8px; }
+.pit dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 14.5px; }
+.pit dt { color: var(--ink-3); font-size: 13px; padding-top: 1px; }
+.pit dd { margin: 0; color: var(--ink-2); }
+
+/* Verify */
+.checks { display: grid; gap: 10px; }
+.check { padding: 14px 20px; }
+.check .w { font-weight: 600; }
+
+/* Unknowns */
+.unknowns { padding: 18px 22px; background: var(--warn-soft); border-color: transparent; }
+.unknowns ul { margin: 0; padding-left: 1.2em; }
+.unknowns li { margin: 4px 0; }
+.unknowns li::marker { content: "？ "; color: var(--warn); font-weight: 700; }
+
+/* Glossary */
+.gloss { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.term { padding: 14px 18px; }
+.term .t { font-weight: 700; }
+.term .m { color: var(--ink-2); font-size: 14.5px; }
+
+.empty { color: var(--ink-3); font-size: 14.5px; font-style: italic; }
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); }
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  nav.toc { position: static; height: auto; padding: 20px 0 0; display: none; }
+  main { padding-top: 24px; }
+  .flow { flex-direction: column; overflow: visible; }
+  .arrow { flex: 0 0 26px; transform: rotate(90deg); }
+  .node { flex: 0 0 auto; }
+  .tbl td:first-child { width: auto; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; }
+  .tbl thead { display: none; }
+  .tbl tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  .tbl tr:last-child { border-bottom: 0; }
+  .tbl td { border: 0; padding: 4px 18px; }
+}
+@media print {
+  nav.toc, .copy, .theme-btn { display: none; }
+  .shell { display: block; }
+  body { background: #fff; }
+  details.task > .body { display: block; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="toc" aria-label="目錄">
+    <p class="toc-title">導覽</p>
+    <div id="toc"></div>
+    <div class="toc-foot"><button class="theme-btn" id="themeBtn" type="button">切換深淺色</button></div>
+  </nav>
+  <main id="app"></main>
+</div>
+
+<!--
+  ============================================================
+  內容資料區：只修改下面這個 JSON，不要改 HTML、CSS 或 JS。
+  欄位規格見 FILL_PROMPT.md。build.py 會自動替換 GUIDE_DATA 區塊。
+  ============================================================
+-->
+<script type="application/json" id="guide-data">
+/*GUIDE_DATA_START*/{
+  "meta": {
+    "id": "knowledge-base",
+    "name": "物理知識庫",
+    "tagline": "把外部 Vault 物理筆記匯出成可驗證的互動圖譜",
+    "status": "archived",
+    "reviewed": "2026-10-01",
+    "generated_by": "cursor-grok-4.6-medium via Cursor CLI",
+    "path": "C:\\Users\\brian\\Downloads\\10_projects\\19_archive\\knowledge-base",
+    "stack": [
+      "Python 3",
+      "HTML/JavaScript",
+      "MathJax 3",
+      "Tauri 2",
+      "GitHub Pages",
+      "Obsidian Vault"
+    ]
+  },
+  "tldr": [
+    "這是一套「外部 Obsidian Vault 為內容正本、本 repo 負責 schema／驗證／匯出／閱讀介面」的大學物理知識庫工作流，另含材料科學子專案與可重用模板。",
+    "日常：在 Vault 改 Markdown，再跑 `python .\\tools\\run_exports.py`，用 `.\\start_prototype.cmd` 開 `http://127.0.0.1:4173/prototype/` 預覽；公開站看 `docs/`。",
+    "最重要：不要手改 `physics_graph.json`／`physics_note_details.json`；Vault 路徑以本機設定或 `--vault` 為準，舊文件裡的路徑與篇數不可信。"
+  ],
+  "quickstart": [
+    {
+      "title": "建立本機設定（勿提交）",
+      "command": "Copy-Item .knowledge-base.local.example.json .knowledge-base.local.json",
+      "note": "填 `pythonPath`、`vaultPath`、可選 `prototypeHost`／`prototypePort`。此檔已被 `.gitignore` 排除。也可改設環境變數 `KB_VAULT_PATH`、`KB_PYTHON_PATH`。",
+      "source": ".knowledge-base.local.example.json"
+    },
+    {
+      "title": "匯出圖譜與筆記詳情並驗證",
+      "command": "python .\\tools\\run_exports.py",
+      "note": "會寫根目錄 `physics_note_details.json` 與 `physics_graph.json`，再跑 `validate_knowledge_base.py`。可用 `--vault` 覆寫路徑；`--skip-validate` 只匯出。直接呼叫兩個匯出腳本時 `--vault` 與 `--out` 皆為必填。",
+      "source": "tools/run_exports.py:16"
+    },
+    {
+      "title": "開啟本機圖譜原型",
+      "command": ".\\start_prototype.cmd",
+      "note": "預設開 `http://127.0.0.1:4173/prototype/`。`prototype/app.js` 從上一層讀 JSON，必須以 repo 根目錄當 HTTP 根，不要用 `file://` 開 `prototype/index.html`。",
+      "source": "start_prototype.ps1:31"
+    },
+    {
+      "title": "（可選）離線單檔或桌面版",
+      "command": "cd desktop_tauri_app\nnpm install\nnpm start",
+      "note": "離線版直接開 `standalone_html_app/index.html`。桌面版會先把該資料夾同步進 `desktop_tauri_app/app` 並內嵌 MathJax。Vault 更新後須重產 `graph-data.js`／`note-details-data.js`，否則離線／桌面內容不會變。",
+      "source": "standalone_html_app/README.md:12"
+    }
+  ],
+  "glance": [
+    {
+      "label": "入口（本機閱讀）",
+      "value": "`start_prototype.cmd` → `http://127.0.0.1:4173/prototype/`；離線用 `standalone_html_app/index.html`",
+      "source": "start_prototype.ps1:35"
+    },
+    {
+      "label": "入口（公開頁）",
+      "value": "GitHub Pages：`main` 的 `/docs`；物理 `docs/index.html`，材料 `docs/materials-science-engineering/index.html`",
+      "source": "docs/README.md:5"
+    },
+    {
+      "label": "資料位置（正本）",
+      "value": "內容在 repo 外的 Obsidian Vault；repo 內 JSON 是衍生品",
+      "source": "README.md:14"
+    },
+    {
+      "label": "資料位置（匯出）",
+      "value": "根目錄 `physics_graph.json`、`physics_note_details.json`；部署複本在 `docs/`",
+      "source": "tools/run_exports.py:33"
+    },
+    {
+      "label": "設定檔",
+      "value": "規則在 `schema/`；本機路徑在被忽略的 `.knowledge-base.local.json`；解析邏輯在 `tools/kb_paths.py`",
+      "source": "tools/kb_paths.py:29"
+    },
+    {
+      "label": "測試／驗證",
+      "value": "無單元測試套件；靠 `validate_knowledge_base.py`、`validate_structure.py`、`audit_content_quality.py`",
+      "source": "tools/validate_knowledge_base.py:204"
+    },
+    {
+      "label": "對外連線",
+      "value": "瀏覽器版公式走 jsDelivr MathJax CDN；無帳號系統。`enrich_from_wikipedia.py` 會打 Wikipedia。實際 LLM 呼叫不在本 repo",
+      "source": "prototype/index.html:29"
+    },
+    {
+      "label": "部署方式",
+      "value": "`scripts/deploy.sh`：匯出 → 複製到 `docs/` → `git commit` → `git push`；無 CI",
+      "source": "scripts/deploy.sh:1"
+    }
+  ],
+  "flow": [
+    {
+      "name": "Obsidian Vault",
+      "role": "作者用 frontmatter、章節 schema 與 `[[wikilink]]` 寫 Markdown；這是唯一內容正本。`_bak` 開頭資料夾會被工具忽略。",
+      "source": "tools/kb_paths.py:17"
+    },
+    {
+      "name": "export_note_details.py",
+      "role": "掃描 Vault，把各篇標題、章節與正文整理成 `physics_note_details.json` 給閱讀模式。",
+      "source": "tools/export_note_details.py:100"
+    },
+    {
+      "name": "export_graph.py",
+      "role": "把筆記節點與 wikilink／frontmatter 關係匯成 `physics_graph.json`（節點＋邊）。",
+      "source": "obsidian-knowledge-map-demo/scripts/export_graph.py:188"
+    },
+    {
+      "name": "validate_knowledge_base.py",
+      "role": "對帳 Vault 篇數與兩份 JSON、必填欄位、壞連結、數學 `$`／`$$` 成對、標題重複；失敗即退出碼 1。",
+      "source": "tools/validate_knowledge_base.py:214"
+    },
+    {
+      "name": "prototype／docs／桌面殼",
+      "role": "前端讀 JSON 畫圖譜與閱讀頁。`docs/` 是 Pages 成品；`standalone_html_app`／Tauri 吃內嵌 JS 資料，不會自動跟根目錄 JSON 同步。",
+      "source": "prototype/app.js:1"
+    }
+  ],
+  "tree": [
+    {
+      "path": "schema/",
+      "note": "筆記類型、章節順序與內容稽核規則（副檔名 `.yaml`，內容是 JSON）"
+    },
+    {
+      "path": "tools/",
+      "note": "匯出、驗證、骨架生成、章節正規化與批次補寫腳本"
+    },
+    {
+      "path": "obsidian-knowledge-map-demo/scripts/",
+      "note": "圖譜匯出 `export_graph.py`（被 `run_exports.py` 呼叫）"
+    },
+    {
+      "path": "prototype/",
+      "note": "物理圖譜單頁前端；向 repo 根讀 JSON"
+    },
+    {
+      "path": "docs/",
+      "note": "GitHub Pages 靜態成品（前端＋JSON 複本）"
+    },
+    {
+      "path": "standalone_html_app/",
+      "note": "可雙擊的離線版，資料已內嵌成 JS"
+    },
+    {
+      "path": "desktop_tauri_app/",
+      "note": "Tauri 2 桌面包裝，建置前同步離線 HTML 並內嵌 MathJax"
+    },
+    {
+      "path": "knowledge-base-template/",
+      "note": "抽離後的通用 starter（含自己的 tools／schema／docs）"
+    },
+    {
+      "path": "materials-science-engineering-kb/",
+      "note": "材料科學子知識庫（內含 seed `vault/`）"
+    },
+    {
+      "path": "prototype_semantic_lens/",
+      "note": "另一套焦點透鏡閱讀原型與拆開的 detail JSON"
+    },
+    {
+      "path": "review_app/",
+      "note": "人工審查 AI 補寫結果的靜態 UI，由 `review_server.py` 提供"
+    },
+    {
+      "path": "prompts/",
+      "note": "給外部模型用的補寫／推導 prompt（repo 內不呼叫 API）"
+    },
+    {
+      "path": "llm_configs/",
+      "note": "議題分流與模型 profile，不含金鑰"
+    },
+    {
+      "path": "task_templates/",
+      "note": "章節修復任務 JSON 模板"
+    },
+    {
+      "path": "assets/",
+      "note": "前端可引用的圖檔；筆記裡請用相對路徑"
+    },
+    {
+      "path": "scripts/",
+      "note": "手動部署 `deploy.sh`"
+    }
+  ],
+  "key_files": [
+    {
+      "path": "tools/kb_paths.py",
+      "why": "所有工具如何找到 Vault：CLI `--vault`、`KB_VAULT_PATH`、本機 JSON；以及哪些路徑不算活筆記。",
+      "source": "tools/kb_paths.py:41"
+    },
+    {
+      "path": "tools/run_exports.py",
+      "why": "日常一鍵匯出＋驗證的順序與輸出檔名都寫在這裡。",
+      "source": "tools/run_exports.py:16"
+    },
+    {
+      "path": "schema/note_types.yaml",
+      "why": "六種筆記類型、資料夾慣例與必填／關係 frontmatter；改類型或新增欄位先看它。",
+      "source": "schema/note_types.yaml:1"
+    },
+    {
+      "path": "schema/sections.yaml",
+      "why": "各類型必填章節順序與條件規則；骨架生成與結構驗證都吃這份。",
+      "source": "schema/sections.yaml:1"
+    },
+    {
+      "path": "prototype/app.js",
+      "why": "圖譜篩選、閱讀模式與 JSON 路徑；改 UI 行為從這裡進。`docs/app.js` 是部署複本且 JSON URL 不同。",
+      "source": "prototype/app.js:1"
+    },
+    {
+      "path": "tools/validate_knowledge_base.py",
+      "why": "定義「什麼叫匯出合格」；改完 schema 或匯出格式後必須對齊這裡。",
+      "source": "tools/validate_knowledge_base.py:150"
+    },
+    {
+      "path": "scripts/deploy.sh",
+      "why": "公開站實際複製哪些檔；漏同步 `docs/` 會讓 Pages 與本機原型不一致。",
+      "source": "scripts/deploy.sh:9"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "新增一篇符合 schema 的筆記",
+      "steps": [
+        "用 `python .\\tools\\generate_note_skeleton.py --type concept --title \"標題\" --summary \"一句\" --domain \"mechanics\"` 預覽骨架；確認路徑後加 `--write`（可再加 `--vault` 寫進對應類型資料夾）。",
+        "在 Vault 填章節、wikilink 與公式，勿破壞 frontmatter。",
+        "跑 `python .\\tools\\validate_structure.py` 再 `python .\\tools\\run_exports.py`。"
+      ],
+      "source": "tools/generate_note_skeleton.py:74"
+    },
+    {
+      "title": "改完 Vault 後更新前端資料",
+      "steps": [
+        "確認 Vault 路徑無漂移後執行 `python .\\tools\\run_exports.py`。",
+        "重開或重新整理 `http://127.0.0.1:4173/prototype/`。",
+        "若要離線／桌面版，另重產 `standalone_html_app` 的資料檔再 `npm run sync-app` 或 `npm run build`。"
+      ],
+      "source": "MAINTENANCE.md:156"
+    },
+    {
+      "title": "只查結構或內容品質（不匯出）",
+      "steps": [
+        "`python .\\tools\\validate_structure.py`（章節順序／缺段）。",
+        "`python .\\tools\\audit_content_quality.py`（過短意義段、未分組相關連結等；可 `--json-out`）。"
+      ],
+      "source": "tools/validate_structure.py:209"
+    },
+    {
+      "title": "發佈 GitHub Pages",
+      "steps": [
+        "在有 bash 的環境於 repo 根執行 `scripts/deploy.sh`（內部呼叫 `python tools/run_exports.py`）。",
+        "確認 GitHub Pages 來源為 `main` 的 `/docs`。",
+        "注意：腳本會 `git add`／`commit`／`push`；封存狀態下先確認是否真的要推遠端。"
+      ],
+      "source": "scripts/deploy.sh:6"
+    },
+    {
+      "title": "打包 Windows 桌面安裝檔",
+      "steps": [
+        "先讓 `standalone_html_app` 資料與最新匯出一致。",
+        "在 `desktop_tauri_app` 執行 `npm install` 後 `npm run build`（需 Node 與 Rust／Tauri 工具鏈）。",
+        "NSIS 產物在 `src-tauri/target/release/bundle/nsis/`。"
+      ],
+      "source": "desktop_tauri_app/package.json:8"
+    }
+  ],
+  "pitfalls": [
+    {
+      "symptom": "本機或公開頁內容停在舊版、圖譜缺新筆記",
+      "cause": "只改了 Vault 或只改了其中一份 JSON；或看錯資料夾／舊伺服器快取。",
+      "fix": "對正確 Vault 重跑 `run_exports.py`，確認 `physics_graph.json` 與 `physics_note_details.json` 都更新後再重整 prototype。",
+      "source": "MAINTENANCE.md:320"
+    },
+    {
+      "symptom": "Obsidian 公式正常，瀏覽器空白或不排版",
+      "cause": "沒用 `$`／`$$`，或用 `file://` 開 prototype，或 MathJax CDN 沒載入。",
+      "fix": "用 HTTP 開原型；檢查公式語法與 CDN。桌面版應走內嵌 MathJax。",
+      "source": "MAINTENANCE.md:337"
+    },
+    {
+      "symptom": "雙擊離線 HTML／桌面程式與 repo 根 JSON 不一致",
+      "cause": "`standalone_html_app` 的 `graph-data.js`、`note-details-data.js` 是另一次匯出的快照。",
+      "fix": "根目錄 JSON 更新後必須重產這兩個 JS，再同步／重建 Tauri。",
+      "source": "standalone_html_app/README.md:13"
+    },
+    {
+      "symptom": "匯出或驗證篇數對不上、舊備份筆記被算進去",
+      "cause": "Vault 路徑漂移，或把 `_bak*` 目錄當活筆記。",
+      "fix": "以 `.knowledge-base.local.json` 或 `--vault` 對現行 Vault；備份資料夾名稱以 `_bak` 開頭才會被忽略。",
+      "source": "MAINTENANCE.md:118"
+    },
+    {
+      "symptom": "`start_prototype.cmd` 找不到 Python 或開到錯直譯器",
+      "cause": "腳本在沒有本機設定／環境變數時，會落到一份寫死的機器專用 `python.exe` 路徑。",
+      "fix": "設 `KB_PYTHON_PATH` 或在 `.knowledge-base.local.json` 寫 `pythonPath`，不要依賴預設後備路徑。",
+      "source": "start_prototype.ps1:16"
+    },
+    {
+      "symptom": "改 `schema/*.yaml` 後載入失敗或規則沒生效",
+      "cause": "檔名是 `.yaml`，載入卻用 `json.loads`；若改成真 YAML 會直接壞。",
+      "fix": "維持 JSON 語法，或先改所有 loader 再換格式。",
+      "source": "knowledge-base-template/README.md:99"
+    }
+  ],
+  "verify": [
+    {
+      "what": "Vault 與兩份匯出 JSON 一致、連結與數學分隔符合格",
+      "command": "python .\\tools\\validate_knowledge_base.py",
+      "source": "tools/validate_knowledge_base.py:204"
+    },
+    {
+      "what": "章節結構符合 `schema/sections.yaml`",
+      "command": "python .\\tools\\validate_structure.py",
+      "source": "tools/validate_structure.py:209"
+    },
+    {
+      "what": "內容品質稽核（非硬失敗定義的教學品質規則）",
+      "command": "python .\\tools\\audit_content_quality.py",
+      "source": "tools/audit_content_quality.py:192"
+    },
+    {
+      "what": "原型能載入圖譜、側欄、閱讀模式與公式（人工）",
+      "command": ".\\start_prototype.cmd",
+      "source": "MAINTENANCE.md:238"
+    }
+  ],
+  "unknowns": [
+    "篇數互相矛盾：`AI_HANDOFF.md`／`MAINTENANCE.md` 寫 2026-06-07 驗證為 330 篇、7473 邊；`ARCHITECTURE_for_VibeCoder.md` 寫 417 篇；`AI_HANDOFF.md` 又寫 `taxonomy_domain` 為 319/319。本次未計數 `physics_graph.json` 實際節點數，以現場 `validate_knowledge_base.py` 為準。",
+    "`MAINTENANCE.md`、`AI_HANDOFF.md` 記錄的 repo 路徑是 `C:\\Users\\brian\\Downloads\\vibe_coding\\knowledge_map`，與目前工作區 `19_archive\\knowledge-base` 不同；視為過期路徑。",
+    "根目錄 `tools/run_exports.py` 沒有 `--out-dir`、輸出檔名固定為 `physics_*.json`；`knowledge-base-template` 與材料子專案的 `run_exports.py` 支援 `--out-dir` 且檔名為 `graph.json`／`note_details.json`。勿把模板 README 的指令直接套在父專案根目錄。",
+    "沒有 `requirements.txt`；核心匯出／驗證只用標準庫。Wikipedia 補寫用 `urllib`。桌面版另需 Node、`@tauri-apps/cli`、Rust。本次未實跑任何指令。",
+    "如何從根目錄 JSON 重產 `standalone_html_app` 的 `graph-data.js`／`note-details-data.js`：README 只說要重新產生，未找到對應腳本名稱（未查證）。"
+  ],
+  "glossary": [
+    {
+      "term": "Vault",
+      "meaning": "放 Markdown 筆記的那個外部資料夾，內容以它為準，不在 git 裡。"
+    },
+    {
+      "term": "schema",
+      "meaning": "`schema/` 裡規定的筆記類型、章節順序與稽核規則；新筆記應先依它長骨架。"
+    },
+    {
+      "term": "frontmatter",
+      "meaning": "筆記開頭 `---` 包住的欄位，至少要有 `type`、`title`、`summary`；多數類型還要 `domain`。"
+    },
+    {
+      "term": "wikilink",
+      "meaning": "`[[筆記名]]` 內部連結；匯出成圖譜的邊，目標不存在驗證會失敗。"
+    },
+    {
+      "term": "taxonomy_domain",
+      "meaning": "用來做圖譜分類篩選的領域標籤（如 mechanics、waves_optics），與教學用 `domain` 欄位分開記。"
+    },
+    {
+      "term": "Semantic Lens",
+      "meaning": "`prototype_semantic_lens/` 那套較新的焦點式閱讀原型，不是預設的 `prototype/` 圖譜。"
+    }
+  ]
+}/*GUIDE_DATA_END*/
+</script>
+
+<script>
+(function () {
+  var raw = document.getElementById("guide-data").textContent
+    .replace("/*GUIDE_DATA_START*/", "").replace("/*GUIDE_DATA_END*/", "");
+  var G;
+  try { G = JSON.parse(raw); } catch (e) {
+    document.getElementById("app").textContent = "導覽資料 JSON 格式錯誤：" + e.message;
+    return;
+  }
+  var app = document.getElementById("app");
+  var STATUS = { active: "開發中", maintained: "維護中", paused: "暫停", archived: "已封存" };
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  // Inline `code` only; everything else stays plain text (no HTML injection).
+  function rich(tag, cls, text) {
+    var n = el(tag, cls);
+    String(text || "").split(/(`[^`]+`)/).forEach(function (part) {
+      if (/^`[^`]+`$/.test(part)) n.appendChild(el("code", null, part.slice(1, -1)));
+      else if (part) n.appendChild(document.createTextNode(part));
+    });
+    return n;
+  }
+  function src(s) {
+    var v = (s || "").trim() || "未查證";
+    return el("span", "src" + (v === "未查證" ? " unverified" : ""), v === "未查證" ? "未查證" : "來源：" + v);
+  }
+  function arr(x) { return Array.isArray(x) ? x : []; }
+
+  var sections = [];
+  function section(id, title, lede, build, items) {
+    var s = el("section"); s.id = id;
+    var h = el("h2"); h.appendChild(el("span", "n", String(sections.length + 1).padStart(2, "0")));
+    h.appendChild(document.createTextNode(title));
+    s.appendChild(h);
+    if (lede) s.appendChild(el("p", "lede", lede));
+    if (items !== undefined && arr(items).length === 0) s.appendChild(el("p", "empty", "（這個專案沒有相關內容）"));
+    else build(s);
+    sections.push({ id: id, title: title });
+    app.appendChild(s);
+  }
+
+  // Hero
+  var m = G.meta || {};
+  document.title = (m.name || "專案") + " · 導覽";
+  var hero = el("header", "hero");
+  var eb = el("div", "eyebrow");
+  var st = m.status in STATUS ? m.status : "archived";
+  eb.appendChild(el("span", "badge " + st, STATUS[st]));
+  if (m.reviewed) eb.appendChild(el("span", null, "檢視日期 " + m.reviewed));
+  if (m.id) eb.appendChild(el("span", "mono", m.id));
+  hero.appendChild(eb);
+  hero.appendChild(el("h1", null, m.name || "未命名專案"));
+  if (m.tagline) hero.appendChild(el("p", "tagline", m.tagline));
+  var chips = el("ul", "chips");
+  arr(m.stack).forEach(function (t) { chips.appendChild(el("li", null, t)); });
+  if (chips.children.length) hero.appendChild(chips);
+  if (m.path) hero.appendChild(el("div", "pathline", m.path));
+  app.appendChild(hero);
+
+  section("tldr", "三句話看懂", null, function (s) {
+    var c = el("div", "card tldr"), ol = el("ol");
+    arr(G.tldr).forEach(function (t) { ol.appendChild(rich("li", null, t)); });
+    c.appendChild(ol); s.appendChild(c);
+  }, G.tldr);
+
+  section("quickstart", "10 分鐘跑起來", "照順序做完，就能在本機看到它運作。", function (s) {
+    var w = el("div", "steps");
+    arr(G.quickstart).forEach(function (q) {
+      var c = el("div", "card step");
+      c.appendChild(el("h3", null, q.title));
+      if (q.command) {
+        var box = el("div", "cmd"), pre = el("pre"), btn = el("button", "copy", "複製");
+        pre.textContent = q.command; btn.type = "button";
+        btn.addEventListener("click", function () {
+          var done = function () { btn.textContent = "已複製"; setTimeout(function () { btn.textContent = "複製"; }, 1400); };
+          if (navigator.clipboard) navigator.clipboard.writeText(q.command).then(done, function () {});
+        });
+        box.appendChild(pre); box.appendChild(btn); c.appendChild(box);
+      }
+      if (q.note) c.appendChild(rich("p", null, q.note));
+      c.appendChild(src(q.source));
+      w.appendChild(c);
+    });
+    s.appendChild(w);
+  }, G.quickstart);
+
+  section("glance", "一眼看完", null, function (s) {
+    var g = el("div", "glance");
+    arr(G.glance).forEach(function (f) {
+      var c = el("div", "card fact");
+      c.appendChild(el("div", "k", f.label));
+      c.appendChild(rich("div", "v", f.value));
+      c.appendChild(src(f.source));
+      g.appendChild(c);
+    });
+    s.appendChild(g);
+  }, G.glance);
+
+  section("flow", "資料怎麼流", "從輸入到輸出的主要路徑。", function (s) {
+    var f = el("div", "flow");
+    arr(G.flow).forEach(function (n, i) {
+      if (i) f.appendChild(el("div", "arrow", "→"));
+      var c = el("div", "card node");
+      c.appendChild(el("div", "t", n.name));
+      c.appendChild(rich("div", "d", n.role));
+      c.appendChild(src(n.source));
+      f.appendChild(c);
+    });
+    s.appendChild(f);
+  }, G.flow);
+
+  section("tree", "資料夾地圖", "只列出值得知道的部分。", function (s) {
+    var c = el("div", "card tree");
+    arr(G.tree).forEach(function (t) {
+      var p = String(t.path || ""), clean = p.replace(/\/$/, "");
+      var depth = clean.split("/").length - 1;
+      var r = el("div", "row");
+      var pe = el("span", "p" + (/\/$/.test(p) ? " dir" : ""), "\u00a0".repeat(depth * 3) + (depth ? "└ " : "") + (clean.split("/").pop() + (/\/$/.test(p) ? "/" : "")));
+      r.appendChild(pe); r.appendChild(el("span", "note", t.note || ""));
+      c.appendChild(r);
+    });
+    s.appendChild(c);
+  }, G.tree);
+
+  section("files", "關鍵檔案", "改功能前先讀這幾個。", function (s) {
+    var c = el("div", "card"), t = el("table", "tbl");
+    var th = el("thead"), hr = el("tr");
+    hr.appendChild(el("th", null, "檔案")); hr.appendChild(el("th", null, "為什麼重要"));
+    th.appendChild(hr); t.appendChild(th);
+    var tb = el("tbody");
+    arr(G.key_files).forEach(function (k) {
+      var r = el("tr"); r.appendChild(el("td", null, k.path));
+      var d = rich("td", null, k.why); d.appendChild(el("br")); d.appendChild(src(k.source));
+      r.appendChild(d); tb.appendChild(r);
+    });
+    t.appendChild(tb); c.appendChild(t); s.appendChild(c);
+  }, G.key_files);
+
+  section("tasks", "常見任務", "點開看步驟。", function (s) {
+    var w = el("div", "tasks");
+    arr(G.tasks).forEach(function (k) {
+      var d = el("details", "card task"); d.appendChild(el("summary", null, k.title));
+      var b = el("div", "body"), ol = el("ol");
+      arr(k.steps).forEach(function (x) { ol.appendChild(rich("li", null, x)); });
+      b.appendChild(ol); b.appendChild(src(k.source)); d.appendChild(b); w.appendChild(d);
+    });
+    s.appendChild(w);
+  }, G.tasks);
+
+  section("pitfalls", "踩過的坑", "症狀 → 原因 → 解法。", function (s) {
+    var w = el("div", "pits");
+    arr(G.pitfalls).forEach(function (p) {
+      var c = el("div", "card pit");
+      c.appendChild(el("div", "sym", p.symptom));
+      var dl = el("dl");
+      dl.appendChild(el("dt", null, "原因")); dl.appendChild(rich("dd", null, p.cause));
+      dl.appendChild(el("dt", null, "解法")); dl.appendChild(rich("dd", null, p.fix));
+      c.appendChild(dl); c.appendChild(src(p.source)); w.appendChild(c);
+    });
+    s.appendChild(w);
+  }, G.pitfalls);
+
+  section("verify", "怎麼確認沒弄壞", null, function (s) {
+    var w = el("div", "checks");
+    arr(G.verify).forEach(function (v) {
+      var c = el("div", "card check");
+      c.appendChild(el("div", "w", v.what));
+      if (v.command) { var box = el("div", "cmd"), pre = el("pre"); pre.textContent = v.command; box.appendChild(pre); c.appendChild(box); }
+      c.appendChild(src(v.source)); w.appendChild(c);
+    });
+    s.appendChild(w);
+  }, G.verify);
+
+  section("unknowns", "尚未確認", "撰寫時查不到或互相矛盾的地方，使用前請先自行核對。", function (s) {
+    var c = el("div", "card unknowns"), ul = el("ul");
+    arr(G.unknowns).forEach(function (u) { ul.appendChild(rich("li", null, u)); });
+    c.appendChild(ul); s.appendChild(c);
+  }, G.unknowns);
+
+  section("glossary", "名詞", null, function (s) {
+    var w = el("div", "gloss");
+    arr(G.glossary).forEach(function (g) {
+      var c = el("div", "card term");
+      c.appendChild(el("div", "t", g.term)); c.appendChild(rich("div", "m", g.meaning));
+      w.appendChild(c);
+    });
+    s.appendChild(w);
+  }, G.glossary);
+
+  var ft = el("footer");
+  ft.textContent = "內容產生：" + (m.generated_by || "未註明") + "。標示「未查證」的項目沒有對應的原始檔案證據。";
+  app.appendChild(ft);
+
+  // TOC + scrollspy
+  var toc = document.getElementById("toc"), links = {};
+  sections.forEach(function (s, i) {
+    var a = el("a"); a.href = "#" + s.id;
+    a.appendChild(el("span", "n", String(i + 1).padStart(2, "0")));
+    a.appendChild(document.createTextNode(s.title));
+    toc.appendChild(a); links[s.id] = a;
+  });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove("active"); });
+          links[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-10% 0px -80% 0px" });
+    sections.forEach(function (s) { io.observe(document.getElementById(s.id)); });
+  }
+
+  // Theme toggle (per-viewer convenience only)
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem("guide-theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("guide-theme", root.dataset.theme); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

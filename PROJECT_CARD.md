@@ -23,6 +23,7 @@ schema 驗證、JSON 匯出、`prototype/` 圖譜與閱讀、`docs/` GitHub Page
 ## 結構與入口
 `schema/`、`tools/run_exports.py`、`prototype/index.html`、`start_prototype.cmd`、衍生檔 `physics_graph.json`。模板複本：`knowledge-base-template/`。
 桌面版：`desktop_tauri_app/`（Tauri，2026-09-27 取代已刪除的 Electron 版 `desktop_exe_app/`）；`npm run build` 先從 `standalone_html_app/` 同步並內嵌 MathJax 3.2.2 再打包，NSIS 安裝檔約 2.5 MiB，公式可離線渲染。
+- 導覽手冊：`PROJECT_GUIDE.html`（cursor-grok-4.6-medium 產生，2026-10-01；來源未逐條人工核對）
 
 ## 外部依賴
 Python、Obsidian（外部 vault）、MathJax／GitHub Pages（文件）。遠端 `knowledge-base`。
